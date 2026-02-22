@@ -8,7 +8,7 @@
   // ── Change this to your deployed Render backend URL after deploying ──
   // e.g. 'https://cover-credit-api.onrender.com'
   // During local testing use 'http://localhost:5000'
-  const API_URL = 'https://cover-credit-api.onrender.com';
+  const API_URL = 'https://cover-credit-backend.onrender.com';
 
   // ── Generic form handler ──────────────────────────────────
   function handleForm(formId, successId, endpoint, buildPayload) {
