@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Book a free 30-minute insurance consultation with Cover Credit. No spam, no obligation, no sales pitch."/>
+  <title>Book Free Consultation | Cover Credit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/variables.css"/><link rel="stylesheet" href="css/global.css"/><link rel="stylesheet" href="css/components.css"/>
+</head>
+<body>
+  <header>
+    <nav class="nav"><div class="nav__inner"><a href="index.html" class="nav__logo">Cover<span>Credit</span></a><ul class="nav__links"><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life Insurance</a></li><li class="nav__dropdown"><span class="nav__dropdown-trigger">Vehicle Insurance <span class="nav__dropdown-arrow">▼</span></span><div class="nav__dropdown-menu"><a href="bike-insurance.html">Bike Insurance</a><a href="car-insurance.html">Car Insurance</a><a href="commercial-vehicle-insurance.html">Commercial Vehicles</a></div></li><li><a href="loans.html">Loans</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="book.html" class="nav__cta">Book Consultation</a></li></ul><button class="nav__hamburger" id="hamburger"><span></span><span></span><span></span></button></div></nav>
+    <nav class="mobile-nav" id="mobile-nav"><a href="health-insurance.html" class="mobile-nav__item">Health Insurance</a><a href="life-insurance.html" class="mobile-nav__item">Life Insurance</a><a href="bike-insurance.html" class="mobile-nav__item mobile-nav__sub">↳ Bike Insurance</a><a href="car-insurance.html" class="mobile-nav__item mobile-nav__sub">↳ Car Insurance</a><a href="commercial-vehicle-insurance.html" class="mobile-nav__item mobile-nav__sub">↳ Commercial Vehicles</a><a href="loans.html" class="mobile-nav__item">Loans</a><a href="blog.html" class="mobile-nav__item">Blog</a><a href="about.html" class="mobile-nav__item">About</a><a href="contact.html" class="mobile-nav__item">Contact</a><a href="book.html" class="mobile-nav__cta">Book Free Consultation</a></nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="page-hero__inner" style="max-width:var(--max-width);width:var(--container);">
+      <nav class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span>Book Consultation</span></nav>
+      <h1 class="page-hero__title">Book Your Free Consultation</h1>
+      <p class="page-hero__desc">A 30-minute session with our advisor — in Telugu or English. No spam, no obligation, no sales pitch.</p>
+    </div>
+  </section>
+
+  <section class="section" style="background:var(--bg);">
+    <div class="section-wrap">
+      <div style="max-width:780px;">
+
+        <!-- Trust badges -->
+        <div class="dark-grid" style="margin-bottom:2.5rem;">
+          <div class="dark-card" style="background:var(--white);border:1px solid var(--border);">
+            <div class="dark-card__icon">🎯</div>
+            <h3 class="dark-card__title" style="color:var(--primary);">Right Policy Advice</h3>
+            <p class="dark-card__body" style="color:var(--muted);">We recommend what fits — not what earns us more commission.</p>
+          </div>
+          <div class="dark-card" style="background:var(--white);border:1px solid var(--border);">
+            <div class="dark-card__icon">🗣️</div>
+            <h3 class="dark-card__title" style="color:var(--primary);">Telugu / English Support</h3>
+            <p class="dark-card__body" style="color:var(--muted);">We speak your language — literally. No jargon, no confusion.</p>
+          </div>
+          <div class="dark-card" style="background:var(--white);border:1px solid var(--border);">
+            <div class="dark-card__icon">🚫</div>
+            <h3 class="dark-card__title" style="color:var(--primary);">Zero Pressure</h3>
+            <p class="dark-card__body" style="color:var(--muted);">This is a conversation, not a sales call. Take your time.</p>
+          </div>
+        </div>
+
+        <!-- Booking Form -->
+        <div class="info-box">
+          <h2 class="info-box__title">Book Your Session</h2>
+          <p class="info-box__body">Fill in your details and we'll call you to confirm a convenient time.</p>
+          <form id="book-form" novalidate style="margin-top:1rem;">
+            <div class="form-row">
+              <div class="form-group"><label for="b-name">Your Name *</label><input type="text" id="b-name" placeholder="Full Name" required/></div>
+              <div class="form-group"><label for="b-phone">Phone Number *</label><input type="tel" id="b-phone" placeholder="+91 9XXXXXXXXX" required/></div>
+            </div>
+            <div class="form-group"><label for="b-email">Email (optional)</label><input type="email" id="b-email" placeholder="you@example.com"/></div>
+            <div class="form-group">
+              <label for="b-topic">What do you need help with? *</label>
+              <select id="b-topic" required>
+                <option value="">Select a topic</option>
+                <option>Health Insurance — New / Renewal / Review</option>
+                <option>Life / Term Insurance</option>
+                <option>Bike Insurance</option>
+                <option>Car Insurance</option>
+                <option>Commercial Vehicle Insurance</option>
+                <option>Loan Guidance</option>
+                <option>Claim Assistance</option>
+                <option>Not sure — need general advice</option>
+              </select>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="b-lang">Preferred Language</label>
+                <select id="b-lang">
+                  <option>Telugu</option>
+                  <option>English</option>
+                  <option>Telugu + English (mix)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="b-time">Preferred Time Slot</label>
+                <select id="b-time">
+                  <option>Morning (9 AM – 12 PM)</option>
+                  <option>Afternoon (12 PM – 3 PM)</option>
+                  <option>Evening (3 PM – 7 PM)</option>
+                  <option>Any time is fine</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group"><label for="b-note">Anything else you'd like us to know?</label><textarea id="b-note" placeholder="Optional — share any details about your situation or specific questions..."></textarea></div>
+            <button type="submit" class="form-submit" data-label="Book My Free Consultation →">Book My Free Consultation →</button>
+            <div class="form-success" id="book-success">🎉 Booking confirmed! We'll call you within a few hours to confirm your time slot.</div>
+            <p class="form-note">Or call us directly: <a href="tel:+919642834789">+91 96428 34789</a></p>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer"><div class="footer__top"><div><a href="index.html" class="footer__logo">Cover<span>Credit</span></a><p class="footer__tagline">Honest insurance advice. We guide, not sell.</p><p class="footer__serving">© <span id="current-year">2026</span> Cover Credit. All rights reserved.</p></div><div class="footer__col"><h4>Quick Links</h4><ul><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life Insurance</a></li><li><a href="loans.html">Loans</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="book.html">Book Consultation</a></li></ul></div><div class="footer__col"><h4>Branches</h4><ul><li><a href="#">Visakhapatnam</a></li><li><a href="#">Hyderabad</a></li></ul></div><div class="footer__col"><h4>Contact</h4><div class="footer__contact-item">📞 <a href="tel:+919642834789">+91 96428 34789</a></div><div class="footer__contact-item">✉️ <a href="mailto:info@covercredit.in">info@covercredit.in</a></div></div></div><div class="footer__bottom"><span>© <span id="current-year-2">2026</span> Cover Credit. All rights reserved.</span><div class="footer__bottom-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div></div></footer>
+  <script src="js/nav.js"></script><script src="js/forms.js"></script><script src="js/main.js"></script>
+</body>
+</html>

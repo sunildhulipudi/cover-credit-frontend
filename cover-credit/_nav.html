@@ -1,0 +1,55 @@
+<!-- ============================================================
+     COVER CREDIT — Shared Navigation Partial
+     Copy this block into every page inside <body>
+     ============================================================ -->
+
+<header>
+  <nav class="nav">
+    <div class="nav__inner">
+
+      <a href="index.html" class="nav__logo">Cover<span>Credit</span></a>
+
+      <ul class="nav__links">
+        <li><a href="health-insurance.html">Health Insurance</a></li>
+        <li><a href="life-insurance.html">Life Insurance</a></li>
+
+        <li class="nav__dropdown">
+          <span class="nav__dropdown-trigger">
+            Vehicle Insurance
+            <span class="nav__dropdown-arrow">▼</span>
+          </span>
+          <div class="nav__dropdown-menu">
+            <a href="bike-insurance.html">Bike Insurance</a>
+            <a href="car-insurance.html">Car Insurance</a>
+            <a href="commercial-vehicle-insurance.html">Commercial Vehicles</a>
+          </div>
+        </li>
+
+        <li><a href="loans.html">Loans</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="book.html" class="nav__cta">Book Consultation</a></li>
+      </ul>
+
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <a href="health-insurance.html" class="mobile-nav__item">Health Insurance</a>
+    <a href="life-insurance.html"   class="mobile-nav__item">Life Insurance</a>
+    <a href="bike-insurance.html"   class="mobile-nav__item mobile-nav__sub">↳ Bike Insurance</a>
+    <a href="car-insurance.html"    class="mobile-nav__item mobile-nav__sub">↳ Car Insurance</a>
+    <a href="commercial-vehicle-insurance.html" class="mobile-nav__item mobile-nav__sub">↳ Commercial Vehicles</a>
+    <a href="loans.html"    class="mobile-nav__item">Loans</a>
+    <a href="blog.html"     class="mobile-nav__item">Blog</a>
+    <a href="about.html"    class="mobile-nav__item">About</a>
+    <a href="contact.html"  class="mobile-nav__item">Contact</a>
+    <a href="book.html"     class="mobile-nav__cta">Book Free Consultation</a>
+  </nav>
+</header>
