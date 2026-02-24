@@ -1,103 +1,950 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Life insurance guidance — term vs ULIP, coverage calculation, honest advice in Telugu & English."/>
-  <title>Life Insurance | Cover Credit</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/variables.css"/><link rel="stylesheet" href="css/global.css"/><link rel="stylesheet" href="css/components.css"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Life Insurance | Cover Credit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#06101f;--i2:#0b1a30;--i3:#112240;
+  --az:#0d47a1;--sky:#1565c0;
+  --gold:#f5a623;--glow:#ffd166;
+  --sage:#4ade80;--rose:#f87171;
+  --fog:rgba(255,255,255,.06);
+  --line:rgba(255,255,255,.08);
+  --E:cubic-bezier(.16,1,.3,1);
+  --nh:72px;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--ink);color:#fff;overflow-x:hidden;cursor:none;}
+a{text-decoration:none;color:inherit;}
+img{display:block;max-width:100%;}
+/* CURSOR */
+#cur,#cr{position:fixed;top:0;left:0;pointer-events:none;border-radius:50%;z-index:9999;transform:translate(-50%,-50%);}
+#cur{width:10px;height:10px;background:var(--gold);}
+#cr{width:38px;height:38px;border:1.5px solid rgba(245,166,35,.5);z-index:9998;}
+body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:.2;}
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:900;height:var(--nh);padding:0 5%;transition:background .4s;}
+.nav.sc{background:rgba(6,16,31,.97);backdrop-filter:blur(24px);box-shadow:0 1px 0 var(--line);}
+.ni{max-width:1300px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;}
+.logo em{font-style:normal;color:var(--gold);}
+.nl{display:flex;align-items:center;gap:1.8rem;list-style:none;}
+.nl a{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.65);transition:color .2s;position:relative;}
+.nl a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--gold);transition:width .28s;}
+.nl a:hover,.nl a.act{color:#fff;}.nl a:hover::after,.nl a.act::after{width:100%;}
+.dd{position:relative;}
+.ddt{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.65);cursor:none;display:flex;align-items:center;gap:.26rem;transition:color .2s;}
+.dd:hover .ddt{color:#fff;}
+.dda{font-size:.54rem;transition:transform .3s;}.dd:hover .dda{transform:rotate(180deg);}
+.ddm{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(6px);background:var(--i2);border:1px solid var(--line);border-radius:12px;padding:.4rem;min-width:190px;opacity:0;visibility:hidden;transition:opacity .2s,transform .28s var(--E),visibility .2s;box-shadow:0 24px 60px rgba(0,0,0,.5);}
+.dd:hover .ddm{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+.ddm a{display:block;padding:.5rem .82rem;font-size:.8rem;color:rgba(255,255,255,.62);border-radius:8px;transition:background .18s,color .18s;}
+.ddm a:hover{background:rgba(255,255,255,.07);color:#fff;}
+.ncta{background:var(--gold)!important;color:var(--ink)!important;padding:.46rem 1.12rem!important;border-radius:100px;font-weight:700!important;font-size:.8rem!important;}
+.ncta::after{display:none!important;}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:4px;}
+.burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s;}
+.burger.op span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.burger.op span:nth-child(2){opacity:0;}
+.burger.op span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.mob{position:fixed;inset:0;z-index:899;background:var(--ink);display:flex;flex-direction:column;padding:calc(var(--nh) + 1.8rem) 5% 3rem;transform:translateX(100%);transition:transform .38s var(--E);}
+.mob.op{transform:translateX(0);}
+.mob a{padding:.9rem 0;font-size:1rem;font-weight:500;color:rgba(255,255,255,.72);border-bottom:1px solid var(--line);}
+.mc{margin-top:1.8rem;background:var(--gold);color:var(--ink)!important;text-align:center;border-radius:12px;padding:.9rem!important;font-weight:700!important;border:none!important;}
+/* FAB */
+.fab{position:fixed;bottom:1.8rem;right:1.8rem;z-index:400;display:flex;flex-direction:column;gap:.65rem;align-items:flex-end;}
+.fab a{display:flex;align-items:center;gap:.48rem;padding:.65rem 1rem;border-radius:100px;font-size:.76rem;font-weight:600;cursor:none;transition:transform .18s;}
+.fab a:hover{transform:translateY(-2px);}
+.fwa{background:#25d366;color:#fff;box-shadow:0 6px 20px rgba(37,211,102,.35);}
+.fbk{background:var(--gold);color:var(--ink);box-shadow:0 6px 20px rgba(245,166,35,.35);}
+/* UTILS */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .65s var(--E),transform .65s var(--E);}
+.rv.on{opacity:1;transform:none;}
+.d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.24s;}.d4{transition-delay:.32s;}
+.tag{display:inline-flex;align-items:center;gap:.38rem;font-size:.66rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:.8rem;}
+.tag::before{content:'';width:14px;height:2px;background:var(--gold);}
+.tit{font-family:'Playfair Display',serif;font-size:clamp(1.65rem,2.8vw,2.45rem);font-weight:700;line-height:1.15;margin-bottom:.7rem;}
+.tit em{font-style:italic;color:var(--gold);}
+.sub{font-size:.86rem;color:rgba(255,255,255,.44);line-height:1.75;max-width:520px;}
+.sec{padding:5rem 5%;}.sa{background:var(--i2);}
+.si{max-width:1300px;margin:0 auto;}
+.bg{display:inline-flex;align-items:center;gap:.38rem;background:var(--gold);color:var(--ink);padding:.78rem 1.6rem;border-radius:11px;font-weight:700;font-size:.87rem;cursor:none;transition:transform .18s,box-shadow .18s;}
+.bg:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(245,166,35,.35);}
+.bgh{display:inline-flex;align-items:center;gap:.38rem;background:var(--fog);border:1px solid var(--line);color:#fff;padding:.78rem 1.6rem;border-radius:11px;font-weight:500;font-size:.87rem;cursor:none;backdrop-filter:blur(10px);transition:background .18s,transform .18s;}
+.bgh:hover{background:rgba(255,255,255,.1);transform:translateY(-2px);}
+.bq{display:flex;align-items:center;justify-content:center;gap:.32rem;border:1.5px solid var(--gold);color:var(--gold);background:transparent;padding:.58rem .9rem;border-radius:9px;font-weight:700;font-size:.76rem;cursor:none;width:100%;transition:background .2s,color .2s,transform .15s;margin-top:1rem;}
+.bq:hover{background:var(--gold);color:var(--ink);transform:translateY(-1px);}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;}
+.hi{position:absolute;inset:0;z-index:0;}
+.hi img{width:100%;height:100%;object-fit:cover;object-position:center 30%;}
+.hi::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(6,16,31,.93) 40%,rgba(6,16,31,.55) 72%,rgba(6,16,31,.28) 100%);}
+.hgrid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:55px 55px;mask-image:radial-gradient(ellipse 70% 80% at 30% 50%,#000,transparent);}
+.hin{position:relative;z-index:2;max-width:1300px;margin:0 auto;padding:calc(var(--nh) + 3rem) 5% 5rem;width:100%;}
+.hbc{display:flex;align-items:center;gap:.38rem;font-size:.72rem;color:rgba(255,255,255,.38);margin-bottom:1.4rem;}
+.hbc a{color:rgba(255,255,255,.38);transition:color .2s;}.hbc a:hover{color:var(--gold);}
+.hkick{display:inline-flex;align-items:center;gap:.42rem;background:rgba(230,92,0,.15);border:1px solid rgba(230,92,0,.3);color:#fda07a;font-size:.68rem;font-weight:700;padding:.3rem .88rem;border-radius:100px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.1rem;}
+.hkick::before{content:'';width:5px;height:5px;background:#f87171;border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
+.htit{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4.5vw,4.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;margin-bottom:1.2rem;max-width:700px;}
+.htit em{font-style:italic;background:linear-gradient(135deg,var(--gold),var(--glow));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hdesc{font-size:.95rem;line-height:1.8;color:rgba(255,255,255,.6);margin-bottom:2rem;max-width:480px;}
+.hbtns{display:flex;gap:.85rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+.hstats{display:flex;gap:1.2rem;flex-wrap:wrap;}
+.hsc{background:rgba(255,255,255,.07);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:.9rem 1.2rem;min-width:130px;}
+.hsc-n{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:var(--gold);line-height:1;}
+.hsc-l{font-size:.68rem;color:rgba(255,255,255,.42);margin-top:.22rem;}
+.sh{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:2;}
+.sh-m{width:22px;height:34px;border:2px solid rgba(255,255,255,.25);border-radius:100px;display:flex;justify-content:center;padding-top:5px;}
+.sh-d{width:3px;height:7px;background:rgba(255,255,255,.5);border-radius:100px;animation:sd 2s ease-in-out infinite;}
+@keyframes sd{0%{opacity:1;transform:translateY(0)}80%{opacity:0;transform:translateY(10px)}100%{opacity:0}}
+.sh-t{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:1.5px;text-transform:uppercase;}
+
+/* IMPACT SPLIT */
+.impact{overflow:hidden;}
+.i-split{display:grid;grid-template-columns:1fr 1fr;min-height:520px;}
+.il{background:linear-gradient(145deg,#1a0505,#2d0a0a);padding:4rem 5%;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
+.il::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1584820927498-cfe5211fd8bf?auto=format&fit=crop&w=700&q=50') center/cover no-repeat;opacity:.1;}
+.ir{background:linear-gradient(145deg,#051a10,#0a2d1a);padding:4rem 5%;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
+.ir::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=700&q=50') center/cover no-repeat;opacity:.13;}
+.ii{position:relative;z-index:1;}
+.ibadge{display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .8rem;border-radius:100px;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.2rem;}
+.il .ibadge{background:rgba(248,113,113,.15);border:1px solid rgba(248,113,113,.28);color:#f87171;}
+.ir .ibadge{background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.26);color:#4ade80;}
+.ititl{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2vw,2rem);font-weight:700;margin-bottom:1.2rem;line-height:1.2;}
+.il .ititl{color:#fca5a5;}.ir .ititl{color:#86efac;}
+.ilist{list-style:none;display:flex;flex-direction:column;gap:.75rem;}
+.ilist li{display:flex;align-items:flex-start;gap:.65rem;font-size:.84rem;line-height:1.55;color:rgba(255,255,255,.72);}
+.iic{font-size:1rem;flex-shrink:0;margin-top:.04rem;}
+.icta{margin-top:1.8rem;}
+
+/* PHOTO MOSAIC */
+.mos-g{display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:240px 240px;gap:1rem;margin-top:2.5rem;border-radius:20px;overflow:hidden;}
+.mg{position:relative;overflow:hidden;}
+.mg img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--E);}
+.mg:hover img{transform:scale(1.06);}
+.mg::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,16,31,.72),transparent 55%);}
+.mg-cap{position:absolute;bottom:.9rem;left:1rem;right:1rem;z-index:1;font-size:.75rem;font-weight:600;color:rgba(255,255,255,.76);}
+.mg1{grid-row:1/3;}
+
+/* STATS BAR */
+.stbar{background:linear-gradient(135deg,var(--az),var(--i3));padding:3.5rem 5%;}
+.strow{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center;}
+.sti{font-size:2rem;margin-bottom:.5rem;}
+.stn{font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:700;color:var(--gold);line-height:1;}
+.stl{font-size:.78rem;color:rgba(255,255,255,.45);margin-top:.3rem;}
+
+/* WHATSAPP CHAT */
+.chat-wrap{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:3.5rem;align-items:center;}
+.cb-item{display:flex;align-items:center;gap:.7rem;font-size:.83rem;color:rgba(255,255,255,.68);}
+.cb-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex-shrink:0;}
+.phone-mock{background:#0b141a;border-radius:28px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.06);max-width:380px;margin:0 auto;}
+.wa-head{background:#1f2c34;padding:.85rem 1rem;display:flex;align-items:center;gap:.75rem;border-bottom:1px solid rgba(255,255,255,.06);}
+.wa-back{color:rgba(255,255,255,.55);font-size:1.1rem;}
+.wa-av{width:38px;height:38px;border-radius:50%;overflow:hidden;flex-shrink:0;}
+.wa-av img{width:100%;height:100%;object-fit:cover;}
+.wa-nm{font-size:.86rem;font-weight:700;line-height:1.2;}
+.wa-st{font-size:.62rem;color:#4ade80;}
+.wa-ic{margin-left:auto;display:flex;gap:.9rem;color:rgba(255,255,255,.5);font-size:1rem;}
+.wa-bg{background:#0b141a;padding:.9rem .75rem;min-height:340px;max-height:340px;overflow-y:auto;display:flex;flex-direction:column;gap:.55rem;}
+.wa-bg::-webkit-scrollbar{width:3px;}.wa-bg::-webkit-scrollbar-thumb{background:rgba(255,255,255,.07);}
+.wa-date{text-align:center;font-size:.58rem;background:rgba(255,255,255,.07);color:rgba(255,255,255,.4);padding:.22rem .7rem;border-radius:100px;width:fit-content;margin:0 auto;}
+.wm{display:flex;flex-direction:column;max-width:82%;}
+.wm.in{align-self:flex-start;}.wm.out{align-self:flex-end;}
+.wm-bub{padding:.6rem .9rem .45rem;border-radius:8px;font-size:.78rem;line-height:1.55;}
+.wm.in .wm-bub{background:#1f2c34;border-radius:0 8px 8px 8px;color:rgba(255,255,255,.9);}
+.wm.out .wm-bub{background:#005c4b;border-radius:8px 8px 0 8px;color:rgba(255,255,255,.9);}
+.wm-name{font-size:.6rem;font-weight:700;color:var(--gold);margin-bottom:.2rem;}
+.wm-time{font-size:.58rem;color:rgba(255,255,255,.28);text-align:right;margin-top:.2rem;}
+.wm.out .wm-time::after{content:' ✓✓';color:#53bdeb;}
+.wm-hl{margin-top:.4rem;background:rgba(74,222,128,.1);border-left:2px solid #4ade80;padding:.3rem .6rem;border-radius:0 5px 5px 0;font-size:.7rem;color:#86efac;}
+.wm-typ{background:#1f2c34;border-radius:0 8px 8px 8px;padding:.6rem .9rem;width:fit-content;display:none;}
+.wm-typ.show{display:flex;gap:4px;align-items:center;}
+.wm-typ span{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.35);animation:td 1s ease-in-out infinite;}
+.wm-typ span:nth-child(2){animation-delay:.15s;}.wm-typ span:nth-child(3){animation-delay:.3s;}
+@keyframes td{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-4px)}}
+.wa-inp{background:#1f2c34;padding:.7rem .9rem;display:flex;align-items:center;gap:.6rem;border-top:1px solid rgba(255,255,255,.05);}
+.wa-inp-box{flex:1;background:rgba(255,255,255,.07);border-radius:100px;padding:.48rem 1rem;font-size:.74rem;color:rgba(255,255,255,.4);font-family:'DM Sans',sans-serif;}
+.wa-send{width:34px;height:34px;background:var(--sage);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
+
+/* PLANS GRID */
+.plans-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2rem;}
+.pc{background:var(--i2);border:1px solid var(--line);border-radius:20px;overflow:hidden;cursor:none;transition:transform .3s var(--E),border-color .3s,box-shadow .3s;display:flex;flex-direction:column;}
+.pc:hover{transform:translateY(-6px);border-color:rgba(245,166,35,.3);box-shadow:0 24px 50px rgba(0,0,0,.4);}
+.pc-img{height:185px;overflow:hidden;position:relative;}
+.pc-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--E);}
+.pc:hover .pc-img img{transform:scale(1.08);}
+.pc-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,var(--i2) 5%,transparent 55%);}
+.pc-badge{position:absolute;top:.8rem;left:.8rem;z-index:1;background:var(--gold);color:var(--ink);font-size:.58rem;font-weight:800;padding:.2rem .58rem;border-radius:100px;text-transform:uppercase;}
+.pc-body{padding:1.4rem 1.5rem 1.5rem;display:flex;flex-direction:column;flex:1;}
+.pc-ic{font-size:1.5rem;margin-bottom:.7rem;}
+.pc-tt{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:.4rem;}
+.pc-ds{font-size:.78rem;color:rgba(255,255,255,.48);line-height:1.64;flex:1;}
+.pc-from{margin-top:.85rem;font-size:.7rem;color:rgba(255,255,255,.28);}
+.pc-from strong{color:var(--gold);font-size:.88rem;}
+.pc-rows{margin-top:.8rem;border-top:1px solid var(--line);padding-top:.8rem;display:flex;flex-direction:column;gap:.4rem;}
+.pc-row{display:flex;align-items:center;gap:.5rem;font-size:.72rem;color:rgba(255,255,255,.5);}
+.pc-row span{color:var(--sage);}
+
+/* COMPARISON */
+.comp-g{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem;}
+.cpc{border-radius:18px;overflow:hidden;}
+.cpc-img{height:220px;position:relative;}
+.cpc-img img{width:100%;height:100%;object-fit:cover;}
+.cpc-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(0,0,0,.85));}
+.cpc-body{padding:1.5rem;}
+.cpc-1{background:linear-gradient(180deg,#0a1628,#05112a);border:1px solid rgba(21,101,192,.2);}
+.cpc-2{background:linear-gradient(180deg,#1a0f05,#100804);border:1px solid rgba(230,92,0,.2);}
+.cpc-tag{display:inline-flex;align-items:center;gap:.35rem;font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:.2rem .6rem;border-radius:100px;margin-bottom:.7rem;}
+.cpc-1 .cpc-tag{background:rgba(21,101,192,.15);border:1px solid rgba(21,101,192,.3);color:#93c5fd;}
+.cpc-2 .cpc-tag{background:rgba(230,92,0,.12);border:1px solid rgba(230,92,0,.25);color:#fdba74;}
+.cpc-tt{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:.55rem;}
+.cpc-ds{font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.66;margin-bottom:1rem;}
+.cpc-rows{display:flex;flex-direction:column;gap:.5rem;}
+.cpc-row{display:flex;justify-content:space-between;padding:.48rem .7rem;background:rgba(255,255,255,.04);border-radius:7px;font-size:.76rem;}
+.cpc-row .k{color:rgba(255,255,255,.44);}.cpc-row .v{font-weight:700;}
+.cpc-1 .cpc-row .v{color:#93c5fd;}.cpc-2 .cpc-row .v{color:#fdba74;}
+.cverd{margin-top:1.5rem;background:linear-gradient(135deg,rgba(245,166,35,.08),rgba(245,166,35,.03));border:1px solid rgba(245,166,35,.15);border-radius:14px;padding:1.2rem 1.5rem;display:flex;align-items:flex-start;gap:1rem;}
+.cvic{font-size:1.8rem;flex-shrink:0;}
+.cvtt{font-size:.9rem;font-weight:700;margin-bottom:.25rem;}
+.cvds{font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.62;}
+
+/* CALCULATOR */
+.calc-w{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;}
+.calc-img{position:relative;border-radius:20px;overflow:hidden;height:480px;}
+.calc-img img{width:100%;height:100%;object-fit:cover;}
+.calc-img::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(6,16,31,.5),rgba(6,16,31,.1));}
+.calc-ov{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;justify-content:flex-end;padding:2rem;}
+.cc{background:rgba(6,16,31,.82);backdrop-filter:blur(20px);border:1px solid rgba(245,166,35,.22);border-radius:14px;padding:1.4rem;}
+.cct{font-size:.72rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:1rem;}
+.ccr{display:flex;justify-content:space-between;margin-bottom:.6rem;}
+.ccl{font-size:.76rem;color:rgba(255,255,255,.45);}.ccv{font-size:.76rem;font-weight:700;}
+.ccbig{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--gold);margin-top:.5rem;}
+.calc-form{background:var(--i2);border:1px solid var(--line);border-radius:20px;padding:2rem;}
+.cf-row{margin-bottom:1.3rem;}
+.cf-lbl{font-size:.72rem;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.8px;margin-bottom:.5rem;display:flex;justify-content:space-between;}
+.cf-lbl span{color:var(--gold);font-size:.84rem;font-family:'Playfair Display',serif;}
+.cf-range{width:100%;appearance:none;height:4px;border-radius:100px;background:rgba(255,255,255,.1);outline:none;cursor:none;}
+.cf-range::-webkit-slider-thumb{appearance:none;width:18px;height:18px;border-radius:50%;background:var(--gold);cursor:none;box-shadow:0 0 10px rgba(245,166,35,.5);}
+.cf-pills{display:flex;gap:.5rem;flex-wrap:wrap;}
+.cf-pill{padding:.38rem .82rem;border:1px solid var(--line);border-radius:100px;font-size:.74rem;cursor:pointer;transition:background .18s,border-color .18s,color .18s;color:rgba(255,255,255,.5);}
+.cf-pill:hover,.cf-pill.on{background:var(--gold);border-color:var(--gold);color:var(--ink);font-weight:700;}
+.cf-res{background:linear-gradient(135deg,var(--az),var(--i3));border-radius:14px;padding:1.4rem;margin-top:1.5rem;text-align:center;}
+.cfrl{font-size:.7rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:1px;margin-bottom:.4rem;}
+.cfrp{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:var(--gold);}
+.cfrn{font-size:.66rem;color:rgba(255,255,255,.3);margin-top:.55rem;}
+
+/* STORIES */
+.st-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2rem;}
+.stc{background:var(--ink);border:1px solid var(--line);border-radius:18px;overflow:hidden;cursor:none;transition:transform .3s,border-color .3s;}
+.stc:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.12);}
+.stc-img{height:160px;overflow:hidden;position:relative;}
+.stc-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(20%);transition:filter .3s,transform .4s var(--E);}
+.stc:hover .stc-img img{filter:grayscale(0);transform:scale(1.06);}
+.stc-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,var(--ink) 8%,transparent 50%);}
+.stc-b{padding:1.3rem;}
+.stc-amt{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--gold);}
+.stc-type{font-size:.64rem;color:rgba(255,255,255,.32);margin-bottom:.7rem;}
+.stc-tx{font-size:.8rem;color:rgba(255,255,255,.6);line-height:1.68;margin-bottom:.8rem;}
+.stc-q{font-size:.72rem;font-style:italic;color:rgba(255,255,255,.38);line-height:1.5;border-left:2px solid var(--line);padding-left:.7rem;margin-bottom:1rem;}
+.stc-p{display:flex;align-items:center;gap:.6rem;}
+.stc-av{width:30px;height:30px;border-radius:50%;overflow:hidden;flex-shrink:0;}
+.stc-av img{width:100%;height:100%;object-fit:cover;}
+.stc-nm{font-size:.78rem;font-weight:600;}
+.stc-rl{font-size:.62rem;color:rgba(136,153,187,1);}
+.stc-sr{margin-left:auto;color:var(--gold);font-size:.65rem;}
+
+/* TRUST */
+.trust{padding:3rem 5%;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.tl-wrap{text-align:center;font-size:.65rem;font-weight:700;color:rgba(255,255,255,.24);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:1.4rem;}
+.tl-logos{display:flex;justify-content:center;align-items:center;gap:1.4rem;flex-wrap:wrap;}
+.tl{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:.55rem 1.1rem;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.35);transition:background .2s,color .2s;}
+.tl:hover{background:rgba(255,255,255,.1);color:rgba(255,255,255,.6);}
+
+/* PROCESS */
+.pg-g{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:2.5rem;}
+.pg{background:var(--i2);border:1px solid var(--line);border-radius:16px;padding:1.5rem;text-align:center;transition:transform .28s,border-color .28s;}
+.pg:hover{transform:translateY(-4px);border-color:rgba(245,166,35,.22);}
+.pg-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:rgba(245,166,35,.12);line-height:1;margin-bottom:.5rem;}
+.pg-ic{font-size:1.8rem;margin-bottom:.65rem;}
+.pg-tt{font-size:.88rem;font-weight:700;margin-bottom:.4rem;}
+.pg-ds{font-size:.74rem;color:rgba(255,255,255,.42);line-height:1.6;}
+
+/* FAQ + SIDEBAR */
+.faq-lay{display:grid;grid-template-columns:1fr 300px;gap:3rem;align-items:start;}
+.faq-list{margin-top:1.8rem;display:flex;flex-direction:column;gap:.65rem;}
+.fi{background:var(--ink);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:border-color .2s;}
+.fi.op{border-color:rgba(255,255,255,.14);}
+.fh{display:flex;align-items:center;justify-content:space-between;padding:.95rem 1.2rem;cursor:pointer;gap:.9rem;}
+.fq{font-size:.83rem;font-weight:600;line-height:1.4;}
+.fic{width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.85rem;transition:transform .28s,background .2s;}
+.fi.op .fic{transform:rotate(45deg);background:var(--gold);color:var(--ink);border-color:var(--gold);}
+.fab2{padding:0 1.2rem;max-height:0;overflow:hidden;transition:max-height .38s var(--E),padding .28s;}
+.fi.op .fab2{max-height:240px;padding-bottom:1rem;}
+.fat{font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.72;}
+.sb2{position:sticky;top:calc(var(--nh) + 1.2rem);display:flex;flex-direction:column;gap:1rem;}
+.sb2-card{background:linear-gradient(145deg,var(--i3),var(--az));border:1px solid rgba(100,160,255,.16);border-radius:16px;padding:1.5rem;}
+.sb2-img{width:100%;height:130px;object-fit:cover;border-radius:10px;margin-bottom:1rem;}
+.sb2-tt{font-family:'Playfair Display',serif;font-size:1.12rem;font-weight:700;margin-bottom:.4rem;}
+.sb2-ds{font-size:.76rem;color:rgba(255,255,255,.48);line-height:1.6;margin-bottom:1.1rem;}
+.sb2-btn{display:block;text-align:center;background:var(--gold);color:var(--ink);padding:.75rem;border-radius:11px;font-weight:700;font-size:.82rem;margin-bottom:.55rem;transition:transform .18s,box-shadow .18s;}
+.sb2-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(245,166,35,.3);}
+.sb2-ph{display:flex;align-items:center;justify-content:center;gap:.38rem;background:rgba(255,255,255,.07);border:1px solid var(--line);color:#fff;padding:.64rem;border-radius:11px;font-weight:600;font-size:.78rem;transition:background .18s;}
+.sb2-ph:hover{background:rgba(255,255,255,.1);}
+.sb2-div{text-align:center;font-size:.65rem;color:rgba(255,255,255,.28);margin:.25rem 0;}
+.sb2-plans{background:var(--ink);border:1px solid var(--line);border-radius:14px;padding:1rem;}
+.sb2-plans .lbl{font-size:.62rem;font-weight:700;color:rgba(255,255,255,.22);text-transform:uppercase;letter-spacing:1.3px;margin-bottom:.75rem;}
+.sp{display:flex;align-items:center;gap:.55rem;padding:.48rem .6rem;background:var(--i2);border:1px solid var(--line);border-radius:9px;margin-bottom:.42rem;transition:border-color .18s;}
+.sp:last-child{margin-bottom:0;}.sp:hover{border-color:rgba(255,255,255,.12);}
+.sp-star{color:var(--gold);font-size:.68rem;}.sp-nm{font-size:.72rem;font-weight:600;}
+
+/* CTA BANNER */
+.ctab{position:relative;padding:5.5rem 5%;overflow:hidden;}
+.ctab-bg{position:absolute;inset:0;z-index:0;}
+.ctab-bg img{width:100%;height:100%;object-fit:cover;}
+.ctab-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(6,16,31,.95) 45%,rgba(6,16,31,.75));}
+.cta-in{position:relative;z-index:1;max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:center;gap:3rem;}
+.cta-tt{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.6vw,2.3rem);font-weight:700;line-height:1.2;margin-bottom:.7rem;}
+.cta-ds{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.7;}
+.cta-pills{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.85rem;}
+.cpill{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:.2rem .65rem;border-radius:100px;font-size:.68rem;color:rgba(255,255,255,.44);}
+.cta-btns{display:flex;flex-direction:column;gap:.65rem;align-items:center;}
+.cta-ph{font-size:.7rem;color:rgba(255,255,255,.35);}.cta-ph a{color:rgba(255,255,255,.62);font-weight:600;}
+
+/* FOOTER */
+.ft{background:#020b1a;border-top:1px solid var(--line);padding:3.5rem 5% 1.8rem;}
+.ft-in{max-width:1300px;margin:0 auto;}
+.ft-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.8rem;padding-bottom:2.5rem;border-bottom:1px solid var(--line);margin-bottom:1.6rem;}
+.ft-logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;display:inline-block;margin-bottom:.8rem;}
+.ft-logo em{font-style:normal;color:var(--gold);}
+.ft-ds{font-size:.76rem;color:rgba(255,255,255,.36);line-height:1.7;margin-bottom:.9rem;}
+.ft-con{display:flex;align-items:center;gap:.42rem;font-size:.73rem;color:rgba(255,255,255,.3);margin-bottom:.4rem;}
+.ft-con a{color:rgba(255,255,255,.52);transition:color .18s;}.ft-con a:hover{color:var(--gold);}
+.ft-clbl{font-size:.62rem;font-weight:700;color:rgba(255,255,255,.22);text-transform:uppercase;letter-spacing:1.3px;margin-bottom:.8rem;}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.45rem;}
+.ft-col a{font-size:.74rem;color:rgba(255,255,255,.36);transition:color .18s;}.ft-col a:hover{color:var(--gold);}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem;font-size:.7rem;color:rgba(255,255,255,.18);}
+.ft-links{display:flex;gap:1.3rem;}.ft-links a{color:rgba(255,255,255,.18);transition:color .18s;}.ft-links a:hover{color:rgba(255,255,255,.4);}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  .chat-wrap,.calc-w,.cta-in,.faq-lay{grid-template-columns:1fr;}
+  .sb2{position:static;}
+  .mos-g{grid-template-columns:1fr 1fr;grid-template-rows:auto;}.mg1{grid-row:auto;}
+  .ft-top{grid-template-columns:1fr 1fr;}
+  .calc-img{height:280px;}
+}
+@media(max-width:768px){
+  .nl{display:none;}.burger{display:flex;}
+  .htit{font-size:clamp(1.9rem,7vw,3rem);}
+  .i-split,.comp-g{grid-template-columns:1fr;}
+  .plans-g,.st-g{grid-template-columns:1fr;}
+  .strow{grid-template-columns:repeat(2,1fr);}
+  .pg-g{grid-template-columns:1fr 1fr;}
+  body{cursor:auto;}#cur,#cr{display:none;}
+  .mos-g{grid-template-columns:1fr;}
+}
+@media(max-width:520px){
+  .strow,.pg-g,.ft-top{grid-template-columns:1fr;}
+  .hstats{gap:.7rem;}.hsc{min-width:110px;}
+}
+</style>
 </head>
 <body>
-  <header>
-    <nav class="nav"><div class="nav__inner"><a href="index.html" class="nav__logo">Cover<span>Credit</span></a><ul class="nav__links"><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html" class="active">Life Insurance</a></li><li class="nav__dropdown"><span class="nav__dropdown-trigger">Vehicle Insurance <span class="nav__dropdown-arrow">▼</span></span><div class="nav__dropdown-menu"><a href="bike-insurance.html">Bike Insurance</a><a href="car-insurance.html">Car Insurance</a><a href="commercial-vehicle-insurance.html">Commercial Vehicles</a></div></li><li><a href="loans.html">Loans</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="book.html" class="nav__cta">Book Consultation</a></li></ul><button class="nav__hamburger" id="hamburger"><span></span><span></span><span></span></button></div></nav>
-    <nav class="mobile-nav" id="mobile-nav"><a href="health-insurance.html" class="mobile-nav__item">Health Insurance</a><a href="life-insurance.html" class="mobile-nav__item">Life Insurance</a><a href="bike-insurance.html" class="mobile-nav__item mobile-nav__sub">↳ Bike Insurance</a><a href="car-insurance.html" class="mobile-nav__item mobile-nav__sub">↳ Car Insurance</a><a href="commercial-vehicle-insurance.html" class="mobile-nav__item mobile-nav__sub">↳ Commercial Vehicles</a><a href="loans.html" class="mobile-nav__item">Loans</a><a href="blog.html" class="mobile-nav__item">Blog</a><a href="about.html" class="mobile-nav__item">About</a><a href="contact.html" class="mobile-nav__item">Contact</a><a href="book.html" class="mobile-nav__cta">Book Free Consultation</a></nav>
-  </header>
 
-  <section class="page-hero">
-    <div class="page-hero__inner" style="max-width:var(--max-width);width:var(--container);">
-      <nav class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span>Life Insurance</span></nav>
-      <h1 class="page-hero__title">Life Insurance</h1>
-      <p class="page-hero__desc">Secure your family's future. We help you understand exactly how much coverage you need and which plan truly protects them — without pushing expensive products.</p>
+<div id="cur"></div><div id="cr"></div>
+
+<!-- FAB -->
+<div class="fab">
+  <a href="book.html" class="fbk">📅 Book Consultation</a>
+  <a href="https://wa.me/917842854466" target="_blank" class="fwa">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp
+  </a>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="ni">
+    <a href="index.html" class="logo">Cover<em>Credit</em></a>
+    <ul class="nl">
+      <li><a href="health-insurance.html">Health</a></li>
+      <li><a href="life-insurance.html" class="act">Life Insurance</a></li>
+      <li class="dd"><span class="ddt">Vehicle <span class="dda">▼</span></span><div class="ddm"><a href="bike-insurance.html">🏍️ Bike Insurance</a><a href="car-insurance.html">🚗 Car Insurance</a><a href="commercial-vehicle-insurance.html">🚛 Commercial</a></div></li>
+      <li><a href="loans.html">Loans</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="book.html" class="ncta">Free Consultation</a></li>
+    </ul>
+    <button class="burger" id="burger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob" id="mob">
+  <a href="health-insurance.html">Health Insurance</a>
+  <a href="life-insurance.html">Life Insurance</a>
+  <a href="bike-insurance.html">Bike Insurance</a>
+  <a href="car-insurance.html">Car Insurance</a>
+  <a href="loans.html">Loans</a>
+  <a href="about.html">About</a>
+  <a href="book.html" class="mc">Book Free Consultation →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hi"><img src="https://images.unsplash.com/photo-1511895426328-dc8714191011?auto=format&fit=crop&w=1600&q=80" alt="Family"/></div>
+  <div class="hgrid"></div>
+  <div class="hin">
+    <div class="hbc"><a href="index.html">Home</a> › Life Insurance</div>
+    <div class="hkick">🛡️ Life &amp; Term Insurance</div>
+    <h1 class="htit">If something happens<br/>to you tomorrow —<br/>is your family <em>safe?</em></h1>
+    <p class="hdesc">Life insurance is not about death. It's about making sure the people who depend on you never struggle — no matter what. We find the right plan at the right price.</p>
+    <div class="hbtns">
+      <a href="book.html" class="bg">Get My Free Plan Comparison →</a>
+      <a href="tel:+917842854466" class="bgh">📞 +91 78428 54466</a>
     </div>
-  </section>
+    <div class="hstats">
+      <div class="hsc"><div class="hsc-n" id="h1">₹1</div><div class="hsc-l">Crore cover from ₹490/mo</div></div>
+      <div class="hsc"><div class="hsc-n" id="h2">15</div><div class="hsc-l">+ Insurers compared</div></div>
+      <div class="hsc"><div class="hsc-n" id="h3">500</div><div class="hsc-l">+ Families secured</div></div>
+      <div class="hsc"><div class="hsc-n" id="h4">98</div><div class="hsc-l">% claim settlement ratio</div></div>
+    </div>
+  </div>
+  <div class="sh"><div class="sh-m"><div class="sh-d"></div></div><div class="sh-t">Scroll</div></div>
+</section>
 
-  <section class="section" style="background:var(--bg);">
-    <div class="section-wrap">
-      <div class="sidebar-layout">
-        <div>
-
-          <div class="info-box" style="background:linear-gradient(135deg,#edf8f1,#c3e9d3);border:1px solid #a3d9b5;margin-bottom:1.5rem;">
-            <h2 class="info-box__title" style="color:#1a5e35;">🧮 Calculate Your Coverage Need</h2>
-            <p class="info-box__body" style="color:#2d6e40;">A thumb rule: your coverage should be 10–15× your annual income. But your actual requirement depends on liabilities, dependents, and goals. Let us do a precise calculation for you.</p>
-            <a href="book.html" class="btn btn--primary">Get My Coverage Calculated</a>
-          </div>
-
-          <div class="info-box" style="margin-bottom:1.5rem;">
-            <h2 class="info-box__title">Term Insurance vs ULIP — Which is Right?</h2>
-            <p class="info-box__body">This is the #1 confusion our clients come with. Here's a simple comparison:</p>
-            <div style="overflow-x:auto;">
-              <table class="compare-table">
-                <thead><tr><th>Feature</th><th>Term Insurance</th><th>ULIP</th></tr></thead>
-                <tbody>
-                  <tr><td>Purpose</td><td>Pure protection</td><td>Protection + Investment</td></tr>
-                  <tr><td>Premium</td><td>Very low</td><td>High</td></tr>
-                  <tr><td>Returns</td><td>No returns (death benefit only)</td><td>Market-linked returns</td></tr>
-                  <tr><td>Recommended for</td><td>Most families</td><td>High-income investors</td></tr>
-                  <tr><td>Transparency</td><td><span class="check-yes">✓ Very high</span></td><td>Complex charges</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <p style="margin-top:1rem;font-size:var(--text-sm);color:var(--muted);">💡 For most middle-class families, a pure Term plan + separate SIP/MF investment is better than a ULIP.</p>
-          </div>
-
-          <div class="info-box" style="margin-bottom:1.5rem;">
-            <h2 class="info-box__title">Types of Life Insurance</h2>
-            <div class="mini-grid">
-              <div class="mini-card"><div class="mini-card__icon">⏱️</div><h4 class="mini-card__title">Term Life Insurance</h4><p class="mini-card__body">Pure protection for a fixed period. High cover at low cost. Best for income replacement.</p></div>
-              <div class="mini-card"><div class="mini-card__icon">🔄</div><h4 class="mini-card__title">Whole Life</h4><p class="mini-card__body">Coverage for entire life. Builds cash value. Suitable for estate planning.</p></div>
-              <div class="mini-card"><div class="mini-card__icon">💹</div><h4 class="mini-card__title">ULIP</h4><p class="mini-card__body">Life cover + market-linked investment. Good for long-term wealth creation with protection.</p></div>
-              <div class="mini-card"><div class="mini-card__icon">💵</div><h4 class="mini-card__title">Endowment Plan</h4><p class="mini-card__body">Savings + insurance. Pays maturity benefit if you survive or death benefit to family.</p></div>
-            </div>
-          </div>
-
-          <div class="info-box">
-            <h2 class="info-box__title">How We Help You</h2>
-            <ul class="steps">
-              <li class="steps__item"><div class="steps__num">1</div><div><h4 class="steps__title">Understand Your Needs</h4><p class="steps__desc">We analyse your income, liabilities, dependents, and goals in a free 30-minute call.</p></div></li>
-              <li class="steps__item"><div class="steps__num">2</div><div><h4 class="steps__title">Calculate Exact Coverage</h4><p class="steps__desc">No thumb rules — we give you a precise number based on your family's actual situation.</p></div></li>
-              <li class="steps__item"><div class="steps__num">3</div><div><h4 class="steps__title">Compare Best Plans</h4><p class="steps__desc">We show you 3–5 plans from top insurers and explain trade-offs in plain Telugu/English.</p></div></li>
-              <li class="steps__item"><div class="steps__num">4</div><div><h4 class="steps__title">Help with Nomination &amp; Docs</h4><p class="steps__desc">We make sure the policy is set up correctly so your family can claim without any issues.</p></div></li>
-              <li class="steps__item"><div class="steps__num">5</div><div><h4 class="steps__title">Claim Support When Needed</h4><p class="steps__desc">We stay with your family through the claim process — no one faces it alone.</p></div></li>
-            </ul>
-          </div>
-
-        </div>
-        <aside>
-          <div class="sticky-card">
-            <h3 class="sticky-card__title">Calculate My Coverage</h3>
-            <p class="sticky-card__body">Tell us about your situation and we'll calculate exactly how much life cover your family needs.</p>
-            <a href="book.html" class="btn btn--primary btn--full" style="margin-bottom:0.8rem;">Book Free Session</a>
-            <div class="sticky-card__divider">or</div>
-            <a href="tel:+919642834789" class="sticky-card__call">📞 +91 96428 34789</a>
-            <hr class="sticky-card__sep"/>
-            <p class="sticky-card__label">Top Term Plans</p>
-            <div class="sticky-pills">
-              <span class="sticky-pill">⭐ LIC Tech Term</span>
-              <span class="sticky-pill">⭐ HDFC Life Click 2 Protect</span>
-              <span class="sticky-pill">⭐ ICICI iProtect Smart</span>
-              <span class="sticky-pill">⭐ Tata AIA Sampoorna Raksha</span>
-            </div>
-          </div>
-        </aside>
+<!-- EMOTIONAL IMPACT SPLIT -->
+<section class="impact rv">
+  <div class="i-split">
+    <div class="il">
+      <div class="ii">
+        <div class="ibadge">❌ Without Life Insurance</div>
+        <h2 class="ititl">Your family faces this alone — overnight.</h2>
+        <ul class="ilist">
+          <li><span class="iic">💸</span>EMIs continue. No income to pay them. Loan defaults start within 3 months.</li>
+          <li><span class="iic">🏠</span>Home loan? The bank doesn't care. Property can be seized.</li>
+          <li><span class="iic">👧</span>Children's education stops or gets compromised mid-stream.</li>
+          <li><span class="iic">😰</span>Spouse forced to work immediately, children left without care.</li>
+          <li><span class="iic">👴</span>Elderly parents lose their only support — no income, no care.</li>
+          <li><span class="iic">📉</span>20 years of savings wiped out in 2–3 years trying to survive.</li>
+        </ul>
       </div>
     </div>
-  </section>
+    <div class="ir">
+      <div class="ii">
+        <div class="ibadge">✅ With Life Insurance from Cover Credit</div>
+        <h2 class="ititl">Your family is completely protected — financially.</h2>
+        <ul class="ilist">
+          <li><span class="iic">✅</span>₹1 Crore+ paid directly to nominee, tax-free, within 30 days.</li>
+          <li><span class="iic">🏠</span>Home loan rider pays off the entire outstanding balance automatically.</li>
+          <li><span class="iic">🎓</span>Children's education funded for 15–20 years from the settlement.</li>
+          <li><span class="iic">💼</span>Spouse has time and security to rebuild life on their terms.</li>
+          <li><span class="iic">👴</span>Monthly income options ensure parents receive regular support.</li>
+          <li><span class="iic">💰</span>Premiums from ₹490/month — less than daily chai and snack.</li>
+        </ul>
+        <div class="icta"><a href="book.html" class="bg">Protect my family now →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <section class="cta-section"><div class="cta-section__inner"><h2 class="cta-section__title">Secure your family's future today</h2><p class="cta-section__desc">A ₹1 crore term plan can cost less than ₹800/month. Let us help you get the right coverage at the right price.</p><a href="book.html" class="btn btn--white">Book Free Consultation</a></div></section>
+<!-- PHOTO MOSAIC -->
+<section class="sec">
+  <div class="si">
+    <div class="tag rv">Real Families</div>
+    <h2 class="tit rv d1">The faces behind<br/><em>every policy we sell</em></h2>
+    <div class="mos-g rv d2">
+      <div class="mg mg1"><img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?auto=format&fit=crop&w=600&q=75" alt="Couple"/><div class="mg-cap">₹1Cr Term Plan · Hyderabad couple, aged 32 &amp; 29</div></div>
+      <div class="mg"><img src="https://images.unsplash.com/photo-1531983412531-1f49a365ffed?auto=format&fit=crop&w=500&q=75" alt="Father"/><div class="mg-cap">₹50L Plan · Father of 2, Vijayawada</div></div>
+      <div class="mg"><img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=500&q=75" alt="Professional"/><div class="mg-cap">₹1Cr Cover · Software engineer, Bengaluru</div></div>
+      <div class="mg"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=500&q=75" alt="Family"/><div class="mg-cap">₹2Cr Term · Business owner, Visakhapatnam</div></div>
+      <div class="mg"><img src="https://images.unsplash.com/photo-1491013516836-7db643ee125a?auto=format&fit=crop&w=500&q=75" alt="Retired couple"/><div class="mg-cap">Senior plan · Retired couple, Guntur</div></div>
+    </div>
+  </div>
+</section>
 
-  <footer class="footer"><div class="footer__top"><div><a href="index.html" class="footer__logo">Cover<span>Credit</span></a><p class="footer__tagline">Honest insurance advice for your family. We guide, not sell.</p><p class="footer__serving">© <span id="current-year">2026</span> Cover Credit. All rights reserved.</p></div><div class="footer__col"><h4>Quick Links</h4><ul><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life Insurance</a></li><li><a href="loans.html">Loans</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="book.html">Book Consultation</a></li></ul></div><div class="footer__col"><h4>Branches</h4><ul><li><a href="#">Visakhapatnam</a></li><li><a href="#">Hyderabad</a></li></ul></div><div class="footer__col"><h4>Contact</h4><div class="footer__contact-item">📞 <a href="tel:+919642834789">+91 96428 34789</a></div><div class="footer__contact-item">✉️ <a href="mailto:info@covercredit.in">info@covercredit.in</a></div></div></div><div class="footer__bottom"><span>© <span id="current-year-2">2026</span> Cover Credit. All rights reserved.</span><div class="footer__bottom-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div></div></footer>
+<!-- STATS BAR -->
+<div class="stbar">
+  <div class="strow">
+    <div class="rv"><div class="sti">🏆</div><div class="stn" id="c1">₹0</div><div class="stl">Starting cover (Term Plan)</div></div>
+    <div class="rv d1"><div class="sti">📊</div><div class="stn" id="c2">0%</div><div class="stl">Avg claim settlement ratio</div></div>
+    <div class="rv d2"><div class="sti">💰</div><div class="stn" id="c3">₹0</div><div class="stl">Monthly premium for ₹1Cr cover</div></div>
+    <div class="rv d3"><div class="sti">🔒</div><div class="stn" id="c4">0%</div><div class="stl">Premium tax benefit u/s 80C</div></div>
+  </div>
+</div>
 
-  <script src="js/nav.js"></script><script src="js/main.js"></script>
+<!-- WHATSAPP CHAT -->
+<section class="sec sa">
+  <div class="chat-wrap">
+    <div class="rv">
+      <div class="tag">How We Advise</div>
+      <h2 class="tit d1">A real consultation —<br/><em>exactly like this</em></h2>
+      <p class="sub d2" style="margin-bottom:1.3rem;">This is an actual conversation from our office. No jargon. No pressure. Just honest advice in Telugu or English.</p>
+      <div style="display:flex;flex-direction:column;gap:.65rem;margin-bottom:1.8rem;">
+        <div class="cb-item"><div class="cb-dot"></div>We ask about your income, loans, and family — not just age</div>
+        <div class="cb-item"><div class="cb-dot"></div>We compare 15+ insurers live in front of you</div>
+        <div class="cb-item"><div class="cb-dot"></div>We explain every exclusion before you sign</div>
+        <div class="cb-item"><div class="cb-dot"></div>Policy issued same day — documents on WhatsApp</div>
+      </div>
+      <a href="book.html" class="bg">Book my free session →</a>
+    </div>
+    <div class="rv d2">
+      <div class="phone-mock">
+        <div class="wa-head">
+          <div class="wa-back">←</div>
+          <div class="wa-av"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=80&q=70" alt="Advisor"/></div>
+          <div><div class="wa-nm">Sunil — Cover Credit</div><div class="wa-st">● Online</div></div>
+          <div class="wa-ic"><span>📞</span><span>⋮</span></div>
+        </div>
+        <div class="wa-bg" id="waChat"><div class="wa-date">Today</div></div>
+        <div class="wa-inp"><div class="wa-inp-box">Type a message…</div><div class="wa-send">➤</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PLAN TYPES -->
+<section class="sec">
+  <div class="si">
+    <div class="tag rv">Plan Types</div>
+    <h2 class="tit rv d1">Which life insurance<br/>is right for <em>you?</em></h2>
+    <p class="sub rv d2" style="margin-bottom:1.8rem;">We explain every plan type clearly so you choose with confidence — not confusion.</p>
+    <div class="plans-g">
+      <div class="pc rv d1">
+        <div class="pc-img"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=500&q=70" alt="Term"/><div class="pc-badge">Best Value</div></div>
+        <div class="pc-body">
+          <div class="pc-ic">🛡️</div>
+          <div class="pc-tt">Pure Term Insurance</div>
+          <div class="pc-ds">Maximum cover at minimum cost. Your family gets the full amount if you pass away during the term. The most honest form of life protection available.</div>
+          <div class="pc-from">From <strong>₹490/mo</strong> for ₹1 Crore cover</div>
+          <div class="pc-rows"><div class="pc-row"><span>✓</span>Highest cover, lowest premium</div><div class="pc-row"><span>✓</span>Riders: accident, critical illness</div><div class="pc-row"><span>✓</span>10 to 40 year term options</div></div>
+          <a href="book.html" class="bq">Get Quote for Term Plan →</a>
+        </div>
+      </div>
+      <div class="pc rv d2">
+        <div class="pc-img"><img src="https://images.unsplash.com/photo-1579621970795-87facc2f976d?auto=format&fit=crop&w=500&q=70" alt="ULIP"/></div>
+        <div class="pc-body">
+          <div class="pc-ic">📈</div>
+          <div class="pc-tt">ULIP — Insurance + Investment</div>
+          <div class="pc-ds">Part of your premium invested in equity/debt funds. Life cover plus potential market-linked returns. 5-year lock-in period applies.</div>
+          <div class="pc-from">From <strong>₹2,500/mo</strong> for ₹25L cover</div>
+          <div class="pc-rows"><div class="pc-row"><span>✓</span>Dual benefit: cover + investment</div><div class="pc-row"><span>✓</span>Switch between fund types anytime</div><div class="pc-row"><span>✓</span>Tax-free maturity under 10(10D)</div></div>
+          <a href="book.html" class="bq">Get Quote for ULIP →</a>
+        </div>
+      </div>
+      <div class="pc rv d3">
+        <div class="pc-img"><img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=500&q=70" alt="Endowment"/></div>
+        <div class="pc-body">
+          <div class="pc-ic">💼</div>
+          <div class="pc-tt">Endowment / Money Back</div>
+          <div class="pc-ds">Guaranteed returns whether you survive or not. Lower cover amount but assured payout. Suited for risk-averse families who want guaranteed savings.</div>
+          <div class="pc-from">From <strong>₹3,000/mo</strong> for ₹10L cover</div>
+          <div class="pc-rows"><div class="pc-row"><span>✓</span>Guaranteed maturity amount</div><div class="pc-row"><span>✓</span>Periodic payouts (money back)</div><div class="pc-row"><span>✓</span>Loan facility against policy</div></div>
+          <a href="book.html" class="bq">Get Quote for Endowment →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TERM vs ENDOWMENT -->
+<section class="sec sa">
+  <div class="si">
+    <div class="tag rv">Side-by-Side</div>
+    <h2 class="tit rv d1">Term vs Endowment —<br/><em>what nobody tells you</em></h2>
+    <p class="sub rv d2" style="margin-bottom:1.8rem;">90% of Indians buy endowment thinking it's better. The numbers tell a very different story. We show you the honest comparison.</p>
+    <div class="comp-g rv d1">
+      <div class="cpc cpc-1">
+        <div class="cpc-img"><img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&w=600&q=70" alt="Term plan"/></div>
+        <div class="cpc-body">
+          <div class="cpc-tag">💙 Pure Term Plan</div>
+          <div class="cpc-tt">₹1 Crore Term · Age 30, 30-year term</div>
+          <div class="cpc-ds">Simple. Honest. Maximum protection at the lowest possible cost.</div>
+          <div class="cpc-rows">
+            <div class="cpc-row"><span class="k">Monthly premium</span><span class="v">₹720</span></div>
+            <div class="cpc-row"><span class="k">Cover amount</span><span class="v">₹1,00,00,000</span></div>
+            <div class="cpc-row"><span class="k">Total paid in 30 yrs</span><span class="v">₹2,59,200</span></div>
+            <div class="cpc-row"><span class="k">Cover : Premium ratio</span><span class="v">385x</span></div>
+            <div class="cpc-row"><span class="k">If you survive</span><span class="v">₹0 (pure protection)</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="cpc cpc-2">
+        <div class="cpc-img"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=70" alt="Endowment"/></div>
+        <div class="cpc-body">
+          <div class="cpc-tag">🟠 Endowment Plan</div>
+          <div class="cpc-tt">₹10L Endowment · Age 30, 30-year term</div>
+          <div class="cpc-ds">Lower cover. Higher premium. Guaranteed return — but is it really a deal?</div>
+          <div class="cpc-rows">
+            <div class="cpc-row"><span class="k">Monthly premium</span><span class="v">₹3,200</span></div>
+            <div class="cpc-row"><span class="k">Cover amount</span><span class="v">₹10,00,000</span></div>
+            <div class="cpc-row"><span class="k">Total paid in 30 yrs</span><span class="v">₹11,52,000</span></div>
+            <div class="cpc-row"><span class="k">Cover : Premium ratio</span><span class="v">3x only</span></div>
+            <div class="cpc-row"><span class="k">If you survive</span><span class="v">~₹14–16L (4–5% CAGR)</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="cverd rv d2">
+      <div class="cvic">💡</div>
+      <div>
+        <div class="cvtt">Our honest verdict: Term is almost always better for protection</div>
+        <div class="cvds">For the same ₹3,200/month you'd pay for endowment, get ₹1 Crore term cover AND invest the ₹2,480 difference in mutual fund SIP — end up with maximum life cover AND 4–6x more wealth at maturity. We show you exactly this before you decide.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="sec">
+  <div class="si">
+    <div class="calc-w">
+      <div class="calc-img rv">
+        <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=700&q=75" alt="Advisor"/>
+        <div class="calc-ov">
+          <div class="cc">
+            <div class="cct">📋 Sample Plan — Age 30</div>
+            <div class="ccr"><span class="ccl">Plan</span><span class="ccv">HDFC Click2Protect</span></div>
+            <div class="ccr"><span class="ccl">Cover</span><span class="ccv">₹1 Crore</span></div>
+            <div class="ccr"><span class="ccl">Term</span><span class="ccv">30 years</span></div>
+            <div class="ccr"><span class="ccl">Claim ratio</span><span class="ccv">98.6%</span></div>
+            <div class="ccbig" id="calcd">₹720/mo</div>
+          </div>
+        </div>
+      </div>
+      <div class="calc-form rv d1">
+        <div class="tag">Quick Estimator</div>
+        <h2 class="tit d1" style="font-size:clamp(1.4rem,2.2vw,2rem);margin-bottom:1.5rem;">Estimate your<br/><em>premium in 30 seconds</em></h2>
+        <div class="cf-row">
+          <div class="cf-lbl">Your Age <span id="ageVal">30 years</span></div>
+          <input type="range" class="cf-range" id="ageRange" min="18" max="55" value="30"/>
+        </div>
+        <div class="cf-row">
+          <div class="cf-lbl">Cover Amount</div>
+          <div class="cf-pills">
+            <div class="cf-pill on" data-cover="50">₹50L</div>
+            <div class="cf-pill" data-cover="100">₹1 Cr</div>
+            <div class="cf-pill" data-cover="200">₹2 Cr</div>
+            <div class="cf-pill" data-cover="500">₹5 Cr</div>
+          </div>
+        </div>
+        <div class="cf-row">
+          <div class="cf-lbl">Policy Term</div>
+          <div class="cf-pills">
+            <div class="cf-pill" data-term="10">10 yrs</div>
+            <div class="cf-pill" data-term="20">20 yrs</div>
+            <div class="cf-pill on" data-term="30">30 yrs</div>
+            <div class="cf-pill" data-term="40">40 yrs</div>
+          </div>
+        </div>
+        <div class="cf-row">
+          <div class="cf-lbl">Smoker?</div>
+          <div class="cf-pills">
+            <div class="cf-pill on" data-smoke="0">Non-smoker</div>
+            <div class="cf-pill" data-smoke="1">Smoker (+35%)</div>
+          </div>
+        </div>
+        <div class="cf-res">
+          <div class="cfrl">Estimated Monthly Premium</div>
+          <div class="cfrp" id="cfResult">₹720</div>
+          <div class="cfrn">Indicative only. Exact premium depends on health history. Book a session for accurate comparison from 15+ insurers.</div>
+        </div>
+        <a href="book.html" class="bg" style="width:100%;justify-content:center;margin-top:1rem;">Get Exact Quotes from 15+ Insurers →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust">
+  <div class="tl-wrap">Insurers We Compare For You</div>
+  <div class="tl-logos">
+    <div class="tl">LIC of India</div><div class="tl">HDFC Life</div><div class="tl">ICICI Prudential</div>
+    <div class="tl">Max Life</div><div class="tl">SBI Life</div><div class="tl">Tata AIA</div>
+    <div class="tl">Bajaj Allianz</div><div class="tl">Kotak Life</div><div class="tl">Aditya Birla</div><div class="tl">PNB MetLife</div>
+  </div>
+</div>
+
+<!-- STORIES -->
+<section class="sec sa stories-sec">
+  <div class="si">
+    <div class="tag rv">Real Stories</div>
+    <h2 class="tit rv d1">Families who got<br/>their <em>claim settled</em></h2>
+    <p class="sub rv d2" style="margin-bottom:1.8rem;">The real test of insurance is at the claim. We sell policies we're confident will pay — and these families prove it.</p>
+    <div class="st-g">
+      <div class="stc rv d1">
+        <div class="stc-img"><img src="https://images.unsplash.com/photo-1484863137850-59afcfe05386?auto=format&fit=crop&w=400&q=70" alt="Family"/></div>
+        <div class="stc-b">
+          <div class="stc-amt">₹1 Crore</div>
+          <div class="stc-type">Term Insurance · Claim settled in 18 days</div>
+          <p class="stc-tx">Rajesh Varma, 38, passed away in a road accident. Family received ₹1 Crore — tax-free — within 18 days. His wife cleared the home loan and funded both children's education.</p>
+          <div class="stc-q">"Cover Credit made sure the claim was simple and fast. We didn't have to fight anyone."</div>
+          <div class="stc-p"><div class="stc-av"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=60&q=60" alt=""/></div><div><div class="stc-nm">Priya Varma</div><div class="stc-rl">Hyderabad</div></div><div class="stc-sr">⭐⭐⭐⭐⭐</div></div>
+        </div>
+      </div>
+      <div class="stc rv d2">
+        <div class="stc-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=70" alt="Man"/></div>
+        <div class="stc-b">
+          <div class="stc-amt">₹15 Lakhs</div>
+          <div class="stc-type">Critical Illness Rider · Heart attack at 44</div>
+          <p class="stc-tx">Suresh Naidu had a CI rider on his term plan. When he suffered a heart attack, ₹15L was paid immediately — covering 100% of treatment without touching savings.</p>
+          <div class="stc-q">"The advisor at Cover Credit specifically recommended the CI rider. Without it I'd have been financially destroyed."</div>
+          <div class="stc-p"><div class="stc-av"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=60&q=60" alt=""/></div><div><div class="stc-nm">Suresh Naidu</div><div class="stc-rl">Vijayawada</div></div><div class="stc-sr">⭐⭐⭐⭐⭐</div></div>
+        </div>
+      </div>
+      <div class="stc rv d3">
+        <div class="stc-img"><img src="https://images.unsplash.com/photo-1591018533288-82d028460cf1?auto=format&fit=crop&w=400&q=70" alt="Mother"/></div>
+        <div class="stc-b">
+          <div class="stc-amt">₹75 Lakhs</div>
+          <div class="stc-type">Term Plan · Widow with 3 children</div>
+          <p class="stc-tx">Kavitha's husband purchased ₹75L through Cover Credit just 8 months before his passing. Claim processed in 22 days. All three children's education fully funded until graduation.</p>
+          <div class="stc-q">"My husband said Cover Credit explained it better than anyone. He bought it the same day. That changed everything."</div>
+          <div class="stc-p"><div class="stc-av"><img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?auto=format&fit=crop&w=60&q=60" alt=""/></div><div><div class="stc-nm">Kavitha Reddy</div><div class="stc-rl">Visakhapatnam</div></div><div class="stc-sr">⭐⭐⭐⭐⭐</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="sec">
+  <div class="si">
+    <div class="tag rv">Our Process</div>
+    <h2 class="tit rv d1">From first call to<br/><em>policy in your hands</em></h2>
+    <div class="pg-g">
+      <div class="pg rv d1"><div class="pg-num">01</div><div class="pg-ic">📞</div><div class="pg-tt">Book a Free Session</div><div class="pg-ds">Call, WhatsApp or book online. Free, zero obligation, 30 minutes.</div></div>
+      <div class="pg rv d2"><div class="pg-num">02</div><div class="pg-ic">🔍</div><div class="pg-tt">We Compare 15+ Plans</div><div class="pg-ds">We analyse your income, loans, family — and compare live in front of you.</div></div>
+      <div class="pg rv d3"><div class="pg-num">03</div><div class="pg-ic">💬</div><div class="pg-tt">Full Honest Explanation</div><div class="pg-ds">Every exclusion, every clause, every rider — explained in Telugu or English.</div></div>
+      <div class="pg rv d4"><div class="pg-num">04</div><div class="pg-ic">📄</div><div class="pg-tt">Policy Issued Today</div><div class="pg-ds">You choose, we fill the form — policy documents on WhatsApp within hours.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ + SIDEBAR -->
+<section class="sec sa">
+  <div class="si faq-lay">
+    <div>
+      <div class="tag rv">FAQ</div>
+      <h2 class="tit rv d1">Questions we answer<br/><em>every single day</em></h2>
+      <div class="faq-list rv d1">
+        <div class="fi op"><div class="fh"><span class="fq">How much life insurance cover do I actually need?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">Standard rule: 10–15x annual income. We calculate precisely based on outstanding loans, dependents, children's education, spouse income, and lifestyle. Most families in AP need ₹75L–₹2Cr. Book a session and we calculate your exact number in 10 minutes.</p></div></div>
+        <div class="fi"><div class="fh"><span class="fq">LIC vs private insurers — which is actually better?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">LIC has government backing and great trust. But private insurers like HDFC Life, ICICI Pru, and Max Life often have higher claim settlement ratios (98–99%), faster processing (7–15 days vs 30+), and significantly lower premiums for the same cover. We compare both honestly.</p></div></div>
+        <div class="fi"><div class="fh"><span class="fq">I have diabetes or BP — can I still get life cover?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">Yes. Insurers will either accept with a loading (10–30% extra), temporarily exclude the condition, or offer specialist plans. Full honest disclosure is critical. We find insurers most favourable for your health profile.</p></div></div>
+        <div class="fi"><div class="fh"><span class="fq">Should I add riders to my term plan?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">Three worth adding: (1) Accidental Death Benefit — doubles payout if death is accidental, costs ₹50–100/mo. (2) Critical Illness — pays lump sum on diagnosis of cancer, heart attack etc. Highly recommended. (3) Waiver of Premium — future premiums waived if disabled. We explain each clearly.</p></div></div>
+        <div class="fi"><div class="fh"><span class="fq">What documents do I need to buy a term plan?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">Aadhaar (identity + address), PAN (tax), last 3 months salary slips or ITR for income proof, and passport photo. Some plans need a medical test for cover above ₹50L or age above 40. We guide you through every requirement.</p></div></div>
+        <div class="fi"><div class="fh"><span class="fq">Can I cancel and get a refund?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">15-day free look period for all plans — full refund if cancelled within 15 days. After that, term plans have no surrender value. ULIPs and endowment plans have surrender values after 3–5 years. We explain lock-in periods fully before you buy.</p></div></div>
+      </div>
+    </div>
+    <aside class="sb2">
+      <div class="sb2-card rv">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=400&q=70" alt="Consultation" class="sb2-img"/>
+        <div class="sb2-tt">Talk to an advisor today</div>
+        <div class="sb2-ds">Free 30-minute session. Telugu or English. We compare 15+ plans and find your perfect fit.</div>
+        <a href="book.html" class="sb2-btn">📅 Book Free Session</a>
+        <div class="sb2-div">or call directly</div>
+        <a href="tel:+917842854466" class="sb2-ph">📞 +91 78428 54466</a>
+      </div>
+      <div class="sb2-plans rv d1">
+        <div class="lbl">Top Plans We Recommend</div>
+        <div class="sp"><span class="sp-star">⭐</span><span class="sp-nm">HDFC Life Click2Protect</span></div>
+        <div class="sp"><span class="sp-star">⭐</span><span class="sp-nm">Max Life Smart Secure+</span></div>
+        <div class="sp"><span class="sp-star">⭐</span><span class="sp-nm">ICICI Pru iProtect Smart</span></div>
+        <div class="sp"><span class="sp-star">⭐</span><span class="sp-nm">Tata AIA SRS Vitality</span></div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="ctab">
+  <div class="ctab-bg"><img src="https://images.unsplash.com/photo-1471879832106-c7ab9e0cee23?auto=format&fit=crop&w=1400&q=70" alt="Family"/></div>
+  <div class="cta-in">
+    <div>
+      <h2 class="cta-tt rv">Your family's security costs<br/>less than you think.</h2>
+      <p class="cta-ds rv d1">₹720 a month. Less than a single restaurant dinner. Protects your family with ₹1 Crore for 30 years. Book free — we compare 15+ plans and issue your policy same day.</p>
+      <div class="cta-pills rv d2"><span class="cpill">✓ Free comparison</span><span class="cpill">✓ Telugu &amp; English</span><span class="cpill">✓ Same-day policy</span><span class="cpill">✓ No pressure</span></div>
+    </div>
+    <div class="cta-btns rv d2">
+      <a href="book.html" class="bg" style="white-space:nowrap;font-size:.95rem;padding:1rem 2rem;">Book Free Consultation →</a>
+      <div class="cta-ph">or call: <a href="tel:+917842854466">+91 78428 54466</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="ft">
+  <div class="ft-in">
+    <div class="ft-top">
+      <div>
+        <a href="index.html" class="ft-logo">Cover<em>Credit</em></a>
+        <p class="ft-ds">Honest insurance and financial advice for families across AP and Telangana. We sell the right policy — no pressure, no jargon.</p>
+        <div class="ft-con">📞 <a href="tel:+917842854466">+91 78428 54466</a></div>
+        <div class="ft-con">✉️ <a href="mailto:Covercredit.official@gmail.com">Covercredit.official@gmail.com</a></div>
+        <div class="ft-con">🕐 Mon–Sat: 9 AM – 7 PM</div>
+      </div>
+      <div class="ft-col"><div class="ft-clbl">Insurance</div><ul><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life &amp; Term Insurance</a></li><li><a href="bike-insurance.html">Bike Insurance</a></li><li><a href="car-insurance.html">Car Insurance</a></li></ul></div>
+      <div class="ft-col"><div class="ft-clbl">Finance</div><ul><li><a href="loans.html">Personal Loans</a></li><li><a href="loans.html">Home Loans</a></li><li><a href="loans.html">Mutual Funds &amp; SIP</a></li></ul></div>
+      <div class="ft-col"><div class="ft-clbl">Company</div><ul><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li><li><a href="book.html">Book Consultation</a></li></ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>© <span id="yr"></span> Cover Credit Insurance Advisors. All rights reserved.</span>
+      <div class="ft-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* CURSOR */
+const cur=document.getElementById('cur'),cr=document.getElementById('cr');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function loop(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button,.pc,.stc,.pg,.fi,.sp,.tl').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
+});
+
+/* NAV */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>40),{passive:true});
+const burger=document.getElementById('burger'),mob=document.getElementById('mob');
+burger.addEventListener('click',()=>{burger.classList.toggle('op');mob.classList.toggle('op');document.body.style.overflow=mob.classList.contains('op')?'hidden':'';});
+
+/* REVEAL */
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});},{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+
+/* COUNTER */
+function animCount(el,target,pre,suf,dur){
+  if(!el)return;
+  let s=null;
+  const step=ts=>{
+    if(!s)s=ts;
+    const p=Math.min((ts-s)/dur,1);
+    const e=1-Math.pow(1-p,4);
+    el.textContent=pre+Math.round(e*target)+suf;
+    if(p<1)requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+const so=new IntersectionObserver(es=>{
+  if(es[0].isIntersecting){
+    animCount(document.getElementById('c1'),1,'₹','Cr',800);
+    animCount(document.getElementById('c2'),97,'','%',1200);
+    animCount(document.getElementById('c3'),490,'₹','/mo',1000);
+    animCount(document.getElementById('c4'),100,'','%',900);
+    so.disconnect();
+  }
+},{threshold:.5});
+const stbar=document.querySelector('.stbar');if(stbar)so.observe(stbar);
+
+/* FAQ */
+document.querySelectorAll('.fh').forEach(h=>{
+  h.addEventListener('click',()=>{
+    const it=h.parentElement,op=it.classList.contains('op');
+    document.querySelectorAll('.fi').forEach(i=>i.classList.remove('op'));
+    if(!op)it.classList.add('op');
+  });
+});
+
+/* PREMIUM CALCULATOR */
+const ageRange=document.getElementById('ageRange');
+let selCover=50,selTerm=30,selSmoke=0;
+function calcPrem(){
+  const age=parseInt(ageRange.value);
+  const rates={18:.028,20:.03,25:.034,28:.038,30:.042,35:.055,40:.078,45:.115,50:.165,55:.24};
+  const keys=Object.keys(rates).map(Number).sort((a,b)=>a-b);
+  let rate=.042;
+  for(let i=0;i<keys.length-1;i++){
+    if(age>=keys[i]&&age<=keys[i+1]){
+      const t=(age-keys[i])/(keys[i+1]-keys[i]);
+      rate=rates[keys[i]]+(rates[keys[i+1]]-rates[keys[i]])*t;
+    }
+  }
+  const tf=selTerm<=10?1.3:selTerm<=20?1.1:selTerm<=30?1:0.95;
+  const sf=selSmoke?1.35:1;
+  const mo=Math.round(rate*selCover*tf*sf/10)*10;
+  const res=document.getElementById('cfResult');
+  const cd=document.getElementById('calcd');
+  if(res)res.textContent='₹'+mo.toLocaleString('en-IN');
+  if(cd)cd.textContent='₹'+mo.toLocaleString('en-IN')+'/mo';
+}
+if(ageRange){
+  ageRange.addEventListener('input',()=>{
+    const av=document.getElementById('ageVal');
+    if(av)av.textContent=ageRange.value+' years';
+    calcPrem();
+  });
+}
+document.querySelectorAll('[data-cover]').forEach(p=>{p.addEventListener('click',()=>{document.querySelectorAll('[data-cover]').forEach(x=>x.classList.remove('on'));p.classList.add('on');selCover=parseInt(p.dataset.cover);calcPrem();});});
+document.querySelectorAll('[data-term]').forEach(p=>{p.addEventListener('click',()=>{document.querySelectorAll('[data-term]').forEach(x=>x.classList.remove('on'));p.classList.add('on');selTerm=parseInt(p.dataset.term);calcPrem();});});
+document.querySelectorAll('[data-smoke]').forEach(p=>{p.addEventListener('click',()=>{document.querySelectorAll('[data-smoke]').forEach(x=>x.classList.remove('on'));p.classList.add('on');selSmoke=parseInt(p.dataset.smoke);calcPrem();});});
+
+/* WHATSAPP CHAT */
+const CONV=[
+  {side:'in', name:'Sunil — Cover Credit', text:'Hello! I saw you booked a consultation for life insurance. May I know a bit about your family — are you married, any kids?', time:'10:14 AM', hl:null, delay:800},
+  {side:'out', name:'Ravi', text:'Yes, married, 2 kids — 6 and 3 years old. Wife is a homemaker. I earn about ₹85,000 per month.', time:'10:15 AM', hl:null, delay:3000},
+  {side:'in', name:'Sunil — Cover Credit', text:'Perfect. And do you have a home loan or any other EMIs currently?', time:'10:15 AM', hl:null, delay:5500},
+  {side:'out', name:'Ravi', text:'Yes — home loan of ₹45 lakhs, about 18 years remaining. Car loan ₹5L.', time:'10:16 AM', hl:null, delay:8000},
+  {side:'in', name:'Sunil — Cover Credit', text:'Based on this, your family needs at least ₹1.5 Crore in life cover. Here\'s why: ₹50L to clear loans + ₹75L for 10 years income replacement + ₹25L for both kids\' education.', time:'10:16 AM', hl:'Recommended minimum cover: ₹1.5 Crore', delay:11000},
+  {side:'out', name:'Ravi', text:'That sounds expensive. I was thinking ₹50 lakhs was enough.', time:'10:17 AM', hl:null, delay:15000},
+  {side:'in', name:'Sunil — Cover Credit', text:'₹1.5 Crore term plan for a 32-year-old non-smoker costs ₹1,050–₹1,200/month. That\'s ₹35/day — less than chai and a snack — for your entire family\'s financial security.', time:'10:18 AM', hl:'₹1.5Cr cover = only ₹1,100/month', delay:17500},
+  {side:'out', name:'Ravi', text:'Wow. I had no idea it was that affordable. Can we compare a few plans now?', time:'10:18 AM', hl:null, delay:21000},
+  {side:'in', name:'Sunil — Cover Credit', text:'Absolutely! Pulling up HDFC Life, Max Life, and ICICI Pru right now. All three have 98%+ claim ratios. Which do you prefer — same-day issuance or medical test for potential discount?', time:'10:19 AM', hl:'All 3 plans available for same-day issuance ✓', delay:23500},
+];
+
+const waChat=document.getElementById('waChat');
+let wTimers=[];
+function clearWt(){wTimers.forEach(t=>clearTimeout(t));wTimers=[];}
+function addMsg(msg){
+  const tw=waChat.querySelector('.wtyp-row');if(tw)tw.remove();
+  const wrap=document.createElement('div');
+  wrap.className='wm '+(msg.side==='in'?'in':'out');
+  const bub=document.createElement('div');bub.className='wm-bub';
+  if(msg.side==='in'){const nm=document.createElement('div');nm.className='wm-name';nm.textContent=msg.name;bub.appendChild(nm);}
+  const txt=document.createElement('div');txt.textContent=msg.text;bub.appendChild(txt);
+  if(msg.hl){const hl=document.createElement('div');hl.className='wm-hl';hl.textContent=msg.hl;bub.appendChild(hl);}
+  const tm=document.createElement('div');tm.className='wm-time';tm.textContent=msg.time;bub.appendChild(tm);
+  wrap.appendChild(bub);waChat.appendChild(wrap);waChat.scrollTop=waChat.scrollHeight;
+}
+function showTyp(side){
+  const tw=waChat.querySelector('.wtyp-row');if(tw)tw.remove();
+  const wrap=document.createElement('div');wrap.className='wtyp-row wm '+(side==='in'?'in':'out');
+  const bub=document.createElement('div');bub.className='wm-typ show';
+  bub.innerHTML='<span></span><span></span><span></span>';
+  wrap.appendChild(bub);waChat.appendChild(wrap);waChat.scrollTop=waChat.scrollHeight;
+}
+function startChat(){
+  clearWt();
+  if(waChat){waChat.innerHTML='<div class="wa-date">Today</div>';}
+  CONV.forEach(msg=>{
+    const t1=setTimeout(()=>showTyp(msg.side),Math.max(0,msg.delay-1400));
+    const t2=setTimeout(()=>addMsg(msg),msg.delay);
+    wTimers.push(t1,t2);
+  });
+  const loop=setTimeout(()=>startChat(),CONV[CONV.length-1].delay+4500);
+  wTimers.push(loop);
+}
+const wo=new IntersectionObserver(es=>{if(es[0].isIntersecting){startChat();wo.disconnect();}},{threshold:.4});
+const phone=document.querySelector('.phone-mock');if(phone)wo.observe(phone);
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* IMAGE FALLBACK */
+document.querySelectorAll('img').forEach(img => {
+  img.addEventListener('error', function() {
+    const w = this.offsetWidth || 400;
+    const h = this.offsetHeight || 300;
+    this.src = `https://picsum.photos/${w}/${h}?random=${Math.floor(Math.random()*100)}`;
+    this.onerror = null;
+  });
+});
+
+</script>
 </body>
 </html>
