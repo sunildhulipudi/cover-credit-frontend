@@ -79,8 +79,8 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 /* HERO */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;}
 .hi{position:absolute;inset:0;z-index:0;}
-.hi img{width:100%;height:100%;object-fit:cover;object-position:center 40%;}
-.hi::after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,rgba(6,16,31,.95) 38%,rgba(6,16,31,.6) 70%,rgba(6,16,31,.3) 100%);}
+.hi img{width:100%;height:100%;object-fit:cover;object-position:center 20%;transform:scale(1.06);transition:transform 8s ease-out;}.hero:hover .hi img{transform:scale(1.0);}
+.hi::after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,rgba(6,16,31,.96) 35%,rgba(6,16,31,.55) 65%,rgba(6,16,31,.2) 100%);}
 .hgrid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:55px 55px;mask-image:radial-gradient(ellipse 70% 80% at 30% 50%,#000,transparent);}
 .hin{position:relative;z-index:2;max-width:1300px;margin:0 auto;padding:calc(var(--nh)+3rem) 5% 5rem;width:100%;}
 .hbc{display:flex;align-items:center;gap:.38rem;font-size:.72rem;color:rgba(255,255,255,.38);margin-bottom:1.4rem;}
@@ -105,11 +105,13 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 /* IMPACT SPLIT */
 .impact{overflow:hidden;}
 .i-split{display:grid;grid-template-columns:1fr 1fr;min-height:560px;}
-.il{background:linear-gradient(145deg,#1a0505,#2d0a0a);padding:4rem 5%;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
-.ir{background:linear-gradient(145deg,#051a10,#0a2d1a);padding:4rem 5%;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
+.il{background:linear-gradient(145deg,#1a0505,#2d0a0a);padding:4rem 5%;display:grid;grid-template-columns:auto 1fr;align-items:center;gap:2rem;position:relative;overflow:hidden;}
+.bg-art{flex-shrink:0;opacity:.9;}
+@media(max-width:768px){.il,.ir{grid-template-columns:1fr;}.bg-art{display:none;}}
+.ir{background:linear-gradient(145deg,#051a10,#0a2d1a);padding:4rem 5%;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2rem;position:relative;overflow:hidden;}
 /* Animated SVG cartoon background in each panel */
 .il .bg-art, .ir .bg-art{position:absolute;right:-20px;bottom:0;opacity:.12;pointer-events:none;}
-.ii{position:relative;z-index:1;}
+.ii{position:relative;z-index:1;min-width:0;}
 .ibadge{display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .8rem;border-radius:100px;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.2rem;}
 .il .ibadge{background:rgba(248,113,113,.15);border:1px solid rgba(248,113,113,.28);color:#f87171;}
 .ir .ibadge{background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.26);color:#4ade80;}
@@ -393,14 +395,14 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 <!-- HERO — Indian family at Hyderabad home -->
 <section class="hero">
   <div class="hi">
-    <img src="https://images.unsplash.com/photo-1596003906949-4bbba20b7476?auto=format&fit=crop&w=1600&q=80" alt="Indian family"/>
+    <img src="https://images.unsplash.com/photo-1586105251261-72a756497a11?auto=format&fit=crop&w=1600&q=85" alt="Indian family"/>
   </div>
   <div class="hgrid"></div>
   <div class="hin">
     <div class="hbc"><a href="index.html">Home</a> &#8250; Life Insurance</div>
     <div class="hkick">&#128737; Life &amp; Term Insurance</div>
-    <h1 class="htit">Agar aap kal nahi rahe —<br/>kya aapka parivaar <em>surakshit hai?</em></h1>
-    <p class="hdesc">Life insurance sirf death ke baare mein nahi hai. Ye ensure karta hai ki aap par depend karne wale log kabhi struggle na karein — chahe kuch bhi ho. Hum sahi plan sahi daam mein dhundh dete hain.</p>
+    <h1 class="htit">If something happens to you —<br/>is your family <em>truly safe?</em></h1>
+    <p class="hdesc">Life insurance is not about death. It is about making sure those who depend on you never struggle — no matter what happens. We find the right plan at the right price, every time.</p>
     <div class="hbtns">
       <a href="book.html" class="bg">Get Free Plan Comparison &#8594;</a>
       <a href="tel:+917842854466" class="bgh">&#128222; +91 78428 54466</a>
@@ -420,7 +422,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
   <div class="i-split">
     <div class="il">
       <!-- Cartoon: sad family under rain, no umbrella -->
-      <svg class="bg-art" width="260" height="280" viewBox="0 0 260 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="bg-art" width="240" height="260" viewBox="0 0 260 280" fill="none" xmlns="http://www.w3.org/2000/svg">
         <!-- Rain drops -->
         <line x1="30" y1="0" x2="20" y2="40" stroke="#f87171" stroke-width="2" opacity="0.6"><animate attributeName="y1" values="0;280" dur="1.2s" repeatCount="indefinite"/><animate attributeName="y2" values="40;320" dur="1.2s" repeatCount="indefinite"/></line>
         <line x1="80" y1="20" x2="70" y2="60" stroke="#f87171" stroke-width="2" opacity="0.5"><animate attributeName="y1" values="0;280" dur="1.5s" repeatCount="indefinite" begin="0.3s"/><animate attributeName="y2" values="40;320" dur="1.5s" repeatCount="indefinite" begin="0.3s"/></line>
@@ -480,27 +482,27 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
         <rect x="50" y="268" width="180" height="6" rx="3" fill="#1f1108" opacity="0.5"/>
       </svg>
       <div class="ii">
-        <div class="ibadge">&#10060; Without Life Insurance</div>
-        <h2 class="ititl">Parivaar akele face karta hai — raat bhar mein.</h2>
+        <div class="ibadge">❌ Without Life Insurance</div>
+        <h2 class="ititl">Your family faces this alone — overnight.</h2>
         <ul class="ilist">
-          <li><span class="iic">&#128184;</span>EMIs jaari rahengi — income nahi. 3 mahine mein default shuru.</li>
-          <li><span class="iic">&#127968;</span>Home loan? Bank parwah nahi karta. Property seizure ho sakti hai.</li>
-          <li><span class="iic">&#128103;</span>Bacchon ki padhai beech mein ruk jaati hai.</li>
-          <li><span class="iic">&#128542;</span>Patni ko foran kaam karna padta hai, bachche unsupervised.</li>
-          <li><span class="iic">&#128116;</span>Budhape mein maa-baap ka ek hi sahara — ab woh bhi nahi.</li>
-          <li><span class="iic">&#128200;</span>20 saal ki savings 2-3 saal mein khatam ho jaati hai.</li>
+          <li><span class="iic">&#128184;</span>EMIs keep coming — but income stops. Loan defaults begin within 3 months.</li>
+          <li><span class="iic">&#127968;</span>Home loan? The bank does not care. Property can be seized.</li>
+          <li><span class="iic">&#128103;</span>Children's education is disrupted or stopped mid-way.</li>
+          <li><span class="iic">&#128542;</span>Spouse forced to work immediately, children left without care.</li>
+          <li><span class="iic">&#128116;</span>Elderly parents lose their only support — no income, no care.</li>
+          <li><span class="iic">&#128200;</span>20 years of savings wiped out in 2 to 3 years just to survive.</li>
         </ul>
       </div>
     </div>
     <div class="ir">
       <!-- Cartoon: happy Indian family under gold umbrella -->
-      <svg class="bg-art" width="260" height="280" viewBox="0 0 260 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="bg-art" width="240" height="260" viewBox="0 0 260 280" fill="none" xmlns="http://www.w3.org/2000/svg">
         <!-- Big protective umbrella -->
         <path d="M60 130 Q130 60 200 130" fill="#f5a623" stroke="#d4870a" stroke-width="3"/>
         <line x1="130" y1="130" x2="130" y2="200" stroke="#d4870a" stroke-width="4" stroke-linecap="round"/>
         <path d="M130 200 Q140 210 130 218" stroke="#d4870a" stroke-width="4" fill="none"/>
         <!-- Rupee symbol inside umbrella -->
-        <text x="110" y="115" font-size="22" fill="#d4870a" font-weight="bold" opacity="0.5">&#8377;</text>
+        <text x="130" y="112" text-anchor="middle" font-size="24" fill="#d4870a" font-weight="900" font-family="Arial" opacity="0.45">₹</text>
         <!-- Rain outside umbrella (deflected) -->
         <line x1="30" y1="60" x2="55" y2="130" stroke="#93c5fd" stroke-width="1.5" opacity="0.4"/>
         <line x1="215" y1="60" x2="205" y2="130" stroke="#93c5fd" stroke-width="1.5" opacity="0.4"/>
@@ -545,17 +547,17 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
         <rect x="50" y="268" width="180" height="6" rx="3" fill="#0a2d1a" opacity="0.4"/>
       </svg>
       <div class="ii">
-        <div class="ibadge">&#10003; Cover Credit ke saath Life Insurance</div>
-        <h2 class="ititl">Aapka parivaar financially completely protected hai.</h2>
+        <div class="ibadge">✅ With Life Insurance from Cover Credit</div>
+        <h2 class="ititl">Your family is completely protected — financially secure.</h2>
         <ul class="ilist">
-          <li><span class="iic">&#9989;</span>&#8377;1 Crore+ directly nominee ko, tax-free, 30 din mein.</li>
-          <li><span class="iic">&#127968;</span>Home loan rider — poora outstanding balance automatically clear.</li>
-          <li><span class="iic">&#127891;</span>Bacchon ki education 15-20 saal tak fund ki gayi.</li>
-          <li><span class="iic">&#128188;</span>Patni ke paas apni life rebuild karne ka time aur security hai.</li>
-          <li><span class="iic">&#128116;</span>Monthly income options — maa-baap ko regular support.</li>
-          <li><span class="iic">&#128176;</span>Sirf &#8377;490/month — ek cup chai ki kimat mein poori suraksha.</li>
+          <li><span class="iic">&#9989;</span>₹1 Crore+ paid directly to nominee — tax-free — within 30 days.</li>
+          <li><span class="iic">&#127968;</span>Home loan rider clears the entire outstanding balance automatically.</li>
+          <li><span class="iic">&#127891;</span>Children's education funded for 15 to 20 years from the settlement.</li>
+          <li><span class="iic">&#128188;</span>Spouse has the time and financial security to rebuild life on their terms.</li>
+          <li><span class="iic">&#128116;</span>Monthly income plan options ensure parents receive regular support.</li>
+          <li><span class="iic">&#128176;</span>From just ₹490 per month — less than a daily cup of chai for complete protection.</li>
         </ul>
-        <div class="icta"><a href="book.html" class="bg">Abhi apne parivaar ko protect karein &#8594;</a></div>
+        <div class="icta"><a href="book.html" class="bg">Protect my family now →</a></div>
       </div>
     </div>
   </div>
@@ -573,11 +575,11 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
       <!-- Card 1: Real Indian office photo -->
       <div class="ccard">
         <div class="ccard-art" style="background:#0d2137;">
-          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=400&q=80" alt="Indian office" style="width:100%;height:100%;object-fit:cover;opacity:.85;"/>
+          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80" alt="Indian office" style="width:100%;height:100%;object-fit:cover;opacity:.85;"/>
         </div>
         <div class="ccard-body">
           <div class="ccard-tt">Expert Comparison</div>
-          <div class="ccard-ds">Hum 15+ insurers ko aapke saamne compare karte hain — LIC se HDFC Life tak.</div>
+          <div class="ccard-ds">We compare 15+ insurers live in front of you — from LIC to HDFC Life to Max Life.</div>
         </div>
       </div>
 
@@ -597,7 +599,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
             <path d="M100 75 Q120 60 130 45 Q112 55 100 70Z" fill="#16a34a" opacity=".8"><animate attributeName="opacity" values=".8;.4;.8" dur="2.5s" repeatCount="indefinite"/></path>
             <!-- Rupee coin at top -->
             <circle cx="100" cy="48" r="16" fill="#f5a623" stroke="#d97706" stroke-width="2"><animate attributeName="cy" values="48;42;48" dur="2s" repeatCount="indefinite"/></circle>
-            <text x="93" y="54" font-size="14" fill="#78350f" font-weight="bold"><animate attributeName="y" values="54;48;54" dur="2s" repeatCount="indefinite"/>&#8377;</text>
+            <text x="100" y="56" text-anchor="middle" font-size="16" fill="#78350f" font-weight="900" font-family="Arial"><animate attributeName="y" values="56;50;56" dur="2s" repeatCount="indefinite"/>₹</text>
             <!-- Sparkles -->
             <circle cx="120" cy="38" r="3" fill="#ffd166"><animate attributeName="opacity" values="1;0;1" dur="1.5s" repeatCount="indefinite"/></circle>
             <circle cx="82" cy="32" r="2.5" fill="#ffd166"><animate attributeName="opacity" values="0;1;0" dur="1.8s" repeatCount="indefinite"/></circle>
@@ -606,7 +608,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
         </div>
         <div class="ccard-body">
           <div class="ccard-tt">Wealth Grows, Cover Grows</div>
-          <div class="ccard-ds">Term plan — premium low, cover high. Aapki savings grow hoti hai, saath mein protection bhi.</div>
+          <div class="ccard-ds">Low premium, high cover. Your savings grow every year while your family stays fully protected.</div>
         </div>
       </div>
 
@@ -620,7 +622,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
             <path d="M90 32 L130 48 L130 88 Q130 122 90 138 Q50 122 50 88 L50 48 Z" fill="rgba(59,130,246,0.1)"><animate attributeName="fill" values="rgba(59,130,246,0.1);rgba(245,166,35,0.12);rgba(59,130,246,0.1)" dur="3s" repeatCount="indefinite"/></path>
             <!-- Rupee in shield -->
             <circle cx="90" cy="82" r="22" fill="#1565c0" stroke="#3b82f6" stroke-width="1.5"><animate attributeName="r" values="22;25;22" dur="2s" repeatCount="indefinite"/></circle>
-            <text x="82" y="90" font-size="20" fill="#ffd166" font-weight="bold">&#8377;</text>
+            <text x="90" y="91" text-anchor="middle" font-size="22" fill="#ffd166" font-weight="900" font-family="Arial">₹</text>
             <!-- Indian family silhouette at bottom of shield -->
             <!-- Dad -->
             <circle cx="76" cy="120" r="7" fill="#93c5fd"/>
@@ -639,15 +641,15 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
           </svg>
         </div>
         <div class="ccard-body">
-          <div class="ccard-tt">1 Crore+ Suraksha</div>
-          <div class="ccard-ds">&#8377;490/month mein &#8377;1 Crore ka cover. Aapke parivaar ko poori protection — har situation mein.</div>
+          <div class="ccard-tt">₹1 Crore+ Protection</div>
+          <div class="ccard-ds">₹490 per month gives your family ₹1 Crore cover. Complete protection in every situation.</div>
         </div>
       </div>
 
       <!-- Card 4: Real Indian Hyderabad photo -->
       <div class="ccard">
         <div class="ccard-art" style="background:#0d1a2d;">
-          <img src="https://images.unsplash.com/photo-1563461661026-49631dd5d68e?auto=format&fit=crop&w=400&q=80" alt="Hyderabad city" style="width:100%;height:100%;object-fit:cover;opacity:.75;"/>
+          <img src="https://images.unsplash.com/photo-1595856898942-c47a85dc5f41?auto=format&fit=crop&w=400&q=80" alt="Hyderabad city" style="width:100%;height:100%;object-fit:cover;opacity:.75;"/>
           <!-- Overlay with text -->
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(6,16,31,.85),transparent 50%);display:flex;align-items:flex-end;padding:.8rem;">
             <div style="font-size:.7rem;font-weight:700;color:rgba(255,255,255,.7);">Hyderabad • Vijayawada • Vizag</div>
@@ -655,7 +657,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
         </div>
         <div class="ccard-body">
           <div class="ccard-tt">Serving All of AP &amp; Telangana</div>
-          <div class="ccard-ds">Telugu mein samjhao, same-day policy issuance — aapke sheher mein humari service.</div>
+          <div class="ccard-ds">We advise in Telugu or English. Same-day policy issuance across AP and Telangana.</div>
         </div>
       </div>
 
@@ -678,15 +680,15 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
   <div class="chat-wrap">
     <div class="rv">
       <div class="tag">How We Advise</div>
-      <h2 class="tit d1">Real consultation —<br/><em>bilkul is tarah</em></h2>
-      <p class="sub d2" style="margin-bottom:1.3rem;">Ye actual conversation hai hamare office se. Koi jargon nahi. Koi pressure nahi. Sirf honest advice — Telugu ya English mein.</p>
+      <h2 class="tit d1">A real consultation —<br/><em>exactly like this</em></h2>
+      <p class="sub d2" style="margin-bottom:1.3rem;">This is an actual conversation from our advisory office. No jargon. No pressure. Just clear, honest advice in Telugu or English.</p>
       <div style="margin-bottom:1.8rem;">
-        <div class="cb-item"><div class="cb-dot"></div>Hum sirf age nahi — income, loans, family puchte hain</div>
-        <div class="cb-item"><div class="cb-dot"></div>15+ insurers ko live aapke saamne compare karte hain</div>
-        <div class="cb-item"><div class="cb-dot"></div>Har exclusion sign karne se pehle explain karte hain</div>
-        <div class="cb-item"><div class="cb-dot"></div>Same day policy — WhatsApp par documents</div>
+        <div class="cb-item"><div class="cb-dot"></div>We ask about your income, loans, and dependents — not just age</div>
+        <div class="cb-item"><div class="cb-dot"></div>We compare 15+ insurers live in front of you</div>
+        <div class="cb-item"><div class="cb-dot"></div>Every exclusion is explained clearly before you sign anything</div>
+        <div class="cb-item"><div class="cb-dot"></div>Policy issued same day — documents sent on WhatsApp</div>
       </div>
-      <a href="book.html" class="bg">Book free session &#8594;</a>
+      <a href="book.html" class="bg">Book my free session →</a>
     </div>
     <div class="rv d2">
       <div class="phone-mock">
@@ -696,8 +698,8 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
           <div><div class="wa-nm">Sunil — Cover Credit</div><div class="wa-st">&#9679; Online</div></div>
           <div class="wa-ic"><span>&#128222;</span><span>&#8942;</span></div>
         </div>
-        <div class="wa-bg" id="waChat"><div class="wa-date">Aaj</div></div>
-        <div class="wa-inp"><div class="wa-inp-box">Message likhiye...</div><div class="wa-send">&#10148;</div></div>
+        <div class="wa-bg" id="waChat"><div class="wa-date">Today</div></div>
+        <div class="wa-inp"><div class="wa-inp-box">Type a message…</div><div class="wa-send">&#10148;</div></div>
       </div>
     </div>
   </div>
@@ -707,8 +709,8 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 <section class="sec">
   <div class="si">
     <div class="tag rv">Plan Types</div>
-    <h2 class="tit rv d1">Kaunsa life insurance<br/><em>aapke liye sahi hai?</em></h2>
-    <p class="sub rv d2" style="margin-bottom:1.8rem;">Har plan type clearly samjhate hain — aap confidence se choose karo, confusion se nahi.</p>
+    <h2 class="tit rv d1">Which life insurance<br/><em>is right for you?</em></h2>
+    <p class="sub rv d2" style="margin-bottom:1.8rem;">We explain every plan type clearly so you choose with confidence — not confusion.</p>
     <div class="plans-g">
 
       <!-- Plan 1: Term — SVG illustration -->
@@ -738,7 +740,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
         </div>
         <div class="pc-body">
           <div class="pc-tt">&#128737; Pure Term Insurance</div>
-          <div class="pc-ds">Maximum cover at minimum cost. Family ko full amount milta hai agar aap policy term mein nahi rahe. Sabse honest life protection.</div>
+          <div class="pc-ds">Maximum cover at minimum cost. Family ko full amount milta hai if you pass away during the policy term. The most honest form of life protection.</div>
           <div class="pc-from">From <strong>&#8377;490/mo</strong> for &#8377;1 Crore cover</div>
           <div class="pc-rows">
             <div class="pc-row"><span>&#10003;</span>Highest cover, lowest premium</div>
@@ -776,11 +778,11 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
         </div>
         <div class="pc-body">
           <div class="pc-tt">&#128200; ULIP — Insurance + Investment</div>
-          <div class="pc-ds">Premium ka ek hissa equity/debt funds mein invest hota hai. Life cover + potential market-linked returns. 5-year lock-in.</div>
+          <div class="pc-ds">Premium is invested in equity or debt funds. Life cover + potential market-linked returns. 5-year lock-in.</div>
           <div class="pc-from">From <strong>&#8377;2,500/mo</strong> for &#8377;25L cover</div>
           <div class="pc-rows">
             <div class="pc-row"><span>&#10003;</span>Dual benefit: cover + investment</div>
-            <div class="pc-row"><span>&#10003;</span>Fund types switch karo anytime</div>
+            <div class="pc-row"><span>&#10003;</span>Switch fund types anytime</div>
             <div class="pc-row"><span>&#10003;</span>Tax-free maturity under 10(10D)</div>
           </div>
           <a href="book.html" class="bq">Get Quote for ULIP &#8594;</a>
@@ -814,7 +816,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
         </div>
         <div class="pc-body">
           <div class="pc-tt">&#128188; Endowment / Money Back</div>
-          <div class="pc-ds">Guaranteed returns whether you survive or not. Lower cover but assured payout. Risk-averse families ke liye — guaranteed savings.</div>
+          <div class="pc-ds">Guaranteed returns whether you survive or not. Lower cover but assured payout. Best for risk-averse families who want guaranteed savings.</div>
           <div class="pc-from">From <strong>&#8377;3,000/mo</strong> for &#8377;10L cover</div>
           <div class="pc-rows">
             <div class="pc-row"><span>&#10003;</span>Guaranteed maturity amount</div>
@@ -833,8 +835,8 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 <section class="sec sa">
   <div class="si">
     <div class="tag rv">Side-by-Side</div>
-    <h2 class="tit rv d1">Term vs Endowment —<br/><em>sach jo koi nahi batata</em></h2>
-    <p class="sub rv d2" style="margin-bottom:1.8rem;">90% Indians endowment buy karte hain sochte hain ki ye better hai. Numbers ek alag kahani sunate hain. Hum honest comparison dikhate hain.</p>
+    <h2 class="tit rv d1">Term vs vs Endowment —<br/><em>what nobody tells you</em></h2>
+    <p class="sub rv d2" style="margin-bottom:1.8rem;">90% of Indians buy endowment plans thinking they are better. The numbers tell a very different story. We show you the honest comparison.</p>
     <div class="comp-g rv d1">
       <div class="cpc cpc-1">
         <div class="cpc-art" style="background:linear-gradient(145deg,#050d1f,#0a1a3a);">
@@ -867,9 +869,9 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
           <div class="cpc-rows">
             <div class="cpc-row"><span class="k">Monthly premium</span><span class="v">&#8377;720</span></div>
             <div class="cpc-row"><span class="k">Cover amount</span><span class="v">&#8377;1,00,00,000</span></div>
-            <div class="cpc-row"><span class="k">30 saal mein total paid</span><span class="v">&#8377;2,59,200</span></div>
+            <div class="cpc-row"><span class="k">30-year total paid</span><span class="v">&#8377;2,59,200</span></div>
             <div class="cpc-row"><span class="k">Cover : Premium ratio</span><span class="v">385x</span></div>
-            <div class="cpc-row"><span class="k">Survive karo to</span><span class="v">&#8377;0 (pure protection)</span></div>
+            <div class="cpc-row"><span class="k">If you survive</span><span class="v">&#8377;0 (pure protection)</span></div>
           </div>
         </div>
       </div>
@@ -896,13 +898,13 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
         <div class="cpc-body">
           <div class="cpc-tag">&#128992; Endowment Plan</div>
           <div class="cpc-tt">&#8377;10L Endowment · Age 30, 30 saal</div>
-          <div class="cpc-ds">Lower cover. Higher premium. Guaranteed return — par kya ye sach mein deal hai?</div>
+          <div class="cpc-ds">Lower cover. Higher premium. Guaranteed return — but is it truly a good deal?</div>
           <div class="cpc-rows">
             <div class="cpc-row"><span class="k">Monthly premium</span><span class="v">&#8377;3,200</span></div>
             <div class="cpc-row"><span class="k">Cover amount</span><span class="v">&#8377;10,00,000</span></div>
-            <div class="cpc-row"><span class="k">30 saal mein total paid</span><span class="v">&#8377;11,52,000</span></div>
+            <div class="cpc-row"><span class="k">30-year total paid</span><span class="v">&#8377;11,52,000</span></div>
             <div class="cpc-row"><span class="k">Cover : Premium ratio</span><span class="v">sirf 3x</span></div>
-            <div class="cpc-row"><span class="k">Survive karo to</span><span class="v">~&#8377;14–16L (4–5% CAGR)</span></div>
+            <div class="cpc-row"><span class="k">If you survive</span><span class="v">~&#8377;14–16L (4–5% CAGR)</span></div>
           </div>
         </div>
       </div>
@@ -910,8 +912,8 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
     <div class="cverd rv d2">
       <div class="cvic">&#128161;</div>
       <div>
-        <div class="cvtt">Humara honest verdict: Term almost always better hai protection ke liye</div>
-        <div class="cvds">Wohi &#8377;3,200/month jo aap endowment mein doge — ussi se &#8377;1 Crore term cover lo AND &#8377;2,480 SIP mein invest karo. Result: Maximum life cover + 4–6x zyada wealth maturity pe. Hum yahi comparison aapko decision se pehle dikhate hain.</div>
+        <div class="cvtt">Humara honest verdict: Term insurance is almost always better for protection</div>
+        <div class="cvds">For the same ₹3,200/month for endowment — use it to get ₹1 Crore term cover AND ₹2,480 in a mutual fund SIP. Result: Maximum life cover + 4–6x more wealth at maturity. We show you thii comparison before you decide.</div>
       </div>
     </div>
   </div>
@@ -936,7 +938,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
       </div>
       <div class="calc-form rv d1">
         <div class="tag">Quick Estimator</div>
-        <h2 class="tit d1" style="font-size:clamp(1.4rem,2.2vw,2rem);margin-bottom:1.5rem;">30 seconds mein<br/><em>apna premium estimate karo</em></h2>
+        <h2 class="tit d1" style="font-size:clamp(1.4rem,2.2vw,2rem);margin-bottom:1.5rem;">Estimate your premium<br/><em>in under 30 seconds</em></h2>
         <div class="cf-row">
           <div class="cf-lbl">Aapki Umar <span id="ageVal">30 saal</span></div>
           <input type="range" class="cf-range" id="ageRange" min="18" max="55" value="30"/>
@@ -992,18 +994,18 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
   <div class="si">
     <div class="tag rv">Real Stories</div>
     <h2 class="tit rv d1">Jinhe humne<br/><em>protect kiya</em></h2>
-    <p class="sub rv d2" style="margin-bottom:1.8rem;">Insurance ka asli test claim ke waqt hota hai. Hum woh policies bechte hain jinka hume confidence hai — ye families is proof hain.</p>
+    <p class="sub rv d2" style="margin-bottom:1.8rem;">The real test of insurance is at the time of the claim. We sell policies we are confident will pay — and these families are proof.</p>
     <div class="st-g">
       <div class="stc rv d1">
         <div class="stc-top">
           <div>
             <div class="stc-amt">&#8377;1 Crore</div>
-            <div class="stc-type">Term Insurance · 18 din mein settled</div>
+            <div class="stc-type">Term Insurance · Claim settled in 18 days</div>
           </div>
           <div class="stc-sr">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         </div>
-        <p class="stc-tx">Rajesh Varma, 38, road accident mein chale gaye. Family ko &#8377;1 Crore tax-free 18 din mein mila. Wife ne home loan clear kiya aur dono bacchon ki education fund ki.</p>
-        <div class="stc-q">"Cover Credit ne claim itna simple bana diya. Kisi se ladna nahi pada. Documents mil gaye — aur jeevan phir se shuru hua."</div>
+        <p class="stc-tx">Rajesh Varma, 38, passed away in a road accident. His family received ₹1 Crore — tax-free — within 18 days of filing the claim. His wife used it to fully clear the home loan and fund both children's education.</p>
+        <div class="stc-q">"Cover Credit ne claim itna simple bana diya. Kisi se fight anyone. Documents received on time and life could move forward."</div>
         <div><div class="stc-nm">Priya Varma</div><div class="stc-rl">Hyderabad, Telangana</div></div>
       </div>
       <div class="stc rv d2">
@@ -1014,20 +1016,20 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
           </div>
           <div class="stc-sr">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         </div>
-        <p class="stc-tx">Suresh Naidu ke term plan mein CI rider tha. Heart attack ke baad &#8377;15L immediately mila — 100% treatment ka kharcha, savings nahi chhuye.</p>
-        <div class="stc-q">"Cover Credit ke advisor ne specifically CI rider recommend kiya tha. Unke bina main financially tabah ho jaata. Shukriya."</div>
+        <p class="stc-tx">Suresh Naidu had a CI rider on his term plan. After his heart attack, ₹15L was paid immediately — covering 10100% of his treatment costs were covered without touching a single rupee of savings.</p>
+        <div class="stc-q">"Cover Credit ke advadvisor specifically recommended the CI rider. Without it I would have been financially devastated. Thanka."</div>
         <div><div class="stc-nm">Suresh Naidu</div><div class="stc-rl">Vijayawada, AP</div></div>
       </div>
       <div class="stc rv d3">
         <div class="stc-top">
           <div>
             <div class="stc-amt">&#8377;75 Lakhs</div>
-            <div class="stc-type">Term Plan · 22 din mein settled</div>
+            <div class="stc-type">Term Plan · Claim settled in 22 days</div>
           </div>
           <div class="stc-sr">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         </div>
-        <p class="stc-tx">Kavitha ke pati ne Cover Credit se &#8377;75L plan liya tha — unke jane ke sirf 8 mahine baad. 22 din mein claim. Teeno bacchon ki padhai graduation tak fully funded.</p>
-        <div class="stc-q">"Mere pati ne kaha — Cover Credit ne sabse achha explain kiya. Unhone usi din liya. Us ek decision ne sab badal diya."</div>
+        <p class="stc-tx">Kavitha's husband purchased a ₹75L plan through Cover Credit — just 8 months before his sudden passing. Claim processed in 22 days. All three children's education is now fully funded until graduation tak fully funded.</p>
+        <div class="stc-q">"Mere husband said — Cover Credit explained it better than anyone else. He bought the policy the very same day. That one decision changed everythindal diya."</div>
         <div><div class="stc-nm">Kavitha Reddy</div><div class="stc-rl">Visakhapatnam, AP</div></div>
       </div>
     </div>
@@ -1040,10 +1042,10 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
     <div class="tag rv">Humara Process</div>
     <h2 class="tit rv d1">Pehli call se<br/><em>policy haath mein</em></h2>
     <div class="pg-g">
-      <div class="pg rv d1"><div class="pg-num">01</div><div class="pg-ic">&#128222;</div><div class="pg-tt">Free Session Book Karo</div><div class="pg-ds">Call, WhatsApp ya online book karo. Free, zero obligation, 30 minutes.</div></div>
-      <div class="pg rv d2"><div class="pg-num">02</div><div class="pg-ic">&#128269;</div><div class="pg-tt">Hum 15+ Plans Compare Karte Hain</div><div class="pg-ds">Income, loans, family — sab analyse karke live aapke saamne compare.</div></div>
+      <div class="pg rv d1"><div class="pg-num">01</div><div class="pg-ic">&#128222;</div><div class="pg-tt">Free Session Book Karo</div><div class="pg-ds">Call, WhatsApp, or book online. Free, zero obligation, 30 minutes.</div></div>
+      <div class="pg rv d2"><div class="pg-num">02</div><div class="pg-ic">&#128269;</div><div class="pg-tt">Hum 15+ Plans Compare Karte Hain</div><div class="pg-ds">Income, loans, and family — then compare 15+ plans live in front of you.</div></div>
       <div class="pg rv d3"><div class="pg-num">03</div><div class="pg-ic">&#128172;</div><div class="pg-tt">Poori Explanation</div><div class="pg-ds">Har exclusion, har clause — clearly explain in Telugu ya English.</div></div>
-      <div class="pg rv d4"><div class="pg-num">04</div><div class="pg-ic">&#128196;</div><div class="pg-tt">Aaj Hi Policy</div><div class="pg-ds">Aap choose karo, hum form bharte hain — WhatsApp par documents in hours.</div></div>
+      <div class="pg rv d4"><div class="pg-num">04</div><div class="pg-ic">&#128196;</div><div class="pg-tt">Aaj Hi Policy</div><div class="pg-ds">You choose, we fill the form — policy documents on WhatsApp within hours.</div></div>
     </div>
   </div>
 </section>
@@ -1053,14 +1055,14 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
   <div class="si faq-lay">
     <div>
       <div class="tag rv">Aksar Pooche Jaate Hain</div>
-      <h2 class="tit rv d1">Sawaal jo roz<br/><em>hamare paas aate hain</em></h2>
+      <h2 class="tit rv d1">Questions we answer<br/><em>every single day</em></h2>
       <div class="faq-list rv d1">
-        <div class="fi op"><div class="fh"><span class="fq">Kitna life insurance cover lena chahiye?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">Standard rule: annual income ka 10–15x. Par hum precisely calculate karte hain — outstanding loans, dependents, education costs, spouse income, lifestyle. Most AP families ko &#8377;75L–&#8377;2Cr chahiye. Book karo, 10 minute mein exact number batate hain.</p></div></div>
-        <div class="fi"><div class="fh"><span class="fq">LIC better hai ya private insurer?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">LIC ka government backing aur trust great hai. Par private insurers jaise HDFC Life, ICICI Pru, Max Life often have higher claim ratios (98–99%), faster processing (7–15 days vs 30+), aur kam premium same cover ke liye. Hum dono ko honestly compare karte hain.</p></div></div>
-        <div class="fi"><div class="fh"><span class="fq">Diabetes ya BP hai — kya life cover milega?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">Haan, bilkul. Insurer ya to loading ke saath accept karega (10–30% extra), ya temporary exclusion, ya specialist plan. Puri honest disclosure zaroori hai. Hum aapke health profile ke liye sabse favorable insurer dhundhte hain.</p></div></div>
-        <div class="fi"><div class="fh"><span class="fq">Term plan mein riders add karne chahiye?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">Teen worth adding hain: (1) Accidental Death Benefit — payout double if accidental death, sirf &#8377;50–100/month extra. (2) Critical Illness — cancer, heart attack etc par lump sum. Highly recommended. (3) Waiver of Premium — disability par future premiums maaf. Hum sab clearly explain karte hain.</p></div></div>
-        <div class="fi"><div class="fh"><span class="fq">Term plan lene ke liye kaunse documents chahiye?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">Aadhaar (identity + address), PAN (tax), last 3 months salary slips ya ITR income proof ke liye, aur passport photo. &#8377;50L se upar ya 40 saal se upar ke liye medical test ho sakta hai. Hum har requirement mein guide karte hain.</p></div></div>
-        <div class="fi"><div class="fh"><span class="fq">Kya policy cancel karke refund mil sakta hai?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">15-day free look period — 15 din mein cancel karo to full refund. Uske baad term plans ka koi surrender value nahi. ULIPs aur endowment mein 3–5 saal baad surrender value hota hai. Hum sabkuch explain karte hain before you buy.</p></div></div>
+        <div class="fi op"><div class="fh"><span class="fq">How much life insurance cover do I actually need?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">Standard rule: annual income 10 to 15 times your annual income. But we calculate precisely — based on outstanding loans, dependents, education costs, spouse income, lifestyle. Most families in AP need between ₹75L and ₹2 Crore. Book a free session and we calculate your exact number in 10 minutes.</p></div></div>
+        <div class="fi"><div class="fh"><span class="fq">LIC better hai ya private insurer?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">LIC has strong government backing and public trust. But private insurers like HDFC Life, ICICI Pru, Max Life often have higher claim ratios (98–99%), faster processing (7–15 days vs 30+), and significantly lower premiums for the same cover. We compare both honestly.</p></div></div>
+        <div class="fi"><div class="fh"><span class="fq">Diabetes ya BP hai — kya life cover milega?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">Yes, absolutely. The insurer will either accept with a premium loading of 10 to 30% extra), ya temporary exclusion, ya specialist plan. Puri honest disclosure zaroori hai. Hum aapke health profile kwe find the insurer most favourable for your specific health profile.</p></div></div>
+        <div class="fi"><div class="fh"><span class="fq">Should I add riders to my term plan?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">Three riders are worth adding: (1) Accidental Death Benefit — doubles payout if death is accidental death, sirf &#8377;50–100/month extra. (2) Critical Illness — cancer, heart attack etc par lump sum. Highly recommended. (3) Waiver of Premium — disability par future premifuture premiums are waived if you become disabled. We explain every rider clearly.</p></div></div>
+        <div class="fi"><div class="fh"><span class="fq">What documents do I need to buy a term plan?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">Aadhaar (identity + address), PAN (tax), last 3 months sasalary slips or ITR for income proof, and a passport photograph. Above ₹50L cover or age above 40, lia medical test may be required. We guide you through every requirement.ou through every single requirement.</p></div></div>
+        <div class="fi"><div class="fh"><span class="fq">Kya policy cancel karke refund mil sakta hai?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">15-day free look period — cancel within 15 days for a full refund. After that, term plans have no surrender value. ULIPs and endowment plans have surrender values after 3 to 5 years. We explain every detail clearly before you buy.</p></div></div>
       </div>
     </div>
     <aside class="sb2">
@@ -1099,10 +1101,10 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
             <rect x="103" y="115" width="100" height="5" rx="2" fill="#0b1a30" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
           </svg>
         </div>
-        <div class="sb2-tt">Aaj hi advisor se baat karo</div>
-        <div class="sb2-ds">Free 30-minute session. Telugu ya English. Hum 15+ plans compare karke best fit dhundhte hain.</div>
+        <div class="sb2-tt">Talk to an advisor today</div>
+        <div class="sb2-ds">Free 30-minute session. Telugu ya English. Hum 15+ plans and find your perfect fit.</div>
         <a href="book.html" class="sb2-btn">&#128197; Book Free Session</a>
-        <div class="sb2-div">ya seedha call karo</div>
+        <div class="sb2-div">or call directly</div>
         <a href="tel:+917842854466" class="sb2-ph">&#128222; +91 78428 54466</a>
       </div>
       <div class="sb2-plans rv d1">
@@ -1123,8 +1125,8 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
   </div>
   <div class="cta-in">
     <div>
-      <h2 class="cta-tt rv">Aapke parivaar ki suraksha<br/>sochte hain utni mehengi nahi hai.</h2>
-      <p class="cta-ds rv d1">&#8377;720 har mahine. Ek restaurant dinner se bhi kam. 30 saal ke liye &#8377;1 Crore ki protection. Free session book karo — 15+ plans compare karke same day policy.</p>
+      <h2 class="cta-tt rv">Your family's security costs<br/>less than you think.</h2>
+      <p class="cta-ds rv d1">₹720 per month. Less than a single restaurant dinner. Gives your family ₹1 Crore of protection for 30 years. Book free — we compare 15+ plans and issue your policy same day.</p>
       <div class="cta-pills rv d2"><span class="cpill">&#10003; Free comparison</span><span class="cpill">&#10003; Telugu &amp; English</span><span class="cpill">&#10003; Same-day policy</span><span class="cpill">&#10003; No pressure</span></div>
     </div>
     <div class="cta-btns rv d2">
@@ -1140,7 +1142,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
     <div class="ft-top">
       <div>
         <a href="index.html" class="ft-logo">Cover<em>Credit</em></a>
-        <p class="ft-ds">AP aur Telangana ke families ke liye honest insurance aur financial advice. Hum sahi policy bechte hain — no pressure, no jargon.</p>
+        <p class="ft-ds">Honest insurance and financial advice for families across AP and Telangana. We sell the right policy — no pressure, no jargon.</p>
         <div class="ft-con">&#128222; <a href="tel:+917842854466">+91 78428 54466</a></div>
         <div class="ft-con">&#9993; <a href="mailto:Covercredit.official@gmail.com">Covercredit.official@gmail.com</a></div>
         <div class="ft-con">&#128336; Mon–Sat: 9 AM – 7 PM</div>
@@ -1215,15 +1217,15 @@ document.querySelectorAll('[data-term]').forEach(p=>{p.addEventListener('click',
 document.querySelectorAll('[data-smoke]').forEach(p=>{p.addEventListener('click',()=>{document.querySelectorAll('[data-smoke]').forEach(x=>x.classList.remove('on'));p.classList.add('on');selSmoke=parseInt(p.dataset.smoke);calcPrem();});});
 /* WHATSAPP CHAT */
 const CONV=[
-  {side:'in', name:'Sunil — Cover Credit', text:'Namaste! Maine dekha aapne life insurance ke liye consultation book ki hai. Kya aap bata sakte hain — shadi hui hai? Bacche hain?', time:'10:14 AM', hl:null, delay:800},
-  {side:'out', name:'Ravi', text:'Haan, shadi hui hai. 2 bacche hain — 6 aur 3 saal. Patni ghar sambhalti hai. Main ₹85,000 per month kamaata hoon.', time:'10:15 AM', hl:null, delay:3200},
-  {side:'in', name:'Sunil — Cover Credit', text:'Bahut achha. Aur koi home loan ya EMI chal rahi hai abhi?', time:'10:15 AM', hl:null, delay:5800},
-  {side:'out', name:'Ravi', text:'Haan — home loan ₹45 lakh, 18 saal baaki hain. Car loan ₹5 lakh bhi hai.', time:'10:16 AM', hl:null, delay:8500},
-  {side:'in', name:'Sunil — Cover Credit', text:'Iske hisaab se aapke parivaar ko kam se kam ₹1.5 Crore ka cover chahiye. Kyun: ₹50L loans clear karne ke liye + ₹75L 10 saal income replace karne ke liye + ₹25L dono bacchon ki education.', time:'10:16 AM', hl:'Minimum recommended cover: ₹1.5 Crore', delay:11500},
-  {side:'out', name:'Ravi', text:'Yaar ye to bahut mehenga lagega? Main ₹50 lakh soch raha tha.', time:'10:17 AM', hl:null, delay:15500},
-  {side:'in', name:'Sunil — Cover Credit', text:'₹1.5 Crore ka term plan — 32 saal ke non-smoker ke liye — sirf ₹1,050–₹1,200 per month. Matlab ₹35 per din. Chai-samosa se bhi kam — poori family ki security ke liye.', time:'10:18 AM', hl:'₹1.5Cr cover = sirf ₹1,100/mahine!', delay:18000},
-  {side:'out', name:'Ravi', text:'Sachchi?! Itna sasta! Kya hum abhi 2-3 plans compare kar sakte hain?', time:'10:18 AM', hl:null, delay:21500},
-  {side:'in', name:'Sunil — Cover Credit', text:'Bilkul! HDFC Life, Max Life aur ICICI Pru — teeno 98%+ claim ratio ke saath — abhi screen par khol raha hoon. Same day policy bhi ho sakti hai!', time:'10:19 AM', hl:'Teeno plans same-day issue ho sakte hain ✓', delay:24000},
+  {side:'in', name:'Sunil — Cover Credit', text:'Hello! I can see you have booked a consultation for life insurance. May I ask — are you married, and do you have children?', time:'10:14 AM', hl:null, delay:800},
+  {side:'out', name:'Ravi', text:'Yes, married with 2 kids — aged 6 and 3. My wife manages the home. I earn around ₹85,000 per month.', time:'10:15 AM', hl:null, delay:3200},
+  {side:'in', name:'Sunil — Cover Credit', text:'Perfect. And do you currently have a home loan or any other EMIs running?', time:'10:15 AM', hl:null, delay:5800},
+  {side:'out', name:'Ravi', text:'Yes — home loan of ₹45 lakhs with 18 years remaining. Also a car loan of ₹5 lakhs.', time:'10:16 AM', hl:null, delay:8500},
+  {side:'in', name:'Sunil — Cover Credit', text:"Based on this, your family needs at minimum ₹1.5 Crore in cover. Here is why: ₹50L to clear loans + ₹75L for 10 years of income replacement + ₹25L for both children's education.", time:'10:16 AM', hl:'Minimum recommended cover: ₹1.5 Crore', delay:11500},
+  {side:'out', name:'Ravi', text:'That sounds expensive. I was only thinking ₹50 lakhs would be enough.', time:'10:17 AM', hl:null, delay:15500},
+  {side:'in', name:'Sunil — Cover Credit', text:"A ₹1.5 Crore term plan for a 32-year-old non-smoker costs only ₹1,050–₹1,200 per month. That is just ₹35 per day — less than chai and a snack — for your entire family's financial security.", time:'10:18 AM', hl:'₹1.5 Crore cover = only ₹1,100 per month', delay:18000},
+  {side:'out', name:'Ravi', text:'Wow, seriously? I had no idea it was that affordable! Can we compare 2 or 3 plans right now?', time:'10:18 AM', hl:null, delay:21500},
+  {side:'in', name:'Sunil — Cover Credit', text:'Absolutely! I am pulling up HDFC Life, Max Life, and ICICI Pru right now — all three have 98%+ claim ratios. Same-day policy issuance is also available for all three.', time:'10:19 AM', hl:'All 3 plans available for same-day issuance ✓', delay:24000},
 ];
 const waChat=document.getElementById('waChat');
 let wTimers=[];
@@ -1245,7 +1247,7 @@ function showTyp(side){
   wrap.appendChild(bub);waChat.appendChild(wrap);waChat.scrollTop=waChat.scrollHeight;
 }
 function startChat(){
-  clearWt();if(waChat){waChat.innerHTML='<div class="wa-date">Aaj</div>';}
+  clearWt();if(waChat){waChat.innerHTML='<div class="wa-date">Today</div>';}
   CONV.forEach(msg=>{
     const t1=setTimeout(()=>showTyp(msg.side),Math.max(0,msg.delay-1400));
     const t2=setTimeout(()=>addMsg(msg),msg.delay);
