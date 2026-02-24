@@ -2,1134 +2,849 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Life Insurance | Cover Credit — Protect Your Family's Future</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Health Insurance | Cover Credit</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --ink:#06101f;--i2:#0b1a30;--i3:#112240;
-  --az:#0d47a1;--sky:#1565c0;
-  --gold:#f5a623;--glow:#ffd166;
-  --sage:#4ade80;--rose:#f87171;
-  --fog:rgba(255,255,255,.06);
-  --line:rgba(255,255,255,.08);
+  --navy:#05112a;--n2:#091d3e;--n3:#0e2d5c;
+  --blue:#1565c0;--bl:#1976d2;
+  --gold:#e6a817;--gl:#f5c842;
+  --green:#4ade80;--red:#ef4444;
+  --white:#fff;--muted:#8899bb;
+  --bdr:rgba(255,255,255,.08);
+  --g1:rgba(255,255,255,.05);
+  --g2:rgba(255,255,255,.1);
+  --Fd:'Cormorant Garamond',Georgia,serif;
+  --Fb:'Outfit',system-ui,sans-serif;
   --E:cubic-bezier(.16,1,.3,1);
   --nh:72px;
 }
 html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',system-ui,sans-serif;background:var(--ink);color:#fff;overflow-x:hidden;cursor:none;}
+body{font-family:var(--Fb);background:var(--navy);color:var(--white);overflow-x:hidden;cursor:none;}
 a{text-decoration:none;color:inherit;}
-img{display:block;max-width:100%;object-fit:cover;}
-#cur,#cr{position:fixed;top:0;left:0;pointer-events:none;border-radius:50%;z-index:9999;transform:translate(-50%,-50%);}
-#cur{width:10px;height:10px;background:var(--gold);}
-#cr{width:38px;height:38px;border:1.5px solid rgba(245,166,35,.5);z-index:9998;}
-body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:.2;}
+
+/* CURSOR */
+#cur,#cur-r{position:fixed;top:0;left:0;pointer-events:none;border-radius:50%;z-index:9999;}
+#cur{width:10px;height:10px;background:var(--gold);transform:translate(-50%,-50%);mix-blend-mode:difference;transition:width .25s,height .25s;}
+#cur-r{width:36px;height:36px;border:1.5px solid var(--gold);transform:translate(-50%,-50%);opacity:.5;z-index:9998;}
+body.hovering #cur{width:5px;height:5px;}
+body.hovering #cur-r{width:52px;height:52px;opacity:.2;}
+
+/* NAV */
 .nav{position:fixed;top:0;left:0;right:0;z-index:900;height:var(--nh);padding:0 5%;transition:background .4s;}
-.nav.sc{background:rgba(6,16,31,.97);backdrop-filter:blur(24px);box-shadow:0 1px 0 var(--line);}
-.ni{max-width:1300px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;}
-.logo{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;}
-.logo em{font-style:normal;color:var(--gold);}
-.nl{display:flex;align-items:center;gap:1.8rem;list-style:none;}
-.nl a{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.65);transition:color .2s;position:relative;}
-.nl a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--gold);transition:width .28s;}
-.nl a:hover,.nl a.act{color:#fff;}.nl a:hover::after,.nl a.act::after{width:100%;}
+.nav.sc{background:rgba(5,17,42,.96);backdrop-filter:blur(20px);box-shadow:0 1px 0 var(--bdr);}
+.nav-in{max-width:1280px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:var(--Fd);font-size:1.55rem;font-weight:700;letter-spacing:-.5px;}
+.logo span{color:var(--gold);}
+.nav-ul{display:flex;align-items:center;gap:1.8rem;list-style:none;}
+.nav-ul a{font-size:.86rem;font-weight:500;color:rgba(255,255,255,.7);transition:color .2s;position:relative;}
+.nav-ul a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--gold);transition:width .28s;}
+.nav-ul a:hover,.nav-ul a.act{color:#fff;}.nav-ul a:hover::after,.nav-ul a.act::after{width:100%;}
 .dd{position:relative;}
-.ddt{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.65);cursor:none;display:flex;align-items:center;gap:.26rem;transition:color .2s;}
-.dd:hover .ddt{color:#fff;}
-.dda{font-size:.54rem;transition:transform .3s;}.dd:hover .dda{transform:rotate(180deg);}
-.ddm{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(6px);background:var(--i2);border:1px solid var(--line);border-radius:12px;padding:.4rem;min-width:190px;opacity:0;visibility:hidden;transition:opacity .2s,transform .28s var(--E),visibility .2s;box-shadow:0 24px 60px rgba(0,0,0,.5);}
-.dd:hover .ddm{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
-.ddm a{display:block;padding:.5rem .82rem;font-size:.8rem;color:rgba(255,255,255,.62);border-radius:8px;transition:background .18s,color .18s;}
-.ddm a:hover{background:rgba(255,255,255,.07);color:#fff;}
-.ncta{background:var(--gold)!important;color:var(--ink)!important;padding:.46rem 1.12rem!important;border-radius:100px;font-weight:700!important;font-size:.8rem!important;}
-.ncta::after{display:none!important;}
+.dd-t{font-size:.86rem;font-weight:500;color:rgba(255,255,255,.7);cursor:none;display:flex;align-items:center;gap:.28rem;transition:color .2s;}
+.dd:hover .dd-t{color:#fff;}
+.dd-a{font-size:.56rem;transition:transform .3s;}.dd:hover .dd-a{transform:rotate(180deg);}
+.dd-m{position:absolute;top:calc(100%+14px);left:50%;transform:translateX(-50%) translateY(6px);background:var(--n2);border:1px solid var(--bdr);border-radius:12px;padding:.45rem;min-width:190px;opacity:0;visibility:hidden;transition:opacity .2s,transform .28s var(--E),visibility .2s;box-shadow:0 20px 50px rgba(0,0,0,.4);}
+.dd:hover .dd-m{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+.dd-m a{display:block;padding:.52rem .85rem;font-size:.82rem;color:rgba(255,255,255,.66);border-radius:8px;transition:background .18s,color .18s;}
+.dd-m a:hover{background:var(--g2);color:#fff;}
+.nav-cta{background:var(--gold)!important;color:var(--navy)!important;padding:.48rem 1.15rem!important;border-radius:100px;font-weight:700!important;font-size:.82rem!important;}
+.nav-cta::after{display:none!important;}
 .burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:4px;}
 .burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s;}
 .burger.op span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
 .burger.op span:nth-child(2){opacity:0;}
 .burger.op span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
-.mob{position:fixed;inset:0;z-index:899;background:var(--ink);display:flex;flex-direction:column;padding:calc(var(--nh)+1.8rem) 5% 3rem;transform:translateX(100%);transition:transform .38s var(--E);}
+.mob{position:fixed;inset:0;z-index:899;background:var(--navy);display:flex;flex-direction:column;padding:calc(var(--nh)+1.8rem) 5% 3rem;transform:translateX(100%);transition:transform .38s var(--E);}
 .mob.op{transform:translateX(0);}
-.mob a{padding:.9rem 0;font-size:1rem;font-weight:500;color:rgba(255,255,255,.72);border-bottom:1px solid var(--line);}
-.mc{margin-top:1.8rem;background:var(--gold);color:var(--ink)!important;text-align:center;border-radius:12px;padding:.9rem!important;font-weight:700!important;border:none!important;}
-.fab{position:fixed;bottom:1.8rem;right:1.8rem;z-index:400;display:flex;flex-direction:column;gap:.65rem;align-items:flex-end;}
-.fab a{display:flex;align-items:center;gap:.48rem;padding:.65rem 1rem;border-radius:100px;font-size:.76rem;font-weight:600;cursor:none;transition:transform .18s;}
+.mob a{padding:.9rem 0;font-size:1rem;font-weight:500;color:rgba(255,255,255,.76);border-bottom:1px solid var(--bdr);}
+.mob-cta{margin-top:1.8rem;background:var(--gold);color:var(--navy)!important;text-align:center;border-radius:12px;padding:.95rem!important;font-weight:700!important;border:none!important;}
+
+/* FAB */
+.fab{position:fixed;bottom:1.8rem;right:1.8rem;z-index:400;display:flex;flex-direction:column;gap:.7rem;align-items:flex-end;}
+.fab a{display:flex;align-items:center;gap:.5rem;padding:.68rem 1rem;border-radius:100px;font-size:.78rem;font-weight:600;cursor:none;transition:transform .18s;}
 .fab a:hover{transform:translateY(-2px);}
-.fwa{background:#25d366;color:#fff;box-shadow:0 6px 20px rgba(37,211,102,.35);}
-.fbk{background:var(--gold);color:var(--ink);box-shadow:0 6px 20px rgba(245,166,35,.35);}
-.rv{opacity:0;transform:translateY(20px);transition:opacity .65s var(--E),transform .65s var(--E);}
+.fab-wa{background:#25d366;color:#fff;box-shadow:0 6px 18px rgba(37,211,102,.36);}
+.fab-bk{background:var(--gold);color:var(--navy);box-shadow:0 6px 18px rgba(230,168,23,.36);}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .6s var(--E),transform .6s var(--E);}
 .rv.on{opacity:1;transform:none;}
-.d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.24s;}.d4{transition-delay:.32s;}
-.tag{display:inline-flex;align-items:center;gap:.38rem;font-size:.66rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:.8rem;}
-.tag::before{content:'';width:14px;height:2px;background:var(--gold);}
-.tit{font-family:'Playfair Display',serif;font-size:clamp(1.65rem,2.8vw,2.45rem);font-weight:700;line-height:1.15;margin-bottom:.7rem;}
-.tit em{font-style:italic;color:var(--gold);}
-.sub{font-size:.86rem;color:rgba(255,255,255,.44);line-height:1.75;max-width:520px;}
-.sec{padding:5rem 5%;}.sa{background:var(--i2);}
-.si{max-width:1300px;margin:0 auto;}
-.bg{display:inline-flex;align-items:center;gap:.38rem;background:var(--gold);color:var(--ink);padding:.78rem 1.6rem;border-radius:11px;font-weight:700;font-size:.87rem;cursor:none;transition:transform .18s,box-shadow .18s;}
-.bg:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(245,166,35,.35);}
-.bgh{display:inline-flex;align-items:center;gap:.38rem;background:var(--fog);border:1px solid var(--line);color:#fff;padding:.78rem 1.6rem;border-radius:11px;font-weight:500;font-size:.87rem;cursor:none;backdrop-filter:blur(10px);transition:background .18s,transform .18s;}
-.bgh:hover{background:rgba(255,255,255,.1);transform:translateY(-2px);}
-.bq{display:flex;align-items:center;justify-content:center;gap:.32rem;border:1.5px solid var(--gold);color:var(--gold);background:transparent;padding:.58rem .9rem;border-radius:9px;font-weight:700;font-size:.76rem;cursor:none;width:100%;transition:background .2s,color .2s,transform .15s;margin-top:1rem;}
-.bq:hover{background:var(--gold);color:var(--ink);transform:translateY(-1px);}
+.d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.24s;}.d4{transition-delay:.32s;}.d5{transition-delay:.4s;}
 
-/* HERO */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;}
-.hi{position:absolute;inset:0;z-index:0;}
-.hi img{width:100%;height:100%;object-fit:cover;object-position:center 40%;}
-.hi::after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,rgba(6,16,31,.95) 38%,rgba(6,16,31,.6) 70%,rgba(6,16,31,.3) 100%);}
-.hgrid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:55px 55px;mask-image:radial-gradient(ellipse 70% 80% at 30% 50%,#000,transparent);}
-.hin{position:relative;z-index:2;max-width:1300px;margin:0 auto;padding:calc(var(--nh)+3rem) 5% 5rem;width:100%;}
-.hbc{display:flex;align-items:center;gap:.38rem;font-size:.72rem;color:rgba(255,255,255,.38);margin-bottom:1.4rem;}
-.hbc a{color:rgba(255,255,255,.38);transition:color .2s;}.hbc a:hover{color:var(--gold);}
-.hkick{display:inline-flex;align-items:center;gap:.42rem;background:rgba(230,92,0,.15);border:1px solid rgba(230,92,0,.3);color:#fda07a;font-size:.68rem;font-weight:700;padding:.3rem .88rem;border-radius:100px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.1rem;}
-.hkick::before{content:'';width:5px;height:5px;background:#f87171;border-radius:50%;animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
-.htit{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4.5vw,4.2rem);font-weight:900;line-height:1.05;letter-spacing:-2px;margin-bottom:1.2rem;max-width:700px;}
-.htit em{font-style:italic;background:linear-gradient(135deg,var(--gold),var(--glow));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hdesc{font-size:.95rem;line-height:1.8;color:rgba(255,255,255,.6);margin-bottom:2rem;max-width:480px;}
-.hbtns{display:flex;gap:.85rem;flex-wrap:wrap;margin-bottom:2.5rem;}
-.hstats{display:flex;gap:1.2rem;flex-wrap:wrap;}
-.hsc{background:rgba(255,255,255,.07);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:.9rem 1.2rem;min-width:130px;}
-.hsc-n{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:var(--gold);line-height:1;}
-.hsc-l{font-size:.68rem;color:rgba(255,255,255,.42);margin-top:.22rem;}
-.sh{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:2;}
-.sh-m{width:22px;height:34px;border:2px solid rgba(255,255,255,.25);border-radius:100px;display:flex;justify-content:center;padding-top:5px;}
-.sh-d{width:3px;height:7px;background:rgba(255,255,255,.5);border-radius:100px;animation:sd 2s ease-in-out infinite;}
-@keyframes sd{0%{opacity:1;transform:translateY(0)}80%{opacity:0;transform:translateY(10px)}100%{opacity:0}}
-.sh-t{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:1.5px;text-transform:uppercase;}
+/* BUTTONS */
+.bg{display:inline-flex;align-items:center;gap:.4rem;background:var(--gold);color:var(--navy);padding:.8rem 1.65rem;border-radius:11px;font-weight:700;font-size:.88rem;cursor:none;transition:transform .18s,box-shadow .18s;}
+.bg:hover{transform:translateY(-2px);box-shadow:0 8px 26px rgba(230,168,23,.34);}
+.bgh{display:inline-flex;align-items:center;gap:.4rem;background:var(--g1);border:1px solid var(--bdr);color:#fff;padding:.8rem 1.65rem;border-radius:11px;font-weight:500;font-size:.88rem;cursor:none;backdrop-filter:blur(10px);transition:background .18s,transform .18s;}
+.bgh:hover{background:var(--g2);transform:translateY(-2px);}
+.bq{display:flex;align-items:center;justify-content:center;gap:.35rem;border:1.5px solid var(--gold);color:var(--gold);background:transparent;padding:.6rem 1rem;border-radius:9px;font-weight:700;font-size:.78rem;cursor:none;width:100%;transition:background .2s,color .2s,transform .15s;margin-top:1.1rem;}
+.bq:hover{background:var(--gold);color:var(--navy);transform:translateY(-1px);}
 
-/* IMPACT SPLIT */
-.impact{overflow:hidden;}
-.i-split{display:grid;grid-template-columns:1fr 1fr;min-height:560px;}
-.il{background:linear-gradient(145deg,#1a0505,#2d0a0a);padding:4rem 5%;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
-.ir{background:linear-gradient(145deg,#051a10,#0a2d1a);padding:4rem 5%;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden;}
-/* Animated SVG cartoon background in each panel */
-.il .bg-art, .ir .bg-art{position:absolute;right:-20px;bottom:0;opacity:.12;pointer-events:none;}
-.ii{position:relative;z-index:1;}
-.ibadge{display:inline-flex;align-items:center;gap:.4rem;padding:.3rem .8rem;border-radius:100px;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.2rem;}
-.il .ibadge{background:rgba(248,113,113,.15);border:1px solid rgba(248,113,113,.28);color:#f87171;}
-.ir .ibadge{background:rgba(74,222,128,.12);border:1px solid rgba(74,222,128,.26);color:#4ade80;}
-.ititl{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2vw,2rem);font-weight:700;margin-bottom:1.2rem;line-height:1.2;}
-.il .ititl{color:#fca5a5;}.ir .ititl{color:#86efac;}
-.ilist{list-style:none;display:flex;flex-direction:column;gap:.75rem;}
-.ilist li{display:flex;align-items:flex-start;gap:.65rem;font-size:.84rem;line-height:1.55;color:rgba(255,255,255,.72);}
-.iic{font-size:1rem;flex-shrink:0;margin-top:.04rem;}
-.icta{margin-top:1.8rem;}
+/* SECTION */
+.sec{padding:5rem 5%;}
+.sec-alt{background:var(--n2);}
+.si{max-width:1280px;margin:0 auto;}
+.stag{display:inline-flex;align-items:center;gap:.4rem;font-size:.68rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:.85rem;}
+.stag::before{content:'';width:16px;height:2px;background:var(--gold);}
+.stit{font-family:var(--Fd);font-size:clamp(1.6rem,2.6vw,2.3rem);font-weight:700;line-height:1.18;margin-bottom:.7rem;}
+.stit em{font-style:normal;background:linear-gradient(135deg,var(--gold),var(--gl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.ssub{font-size:.86rem;color:rgba(255,255,255,.46);line-height:1.72;margin-bottom:1.8rem;max-width:520px;}
 
-/* CARTOON STRIP */
-.cstrip{padding:3.5rem 5%;background:var(--i2);overflow:hidden;}
-.cstrip-inner{max-width:1300px;margin:0 auto;}
-.cstrip-lbl{text-align:center;margin-bottom:2rem;}
-.cstrip-lbl .tag{justify-content:center;}
-.cstrip-lbl .tag::before{display:none;}
-.cstrip-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
-.ccard{border-radius:18px;overflow:hidden;background:var(--ink);border:1px solid var(--line);display:flex;flex-direction:column;transition:transform .3s var(--E),border-color .3s;}
-.ccard:hover{transform:translateY(-5px);border-color:rgba(245,166,35,.25);}
-.ccard-art{height:180px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-.ccard-body{padding:1rem 1.1rem 1.2rem;}
-.ccard-tt{font-size:.86rem;font-weight:700;margin-bottom:.25rem;}
-.ccard-ds{font-size:.73rem;color:rgba(255,255,255,.42);line-height:1.6;}
+/* ══════════════════════════════
+   HERO
+══════════════════════════════ */
+.hero{min-height:100vh;display:flex;align-items:center;padding:var(--nh) 5% 0;position:relative;overflow:hidden;}
+.h-bg{position:absolute;inset:0;background:var(--navy);}
+.h-bg::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 65% 75% at 76% 42%,rgba(239,68,68,.09),transparent 64%),radial-gradient(ellipse 55% 55% at 12% 70%,rgba(21,101,192,.1),transparent 58%);}
+.h-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 85% 85% at 50% 50%,#000,transparent);}
+.h-in{position:relative;z-index:2;max-width:1280px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4rem;padding:5rem 0 4rem;}
+.h-bc{display:flex;align-items:center;gap:.4rem;font-size:.74rem;color:var(--muted);margin-bottom:1.2rem;}
+.h-bc a{color:var(--muted);transition:color .2s;}.h-bc a:hover{color:var(--gold);}.h-bc .s{color:rgba(255,255,255,.18);}
+.h-tag{display:inline-flex;align-items:center;gap:.4rem;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.26);color:#fca5a5;font-size:.68rem;font-weight:700;padding:.3rem .88rem;border-radius:100px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.1rem;}
+.h-tag::before{content:'';width:5px;height:5px;background:#f87171;border-radius:50%;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.h-tit{font-family:var(--Fd);font-size:clamp(2rem,3.5vw,3.3rem);font-weight:700;line-height:1.1;letter-spacing:-1px;margin-bottom:1rem;}
+.h-tit em{font-style:normal;background:linear-gradient(135deg,var(--gold),var(--gl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.h-desc{font-size:.92rem;line-height:1.8;color:rgba(255,255,255,.56);margin-bottom:1.8rem;max-width:440px;}
+.h-btns{display:flex;gap:.85rem;flex-wrap:wrap;margin-bottom:1.7rem;}
+.h-trust{display:flex;gap:1.2rem;flex-wrap:wrap;}
+.ht{display:flex;align-items:center;gap:.32rem;font-size:.74rem;color:rgba(255,255,255,.36);}
+.ht span{color:var(--green);}
 
-/* STATS BAR */
-.stbar{background:linear-gradient(135deg,var(--az),var(--i3));padding:3.5rem 5%;}
-.strow{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center;}
-.sti{font-size:2rem;margin-bottom:.5rem;}
-.stn{font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:700;color:var(--gold);line-height:1;}
-.stl{font-size:.78rem;color:rgba(255,255,255,.45);margin-top:.3rem;}
+/* Hero visual — shield with floats */
+.h-vis{position:relative;height:450px;display:flex;align-items:center;justify-content:center;}
+.sh-wrap{position:relative;width:295px;height:330px;}
+.sh-ring{position:absolute;top:50%;left:50%;border:1px solid rgba(21,101,192,.15);border-radius:50%;animation:rout 3s ease-out infinite;}
+.sh-ring:nth-child(1){width:210px;height:210px;margin:-105px 0 0 -105px;}
+.sh-ring:nth-child(2){width:268px;height:268px;margin:-134px 0 0 -134px;animation-delay:1s;}
+.sh-ring:nth-child(3){width:330px;height:330px;margin:-165px 0 0 -165px;animation-delay:2s;}
+@keyframes rout{0%{opacity:.5;transform:scale(.82)}100%{opacity:0;transform:scale(1.1)}}
+.sh-body{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:138px;height:162px;background:linear-gradient(145deg,rgba(21,101,192,.3),rgba(14,45,92,.55));border:2px solid rgba(100,160,255,.36);clip-path:polygon(50% 0%,100% 25%,100% 70%,50% 100%,0% 70%,0% 25%);display:flex;align-items:center;justify-content:center;font-size:2.6rem;animation:shp 3s ease-in-out infinite;}
+@keyframes shp{0%,100%{box-shadow:0 0 0 0 rgba(21,101,192,0)}50%{box-shadow:0 0 50px 16px rgba(21,101,192,.14)}}
+.flt{position:absolute;background:rgba(255,255,255,.06);backdrop-filter:blur(18px);border:1px solid rgba(255,255,255,.1);border-radius:13px;padding:.8rem .95rem;}
+.flt-1{top:0;right:-8px;width:158px;animation:f1 5s ease-in-out infinite;}
+.flt-2{bottom:52px;left:-18px;width:163px;animation:f2 6s ease-in-out infinite;}
+.flt-3{bottom:-8px;right:0;width:150px;animation:f3 4.5s ease-in-out infinite;}
+.flt-4{top:68px;left:-26px;width:148px;animation:f1 7s ease-in-out infinite reverse;}
+@keyframes f1{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+@keyframes f2{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes f3{0%,100%{transform:translateY(0)}50%{transform:translateY(-15px)}}
+.fi-ic{font-size:1.1rem;margin-bottom:.25rem;}
+.fi-lb{font-size:.6rem;font-weight:700;color:rgba(255,255,255,.32);text-transform:uppercase;letter-spacing:.9px;}
+.fi-vl{font-family:var(--Fd);font-size:1.1rem;font-weight:700;}
+.fi-sb{font-size:.62rem;color:rgba(255,255,255,.4);margin-top:.08rem;}
+.gd{color:var(--gold);}.gn{color:var(--green);}
 
-/* WHATSAPP CHAT */
-.chat-wrap{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:3.5rem;align-items:center;}
-.cb-item{display:flex;align-items:center;gap:.7rem;font-size:.83rem;color:rgba(255,255,255,.68);margin-bottom:.55rem;}
-.cb-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);flex-shrink:0;}
-.phone-mock{background:#0b141a;border-radius:28px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.06);max-width:380px;margin:0 auto;}
-.wa-head{background:#1f2c34;padding:.85rem 1rem;display:flex;align-items:center;gap:.75rem;border-bottom:1px solid rgba(255,255,255,.06);}
-.wa-back{color:rgba(255,255,255,.55);font-size:1.1rem;}
-.wa-avt{width:38px;height:38px;border-radius:50%;background:linear-gradient(145deg,var(--gold),#a07000);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
-.wa-nm{font-size:.86rem;font-weight:700;line-height:1.2;}
-.wa-st{font-size:.62rem;color:#4ade80;}
-.wa-ic{margin-left:auto;display:flex;gap:.9rem;color:rgba(255,255,255,.5);font-size:1rem;}
-.wa-bg{background:#0b141a;padding:.9rem .75rem;min-height:340px;max-height:340px;overflow-y:auto;display:flex;flex-direction:column;gap:.55rem;}
-.wa-bg::-webkit-scrollbar{width:3px;}.wa-bg::-webkit-scrollbar-thumb{background:rgba(255,255,255,.07);}
-.wa-date{text-align:center;font-size:.58rem;background:rgba(255,255,255,.07);color:rgba(255,255,255,.4);padding:.22rem .7rem;border-radius:100px;width:fit-content;margin:0 auto;}
-.wm{display:flex;flex-direction:column;max-width:82%;}
-.wm.in{align-self:flex-start;}.wm.out{align-self:flex-end;}
-.wm-bub{padding:.6rem .9rem .45rem;border-radius:8px;font-size:.78rem;line-height:1.55;}
-.wm.in .wm-bub{background:#1f2c34;border-radius:0 8px 8px 8px;color:rgba(255,255,255,.9);}
-.wm.out .wm-bub{background:#005c4b;border-radius:8px 8px 0 8px;color:rgba(255,255,255,.9);}
-.wm-name{font-size:.6rem;font-weight:700;color:var(--gold);margin-bottom:.2rem;}
-.wm-time{font-size:.58rem;color:rgba(255,255,255,.28);text-align:right;margin-top:.2rem;}
-.wm.out .wm-time::after{content:' ✓✓';color:#53bdeb;}
-.wm-hl{margin-top:.4rem;background:rgba(74,222,128,.1);border-left:2px solid #4ade80;padding:.3rem .6rem;border-radius:0 5px 5px 0;font-size:.7rem;color:#86efac;}
-.wm-typ{background:#1f2c34;border-radius:0 8px 8px 8px;padding:.6rem .9rem;width:fit-content;display:none;}
-.wm-typ.show{display:flex;gap:4px;align-items:center;}
-.wm-typ span{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.35);animation:td 1s ease-in-out infinite;}
-.wm-typ span:nth-child(2){animation-delay:.15s;}.wm-typ span:nth-child(3){animation-delay:.3s;}
-@keyframes td{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-4px)}}
-.wa-inp{background:#1f2c34;padding:.7rem .9rem;display:flex;align-items:center;gap:.6rem;border-top:1px solid rgba(255,255,255,.05);}
-.wa-inp-box{flex:1;background:rgba(255,255,255,.07);border-radius:100px;padding:.48rem 1rem;font-size:.74rem;color:rgba(255,255,255,.4);}
-.wa-send{width:34px;height:34px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
+/* ══════════════════════════════
+   REALISTIC CHAT STORYBOARD
+══════════════════════════════ */
+.sb-section{padding:5rem 5%;background:var(--n2);position:relative;overflow:hidden;}
+.sb-section::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(21,101,192,.04),transparent);}
+.sb-inner{max-width:1060px;margin:0 auto;position:relative;z-index:1;}
+.sb-stage{background:var(--navy);border:1px solid var(--bdr);border-radius:22px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.45);}
+/* top bar */
+.sb-bar{background:var(--n3);border-bottom:1px solid var(--bdr);padding:.78rem 1.4rem;display:flex;align-items:center;gap:.9rem;}
+.sb-dots{display:flex;gap:.38rem;}
+.sb-dot{width:10px;height:10px;border-radius:50%;}
+.sb-dot:nth-child(1){background:#f87171;}.sb-dot:nth-child(2){background:#fb923c;}.sb-dot:nth-child(3){background:#4ade80;}
+.sb-bar-title{font-size:.74rem;font-weight:600;color:rgba(255,255,255,.36);margin-left:.4rem;}
+.sb-bar-live{margin-left:auto;display:flex;align-items:center;gap:.38rem;font-size:.66rem;color:var(--green);font-weight:600;}
+.sb-live-dot{width:6px;height:6px;background:var(--green);border-radius:50%;animation:blink 1.5s infinite;}
+/* participants */
+.sb-participants{display:flex;align-items:center;padding:.9rem 1.4rem;background:rgba(255,255,255,.025);border-bottom:1px solid var(--bdr);gap:.8rem;}
+.sb-person{display:flex;align-items:center;gap:.65rem;padding:.45rem .75rem;border-radius:10px;transition:background .3s;flex:1;}
+.sb-person.active-spk{background:rgba(255,255,255,.055);}
+.sb-av{position:relative;width:42px;height:42px;flex-shrink:0;}
+.sb-av-face{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.25rem;border:2px solid transparent;transition:border-color .3s,box-shadow .3s;position:relative;z-index:1;}
+.sb-av-cust .sb-av-face{background:linear-gradient(145deg,#1565c0,#0d47a1);}
+.sb-av-adv  .sb-av-face{background:linear-gradient(145deg,var(--gold),#a07000);color:var(--navy);}
+.sb-av-ring{position:absolute;inset:-4px;border-radius:50%;border:2px solid transparent;transition:border-color .3s;}
+.sb-person.active-spk .sb-av-face{border-color:var(--gold);box-shadow:0 0 14px rgba(230,168,23,.38);}
+.sb-person.active-spk .sb-av-ring{border-color:rgba(230,168,23,.28);animation:spkring 1.2s ease-in-out infinite;}
+@keyframes spkring{0%,100%{transform:scale(1);opacity:.55;}50%{transform:scale(1.16);opacity:0;}}
+/* sound wave bars */
+.sb-waves{display:flex;align-items:center;gap:2px;height:16px;margin-left:.3rem;opacity:0;transition:opacity .3s;}
+.sb-person.active-spk .sb-waves{opacity:1;}
+.sb-wave{width:3px;border-radius:100px;background:var(--gold);animation:wv .75s ease-in-out infinite;}
+.sb-wave:nth-child(1){height:4px;animation-delay:0s;}
+.sb-wave:nth-child(2){height:10px;animation-delay:.1s;}
+.sb-wave:nth-child(3){height:16px;animation-delay:.2s;}
+.sb-wave:nth-child(4){height:10px;animation-delay:.3s;}
+.sb-wave:nth-child(5){height:4px;animation-delay:.4s;}
+@keyframes wv{0%,100%{transform:scaleY(.35);}50%{transform:scaleY(1);}}
+.sb-pname{font-size:.8rem;font-weight:700;}
+.sb-prole{font-size:.66rem;color:rgba(255,255,255,.36);}
+.sb-pstatus{font-size:.63rem;color:var(--green);display:none;}
+.sb-person.active-spk .sb-pstatus{display:block;}
+.sb-person.active-spk .sb-prole{display:none;}
+.sb-pdiv{width:1px;height:32px;background:var(--bdr);}
+/* chat window */
+.sb-chat{height:310px;overflow-y:auto;padding:1.1rem 1.4rem;display:flex;flex-direction:column;gap:.7rem;scroll-behavior:smooth;}
+.sb-chat::-webkit-scrollbar{width:3px;}.sb-chat::-webkit-scrollbar-thumb{background:rgba(255,255,255,.07);border-radius:2px;}
+/* message row */
+.msg-row{display:flex;gap:.6rem;align-items:flex-end;animation:mIn .3s var(--E) both;}
+@keyframes mIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
+.msg-row.right{flex-direction:row-reverse;}
+.msg-av{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0;}
+.msg-av-c{background:linear-gradient(145deg,#1565c0,#0d47a1);}
+.msg-av-a{background:linear-gradient(145deg,var(--gold),#a07000);color:var(--navy);}
+.msg-bub{max-width:68%;padding:.68rem .95rem;border-radius:14px;font-size:.83rem;line-height:1.6;position:relative;}
+.msg-bub.bub-c{background:rgba(21,101,192,.2);border:1px solid rgba(21,101,192,.28);border-bottom-left-radius:3px;}
+.msg-bub.bub-a{background:rgba(230,168,23,.11);border:1px solid rgba(230,168,23,.22);border-bottom-right-radius:3px;}
+.msg-name{font-size:.6rem;font-weight:700;margin-bottom:.2rem;opacity:.48;}
+.bub-c .msg-name{color:#93c5fd;}.bub-a .msg-name{color:var(--gold);}
+.msg-txt{color:rgba(255,255,255,.88);}
+/* cursor blink while typing */
+.msg-txt.typing::after{content:'|';animation:cur 0.6s steps(1) infinite;color:var(--gold);margin-left:1px;}
+@keyframes cur{0%,100%{opacity:1;}50%{opacity:0;}}
+.msg-time{font-size:.57rem;color:rgba(255,255,255,.25);margin-top:.28rem;text-align:right;}
+.msg-hl{margin-top:.5rem;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.2);border-radius:7px;padding:.38rem .6rem;font-size:.7rem;color:var(--green);}
+/* typing indicator row */
+.typing-row{display:flex;gap:.6rem;align-items:center;}
+.typing-row.right{flex-direction:row-reverse;}
+.typing-pill{display:flex;align-items:center;gap:.26rem;padding:.5rem .82rem;background:rgba(255,255,255,.05);border:1px solid var(--bdr);border-radius:100px;}
+.tdot{width:5px;height:5px;border-radius:50%;background:var(--muted);animation:tdot 1s ease-in-out infinite;}
+.tdot:nth-child(2){animation-delay:.16s;}.tdot:nth-child(3){animation-delay:.32s;}
+@keyframes tdot{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-4px)}}
+/* footer */
+.sb-footer{padding:.82rem 1.4rem;border-top:1px solid var(--bdr);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.65rem;background:rgba(0,0,0,.14);}
+.sb-step-info{font-size:.68rem;color:rgba(255,255,255,.26);font-weight:600;letter-spacing:.4px;}
+.sb-replay{display:flex;align-items:center;gap:.38rem;background:none;border:1px solid var(--bdr);color:rgba(255,255,255,.36);padding:.38rem .84rem;border-radius:8px;font-size:.7rem;font-family:var(--Fb);cursor:pointer;transition:border-color .2s,color .2s;}
+.sb-replay:hover{border-color:var(--gold);color:var(--gold);}
+.sb-cta-btn{display:inline-flex;align-items:center;gap:.36rem;background:var(--gold);color:var(--navy);padding:.46rem 1rem;border-radius:8px;font-size:.75rem;font-weight:700;transition:transform .18s;}
+.sb-cta-btn:hover{transform:translateY(-1px);}
 
-/* PLAN CARDS — SVG illustrated */
-.plans-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2rem;}
-.pc{background:var(--i2);border:1px solid var(--line);border-radius:20px;overflow:hidden;cursor:none;transition:transform .3s var(--E),border-color .3s,box-shadow .3s;display:flex;flex-direction:column;}
-.pc:hover{transform:translateY(-6px);border-color:rgba(245,166,35,.3);box-shadow:0 24px 50px rgba(0,0,0,.4);}
-.pc-art{height:190px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-.pc-badge{position:absolute;top:.8rem;left:.8rem;z-index:1;background:var(--gold);color:var(--ink);font-size:.58rem;font-weight:800;padding:.2rem .58rem;border-radius:100px;text-transform:uppercase;}
-.pc-body{padding:1.4rem 1.5rem 1.5rem;display:flex;flex-direction:column;flex:1;}
-.pc-tt{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:.4rem;}
-.pc-ds{font-size:.78rem;color:rgba(255,255,255,.48);line-height:1.64;flex:1;}
-.pc-from{margin-top:.85rem;font-size:.7rem;color:rgba(255,255,255,.28);}
-.pc-from strong{color:var(--gold);font-size:.88rem;}
-.pc-rows{margin-top:.8rem;border-top:1px solid var(--line);padding-top:.8rem;display:flex;flex-direction:column;gap:.4rem;}
-.pc-row{display:flex;align-items:center;gap:.5rem;font-size:.72rem;color:rgba(255,255,255,.5);}
-.pc-row span{color:var(--sage);}
+/* ══════════════════════════════
+   REALITY STATS
+══════════════════════════════ */
+.real-g{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;margin-top:2.5rem;}
+.stat-list{display:flex;flex-direction:column;gap:1rem;}
+.scard{display:flex;align-items:center;gap:1.1rem;padding:1.1rem 1.3rem;background:var(--n2);border:1px solid var(--bdr);border-radius:13px;transition:border-color .18s,transform .18s;}
+.scard:hover{border-color:rgba(255,255,255,.16);transform:translateX(3px);}
+.sc-num{font-family:var(--Fd);font-size:1.9rem;font-weight:700;color:var(--gold);white-space:nowrap;min-width:76px;}
+.sc-txt strong{display:block;font-size:.86rem;margin-bottom:.15rem;}
+.sc-txt span{font-size:.76rem;color:rgba(255,255,255,.44);}
+.cbars{display:flex;flex-direction:column;gap:1rem;}
+.cb .cb-r{display:flex;justify-content:space-between;margin-bottom:.38rem;}
+.cb-l{font-size:.78rem;font-weight:500;}
+.cb-a{font-family:var(--Fd);font-size:.9rem;font-weight:700;color:var(--gold);}
+.cb-tr{height:6px;background:rgba(255,255,255,.07);border-radius:100px;overflow:hidden;}
+.cb-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--blue),var(--gold));width:0;transition:width 1.5s var(--E);}
 
-/* COMPARISON */
-.comp-g{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem;}
-.cpc{border-radius:18px;overflow:hidden;}
-.cpc-art{height:200px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
-.cpc-body{padding:1.5rem;}
-.cpc-1{background:linear-gradient(180deg,#0a1628,#05112a);border:1px solid rgba(21,101,192,.2);}
-.cpc-2{background:linear-gradient(180deg,#1a0f05,#100804);border:1px solid rgba(230,92,0,.2);}
-.cpc-tag{display:inline-flex;align-items:center;gap:.35rem;font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:.2rem .6rem;border-radius:100px;margin-bottom:.7rem;}
-.cpc-1 .cpc-tag{background:rgba(21,101,192,.15);border:1px solid rgba(21,101,192,.3);color:#93c5fd;}
-.cpc-2 .cpc-tag{background:rgba(230,92,0,.12);border:1px solid rgba(230,92,0,.25);color:#fdba74;}
-.cpc-tt{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:.55rem;}
-.cpc-ds{font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.66;margin-bottom:1rem;}
-.cpc-rows{display:flex;flex-direction:column;gap:.5rem;}
-.cpc-row{display:flex;justify-content:space-between;padding:.48rem .7rem;background:rgba(255,255,255,.04);border-radius:7px;font-size:.76rem;}
-.cpc-row .k{color:rgba(255,255,255,.44);}.cpc-row .v{font-weight:700;}
-.cpc-1 .cpc-row .v{color:#93c5fd;}.cpc-2 .cpc-row .v{color:#fdba74;}
-.cverd{margin-top:1.5rem;background:linear-gradient(135deg,rgba(245,166,35,.08),rgba(245,166,35,.03));border:1px solid rgba(245,166,35,.15);border-radius:14px;padding:1.2rem 1.5rem;display:flex;align-items:flex-start;gap:1rem;}
-.cvic{font-size:1.8rem;flex-shrink:0;}
-.cvtt{font-size:.9rem;font-weight:700;margin-bottom:.25rem;}
-.cvds{font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.62;}
+/* ══════════════════════════════
+   PLANS GRID — 2 col, no collision
+══════════════════════════════ */
+.plans-g{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2rem;}
+.pc{
+  background:var(--navy);
+  border:1.5px solid var(--bdr);
+  border-radius:18px;
+  padding:1.8rem;
+  display:flex;flex-direction:column;
+  cursor:none;position:relative;
+  transition:border-color .28s,transform .28s,box-shadow .28s;
+}
+.pc:hover{border-color:rgba(100,160,255,.38);transform:translateY(-4px);box-shadow:0 18px 36px rgba(0,0,0,.28);}
+.pc-badge{position:absolute;top:1.1rem;right:1.1rem;background:var(--gold);color:var(--navy);font-size:.58rem;font-weight:800;padding:.2rem .6rem;border-radius:100px;text-transform:uppercase;letter-spacing:.4px;}
+.pc-ic{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1rem;flex-shrink:0;}
+.pc-tt{font-family:var(--Fd);font-size:1.18rem;font-weight:700;margin-bottom:.45rem;}
+.pc-ds{font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.62;flex:1;}
+.pc-bf{margin-top:.85rem;font-size:.71rem;color:var(--gold);font-weight:600;}
+.pc-bf span{color:rgba(255,255,255,.42);font-weight:400;}
 
-/* CALCULATOR */
-.calc-w{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:center;}
-.calc-img-wrap{position:relative;border-radius:20px;overflow:hidden;height:480px;}
-.calc-img-wrap img{width:100%;height:100%;object-fit:cover;}
-.calc-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(6,16,31,.6),rgba(6,16,31,.15));}
-.calc-ov{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;justify-content:flex-end;padding:2rem;}
-.cc{background:rgba(6,16,31,.85);backdrop-filter:blur(20px);border:1px solid rgba(245,166,35,.22);border-radius:14px;padding:1.4rem;}
-.cct{font-size:.72rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:1rem;}
-.ccr{display:flex;justify-content:space-between;margin-bottom:.6rem;}
-.ccl{font-size:.76rem;color:rgba(255,255,255,.45);}.ccv{font-size:.76rem;font-weight:700;}
-.ccbig{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;color:var(--gold);margin-top:.5rem;}
-.calc-form{background:var(--i2);border:1px solid var(--line);border-radius:20px;padding:2rem;}
-.cf-row{margin-bottom:1.3rem;}
-.cf-lbl{font-size:.72rem;font-weight:700;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.8px;margin-bottom:.5rem;display:flex;justify-content:space-between;}
-.cf-lbl span{color:var(--gold);font-size:.84rem;font-family:'Playfair Display',serif;}
-.cf-range{width:100%;appearance:none;height:4px;border-radius:100px;background:rgba(255,255,255,.1);outline:none;cursor:none;}
-.cf-range::-webkit-slider-thumb{appearance:none;width:18px;height:18px;border-radius:50%;background:var(--gold);cursor:none;box-shadow:0 0 10px rgba(245,166,35,.5);}
-.cf-pills{display:flex;gap:.5rem;flex-wrap:wrap;}
-.cf-pill{padding:.38rem .82rem;border:1px solid var(--line);border-radius:100px;font-size:.74rem;cursor:pointer;transition:background .18s,border-color .18s,color .18s;color:rgba(255,255,255,.5);}
-.cf-pill:hover,.cf-pill.on{background:var(--gold);border-color:var(--gold);color:var(--ink);font-weight:700;}
-.cf-res{background:linear-gradient(135deg,var(--az),var(--i3));border-radius:14px;padding:1.4rem;margin-top:1.5rem;text-align:center;}
-.cfrl{font-size:.7rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:1px;margin-bottom:.4rem;}
-.cfrp{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:var(--gold);}
-.cfrn{font-size:.66rem;color:rgba(255,255,255,.3);margin-top:.55rem;}
+/* ══════════════════════════════
+   COVERAGE — 2 col
+══════════════════════════════ */
+.cov-g{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.8rem;}
+.cov-col{background:var(--navy);border:1px solid var(--bdr);border-radius:16px;padding:1.7rem;}
+.cov-h{display:flex;align-items:center;gap:.65rem;margin-bottom:1.2rem;padding-bottom:.85rem;border-bottom:1px solid var(--bdr);}
+.cov-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.cov-tt{font-family:var(--Fd);font-size:1.1rem;font-weight:700;}
+.cov-ul{list-style:none;display:flex;flex-direction:column;gap:.6rem;}
+.cov-ul li{display:flex;align-items:flex-start;gap:.6rem;font-size:.81rem;color:rgba(255,255,255,.68);line-height:1.48;}
+.ci{flex-shrink:0;margin-top:.02rem;font-size:.82rem;}
 
-/* STORIES — no photos */
-.st-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2rem;}
-.stc{background:var(--ink);border:1px solid var(--line);border-radius:18px;padding:1.6rem;cursor:none;transition:transform .3s,border-color .3s;}
-.stc:hover{transform:translateY(-5px);border-color:rgba(255,255,255,.12);}
-.stc-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;}
-.stc-amt{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:700;color:var(--gold);}
-.stc-sr{color:var(--gold);font-size:.72rem;letter-spacing:1px;}
-.stc-type{font-size:.64rem;color:rgba(255,255,255,.3);margin-bottom:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;}
-.stc-tx{font-size:.81rem;color:rgba(255,255,255,.62);line-height:1.72;margin-bottom:.9rem;}
-.stc-q{font-size:.74rem;font-style:italic;color:rgba(255,255,255,.4);line-height:1.55;border-left:2px solid rgba(245,166,35,.3);padding-left:.75rem;margin-bottom:.9rem;}
-.stc-nm{font-size:.78rem;font-weight:700;color:rgba(255,255,255,.7);}
-.stc-rl{font-size:.62rem;color:rgba(255,255,255,.3);}
+/* ══════════════════════════════
+   MISTAKES — 3 col
+══════════════════════════════ */
+.mk-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1.8rem;}
+.mk{background:rgba(239,68,68,.06);border:1px solid rgba(239,68,68,.16);border-radius:14px;padding:1.3rem;cursor:none;transition:transform .2s,border-color .2s;}
+.mk:hover{transform:translateY(-3px);border-color:rgba(239,68,68,.36);}
+.mk-n{font-family:var(--Fd);font-size:1.9rem;font-weight:700;color:rgba(239,68,68,.18);line-height:1;margin-bottom:.38rem;}
+.mk-t{font-size:.85rem;font-weight:700;color:#fca5a5;margin-bottom:.4rem;}
+.mk-d{font-size:.76rem;color:rgba(255,255,255,.46);line-height:1.58;}
+.mk-f{margin-top:.65rem;padding-top:.65rem;border-top:1px solid rgba(239,68,68,.14);font-size:.7rem;color:var(--green);}
+.mk-f::before{content:'✓ Fix: ';font-weight:700;}
 
-/* TRUST */
-.trust{padding:2.8rem 5%;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
-.tl-wrap{text-align:center;font-size:.65rem;font-weight:700;color:rgba(255,255,255,.24);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:1.4rem;}
-.tl-logos{display:flex;justify-content:center;align-items:center;gap:1.2rem;flex-wrap:wrap;}
-.tl{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:.55rem 1.1rem;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.35);transition:background .2s,color .2s;}
-.tl:hover{background:rgba(255,255,255,.1);color:rgba(255,255,255,.6);}
+/* ══════════════════════════════
+   COMPARE TABLE
+══════════════════════════════ */
+.tw{overflow-x:auto;margin-top:1.8rem;border-radius:14px;border:1px solid var(--bdr);}
+.ct{width:100%;border-collapse:collapse;min-width:660px;}
+.ct thead tr{background:var(--n3);}
+.ct th{padding:.8rem 1rem;font-size:.7rem;font-weight:700;text-align:left;color:rgba(255,255,255,.44);text-transform:uppercase;letter-spacing:.9px;white-space:nowrap;}
+.ct td{padding:.82rem 1rem;font-size:.8rem;border-bottom:1px solid var(--bdr);color:rgba(255,255,255,.68);vertical-align:middle;}
+.ct tr:last-child td{border-bottom:none;}
+.ct tbody tr:hover td{background:var(--g1);}
+.pn{font-weight:700;color:#fff;}
+.bb{display:inline-block;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.24);color:var(--green);font-size:.6rem;font-weight:700;padding:.15rem .42rem;border-radius:100px;margin-left:.3rem;vertical-align:middle;}
+.rt{color:var(--gold);font-weight:700;}.ck{color:var(--green);font-weight:700;}
+.tq{display:inline-flex;align-items:center;gap:.28rem;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:.35rem .82rem;border-radius:8px;font-size:.7rem;font-weight:600;font-family:var(--Fb);cursor:none;transition:background .18s,color .18s;white-space:nowrap;}
+.tq:hover{background:var(--gold);color:var(--navy);}
 
-/* PROCESS */
-.pg-g{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:2.5rem;}
-.pg{background:var(--i2);border:1px solid var(--line);border-radius:16px;padding:1.5rem;text-align:center;transition:transform .28s,border-color .28s;}
-.pg:hover{transform:translateY(-4px);border-color:rgba(245,166,35,.22);}
-.pg-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:rgba(245,166,35,.12);line-height:1;margin-bottom:.5rem;}
-.pg-ic{font-size:1.8rem;margin-bottom:.65rem;}
-.pg-tt{font-size:.88rem;font-weight:700;margin-bottom:.4rem;}
-.pg-ds{font-size:.74rem;color:rgba(255,255,255,.42);line-height:1.6;}
+/* ══════════════════════════════
+   CLAIM STEPS — 5 col
+══════════════════════════════ */
+.cl-g{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:2.5rem;position:relative;}
+.cl-g::before{content:'';position:absolute;top:26px;left:calc(10% + 8px);right:calc(10% + 8px);height:2px;background:linear-gradient(90deg,var(--blue),var(--gold));z-index:0;}
+.cl-s{display:flex;flex-direction:column;align-items:center;text-align:center;position:relative;z-index:1;}
+.cl-c{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--gold));display:flex;align-items:center;justify-content:center;font-size:1.15rem;margin-bottom:.85rem;box-shadow:0 0 0 5px var(--n2);transition:transform .28s;}
+.cl-s:hover .cl-c{transform:scale(1.12);}
+.cl-t{font-size:.75rem;font-weight:700;margin-bottom:.2rem;}
+.cl-d{font-size:.66rem;color:rgba(255,255,255,.38);line-height:1.44;}
 
-/* FAQ + SIDEBAR */
-.faq-lay{display:grid;grid-template-columns:1fr 300px;gap:3rem;align-items:start;}
-.faq-list{margin-top:1.8rem;display:flex;flex-direction:column;gap:.65rem;}
-.fi{background:var(--ink);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:border-color .2s;}
-.fi.op{border-color:rgba(255,255,255,.14);}
-.fh{display:flex;align-items:center;justify-content:space-between;padding:.95rem 1.2rem;cursor:pointer;gap:.9rem;}
-.fq{font-size:.83rem;font-weight:600;line-height:1.4;}
-.fic{width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.85rem;transition:transform .28s,background .2s;}
-.fi.op .fic{transform:rotate(45deg);background:var(--gold);color:var(--ink);border-color:var(--gold);}
-.fab2{padding:0 1.2rem;max-height:0;overflow:hidden;transition:max-height .38s var(--E),padding .28s;}
-.fi.op .fab2{max-height:240px;padding-bottom:1rem;}
-.fat{font-size:.8rem;color:rgba(255,255,255,.5);line-height:1.72;}
-.sb2{position:sticky;top:calc(var(--nh)+1.2rem);display:flex;flex-direction:column;gap:1rem;}
-.sb2-card{background:linear-gradient(145deg,var(--i3),var(--az));border:1px solid rgba(100,160,255,.16);border-radius:16px;padding:1.5rem;}
-.sb2-art{width:100%;height:130px;border-radius:10px;margin-bottom:1rem;overflow:hidden;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.2);}
-.sb2-tt{font-family:'Playfair Display',serif;font-size:1.12rem;font-weight:700;margin-bottom:.4rem;}
-.sb2-ds{font-size:.76rem;color:rgba(255,255,255,.48);line-height:1.6;margin-bottom:1.1rem;}
-.sb2-btn{display:block;text-align:center;background:var(--gold);color:var(--ink);padding:.75rem;border-radius:11px;font-weight:700;font-size:.82rem;margin-bottom:.55rem;transition:transform .18s,box-shadow .18s;}
-.sb2-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(245,166,35,.3);}
-.sb2-ph{display:flex;align-items:center;justify-content:center;gap:.38rem;background:rgba(255,255,255,.07);border:1px solid var(--line);color:#fff;padding:.64rem;border-radius:11px;font-weight:600;font-size:.78rem;transition:background .18s;}
-.sb2-ph:hover{background:rgba(255,255,255,.1);}
-.sb2-div{text-align:center;font-size:.65rem;color:rgba(255,255,255,.28);margin:.25rem 0;}
-.sb2-plans{background:var(--ink);border:1px solid var(--line);border-radius:14px;padding:1rem;}
-.sb2-plans .lbl{font-size:.62rem;font-weight:700;color:rgba(255,255,255,.22);text-transform:uppercase;letter-spacing:1.3px;margin-bottom:.75rem;}
-.sp{display:flex;align-items:center;gap:.55rem;padding:.48rem .6rem;background:var(--i2);border:1px solid var(--line);border-radius:9px;margin-bottom:.42rem;transition:border-color .18s;}
-.sp:last-child{margin-bottom:0;}.sp:hover{border-color:rgba(255,255,255,.12);}
-.sp-star{color:var(--gold);font-size:.68rem;}.sp-nm{font-size:.72rem;font-weight:600;}
+/* ══════════════════════════════
+   STORIES — 3 col
+══════════════════════════════ */
+.st-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:1.8rem;}
+.stc{background:var(--n2);border:1px solid var(--bdr);border-radius:16px;padding:1.6rem;cursor:none;display:flex;flex-direction:column;transition:transform .28s,border-color .28s;position:relative;overflow:hidden;}
+.stc:hover{transform:translateY(-4px);border-color:rgba(255,255,255,.14);}
+.stc::before{content:'"';position:absolute;top:-.4rem;right:.9rem;font-family:var(--Fd);font-size:6.5rem;font-weight:700;color:rgba(255,255,255,.025);line-height:1;}
+.stc-tag{display:inline-flex;align-items:center;gap:.35rem;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.18);color:#fca5a5;font-size:.64rem;font-weight:700;padding:.2rem .6rem;border-radius:100px;margin-bottom:.85rem;text-transform:uppercase;letter-spacing:.4px;}
+.stc-amt{font-family:var(--Fd);font-size:1.75rem;font-weight:700;color:var(--gold);}
+.stc-set{font-size:.68rem;color:rgba(255,255,255,.35);margin-bottom:.85rem;}
+.stc-tx{font-size:.8rem;color:rgba(255,255,255,.6);line-height:1.68;flex:1;margin-bottom:1rem;}
+.stc-p{display:flex;align-items:center;gap:.65rem;}
+.stc-av{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.72rem;background:linear-gradient(135deg,var(--blue),var(--bl));flex-shrink:0;}
+.stc-nm{font-weight:600;font-size:.8rem;}
+.stc-mt{font-size:.68rem;color:var(--muted);}
+.stc-sr{margin-left:auto;color:var(--gold);font-size:.68rem;}
+
+/* ══════════════════════════════
+   FAQ + SIDEBAR
+══════════════════════════════ */
+.faq-lay{display:grid;grid-template-columns:1fr 290px;gap:2.8rem;align-items:start;}
+.faq{display:flex;flex-direction:column;gap:.7rem;margin-top:1.8rem;}
+.fi{background:var(--n2);border:1px solid var(--bdr);border-radius:12px;overflow:hidden;transition:border-color .18s;}
+.fi.op{border-color:rgba(255,255,255,.16);}
+.fh{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;cursor:pointer;gap:.9rem;}
+.fq{font-size:.84rem;font-weight:600;line-height:1.38;}
+.fi-ic{width:24px;height:24px;border-radius:50%;background:var(--g1);border:1px solid var(--bdr);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.9rem;transition:transform .28s,background .2s;}
+.fi.op .fi-ic{transform:rotate(45deg);background:var(--gold);color:var(--navy);border-color:var(--gold);}
+.fa-b{padding:0 1.25rem;max-height:0;overflow:hidden;transition:max-height .38s var(--E),padding .28s;}
+.fi.op .fa-b{max-height:220px;padding-bottom:1rem;}
+.fa-t{font-size:.82rem;color:rgba(255,255,255,.54);line-height:1.72;}
+
+/* SIDEBAR */
+.sb2{position:sticky;top:calc(var(--nh)+1.4rem);display:flex;flex-direction:column;gap:1rem;}
+.sb2-cta{background:linear-gradient(145deg,var(--n3),var(--blue));border:1px solid rgba(100,160,255,.18);border-radius:16px;padding:1.6rem;}
+.sb2-tt{font-family:var(--Fd);font-size:1.18rem;font-weight:700;margin-bottom:.42rem;}
+.sb2-ds{font-size:.78rem;color:rgba(255,255,255,.52);line-height:1.58;margin-bottom:1.2rem;}
+.sb2-btn{display:block;text-align:center;background:var(--gold);color:var(--navy);padding:.78rem;border-radius:11px;font-weight:700;font-size:.84rem;margin-bottom:.6rem;transition:transform .18s,box-shadow .18s;}
+.sb2-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(230,168,23,.28);}
+.sb2-call{display:flex;align-items:center;justify-content:center;gap:.4rem;background:rgba(255,255,255,.07);border:1px solid var(--bdr);color:#fff;padding:.66rem;border-radius:11px;font-weight:600;font-size:.8rem;transition:background .18s;}
+.sb2-call:hover{background:var(--g2);}
+.sb2-div{text-align:center;font-size:.68rem;color:var(--muted);margin:.28rem 0;}
+.sb2-pl{background:var(--n2);border:1px solid var(--bdr);border-radius:14px;padding:1.1rem;}
+.sb2-lbl{font-size:.64rem;font-weight:700;color:rgba(255,255,255,.25);text-transform:uppercase;letter-spacing:1.4px;margin-bottom:.8rem;}
+.sb2-plan{display:flex;align-items:center;gap:.6rem;padding:.52rem;background:var(--navy);border:1px solid var(--bdr);border-radius:9px;margin-bottom:.45rem;transition:border-color .18s;}
+.sb2-plan:last-child{margin-bottom:0;}.sb2-plan:hover{border-color:rgba(255,255,255,.14);}
+.sb2-star{color:var(--gold);font-size:.72rem;}.sb2-pn{font-size:.74rem;font-weight:600;}
+.sb2-lnk{background:var(--n2);border:1px solid var(--bdr);border-radius:14px;padding:1.1rem;}
+.sb2-lnk a{display:flex;align-items:center;justify-content:space-between;padding:.48rem 0;font-size:.76rem;color:rgba(255,255,255,.5);border-bottom:1px solid var(--bdr);transition:color .18s;}
+.sb2-lnk a:last-child{border-bottom:none;}.sb2-lnk a:hover{color:var(--gold);}
 
 /* CTA BANNER */
-.ctab{position:relative;padding:5.5rem 5%;overflow:hidden;}
-.ctab-bg{position:absolute;inset:0;z-index:0;}
-.ctab-bg img{width:100%;height:100%;object-fit:cover;}
-.ctab-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(6,16,31,.96) 45%,rgba(6,16,31,.8));}
-.cta-in{position:relative;z-index:1;max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:center;gap:3rem;}
-.cta-tt{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.6vw,2.3rem);font-weight:700;line-height:1.2;margin-bottom:.7rem;}
-.cta-ds{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.7;}
-.cta-pills{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.85rem;}
-.cpill{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:.2rem .65rem;border-radius:100px;font-size:.68rem;color:rgba(255,255,255,.44);}
-.cta-btns{display:flex;flex-direction:column;gap:.65rem;align-items:center;}
-.cta-ph{font-size:.7rem;color:rgba(255,255,255,.35);}.cta-ph a{color:rgba(255,255,255,.62);font-weight:600;}
+.cta-s{background:linear-gradient(135deg,var(--blue),var(--n3),var(--navy));padding:4.5rem 5%;position:relative;overflow:hidden;}
+.cta-s::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 75% at 80% 50%,rgba(230,168,23,.07),transparent);}
+.cta-in{max-width:1280px;margin:0 auto;position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;align-items:center;gap:3rem;}
+.cta-tt{font-family:var(--Fd);font-size:clamp(1.55rem,2.4vw,2.2rem);font-weight:700;line-height:1.2;margin-bottom:.75rem;}
+.cta-ds{font-size:.86rem;color:rgba(255,255,255,.54);line-height:1.68;}
+.cta-pills{display:flex;gap:.45rem;flex-wrap:wrap;margin-top:.9rem;}
+.cpill{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);padding:.22rem .68rem;border-radius:100px;font-size:.7rem;color:rgba(255,255,255,.48);}
+.cta-btns{display:flex;flex-direction:column;gap:.7rem;align-items:center;}
+.cta-ph{font-size:.73rem;color:rgba(255,255,255,.38);}.cta-ph a{color:rgba(255,255,255,.68);font-weight:600;}
 
 /* FOOTER */
-.ft{background:#020b1a;border-top:1px solid var(--line);padding:3.5rem 5% 1.8rem;}
-.ft-in{max-width:1300px;margin:0 auto;}
-.ft-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.8rem;padding-bottom:2.5rem;border-bottom:1px solid var(--line);margin-bottom:1.6rem;}
-.ft-logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;display:inline-block;margin-bottom:.8rem;}
-.ft-logo em{font-style:normal;color:var(--gold);}
-.ft-ds{font-size:.76rem;color:rgba(255,255,255,.36);line-height:1.7;margin-bottom:.9rem;}
-.ft-con{display:flex;align-items:center;gap:.42rem;font-size:.73rem;color:rgba(255,255,255,.3);margin-bottom:.4rem;}
-.ft-con a{color:rgba(255,255,255,.52);transition:color .18s;}.ft-con a:hover{color:var(--gold);}
-.ft-clbl{font-size:.62rem;font-weight:700;color:rgba(255,255,255,.22);text-transform:uppercase;letter-spacing:1.3px;margin-bottom:.8rem;}
-.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.45rem;}
-.ft-col a{font-size:.74rem;color:rgba(255,255,255,.36);transition:color .18s;}.ft-col a:hover{color:var(--gold);}
-.ft-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem;font-size:.7rem;color:rgba(255,255,255,.18);}
-.ft-links{display:flex;gap:1.3rem;}.ft-links a{color:rgba(255,255,255,.18);transition:color .18s;}.ft-links a:hover{color:rgba(255,255,255,.4);}
+.ft{background:#020b1a;border-top:1px solid var(--bdr);padding:3.5rem 5% 1.8rem;}
+.ft-in{max-width:1280px;margin:0 auto;}
+.ft-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.8rem;padding-bottom:2.8rem;border-bottom:1px solid var(--bdr);margin-bottom:1.8rem;}
+.ft-logo{font-family:var(--Fd);font-size:1.5rem;font-weight:700;display:inline-block;margin-bottom:.85rem;}.ft-logo span{color:var(--gold);}
+.ft-ds{font-size:.78rem;color:var(--muted);line-height:1.68;margin-bottom:1rem;}
+.ft-con{display:flex;align-items:center;gap:.45rem;font-size:.75rem;color:rgba(255,255,255,.38);margin-bottom:.45rem;}
+.ft-con a{color:rgba(255,255,255,.58);transition:color .18s;}.ft-con a:hover{color:var(--gold);}
+.ft-clbl{font-size:.64rem;font-weight:700;color:rgba(255,255,255,.24);text-transform:uppercase;letter-spacing:1.4px;margin-bottom:.85rem;}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.48rem;}
+.ft-col a{font-size:.76rem;color:rgba(255,255,255,.4);transition:color .18s;}.ft-col a:hover{color:var(--gold);}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.9rem;font-size:.72rem;color:rgba(255,255,255,.2);}
+.ft-links{display:flex;gap:1.4rem;}.ft-links a{color:rgba(255,255,255,.2);transition:color .18s;}.ft-links a:hover{color:var(--muted);}
 
 /* RESPONSIVE */
 @media(max-width:1024px){
-  .chat-wrap,.calc-w,.cta-in,.faq-lay{grid-template-columns:1fr;}
-  .sb2{position:static;}
-  .ft-top{grid-template-columns:1fr 1fr;}
-  .calc-img-wrap{height:280px;}
-  .cstrip-grid{grid-template-columns:repeat(2,1fr);}
+  .h-in,.real-g,.faq-lay,.cta-in{grid-template-columns:1fr;}
+  .h-vis{display:none;}.sb2{position:static;}
 }
 @media(max-width:768px){
-  .nl{display:none;}.burger{display:flex;}
-  .htit{font-size:clamp(1.9rem,7vw,3rem);}
-  .i-split,.comp-g{grid-template-columns:1fr;}
-  .plans-g,.st-g{grid-template-columns:1fr;}
-  .strow{grid-template-columns:repeat(2,1fr);}
-  .pg-g{grid-template-columns:1fr 1fr;}
-  body{cursor:auto;}#cur,#cr{display:none;}
+  .nav-ul{display:none;}.burger{display:flex;}
+  .plans-g,.cov-g,.st-g{grid-template-columns:1fr;}
+  .mk-g{grid-template-columns:repeat(2,1fr);}
+  .cl-g{grid-template-columns:repeat(2,1fr);}.cl-g::before{display:none;}
+  .ft-top{grid-template-columns:1fr 1fr;}
+  body{cursor:auto;}#cur,#cur-r{display:none;}
+  .sb-characters{padding:2rem 1.5rem 0;}
+  .sb-bubbles{width:60%;}
 }
 @media(max-width:520px){
-  .strow,.pg-g,.ft-top,.cstrip-grid{grid-template-columns:1fr;}
-  .hstats{gap:.7rem;}.hsc{min-width:110px;}
+  .mk-g,.ft-top{grid-template-columns:1fr;}
+  .sb-characters{padding:1.5rem 1rem 0;}
+  .sb-bubbles{width:65%;top:1.5rem;}
 }
-
-/* SVG ANIMATIONS */
-@keyframes floatup{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-@keyframes spin{from{transform:rotate(0)}to{transform:rotate(360deg)}}
-@keyframes growbar{from{transform:scaleY(0)}to{transform:scaleY(1)}}
-@keyframes raindrop{0%{opacity:0;transform:translateY(-10px)}50%{opacity:1}100%{opacity:0;transform:translateY(20px)}}
-@keyframes coinbounce{0%,100%{transform:translateY(0) rotate(0deg)}40%{transform:translateY(-12px) rotate(10deg)}70%{transform:translateY(-6px) rotate(-5deg)}}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
-@keyframes shimmer{0%{opacity:.6}50%{opacity:1}100%{opacity:.6}}
 </style>
 </head>
 <body>
 
-<div id="cur"></div><div id="cr"></div>
+<div id="cur"></div>
+<div id="cur-r"></div>
 
 <!-- FAB -->
 <div class="fab">
-  <a href="book.html" class="fbk">📅 Book Consultation</a>
-  <a href="https://wa.me/917842854466" target="_blank" class="fwa">
-    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <a href="book.html" class="fab-bk">📅 Book Consultation</a>
+  <a href="https://wa.me/917842854466" target="_blank" class="fab-wa">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     WhatsApp
   </a>
 </div>
 
 <!-- NAV -->
-<nav class="nav" id="nav">
-  <div class="ni">
-    <a href="index.html" class="logo">Cover<em>Credit</em></a>
-    <ul class="nl">
-      <li><a href="health-insurance.html">Health</a></li>
-      <li><a href="life-insurance.html" class="act">Life Insurance</a></li>
-      <li class="dd"><span class="ddt">Vehicle <span class="dda">&#9660;</span></span><div class="ddm"><a href="bike-insurance.html">&#127949; Bike Insurance</a><a href="car-insurance.html">&#128663; Car Insurance</a><a href="commercial-vehicle-insurance.html">&#128667; Commercial</a></div></li>
-      <li><a href="loans.html">Loans</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="book.html" class="ncta">Free Consultation</a></li>
-    </ul>
-    <button class="burger" id="burger"><span></span><span></span><span></span></button>
+<header>
+  <nav class="nav" id="nav">
+    <div class="nav-in">
+      <a href="index.html" class="logo">Cover<span>Credit</span></a>
+      <ul class="nav-ul">
+        <li><a href="health-insurance.html" class="act">Health Insurance</a></li>
+        <li><a href="life-insurance.html">Life Insurance</a></li>
+        <li class="dd">
+          <span class="dd-t">Vehicle <span class="dd-a">▼</span></span>
+          <div class="dd-m">
+            <a href="bike-insurance.html">🏍️ Bike Insurance</a>
+            <a href="car-insurance.html">🚗 Car Insurance</a>
+            <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicles</a>
+          </div>
+        </li>
+        <li><a href="loans.html">Loans</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="book.html" class="nav-cta">Book Free Consultation</a></li>
+      </ul>
+      <button class="burger" id="burger"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mob" id="mob">
+    <a href="health-insurance.html">Health Insurance</a>
+    <a href="life-insurance.html">Life Insurance</a>
+    <a href="bike-insurance.html">Bike Insurance</a>
+    <a href="car-insurance.html">Car Insurance</a>
+    <a href="loans.html">Loans &amp; Finance</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+    <a href="book.html" class="mob-cta">Book Free Consultation →</a>
   </div>
-</nav>
-<div class="mob" id="mob">
-  <a href="health-insurance.html">Health Insurance</a>
-  <a href="life-insurance.html">Life Insurance</a>
-  <a href="bike-insurance.html">Bike Insurance</a>
-  <a href="car-insurance.html">Car Insurance</a>
-  <a href="loans.html">Loans</a>
-  <a href="about.html">About</a>
-  <a href="book.html" class="mc">Book Free Consultation &#8594;</a>
-</div>
+</header>
 
-<!-- HERO — Indian family at Hyderabad home -->
+<!-- ════════ HERO ════════ -->
 <section class="hero">
-  <div class="hi">
-    <img src="https://images.unsplash.com/photo-1596003906949-4bbba20b7476?auto=format&fit=crop&w=1600&q=80" alt="Indian family"/>
-  </div>
-  <div class="hgrid"></div>
-  <div class="hin">
-    <div class="hbc"><a href="index.html">Home</a> &#8250; Life Insurance</div>
-    <div class="hkick">&#128737; Life &amp; Term Insurance</div>
-    <h1 class="htit">Agar aap kal nahi rahe —<br/>kya aapka parivaar <em>surakshit hai?</em></h1>
-    <p class="hdesc">Life insurance sirf death ke baare mein nahi hai. Ye ensure karta hai ki aap par depend karne wale log kabhi struggle na karein — chahe kuch bhi ho. Hum sahi plan sahi daam mein dhundh dete hain.</p>
-    <div class="hbtns">
-      <a href="book.html" class="bg">Get Free Plan Comparison &#8594;</a>
-      <a href="tel:+917842854466" class="bgh">&#128222; +91 78428 54466</a>
-    </div>
-    <div class="hstats">
-      <div class="hsc"><div class="hsc-n" id="h1">&#8377;1</div><div class="hsc-l">Crore cover from &#8377;490/mo</div></div>
-      <div class="hsc"><div class="hsc-n" id="h2">15</div><div class="hsc-l">+ Insurers compared</div></div>
-      <div class="hsc"><div class="hsc-n" id="h3">500</div><div class="hsc-l">+ Families secured in AP &amp; TG</div></div>
-      <div class="hsc"><div class="hsc-n" id="h4">98</div><div class="hsc-l">% claim settlement ratio</div></div>
-    </div>
-  </div>
-  <div class="sh"><div class="sh-m"><div class="sh-d"></div></div><div class="sh-t">Scroll</div></div>
-</section>
-
-<!-- EMOTIONAL IMPACT SPLIT — Indian cartoon art in background -->
-<section class="impact rv">
-  <div class="i-split">
-    <div class="il">
-      <!-- Cartoon: sad family under rain, no umbrella -->
-      <svg class="bg-art" width="260" height="280" viewBox="0 0 260 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Rain drops -->
-        <line x1="30" y1="0" x2="20" y2="40" stroke="#f87171" stroke-width="2" opacity="0.6"><animate attributeName="y1" values="0;280" dur="1.2s" repeatCount="indefinite"/><animate attributeName="y2" values="40;320" dur="1.2s" repeatCount="indefinite"/></line>
-        <line x1="80" y1="20" x2="70" y2="60" stroke="#f87171" stroke-width="2" opacity="0.5"><animate attributeName="y1" values="0;280" dur="1.5s" repeatCount="indefinite" begin="0.3s"/><animate attributeName="y2" values="40;320" dur="1.5s" repeatCount="indefinite" begin="0.3s"/></line>
-        <line x1="130" y1="10" x2="120" y2="50" stroke="#f87171" stroke-width="2" opacity="0.6"><animate attributeName="y1" values="0;280" dur="1.1s" repeatCount="indefinite" begin="0.6s"/><animate attributeName="y2" values="40;320" dur="1.1s" repeatCount="indefinite" begin="0.6s"/></line>
-        <line x1="180" y1="0" x2="170" y2="40" stroke="#f87171" stroke-width="2" opacity="0.4"><animate attributeName="y1" values="0;280" dur="1.3s" repeatCount="indefinite" begin="0.9s"/><animate attributeName="y2" values="40;320" dur="1.3s" repeatCount="indefinite" begin="0.9s"/></line>
-        <line x1="220" y1="15" x2="210" y2="55" stroke="#f87171" stroke-width="2" opacity="0.5"><animate attributeName="y1" values="0;280" dur="1.4s" repeatCount="indefinite" begin="0.2s"/><animate attributeName="y2" values="40;320" dur="1.4s" repeatCount="indefinite" begin="0.2s"/></line>
-        <!-- Worried Indian man cartoon -->
-        <!-- Head -->
-        <circle cx="90" cy="160" r="22" fill="#c68642" stroke="#8B5E3C" stroke-width="1.5"/>
-        <!-- Hair -->
-        <path d="M68 148 Q90 135 112 148" fill="#1a0a00" stroke="#1a0a00" stroke-width="1"/>
-        <!-- Sad eyes -->
-        <path d="M82 158 Q86 162 90 158" stroke="#333" stroke-width="2" fill="none"/>
-        <path d="M94 158 Q98 162 102 158" stroke="#333" stroke-width="2" fill="none"/>
-        <!-- Mouth sad -->
-        <path d="M83 168 Q90 163 97 168" stroke="#333" stroke-width="2" fill="none"/>
-        <!-- Body — Indian shirt kurta -->
-        <rect x="72" y="182" width="36" height="50" rx="6" fill="#4a3728" stroke="#3a2a1a" stroke-width="1"/>
-        <!-- Kurta collar -->
-        <path d="M82 182 L90 194 L98 182" fill="none" stroke="#6b5040" stroke-width="1.5"/>
-        <!-- Dhoti / pants -->
-        <rect x="74" y="230" width="14" height="35" rx="4" fill="#3a2a1a"/>
-        <rect x="92" y="230" width="14" height="35" rx="4" fill="#3a2a1a"/>
-
-        <!-- Indian woman/wife  -->
-        <circle cx="160" cy="160" r="20" fill="#c68642" stroke="#8B5E3C" stroke-width="1.5"/>
-        <!-- Hair bun -->
-        <path d="M142 148 Q160 138 178 148" fill="#1a0a00"/>
-        <circle cx="160" cy="140" r="8" fill="#1a0a00"/>
-        <!-- Bindi -->
-        <circle cx="160" cy="153" r="2.5" fill="#f87171"/>
-        <!-- Sad eyes -->
-        <path d="M153 159 Q157 163 161 159" stroke="#333" stroke-width="2" fill="none"/>
-        <path d="M163 159 Q167 163 171 159" stroke="#333" stroke-width="2" fill="none"/>
-        <!-- Tears -->
-        <ellipse cx="151" cy="165" rx="2" ry="4" fill="#93c5fd" opacity="0.8"/>
-        <ellipse cx="170" cy="165" rx="2" ry="4" fill="#93c5fd" opacity="0.8"/>
-        <!-- Mouth sad -->
-        <path d="M153 169 Q160 164 167 169" stroke="#333" stroke-width="2" fill="none"/>
-        <!-- Saree body -->
-        <rect x="143" y="180" width="34" height="52" rx="5" fill="#dc2626" stroke="#991b1b" stroke-width="1"/>
-        <!-- Saree border gold -->
-        <rect x="143" y="226" width="34" height="6" rx="2" fill="#f5a623"/>
-        <!-- Pallu drape -->
-        <path d="M177 180 Q200 190 195 230" stroke="#b91c1c" stroke-width="8" fill="none" stroke-linecap="round"/>
-        <!-- Legs -->
-        <rect x="146" y="230" width="12" height="35" rx="4" fill="#b91c1c"/>
-        <rect x="164" y="230" width="12" height="35" rx="4" fill="#b91c1c"/>
-
-        <!-- Small child crying -->
-        <circle cx="125" cy="205" r="13" fill="#d4956a"/>
-        <!-- Child tears -->
-        <ellipse cx="120" cy="210" rx="1.5" ry="3" fill="#93c5fd" opacity="0.9"/>
-        <!-- Body -->
-        <rect x="115" y="218" width="20" height="25" rx="4" fill="#7c3aed" stroke="#6d28d9" stroke-width="1"/>
-        <!-- Ground -->
-        <rect x="50" y="268" width="180" height="6" rx="3" fill="#1f1108" opacity="0.5"/>
-      </svg>
-      <div class="ii">
-        <div class="ibadge">&#10060; Without Life Insurance</div>
-        <h2 class="ititl">Parivaar akele face karta hai — raat bhar mein.</h2>
-        <ul class="ilist">
-          <li><span class="iic">&#128184;</span>EMIs jaari rahengi — income nahi. 3 mahine mein default shuru.</li>
-          <li><span class="iic">&#127968;</span>Home loan? Bank parwah nahi karta. Property seizure ho sakti hai.</li>
-          <li><span class="iic">&#128103;</span>Bacchon ki padhai beech mein ruk jaati hai.</li>
-          <li><span class="iic">&#128542;</span>Patni ko foran kaam karna padta hai, bachche unsupervised.</li>
-          <li><span class="iic">&#128116;</span>Budhape mein maa-baap ka ek hi sahara — ab woh bhi nahi.</li>
-          <li><span class="iic">&#128200;</span>20 saal ki savings 2-3 saal mein khatam ho jaati hai.</li>
-        </ul>
+  <div class="h-bg"></div>
+  <div class="h-grid"></div>
+  <div class="h-in">
+    <div>
+      <div class="h-bc rv"><a href="index.html">Home</a><span class="s">›</span><span>Health Insurance</span></div>
+      <div class="h-tag rv">🏥 Health Insurance</div>
+      <h1 class="h-tit rv d1">One Hospital Bill<br/>Can Change <em>Everything.</em><br/>Are You Protected?</h1>
+      <p class="h-desc rv d2">Medical costs in India rise 14% every year. A single ICU night in Hyderabad costs ₹15,000–35,000. The right health insurance — chosen correctly — means you never face that bill alone.</p>
+      <div class="h-btns rv d3">
+        <a href="book.html" class="bg">Get Free Expert Advice →</a>
+        <a href="tel:+917842854466" class="bgh">📞 +91 78428 54466</a>
+      </div>
+      <div class="h-trust rv d4">
+        <div class="ht"><span>✓</span> Unbiased advice</div>
+        <div class="ht"><span>✓</span> 15+ insurers compared</div>
+        <div class="ht"><span>✓</span> Telugu &amp; English</div>
+        <div class="ht"><span>✓</span> Fast renewals</div>
       </div>
     </div>
-    <div class="ir">
-      <!-- Cartoon: happy Indian family under gold umbrella -->
-      <svg class="bg-art" width="260" height="280" viewBox="0 0 260 280" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Big protective umbrella -->
-        <path d="M60 130 Q130 60 200 130" fill="#f5a623" stroke="#d4870a" stroke-width="3"/>
-        <line x1="130" y1="130" x2="130" y2="200" stroke="#d4870a" stroke-width="4" stroke-linecap="round"/>
-        <path d="M130 200 Q140 210 130 218" stroke="#d4870a" stroke-width="4" fill="none"/>
-        <!-- Rupee symbol inside umbrella -->
-        <text x="110" y="115" font-size="22" fill="#d4870a" font-weight="bold" opacity="0.5">&#8377;</text>
-        <!-- Rain outside umbrella (deflected) -->
-        <line x1="30" y1="60" x2="55" y2="130" stroke="#93c5fd" stroke-width="1.5" opacity="0.4"/>
-        <line x1="215" y1="60" x2="205" y2="130" stroke="#93c5fd" stroke-width="1.5" opacity="0.4"/>
-        <line x1="20" y1="80" x2="42" y2="140" stroke="#93c5fd" stroke-width="1.5" opacity="0.4"/>
-        <line x1="225" y1="80" x2="218" y2="140" stroke="#93c5fd" stroke-width="1.5" opacity="0.4"/>
-        <!-- Happy Indian man -->
-        <circle cx="90" cy="170" r="20" fill="#c68642" stroke="#8B5E3C" stroke-width="1.5"/>
-        <path d="M70 158 Q90 148 110 158" fill="#1a0a00"/>
-        <path d="M83 167 Q87 171 91 167" stroke="#333" stroke-width="2" fill="none"/>
-        <path d="M95 167 Q99 171 103 167" stroke="#333" stroke-width="2" fill="none"/>
-        <!-- Happy smile -->
-        <path d="M83 177 Q90 184 97 177" stroke="#333" stroke-width="2.5" fill="none"/>
-        <!-- Kurta -->
-        <rect x="74" y="190" width="32" height="45" rx="6" fill="#1565c0" stroke="#0d47a1" stroke-width="1"/>
-        <path d="M82 190 L90 202 L98 190" fill="none" stroke="#1976d2" stroke-width="1.5"/>
-        <rect x="76" y="233" width="12" height="32" rx="4" fill="#0d47a1"/>
-        <rect x="92" y="233" width="12" height="32" rx="4" fill="#0d47a1"/>
-        <!-- Happy Indian woman -->
-        <circle cx="158" cy="170" r="20" fill="#c68642" stroke="#8B5E3C" stroke-width="1.5"/>
-        <path d="M140 158 Q158 148 176 158" fill="#1a0a00"/>
-        <circle cx="158" cy="150" r="7" fill="#1a0a00"/>
-        <!-- Bindi gold -->
-        <circle cx="158" cy="163" r="2.5" fill="#f5a623"/>
-        <path d="M151 168 Q155 172 159 168" stroke="#333" stroke-width="2" fill="none"/>
-        <path d="M161 168 Q165 172 169 168" stroke="#333" stroke-width="2" fill="none"/>
-        <path d="M151 178 Q158 185 165 178" stroke="#333" stroke-width="2.5" fill="none"/>
-        <!-- Saree green (auspicious) -->
-        <rect x="141" y="190" width="34" height="45" rx="5" fill="#15803d" stroke="#166534" stroke-width="1"/>
-        <rect x="141" y="229" width="34" height="6" rx="2" fill="#f5a623"/>
-        <path d="M175 190 Q195 200 192 235" stroke="#166534" stroke-width="8" fill="none" stroke-linecap="round"/>
-        <rect x="144" y="233" width="12" height="32" rx="4" fill="#166534"/>
-        <rect x="162" y="233" width="12" height="32" rx="4" fill="#166534"/>
-        <!-- Happy child -->
-        <circle cx="124" cy="210" r="13" fill="#d4956a"/>
-        <path d="M116 218 Q124 226 132 218" stroke="#333" stroke-width="2.5" fill="none"/>
-        <rect x="114" y="223" width="20" height="22" rx="4" fill="#f59e0b"/>
-        <!-- Stars / sparkles above -->
-        <text x="50" y="80" font-size="16" fill="#ffd166" opacity="0.8"><animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite"/>&#10026;</text>
-        <text x="195" y="75" font-size="14" fill="#ffd166" opacity="0.6"><animate attributeName="opacity" values="0.6;1;0.6" dur="1.8s" repeatCount="indefinite"/>&#10027;</text>
-        <text x="130" y="55" font-size="12" fill="#ffd166" opacity="0.7"><animate attributeName="opacity" values="0.7;0.1;0.7" dur="1.5s" repeatCount="indefinite"/>&#9733;</text>
-        <!-- Ground -->
-        <rect x="50" y="268" width="180" height="6" rx="3" fill="#0a2d1a" opacity="0.4"/>
-      </svg>
-      <div class="ii">
-        <div class="ibadge">&#10003; Cover Credit ke saath Life Insurance</div>
-        <h2 class="ititl">Aapka parivaar financially completely protected hai.</h2>
-        <ul class="ilist">
-          <li><span class="iic">&#9989;</span>&#8377;1 Crore+ directly nominee ko, tax-free, 30 din mein.</li>
-          <li><span class="iic">&#127968;</span>Home loan rider — poora outstanding balance automatically clear.</li>
-          <li><span class="iic">&#127891;</span>Bacchon ki education 15-20 saal tak fund ki gayi.</li>
-          <li><span class="iic">&#128188;</span>Patni ke paas apni life rebuild karne ka time aur security hai.</li>
-          <li><span class="iic">&#128116;</span>Monthly income options — maa-baap ko regular support.</li>
-          <li><span class="iic">&#128176;</span>Sirf &#8377;490/month — ek cup chai ki kimat mein poori suraksha.</li>
-        </ul>
-        <div class="icta"><a href="book.html" class="bg">Abhi apne parivaar ko protect karein &#8594;</a></div>
+    <div class="h-vis rv d2">
+      <div class="sh-wrap">
+        <div class="sh-ring"></div><div class="sh-ring"></div><div class="sh-ring"></div>
+        <div class="sh-body">🏥</div>
+        <div class="flt flt-1"><div class="fi-ic">🛡️</div><div class="fi-lb">Families Protected</div><div class="fi-vl gd">500+</div><div class="fi-sb">AP &amp; Telangana</div></div>
+        <div class="flt flt-2"><div class="fi-ic">📋</div><div class="fi-lb">Plans Compared</div><div class="fi-vl">30+</div><div class="fi-sb gn">For your best deal</div></div>
+        <div class="flt flt-3"><div class="fi-ic">⚡</div><div class="fi-lb">Policy Issued</div><div class="fi-vl gn">Same Day</div><div class="fi-sb">On approval</div></div>
+        <div class="flt flt-4"><div class="fi-ic">🔄</div><div class="fi-lb">Renewal Reminder</div><div class="fi-vl gd">Free</div><div class="fi-sb">Never miss renewal</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CARTOON STRIP — 4 animated illustration cards -->
-<section class="cstrip">
-  <div class="cstrip-inner">
-    <div class="cstrip-lbl rv">
-      <div class="tag" style="justify-content:center;">Why Life Insurance Matters</div>
-      <h2 class="tit" style="text-align:center;">Simple truths, <em>visually told</em></h2>
-    </div>
-    <div class="cstrip-grid rv d1">
+<!-- ════════ ANIMATED STORYBOARD ════════ -->
+<section class="sb-section">
+  <div class="sb-inner">
+    <div class="stag rv">How We Work</div>
+    <h2 class="stit rv d1">Watch a real <em>Cover Credit advisory</em> session</h2>
+    <p class="ssub rv d2" style="margin-bottom:1.8rem;">A family visits confused about health insurance. See exactly how our advisor guides them — in real time, clearly, in Telugu or English.</p>
 
-      <!-- Card 1: Real Indian office photo -->
-      <div class="ccard">
-        <div class="ccard-art" style="background:#0d2137;">
-          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=400&q=80" alt="Indian office" style="width:100%;height:100%;object-fit:cover;opacity:.85;"/>
-        </div>
-        <div class="ccard-body">
-          <div class="ccard-tt">Expert Comparison</div>
-          <div class="ccard-ds">Hum 15+ insurers ko aapke saamne compare karte hain — LIC se HDFC Life tak.</div>
-        </div>
+    <div class="sb-stage rv d2" id="sbStage">
+      <!-- Top bar -->
+      <div class="sb-bar">
+        <div class="sb-dots"><div class="sb-dot"></div><div class="sb-dot"></div><div class="sb-dot"></div></div>
+        <span class="sb-bar-title">Cover Credit Advisory — Hyderabad Office</span>
+        <div class="sb-bar-live"><div class="sb-live-dot"></div> Live Session</div>
       </div>
 
-      <!-- Card 2: Animated SVG — Rupee growing like a plant -->
-      <div class="ccard">
-        <div class="ccard-art" style="background:linear-gradient(145deg,#051a10,#0a3020);">
-          <svg width="180" height="160" viewBox="0 0 180 160" fill="none">
-            <!-- Pot -->
-            <path d="M65 120 Q60 140 115 140 Q140 140 135 120Z" fill="#c2410c" stroke="#9a3412" stroke-width="1.5"/>
-            <rect x="60" y="112" width="80" height="12" rx="4" fill="#b45309"/>
-            <!-- Soil -->
-            <ellipse cx="100" cy="112" rx="40" ry="7" fill="#78350f"/>
-            <!-- Stem -->
-            <line x1="100" y1="112" x2="100" y2="55" stroke="#15803d" stroke-width="4" stroke-linecap="round"/>
-            <!-- Leaves -->
-            <path d="M100 90 Q80 75 72 60 Q90 65 100 80Z" fill="#22c55e" opacity=".9"><animate attributeName="opacity" values=".9;.5;.9" dur="2s" repeatCount="indefinite"/></path>
-            <path d="M100 75 Q120 60 130 45 Q112 55 100 70Z" fill="#16a34a" opacity=".8"><animate attributeName="opacity" values=".8;.4;.8" dur="2.5s" repeatCount="indefinite"/></path>
-            <!-- Rupee coin at top -->
-            <circle cx="100" cy="48" r="16" fill="#f5a623" stroke="#d97706" stroke-width="2"><animate attributeName="cy" values="48;42;48" dur="2s" repeatCount="indefinite"/></circle>
-            <text x="93" y="54" font-size="14" fill="#78350f" font-weight="bold"><animate attributeName="y" values="54;48;54" dur="2s" repeatCount="indefinite"/>&#8377;</text>
-            <!-- Sparkles -->
-            <circle cx="120" cy="38" r="3" fill="#ffd166"><animate attributeName="opacity" values="1;0;1" dur="1.5s" repeatCount="indefinite"/></circle>
-            <circle cx="82" cy="32" r="2.5" fill="#ffd166"><animate attributeName="opacity" values="0;1;0" dur="1.8s" repeatCount="indefinite"/></circle>
-            <circle cx="130" cy="55" r="2" fill="#ffd166"><animate attributeName="opacity" values="1;0;1" dur="1.2s" repeatCount="indefinite"/></circle>
-          </svg>
-        </div>
-        <div class="ccard-body">
-          <div class="ccard-tt">Wealth Grows, Cover Grows</div>
-          <div class="ccard-ds">Term plan — premium low, cover high. Aapki savings grow hoti hai, saath mein protection bhi.</div>
-        </div>
-      </div>
-
-      <!-- Card 3: Animated SVG — Family shield -->
-      <div class="ccard">
-        <div class="ccard-art" style="background:linear-gradient(145deg,#0a1628,#05112a);">
-          <svg width="180" height="160" viewBox="0 0 180 160" fill="none">
-            <!-- Animated shield -->
-            <path d="M90 20 L140 40 L140 90 Q140 130 90 150 Q40 130 40 90 L40 40 Z" fill="rgba(21,101,192,0.25)" stroke="#3b82f6" stroke-width="2.5"><animate attributeName="stroke" values="#3b82f6;#f5a623;#3b82f6" dur="3s" repeatCount="indefinite"/></path>
-            <!-- Inner shield glow -->
-            <path d="M90 32 L130 48 L130 88 Q130 122 90 138 Q50 122 50 88 L50 48 Z" fill="rgba(59,130,246,0.1)"><animate attributeName="fill" values="rgba(59,130,246,0.1);rgba(245,166,35,0.12);rgba(59,130,246,0.1)" dur="3s" repeatCount="indefinite"/></path>
-            <!-- Rupee in shield -->
-            <circle cx="90" cy="82" r="22" fill="#1565c0" stroke="#3b82f6" stroke-width="1.5"><animate attributeName="r" values="22;25;22" dur="2s" repeatCount="indefinite"/></circle>
-            <text x="82" y="90" font-size="20" fill="#ffd166" font-weight="bold">&#8377;</text>
-            <!-- Indian family silhouette at bottom of shield -->
-            <!-- Dad -->
-            <circle cx="76" cy="120" r="7" fill="#93c5fd"/>
-            <rect x="70" y="127" width="12" height="18" rx="3" fill="#1d4ed8"/>
-            <!-- Mom with bindi -->
-            <circle cx="104" cy="120" r="7" fill="#93c5fd"/>
-            <circle cx="104" cy="116" r="1.5" fill="#f87171"/>
-            <rect x="98" y="127" width="12" height="18" rx="3" fill="#dc2626"/>
-            <!-- Child -->
-            <circle cx="90" cy="123" r="5" fill="#fbbf24"/>
-            <rect x="85" y="128" width="10" height="14" rx="3" fill="#a78bfa"/>
-            <!-- Stars pulse -->
-            <circle cx="55" cy="60" r="3" fill="#ffd166"><animate attributeName="opacity" values="1;0;1" dur="1.4s" repeatCount="indefinite"/></circle>
-            <circle cx="125" cy="55" r="2.5" fill="#ffd166"><animate attributeName="opacity" values="0;1;0" dur="1.7s" repeatCount="indefinite"/></circle>
-            <circle cx="140" cy="80" r="2" fill="#ffd166"><animate attributeName="opacity" values="1;0;1" dur="1.1s" repeatCount="indefinite"/></circle>
-          </svg>
-        </div>
-        <div class="ccard-body">
-          <div class="ccard-tt">1 Crore+ Suraksha</div>
-          <div class="ccard-ds">&#8377;490/month mein &#8377;1 Crore ka cover. Aapke parivaar ko poori protection — har situation mein.</div>
-        </div>
-      </div>
-
-      <!-- Card 4: Real Indian Hyderabad photo -->
-      <div class="ccard">
-        <div class="ccard-art" style="background:#0d1a2d;">
-          <img src="https://images.unsplash.com/photo-1563461661026-49631dd5d68e?auto=format&fit=crop&w=400&q=80" alt="Hyderabad city" style="width:100%;height:100%;object-fit:cover;opacity:.75;"/>
-          <!-- Overlay with text -->
-          <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(6,16,31,.85),transparent 50%);display:flex;align-items:flex-end;padding:.8rem;">
-            <div style="font-size:.7rem;font-weight:700;color:rgba(255,255,255,.7);">Hyderabad • Vijayawada • Vizag</div>
+      <!-- Participants header -->
+      <div class="sb-participants">
+        <div class="sb-person sb-av-cust" id="pCust">
+          <div class="sb-av">
+            <div class="sb-av-face">👨</div>
+            <div class="sb-av-ring"></div>
           </div>
+          <div>
+            <div class="sb-pname">Ravi Kumar</div>
+            <div class="sb-prole">Customer, Hyderabad</div>
+            <div class="sb-pstatus">● speaking…</div>
+          </div>
+          <div class="sb-waves"><div class="sb-wave"></div><div class="sb-wave"></div><div class="sb-wave"></div><div class="sb-wave"></div><div class="sb-wave"></div></div>
         </div>
-        <div class="ccard-body">
-          <div class="ccard-tt">Serving All of AP &amp; Telangana</div>
-          <div class="ccard-ds">Telugu mein samjhao, same-day policy issuance — aapke sheher mein humari service.</div>
+
+        <div class="sb-pdiv"></div>
+
+        <div class="sb-person sb-av-adv" id="pAdv">
+          <div class="sb-av">
+            <div class="sb-av-face">👨‍💼</div>
+            <div class="sb-av-ring"></div>
+          </div>
+          <div>
+            <div class="sb-pname">Sunil — Cover Credit</div>
+            <div class="sb-prole">Insurance Advisor</div>
+            <div class="sb-pstatus">● typing…</div>
+          </div>
+          <div class="sb-waves"><div class="sb-wave"></div><div class="sb-wave"></div><div class="sb-wave"></div><div class="sb-wave"></div><div class="sb-wave"></div></div>
         </div>
       </div>
 
-    </div>
-  </div>
-</section>
+      <!-- Chat messages accumulate here -->
+      <div class="sb-chat" id="sbChat"></div>
 
-<!-- STATS BAR -->
-<div class="stbar">
-  <div class="strow">
-    <div class="rv"><div class="sti">&#127942;</div><div class="stn" id="c1">&#8377;0</div><div class="stl">Starting cover (Term Plan)</div></div>
-    <div class="rv d1"><div class="sti">&#128202;</div><div class="stn" id="c2">0%</div><div class="stl">Avg claim settlement ratio</div></div>
-    <div class="rv d2"><div class="sti">&#128176;</div><div class="stn" id="c3">&#8377;0</div><div class="stl">Monthly premium for &#8377;1Cr cover</div></div>
-    <div class="rv d3"><div class="sti">&#128274;</div><div class="stn" id="c4">0%</div><div class="stl">Premium tax benefit u/s 80C</div></div>
-  </div>
-</div>
-
-<!-- WHATSAPP CHAT -->
-<section class="sec sa">
-  <div class="chat-wrap">
-    <div class="rv">
-      <div class="tag">How We Advise</div>
-      <h2 class="tit d1">Real consultation —<br/><em>bilkul is tarah</em></h2>
-      <p class="sub d2" style="margin-bottom:1.3rem;">Ye actual conversation hai hamare office se. Koi jargon nahi. Koi pressure nahi. Sirf honest advice — Telugu ya English mein.</p>
-      <div style="margin-bottom:1.8rem;">
-        <div class="cb-item"><div class="cb-dot"></div>Hum sirf age nahi — income, loans, family puchte hain</div>
-        <div class="cb-item"><div class="cb-dot"></div>15+ insurers ko live aapke saamne compare karte hain</div>
-        <div class="cb-item"><div class="cb-dot"></div>Har exclusion sign karne se pehle explain karte hain</div>
-        <div class="cb-item"><div class="cb-dot"></div>Same day policy — WhatsApp par documents</div>
-      </div>
-      <a href="book.html" class="bg">Book free session &#8594;</a>
-    </div>
-    <div class="rv d2">
-      <div class="phone-mock">
-        <div class="wa-head">
-          <div class="wa-back">&#8592;</div>
-          <div class="wa-avt">&#128104;&#8205;&#128188;</div>
-          <div><div class="wa-nm">Sunil — Cover Credit</div><div class="wa-st">&#9679; Online</div></div>
-          <div class="wa-ic"><span>&#128222;</span><span>&#8942;</span></div>
+      <!-- Footer -->
+      <div class="sb-footer">
+        <span class="sb-step-info" id="sbStepInfo">Starting conversation…</span>
+        <div style="display:flex;gap:.6rem;">
+          <button class="sb-replay" id="sbReplay">↺ Replay</button>
+          <a href="book.html" class="sb-cta-btn">Book your free session →</a>
         </div>
-        <div class="wa-bg" id="waChat"><div class="wa-date">Aaj</div></div>
-        <div class="wa-inp"><div class="wa-inp-box">Message likhiye...</div><div class="wa-send">&#10148;</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PLAN TYPES — SVG illustrated cards -->
+<!-- ════════ REALITY ════════ -->
 <section class="sec">
   <div class="si">
-    <div class="tag rv">Plan Types</div>
-    <h2 class="tit rv d1">Kaunsa life insurance<br/><em>aapke liye sahi hai?</em></h2>
-    <p class="sub rv d2" style="margin-bottom:1.8rem;">Har plan type clearly samjhate hain — aap confidence se choose karo, confusion se nahi.</p>
-    <div class="plans-g">
-
-      <!-- Plan 1: Term — SVG illustration -->
-      <div class="pc rv d1">
-        <div class="pc-art" style="background:linear-gradient(145deg,#0a1628,#112240);">
-          <div class="pc-badge">Best Value</div>
-          <svg width="200" height="170" viewBox="0 0 200 170" fill="none">
-            <!-- Big shield -->
-            <path d="M100 15 L155 38 L155 95 Q155 140 100 160 Q45 140 45 95 L45 38 Z" fill="rgba(21,101,192,0.2)" stroke="#3b82f6" stroke-width="2"/>
-            <!-- 1 Crore text -->
-            <text x="62" y="72" font-size="11" fill="rgba(255,255,255,0.6)" font-family="serif">&#8377;1 CRORE</text>
-            <!-- Rupee big -->
-            <circle cx="100" cy="95" r="28" fill="#1565c0" stroke="#3b82f6" stroke-width="2"><animate attributeName="r" values="28;31;28" dur="2.5s" repeatCount="indefinite"/></circle>
-            <text x="88" y="104" font-size="24" fill="#ffd166" font-weight="bold">&#8377;</text>
-            <!-- Indian family silhouette -->
-            <circle cx="78" cy="135" r="8" fill="#93c5fd"/>
-            <rect x="72" y="143" width="12" height="16" rx="3" fill="#1d4ed8"/>
-            <circle cx="122" cy="135" r="8" fill="#fca5a5"/>
-            <circle cx="122" cy="130" r="1.8" fill="#f87171"/>
-            <rect x="116" y="143" width="12" height="16" rx="3" fill="#dc2626"/>
-            <circle cx="100" cy="138" r="6" fill="#fbbf24"/>
-            <rect x="95" y="144" width="10" height="13" rx="3" fill="#a78bfa"/>
-            <!-- Stars -->
-            <circle cx="50" cy="50" r="3" fill="#ffd166"><animate attributeName="opacity" values="1;0;1" dur="1.3s" repeatCount="indefinite"/></circle>
-            <circle cx="150" cy="45" r="2.5" fill="#ffd166"><animate attributeName="opacity" values="0;1;0" dur="1.7s" repeatCount="indefinite"/></circle>
-          </svg>
-        </div>
-        <div class="pc-body">
-          <div class="pc-tt">&#128737; Pure Term Insurance</div>
-          <div class="pc-ds">Maximum cover at minimum cost. Family ko full amount milta hai agar aap policy term mein nahi rahe. Sabse honest life protection.</div>
-          <div class="pc-from">From <strong>&#8377;490/mo</strong> for &#8377;1 Crore cover</div>
-          <div class="pc-rows">
-            <div class="pc-row"><span>&#10003;</span>Highest cover, lowest premium</div>
-            <div class="pc-row"><span>&#10003;</span>Riders: accident, critical illness</div>
-            <div class="pc-row"><span>&#10003;</span>10 to 40 year term options</div>
-          </div>
-          <a href="book.html" class="bq">Get Quote for Term Plan &#8594;</a>
-        </div>
+    <div class="stag rv">The Reality</div>
+    <h2 class="stit rv d1">Medical costs are rising fast.<br/><em>Is your family protected?</em></h2>
+    <div class="real-g">
+      <div class="stat-list">
+        <div class="scard rv d1"><div class="sc-num">₹3–8L</div><div class="sc-txt"><strong>ICU admission in Hyderabad</strong><span>One critical illness can erase years of savings overnight.</span></div></div>
+        <div class="scard rv d2"><div class="sc-num">14%</div><div class="sc-txt"><strong>Annual medical inflation in India</strong><span>Healthcare costs double every 5 years — savings cannot keep pace.</span></div></div>
+        <div class="scard rv d3"><div class="sc-num">63%</div><div class="sc-txt"><strong>Indians pay from personal savings</strong><span>Most families are one hospitalisation away from a financial crisis.</span></div></div>
+        <div class="scard rv d4"><div class="sc-num">₹500</div><div class="sc-txt"><strong>Daily premium for a ₹10L family floater</strong><span>Less than chai and breakfast — covers your entire family.</span></div></div>
       </div>
-
-      <!-- Plan 2: ULIP — Animated chart SVG -->
-      <div class="pc rv d2">
-        <div class="pc-art" style="background:linear-gradient(145deg,#0f1a0a,#1a2e0e);">
-          <svg width="200" height="170" viewBox="0 0 200 170" fill="none">
-            <!-- Chart bars growing -->
-            <rect x="30" y="120" width="22" height="35" rx="4" fill="#15803d" transform-origin="30 155" transform="scaleY(0)"><animate attributeName="height" values="0;35;35" dur="2s" repeatCount="indefinite" begin="0s"/><animate attributeName="y" values="155;120;120" dur="2s" repeatCount="indefinite" begin="0s"/></rect>
-            <rect x="62" y="100" width="22" height="55" rx="4" fill="#16a34a" transform-origin="62 155"><animate attributeName="height" values="0;55;55" dur="2s" repeatCount="indefinite" begin="0.3s"/><animate attributeName="y" values="155;100;100" dur="2s" repeatCount="indefinite" begin="0.3s"/></rect>
-            <rect x="94" y="75" width="22" height="80" rx="4" fill="#22c55e"><animate attributeName="height" values="0;80;80" dur="2s" repeatCount="indefinite" begin="0.6s"/><animate attributeName="y" values="155;75;75" dur="2s" repeatCount="indefinite" begin="0.6s"/></rect>
-            <rect x="126" y="50" width="22" height="105" rx="4" fill="#4ade80"><animate attributeName="height" values="0;105;105" dur="2s" repeatCount="indefinite" begin="0.9s"/><animate attributeName="y" values="155;50;50" dur="2s" repeatCount="indefinite" begin="0.9s"/></rect>
-            <!-- Chart line -->
-            <polyline points="41,120 73,100 105,75 137,50" stroke="#ffd166" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-            <!-- Arrow up -->
-            <polygon points="137,38 130,55 144,55" fill="#ffd166"/>
-            <!-- Baseline -->
-            <line x1="20" y1="155" x2="180" y2="155" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
-            <!-- Labels -->
-            <text x="23" y="168" font-size="9" fill="rgba(255,255,255,0.4)">Yr 1</text>
-            <text x="55" y="168" font-size="9" fill="rgba(255,255,255,0.4)">Yr 5</text>
-            <text x="87" y="168" font-size="9" fill="rgba(255,255,255,0.4)">Yr 10</text>
-            <text x="119" y="168" font-size="9" fill="rgba(255,255,255,0.4)">Yr 20</text>
-            <!-- Shield small -->
-            <path d="M158 25 L175 32 L175 58 Q175 72 158 78 Q141 72 141 58 L141 32 Z" fill="rgba(21,101,192,0.3)" stroke="#3b82f6" stroke-width="1.5"/>
-            <text x="150" y="52" font-size="14" fill="#93c5fd">&#128737;</text>
-          </svg>
-        </div>
-        <div class="pc-body">
-          <div class="pc-tt">&#128200; ULIP — Insurance + Investment</div>
-          <div class="pc-ds">Premium ka ek hissa equity/debt funds mein invest hota hai. Life cover + potential market-linked returns. 5-year lock-in.</div>
-          <div class="pc-from">From <strong>&#8377;2,500/mo</strong> for &#8377;25L cover</div>
-          <div class="pc-rows">
-            <div class="pc-row"><span>&#10003;</span>Dual benefit: cover + investment</div>
-            <div class="pc-row"><span>&#10003;</span>Fund types switch karo anytime</div>
-            <div class="pc-row"><span>&#10003;</span>Tax-free maturity under 10(10D)</div>
-          </div>
-          <a href="book.html" class="bq">Get Quote for ULIP &#8594;</a>
-        </div>
-      </div>
-
-      <!-- Plan 3: Endowment — Matka/piggy bank SVG -->
-      <div class="pc rv d3">
-        <div class="pc-art" style="background:linear-gradient(145deg,#1a0f00,#2d1a00);">
-          <svg width="200" height="170" viewBox="0 0 200 170" fill="none">
-            <!-- Indian clay pot (matka/gullak) -->
-            <ellipse cx="100" cy="130" rx="48" ry="20" fill="#92400e" opacity="0.6"/>
-            <path d="M52 105 Q52 155 100 155 Q148 155 148 105 Q148 75 100 72 Q52 75 52 105Z" fill="#c2410c" stroke="#9a3412" stroke-width="2"/>
-            <!-- Pot neck -->
-            <rect x="82" y="62" width="36" height="18" rx="5" fill="#b45309" stroke="#92400e" stroke-width="1.5"/>
-            <!-- Pot rim -->
-            <ellipse cx="100" cy="62" rx="22" ry="7" fill="#d97706" stroke="#92400e" stroke-width="1.5"/>
-            <!-- Slot on top -->
-            <rect x="94" y="56" width="12" height="5" rx="2" fill="#7c2d12"/>
-            <!-- Rupee symbol on pot -->
-            <text x="86" y="116" font-size="22" fill="#ffd166" font-weight="bold" opacity="0.7">&#8377;</text>
-            <!-- Coins floating out of top with animation -->
-            <circle cx="90" cy="45" r="9" fill="#f5a623" stroke="#d97706" stroke-width="1.5"><animate attributeName="cy" values="45;25;45" dur="1.8s" repeatCount="indefinite" begin="0s"/><animate attributeName="opacity" values="1;0;1" dur="1.8s" repeatCount="indefinite" begin="0s"/></circle>
-            <text x="85" y="49" font-size="10" fill="#78350f" font-weight="bold"><animate attributeName="y" values="49;29;49" dur="1.8s" repeatCount="indefinite" begin="0s"/>&#8377;</text>
-            <circle cx="110" cy="40" r="8" fill="#f5a623" stroke="#d97706" stroke-width="1.5"><animate attributeName="cy" values="40;18;40" dur="2.2s" repeatCount="indefinite" begin="0.4s"/><animate attributeName="opacity" values="1;0;1" dur="2.2s" repeatCount="indefinite" begin="0.4s"/></circle>
-            <!-- Tick/guaranteed badge -->
-            <circle cx="148" cy="80" r="16" fill="#15803d" stroke="#22c55e" stroke-width="2"/>
-            <path d="M141 80 L146 86 L156 73" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            <text x="134" y="105" font-size="8" fill="#4ade80" font-weight="bold">Guaranteed</text>
-          </svg>
-        </div>
-        <div class="pc-body">
-          <div class="pc-tt">&#128188; Endowment / Money Back</div>
-          <div class="pc-ds">Guaranteed returns whether you survive or not. Lower cover but assured payout. Risk-averse families ke liye — guaranteed savings.</div>
-          <div class="pc-from">From <strong>&#8377;3,000/mo</strong> for &#8377;10L cover</div>
-          <div class="pc-rows">
-            <div class="pc-row"><span>&#10003;</span>Guaranteed maturity amount</div>
-            <div class="pc-row"><span>&#10003;</span>Periodic payouts (money back)</div>
-            <div class="pc-row"><span>&#10003;</span>Loan facility against policy</div>
-          </div>
-          <a href="book.html" class="bq">Get Quote for Endowment &#8594;</a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- TERM vs ENDOWMENT comparison — SVG illustrations -->
-<section class="sec sa">
-  <div class="si">
-    <div class="tag rv">Side-by-Side</div>
-    <h2 class="tit rv d1">Term vs Endowment —<br/><em>sach jo koi nahi batata</em></h2>
-    <p class="sub rv d2" style="margin-bottom:1.8rem;">90% Indians endowment buy karte hain sochte hain ki ye better hai. Numbers ek alag kahani sunate hain. Hum honest comparison dikhate hain.</p>
-    <div class="comp-g rv d1">
-      <div class="cpc cpc-1">
-        <div class="cpc-art" style="background:linear-gradient(145deg,#050d1f,#0a1a3a);">
-          <svg width="300" height="190" viewBox="0 0 300 190" fill="none">
-            <!-- Big shield -->
-            <path d="M150 20 L220 48 L220 110 Q220 160 150 180 Q80 160 80 110 L80 48 Z" fill="rgba(29,78,216,0.2)" stroke="#3b82f6" stroke-width="2.5"/>
-            <!-- 1 Crore badge -->
-            <rect x="105" y="52" width="90" height="28" rx="8" fill="rgba(29,78,216,0.4)" stroke="#3b82f6" stroke-width="1"/>
-            <text x="115" y="71" font-size="14" fill="#93c5fd" font-weight="bold">&#8377;1,00,00,000</text>
-            <!-- Price tag -->
-            <rect x="110" y="88" width="80" height="24" rx="6" fill="rgba(245,166,35,0.15)" stroke="#f5a623" stroke-width="1"/>
-            <text x="118" y="104" font-size="12" fill="#ffd166" font-weight="bold">&#8377;720 / month</text>
-            <!-- Indian family at bottom -->
-            <circle cx="130" cy="148" r="10" fill="#93c5fd"/>
-            <rect x="122" y="158" width="16" height="20" rx="3" fill="#1d4ed8"/>
-            <circle cx="170" cy="148" r="10" fill="#fca5a5"/>
-            <circle cx="170" cy="142" r="2.5" fill="#f87171"/>
-            <rect x="162" y="158" width="16" height="20" rx="3" fill="#dc2626"/>
-            <circle cx="150" cy="151" r="8" fill="#fbbf24"/>
-            <rect x="143" y="159" width="14" height="18" rx="3" fill="#a78bfa"/>
-            <!-- Stars -->
-            <circle cx="90" cy="60" r="3" fill="#ffd166"><animate attributeName="opacity" values="1;0;1" dur="1.3s" repeatCount="indefinite"/></circle>
-            <circle cx="210" cy="55" r="2.5" fill="#ffd166"><animate attributeName="opacity" values="0;1;0" dur="1.7s" repeatCount="indefinite"/></circle>
-          </svg>
-        </div>
-        <div class="cpc-body">
-          <div class="cpc-tag">&#128153; Pure Term Plan</div>
-          <div class="cpc-tt">&#8377;1 Crore Term · Age 30, 30 saal</div>
-          <div class="cpc-ds">Simple. Honest. Maximum protection at minimum cost.</div>
-          <div class="cpc-rows">
-            <div class="cpc-row"><span class="k">Monthly premium</span><span class="v">&#8377;720</span></div>
-            <div class="cpc-row"><span class="k">Cover amount</span><span class="v">&#8377;1,00,00,000</span></div>
-            <div class="cpc-row"><span class="k">30 saal mein total paid</span><span class="v">&#8377;2,59,200</span></div>
-            <div class="cpc-row"><span class="k">Cover : Premium ratio</span><span class="v">385x</span></div>
-            <div class="cpc-row"><span class="k">Survive karo to</span><span class="v">&#8377;0 (pure protection)</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="cpc cpc-2">
-        <div class="cpc-art" style="background:linear-gradient(145deg,#1a0a00,#2a1000);">
-          <svg width="300" height="190" viewBox="0 0 300 190" fill="none">
-            <!-- Stack of coins -->
-            <ellipse cx="150" cy="155" rx="50" ry="15" fill="#b45309"/>
-            <ellipse cx="150" cy="140" rx="50" ry="15" fill="#c2410c"/>
-            <ellipse cx="150" cy="125" rx="50" ry="15" fill="#d97706"/>
-            <ellipse cx="150" cy="110" rx="50" ry="15" fill="#f59e0b"/>
-            <ellipse cx="150" cy="95" rx="50" ry="15" fill="#fbbf24"/>
-            <!-- Rupee on top coin -->
-            <text x="136" y="100" font-size="18" fill="#78350f" font-weight="bold">&#8377;</text>
-            <!-- Small shield — low cover -->
-            <path d="M150 20 L185 34 L185 65 Q185 88 150 98 Q115 88 115 65 L115 34 Z" fill="rgba(234,88,12,0.2)" stroke="#f97316" stroke-width="2"/>
-            <!-- 10L text -->
-            <text x="128" y="56" font-size="11" fill="#fdba74" font-weight="bold">&#8377;10L only</text>
-            <!-- Price high -->
-            <rect x="88" y="68" width="125" height="22" rx="6" fill="rgba(234,88,12,0.15)" stroke="#f97316" stroke-width="1"/>
-            <text x="96" y="83" font-size="11" fill="#fdba74" font-weight="bold">&#8377;3,200 / month</text>
-          </svg>
-        </div>
-        <div class="cpc-body">
-          <div class="cpc-tag">&#128992; Endowment Plan</div>
-          <div class="cpc-tt">&#8377;10L Endowment · Age 30, 30 saal</div>
-          <div class="cpc-ds">Lower cover. Higher premium. Guaranteed return — par kya ye sach mein deal hai?</div>
-          <div class="cpc-rows">
-            <div class="cpc-row"><span class="k">Monthly premium</span><span class="v">&#8377;3,200</span></div>
-            <div class="cpc-row"><span class="k">Cover amount</span><span class="v">&#8377;10,00,000</span></div>
-            <div class="cpc-row"><span class="k">30 saal mein total paid</span><span class="v">&#8377;11,52,000</span></div>
-            <div class="cpc-row"><span class="k">Cover : Premium ratio</span><span class="v">sirf 3x</span></div>
-            <div class="cpc-row"><span class="k">Survive karo to</span><span class="v">~&#8377;14–16L (4–5% CAGR)</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="cverd rv d2">
-      <div class="cvic">&#128161;</div>
       <div>
-        <div class="cvtt">Humara honest verdict: Term almost always better hai protection ke liye</div>
-        <div class="cvds">Wohi &#8377;3,200/month jo aap endowment mein doge — ussi se &#8377;1 Crore term cover lo AND &#8377;2,480 SIP mein invest karo. Result: Maximum life cover + 4–6x zyada wealth maturity pe. Hum yahi comparison aapko decision se pehle dikhate hain.</div>
+        <p class="rv" style="font-size:.8rem;color:rgba(255,255,255,.42);margin-bottom:1.2rem;">What common procedures cost at Hyderabad private hospitals today:</p>
+        <div class="cbars rv d1">
+          <div class="cb"><div class="cb-r"><span class="cb-l">Heart Bypass Surgery</span><span class="cb-a">₹3.5–6L</span></div><div class="cb-tr"><div class="cb-fill" data-w="90"></div></div></div>
+          <div class="cb"><div class="cb-r"><span class="cb-l">Knee Replacement</span><span class="cb-a">₹1.8–3.5L</span></div><div class="cb-tr"><div class="cb-fill" data-w="58"></div></div></div>
+          <div class="cb"><div class="cb-r"><span class="cb-l">Cancer Treatment (per cycle)</span><span class="cb-a">₹1.2–2.5L</span></div><div class="cb-tr"><div class="cb-fill" data-w="68"></div></div></div>
+          <div class="cb"><div class="cb-r"><span class="cb-l">Normal Delivery (Private)</span><span class="cb-a">₹60K–1.2L</span></div><div class="cb-tr"><div class="cb-fill" data-w="34"></div></div></div>
+          <div class="cb"><div class="cb-r"><span class="cb-l">ICU stay per day</span><span class="cb-a">₹15K–35K</span></div><div class="cb-tr"><div class="cb-fill" data-w="44"></div></div></div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CALCULATOR — Indian advisor real photo -->
+<!-- ════════ PLAN TYPES ════════ -->
+<section class="sec sec-alt">
+  <div class="si">
+    <div class="stag rv">Plan Types</div>
+    <h2 class="stit rv d1">Which plan is right<br/>for <em>your family?</em></h2>
+    <p class="ssub rv d2">We compare plans from 15+ insurers and recommend the best fit for your age, budget, and health history.</p>
+    <div class="plans-g">
+      <div class="pc rv d1">
+        <div class="pc-badge">Most Popular</div>
+        <div class="pc-ic" style="background:rgba(21,101,192,.2);">👨‍👩‍👧‍👦</div>
+        <div class="pc-tt">Family Floater Plan</div>
+        <div class="pc-ds">One shared sum insured for the whole family. Very cost-effective for young, healthy families — the full cover is available to whichever member needs it.</div>
+        <div class="pc-bf">Best for: <span>Young families with parents below 45</span></div>
+        <a href="book.html" class="bq">Get Quote for Family Floater →</a>
+      </div>
+      <div class="pc rv d2">
+        <div class="pc-ic" style="background:rgba(74,222,128,.12);">👤</div>
+        <div class="pc-tt">Individual Plan</div>
+        <div class="pc-ds">Dedicated sum insured for each person. Each member keeps their full cover regardless of others' claims — ideal when health histories differ.</div>
+        <div class="pc-bf">Best for: <span>Members with pre-existing conditions</span></div>
+        <a href="book.html" class="bq">Get Quote for Individual Plan →</a>
+      </div>
+      <div class="pc rv d3">
+        <div class="pc-ic" style="background:rgba(230,168,23,.12);">👴</div>
+        <div class="pc-tt">Senior Citizen Plan</div>
+        <div class="pc-ds">Designed for parents aged 60+. Regular plans charge extremely high premiums for seniors. Senior plans offer proper age-appropriate coverage at manageable cost.</div>
+        <div class="pc-bf">Best for: <span>Parents aged 60 and above</span></div>
+        <a href="book.html" class="bq">Get Quote for Senior Plan →</a>
+      </div>
+      <div class="pc rv d4">
+        <div class="pc-ic" style="background:rgba(168,85,247,.12);">➕</div>
+        <div class="pc-tt">Super Top-Up Plan</div>
+        <div class="pc-ds">Adds extra coverage above your base plan at very low cost. Turn your employer's ₹5L cover into ₹25L total protection for less than ₹4,000/year extra.</div>
+        <div class="pc-bf">Best for: <span>Anyone wanting more cover at low cost</span></div>
+        <a href="book.html" class="bq">Get Quote for Super Top-Up →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ COVERAGE ════════ -->
 <section class="sec">
   <div class="si">
-    <div class="calc-w">
-      <div class="calc-img-wrap rv">
-        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=700&q=80" alt="Indian financial advisor"/>
-        <div class="calc-ov">
-          <div class="cc">
-            <div class="cct">&#128203; Sample Plan — Age 30</div>
-            <div class="ccr"><span class="ccl">Plan</span><span class="ccv">HDFC Click2Protect</span></div>
-            <div class="ccr"><span class="ccl">Cover</span><span class="ccv">&#8377;1 Crore</span></div>
-            <div class="ccr"><span class="ccl">Term</span><span class="ccv">30 years</span></div>
-            <div class="ccr"><span class="ccl">Claim ratio</span><span class="ccv">98.6%</span></div>
-            <div class="ccbig" id="calcd">&#8377;720/mo</div>
-          </div>
-        </div>
+    <div class="stag rv">Coverage</div>
+    <h2 class="stit rv d1">What is <em>covered</em> — and what is not</h2>
+    <p class="ssub rv d2">Most surprises at claim time happen because nobody explained exclusions at purchase. We walk you through this before you buy.</p>
+    <div class="cov-g">
+      <div class="cov-col rv d1">
+        <div class="cov-h"><div class="cov-dot" style="background:var(--green)"></div><div class="cov-tt">Typically Covered ✓</div></div>
+        <ul class="cov-ul">
+          <li><span class="ci">✅</span>Inpatient hospitalisation (24hrs+)</li>
+          <li><span class="ci">✅</span>ICU &amp; critical care charges</li>
+          <li><span class="ci">✅</span>Pre-hospitalisation (30–60 days)</li>
+          <li><span class="ci">✅</span>Post-hospitalisation (60–90 days)</li>
+          <li><span class="ci">✅</span>500+ daycare procedures</li>
+          <li><span class="ci">✅</span>Ambulance charges</li>
+          <li><span class="ci">✅</span>Organ donor expenses</li>
+          <li><span class="ci">✅</span>Mental illness treatment (most new plans)</li>
+          <li><span class="ci">✅</span>AYUSH treatments</li>
+          <li><span class="ci">✅</span>Domiciliary hospitalisation</li>
+        </ul>
       </div>
-      <div class="calc-form rv d1">
-        <div class="tag">Quick Estimator</div>
-        <h2 class="tit d1" style="font-size:clamp(1.4rem,2.2vw,2rem);margin-bottom:1.5rem;">30 seconds mein<br/><em>apna premium estimate karo</em></h2>
-        <div class="cf-row">
-          <div class="cf-lbl">Aapki Umar <span id="ageVal">30 saal</span></div>
-          <input type="range" class="cf-range" id="ageRange" min="18" max="55" value="30"/>
-        </div>
-        <div class="cf-row">
-          <div class="cf-lbl">Cover Amount</div>
-          <div class="cf-pills">
-            <div class="cf-pill on" data-cover="50">&#8377;50L</div>
-            <div class="cf-pill" data-cover="100">&#8377;1 Cr</div>
-            <div class="cf-pill" data-cover="200">&#8377;2 Cr</div>
-            <div class="cf-pill" data-cover="500">&#8377;5 Cr</div>
-          </div>
-        </div>
-        <div class="cf-row">
-          <div class="cf-lbl">Policy Term</div>
-          <div class="cf-pills">
-            <div class="cf-pill" data-term="10">10 saal</div>
-            <div class="cf-pill" data-term="20">20 saal</div>
-            <div class="cf-pill on" data-term="30">30 saal</div>
-            <div class="cf-pill" data-term="40">40 saal</div>
-          </div>
-        </div>
-        <div class="cf-row">
-          <div class="cf-lbl">Smoker?</div>
-          <div class="cf-pills">
-            <div class="cf-pill on" data-smoke="0">Non-smoker</div>
-            <div class="cf-pill" data-smoke="1">Smoker (+35%)</div>
-          </div>
-        </div>
-        <div class="cf-res">
-          <div class="cfrl">Estimated Monthly Premium</div>
-          <div class="cfrp" id="cfResult">&#8377;720</div>
-          <div class="cfrn">Indicative only. Exact premium depends on health history. Book a session for accurate comparison.</div>
-        </div>
-        <a href="book.html" class="bg" style="width:100%;justify-content:center;margin-top:1rem;">Get Exact Quotes from 15+ Insurers &#8594;</a>
+      <div class="cov-col rv d2">
+        <div class="cov-h"><div class="cov-dot" style="background:#f87171"></div><div class="cov-tt">Typically NOT Covered ✗</div></div>
+        <ul class="cov-ul">
+          <li><span class="ci">❌</span>Cosmetic or aesthetic procedures</li>
+          <li><span class="ci">❌</span>Dental (unless due to accident)</li>
+          <li><span class="ci">❌</span>Spectacles, hearing aids, contact lenses</li>
+          <li><span class="ci">❌</span>Pre-existing conditions (during waiting period)</li>
+          <li><span class="ci">❌</span>OPD consultations (basic plans)</li>
+          <li><span class="ci">❌</span>Maternity (first 2–4 years in most plans)</li>
+          <li><span class="ci">❌</span>Weight loss / obesity surgery</li>
+          <li><span class="ci">❌</span>Experimental treatments</li>
+          <li><span class="ci">❌</span>Self-inflicted injuries</li>
+          <li><span class="ci">❌</span>War or nuclear hazard illness</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- TRUST STRIP -->
-<div class="trust">
-  <div class="tl-wrap">Jinhe Hum Compare Karte Hain</div>
-  <div class="tl-logos">
-    <div class="tl">LIC of India</div><div class="tl">HDFC Life</div><div class="tl">ICICI Prudential</div>
-    <div class="tl">Max Life</div><div class="tl">SBI Life</div><div class="tl">Tata AIA</div>
-    <div class="tl">Bajaj Allianz</div><div class="tl">Kotak Life</div><div class="tl">Aditya Birla</div><div class="tl">PNB MetLife</div>
-  </div>
-</div>
-
-<!-- STORIES — No photos, clean text cards -->
-<section class="sec sa">
+<!-- ════════ MISTAKES ════════ -->
+<section class="sec sec-alt">
   <div class="si">
-    <div class="tag rv">Real Stories</div>
-    <h2 class="tit rv d1">Jinhe humne<br/><em>protect kiya</em></h2>
-    <p class="sub rv d2" style="margin-bottom:1.8rem;">Insurance ka asli test claim ke waqt hota hai. Hum woh policies bechte hain jinka hume confidence hai — ye families is proof hain.</p>
+    <div class="stag rv">Buyer Traps</div>
+    <h2 class="stit rv d1">6 mistakes that cost<br/>families <em>lakhs of rupees</em></h2>
+    <p class="ssub rv d2">These are the exact mistakes we prevent when we sell you a policy — so nothing surprises you later.</p>
+    <div class="mk-g">
+      <div class="mk rv d1"><div class="mk-n">01</div><div class="mk-t">Not Disclosing Pre-Existing Conditions</div><div class="mk-d">Hiding diabetes, BP, or past surgeries to get a lower premium. Insurers check medical history during every claim — this gets policies cancelled.</div><div class="mk-f">We ensure full honest disclosure so your policy holds up when needed.</div></div>
+      <div class="mk rv d2"><div class="mk-n">02</div><div class="mk-t">Buying Cheapest Without Reading Exclusions</div><div class="mk-d">Low-premium plans hide ₹1,500 room rent sub-limits that trigger proportional deduction of your entire bill — not just the room charge.</div><div class="mk-f">We show you the actual effective coverage — not just the headline premium.</div></div>
+      <div class="mk rv d3"><div class="mk-n">03</div><div class="mk-t">Choosing Wrong Sum Insured</div><div class="mk-d">Families in Hyderabad buy ₹3L cover and discover that a single surgery costs ₹4–6L. Underinsurance is one of the most common mistakes we see.</div><div class="mk-f">We calculate the right cover based on your city, hospital preference, and family size.</div></div>
+      <div class="mk rv d4"><div class="mk-n">04</div><div class="mk-t">Putting Parents in a Family Floater</div><div class="mk-d">Including elderly parents inflates the premium for the entire family by 40–60% because rates are based on the oldest member's age.</div><div class="mk-f">We recommend separate senior plans for parents — same or better cover, lower total cost.</div></div>
+      <div class="mk rv d5"><div class="mk-n">05</div><div class="mk-t">Ignoring the Waiting Period</div><div class="mk-d">30-day initial wait. 2–4 years for pre-existing diseases. 1–2 years for specific surgeries like cataract, hernia. Buying late means waiting longer.</div><div class="mk-f">We tell you the exact waiting period for every condition before you buy.</div></div>
+      <div class="mk rv d3"><div class="mk-n">06</div><div class="mk-t">Letting the Policy Lapse at Renewal</div><div class="mk-d">Even a 1-day lapse resets your waiting period, cancels no-claim bonus, and makes pre-existing conditions ineligible again from scratch.</div><div class="mk-f">We send you renewal reminders 30, 15, and 5 days before expiry — free of charge.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ PLAN COMPARISON TABLE ════════ -->
+<section class="sec">
+  <div class="si">
+    <div class="stag rv">Top Plans</div>
+    <h2 class="stit rv d1">Plans we <em>recommend</em><br/>for AP &amp; Telangana</h2>
+    <p class="ssub rv d2">We compared 30+ plans on claim settlement, network hospitals, and value. These consistently top the list for our region.</p>
+    <div class="tw rv d1">
+      <table class="ct">
+        <thead>
+          <tr>
+            <th>Plan</th><th>Sum Insured</th><th>Annual Premium*</th><th>Network Hospitals</th><th>Claim Ratio</th><th>Restore</th><th>Rating</th><th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="pn">Niva Bupa ReAssure 2.0</span><span class="bb">Our Pick</span></td>
+            <td>₹5L–1Cr</td><td>₹12,000–18,000</td><td>10,000+</td><td>91.6%</td><td><span class="ck">✓</span></td><td><span class="rt">★ 4.8</span></td>
+            <td><a href="book.html" class="tq">Get Quote →</a></td>
+          </tr>
+          <tr>
+            <td><span class="pn">Star Health Comprehensive</span></td>
+            <td>₹5L–1Cr</td><td>₹11,500–16,000</td><td>14,000+</td><td>89.2%</td><td><span class="ck">✓</span></td><td><span class="rt">★ 4.6</span></td>
+            <td><a href="book.html" class="tq">Get Quote →</a></td>
+          </tr>
+          <tr>
+            <td><span class="pn">HDFC ERGO Optima Secure</span></td>
+            <td>₹5L–2Cr</td><td>₹14,000–22,000</td><td>13,000+</td><td>90.1%</td><td><span class="ck">✓</span></td><td><span class="rt">★ 4.7</span></td>
+            <td><a href="book.html" class="tq">Get Quote →</a></td>
+          </tr>
+          <tr>
+            <td><span class="pn">Care Health Supreme</span></td>
+            <td>₹5L–6Cr</td><td>₹10,000–15,000</td><td>19,000+</td><td>86.4%</td><td><span class="ck">✓</span></td><td><span class="rt">★ 4.5</span></td>
+            <td><a href="book.html" class="tq">Get Quote →</a></td>
+          </tr>
+          <tr>
+            <td><span class="pn">Aditya Birla Activ One</span></td>
+            <td>₹10L–6Cr</td><td>₹15,000–25,000</td><td>11,000+</td><td>93.2%</td><td><span class="ck">✓</span></td><td><span class="rt">★ 4.7</span></td>
+            <td><a href="book.html" class="tq">Get Quote →</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:.66rem;color:var(--muted);margin-top:.6rem;">*Indicative for family of 4 (35yr, 32yr + 2 kids) at ₹10L cover. Exact premium depends on age, city, and medical history. Contact us for your personalised quote.</p>
+  </div>
+</section>
+
+<!-- ════════ HOW WE SELL ════════ -->
+<section class="sec sec-alt">
+  <div class="si">
+    <div class="stag rv">Our Process</div>
+    <h2 class="stit rv d1">From your first call<br/>to <em>policy in hand</em></h2>
+    <p class="ssub rv d2">We keep it simple. You book a session, we compare plans, you choose, and your policy is issued — often the same day.</p>
+    <div class="cl-g rv">
+      <div class="cl-s"><div class="cl-c">📞</div><div class="cl-t">Book a Session</div><div class="cl-d">Call, WhatsApp, or book online. Free, no obligation.</div></div>
+      <div class="cl-s"><div class="cl-c">🔍</div><div class="cl-t">We Compare Plans</div><div class="cl-d">We analyse 15+ insurers and shortlist the best 3–4 for your needs.</div></div>
+      <div class="cl-s"><div class="cl-c">💬</div><div class="cl-t">We Explain Everything</div><div class="cl-d">Inclusions, exclusions, waiting periods — in Telugu or English, clearly.</div></div>
+      <div class="cl-s"><div class="cl-c">✅</div><div class="cl-t">You Choose</div><div class="cl-d">No pressure. You pick the plan that feels right. We fill the form.</div></div>
+      <div class="cl-s"><div class="cl-c">📄</div><div class="cl-t">Policy Issued</div><div class="cl-d">Policy document delivered digitally. We remind you before every renewal.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ REAL STORIES ════════ -->
+<section class="sec">
+  <div class="si">
+    <div class="stag rv">Customer Stories</div>
+    <h2 class="stit rv d1">Families we helped find<br/><em>the right policy</em></h2>
+    <p class="ssub rv d2" style="margin-bottom:1.8rem;">Real families across AP &amp; Telangana who came confused and left with exactly the right cover.</p>
     <div class="st-g">
       <div class="stc rv d1">
-        <div class="stc-top">
-          <div>
-            <div class="stc-amt">&#8377;1 Crore</div>
-            <div class="stc-type">Term Insurance · 18 din mein settled</div>
-          </div>
-          <div class="stc-sr">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        </div>
-        <p class="stc-tx">Rajesh Varma, 38, road accident mein chale gaye. Family ko &#8377;1 Crore tax-free 18 din mein mila. Wife ne home loan clear kiya aur dono bacchon ki education fund ki.</p>
-        <div class="stc-q">"Cover Credit ne claim itna simple bana diya. Kisi se ladna nahi pada. Documents mil gaye — aur jeevan phir se shuru hua."</div>
-        <div><div class="stc-nm">Priya Varma</div><div class="stc-rl">Hyderabad, Telangana</div></div>
+        <div class="stc-tag">👨‍👩‍👧 Family Floater</div>
+        <div class="stc-amt">₹10 Lakhs</div>
+        <div class="stc-set">Niva Bupa ReAssure — ₹13,200/year</div>
+        <p class="stc-tx">"We had no idea what health insurance to buy. The advisor at Cover Credit explained the difference between a floater and individual plan in 10 minutes. We got the right plan for our family of 4 at a price we never expected. Renews automatically every year — zero effort."</p>
+        <div class="stc-p"><div class="stc-av">RK</div><div><div class="stc-nm">Ravi Kumar Reddy</div><div class="stc-mt">IT Professional, Hyderabad</div></div><div class="stc-sr">⭐⭐⭐⭐⭐</div></div>
       </div>
       <div class="stc rv d2">
-        <div class="stc-top">
-          <div>
-            <div class="stc-amt">&#8377;15 Lakhs</div>
-            <div class="stc-type">Critical Illness Rider · Heart attack, 44 saal</div>
-          </div>
-          <div class="stc-sr">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        </div>
-        <p class="stc-tx">Suresh Naidu ke term plan mein CI rider tha. Heart attack ke baad &#8377;15L immediately mila — 100% treatment ka kharcha, savings nahi chhuye.</p>
-        <div class="stc-q">"Cover Credit ke advisor ne specifically CI rider recommend kiya tha. Unke bina main financially tabah ho jaata. Shukriya."</div>
-        <div><div class="stc-nm">Suresh Naidu</div><div class="stc-rl">Vijayawada, AP</div></div>
+        <div class="stc-tag">👴 Senior Plan</div>
+        <div class="stc-amt">₹5 Lakhs</div>
+        <div class="stc-set">Star Senior Citizen Red Carpet — ₹18,500/year</div>
+        <p class="stc-tx">"Naa parents ki diabetes undi. Every agent was quoting crazy premiums to add them to my family policy. Cover Credit explained the right solution — a separate senior citizen plan. ₹18,500/year for both parents with diabetes covered. Best advice I ever got."</p>
+        <div class="stc-p"><div class="stc-av">DP</div><div><div class="stc-nm">Deepika Prasad</div><div class="stc-mt">Teacher, Vijayawada</div></div><div class="stc-sr">⭐⭐⭐⭐⭐</div></div>
       </div>
       <div class="stc rv d3">
-        <div class="stc-top">
-          <div>
-            <div class="stc-amt">&#8377;75 Lakhs</div>
-            <div class="stc-type">Term Plan · 22 din mein settled</div>
-          </div>
-          <div class="stc-sr">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        </div>
-        <p class="stc-tx">Kavitha ke pati ne Cover Credit se &#8377;75L plan liya tha — unke jane ke sirf 8 mahine baad. 22 din mein claim. Teeno bacchon ki padhai graduation tak fully funded.</p>
-        <div class="stc-q">"Mere pati ne kaha — Cover Credit ne sabse achha explain kiya. Unhone usi din liya. Us ek decision ne sab badal diya."</div>
-        <div><div class="stc-nm">Kavitha Reddy</div><div class="stc-rl">Visakhapatnam, AP</div></div>
+        <div class="stc-tag">➕ Super Top-Up</div>
+        <div class="stc-amt">₹30 Lakhs</div>
+        <div class="stc-set">Added on top of employer cover — ₹3,800/year</div>
+        <p class="stc-tx">"My company gives ₹5L cover. Cover Credit showed me how to get ₹35L total effective cover for just ₹3,800 more per year using a super top-up. I never knew this was possible. The policy was issued the same afternoon."</p>
+        <div class="stc-p"><div class="stc-av">SN</div><div><div class="stc-nm">Suresh Narayana</div><div class="stc-mt">Engineer, Visakhapatnam</div></div><div class="stc-sr">⭐⭐⭐⭐⭐</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PROCESS -->
-<section class="sec">
+<!-- ════════ FAQ + SIDEBAR ════════ -->
+<section class="sec sec-alt">
   <div class="si">
-    <div class="tag rv">Humara Process</div>
-    <h2 class="tit rv d1">Pehli call se<br/><em>policy haath mein</em></h2>
-    <div class="pg-g">
-      <div class="pg rv d1"><div class="pg-num">01</div><div class="pg-ic">&#128222;</div><div class="pg-tt">Free Session Book Karo</div><div class="pg-ds">Call, WhatsApp ya online book karo. Free, zero obligation, 30 minutes.</div></div>
-      <div class="pg rv d2"><div class="pg-num">02</div><div class="pg-ic">&#128269;</div><div class="pg-tt">Hum 15+ Plans Compare Karte Hain</div><div class="pg-ds">Income, loans, family — sab analyse karke live aapke saamne compare.</div></div>
-      <div class="pg rv d3"><div class="pg-num">03</div><div class="pg-ic">&#128172;</div><div class="pg-tt">Poori Explanation</div><div class="pg-ds">Har exclusion, har clause — clearly explain in Telugu ya English.</div></div>
-      <div class="pg rv d4"><div class="pg-num">04</div><div class="pg-ic">&#128196;</div><div class="pg-tt">Aaj Hi Policy</div><div class="pg-ds">Aap choose karo, hum form bharte hain — WhatsApp par documents in hours.</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- FAQ + SIDEBAR -->
-<section class="sec sa">
-  <div class="si faq-lay">
-    <div>
-      <div class="tag rv">Aksar Pooche Jaate Hain</div>
-      <h2 class="tit rv d1">Sawaal jo roz<br/><em>hamare paas aate hain</em></h2>
-      <div class="faq-list rv d1">
-        <div class="fi op"><div class="fh"><span class="fq">Kitna life insurance cover lena chahiye?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">Standard rule: annual income ka 10–15x. Par hum precisely calculate karte hain — outstanding loans, dependents, education costs, spouse income, lifestyle. Most AP families ko &#8377;75L–&#8377;2Cr chahiye. Book karo, 10 minute mein exact number batate hain.</p></div></div>
-        <div class="fi"><div class="fh"><span class="fq">LIC better hai ya private insurer?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">LIC ka government backing aur trust great hai. Par private insurers jaise HDFC Life, ICICI Pru, Max Life often have higher claim ratios (98–99%), faster processing (7–15 days vs 30+), aur kam premium same cover ke liye. Hum dono ko honestly compare karte hain.</p></div></div>
-        <div class="fi"><div class="fh"><span class="fq">Diabetes ya BP hai — kya life cover milega?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">Haan, bilkul. Insurer ya to loading ke saath accept karega (10–30% extra), ya temporary exclusion, ya specialist plan. Puri honest disclosure zaroori hai. Hum aapke health profile ke liye sabse favorable insurer dhundhte hain.</p></div></div>
-        <div class="fi"><div class="fh"><span class="fq">Term plan mein riders add karne chahiye?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">Teen worth adding hain: (1) Accidental Death Benefit — payout double if accidental death, sirf &#8377;50–100/month extra. (2) Critical Illness — cancer, heart attack etc par lump sum. Highly recommended. (3) Waiver of Premium — disability par future premiums maaf. Hum sab clearly explain karte hain.</p></div></div>
-        <div class="fi"><div class="fh"><span class="fq">Term plan lene ke liye kaunse documents chahiye?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">Aadhaar (identity + address), PAN (tax), last 3 months salary slips ya ITR income proof ke liye, aur passport photo. &#8377;50L se upar ya 40 saal se upar ke liye medical test ho sakta hai. Hum har requirement mein guide karte hain.</p></div></div>
-        <div class="fi"><div class="fh"><span class="fq">Kya policy cancel karke refund mil sakta hai?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">15-day free look period — 15 din mein cancel karo to full refund. Uske baad term plans ka koi surrender value nahi. ULIPs aur endowment mein 3–5 saal baad surrender value hota hai. Hum sabkuch explain karte hain before you buy.</p></div></div>
-      </div>
-    </div>
-    <aside class="sb2">
-      <div class="sb2-card rv">
-        <!-- SVG illustration for sidebar -->
-        <div class="sb2-art">
-          <svg width="240" height="120" viewBox="0 0 240 120" fill="none">
-            <rect width="240" height="120" fill="rgba(0,0,0,0.2)" rx="10"/>
-            <!-- Advisor cartoon -->
-            <circle cx="80" cy="50" r="22" fill="#c68642" stroke="#8B5E3C" stroke-width="1.5"/>
-            <path d="M58 38 Q80 28 102 38" fill="#1a0a00"/>
-            <!-- Smile -->
-            <path d="M72 58 Q80 65 88 58" stroke="#333" stroke-width="2.5" fill="none"/>
-            <!-- Eyes -->
-            <circle cx="73" cy="50" r="2.5" fill="#333"/>
-            <circle cx="87" cy="50" r="2.5" fill="#333"/>
-            <!-- Kurta blue -->
-            <rect x="63" y="72" width="34" height="40" rx="6" fill="#1565c0"/>
-            <path d="M73 72 L80 82 L87 72" fill="none" stroke="#1976d2" stroke-width="1.5"/>
-            <!-- CC badge -->
-            <rect x="67" y="80" width="26" height="14" rx="3" fill="#f5a623"/>
-            <text x="70" y="91" font-size="9" fill="#78350f" font-weight="bold">CC</text>
-            <!-- Laptop -->
-            <rect x="108" y="60" width="90" height="55" rx="6" fill="#0b1a30" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
-            <rect x="112" y="64" width="82" height="42" rx="4" fill="#0d2137"/>
-            <!-- Screen content -->
-            <rect x="116" y="68" width="30" height="4" rx="2" fill="#f5a623" opacity="0.7"/>
-            <rect x="116" y="75" width="50" height="3" rx="1.5" fill="rgba(255,255,255,0.3)"/>
-            <rect x="116" y="80" width="40" height="3" rx="1.5" fill="rgba(255,255,255,0.2)"/>
-            <!-- Chart bars on screen -->
-            <rect x="142" y="95" width="8" height="10" rx="1" fill="#22c55e"/>
-            <rect x="152" y="88" width="8" height="17" rx="1" fill="#3b82f6"/>
-            <rect x="162" y="78" width="8" height="27" rx="1" fill="#f5a623"/>
-            <rect x="172" y="70" width="8" height="35" rx="1" fill="#f87171"/>
-            <!-- Laptop base -->
-            <rect x="103" y="115" width="100" height="5" rx="2" fill="#0b1a30" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
-          </svg>
+    <div class="faq-lay">
+      <div>
+        <div class="stag rv">FAQ</div>
+        <h2 class="stit rv d1">Questions we get<br/><em>every single day</em></h2>
+        <div class="faq rv d1">
+          <div class="fi op">
+            <div class="fh"><span class="fq">What is the ideal sum insured for a family of 4 in Hyderabad?</span><span class="fi-ic">+</span></div>
+            <div class="fa-b"><p class="fa-t">Minimum ₹10 lakh for a family of 4 with parents below 40. Given hospital costs at Apollo, Care, and Yashoda in Hyderabad, ₹15–20 lakh with a ₹20–50 lakh super top-up is ideal. We calculate the exact right amount for your family — contact us for a personalised recommendation.</p></div>
+          </div>
+          <div class="fi">
+            <div class="fh"><span class="fq">Should I include my parents in a family floater or buy a separate plan?</span><span class="fi-ic">+</span></div>
+            <div class="fa-b"><p class="fa-t">Almost always separate. When parents are added to a floater, the premium is calculated on the oldest member's age — inflating your cost by 40–60%. A dedicated senior citizen plan for parents aged 55+ gives the same or better coverage at a significantly lower total premium.</p></div>
+          </div>
+          <div class="fi">
+            <div class="fh"><span class="fq">What is a waiting period — and why does it matter?</span><span class="fi-ic">+</span></div>
+            <div class="fa-b"><p class="fa-t">Every policy has waiting periods: (1) 30-day initial wait for non-accident claims, (2) 2–4 years for pre-existing conditions like diabetes or hypertension, (3) 1–2 years for specific conditions like cataract, hernia, joint replacement. We explain every waiting period clearly before you sign — so nothing surprises you.</p></div>
+          </div>
+          <div class="fi">
+            <div class="fh"><span class="fq">My employer gives ₹5L group cover. Do I still need personal insurance?</span><span class="fi-ic">+</span></div>
+            <div class="fa-b"><p class="fa-t">Yes. Group cover ends the day you leave your job. ₹5L is insufficient for major surgeries in Hyderabad. A personal ₹10L floater + ₹30L super top-up costs ₹8,000–12,000 per year and gives you permanent, job-independent protection you control.</p></div>
+          </div>
+          <div class="fi">
+            <div class="fh"><span class="fq">Does health insurance cover pre-existing conditions like diabetes?</span><span class="fi-ic">+</span></div>
+            <div class="fa-b"><p class="fa-t">Yes — after the waiting period (usually 2–4 years). The key is to disclose all conditions honestly at purchase. If you declare diabetes, the insurer may load your premium slightly but will cover related hospitalisation after waiting. Non-disclosure at purchase is the #1 reason policies get cancelled.</p></div>
+          </div>
+          <div class="fi">
+            <div class="fh"><span class="fq">Do you help with renewals?</span><span class="fi-ic">+</span></div>
+            <div class="fa-b"><p class="fa-t">Yes — renewal reminders are a free service we provide to every customer we sell a policy to. We send reminders 30 days, 15 days, and 5 days before expiry so you never miss a renewal and never lose your continuity benefits.</p></div>
+          </div>
         </div>
-        <div class="sb2-tt">Aaj hi advisor se baat karo</div>
-        <div class="sb2-ds">Free 30-minute session. Telugu ya English. Hum 15+ plans compare karke best fit dhundhte hain.</div>
-        <a href="book.html" class="sb2-btn">&#128197; Book Free Session</a>
-        <div class="sb2-div">ya seedha call karo</div>
-        <a href="tel:+917842854466" class="sb2-ph">&#128222; +91 78428 54466</a>
       </div>
-      <div class="sb2-plans rv d1">
-        <div class="lbl">Top Plans We Recommend</div>
-        <div class="sp"><span class="sp-star">&#9733;</span><span class="sp-nm">HDFC Life Click2Protect</span></div>
-        <div class="sp"><span class="sp-star">&#9733;</span><span class="sp-nm">Max Life Smart Secure+</span></div>
-        <div class="sp"><span class="sp-star">&#9733;</span><span class="sp-nm">ICICI Pru iProtect Smart</span></div>
-        <div class="sp"><span class="sp-star">&#9733;</span><span class="sp-nm">Tata AIA SRS Vitality</span></div>
-      </div>
-    </aside>
+      <aside class="sb2">
+        <div class="sb2-cta">
+          <div class="sb2-tt">Ready to get covered?</div>
+          <div class="sb2-ds">Talk to our advisor in Telugu or English. We compare 15+ plans and find the best one for your family — free of charge.</div>
+          <a href="book.html" class="sb2-btn">📅 Book Free Consultation</a>
+          <div class="sb2-div">or call directly</div>
+          <a href="tel:+917842854466" class="sb2-call">📞 +91 78428 54466</a>
+        </div>
+        <div class="sb2-pl">
+          <div class="sb2-lbl">Top Plans We Recommend</div>
+          <div class="sb2-plan"><span class="sb2-star">⭐</span><span class="sb2-pn">Niva Bupa ReAssure 2.0</span></div>
+          <div class="sb2-plan"><span class="sb2-star">⭐</span><span class="sb2-pn">Star Health Comprehensive</span></div>
+          <div class="sb2-plan"><span class="sb2-star">⭐</span><span class="sb2-pn">HDFC ERGO Optima Secure</span></div>
+          <div class="sb2-plan"><span class="sb2-star">⭐</span><span class="sb2-pn">Care Health Supreme</span></div>
+        </div>
+        <div class="sb2-lnk">
+          <div class="sb2-lbl">Other Services</div>
+          <a href="life-insurance.html">🛡️ Life Insurance →</a>
+          <a href="car-insurance.html">🚗 Vehicle Insurance →</a>
+          <a href="loans.html">💰 Loans &amp; Finance →</a>
+          <a href="loans.html">📈 Mutual Funds &amp; SIP →</a>
+        </div>
+      </aside>
+    </div>
   </div>
 </section>
 
-<!-- CTA BANNER — Indian family silhouette + real Indian cityscape -->
-<section class="ctab">
-  <div class="ctab-bg">
-    <img src="https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1400&q=75" alt="India"/>
-  </div>
+<!-- CTA BANNER -->
+<section class="cta-s">
   <div class="cta-in">
     <div>
-      <h2 class="cta-tt rv">Aapke parivaar ki suraksha<br/>sochte hain utni mehengi nahi hai.</h2>
-      <p class="cta-ds rv d1">&#8377;720 har mahine. Ek restaurant dinner se bhi kam. 30 saal ke liye &#8377;1 Crore ki protection. Free session book karo — 15+ plans compare karke same day policy.</p>
-      <div class="cta-pills rv d2"><span class="cpill">&#10003; Free comparison</span><span class="cpill">&#10003; Telugu &amp; English</span><span class="cpill">&#10003; Same-day policy</span><span class="cpill">&#10003; No pressure</span></div>
+      <h2 class="cta-tt rv">The best time to buy health<br/>insurance is today.</h2>
+      <p class="cta-ds rv d1">Every day you wait, the waiting period clock has not started. Book a free 30-minute session — we compare 15+ plans and issue your policy same day.</p>
+      <div class="cta-pills rv d2">
+        <span class="cpill">✓ Free comparison</span>
+        <span class="cpill">✓ Telugu &amp; English</span>
+        <span class="cpill">✓ Same-day policy</span>
+        <span class="cpill">✓ Free renewal reminders</span>
+      </div>
     </div>
     <div class="cta-btns rv d2">
-      <a href="book.html" class="bg" style="white-space:nowrap;font-size:.95rem;padding:1rem 2rem;">Book Free Consultation &#8594;</a>
-      <div class="cta-ph">ya call karein: <a href="tel:+917842854466">+91 78428 54466</a></div>
+      <a href="book.html" class="bg" style="white-space:nowrap;">Book Free Consultation →</a>
+      <div class="cta-ph">or call: <a href="tel:+917842854466">+91 78428 54466</a></div>
     </div>
   </div>
 </section>
@@ -1139,54 +854,66 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
   <div class="ft-in">
     <div class="ft-top">
       <div>
-        <a href="index.html" class="ft-logo">Cover<em>Credit</em></a>
-        <p class="ft-ds">AP aur Telangana ke families ke liye honest insurance aur financial advice. Hum sahi policy bechte hain — no pressure, no jargon.</p>
-        <div class="ft-con">&#128222; <a href="tel:+917842854466">+91 78428 54466</a></div>
-        <div class="ft-con">&#9993; <a href="mailto:Covercredit.official@gmail.com">Covercredit.official@gmail.com</a></div>
-        <div class="ft-con">&#128336; Mon–Sat: 9 AM – 7 PM</div>
+        <a href="index.html" class="ft-logo">Cover<span>Credit</span></a>
+        <p class="ft-ds">Honest insurance &amp; financial advice for families across AP &amp; Telangana. We sell the right policy — no pressure, no jargon.</p>
+        <div class="ft-con">📞 <a href="tel:+917842854466">+91 78428 54466</a></div>
+        <div class="ft-con">✉️ <a href="mailto:Covercredit.official@gmail.com">Covercredit.official@gmail.com</a></div>
+        <div class="ft-con">🕐 Mon–Sat: 9 AM – 7 PM</div>
       </div>
-      <div class="ft-col"><div class="ft-clbl">Insurance</div><ul><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life &amp; Term Insurance</a></li><li><a href="bike-insurance.html">Bike Insurance</a></li><li><a href="car-insurance.html">Car Insurance</a></li></ul></div>
-      <div class="ft-col"><div class="ft-clbl">Finance</div><ul><li><a href="loans.html">Personal Loans</a></li><li><a href="loans.html">Home Loans</a></li><li><a href="loans.html">Mutual Funds &amp; SIP</a></li></ul></div>
-      <div class="ft-col"><div class="ft-clbl">Company</div><ul><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li><li><a href="book.html">Book Consultation</a></li></ul></div>
+      <div class="ft-col"><div class="ft-clbl">Insurance</div><ul><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life &amp; Term Insurance</a></li><li><a href="bike-insurance.html">Bike Insurance</a></li><li><a href="car-insurance.html">Car Insurance</a></li><li><a href="commercial-vehicle-insurance.html">Commercial Vehicles</a></li></ul></div>
+      <div class="ft-col"><div class="ft-clbl">Finance</div><ul><li><a href="loans.html">Personal Loans</a></li><li><a href="loans.html">Home Loans</a></li><li><a href="loans.html">Business Loans</a></li><li><a href="loans.html">Mutual Funds &amp; SIP</a></li></ul></div>
+      <div class="ft-col"><div class="ft-clbl">Company</div><ul><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li><li><a href="book.html">Book Consultation</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div>
     </div>
     <div class="ft-bot">
-      <span>&#169; <span id="yr"></span> Cover Credit Insurance Advisors. All rights reserved.</span>
+      <span>© <span id="yr"></span> Cover Credit Insurance Advisors. All rights reserved.</span>
       <div class="ft-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
     </div>
   </div>
 </footer>
 
 <script>
-const cur=document.getElementById('cur'),cr=document.getElementById('cr');
+/* ── CURSOR ── */
+const cur=document.getElementById('cur'),ring=document.getElementById('cur-r');
 let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
-(function loop(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(loop);})();
-document.querySelectorAll('a,button,.pc,.stc,.pg,.fi,.sp,.tl,.ccard').forEach(el=>{
-  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
-  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
+document.addEventListener('mousemove',e=>{
+  mx=e.clientX;my=e.clientY;
+  cur.style.left=mx+'px';cur.style.top=my+'px';
 });
+(function loop(){
+  rx+=(mx-rx)*.11;ry+=(my-ry)*.11;
+  ring.style.left=rx+'px';ring.style.top=ry+'px';
+  requestAnimationFrame(loop);
+})();
+document.querySelectorAll('a,button,.pc,.mk,.stc,.fh,.scard').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hovering'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'));
+});
+
+/* ── NAV ── */
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>40),{passive:true});
 const burger=document.getElementById('burger'),mob=document.getElementById('mob');
-burger.addEventListener('click',()=>{burger.classList.toggle('op');mob.classList.toggle('op');document.body.style.overflow=mob.classList.contains('op')?'hidden':'';});
-const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});},{threshold:.08});
+burger.addEventListener('click',()=>{
+  burger.classList.toggle('op');mob.classList.toggle('op');
+  document.body.style.overflow=mob.classList.contains('op')?'hidden':'';
+});
+
+/* ── REVEAL ── */
+const ro=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});
+},{threshold:.1});
 document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
-function animCount(el,target,pre,suf,dur){
-  if(!el)return;
-  let s=null;
-  const step=ts=>{if(!s)s=ts;const p=Math.min((ts-s)/dur,1);const e=1-Math.pow(1-p,4);el.textContent=pre+Math.round(e*target)+suf;if(p<1)requestAnimationFrame(step);};
-  requestAnimationFrame(step);
-}
-const so=new IntersectionObserver(es=>{
+
+/* ── COST BARS ── */
+const bo=new IntersectionObserver(es=>{
   if(es[0].isIntersecting){
-    animCount(document.getElementById('c1'),1,'\u20b9','Cr',800);
-    animCount(document.getElementById('c2'),97,'','%',1200);
-    animCount(document.getElementById('c3'),490,'\u20b9','/mo',1000);
-    animCount(document.getElementById('c4'),100,'','%',900);
-    so.disconnect();
+    document.querySelectorAll('.cb-fill').forEach(b=>b.style.width=b.dataset.w+'%');
+    bo.disconnect();
   }
-},{threshold:.5});
-const stbar=document.querySelector('.stbar');if(stbar)so.observe(stbar);
+},{threshold:.3});
+const bs=document.querySelector('.cbars');if(bs)bo.observe(bs);
+
+/* ── FAQ ── */
 document.querySelectorAll('.fh').forEach(h=>{
   h.addEventListener('click',()=>{
     const it=h.parentElement,op=it.classList.contains('op');
@@ -1194,68 +921,167 @@ document.querySelectorAll('.fh').forEach(h=>{
     if(!op)it.classList.add('op');
   });
 });
-let selCover=50,selTerm=30,selSmoke=0;
-function calcPrem(){
-  const age=parseInt(document.getElementById('ageRange').value);
-  const rates={18:.028,20:.03,25:.034,28:.038,30:.042,35:.055,40:.078,45:.115,50:.165,55:.24};
-  const keys=Object.keys(rates).map(Number).sort((a,b)=>a-b);
-  let rate=.042;
-  for(let i=0;i<keys.length-1;i++){if(age>=keys[i]&&age<=keys[i+1]){const t=(age-keys[i])/(keys[i+1]-keys[i]);rate=rates[keys[i]]+(rates[keys[i+1]]-rates[keys[i]])*t;}}
-  const tf=selTerm<=10?1.3:selTerm<=20?1.1:selTerm<=30?1:0.95;
-  const sf=selSmoke?1.35:1;
-  const mo=Math.round(rate*selCover*tf*sf/10)*10;
-  const res=document.getElementById('cfResult');const cd=document.getElementById('calcd');
-  if(res)res.textContent='\u20b9'+mo.toLocaleString('en-IN');
-  if(cd)cd.textContent='\u20b9'+mo.toLocaleString('en-IN')+'/mo';
-}
-const ar=document.getElementById('ageRange');
-if(ar){ar.addEventListener('input',()=>{const av=document.getElementById('ageVal');if(av)av.textContent=ar.value+' saal';calcPrem();});}
-document.querySelectorAll('[data-cover]').forEach(p=>{p.addEventListener('click',()=>{document.querySelectorAll('[data-cover]').forEach(x=>x.classList.remove('on'));p.classList.add('on');selCover=parseInt(p.dataset.cover);calcPrem();});});
-document.querySelectorAll('[data-term]').forEach(p=>{p.addEventListener('click',()=>{document.querySelectorAll('[data-term]').forEach(x=>x.classList.remove('on'));p.classList.add('on');selTerm=parseInt(p.dataset.term);calcPrem();});});
-document.querySelectorAll('[data-smoke]').forEach(p=>{p.addEventListener('click',()=>{document.querySelectorAll('[data-smoke]').forEach(x=>x.classList.remove('on'));p.classList.add('on');selSmoke=parseInt(p.dataset.smoke);calcPrem();});});
-/* WHATSAPP CHAT */
-const CONV=[
-  {side:'in', name:'Sunil — Cover Credit', text:'Namaste! Maine dekha aapne life insurance ke liye consultation book ki hai. Kya aap bata sakte hain — shadi hui hai? Bacche hain?', time:'10:14 AM', hl:null, delay:800},
-  {side:'out', name:'Ravi', text:'Haan, shadi hui hai. 2 bacche hain — 6 aur 3 saal. Patni ghar sambhalti hai. Main ₹85,000 per month kamaata hoon.', time:'10:15 AM', hl:null, delay:3200},
-  {side:'in', name:'Sunil — Cover Credit', text:'Bahut achha. Aur koi home loan ya EMI chal rahi hai abhi?', time:'10:15 AM', hl:null, delay:5800},
-  {side:'out', name:'Ravi', text:'Haan — home loan ₹45 lakh, 18 saal baaki hain. Car loan ₹5 lakh bhi hai.', time:'10:16 AM', hl:null, delay:8500},
-  {side:'in', name:'Sunil — Cover Credit', text:'Iske hisaab se aapke parivaar ko kam se kam ₹1.5 Crore ka cover chahiye. Kyun: ₹50L loans clear karne ke liye + ₹75L 10 saal income replace karne ke liye + ₹25L dono bacchon ki education.', time:'10:16 AM', hl:'Minimum recommended cover: ₹1.5 Crore', delay:11500},
-  {side:'out', name:'Ravi', text:'Yaar ye to bahut mehenga lagega? Main ₹50 lakh soch raha tha.', time:'10:17 AM', hl:null, delay:15500},
-  {side:'in', name:'Sunil — Cover Credit', text:'₹1.5 Crore ka term plan — 32 saal ke non-smoker ke liye — sirf ₹1,050–₹1,200 per month. Matlab ₹35 per din. Chai-samosa se bhi kam — poori family ki security ke liye.', time:'10:18 AM', hl:'₹1.5Cr cover = sirf ₹1,100/mahine!', delay:18000},
-  {side:'out', name:'Ravi', text:'Sachchi?! Itna sasta! Kya hum abhi 2-3 plans compare kar sakte hain?', time:'10:18 AM', hl:null, delay:21500},
-  {side:'in', name:'Sunil — Cover Credit', text:'Bilkul! HDFC Life, Max Life aur ICICI Pru — teeno 98%+ claim ratio ke saath — abhi screen par khol raha hoon. Same day policy bhi ho sakti hai!', time:'10:19 AM', hl:'Teeno plans same-day issue ho sakte hain ✓', delay:24000},
+
+/* ══════════════════════════════════════
+   ANIMATED STORYBOARD ENGINE
+   Real-time chat with character-by-character typing
+══════════════════════════════════════ */
+const CONV = [
+  {who:'cust', text:"Hello, I want health insurance for my family — me, my wife, 2 kids and my parents aged 64 and 60. Honestly I don't know where to start.", time:"10:02 AM", hl:null, speed:28},
+  {who:'adv',  text:"Hello Ravi! Great decision — the earlier you buy, the earlier the waiting period starts. Quick question first: does anyone in the family have diabetes, BP, thyroid, or any past surgeries?", time:"10:02 AM", hl:null, speed:22},
+  {who:'cust', text:"My father has diabetes — diagnosed 5 years ago. My wife and I are completely healthy. Kids are fine too.", time:"10:03 AM", hl:null, speed:30},
+  {who:'adv',  text:"Got it. This changes the recommendation significantly. Do NOT include your parents in your family floater — your father's diabetes will inflate the premium for all 4 of you by 40–60%.", time:"10:03 AM", hl:"✓ Separate plan for parents saves ₹8,000–12,000/year", speed:20},
+  {who:'adv',  text:"My recommendation: ₹10L Family Floater (you, wife, kids) — around ₹12,500/year. Separate Star Senior Citizen Red Carpet for your parents — around ₹22,000/year. Diabetes covered from Year 2.", time:"10:04 AM", hl:"⭐ Star Senior Citizen Red Carpet — accepts diabetes, no medical test needed", speed:18},
+  {who:'cust', text:"Wow. No agent ever explained it like this. So I'm not overpaying by keeping them separate?", time:"10:04 AM", hl:null, speed:32},
+  {who:'adv',  text:"Exactly the opposite — you save money AND get better coverage. I'll pull up both plans right now and show you the exact premium breakdown for your family.", time:"10:05 AM", hl:null, speed:24},
+  {who:'cust', text:"Yes please! Can we also issue both policies today itself?", time:"10:05 AM", hl:null, speed:34},
+  {who:'adv',  text:"Absolutely. Once you confirm, both policies are issued digitally — documents on WhatsApp within the hour. Shall we fill the form now?", time:"10:06 AM", hl:"✓ Both policies issued same day — documents on WhatsApp", speed:20},
 ];
-const waChat=document.getElementById('waChat');
-let wTimers=[];
-function clearWt(){wTimers.forEach(t=>clearTimeout(t));wTimers=[];}
-function addMsg(msg){
-  const tw=waChat.querySelector('.wtyp-row');if(tw)tw.remove();
-  const wrap=document.createElement('div');wrap.className='wm '+(msg.side==='in'?'in':'out');
-  const bub=document.createElement('div');bub.className='wm-bub';
-  if(msg.side==='in'){const nm=document.createElement('div');nm.className='wm-name';nm.textContent=msg.name;bub.appendChild(nm);}
-  const txt=document.createElement('div');txt.textContent=msg.text;bub.appendChild(txt);
-  if(msg.hl){const hl=document.createElement('div');hl.className='wm-hl';hl.textContent=msg.hl;bub.appendChild(hl);}
-  const tm=document.createElement('div');tm.className='wm-time';tm.textContent=msg.time;bub.appendChild(tm);
-  wrap.appendChild(bub);waChat.appendChild(wrap);waChat.scrollTop=waChat.scrollHeight;
+
+let sbTimer=null, sbRunning=false, sbStep=0;
+const sbChat=document.getElementById('sbChat');
+const pCust=document.getElementById('pCust'), pAdv=document.getElementById('pAdv');
+const sbStepInfo=document.getElementById('sbStepInfo');
+
+function sbSetSpeaker(who){
+  pCust.classList.toggle('active-spk', who==='cust');
+  pAdv.classList.toggle('active-spk',  who==='adv');
+  const custStatus=pCust.querySelector('.sb-pstatus');
+  const advStatus =pAdv.querySelector('.sb-pstatus');
+  if(custStatus) custStatus.textContent = '● speaking…';
+  if(advStatus)  advStatus.textContent  = who==='adv' ? '● typing…' : '● speaking…';
 }
-function showTyp(side){
-  const tw=waChat.querySelector('.wtyp-row');if(tw)tw.remove();
-  const wrap=document.createElement('div');wrap.className='wtyp-row wm '+(side==='in'?'in':'out');
-  const bub=document.createElement('div');bub.className='wm-typ show';bub.innerHTML='<span></span><span></span><span></span>';
-  wrap.appendChild(bub);waChat.appendChild(wrap);waChat.scrollTop=waChat.scrollHeight;
+function sbClearSpeaker(){
+  pCust.classList.remove('active-spk');
+  pAdv.classList.remove('active-spk');
 }
-function startChat(){
-  clearWt();if(waChat){waChat.innerHTML='<div class="wa-date">Aaj</div>';}
-  CONV.forEach(msg=>{
-    const t1=setTimeout(()=>showTyp(msg.side),Math.max(0,msg.delay-1400));
-    const t2=setTimeout(()=>addMsg(msg),msg.delay);
-    wTimers.push(t1,t2);
+
+function sbShowTyping(who){
+  const row=document.createElement('div');
+  row.className='typing-row'+(who==='adv'?' right':'');
+  row.id='typRow';
+  const av=document.createElement('div');
+  av.className='msg-av '+(who==='cust'?'msg-av-c':'msg-av-a');
+  av.textContent=who==='cust'?'👨':'👨‍💼';
+  const pill=document.createElement('div');
+  pill.className='typing-pill';
+  pill.innerHTML='<div class="tdot"></div><div class="tdot"></div><div class="tdot"></div>';
+  row.appendChild(av); row.appendChild(pill);
+  sbChat.appendChild(row);
+  sbChat.scrollTop=sbChat.scrollHeight;
+}
+function sbRemoveTyping(){
+  const t=document.getElementById('typRow'); if(t)t.remove();
+}
+
+function sbTypeMessage(msgEl, fullText, speed, onDone){
+  let i=0;
+  msgEl.classList.add('typing');
+  function tick(){
+    if(i<=fullText.length){
+      msgEl.textContent=fullText.slice(0,i);
+      i++;
+      sbChat.scrollTop=sbChat.scrollHeight;
+      sbTimer=setTimeout(tick, speed + Math.random()*15);
+    } else {
+      msgEl.classList.remove('typing');
+      if(onDone) onDone();
+    }
+  }
+  tick();
+}
+
+function sbAddMessage(step, onDone){
+  const s=CONV[step];
+  const isCust=s.who==='cust';
+
+  sbSetSpeaker(s.who);
+  sbStepInfo.textContent='Message '+(step+1)+' of '+CONV.length;
+
+  // Show typing indicator first
+  sbShowTyping(s.who);
+  const typDelay = 600 + s.text.length * 8;
+
+  sbTimer=setTimeout(()=>{
+    sbRemoveTyping();
+
+    // Create message row
+    const row=document.createElement('div');
+    row.className='msg-row'+(isCust?'':' right');
+
+    const av=document.createElement('div');
+    av.className='msg-av '+(isCust?'msg-av-c':'msg-av-a');
+    av.textContent=isCust?'👨':'👨‍💼';
+
+    const bub=document.createElement('div');
+    bub.className='msg-bub '+(isCust?'bub-c':'bub-a');
+
+    const name=document.createElement('div');
+    name.className='msg-name';
+    name.textContent=isCust?'Ravi Kumar':'Sunil — Cover Credit';
+
+    const txt=document.createElement('div');
+    txt.className='msg-txt';
+
+    const timeEl=document.createElement('div');
+    timeEl.className='msg-time';
+    timeEl.textContent=s.time;
+
+    bub.appendChild(name);
+    bub.appendChild(txt);
+
+    row.appendChild(av);
+    row.appendChild(bub);
+    sbChat.appendChild(row);
+    sbChat.scrollTop=sbChat.scrollHeight;
+
+    // Type text character by character
+    sbTypeMessage(txt, s.text, s.speed, ()=>{
+      bub.appendChild(timeEl);
+      if(s.hl){
+        const hl=document.createElement('div');
+        hl.className='msg-hl';
+        hl.textContent=s.hl;
+        bub.appendChild(hl);
+      }
+      sbChat.scrollTop=sbChat.scrollHeight;
+      if(onDone) sbTimer=setTimeout(onDone, 900);
+    });
+  }, typDelay);
+}
+
+function sbRunStep(){
+  if(sbStep>=CONV.length){
+    sbClearSpeaker();
+    sbStepInfo.textContent='Conversation complete — loops in 3s';
+    sbTimer=setTimeout(()=>{ startStoryboard(); },3000);
+    return;
+  }
+  sbAddMessage(sbStep, ()=>{
+    sbStep++;
+    sbRunStep();
   });
-  wTimers.push(setTimeout(()=>startChat(),CONV[CONV.length-1].delay+5000));
 }
-const wo=new IntersectionObserver(es=>{if(es[0].isIntersecting){startChat();wo.disconnect();}},{threshold:.4});
-const phone=document.querySelector('.phone-mock');if(phone)wo.observe(phone);
-document.getElementById('yr').textContent=new Date().getFullYear();
+
+function startStoryboard(){
+  if(sbTimer)clearTimeout(sbTimer);
+  sbStep=0; sbRunning=true;
+  sbChat.innerHTML='';
+  sbClearSpeaker();
+  sbStepInfo.textContent='Starting conversation…';
+  sbTimer=setTimeout(sbRunStep, 400);
+}
+
+document.getElementById('sbReplay').addEventListener('click',startStoryboard);
+
+// Auto-start on scroll
+const sbo=new IntersectionObserver(es=>{
+  if(es[0].isIntersecting&&!sbRunning){startStoryboard();sbo.disconnect();}
+},{threshold:.35});
+const stage=document.getElementById('sbStage');if(stage)sbo.observe(stage);
+
+/* ── YEAR ── */
+const yr=document.getElementById('yr');if(yr)yr.textContent=new Date().getFullYear();
 </script>
 </body>
 </html>
