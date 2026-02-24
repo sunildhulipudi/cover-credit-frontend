@@ -1,1 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Vehicle Insurance | Cover Credit — Bike, Car & Commercial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#06101f;--i2:#0b1a30;--i3:#112240;
+  --az:#0d47a1;--sky:#1565c0;
+  --gold:#f5a623;--glow:#ffd166;
+  --or:#ff6b00;--or2:#ff8c00;
+  --fog:rgba(255,255,255,.06);
+  --line:rgba(255,255,255,.08);
+  --E:cubic-bezier(.16,1,.3,1);
+  --nh:72px;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--ink);color:#fff;overflow-x:hidden;cursor:none;}
+a{text-decoration:none;color:inherit;}
+img{display:block;max-width:100%;object-fit:cover;}
 
+/* ── CURSOR ── */
+#cur,#cr{position:fixed;top:0;left:0;pointer-events:none;border-radius:50%;z-index:9999;transform:translate(-50%,-50%);}
+#cur{width:10px;height:10px;background:var(--or);}
+#cr{width:38px;height:38px;border:1.5px solid rgba(255,107,0,.5);z-index:9998;transition:width .2s,height .2s,opacity .2s;}
+body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:.2;}
+
+/* ── NAV (identical to life insurance) ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:900;height:var(--nh);padding:0 5%;transition:background .4s;}
+.nav.sc{background:rgba(6,16,31,.97);backdrop-filter:blur(24px);box-shadow:0 1px 0 var(--line);}
+.ni{max-width:1300px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;}
+.logo em{font-style:normal;color:var(--gold);}
+.nl{display:flex;align-items:center;gap:1.8rem;list-style:none;}
+.nl a{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.65);transition:color .2s;position:relative;}
+.nl a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--gold);transition:width .28s;}
+.nl a:hover,.nl a.act{color:#fff;}.nl a:hover::after,.nl a.act::after{width:100%;}
+.dd{position:relative;}
+.ddt{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.65);cursor:none;display:flex;align-items:center;gap:.26rem;transition:color .2s;}
+.dd:hover .ddt,.dd:hover .ddt,.nl .act-p{color:#fff;}
+.dda{font-size:.54rem;transition:transform .3s;}.dd:hover .dda{transform:rotate(180deg);}
+.ddm{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(6px);background:var(--i2);border:1px solid var(--line);border-radius:12px;padding:.4rem;min-width:190px;opacity:0;visibility:hidden;transition:opacity .2s,transform .28s var(--E),visibility .2s;box-shadow:0 24px 60px rgba(0,0,0,.5);}
+.dd:hover .ddm{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+.ddm a{display:block;padding:.5rem .82rem;font-size:.8rem;color:rgba(255,255,255,.62);border-radius:8px;transition:background .18s,color .18s;}
+.ddm a:hover{background:rgba(255,255,255,.07);color:#fff;}
+.ncta{background:var(--gold)!important;color:var(--ink)!important;padding:.46rem 1.12rem!important;border-radius:100px;font-weight:700!important;font-size:.8rem!important;}
+.ncta::after{display:none!important;}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:4px;}
+.burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s;}
+.burger.op span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.burger.op span:nth-child(2){opacity:0;}
+.burger.op span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.mob{position:fixed;inset:0;z-index:899;background:var(--ink);display:flex;flex-direction:column;padding:calc(var(--nh)+1.8rem) 5% 3rem;transform:translateX(100%);transition:transform .38s var(--E);}
+.mob.op{transform:translateX(0);}
+.mob a{padding:.9rem 0;font-size:1rem;font-weight:500;color:rgba(255,255,255,.72);border-bottom:1px solid var(--line);}
+.mc{margin-top:1.8rem;background:var(--gold);color:var(--ink)!important;text-align:center;border-radius:12px;padding:.9rem!important;font-weight:700!important;border:none!important;}
+
+/* ── FAB ── */
+.fab{position:fixed;bottom:1.8rem;right:1.8rem;z-index:400;display:flex;flex-direction:column;gap:.65rem;align-items:flex-end;}
+.fab a{display:flex;align-items:center;gap:.48rem;padding:.65rem 1rem;border-radius:100px;font-size:.76rem;font-weight:600;cursor:none;transition:transform .18s;}
+.fab a:hover{transform:translateY(-2px);}
+.fwa{background:#25d366;color:#fff;box-shadow:0 6px 20px rgba(37,211,102,.35);}
+.fbk{background:var(--gold);color:var(--ink);box-shadow:0 6px 20px rgba(245,166,35,.35);}
+
+/* ── UTILS ── */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .65s var(--E),transform .65s var(--E);}
+.rv.on{opacity:1;transform:none;}
+.d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.24s;}.d4{transition-delay:.32s;}
+.tag{display:inline-flex;align-items:center;gap:.38rem;font-size:.66rem;font-weight:700;color:var(--or);text-transform:uppercase;letter-spacing:2px;margin-bottom:.8rem;}
+.tag::before{content:'';width:14px;height:2px;background:var(--or);}
+.tit{font-family:'Playfair Display',serif;font-size:clamp(1.65rem,2.8vw,2.45rem);font-weight:700;line-height:1.15;margin-bottom:.7rem;}
+.tit em{font-style:italic;color:var(--or);}
+.sub{font-size:.86rem;color:rgba(255,255,255,.44);line-height:1.75;max-width:520px;}
+.sec{padding:5rem 5%;}.sa{background:var(--i2);}
+.si{max-width:1300px;margin:0 auto;}
+.bg{display:inline-flex;align-items:center;gap:.38rem;background:var(--or);color:#fff;padding:.78rem 1.6rem;border-radius:11px;font-weight:700;font-size:.87rem;cursor:none;transition:transform .18s,box-shadow .18s;}
+.bg:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(255,107,0,.4);}
+.bgh{display:inline-flex;align-items:center;gap:.38rem;background:var(--fog);border:1px solid var(--line);color:#fff;padding:.78rem 1.6rem;border-radius:11px;font-weight:500;font-size:.87rem;cursor:none;backdrop-filter:blur(10px);transition:background .18s,transform .18s;}
+.bgh:hover{background:rgba(255,255,255,.1);transform:translateY(-2px);}
+
+/* ══════════════════════════════════
+   HERO — cinematic road shot
+══════════════════════════════════ */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;}
+.hi{position:absolute;inset:0;z-index:0;}
+.hi img{width:100%;height:100%;object-fit:cover;object-position:center 60%;transform:scale(1.04);}
+.hi::after{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(6,16,31,.97) 38%,rgba(6,16,31,.6) 68%,rgba(6,16,31,.18) 100%);}
+/* speed lines overlay */
+.hero-lines{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none;}
+.hl{position:absolute;height:1px;background:linear-gradient(90deg,transparent,rgba(255,107,0,.18),transparent);transform-origin:left;}
+/* grid */
+.hgrid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,255,255,.016) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.016) 1px,transparent 1px);background-size:55px 55px;mask-image:radial-gradient(ellipse 70% 80% at 30% 50%,#000,transparent);}
+.hin{position:relative;z-index:2;max-width:1300px;margin:0 auto;padding:calc(var(--nh)+3rem) 5% 5rem;width:100%;}
+.hbc{display:flex;align-items:center;gap:.38rem;font-size:.72rem;color:rgba(255,255,255,.35);margin-bottom:1.4rem;}
+.hbc a{color:rgba(255,255,255,.35);transition:color .2s;}.hbc a:hover{color:var(--or);}
+.hkick{display:inline-flex;align-items:center;gap:.42rem;background:rgba(255,107,0,.14);border:1px solid rgba(255,107,0,.3);color:#ffb380;font-size:.68rem;font-weight:700;padding:.3rem .88rem;border-radius:100px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.1rem;}
+.hkick::before{content:'';width:5px;height:5px;background:var(--or);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
+.htit{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4.5vw,4.4rem);font-weight:900;line-height:1.04;letter-spacing:-2px;margin-bottom:1.2rem;max-width:720px;}
+.htit em{font-style:italic;background:linear-gradient(135deg,var(--or),var(--glow));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hdesc{font-size:.95rem;line-height:1.8;color:rgba(255,255,255,.58);margin-bottom:2rem;max-width:480px;}
+.hbtns{display:flex;gap:.85rem;flex-wrap:wrap;margin-bottom:2.8rem;}
+/* hero stat cards */
+.hstats{display:flex;gap:1rem;flex-wrap:wrap;}
+.hsc{background:rgba(255,255,255,.06);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:.85rem 1.1rem;min-width:128px;}
+.hsc-n{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--or);line-height:1;letter-spacing:1px;}
+.hsc-l{font-size:.65rem;color:rgba(255,255,255,.4);margin-top:.18rem;}
+/* scroll hint */
+.sh{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:2;}
+.sh-m{width:22px;height:34px;border:2px solid rgba(255,255,255,.22);border-radius:100px;display:flex;justify-content:center;padding-top:5px;}
+.sh-d{width:3px;height:7px;background:rgba(255,255,255,.45);border-radius:100px;animation:sd 2s ease-in-out infinite;}
+@keyframes sd{0%{opacity:1;transform:translateY(0)}80%{opacity:0;transform:translateY(10px)}100%{opacity:0}}
+.sh-t{font-size:.6rem;color:rgba(255,255,255,.25);letter-spacing:1.5px;text-transform:uppercase;}
+
+/* ══════════════════════════════════
+   3 VEHICLE CATEGORY CARDS
+══════════════════════════════════ */
+.vcats{padding:0 5% 0;background:var(--ink);margin-top:-3rem;position:relative;z-index:3;}
+.vcats-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;}
+.vc{border-radius:22px;overflow:hidden;position:relative;cursor:none;transition:transform .35s var(--E),box-shadow .35s;display:flex;flex-direction:column;}
+.vc:hover{transform:translateY(-8px);box-shadow:0 32px 64px rgba(0,0,0,.5);}
+.vc-img{height:220px;position:relative;overflow:hidden;}
+.vc-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--E);}
+.vc:hover .vc-img img{transform:scale(1.08);}
+.vc-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,16,31,.95) 10%,transparent 55%);}
+/* animated speed stripe on hover */
+.vc-img::before{content:'';position:absolute;inset:0;background:linear-gradient(100deg,transparent 40%,rgba(255,107,0,.08) 60%,transparent 80%);transform:translateX(-100%);transition:transform .5s var(--E);z-index:1;}
+.vc:hover .vc-img::before{transform:translateX(100%);}
+.vc-body{background:var(--i2);padding:1.5rem;flex:1;display:flex;flex-direction:column;border:1px solid var(--line);border-top:none;}
+.vc-ic{font-size:2.2rem;margin-bottom:.6rem;}
+.vc-tt{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:1px;margin-bottom:.4rem;color:#fff;}
+.vc-ds{font-size:.8rem;color:rgba(255,255,255,.48);line-height:1.66;flex:1;}
+.vc-meta{display:flex;align-items:center;justify-content:space-between;margin-top:1rem;padding-top:.9rem;border-top:1px solid var(--line);}
+.vc-from{font-size:.7rem;color:rgba(255,255,255,.3);}
+.vc-from strong{color:var(--or);font-size:.92rem;font-weight:700;}
+.vc-btn{display:inline-flex;align-items:center;gap:.3rem;background:var(--or);color:#fff;padding:.5rem 1rem;border-radius:9px;font-weight:700;font-size:.76rem;cursor:none;transition:background .18s,transform .15s;}
+.vc-btn:hover{background:var(--or2);transform:translateX(2px);}
+/* accent color per card */
+.vc-bike .vc-body{border-color:rgba(255,107,0,.18);}
+.vc-car .vc-body{border-color:rgba(21,101,192,.2);}
+.vc-comm .vc-body{border-color:rgba(74,222,128,.15);}
+.vc-bike .vc-tt{background:linear-gradient(135deg,#ff6b00,#ffb300);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.vc-car .vc-tt{background:linear-gradient(135deg,#4fa3e0,#93c5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.vc-comm .vc-tt{background:linear-gradient(135deg,#4ade80,#86efac);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.vc-bike .vc-btn{background:linear-gradient(135deg,#ff6b00,#ff8c00);}
+.vc-car .vc-btn{background:linear-gradient(135deg,#1565c0,#1976d2);}
+.vc-comm .vc-btn{background:linear-gradient(135deg,#15803d,#16a34a);}
+
+/* ══════════════════════════════════
+   WHY INSURE — stats bar
+══════════════════════════════════ */
+.stbar{background:linear-gradient(135deg,#0d1f3c,#1a0d00 80%);padding:3.5rem 5%;margin-top:4rem;}
+.strow{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center;}
+.sti{font-size:2rem;margin-bottom:.5rem;}
+.stn{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,3vw,3rem);color:var(--or);line-height:1;letter-spacing:1px;}
+.stl{font-size:.76rem;color:rgba(255,255,255,.4);margin-top:.28rem;}
+
+/* ══════════════════════════════════
+   ROAD ANIMATION DIVIDER
+══════════════════════════════════ */
+.road-div{height:90px;background:#0a0f1a;position:relative;overflow:hidden;}
+.rd-road{position:absolute;top:50%;left:0;right:0;height:3px;background:rgba(255,255,255,.06);transform:translateY(-50%);}
+.rd-line{position:absolute;top:50%;height:2px;background:rgba(255,255,255,.15);border-radius:2px;transform:translateY(-50%);animation:roadline 2.2s linear infinite;}
+@keyframes roadline{from{left:-15%}to{left:115%}}
+.rd-bike{position:absolute;top:50%;transform:translateY(-62%);font-size:2.4rem;animation:drivebike 7s linear infinite;}
+@keyframes drivebike{from{left:-10%}to{left:110%}}
+.rd-car{position:absolute;top:50%;transform:translateY(-55%);font-size:2rem;animation:drivecar 10s linear infinite 3.5s;}
+@keyframes drivecar{from{left:-10%}to{left:110%}}
+.rd-truck{position:absolute;top:50%;transform:translateY(-50%);font-size:1.8rem;animation:drivetruck 14s linear infinite 1.5s;}
+@keyframes drivetruck{from{left:-10%}to{left:110%}}
+
+/* ══════════════════════════════════
+   WHY CHOOSE US — feature grid
+══════════════════════════════════ */
+.feat-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem;}
+.fg{background:var(--i2);border:1px solid var(--line);border-radius:16px;padding:1.6rem;transition:transform .28s,border-color .28s;}
+.fg:hover{transform:translateY(-4px);border-color:rgba(255,107,0,.22);}
+.fg-ic{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:.9rem;}
+.fg-ic.or{background:rgba(255,107,0,.12);}
+.fg-ic.bl{background:rgba(21,101,192,.12);}
+.fg-ic.gr{background:rgba(74,222,128,.1);}
+.fg-tt{font-size:.92rem;font-weight:700;margin-bottom:.4rem;}
+.fg-ds{font-size:.78rem;color:rgba(255,255,255,.44);line-height:1.66;}
+
+/* ══════════════════════════════════
+   COVERAGE TYPES — visual compare
+══════════════════════════════════ */
+.cov-g{display:grid;grid-template-columns:1fr 1fr;gap:1.4rem;margin-top:2rem;}
+.cov-c{border-radius:18px;overflow:hidden;border:1px solid var(--line);}
+.cov-top{height:160px;position:relative;display:flex;align-items:center;justify-content:center;}
+.cov-tp{background:linear-gradient(145deg,#0a1628,#1565c0);}
+.cov-cp{background:linear-gradient(145deg,#1a0800,#8b3a00);}
+.cov-svg{height:120px;width:auto;}
+.cov-body{background:var(--i2);padding:1.4rem;}
+.cov-badge{display:inline-flex;align-items:center;gap:.35rem;font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;padding:.22rem .65rem;border-radius:100px;margin-bottom:.7rem;}
+.cov-tp .cov-badge{background:rgba(21,101,192,.15);border:1px solid rgba(21,101,192,.3);color:#93c5fd;}
+.cov-cp .cov-badge{background:rgba(255,107,0,.12);border:1px solid rgba(255,107,0,.25);color:#ffb380;}
+.cov-tt{font-family:'Playfair Display',serif;font-size:1.22rem;font-weight:700;margin-bottom:.5rem;}
+.cov-ds{font-size:.79rem;color:rgba(255,255,255,.48);line-height:1.64;margin-bottom:1rem;}
+.cov-rows{display:flex;flex-direction:column;gap:.42rem;}
+.cr{display:flex;align-items:flex-start;gap:.55rem;font-size:.76rem;color:rgba(255,255,255,.55);}
+.cr-dot{flex-shrink:0;width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;margin-top:.05rem;}
+.cr-y{background:rgba(74,222,128,.15);color:#4ade80;}
+.cr-n{background:rgba(248,113,113,.12);color:#f87171;}
+.cov-verdict{margin-top:1.4rem;background:linear-gradient(135deg,rgba(255,107,0,.08),rgba(255,107,0,.03));border:1px solid rgba(255,107,0,.15);border-radius:14px;padding:1.2rem 1.4rem;display:flex;align-items:flex-start;gap:.9rem;}
+.cv-ic{font-size:1.7rem;flex-shrink:0;}
+.cv-tt{font-size:.88rem;font-weight:700;margin-bottom:.22rem;}
+.cv-ds{font-size:.78rem;color:rgba(255,255,255,.48);line-height:1.62;}
+
+/* ══════════════════════════════════
+   QUICK QUOTE CALCULATOR
+══════════════════════════════════ */
+.qq-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.qq-visual{position:relative;border-radius:20px;overflow:hidden;height:420px;}
+.qq-visual img{width:100%;height:100%;object-fit:cover;}
+.qq-visual::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(6,16,31,.55),rgba(6,16,31,.1));}
+.qq-ov{position:absolute;bottom:1.5rem;left:1.5rem;right:1.5rem;z-index:1;}
+.qq-card{background:rgba(6,16,31,.82);backdrop-filter:blur(20px);border:1px solid rgba(255,107,0,.2);border-radius:14px;padding:1.4rem;}
+.qqc-tt{font-size:.7rem;font-weight:700;color:var(--or);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:.9rem;}
+.qqc-r{display:flex;justify-content:space-between;margin-bottom:.55rem;}
+.qqc-l{font-size:.74rem;color:rgba(255,255,255,.42);}
+.qqc-v{font-size:.74rem;font-weight:700;}
+.qqc-big{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:var(--or);letter-spacing:1px;margin-top:.4rem;}
+/* form */
+.qq-form{background:var(--i2);border:1px solid var(--line);border-radius:20px;padding:2rem;}
+.qf-row{margin-bottom:1.2rem;}
+.qf-lbl{font-size:.7rem;font-weight:700;color:rgba(255,255,255,.45);text-transform:uppercase;letter-spacing:.8px;margin-bottom:.5rem;display:flex;justify-content:space-between;}
+.qf-lbl span{color:var(--or);font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:1px;}
+.qf-range{width:100%;appearance:none;height:4px;border-radius:100px;background:rgba(255,255,255,.1);outline:none;cursor:none;}
+.qf-range::-webkit-slider-thumb{appearance:none;width:18px;height:18px;border-radius:50%;background:var(--or);cursor:none;box-shadow:0 0 10px rgba(255,107,0,.5);}
+.qf-pills{display:flex;gap:.48rem;flex-wrap:wrap;}
+.qf-pill{padding:.36rem .78rem;border:1px solid var(--line);border-radius:100px;font-size:.72rem;cursor:pointer;transition:background .18s,border-color .18s,color .18s;color:rgba(255,255,255,.48);}
+.qf-pill:hover,.qf-pill.on{background:var(--or);border-color:var(--or);color:#fff;font-weight:700;}
+.qf-res{background:linear-gradient(135deg,#1a0800,#3d1800);border:1px solid rgba(255,107,0,.2);border-radius:14px;padding:1.3rem;margin-top:1.4rem;text-align:center;}
+.qfrl{font-size:.68rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:.35rem;}
+.qfrp{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--or);letter-spacing:2px;}
+.qfrs{font-size:.7rem;color:rgba(255,255,255,.3);margin-top:.3rem;}
+
+/* ══════════════════════════════════
+   WHATSAPP CHAT SECTION
+══════════════════════════════════ */
+.chat-wrap{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1.1fr;gap:3.5rem;align-items:center;}
+.cb-item{display:flex;align-items:center;gap:.7rem;font-size:.83rem;color:rgba(255,255,255,.66);}
+.cb-dot{width:7px;height:7px;border-radius:50%;background:var(--or);flex-shrink:0;}
+.phone-mock{background:#0b141a;border-radius:28px;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.06);max-width:380px;margin:0 auto;}
+.wa-head{background:#1f2c34;padding:.85rem 1rem;display:flex;align-items:center;gap:.75rem;border-bottom:1px solid rgba(255,255,255,.06);}
+.wa-back{color:rgba(255,255,255,.5);font-size:1.1rem;}
+.wa-av{width:38px;height:38px;border-radius:50%;overflow:hidden;flex-shrink:0;background:#1565c0;display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
+.wa-nm{font-size:.86rem;font-weight:700;line-height:1.2;}
+.wa-st{font-size:.62rem;color:#4ade80;}
+.wa-ic{margin-left:auto;display:flex;gap:.9rem;color:rgba(255,255,255,.45);font-size:1rem;}
+.wa-bg{background:#0b141a;padding:.9rem .75rem;min-height:340px;max-height:340px;overflow-y:auto;display:flex;flex-direction:column;gap:.55rem;}
+.wa-bg::-webkit-scrollbar{width:3px;}.wa-bg::-webkit-scrollbar-thumb{background:rgba(255,255,255,.07);}
+.wa-date{text-align:center;font-size:.58rem;background:rgba(255,255,255,.07);color:rgba(255,255,255,.38);padding:.22rem .7rem;border-radius:100px;width:fit-content;margin:0 auto;}
+.wm{display:flex;flex-direction:column;max-width:82%;}
+.wm.in{align-self:flex-start;}.wm.out{align-self:flex-end;}
+.wm-bub{padding:.6rem .9rem .45rem;border-radius:8px;font-size:.78rem;line-height:1.55;}
+.wm.in .wm-bub{background:#1f2c34;border-radius:0 8px 8px 8px;color:rgba(255,255,255,.9);}
+.wm.out .wm-bub{background:#005c4b;border-radius:8px 8px 0 8px;color:rgba(255,255,255,.9);}
+.wm-name{font-size:.6rem;font-weight:700;color:var(--or);margin-bottom:.2rem;}
+.wm-time{font-size:.58rem;color:rgba(255,255,255,.26);text-align:right;margin-top:.2rem;}
+.wm.out .wm-time::after{content:' ✓✓';color:#53bdeb;}
+.wm-hl{margin-top:.38rem;background:rgba(255,107,0,.1);border-left:2px solid var(--or);padding:.3rem .6rem;border-radius:0 5px 5px 0;font-size:.7rem;color:#ffb380;}
+.wm-typ{background:#1f2c34;border-radius:0 8px 8px 8px;padding:.6rem .9rem;width:fit-content;display:none;}
+.wm-typ.show{display:flex;gap:4px;align-items:center;}
+.wm-typ span{width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,.32);animation:td 1s ease-in-out infinite;}
+.wm-typ span:nth-child(2){animation-delay:.15s;}.wm-typ span:nth-child(3){animation-delay:.3s;}
+@keyframes td{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-4px)}}
+.wa-inp{background:#1f2c34;padding:.7rem .9rem;display:flex;align-items:center;gap:.6rem;border-top:1px solid rgba(255,255,255,.05);}
+.wa-inp-box{flex:1;background:rgba(255,255,255,.07);border-radius:100px;padding:.48rem 1rem;font-size:.74rem;color:rgba(255,255,255,.38);font-family:'DM Sans',sans-serif;}
+.wa-send{width:34px;height:34px;background:#4ade80;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;}
+
+/* ══════════════════════════════════
+   FAQ
+══════════════════════════════════ */
+.faq-lay{display:grid;grid-template-columns:1fr 300px;gap:3rem;align-items:start;}
+.faq-list{margin-top:1.6rem;display:flex;flex-direction:column;gap:.6rem;}
+.fi{background:var(--ink);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:border-color .2s;}
+.fi.op{border-color:rgba(255,107,0,.2);}
+.fh{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.2rem;cursor:pointer;gap:.9rem;}
+.fq{font-size:.83rem;font-weight:600;line-height:1.4;}
+.fic{width:22px;height:22px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.85rem;transition:transform .28s,background .2s;}
+.fi.op .fic{transform:rotate(45deg);background:var(--or);color:#fff;border-color:var(--or);}
+.fab2{padding:0 1.2rem;max-height:0;overflow:hidden;transition:max-height .38s var(--E),padding .28s;}
+.fi.op .fab2{max-height:240px;padding-bottom:1rem;}
+.fat{font-size:.8rem;color:rgba(255,255,255,.48);line-height:1.72;}
+/* sidebar */
+.sb2{position:sticky;top:calc(var(--nh)+1.2rem);display:flex;flex-direction:column;gap:1rem;}
+.sb2-card{background:linear-gradient(145deg,#1a0800,#3d1800);border:1px solid rgba(255,107,0,.18);border-radius:16px;padding:1.5rem;}
+.sb2-tt{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:.4rem;}
+.sb2-ds{font-size:.76rem;color:rgba(255,255,255,.46);line-height:1.6;margin-bottom:1.1rem;}
+.sb2-btn{display:block;text-align:center;background:var(--or);color:#fff;padding:.75rem;border-radius:11px;font-weight:700;font-size:.82rem;margin-bottom:.55rem;transition:transform .18s,box-shadow .18s;}
+.sb2-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(255,107,0,.3);}
+.sb2-ph{display:flex;align-items:center;justify-content:center;gap:.38rem;background:rgba(255,255,255,.07);border:1px solid var(--line);color:#fff;padding:.64rem;border-radius:11px;font-weight:600;font-size:.78rem;transition:background .18s;}
+.sb2-ph:hover{background:rgba(255,255,255,.1);}
+.sb2-div{text-align:center;font-size:.65rem;color:rgba(255,255,255,.26);margin:.25rem 0;}
+.sb2-links{background:var(--ink);border:1px solid var(--line);border-radius:14px;padding:1rem;}
+.sb2-lbl{font-size:.62rem;font-weight:700;color:rgba(255,255,255,.22);text-transform:uppercase;letter-spacing:1.3px;margin-bottom:.75rem;}
+.sbl{display:flex;align-items:center;gap:.7rem;padding:.52rem .65rem;background:var(--i2);border:1px solid var(--line);border-radius:9px;margin-bottom:.42rem;text-decoration:none;transition:border-color .2s,transform .18s;}
+.sbl:last-child{margin-bottom:0;}.sbl:hover{border-color:rgba(255,107,0,.25);transform:translateX(3px);}
+.sbl-ic{font-size:1.2rem;}.sbl-nm{font-size:.76rem;font-weight:600;}
+.sbl-ar{margin-left:auto;font-size:.7rem;color:rgba(255,255,255,.25);}
+
+/* ══════════════════════════════════
+   CTA BANNER
+══════════════════════════════════ */
+.ctab{position:relative;padding:5.5rem 5%;overflow:hidden;}
+.ctab-bg{position:absolute;inset:0;z-index:0;}
+.ctab-bg img{width:100%;height:100%;object-fit:cover;}
+.ctab-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(6,16,31,.96) 42%,rgba(6,16,31,.7));}
+.cta-in{position:relative;z-index:1;max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:center;gap:3rem;}
+.cta-tt{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.6vw,2.3rem);font-weight:700;line-height:1.2;margin-bottom:.65rem;}
+.cta-ds{font-size:.85rem;color:rgba(255,255,255,.48);line-height:1.7;}
+.cta-pills{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.85rem;}
+.cpill{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:.2rem .65rem;border-radius:100px;font-size:.68rem;color:rgba(255,255,255,.42);}
+.cta-btns{display:flex;flex-direction:column;gap:.65rem;align-items:center;}
+.cta-ph{font-size:.7rem;color:rgba(255,255,255,.32);}.cta-ph a{color:rgba(255,255,255,.6);font-weight:600;}
+
+/* ══════════════════════════════════
+   FOOTER
+══════════════════════════════════ */
+.ft{background:#020b1a;border-top:1px solid var(--line);padding:3.5rem 5% 1.8rem;}
+.ft-in{max-width:1300px;margin:0 auto;}
+.ft-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.8rem;padding-bottom:2.5rem;border-bottom:1px solid var(--line);margin-bottom:1.6rem;}
+.ft-logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;display:inline-block;margin-bottom:.8rem;}
+.ft-logo em{font-style:normal;color:var(--gold);}
+.ft-ds{font-size:.76rem;color:rgba(255,255,255,.34);line-height:1.7;margin-bottom:.9rem;}
+.ft-con{display:flex;align-items:center;gap:.42rem;font-size:.73rem;color:rgba(255,255,255,.28);margin-bottom:.4rem;}
+.ft-con a{color:rgba(255,255,255,.5);transition:color .18s;}.ft-con a:hover{color:var(--gold);}
+.ft-clbl{font-size:.62rem;font-weight:700;color:rgba(255,255,255,.2);text-transform:uppercase;letter-spacing:1.3px;margin-bottom:.8rem;}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.45rem;}
+.ft-col a{font-size:.74rem;color:rgba(255,255,255,.34);transition:color .18s;}.ft-col a:hover{color:var(--gold);}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem;font-size:.7rem;color:rgba(255,255,255,.16);}
+.ft-links{display:flex;gap:1.3rem;}.ft-links a{color:rgba(255,255,255,.16);transition:color .18s;}.ft-links a:hover{color:rgba(255,255,255,.38);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .vcats-inner,.feat-g{grid-template-columns:1fr 1fr;}
+  .qq-wrap,.chat-wrap,.cta-in,.faq-lay{grid-template-columns:1fr;}
+  .sb2{position:static;}
+  .cov-g{grid-template-columns:1fr;}
+  .ft-top{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:768px){
+  .nl{display:none;}.burger{display:flex;}
+  .htit{font-size:clamp(2rem,7vw,3rem);}
+  .vcats-inner,.feat-g,.strow{grid-template-columns:1fr;}
+  body{cursor:auto;}#cur,#cr{display:none;}
+}
+@media(max-width:520px){
+  .strow,.ft-top{grid-template-columns:1fr;}
+  .hstats{gap:.7rem;}.hsc{min-width:110px;}
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div><div id="cr"></div>
+
+<!-- FAB -->
+<div class="fab">
+  <a href="book.html" class="fbk">📅 Book Consultation</a>
+  <a href="https://wa.me/917842854466" target="_blank" class="fwa">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp
+  </a>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="ni">
+    <a href="index.html" class="logo">Cover<em>Credit</em></a>
+    <ul class="nl">
+      <li><a href="health-insurance.html">Health</a></li>
+      <li><a href="life-insurance.html">Life Insurance</a></li>
+      <li class="dd">
+        <span class="ddt act-p">Vehicle <span class="dda">▼</span></span>
+        <div class="ddm">
+          <a href="bike-insurance.html">🏍️ Bike Insurance</a>
+          <a href="car-insurance.html">🚗 Car Insurance</a>
+          <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicle</a>
+        </div>
+      </li>
+      <li><a href="loans.html">Loans</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="book.html" class="ncta">Free Consultation</a></li>
+    </ul>
+    <button class="burger" id="burger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob" id="mob">
+  <a href="health-insurance.html">Health Insurance</a>
+  <a href="life-insurance.html">Life Insurance</a>
+  <a href="bike-insurance.html">Bike Insurance</a>
+  <a href="car-insurance.html">Car Insurance</a>
+  <a href="commercial-vehicle-insurance.html">Commercial Vehicle</a>
+  <a href="loans.html">Loans</a>
+  <a href="about.html">About</a>
+  <a href="book.html" class="mc">Book Free Consultation →</a>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section class="hero">
+  <div class="hi">
+    <img src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=1600&q=85" alt="Indian highway"/>
+  </div>
+  <div class="hero-lines" id="heroLines"></div>
+  <div class="hgrid"></div>
+  <div class="hin">
+    <div class="hbc"><a href="index.html">Home</a> › Vehicle Insurance</div>
+    <div class="hkick">🚗 Bike · Car · Commercial</div>
+    <h1 class="htit">Your vehicle runs every day.<br/>Is it covered <em>every day?</em></h1>
+    <p class="hdesc">Third-party is the law. Comprehensive is smart. We compare every insurer, every plan — and get you covered in minutes. No paperwork. No waiting.</p>
+    <div class="hbtns">
+      <a href="book.html" class="bg">Get Instant Quote →</a>
+      <a href="tel:+917842854466" class="bgh">📞 +91 78428 54466</a>
+    </div>
+    <div class="hstats">
+      <div class="hsc"><div class="hsc-n" id="h1">2</div><div class="hsc-l">Min to get a quote</div></div>
+      <div class="hsc"><div class="hsc-n" id="h2">15+</div><div class="hsc-l">Insurers compared</div></div>
+      <div class="hsc"><div class="hsc-n" id="h3">₹1,200</div><div class="hsc-l">Avg saved per renewal</div></div>
+      <div class="hsc"><div class="hsc-n" id="h4">98%</div><div class="hsc-l">Claim settlement ratio</div></div>
+    </div>
+  </div>
+  <div class="sh"><div class="sh-m"><div class="sh-d"></div></div><div class="sh-t">Scroll</div></div>
+</section>
+
+<!-- ═══════════ 3 VEHICLE CATEGORY CARDS ═══════════ -->
+<section class="vcats">
+  <div class="vcats-inner">
+
+    <div class="vc vc-bike rv d1">
+      <div class="vc-img">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=600&q=80" alt="Bike Insurance"/>
+      </div>
+      <div class="vc-body">
+        <div class="vc-ic">🏍️</div>
+        <div class="vc-tt">Bike Insurance</div>
+        <div class="vc-ds">Two-wheeler insurance for bikes, scooters and mopeds. Third-party starts at ₹538/year. Comprehensive cover protects against theft, accidents, and natural disasters.</div>
+        <div class="vc-meta">
+          <div class="vc-from">From <strong>₹538/yr</strong></div>
+          <a href="bike-insurance.html" class="vc-btn">Explore 🏍️ →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="vc vc-car rv d2">
+      <div class="vc-img">
+        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=600&q=80" alt="Car Insurance"/>
+      </div>
+      <div class="vc-body">
+        <div class="vc-ic">🚗</div>
+        <div class="vc-tt">Car Insurance</div>
+        <div class="vc-ds">Four-wheeler cover for hatchbacks, sedans, SUVs and more. Protect against accidents, floods, fire and theft. Zero depreciation available for newer cars.</div>
+        <div class="vc-meta">
+          <div class="vc-from">From <strong>₹2,094/yr</strong></div>
+          <a href="car-insurance.html" class="vc-btn">Explore 🚗 →</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="vc vc-comm rv d3">
+      <div class="vc-img">
+        <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=600&q=80" alt="Commercial Vehicle"/>
+      </div>
+      <div class="vc-body">
+        <div class="vc-ic">🚛</div>
+        <div class="vc-tt">Commercial Vehicle</div>
+        <div class="vc-ds">Trucks, buses, autos, cabs and goods carriers. Fleet discounts available. Covers third-party liability, goods in transit, and driver personal accident.</div>
+        <div class="vc-meta">
+          <div class="vc-from">From <strong>₹6,500/yr</strong></div>
+          <a href="commercial-vehicle-insurance.html" class="vc-btn">Explore 🚛 →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════ STATS BAR ═══════════ -->
+<div class="stbar" style="margin-top:4rem;">
+  <div class="strow">
+    <div class="rv"><div class="sti">⚡</div><div class="stn" id="c1">0</div><div class="stl">Minutes to get insured online</div></div>
+    <div class="rv d1"><div class="sti">🏆</div><div class="stn" id="c2">0%</div><div class="stl">Cashless garage network coverage</div></div>
+    <div class="rv d2"><div class="sti">💰</div><div class="stn" id="c3">₹0</div><div class="stl">Average annual saving vs direct</div></div>
+    <div class="rv d3"><div class="sti">🔧</div><div class="stn" id="c4">0+</div><div class="stl">Cashless garages across AP & TG</div></div>
+  </div>
+</div>
+
+<!-- ═══════════ ANIMATED ROAD DIVIDER ═══════════ -->
+<div class="road-div">
+  <div class="rd-road"></div>
+  <div class="rd-line" style="width:12%;top:50%;animation-delay:0s;"></div>
+  <div class="rd-line" style="width:8%;top:50%;animation-delay:.7s;"></div>
+  <div class="rd-line" style="width:14%;top:50%;animation-delay:1.4s;"></div>
+  <div class="rd-bike">🏍️</div>
+  <div class="rd-car">🚗</div>
+  <div class="rd-truck">🚛</div>
+</div>
+
+<!-- ═══════════ WHY CHOOSE US ═══════════ -->
+<section class="sec">
+  <div class="si">
+    <div class="tag rv">Why Cover Credit</div>
+    <h2 class="tit rv d1">We do the hard work.<br/>You just <em>drive.</em></h2>
+    <p class="sub rv d2" style="margin-bottom:2rem;">Renewing at the same insurer every year without comparing is costing you money. We compare 15+ insurers in real time and find you the best deal — every time.</p>
+    <div class="feat-g">
+      <div class="fg rv d1">
+        <div class="fg-ic or">⚡</div>
+        <div class="fg-tt">2-Minute Quote</div>
+        <div class="fg-ds">Vehicle number, basic details — done. We pull all vehicle info automatically and compare 15+ insurers instantly. No long forms.</div>
+      </div>
+      <div class="fg rv d2">
+        <div class="fg-ic bl">🔧</div>
+        <div class="fg-tt">5,000+ Cashless Garages</div>
+        <div class="fg-ds">Drive in, get repaired, drive out. No upfront payment. Cashless claim settlement across the entire AP and Telangana network.</div>
+      </div>
+      <div class="fg rv d3">
+        <div class="fg-ic gr">💰</div>
+        <div class="fg-tt">Save ₹1,200 on Average</div>
+        <div class="fg-ds">Most people overpay by renewing with the same insurer. Our comparison saves an average of ₹1,200 per year — with equal or better coverage.</div>
+      </div>
+      <div class="fg rv d1">
+        <div class="fg-ic or">📱</div>
+        <div class="fg-tt">Zero Depreciation Add-on</div>
+        <div class="fg-ds">Standard insurance deducts depreciation from your claim. Zero-dep add-on means you get the full repair cost paid — no deductions.</div>
+      </div>
+      <div class="fg rv d2">
+        <div class="fg-ic bl">🏥</div>
+        <div class="fg-tt">Personal Accident Cover</div>
+        <div class="fg-ds">₹15 lakh personal accident cover included with every vehicle policy for the owner-driver. Covers death, permanent disability, and hospitalisation.</div>
+      </div>
+      <div class="fg rv d3">
+        <div class="fg-ic gr">🔄</div>
+        <div class="fg-tt">Renewal Reminders</div>
+        <div class="fg-ds">We send reminders 30 days before your policy expires so you never lapse — and never pay higher premiums due to a missed renewal.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ COVERAGE TYPES ═══════════ -->
+<section class="sec sa">
+  <div class="si">
+    <div class="tag rv">Coverage Types</div>
+    <h2 class="tit rv d1">Third-Party vs Comprehensive —<br/><em>know the difference</em></h2>
+    <p class="sub rv d2" style="margin-bottom:1.8rem;">The law requires Third-Party. But only Comprehensive truly protects your vehicle. Here is exactly what you get with each.</p>
+    <div class="cov-g rv d1">
+
+      <div class="cov-c">
+        <div class="cov-top cov-tp">
+          <svg class="cov-svg" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Shield outline -->
+            <path d="M100 10 L160 35 L160 75 Q160 105 100 118 Q40 105 40 75 L40 35 Z" fill="rgba(21,101,192,0.2)" stroke="#4fa3e0" stroke-width="2">
+              <animate attributeName="stroke-opacity" values="1;0.4;1" dur="2.5s" repeatCount="indefinite"/>
+            </path>
+            <!-- Check -->
+            <path d="M76 63 L92 78 L128 48" stroke="#4ade80" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <!-- Third party figure -->
+            <circle cx="155" cy="58" r="10" fill="#93c5fd"/>
+            <rect x="148" y="68" width="14" height="16" rx="3" fill="#1565c0"/>
+            <text x="100" y="100" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.4)" font-family="DM Sans,sans-serif">THIRD-PARTY</text>
+          </svg>
+        </div>
+        <div class="cov-body">
+          <div class="cov-tp cov-badge" style="background:rgba(21,101,192,.15);border:1px solid rgba(21,101,192,.3);color:#93c5fd;">⚖️ Third-Party Only</div>
+          <div class="cov-tt">Mandatory by Law</div>
+          <div class="cov-ds">Covers damage or injury caused to another person or their vehicle. Does not protect your own vehicle at all.</div>
+          <div class="cov-rows">
+            <div class="cr"><div class="cr-dot cr-y">✓</div>Third-party bodily injury covered</div>
+            <div class="cr"><div class="cr-dot cr-y">✓</div>Third-party property damage covered</div>
+            <div class="cr"><div class="cr-dot cr-y">✓</div>Legal liability protection</div>
+            <div class="cr"><div class="cr-dot cr-n">✗</div>Own vehicle damage NOT covered</div>
+            <div class="cr"><div class="cr-dot cr-n">✗</div>Theft NOT covered</div>
+            <div class="cr"><div class="cr-dot cr-n">✗</div>Natural calamities NOT covered</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="cov-c">
+        <div class="cov-top cov-cp">
+          <svg class="cov-svg" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Big comprehensive shield -->
+            <path d="M100 8 L168 36 L168 80 Q168 112 100 118 Q32 112 32 80 L32 36 Z" fill="rgba(255,107,0,0.18)" stroke="#ff6b00" stroke-width="2.5">
+              <animate attributeName="stroke-opacity" values="1;0.35;1" dur="2s" repeatCount="indefinite"/>
+            </path>
+            <!-- Star/full check inside -->
+            <circle cx="100" cy="62" r="24" fill="rgba(255,107,0,0.15)" stroke="#ff8c00" stroke-width="1.5">
+              <animate attributeName="r" values="24;27;24" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <path d="M88 62 L96 70 L116 52" stroke="#ffd166" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <text x="100" y="106" text-anchor="middle" font-size="10" fill="rgba(255,255,255,0.4)" font-family="DM Sans,sans-serif">COMPREHENSIVE</text>
+            <!-- Stars -->
+            <circle cx="40" cy="30" r="2.5" fill="#ffd166"><animate attributeName="opacity" values="1;0;1" dur="1.4s" repeatCount="indefinite"/></circle>
+            <circle cx="162" cy="28" r="2" fill="#ffd166"><animate attributeName="opacity" values="0;1;0" dur="1.8s" repeatCount="indefinite"/></circle>
+          </svg>
+        </div>
+        <div class="cov-body">
+          <div class="cov-badge" style="background:rgba(255,107,0,.12);border:1px solid rgba(255,107,0,.25);color:#ffb380;">🛡️ Comprehensive — Recommended</div>
+          <div class="cov-tt">Complete Protection</div>
+          <div class="cov-ds">Covers everything in third-party AND protects your own vehicle from accidents, theft, fire, flood, and more.</div>
+          <div class="cov-rows">
+            <div class="cr"><div class="cr-dot cr-y">✓</div>All third-party cover included</div>
+            <div class="cr"><div class="cr-dot cr-y">✓</div>Own vehicle accident damage</div>
+            <div class="cr"><div class="cr-dot cr-y">✓</div>Theft and total loss covered</div>
+            <div class="cr"><div class="cr-dot cr-y">✓</div>Fire, flood, natural calamity</div>
+            <div class="cr"><div class="cr-dot cr-y">✓</div>Zero depreciation add-on available</div>
+            <div class="cr"><div class="cr-dot cr-y">✓</div>Roadside assistance add-on</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="cov-verdict rv d2">
+      <div class="cv-ic">💡</div>
+      <div>
+        <div class="cv-tt">Our honest advice: Always go Comprehensive for vehicles under 7 years old</div>
+        <div class="cv-ds">A comprehensive policy costs only ₹2,000–₹4,000 more per year than third-party. But a single accident can cost ₹50,000–₹2,00,000 in repairs. The maths is simple. We help you pick the right plan and add-ons without overpaying.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ QUICK QUOTE CALCULATOR ═══════════ -->
+<section class="sec">
+  <div class="si">
+    <div class="qq-wrap">
+      <div class="qq-visual rv">
+        <img src="https://images.unsplash.com/photo-1568605117036-5fe5e7bab0b7?auto=format&fit=crop&w=700&q=80" alt="Car on Indian road"/>
+        <div class="qq-ov">
+          <div class="qq-card">
+            <div class="qqc-tt">📋 Sample — Maruti Swift, 2021</div>
+            <div class="qqc-r"><span class="qqc-l">Plan</span><span class="qqc-v">HDFC ERGO Comprehensive</span></div>
+            <div class="qqc-r"><span class="qqc-l">IDV</span><span class="qqc-v">₹5.2 Lakh</span></div>
+            <div class="qqc-r"><span class="qqc-l">Zero-dep add-on</span><span class="qqc-v">Included</span></div>
+            <div class="qqc-r"><span class="qqc-l">Claim ratio</span><span class="qqc-v">97.8%</span></div>
+            <div class="qqc-big" id="calcDisplay">₹4,200/yr</div>
+          </div>
+        </div>
+      </div>
+      <div class="qq-form rv d1">
+        <div class="tag">Premium Estimator</div>
+        <h2 class="tit d1" style="font-size:clamp(1.4rem,2.2vw,2rem);margin-bottom:1.5rem;">Estimate your<br/><em>vehicle premium</em></h2>
+        <div class="qf-row">
+          <div class="qf-lbl">Vehicle Type</div>
+          <div class="qf-pills">
+            <div class="qf-pill on" data-vtype="bike">🏍️ Bike</div>
+            <div class="qf-pill" data-vtype="car">🚗 Car</div>
+            <div class="qf-pill" data-vtype="commercial">🚛 Commercial</div>
+          </div>
+        </div>
+        <div class="qf-row">
+          <div class="qf-lbl">Vehicle Age <span id="ageVal">3 years</span></div>
+          <input type="range" class="qf-range" id="ageRange" min="0" max="15" value="3"/>
+        </div>
+        <div class="qf-row">
+          <div class="qf-lbl">Coverage Type</div>
+          <div class="qf-pills">
+            <div class="qf-pill" data-cov="tp">Third-Party</div>
+            <div class="qf-pill on" data-cov="comp">Comprehensive</div>
+          </div>
+        </div>
+        <div class="qf-row">
+          <div class="qf-lbl">Zero Depreciation Add-on?</div>
+          <div class="qf-pills">
+            <div class="qf-pill on" data-zdep="0">No</div>
+            <div class="qf-pill" data-zdep="1">Yes (+₹800)</div>
+          </div>
+        </div>
+        <div class="qf-res">
+          <div class="qfrl">Estimated Annual Premium</div>
+          <div class="qfrp" id="qfResult">₹4,200</div>
+          <div class="qfrs">Indicative only. Exact premium depends on vehicle model, city, and insurer. Book a session for an accurate comparison.</div>
+        </div>
+        <a href="book.html" class="bg" style="width:100%;justify-content:center;margin-top:1rem;">Get Exact Quotes from 15+ Insurers →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ WHATSAPP CHAT ═══════════ -->
+<section class="sec sa">
+  <div class="chat-wrap">
+    <div class="rv">
+      <div class="tag">Real Conversation</div>
+      <h2 class="tit d1">This is how we help<br/><em>every single customer</em></h2>
+      <p class="sub d2" style="margin-bottom:1.4rem;">A real advisory session from our office. No upselling. No pressure. Just clear advice on what you actually need — and what you can skip.</p>
+      <div style="display:flex;flex-direction:column;gap:.65rem;margin-bottom:1.8rem;">
+        <div class="cb-item"><div class="cb-dot"></div>We check if your current insurer is overcharging you</div>
+        <div class="cb-item"><div class="cb-dot"></div>We explain zero-dep, engine protect, and roadside assist honestly</div>
+        <div class="cb-item"><div class="cb-dot"></div>We compare NCB transfer and renewal benefits across insurers</div>
+        <div class="cb-item"><div class="cb-dot"></div>Policy renewed or issued digitally within minutes</div>
+      </div>
+      <a href="book.html" class="bg">Book free consultation →</a>
+    </div>
+    <div class="rv d2">
+      <div class="phone-mock">
+        <div class="wa-head">
+          <div class="wa-back">←</div>
+          <div class="wa-av">🧑‍💼</div>
+          <div><div class="wa-nm">Sunil — Cover Credit</div><div class="wa-st">● Online</div></div>
+          <div class="wa-ic"><span>📞</span><span>⋮</span></div>
+        </div>
+        <div class="wa-bg" id="waChat"><div class="wa-date">Today</div></div>
+        <div class="wa-inp"><div class="wa-inp-box">Type a message…</div><div class="wa-send">➤</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FAQ + SIDEBAR ═══════════ -->
+<section class="sec">
+  <div class="si faq-lay">
+    <div>
+      <div class="tag rv">FAQ</div>
+      <h2 class="tit rv d1">Questions about<br/><em>vehicle insurance</em></h2>
+      <div class="faq-list rv d1">
+        <div class="fi op">
+          <div class="fh"><span class="fq">Is Third-Party insurance enough or do I need Comprehensive?</span><span class="fic">+</span></div>
+          <div class="fab2"><p class="fat">Third-party is the legal minimum — it covers damage to others. But it does not cover your own vehicle at all. If your car gets damaged in an accident, floods, or gets stolen, third-party pays nothing. For any vehicle under 7 years old, we strongly recommend comprehensive cover. The extra cost is typically ₹2,000–₹4,000 per year — far less than a single repair bill.</p></div>
+        </div>
+        <div class="fi">
+          <div class="fh"><span class="fq">What is Zero Depreciation and should I add it?</span><span class="fic">+</span></div>
+          <div class="fab2"><p class="fat">Standard comprehensive insurance deducts depreciation from your claim payout — meaning you pay part of the repair out of pocket. Zero Depreciation (Zero-Dep) means the insurer pays 100% of the repair cost with no deductions. It costs ₹600–₹1,200 extra per year and is highly recommended for cars under 5 years old. We always recommend it unless the car is very old.</p></div>
+        </div>
+        <div class="fi">
+          <div class="fh"><span class="fq">How does NCB (No Claim Bonus) work?</span><span class="fic">+</span></div>
+          <div class="fab2"><p class="fat">Every year you do not make a claim, you earn a discount on your premium — starting at 20% and going up to 50% after 5 consecutive claim-free years. This NCB belongs to you, not the vehicle. If you switch insurers, your NCB transfers. However, any claim resets it to 0%. We help you decide whether a small claim is worth making or better paid out of pocket to protect your NCB.</p></div>
+        </div>
+        <div class="fi">
+          <div class="fh"><span class="fq">What documents do I need to buy or renew vehicle insurance?</span><span class="fic">+</span></div>
+          <div class="fab2"><p class="fat">For renewal: your existing policy number and vehicle registration number — that is it. For a new policy: RC book copy, previous policy (if any), and your driving licence. For commercial vehicles: additional permit and fitness certificate documents may be required. We handle the entire paperwork process for you.</p></div>
+        </div>
+        <div class="fi">
+          <div class="fh"><span class="fq">How do I make a claim if my vehicle is damaged?</span><span class="fic">+</span></div>
+          <div class="fab2"><p class="fat">Step 1: Call the insurer helpline immediately and register the claim. Step 2: Take your vehicle to a network cashless garage — no upfront payment needed. Step 3: Surveyor inspects the vehicle and approves repairs. Step 4: Vehicle repaired and you drive out. For reimbursement claims at non-network garages: repair first, submit bills, and the insurer pays within 7 working days.</p></div>
+        </div>
+        <div class="fi">
+          <div class="fh"><span class="fq">Can I insure a vehicle with an expired policy?</span><span class="fic">+</span></div>
+          <div class="fab2"><p class="fat">Yes, but a lapsed policy (expired for more than 90 days) may require a fresh inspection of the vehicle before the new insurer accepts it. It can also result in loss of your accumulated NCB. If your policy lapses, contact us immediately — we help you get re-insured with minimum hassle and advise on NCB protection options.</p></div>
+        </div>
+      </div>
+    </div>
+    <aside class="sb2">
+      <div class="sb2-card rv">
+        <div style="font-size:3rem;margin-bottom:.8rem;">🚗</div>
+        <div class="sb2-tt">Get your vehicle covered today</div>
+        <div class="sb2-ds">Free comparison across 15+ insurers. Same-day digital policy. No paperwork hassle.</div>
+        <a href="book.html" class="sb2-btn">📅 Book Free Session</a>
+        <div class="sb2-div">or call directly</div>
+        <a href="tel:+917842854466" class="sb2-ph">📞 +91 78428 54466</a>
+      </div>
+      <div class="sb2-links rv d1">
+        <div class="sb2-lbl">Vehicle Insurance Pages</div>
+        <a href="bike-insurance.html" class="sbl"><span class="sbl-ic">🏍️</span><span class="sbl-nm">Bike Insurance</span><span class="sbl-ar">→</span></a>
+        <a href="car-insurance.html" class="sbl"><span class="sbl-ic">🚗</span><span class="sbl-nm">Car Insurance</span><span class="sbl-ar">→</span></a>
+        <a href="commercial-vehicle-insurance.html" class="sbl"><span class="sbl-ic">🚛</span><span class="sbl-nm">Commercial Vehicle</span><span class="sbl-ar">→</span></a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- ═══════════ TRUST STRIP ═══════════ -->
+<div style="padding:2.5rem 5%;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--i2);">
+  <div style="text-align:center;font-size:.64rem;font-weight:700;color:rgba(255,255,255,.22);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:1.2rem;">Insurers We Compare</div>
+  <div style="display:flex;justify-content:center;align-items:center;gap:1.2rem;flex-wrap:wrap;max-width:1300px;margin:0 auto;">
+    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:.48rem 1rem;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.32);">HDFC ERGO</div>
+    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:.48rem 1rem;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.32);">New India Assurance</div>
+    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:.48rem 1rem;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.32);">Bajaj Allianz</div>
+    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:.48rem 1rem;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.32);">ICICI Lombard</div>
+    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:.48rem 1rem;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.32);">Tata AIG</div>
+    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:.48rem 1rem;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.32);">Oriental Insurance</div>
+    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:.48rem 1rem;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.32);">Royal Sundaram</div>
+    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:.48rem 1rem;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.32);">Reliance General</div>
+    <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:.48rem 1rem;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.32);">United India</div>
+  </div>
+</div>
+
+<!-- ═══════════ CTA BANNER ═══════════ -->
+<section class="ctab">
+  <div class="ctab-bg">
+    <img src="https://images.unsplash.com/photo-1542362567-b07e54358753?auto=format&fit=crop&w=1400&q=80" alt="Indian highway night"/>
+  </div>
+  <div class="cta-in">
+    <div>
+      <h2 class="cta-tt rv">Stop overpaying for<br/>vehicle insurance.</h2>
+      <p class="cta-ds rv d1">Takes 2 minutes. We compare 15+ insurers and find your best rate — same coverage, lower price. Policy issued digitally, same day.</p>
+      <div class="cta-pills rv d2">
+        <span class="cpill">✓ Free comparison</span>
+        <span class="cpill">✓ 2 minute process</span>
+        <span class="cpill">✓ Same-day policy</span>
+        <span class="cpill">✓ Digital delivery</span>
+      </div>
+    </div>
+    <div class="cta-btns rv d2">
+      <a href="book.html" class="bg" style="white-space:nowrap;font-size:.95rem;padding:1rem 2rem;">Get My Free Quote →</a>
+      <div class="cta-ph">or call: <a href="tel:+917842854466">+91 78428 54466</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer class="ft">
+  <div class="ft-in">
+    <div class="ft-top">
+      <div>
+        <a href="index.html" class="ft-logo">Cover<em>Credit</em></a>
+        <p class="ft-ds">Honest insurance and financial advice for families across AP and Telangana. We sell the right policy — no pressure, no jargon.</p>
+        <div class="ft-con">📞 <a href="tel:+917842854466">+91 78428 54466</a></div>
+        <div class="ft-con">✉️ <a href="mailto:Covercredit.official@gmail.com">Covercredit.official@gmail.com</a></div>
+        <div class="ft-con">🕐 Mon–Sat: 9 AM – 7 PM</div>
+      </div>
+      <div class="ft-col">
+        <div class="ft-clbl">Vehicle Insurance</div>
+        <ul>
+          <li><a href="bike-insurance.html">Bike Insurance</a></li>
+          <li><a href="car-insurance.html">Car Insurance</a></li>
+          <li><a href="commercial-vehicle-insurance.html">Commercial Vehicle</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <div class="ft-clbl">Insurance</div>
+        <ul>
+          <li><a href="health-insurance.html">Health Insurance</a></li>
+          <li><a href="life-insurance.html">Life &amp; Term Insurance</a></li>
+          <li><a href="loans.html">Loans &amp; Finance</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <div class="ft-clbl">Company</div>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="book.html">Book Consultation</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span>© <span id="yr"></span> Cover Credit Insurance Advisors. All rights reserved.</span>
+      <div class="ft-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* CURSOR */
+const cur=document.getElementById('cur'),cr=document.getElementById('cr');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function tick(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(tick);})();
+document.querySelectorAll('a,button,.vc,.fg,.fi,.sbl,.qf-pill').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
+});
+
+/* NAV */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>40),{passive:true});
+const burger=document.getElementById('burger'),mob=document.getElementById('mob');
+burger.addEventListener('click',()=>{burger.classList.toggle('op');mob.classList.toggle('op');document.body.style.overflow=mob.classList.contains('op')?'hidden':'';});
+
+/* HERO SPEED LINES */
+const cont=document.getElementById('heroLines');
+if(cont){
+  for(let i=0;i<12;i++){
+    const l=document.createElement('div');
+    l.className='hl';
+    const top=20+Math.random()*60;
+    const w=80+Math.random()*200;
+    const dur=1.5+Math.random()*3;
+    const delay=Math.random()*4;
+    l.style.cssText=`top:${top}%;width:${w}px;animation:speedline ${dur}s linear ${delay}s infinite;opacity:${0.1+Math.random()*0.15};`;
+    cont.appendChild(l);
+  }
+  const st=document.createElement('style');
+  st.textContent='@keyframes speedline{from{transform:translateX(-120px) scaleX(0.3)}to{transform:translateX(calc(100vw + 120px)) scaleX(1)}}';
+  document.head.appendChild(st);
+}
+
+/* REVEAL */
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});},{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+
+/* STATS COUNTER */
+function animN(el,target,pre,suf,dur){
+  if(!el)return;let s=null;
+  const step=ts=>{
+    if(!s)s=ts;const p=Math.min((ts-s)/dur,1);const e=1-Math.pow(1-p,4);
+    el.textContent=pre+Math.round(e*target)+suf;if(p<1)requestAnimationFrame(step);
+  };requestAnimationFrame(step);
+}
+const so=new IntersectionObserver(es=>{
+  if(es[0].isIntersecting){
+    animN(document.getElementById('c1'),2,'','',600);
+    animN(document.getElementById('c2'),98,'','%',1200);
+    animN(document.getElementById('c3'),1200,'₹','',1000);
+    animN(document.getElementById('c4'),5000,'','',1400);
+    so.disconnect();
+  }
+},{threshold:.5});
+const stbar=document.querySelector('.stbar');if(stbar)so.observe(stbar);
+
+/* FAQ */
+document.querySelectorAll('.fh').forEach(h=>{
+  h.addEventListener('click',()=>{
+    const it=h.parentElement,op=it.classList.contains('op');
+    document.querySelectorAll('.fi').forEach(i=>i.classList.remove('op'));
+    if(!op)it.classList.add('op');
+  });
+});
+
+/* PREMIUM CALCULATOR */
+let selVtype='bike',selAge=3,selCov='comp',selZdep=0;
+function calcQ(){
+  const base={bike:{tp:538,comp:1800},car:{tp:2094,comp:4200},commercial:{tp:6500,comp:12000}};
+  const ageFactor=Math.max(0.6,1-(selAge*0.04));
+  let p=selCov==='tp'?base[selVtype].tp:base[selVtype].comp;
+  p=Math.round(p*ageFactor/100)*100;
+  if(selCov==='comp'&&selZdep)p+=800;
+  const res=document.getElementById('qfResult');
+  const cd=document.getElementById('calcDisplay');
+  if(res)res.textContent='₹'+p.toLocaleString('en-IN');
+  if(cd)cd.textContent='₹'+p.toLocaleString('en-IN')+'/yr';
+}
+const ar=document.getElementById('ageRange');
+if(ar){ar.addEventListener('input',()=>{selAge=parseInt(ar.value);const av=document.getElementById('ageVal');if(av)av.textContent=ar.value+' years';calcQ();});}
+document.querySelectorAll('[data-vtype]').forEach(p=>{p.addEventListener('click',()=>{document.querySelectorAll('[data-vtype]').forEach(x=>x.classList.remove('on'));p.classList.add('on');selVtype=p.dataset.vtype;calcQ();});});
+document.querySelectorAll('[data-cov]').forEach(p=>{p.addEventListener('click',()=>{document.querySelectorAll('[data-cov]').forEach(x=>x.classList.remove('on'));p.classList.add('on');selCov=p.dataset.cov;calcQ();});});
+document.querySelectorAll('[data-zdep]').forEach(p=>{p.addEventListener('click',()=>{document.querySelectorAll('[data-zdep]').forEach(x=>x.classList.remove('on'));p.classList.add('on');selZdep=parseInt(p.dataset.zdep);calcQ();});});
+
+/* WHATSAPP CHAT */
+const CONV=[
+  {side:'in', name:'Sunil — Cover Credit', text:'Hi! I see you want to renew your car insurance. Which car do you drive, and when does your current policy expire?', time:'11:02 AM', hl:null, delay:800},
+  {side:'out', name:'Arjun', text:'Maruti Swift 2021 model. Policy expires in 3 weeks. Currently with New India Assurance, paying about ₹6,800 per year.', time:'11:03 AM', hl:null, delay:3000},
+  {side:'in', name:'Sunil — Cover Credit', text:'Got it. That sounds high for a 2021 Swift. Let me check. What is your current NCB percentage — do you know?', time:'11:03 AM', hl:null, delay:5500},
+  {side:'out', name:'Arjun', text:'I think 20% — no claims last year. But I am not sure if zero-dep is included or not.', time:'11:04 AM', hl:null, delay:8200},
+  {side:'in', name:'Sunil — Cover Credit', text:'Checked it. HDFC ERGO and ICICI Lombard both give you the same or better cover for ₹4,100–₹4,400 with zero-dep included. That is a saving of ₹2,400 per year minimum.', time:'11:05 AM', hl:'Saving identified: ₹2,400/year — same cover, lower price', delay:11500},
+  {side:'out', name:'Arjun', text:'Seriously? Is it safe to switch? Will I lose my NCB?', time:'11:06 AM', hl:null, delay:15000},
+  {side:'in', name:'Sunil — Cover Credit', text:'100% safe to switch. NCB is yours — it transfers to any insurer. We handle the NCB transfer form and the entire process. You just approve and we issue digitally within 10 minutes.', time:'11:07 AM', hl:'NCB transfer is free and handled by us ✓', delay:17500},
+  {side:'out', name:'Arjun', text:'That is great! Can we go ahead with HDFC ERGO with zero-dep?', time:'11:07 AM', hl:null, delay:21000},
+  {side:'in', name:'Sunil — Cover Credit', text:'Done! Generating your policy now. You will receive the digital copy on WhatsApp within 8 minutes. Welcome to Cover Credit!', time:'11:08 AM', hl:'Policy issued digitally in under 10 minutes ✓', delay:23500},
+];
+const waChat=document.getElementById('waChat');
+let wt=[];
+function cWt(){wt.forEach(t=>clearTimeout(t));wt=[];}
+function addM(msg){
+  const tw=waChat.querySelector('.wtyp-row');if(tw)tw.remove();
+  const w=document.createElement('div');w.className='wm '+(msg.side==='in'?'in':'out');
+  const b=document.createElement('div');b.className='wm-bub';
+  if(msg.side==='in'){const n=document.createElement('div');n.className='wm-name';n.textContent=msg.name;b.appendChild(n);}
+  const t=document.createElement('div');t.textContent=msg.text;b.appendChild(t);
+  if(msg.hl){const h=document.createElement('div');h.className='wm-hl';h.textContent=msg.hl;b.appendChild(h);}
+  const tm=document.createElement('div');tm.className='wm-time';tm.textContent=msg.time;b.appendChild(tm);
+  w.appendChild(b);waChat.appendChild(w);waChat.scrollTop=waChat.scrollHeight;
+}
+function showT(side){
+  const tw=waChat.querySelector('.wtyp-row');if(tw)tw.remove();
+  const w=document.createElement('div');w.className='wtyp-row wm '+(side==='in'?'in':'out');
+  const b=document.createElement('div');b.className='wm-typ show';b.innerHTML='<span></span><span></span><span></span>';
+  w.appendChild(b);waChat.appendChild(w);waChat.scrollTop=waChat.scrollHeight;
+}
+function startC(){
+  cWt();if(waChat)waChat.innerHTML='<div class="wa-date">Today</div>';
+  CONV.forEach(msg=>{
+    wt.push(setTimeout(()=>showT(msg.side),Math.max(0,msg.delay-1400)));
+    wt.push(setTimeout(()=>addM(msg),msg.delay));
+  });
+  wt.push(setTimeout(startC,CONV[CONV.length-1].delay+5000));
+}
+const wo=new IntersectionObserver(es=>{if(es[0].isIntersecting){startC();wo.disconnect();}},{threshold:.35});
+const ph=document.querySelector('.phone-mock');if(ph)wo.observe(ph);
+
+/* IMAGE FALLBACK */
+document.querySelectorAll('img').forEach(img=>{
+  img.addEventListener('error',function(){
+    const w=this.offsetWidth||400,h=this.offsetHeight||280;
+    this.src='https://picsum.photos/'+w+'/'+h+'?random='+Math.floor(Math.random()*100);
+    this.onerror=null;
+  });
+});
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
