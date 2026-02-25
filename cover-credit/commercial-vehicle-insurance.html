@@ -1,74 +1,956 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Commercial vehicle insurance — trucks, autos, buses, fleet insurance. Cover Credit AP & Telangana."/>
-  <title>Commercial Vehicle Insurance | Cover Credit</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/variables.css"/><link rel="stylesheet" href="css/global.css"/><link rel="stylesheet" href="css/components.css"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Commercial Vehicle Insurance | Policy Doc — AP & Telangana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{--ac:#e65100;--ac2:#ff8f00;--acr:230,81,0;--ink:#06101f;--i2:#0b1a30;--line:rgba(255,255,255,.08);--fog:rgba(255,255,255,.06);--E:cubic-bezier(.16,1,.3,1);--nh:72px;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--ink);color:#fff;overflow-x:hidden;cursor:none;}
+a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;object-fit:cover;}
+#cur,#cr{position:fixed;top:0;left:0;pointer-events:none;border-radius:50%;z-index:9999;transform:translate(-50%,-50%);}
+#cur{width:10px;height:10px;background:var(--ac);}
+#cr{width:38px;height:38px;border:1.5px solid rgba(230,81,0,.5);z-index:9998;transition:width .2s,height .2s,opacity .2s;}
+body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:.18;}
+.nav{position:fixed;top:0;left:0;right:0;z-index:900;height:var(--nh);padding:0 5%;transition:background .4s;}
+.nav.sc{background:rgba(6,16,31,.97);backdrop-filter:blur(24px);box-shadow:0 1px 0 var(--line);}
+.ni{max-width:1300px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;}.logo em{font-style:normal;color:#f5a623;}
+.nl{display:flex;align-items:center;gap:1.8rem;list-style:none;}
+.nl a{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.65);transition:color .2s;position:relative;}
+.nl a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:#f5a623;transition:width .28s;}
+.nl a:hover,.nl a.act{color:#fff;}.nl a:hover::after,.nl a.act::after{width:100%;}
+.dd{position:relative;}.ddt{font-size:.85rem;font-weight:500;color:#fff;cursor:none;display:flex;align-items:center;gap:.26rem;}
+.dda{font-size:.54rem;transition:transform .3s;}.dd:hover .dda{transform:rotate(180deg);}
+.ddm{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(6px);background:var(--i2);border:1px solid var(--line);border-radius:12px;padding:.4rem;min-width:190px;opacity:0;visibility:hidden;transition:opacity .2s,transform .28s var(--E),visibility .2s;box-shadow:0 24px 60px rgba(0,0,0,.5);}
+.dd:hover .ddm{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+.ddm a{display:block;padding:.5rem .82rem;font-size:.8rem;color:rgba(255,255,255,.62);border-radius:8px;transition:background .18s,color .18s;}
+.ddm a:hover,.ddm a.act{background:rgba(255,255,255,.07);color:#fff;}
+.ncta{background:#f5a623!important;color:#06101f!important;padding:.46rem 1.12rem!important;border-radius:100px;font-weight:700!important;font-size:.8rem!important;}
+.ncta::after{display:none!important;}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:4px;}
+.burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s;}
+.burger.op span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.burger.op span:nth-child(2){opacity:0;}
+.burger.op span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.mob{position:fixed;inset:0;z-index:899;background:var(--ink);display:flex;flex-direction:column;padding:calc(var(--nh)+1.8rem) 5% 3rem;transform:translateX(100%);transition:transform .38s var(--E);}
+.mob.op{transform:translateX(0);}
+.mob a{padding:.9rem 0;font-size:1rem;font-weight:500;color:rgba(255,255,255,.72);border-bottom:1px solid var(--line);}
+.mc{margin-top:1.8rem;background:#f5a623;color:#06101f!important;text-align:center;border-radius:12px;padding:.9rem!important;font-weight:700!important;border:none!important;}
+.fab{position:fixed;bottom:1.8rem;right:1.8rem;z-index:400;display:flex;flex-direction:column;gap:.65rem;align-items:flex-end;}
+.fab a{display:flex;align-items:center;gap:.48rem;padding:.65rem 1rem;border-radius:100px;font-size:.76rem;font-weight:600;cursor:none;transition:transform .18s;}
+.fab a:hover{transform:translateY(-2px);}
+.fwa{background:#25d366;color:#fff;box-shadow:0 6px 20px rgba(37,211,102,.35);}
+.fbk{background:var(--ac);color:#fff;box-shadow:0 6px 20px rgba(230,81,0,.35);}
+.rv{opacity:0;transform:translateY(24px);transition:opacity .65s var(--E),transform .65s var(--E);}
+.rv.on{opacity:1;transform:none;}
+.d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.24s;}.d4{transition-delay:.32s;}
+.tag{display:inline-flex;align-items:center;gap:.38rem;font-size:.66rem;font-weight:700;color:var(--ac2);text-transform:uppercase;letter-spacing:2px;margin-bottom:.8rem;}
+.tag::before{content:'';width:14px;height:2px;background:var(--ac2);}
+.tit{font-family:'Playfair Display',serif;font-size:clamp(1.65rem,2.8vw,2.45rem);font-weight:700;line-height:1.15;margin-bottom:.7rem;}
+.tit em{font-style:italic;color:var(--ac2);}
+.sub{font-size:.86rem;color:rgba(255,255,255,.44);line-height:1.75;max-width:520px;}
+.sec{padding:5rem 5%;}.sa{background:var(--i2);}
+.si{max-width:1300px;margin:0 auto;}
+.bg{display:inline-flex;align-items:center;gap:.38rem;background:var(--ac);color:#fff;padding:.78rem 1.6rem;border-radius:11px;font-weight:700;font-size:.87rem;cursor:none;transition:transform .18s,box-shadow .18s;}
+.bg:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(230,81,0,.45);}
+.bgh{display:inline-flex;align-items:center;gap:.38rem;background:var(--fog);border:1px solid var(--line);color:#fff;padding:.78rem 1.6rem;border-radius:11px;font-weight:500;font-size:.87rem;cursor:none;backdrop-filter:blur(10px);transition:background .18s,transform .18s;}
+.bgh:hover{background:rgba(255,255,255,.1);transform:translateY(-2px);}
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;}
+.hi{position:absolute;inset:0;z-index:0;}
+.hi img{width:100%;height:100%;object-fit:cover;object-position:center 60%;transform:scale(1.04);}
+.hi::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(6,16,31,.96) 36%,rgba(6,16,31,.55) 66%,rgba(6,16,31,.18) 100%);}
+.hgrid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:55px 55px;mask-image:radial-gradient(ellipse 70% 80% at 30% 50%,#000,transparent);}
+.hin{position:relative;z-index:2;max-width:1300px;margin:0 auto;padding:calc(var(--nh)+3rem) 5% 5rem;width:100%;}
+.hbc{display:flex;align-items:center;gap:.38rem;font-size:.72rem;color:rgba(255,255,255,.32);margin-bottom:1.3rem;}
+.hbc a{color:rgba(255,255,255,.32);transition:color .2s;}.hbc a:hover{color:var(--ac2);}
+.hkick{display:inline-flex;align-items:center;gap:.42rem;background:rgba(230,81,0,.13);border:1px solid rgba(230,81,0,.28);color:#ffcc80;font-size:.68rem;font-weight:700;padding:.3rem .88rem;border-radius:100px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.1rem;}
+.hkick::before{content:'';width:5px;height:5px;background:var(--ac2);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
+.htit{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4.8vw,4.8rem);font-weight:900;line-height:1.02;letter-spacing:-2.5px;margin-bottom:1.1rem;max-width:700px;}
+.htit em{font-style:italic;background:linear-gradient(120deg,#ff8f00,#ffcc02);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hdesc{font-size:.95rem;line-height:1.8;color:rgba(255,255,255,.56);margin-bottom:2rem;max-width:460px;}
+.hbtns{display:flex;gap:.85rem;flex-wrap:wrap;margin-bottom:2.6rem;}
+.hstats{display:flex;gap:1rem;flex-wrap:wrap;}
+.hsc{background:rgba(255,255,255,.06);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:.85rem 1.15rem;min-width:120px;}
+.hsc-n{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--ac2);line-height:1;letter-spacing:1px;}
+.hsc-l{font-size:.64rem;color:rgba(255,255,255,.38);margin-top:.18rem;}
+.sh{position:absolute;bottom:2.2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:2;}
+.sh-m{width:22px;height:34px;border:2px solid rgba(255,255,255,.2);border-radius:100px;display:flex;justify-content:center;padding-top:5px;}
+.sh-d{width:3px;height:7px;background:rgba(255,255,255,.4);border-radius:100px;animation:sd 2s ease-in-out infinite;}
+@keyframes sd{0%{opacity:1;transform:translateY(0)}80%{opacity:0;transform:translateY(10px)}100%{opacity:0}}
+.sh-t{font-size:.58rem;color:rgba(255,255,255,.22);letter-spacing:1.5px;text-transform:uppercase;}
+
+/* STORY */
+.story-wrap{padding:4rem 5%;background:#06101f;}
+.story-head{text-align:center;margin-bottom:2.5rem;}
+.story-tag{display:inline-flex;align-items:center;gap:.4rem;font-size:.64rem;font-weight:700;color:#ff8f00;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:.7rem;}
+.story-tag::before{content:'';width:16px;height:2px;background:#ff8f00;}
+.story-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.6vw,2.4rem);font-weight:900;line-height:1.08;margin-bottom:.5rem;}
+.story-title em{font-style:italic;color:#ff8f00;}
+.story-sub{font-size:.85rem;color:rgba(255,255,255,.4);max-width:520px;margin:0 auto;}
+.cartoon-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:1.5rem;}
+.cpanel{background:#0d1826;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;}
+.cpanel svg{width:100%;height:auto;display:block;}
+.cp-caption{padding:.85rem 1rem 1rem;flex:1;}
+.cp-num{font-family:'Bebas Neue',sans-serif;font-size:.65rem;letter-spacing:2px;color:rgba(255,255,255,.22);margin-bottom:.25rem;}
+.cp-tt{font-size:.8rem;font-weight:700;color:rgba(255,255,255,.9);line-height:1.3;margin-bottom:.35rem;}
+.cp-ds{font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6;}
+.cp-ds strong{color:rgba(255,255,255,.75);}
+.story-quote{background:rgba(230,81,0,.05);border:1px solid rgba(230,81,0,.14);border-radius:12px;padding:1.3rem 1.5rem;display:flex;align-items:flex-start;gap:1.1rem;}
+.sq-av{font-size:1.8rem;flex-shrink:0;}
+.sq-q{font-family:'Playfair Display',serif;font-size:.9rem;font-style:italic;line-height:1.65;color:rgba(255,255,255,.72);margin-bottom:.28rem;}
+.sq-nm{font-size:.68rem;color:rgba(255,255,255,.3);}
+.sq-note{font-size:.62rem;color:rgba(255,255,255,.18);font-style:italic;}
+
+/* ANIMATIONS */
+@keyframes wheelSpin{to{transform:rotate(360deg)}}
+@keyframes truckMove{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
+@keyframes roadScroll{from{transform:translateX(0)}to{transform:translateX(-120px)}}
+@keyframes cloudDrift{from{transform:translateX(0)}to{transform:translateX(18px)}}
+@keyframes smokeRise{0%{transform:translateY(0) scale(1);opacity:.6}100%{transform:translateY(-40px) scale(2);opacity:0}}
+@keyframes flashWarning{0%,100%{opacity:1;fill:#ff6b00}50%{opacity:.15;fill:#ff6b00}}
+@keyframes notifPop{0%{opacity:0;transform:scale(.6) translateY(10px)}60%{opacity:1;transform:scale(1.05) translateY(-2px)}100%{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes shieldPop{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@keyframes checkDraw{from{stroke-dashoffset:60}to{stroke-dashoffset:0}}
+@keyframes starTwinkle{0%,100%{opacity:0;transform:scale(0)}50%{opacity:1;transform:scale(1)}}
+@keyframes cardFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes starSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes gaugeSpin{from{transform:rotate(-90deg)}to{transform:rotate(90deg)}}
+@keyframes fadeInScale{0%{opacity:0;transform:scale(.7)}100%{opacity:1;transform:scale(1)}}
+@keyframes rupeeCount{0%{opacity:0}100%{opacity:1}}
+
+@media(max-width:900px){.cartoon-strip{grid-template-columns:1fr 1fr;}}
+@media(max-width:520px){.cartoon-strip{grid-template-columns:1fr;}}
+
+/* FEATURES */
+.feat-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem;}
+.fg{background:var(--i2);border:1px solid var(--line);border-radius:16px;padding:1.6rem;transition:transform .28s var(--E),border-color .28s;}
+.fg:hover{transform:translateY(-5px);border-color:rgba(230,81,0,.22);}
+.fg-top{display:flex;align-items:center;gap:.8rem;margin-bottom:.8rem;}
+.fg-ic{width:44px;height:44px;border-radius:12px;background:rgba(230,81,0,.1);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;}
+.fg-tt{font-size:.92rem;font-weight:700;}
+.fg-ds{font-size:.78rem;color:rgba(255,255,255,.44);line-height:1.66;}
+
+/* VEHICLE TYPES GRID */
+.vtype-g{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2rem;}
+.vt{background:var(--i2);border:1px solid var(--line);border-radius:14px;padding:1.4rem 1rem;text-align:center;transition:transform .28s var(--E),border-color .28s;}
+.vt:hover{transform:translateY(-4px);border-color:rgba(230,81,0,.28);}
+.vt-ic{font-size:2.2rem;margin-bottom:.6rem;}
+.vt-tt{font-size:.82rem;font-weight:700;margin-bottom:.3rem;}
+.vt-ds{font-size:.7rem;color:rgba(255,255,255,.38);line-height:1.55;}
+
+/* PLANS */
+.plans-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:2rem;}
+.pc{background:var(--i2);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .3s var(--E),border-color .3s;}
+.pc:hover{transform:translateY(-6px);}
+.pc.rec{border-color:rgba(230,81,0,.35);}
+.pc-top{height:120px;display:flex;align-items:center;justify-content:center;position:relative;}
+.pc-badge{position:absolute;top:.7rem;right:.7rem;background:var(--ac);color:#fff;font-size:.58rem;font-weight:700;padding:.18rem .58rem;border-radius:100px;text-transform:uppercase;}
+.pc-body{padding:1.4rem;}
+.pc-tt{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;letter-spacing:1px;margin-bottom:.35rem;}
+.pc-pr{font-size:.7rem;color:rgba(255,255,255,.32);margin-bottom:.9rem;}
+.pc-pr strong{font-size:1.4rem;font-weight:900;color:var(--ac2);font-family:'Bebas Neue',sans-serif;letter-spacing:1px;}
+.pc-rows{display:flex;flex-direction:column;gap:.38rem;margin-bottom:1.1rem;}
+.pc-row{display:flex;align-items:center;gap:.5rem;font-size:.76rem;color:rgba(255,255,255,.54);}
+.pc-row span{color:#4ade80;font-size:.7rem;}
+.pc-row.no span{color:#f87171;}
+.pc-cta{display:block;text-align:center;padding:.65rem;border:1.5px solid rgba(230,81,0,.3);border-radius:9px;font-weight:700;font-size:.78rem;color:var(--ac2);transition:background .18s,color .18s;}
+.pc:hover .pc-cta,.pc.rec .pc-cta{background:var(--ac);border-color:var(--ac);color:#fff;}
+
+/* CALC */
+.calc-lay{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.calc-vis{border-radius:20px;overflow:hidden;position:relative;height:420px;}
+.calc-vis img{width:100%;height:100%;object-fit:cover;}
+.calc-vis::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(6,16,31,.6),rgba(6,16,31,.1));}
+.calc-ov{position:absolute;bottom:1.5rem;left:1.5rem;right:1.5rem;z-index:1;}
+.calc-card{background:rgba(6,16,31,.85);backdrop-filter:blur(20px);border:1px solid rgba(230,81,0,.2);border-radius:14px;padding:1.3rem;}
+.ccard-tt{font-size:.66rem;font-weight:700;color:var(--ac2);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:.8rem;}
+.ccard-r{display:flex;justify-content:space-between;margin-bottom:.5rem;}
+.ccard-l{font-size:.72rem;color:rgba(255,255,255,.38);}.ccard-v{font-size:.72rem;font-weight:700;}
+.ccard-big{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:var(--ac2);letter-spacing:1px;margin-top:.3rem;}
+.calc-form{background:var(--i2);border:1px solid var(--line);border-radius:20px;padding:2rem;}
+.cf-row{margin-bottom:1.2rem;}
+.cf-lbl{font-size:.68rem;font-weight:700;color:rgba(255,255,255,.38);text-transform:uppercase;letter-spacing:.8px;margin-bottom:.48rem;display:flex;justify-content:space-between;}
+.cf-lbl span{color:var(--ac2);font-family:'Bebas Neue',sans-serif;font-size:.95rem;letter-spacing:1px;}
+.cf-range{width:100%;appearance:none;height:4px;border-radius:100px;background:rgba(255,255,255,.1);outline:none;cursor:none;}
+.cf-range::-webkit-slider-thumb{appearance:none;width:18px;height:18px;border-radius:50%;background:var(--ac);cursor:none;box-shadow:0 0 10px rgba(230,81,0,.6);}
+.cf-pills{display:flex;gap:.45rem;flex-wrap:wrap;}
+.cf-pill{padding:.34rem .75rem;border:1px solid var(--line);border-radius:100px;font-size:.72rem;cursor:pointer;transition:background .18s,border-color .18s,color .18s;color:rgba(255,255,255,.45);}
+.cf-pill:hover,.cf-pill.on{background:var(--ac);border-color:var(--ac);color:#fff;font-weight:700;}
+.cf-res{background:linear-gradient(135deg,#060d1a,#1a0e00);border:1px solid rgba(230,81,0,.2);border-radius:14px;padding:1.2rem;margin-top:1.3rem;text-align:center;}
+.cfrl{font-size:.64rem;color:rgba(255,255,255,.36);text-transform:uppercase;letter-spacing:1px;margin-bottom:.3rem;}
+.cfrp{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:var(--ac2);letter-spacing:2px;}
+.cfrs{font-size:.67rem;color:rgba(255,255,255,.28);margin-top:.25rem;}
+
+/* FAQ */
+.faq-lay{display:grid;grid-template-columns:1fr 300px;gap:3rem;align-items:start;}
+.faq-list{margin-top:1.5rem;display:flex;flex-direction:column;gap:.55rem;}
+.fi{background:var(--ink);border:1px solid var(--line);border-radius:12px;overflow:hidden;transition:border-color .2s;}
+.fi.op{border-color:rgba(230,81,0,.22);}
+.fh{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.2rem;cursor:pointer;gap:.9rem;}
+.fq{font-size:.83rem;font-weight:600;line-height:1.4;}
+.fic{width:22px;height:22px;border-radius:50%;background:var(--fog);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.85rem;transition:transform .28s,background .2s;}
+.fi.op .fic{transform:rotate(45deg);background:var(--ac);color:#fff;border-color:var(--ac);}
+.fab2{padding:0 1.2rem;max-height:0;overflow:hidden;transition:max-height .38s var(--E),padding .28s;}
+.fi.op .fab2{max-height:280px;padding-bottom:1rem;}
+.fat{font-size:.79rem;color:rgba(255,255,255,.46);line-height:1.72;}
+.sb2{position:sticky;top:calc(var(--nh)+1.2rem);display:flex;flex-direction:column;gap:1rem;}
+.sb2-card{background:linear-gradient(145deg,#1a0600,#2d1100);border:1px solid rgba(230,81,0,.2);border-radius:16px;padding:1.5rem;}
+.sb2-tt{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:.35rem;}
+.sb2-ds{font-size:.74rem;color:rgba(255,255,255,.44);line-height:1.6;margin-bottom:1rem;}
+.sb2-btn{display:block;text-align:center;background:var(--ac);color:#fff;padding:.75rem;border-radius:11px;font-weight:700;font-size:.82rem;margin-bottom:.5rem;transition:transform .18s,box-shadow .18s;}
+.sb2-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(230,81,0,.35);}
+.sb2-ph{display:flex;align-items:center;justify-content:center;gap:.38rem;background:var(--fog);border:1px solid var(--line);color:#fff;padding:.64rem;border-radius:11px;font-weight:600;font-size:.78rem;transition:background .18s;}
+.sb2-ph:hover{background:rgba(255,255,255,.1);}
+.sb2-div{text-align:center;font-size:.63rem;color:rgba(255,255,255,.24);margin:.22rem 0;}
+
+/* CTA + FOOTER */
+.ctab{position:relative;padding:5.5rem 5%;overflow:hidden;}
+.ctab-bg{position:absolute;inset:0;z-index:0;}
+.ctab-bg img{width:100%;height:100%;object-fit:cover;}
+.ctab-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(6,16,31,.96) 42%,rgba(6,16,31,.72));}
+.cta-in{position:relative;z-index:1;max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:center;gap:3rem;}
+.cta-tt{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.6vw,2.3rem);font-weight:700;line-height:1.2;margin-bottom:.6rem;}
+.cta-ds{font-size:.84rem;color:rgba(255,255,255,.46);line-height:1.7;}
+.cta-pills{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.8rem;}
+.cpill{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);padding:.2rem .65rem;border-radius:100px;font-size:.67rem;color:rgba(255,255,255,.4);}
+.cta-btns{display:flex;flex-direction:column;gap:.6rem;align-items:center;}
+.cta-ph{font-size:.7rem;color:rgba(255,255,255,.3);}.cta-ph a{color:rgba(255,255,255,.58);font-weight:600;}
+.ft{background:#020b1a;border-top:1px solid var(--line);padding:3.5rem 5% 1.8rem;}
+.ft-in{max-width:1300px;margin:0 auto;}
+.ft-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.8rem;padding-bottom:2.5rem;border-bottom:1px solid var(--line);margin-bottom:1.6rem;}
+.ft-logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;display:inline-block;margin-bottom:.8rem;}
+.ft-logo em{font-style:normal;color:#f5a623;}
+.ft-ds{font-size:.76rem;color:rgba(255,255,255,.34);line-height:1.7;margin-bottom:.9rem;}
+.ft-con{display:flex;align-items:center;gap:.42rem;font-size:.73rem;color:rgba(255,255,255,.28);margin-bottom:.4rem;}
+.ft-con a{color:rgba(255,255,255,.5);transition:color .18s;}.ft-con a:hover{color:#f5a623;}
+.ft-clbl{font-size:.62rem;font-weight:700;color:rgba(255,255,255,.2);text-transform:uppercase;letter-spacing:1.3px;margin-bottom:.8rem;}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.45rem;}
+.ft-col a{font-size:.74rem;color:rgba(255,255,255,.34);transition:color .18s;}.ft-col a:hover{color:#f5a623;}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem;font-size:.7rem;color:rgba(255,255,255,.16);}
+.ft-links{display:flex;gap:1.3rem;}.ft-links a{color:rgba(255,255,255,.16);transition:color .18s;}.ft-links a:hover{color:rgba(255,255,255,.38);}
+@media(max-width:1024px){.feat-g,.plans-g,.vtype-g{grid-template-columns:1fr 1fr;}.calc-lay,.faq-lay,.cta-in{grid-template-columns:1fr;}.sb2{position:static;}}
+@media(max-width:768px){.nl{display:none;}.burger{display:flex;}.ft-top{grid-template-columns:1fr 1fr;}body{cursor:auto;}#cur,#cr{display:none;}}
+@media(max-width:520px){.feat-g,.plans-g,.vtype-g{grid-template-columns:1fr;}.ft-top{grid-template-columns:1fr;}}
+</style>
 </head>
 <body>
-  <header>
-    <nav class="nav"><div class="nav__inner"><a href="index.html" class="nav__logo">Cover<span>Credit</span></a><ul class="nav__links"><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life Insurance</a></li><li class="nav__dropdown"><span class="nav__dropdown-trigger">Vehicle Insurance <span class="nav__dropdown-arrow">▼</span></span><div class="nav__dropdown-menu"><a href="bike-insurance.html">Bike Insurance</a><a href="car-insurance.html">Car Insurance</a><a href="commercial-vehicle-insurance.html" style="color:var(--accent);">Commercial Vehicles</a></div></li><li><a href="loans.html">Loans</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="book.html" class="nav__cta">Book Consultation</a></li></ul><button class="nav__hamburger" id="hamburger"><span></span><span></span><span></span></button></div></nav>
-    <nav class="mobile-nav" id="mobile-nav"><a href="health-insurance.html" class="mobile-nav__item">Health Insurance</a><a href="life-insurance.html" class="mobile-nav__item">Life Insurance</a><a href="bike-insurance.html" class="mobile-nav__item mobile-nav__sub">↳ Bike Insurance</a><a href="car-insurance.html" class="mobile-nav__item mobile-nav__sub">↳ Car Insurance</a><a href="commercial-vehicle-insurance.html" class="mobile-nav__item mobile-nav__sub">↳ Commercial Vehicles</a><a href="loans.html" class="mobile-nav__item">Loans</a><a href="blog.html" class="mobile-nav__item">Blog</a><a href="about.html" class="mobile-nav__item">About</a><a href="contact.html" class="mobile-nav__item">Contact</a><a href="book.html" class="mobile-nav__cta">Book Free Consultation</a></nav>
-  </header>
+<div id="cur"></div><div id="cr"></div>
 
-  <section class="page-hero">
-    <div class="page-hero__inner" style="max-width:var(--max-width);width:var(--container);">
-      <nav class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span>Vehicle Insurance</span><span class="sep">›</span><span>Commercial Vehicles</span></nav>
-      <h1 class="page-hero__title">Commercial Vehicle Insurance</h1>
-      <p class="page-hero__desc">Protect your livelihood. Whether you own a truck, auto, goods vehicle, or passenger carrier — we ensure your business stays covered and your claims get settled fast.</p>
-    </div>
-  </section>
+<div class="fab">
+  <a href="book.html" class="fbk">📅 Book Free Session</a>
+  <a href="https://wa.me/917842854466" target="_blank" class="fwa">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp
+  </a>
+</div>
 
-  <section class="section" style="background:var(--bg);">
-    <div class="section-wrap">
-      <div class="sidebar-layout">
-        <div>
-          <div class="info-box" style="margin-bottom:1.5rem;">
-            <h2 class="info-box__title">Vehicles We Cover</h2>
-            <div class="mini-grid">
-              <div class="mini-card"><div class="mini-card__icon">🚛</div><h4 class="mini-card__title">Goods Carrying Vehicles</h4><p class="mini-card__body">Trucks, lorries, mini-trucks, LCVs, pickups</p></div>
-              <div class="mini-card"><div class="mini-card__icon">🚌</div><h4 class="mini-card__title">Passenger Vehicles</h4><p class="mini-card__body">Buses, maxi-cabs, taxis, school vans, autos</p></div>
-              <div class="mini-card"><div class="mini-card__icon">🏗️</div><h4 class="mini-card__title">Construction Equipment</h4><p class="mini-card__body">JCBs, cranes, tractors, trailers</p></div>
-              <div class="mini-card"><div class="mini-card__icon">🛵</div><h4 class="mini-card__title">Three-Wheelers</h4><p class="mini-card__body">Auto-rickshaws, e-rickshaws for commercial use</p></div>
-            </div>
-          </div>
-
-          <div class="info-box" style="margin-bottom:1.5rem;">
-            <h2 class="info-box__title">What's Covered</h2>
-            <ul class="checklist">
-              <li>Own damage — accident, fire, natural disaster, theft</li>
-              <li>Third-party liability — property and bodily injury</li>
-              <li>Driver &amp; cleaner personal accident cover</li>
-              <li>Transit loss of cargo (with goods-in-transit add-on)</li>
-              <li>Electrical &amp; mechanical breakdown (select policies)</li>
-            </ul>
-          </div>
-
-          <div class="info-box">
-            <h2 class="info-box__title">Fleet Insurance — For Multiple Vehicles</h2>
-            <p class="info-box__body">Own 5 or more vehicles? Fleet insurance is more economical and easier to manage. One policy. One renewal date. Consolidated billing. We help fleet owners across AP &amp; Telangana manage their insurance efficiently.</p>
-            <a href="book.html" class="btn btn--primary" style="margin-top:1rem;display:inline-block;">Get Fleet Quote</a>
-          </div>
+<nav class="nav" id="nav">
+  <div class="ni">
+    <a href="index.html" class="logo">Cover<em>Credit</em></a>
+    <ul class="nl">
+      <li><a href="health-insurance.html">Health</a></li>
+      <li><a href="life-insurance.html">Life Insurance</a></li>
+      <li class="dd">
+        <span class="ddt">Vehicle <span class="dda">▼</span></span>
+        <div class="ddm">
+          <a href="bike-insurance.html">🏍️ Bike Insurance</a>
+          <a href="car-insurance.html">🚗 Car Insurance</a>
+          <a href="commercial-vehicle-insurance.html" class="act">🚛 Commercial Vehicle</a>
         </div>
-        <aside>
-          <div class="sticky-card">
-            <h3 class="sticky-card__title">Protect Your Commercial Vehicle</h3>
-            <p class="sticky-card__body">One missed renewal can cost your business lakhs. Let us handle it for you.</p>
-            <a href="book.html" class="btn btn--primary btn--full" style="margin-bottom:0.8rem;">Book Free Consultation</a>
-            <div class="sticky-card__divider">or</div>
-            <a href="tel:+919642834789" class="sticky-card__call">📞 +91 96428 34789</a>
-          </div>
-        </aside>
+      </li>
+      <li><a href="loans.html">Loans</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="book.html" class="ncta">Free Consultation</a></li>
+    </ul>
+    <button class="burger" id="burger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob" id="mob">
+  <a href="health-insurance.html">Health Insurance</a>
+  <a href="life-insurance.html">Life Insurance</a>
+  <a href="bike-insurance.html">🏍️ Bike Insurance</a>
+  <a href="car-insurance.html">🚗 Car Insurance</a>
+  <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicle</a>
+  <a href="loans.html">Loans</a>
+  <a href="about.html">About</a>
+  <a href="book.html" class="mc">Book Free Consultation →</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hi"><img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1600&q=85" alt="Commercial truck on highway"/></div>
+  <div class="hgrid"></div>
+  <div class="hin">
+    <div class="hbc"><a href="index.html">Home</a> › <a href="vehicle-insurance.html">Vehicle</a> › Commercial Vehicle Insurance</div>
+    <div class="hkick">🚛 Goods & Passenger Carriers</div>
+    <h1 class="htit">Your fleet runs.<br/>Your income stays <em>protected.</em></h1>
+    <p class="hdesc">Commercial vehicle insurance from ₹6,500/year. Lorries, autos, school buses, tankers, tippers — we compare 15+ insurers and get act-of-god, goods-in-transit, and IMT covers sorted same day.</p>
+    <div class="hbtns">
+      <a href="book.html" class="bg">Insure My Vehicle →</a>
+      <a href="tel:+917842854466" class="bgh">📞 +91 78428 54466</a>
+    </div>
+    <div class="hstats">
+      <div class="hsc"><div class="hsc-n">₹6,500</div><div class="hsc-l">GCV from /yr</div></div>
+      <div class="hsc"><div class="hsc-n">15+</div><div class="hsc-l">Insurers compared</div></div>
+      <div class="hsc"><div class="hsc-n">24H</div><div class="hsc-l">Roadside assist</div></div>
+      <div class="hsc"><div class="hsc-n">97%</div><div class="hsc-l">Claim settlement</div></div>
+    </div>
+  </div>
+  <div class="sh"><div class="sh-m"><div class="sh-d"></div></div><div class="sh-t">Scroll</div></div>
+</section>
+
+<!-- CARTOON STORY -->
+<section class="story-wrap" id="cvStory">
+  <div class="si">
+    <div class="story-head rv">
+      <div class="story-tag">NH-44 · Near Jadcherla · 2 AM</div>
+      <h2 class="story-title">The tyre blew. The load shifted.<br/>Raju's loss was <em>₹0.</em></h2>
+      <p class="story-sub">A tyre blowout, overturned lorry, and ₹3.2 lakh of damaged FMCG goods. Raju called one number. The insurer paid everything — goods-in-transit, own damage, third-party. He was back on road in 5 days.</p>
+    </div>
+    <div class="cartoon-strip rv d1">
+
+      <!-- PANEL 1: NIGHT HIGHWAY LORRY -->
+      <div class="cpanel">
+        <svg viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="nsky1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#030912"/><stop offset="1" stop-color="#0a1628"/></linearGradient>
+  <linearGradient id="road1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a2533"/><stop offset="1" stop-color="#0d1826"/></linearGradient>
+  <linearGradient id="lbody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e65100"/><stop offset="1" stop-color="#bf360c"/></linearGradient>
+  <linearGradient id="ltruck" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#37474f"/><stop offset="1" stop-color="#263238"/></linearGradient>
+</defs>
+<!-- Night sky -->
+<rect width="280" height="200" fill="url(#nsky1)"/>
+<!-- Stars -->
+<circle cx="20" cy="15" r="1.2" fill="white" opacity=".6" style="animation:starTwinkle 2.5s infinite"/>
+<circle cx="55" cy="8" r="1" fill="white" opacity=".5" style="animation:starTwinkle 2.5s infinite .4s"/>
+<circle cx="90" cy="20" r="1.4" fill="white" opacity=".7" style="animation:starTwinkle 2.5s infinite .8s"/>
+<circle cx="130" cy="10" r="1" fill="white" opacity=".5" style="animation:starTwinkle 2.5s infinite 1.2s"/>
+<circle cx="168" cy="18" r="1.3" fill="white" opacity=".6" style="animation:starTwinkle 2.5s infinite .6s"/>
+<circle cx="210" cy="12" r="1" fill="white" opacity=".4" style="animation:starTwinkle 2.5s infinite 1s"/>
+<circle cx="248" cy="22" r="1.5" fill="white" opacity=".7" style="animation:starTwinkle 2.5s infinite .2s"/>
+<!-- Moon -->
+<circle cx="240" cy="28" r="16" fill="#ffd54f" opacity=".12"/>
+<circle cx="246" cy="24" r="13" fill="#0a1628"/>
+<circle cx="240" cy="28" r="10" fill="#ffd54f" opacity=".18"/>
+<!-- Road -->
+<rect x="0" y="148" width="280" height="52" fill="url(#road1)"/>
+<rect x="0" y="148" width="280" height="2" fill="#2d3e51"/>
+<!-- Road markings animated scroll -->
+<g style="animation:roadScroll 1.2s linear infinite">
+  <rect x="8" y="172" width="32" height="3" rx="1.5" fill="#ff8f00" opacity=".4"/>
+  <rect x="60" y="172" width="32" height="3" rx="1.5" fill="#ff8f00" opacity=".4"/>
+  <rect x="112" y="172" width="32" height="3" rx="1.5" fill="#ff8f00" opacity=".4"/>
+  <rect x="164" y="172" width="32" height="3" rx="1.5" fill="#ff8f00" opacity=".4"/>
+  <rect x="216" y="172" width="32" height="3" rx="1.5" fill="#ff8f00" opacity=".4"/>
+  <rect x="268" y="172" width="32" height="3" rx="1.5" fill="#ff8f00" opacity=".4"/>
+</g>
+<!-- Lorry (moving) with subtle hop -->
+<g style="animation:truckMove .8s ease-in-out infinite">
+  <!-- Trailer/container -->
+  <rect x="28" y="104" width="160" height="52" rx="4" fill="url(#ltruck)"/>
+  <rect x="28" y="104" width="160" height="6" rx="3" fill="#455a64"/>
+  <!-- Container panels detail -->
+  <line x1="68" y1="104" x2="68" y2="156" stroke="#37474f" stroke-width="1.5"/>
+  <line x1="108" y1="104" x2="108" y2="156" stroke="#37474f" stroke-width="1.5"/>
+  <line x1="148" y1="104" x2="148" y2="156" stroke="#37474f" stroke-width="1.5"/>
+  <!-- Goods text on container -->
+  <text x="88" y="133" text-anchor="middle" font-size="6.5" fill="#ff8f00" font-weight="700" font-family="Bebas Neue,sans-serif" letter-spacing="1.5" opacity=".65">FMCG GOODS</text>
+  <text x="88" y="142" text-anchor="middle" font-size="5" fill="rgba(255,255,255,.25)" font-family="DM Sans,sans-serif">₹3.2 LAKH LOAD</text>
+  <!-- Cab -->
+  <rect x="188" y="110" width="68" height="46" rx="6" fill="url(#lbody)"/>
+  <!-- Windshield -->
+  <rect x="194" y="115" width="54" height="26" rx="4" fill="#1a2e44"/>
+  <!-- Cab detail -->
+  <rect x="196" y="117" width="24" height="18" rx="3" fill="#80d8ff" opacity=".25"/>
+  <rect x="224" y="117" width="20" height="18" rx="3" fill="#80d8ff" opacity=".2"/>
+  <!-- Headlights beams -->
+  <polygon points="256,130 280,110 280,150" fill="url(#nsky1)" opacity=".0"/>
+  <polygon points="256,132 280,108 280,158" fill="#ffd54f" opacity=".08"/>
+  <rect x="256" y="126" width="12" height="8" rx="2" fill="#ffd54f" opacity=".9"/>
+  <!-- Tail lights -->
+  <rect x="28" y="128" width="10" height="6" rx="2" fill="#ef5350" opacity=".6"/>
+  <!-- Driver silhouette in cab -->
+  <circle cx="210" cy="124" r="7" fill="#263238"/>
+  <rect x="207" y="130" width="6" height="8" rx="3" fill="#37474f"/>
+  <!-- All wheels -->
+  <g style="transform-origin:48px 160px;animation:wheelSpin .7s linear infinite">
+    <circle cx="48" cy="160" r="16" fill="#1a2533" stroke="#2d3e51" stroke-width="2"/>
+    <circle cx="48" cy="160" r="9" fill="#263238"/>
+    <line x1="48" y1="144" x2="48" y2="176" stroke="#37474f" stroke-width="2"/>
+    <line x1="32" y1="160" x2="64" y2="160" stroke="#37474f" stroke-width="2"/>
+    <circle cx="48" cy="160" r="3.5" fill="#455a64"/>
+  </g>
+  <g style="transform-origin:168px 160px;animation:wheelSpin .7s linear infinite">
+    <circle cx="168" cy="160" r="16" fill="#1a2533" stroke="#2d3e51" stroke-width="2"/>
+    <circle cx="168" cy="160" r="9" fill="#263238"/>
+    <line x1="168" y1="144" x2="168" y2="176" stroke="#37474f" stroke-width="2"/>
+    <line x1="152" y1="160" x2="184" y2="160" stroke="#37474f" stroke-width="2"/>
+    <circle cx="168" cy="160" r="3.5" fill="#455a64"/>
+  </g>
+  <g style="transform-origin:210px 160px;animation:wheelSpin .7s linear infinite">
+    <circle cx="210" cy="160" r="16" fill="#1a2533" stroke="#2d3e51" stroke-width="2"/>
+    <circle cx="210" cy="160" r="9" fill="#263238"/>
+    <line x1="210" y1="144" x2="210" y2="176" stroke="#37474f" stroke-width="2"/>
+    <line x1="194" y1="160" x2="226" y2="160" stroke="#37474f" stroke-width="2"/>
+    <circle cx="210" cy="160" r="3.5" fill="#455a64"/>
+  </g>
+  <g style="transform-origin:240px 160px;animation:wheelSpin .7s linear infinite">
+    <circle cx="240" cy="160" r="16" fill="#1a2533" stroke="#2d3e51" stroke-width="2"/>
+    <circle cx="240" cy="160" r="9" fill="#263238"/>
+    <line x1="240" y1="144" x2="240" y2="176" stroke="#37474f" stroke-width="2"/>
+    <line x1="224" y1="160" x2="256" y2="160" stroke="#37474f" stroke-width="2"/>
+    <circle cx="240" cy="160" r="3.5" fill="#455a64"/>
+  </g>
+</g>
+<!-- NH sign on road side -->
+<rect x="4" y="90" width="22" height="28" rx="3" fill="#1565c0"/>
+<text x="15" y="103" text-anchor="middle" font-size="5" fill="white" font-weight="700" font-family="DM Sans,sans-serif">NH</text>
+<text x="15" y="111" text-anchor="middle" font-size="6" fill="#ffd54f" font-weight="900" font-family="Bebas Neue,sans-serif">44</text>
+<rect x="13" y="118" width="4" height="18" fill="#ccc" rx="1"/>
+</svg>
+        <div class="cp-caption">
+          <div class="cp-num">01 · 2 AM · NH-44</div>
+          <div class="cp-tt">Raju's lorry. ₹3.2 lakh FMCG load. Hyderabad to Bengaluru.</div>
+          <div class="cp-ds">500 km night run. <strong>Six months ago, his Cover Credit advisor added goods-in-transit and IMT-23 (overturning) cover.</strong> Cost ₹3,200 extra. "Extra kya chahiye?" Raju had said.</div>
+        </div>
+      </div>
+
+      <!-- PANEL 2: TYRE BLOWOUT ACCIDENT -->
+      <div class="cpanel">
+        <svg viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="nsky2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#030912"/><stop offset="1" stop-color="#0a1628"/></linearGradient>
+  <linearGradient id="road2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a2533"/><stop offset="1" stop-color="#0d1826"/></linearGradient>
+  <radialGradient id="explosion" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#ff8f00"/><stop offset="0.5" stop-color="#e65100" stop-opacity=".6"/><stop offset="1" stop-color="#e65100" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="280" height="200" fill="url(#nsky2)"/>
+<circle cx="240" cy="28" r="10" fill="#ffd54f" opacity=".12"/>
+<!-- Road -->
+<rect x="0" y="148" width="280" height="52" fill="url(#road2)"/>
+<rect x="0" y="148" width="280" height="2" fill="#2d3e51"/>
+<!-- Lorry overturned on its side — rotated dramatically -->
+<g transform="translate(40,90) rotate(25)">
+  <!-- Container tilted -->
+  <rect x="0" y="20" width="145" height="50" rx="4" fill="#37474f"/>
+  <line x1="36" y1="20" x2="36" y2="70" stroke="#2d3e51" stroke-width="1.5"/>
+  <line x1="72" y1="20" x2="72" y2="70" stroke="#2d3e51" stroke-width="1.5"/>
+  <line x1="108" y1="20" x2="108" y2="70" stroke="#2d3e51" stroke-width="1.5"/>
+  <!-- Goods spilling out -->
+  <rect x="-15" y="55" width="18" height="12" rx="2" fill="#ffd54f" opacity=".7" transform="rotate(-20,-6,61)"/>
+  <rect x="148" y="60" width="15" height="10" rx="2" fill="#ffd54f" opacity=".6" transform="rotate(15,155,65)"/>
+  <rect x="140" y="45" width="12" height="8" rx="2" fill="#e8f5e9" opacity=".55" transform="rotate(-10,146,49)"/>
+  <rect x="-10" y="40" width="14" height="9" rx="2" fill="#e8f5e9" opacity=".5" transform="rotate(20,-3,44)"/>
+  <circle cx="-18" cy="42" r="5" fill="#ff8f00" opacity=".7"/>
+  <circle cx="160" cy="52" r="4" fill="#ff8f00" opacity=".6"/>
+  <!-- Cab -->
+  <rect x="145" y="10" width="60" height="46" rx="6" fill="#e65100"/>
+  <rect x="149" y="14" width="48" height="28" rx="4" fill="#1a2e44"/>
+</g>
+<!-- BURST / EXPLOSION from tyre blowout -->
+<circle cx="138" cy="168" r="22" fill="url(#explosion)">
+  <animate attributeName="r" values="22;28;22" dur=".6s" repeatCount="indefinite"/>
+  <animate attributeName="opacity" values="1;.6;1" dur=".6s" repeatCount="indefinite"/>
+</circle>
+<!-- Smoke from tyre -->
+<g>
+  <circle cx="135" cy="148" r="8" fill="#546e7a" opacity=".5" style="animation:smokeRise 2s ease-out infinite"/>
+  <circle cx="145" cy="138" r="6" fill="#607d8b" opacity=".4" style="animation:smokeRise 2s ease-out infinite .4s"/>
+  <circle cx="128" cy="132" r="9" fill="#546e7a" opacity=".3" style="animation:smokeRise 2s ease-out infinite .8s"/>
+</g>
+<!-- Scattered rubber tyre pieces -->
+<path d="M155 178 Q160 172 168 175" stroke="#1a2533" stroke-width="4" fill="none" stroke-linecap="round" opacity=".8"/>
+<path d="M115 182 Q120 176 128 180" stroke="#1a2533" stroke-width="3.5" fill="none" stroke-linecap="round" opacity=".7"/>
+<!-- Warning triangles on road -->
+<polygon points="68,188 60,200 76,200" fill="#ef5350" opacity=".8"/>
+<polygon points="88,184 80,196 96,196" fill="#ef5350" opacity=".6"/>
+<!-- Flash/warning light -->
+<circle cx="228" cy="175" r="6" fill="#ffd54f">
+  <animate attributeName="opacity" values="1;.1;1" dur=".7s" repeatCount="indefinite"/>
+</circle>
+<!-- Skid marks -->
+<path d="M180 160 Q200 168 220 170" stroke="#1a2533" stroke-width="5" fill="none" stroke-linecap="round" opacity=".6"/>
+<path d="M190 166 Q210 172 232 174" stroke="#1a2533" stroke-width="4" fill="none" stroke-linecap="round" opacity=".5"/>
+<!-- Big BLOWOUT text -->
+<text x="140" y="80" text-anchor="middle" font-size="13" font-weight="900" font-family="Bebas Neue,sans-serif" fill="#ef5350" opacity=".85" style="animation:cardFloat 1.2s ease-in-out infinite">BLOWOUT!</text>
+<!-- Exclamation marks scattered -->
+<text x="20" y="100" font-size="20" fill="#ffd54f" opacity=".5" style="animation:starTwinkle 1s infinite">!</text>
+<text x="256" y="95" font-size="18" fill="#ffd54f" opacity=".4" style="animation:starTwinkle 1s infinite .3s">!</text>
+</svg>
+        <div class="cp-caption">
+          <div class="cp-num">02 · ACCIDENT</div>
+          <div class="cp-tt">Rear tyre blowout. Lorry overturns. Goods scatter on highway.</div>
+          <div class="cp-ds">No other vehicle involved. Own damage ₹1.8L, goods loss ₹3.2L. <strong>Third-party property damage to road divider: ₹40,000 additional claim.</strong> Total exposure: ₹5+ lakh.</div>
+        </div>
+      </div>
+
+      <!-- PANEL 3: CALLING THE INSURER -->
+      <div class="cpanel">
+        <svg viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="bgpanel3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#060d18"/><stop offset="1" stop-color="#0d1e32"/></linearGradient>
+  <linearGradient id="notif2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#e65100"/><stop offset="1" stop-color="#ff8f00"/></linearGradient>
+</defs>
+<rect width="280" height="200" fill="url(#bgpanel3)"/>
+<!-- Person on phone — Raju standing by roadside, dawn light -->
+<!-- Ground / road edge -->
+<rect x="0" y="155" width="280" height="45" fill="#0d1a28"/>
+<rect x="0" y="155" width="280" height="2" fill="#1a2e44"/>
+<!-- Dawn horizon glow -->
+<ellipse cx="240" cy="155" rx="80" ry="35" fill="#e65100" opacity=".1"/>
+<ellipse cx="240" cy="155" rx="50" ry="20" fill="#ff8f00" opacity=".08"/>
+<!-- Raju figure standing by road -->
+<rect x="30" y="118" width="9" height="38" rx="4" fill="#37474f"/>
+<rect x="42" y="118" width="9" height="38" rx="4" fill="#37474f"/>
+<!-- Body torso -->
+<rect x="22" y="90" width="28" height="34" rx="8" fill="#455a64"/>
+<!-- Holding phone arm -->
+<rect x="50" y="96" width="24" height="7" rx="3.5" fill="#455a64" transform="rotate(-30,62,99)"/>
+<!-- Head -->
+<circle cx="36" cy="82" r="14" fill="#d4956a"/>
+<!-- Dhoti/lungi detail -->
+<path d="M22 120 Q36 114 50 120" stroke="#1565c0" stroke-width="3" fill="none"/>
+<!-- Cap on head -->
+<rect x="23" y="72" width="26" height="8" rx="4" fill="#263238"/>
+<!-- Concentrated/worried expression -->
+<line x1="30" y1="80" x2="34" y2="83" stroke="#5d4037" stroke-width="1.8"/>
+<line x1="38" y1="80" x2="42" y2="83" stroke="#5d4037" stroke-width="1.8"/>
+<path d="M31 88 Q36 85 41 88" stroke="#a0522d" stroke-width="2" fill="none" stroke-linecap="round"/>
+
+<!-- PHONE SCREEN close-up -->
+<g style="animation:notifPop .8s ease-out .3s both">
+  <!-- Phone body -->
+  <rect x="120" y="28" width="110" height="148" rx="14" fill="#0d1826" stroke="#1a2e44" stroke-width="2"/>
+  <rect x="128" y="40" width="94" height="118" rx="7" fill="#060f1a"/>
+  <!-- Insurer helpline call screen -->
+  <rect x="128" y="44" width="94" height="36" rx="5" fill="#0a2040"/>
+  <text x="175" y="60" text-anchor="middle" font-size="6" fill="#ff8f00" font-weight="700" font-family="DM Sans,sans-serif">24×7 CLAIMS HELPLINE</text>
+  <text x="175" y="71" text-anchor="middle" font-size="9" fill="#fff" font-weight="700" font-family="Bebas Neue,sans-serif" letter-spacing=".5">CONNECTED</text>
+  <!-- Active call indicator -->
+  <circle cx="154" cy="57" r="4" fill="#4ade80">
+    <animate attributeName="opacity" values="1;.3;1" dur=".8s" repeatCount="indefinite"/>
+  </circle>
+  <!-- Policy details shown -->
+  <rect x="132" y="84" width="86" height="68" rx="5" fill="rgba(230,81,0,.07)" stroke="rgba(230,81,0,.2)" stroke-width="1"/>
+  <text x="140" y="95" font-size="5" fill="#ff8f00" font-weight="700" font-family="DM Sans,sans-serif">POLICY ACTIVE ✓</text>
+  <text x="140" y="104" font-size="4.5" fill="rgba(255,255,255,.55)" font-family="DM Sans,sans-serif">Own Damage ✓</text>
+  <text x="140" y="112" font-size="4.5" fill="rgba(255,255,255,.55)" font-family="DM Sans,sans-serif">Goods-In-Transit ✓</text>
+  <text x="140" y="120" font-size="4.5" fill="rgba(255,255,255,.55)" font-family="DM Sans,sans-serif">IMT-23 Overturning ✓</text>
+  <text x="140" y="128" font-size="4.5" fill="rgba(255,255,255,.55)" font-family="DM Sans,sans-serif">Third Party ✓</text>
+  <text x="140" y="138" font-size="4.5" fill="rgba(255,255,255,.55)" font-family="DM Sans,sans-serif">PA Driver ₹2L ✓</text>
+  <!-- Big green shield -->
+  <g style="animation:shieldPop 2s ease-in-out infinite">
+    <path d="M175 148 Q193 154 193 166 Q193 178 175 182 Q157 178 157 166 Q157 154 175 148Z" fill="rgba(74,222,128,.12)" stroke="#4ade80" stroke-width="1.5"/>
+    <path d="M168 166 L173 172 L184 158" stroke="#4ade80" stroke-width="2.5" fill="none" stroke-dasharray="28" stroke-dashoffset="28">
+      <animate attributeName="stroke-dashoffset" from="28" to="0" dur=".7s" fill="freeze" begin="0.5s"/>
+    </path>
+  </g>
+  <!-- Home bar -->
+  <rect x="154" y="163" width="32" height="4" rx="2" fill="rgba(255,255,255,.1)"/>
+</g>
+<!-- SURVEYOR DISPATCHED floating badge -->
+<text x="140" y="22" text-anchor="middle" font-size="8" fill="#4ade80" font-weight="700" font-family="Bebas Neue,sans-serif" style="animation:cardFloat 2s ease-in-out infinite">SURVEYOR DISPATCHED ✓</text>
+<!-- Dawn glow behind phone -->
+<ellipse cx="175" cy="100" rx="70" ry="85" fill="rgba(230,81,0,.04)"/>
+</svg>
+        <div class="cp-caption">
+          <div class="cp-num">03 · THE CALL</div>
+          <div class="cp-tt">2:18 AM. Policy photo on phone. One toll-free call.</div>
+          <div class="cp-ds">All covers verified instantly: <strong>Own damage, Goods-in-Transit, IMT-23, Third-party.</strong> Surveyor dispatched from Kurnool — arrived by 5 AM. FIR done. Raju drank his chai.</div>
+        </div>
+      </div>
+
+      <!-- PANEL 4: SETTLEMENT / BACK ON ROAD -->
+      <div class="cpanel">
+        <svg viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="dsky4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d3b7a"/><stop offset="1" stop-color="#1976d2"/></linearGradient>
+  <linearGradient id="road4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#546e7a"/><stop offset="1" stop-color="#37474f"/></linearGradient>
+  <linearGradient id="lbody4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e65100"/><stop offset="1" stop-color="#bf360c"/></linearGradient>
+  <linearGradient id="moneyg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#43a047"/><stop offset="1" stop-color="#2e7d32"/></linearGradient>
+</defs>
+<!-- Blue sky day -->
+<rect width="280" height="200" fill="url(#dsky4)"/>
+<!-- Sun rays -->
+<g style="transform-origin:242px 24px;animation:starSpin 20s linear infinite" opacity=".14">
+  <line x1="242" y1="0" x2="242" y2="48" stroke="#ffd54f" stroke-width="2.5"/>
+  <line x1="220" y1="2" x2="242" y2="24" stroke="#ffd54f" stroke-width="2"/>
+  <line x1="264" y1="2" x2="242" y2="24" stroke="#ffd54f" stroke-width="2"/>
+  <line x1="218" y1="24" x2="266" y2="24" stroke="#ffd54f" stroke-width="2"/>
+</g>
+<circle cx="242" cy="24" r="18" fill="#ffd54f" opacity=".2"/>
+<circle cx="242" cy="24" r="11" fill="#ffee58" opacity=".35"/>
+<!-- Clouds -->
+<g style="animation:cloudDrift 9s ease-in-out infinite alternate">
+  <ellipse cx="60" cy="32" rx="28" ry="12" fill="white" opacity=".25"/>
+  <ellipse cx="46" cy="37" rx="18" ry="10" fill="white" opacity=".22"/>
+</g>
+<!-- Road -->
+<rect x="0" y="155" width="280" height="45" fill="url(#road4)"/>
+<rect x="0" y="155" width="280" height="2" fill="#78909c"/>
+<g style="animation:roadScroll 1.3s linear infinite">
+  <rect x="8" y="175" width="32" height="3" rx="1.5" fill="#ffeb3b" opacity=".5"/>
+  <rect x="60" y="175" width="32" height="3" rx="1.5" fill="#ffeb3b" opacity=".5"/>
+  <rect x="112" y="175" width="32" height="3" rx="1.5" fill="#ffeb3b" opacity=".5"/>
+  <rect x="164" y="175" width="32" height="3" rx="1.5" fill="#ffeb3b" opacity=".5"/>
+  <rect x="216" y="175" width="32" height="3" rx="1.5" fill="#ffeb3b" opacity=".5"/>
+</g>
+<!-- Repaired Lorry back on road — moving + hop animation -->
+<g style="animation:truckMove .9s ease-in-out infinite">
+  <!-- Full container - freshly painted -->
+  <rect x="20" y="106" width="165" height="50" rx="4" fill="#455a64"/>
+  <rect x="20" y="106" width="165" height="5" rx="2.5" fill="#546e7a"/>
+  <line x1="62" y1="106" x2="62" y2="156" stroke="#37474f" stroke-width="1.5"/>
+  <line x1="104" y1="106" x2="104" y2="156" stroke="#37474f" stroke-width="1.5"/>
+  <line x1="146" y1="106" x2="146" y2="156" stroke="#37474f" stroke-width="1.5"/>
+  <text x="92" y="133" text-anchor="middle" font-size="6" fill="#4ade80" font-weight="700" font-family="Bebas Neue,sans-serif" letter-spacing="1.2" opacity=".8">BACK ON ROAD</text>
+  <text x="92" y="143" text-anchor="middle" font-size="5" fill="rgba(255,255,255,.3)" font-family="DM Sans,sans-serif">5 DAYS · ₹0 PAID</text>
+  <!-- Cab -->
+  <rect x="185" y="112" width="68" height="44" rx="6" fill="url(#lbody4)"/>
+  <rect x="190" y="117" width="56" height="24" rx="4" fill="#1a2e44"/>
+  <rect x="193" y="119" width="22" height="18" rx="3" fill="#80d8ff" opacity=".3"/>
+  <rect x="220" y="119" width="22" height="18" rx="3" fill="#80d8ff" opacity=".25"/>
+  <!-- Headlights -->
+  <rect x="253" y="128" width="12" height="7" rx="2" fill="#ffd54f" opacity=".8"/>
+  <!-- Raju's happy face visible in cab -->
+  <circle cx="204" cy="127" r="7" fill="#d4956a"/>
+  <path d="M200 130 Q204 133 208 130" stroke="#a0522d" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M199 125 Q201 123 203 125" stroke="#5d4037" stroke-width="1.5" fill="none"/>
+  <path d="M205 125 Q207 123 209 125" stroke="#5d4037" stroke-width="1.5" fill="none"/>
+  <circle cx="200" cy="127" r="2.5" fill="#e57373" opacity=".3"/>
+  <circle cx="208" cy="127" r="2.5" fill="#e57373" opacity=".3"/>
+  <!-- Wheels -->
+  <g style="transform-origin:42px 167px;animation:wheelSpin .7s linear infinite">
+    <circle cx="42" cy="167" r="17" fill="#263238" stroke="#37474f" stroke-width="2"/>
+    <circle cx="42" cy="167" r="10" fill="#2e3c43"/>
+    <line x1="42" y1="150" x2="42" y2="184" stroke="#455a64" stroke-width="2"/>
+    <line x1="25" y1="167" x2="59" y2="167" stroke="#455a64" stroke-width="2"/>
+    <circle cx="42" cy="167" r="3.5" fill="#546e7a"/>
+  </g>
+  <g style="transform-origin:162px 167px;animation:wheelSpin .7s linear infinite">
+    <circle cx="162" cy="167" r="17" fill="#263238" stroke="#37474f" stroke-width="2"/>
+    <circle cx="162" cy="167" r="10" fill="#2e3c43"/>
+    <line x1="162" y1="150" x2="162" y2="184" stroke="#455a64" stroke-width="2"/>
+    <line x1="145" y1="167" x2="179" y2="167" stroke="#455a64" stroke-width="2"/>
+    <circle cx="162" cy="167" r="3.5" fill="#546e7a"/>
+  </g>
+  <g style="transform-origin:208px 167px;animation:wheelSpin .7s linear infinite">
+    <circle cx="208" cy="167" r="17" fill="#263238" stroke="#37474f" stroke-width="2"/>
+    <circle cx="208" cy="167" r="10" fill="#2e3c43"/>
+    <line x1="208" y1="150" x2="208" y2="184" stroke="#455a64" stroke-width="2"/>
+    <line x1="191" y1="167" x2="225" y2="167" stroke="#455a64" stroke-width="2"/>
+    <circle cx="208" cy="167" r="3.5" fill="#546e7a"/>
+  </g>
+  <g style="transform-origin:240px 167px;animation:wheelSpin .7s linear infinite">
+    <circle cx="240" cy="167" r="17" fill="#263238" stroke="#37474f" stroke-width="2"/>
+    <circle cx="240" cy="167" r="10" fill="#2e3c43"/>
+    <line x1="240" y1="150" x2="240" y2="184" stroke="#455a64" stroke-width="2"/>
+    <line x1="223" y1="167" x2="257" y2="167" stroke="#455a64" stroke-width="2"/>
+    <circle cx="240" cy="167" r="3.5" fill="#546e7a"/>
+  </g>
+</g>
+<!-- Settlement amounts floating -->
+<rect x="8" y="35" width="118" height="70" rx="10" fill="rgba(6,16,31,.85)" stroke="rgba(74,222,128,.25)" stroke-width="1.5" style="animation:cardFloat 2.5s ease-in-out infinite"/>
+<text x="20" y="50" font-size="5.5" fill="rgba(255,255,255,.35)" font-family="DM Sans,sans-serif" font-weight="700">CLAIM SETTLED ✓</text>
+<text x="20" y="62" font-size="5" fill="rgba(255,255,255,.45)" font-family="DM Sans,sans-serif">Own Damage</text><text x="116" y="62" text-anchor="end" font-size="5" fill="#4ade80" font-family="DM Sans,sans-serif" font-weight="700">₹1,80,000</text>
+<text x="20" y="72" font-size="5" fill="rgba(255,255,255,.45)" font-family="DM Sans,sans-serif">Goods-In-Transit</text><text x="116" y="72" text-anchor="end" font-size="5" fill="#4ade80" font-family="DM Sans,sans-serif" font-weight="700">₹3,20,000</text>
+<text x="20" y="82" font-size="5" fill="rgba(255,255,255,.45)" font-family="DM Sans,sans-serif">Third Party</text><text x="116" y="82" text-anchor="end" font-size="5" fill="#4ade80" font-family="DM Sans,sans-serif" font-weight="700">₹40,000</text>
+<line x1="20" y1="88" x2="116" y2="88" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+<text x="20" y="97" font-size="5.5" fill="rgba(255,255,255,.6)" font-family="DM Sans,sans-serif" font-weight="700">Raju Paid</text>
+<text x="116" y="97" text-anchor="end" font-size="10" fill="#4ade80" font-family="Bebas Neue,sans-serif" letter-spacing="1">₹0</text>
+<!-- Stars -->
+<circle cx="150" cy="52" r="4" fill="#ffd54f" style="animation:starTwinkle 1.2s ease-in-out infinite"/>
+<circle cx="162" cy="40" r="3" fill="#ffd54f" style="animation:starTwinkle 1.2s ease-in-out infinite .4s"/>
+<circle cx="172" cy="56" r="3" fill="#ffd54f" style="animation:starTwinkle 1.2s ease-in-out infinite .8s"/>
+</svg>
+        <div class="cp-caption">
+          <div class="cp-num">04 · DAY 5 · ₹0</div>
+          <div class="cp-tt">Lorry repaired. Goods compensated. Back to Bengaluru run.</div>
+          <div class="cp-ds">Own damage ₹1.8L + Goods ₹3.2L + TP ₹40K = <strong>₹5.4 lakh total settled. Raju paid zero.</strong> His IMT-23 + GIT add-on cost ₹3,200/yr. Best investment of his fleet career.</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="story-quote rv d2">
+      <div class="sq-av">🚛</div>
+      <div>
+        <div class="sq-q">Main socha tha extra cover kyu lu? ₹3,200 extra lagega. Phir ek raat mein ₹5.4 lakh ka claim ho gaya — sab settle. Lorry workshop se wapas aayi, maal ka paisa mila, TP bhi clear. Hamare Cover Credit wale ne sahi bola tha — commercial vehicle mein goods-in-transit aur IMT zaroori hai.</div>
+        <div class="sq-nm">Raju K., Tata 1109 Lorry Owner, Kurnool · Goods-In-Transit + IMT-23 Policyholder</div>
+        <div class="sq-note">Cover Credit advised and arranged Raju's commercial vehicle policy. Claim settled directly between Raju and his insurer.</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="cta-section"><div class="cta-section__inner"><h2 class="cta-section__title">Your vehicle is your business</h2><p class="cta-section__desc">Don't let a lapsed policy or denied claim stop your operations. We're your insurance partner.</p><a href="book.html" class="btn btn--white">Get Free Advice</a></div></section>
+<!-- VEHICLE TYPES -->
+<section class="sec sa">
+  <div class="si">
+    <div class="tag rv">Vehicles We Cover</div>
+    <h2 class="tit rv d1">Every commercial vehicle<br/><em>on AP & Telangana roads.</em></h2>
+    <div class="vtype-g rv d1">
+      <div class="vt"><div class="vt-ic">🚛</div><div class="vt-tt">Lorry / Truck</div><div class="vt-ds">LCV, HCV, multi-axle. Goods carrying. GCV policy with IMT options.</div></div>
+      <div class="vt"><div class="vt-ic">🚌</div><div class="vt-tt">Bus / Maxi-cab</div><div class="vt-ds">School buses, stage carriages, private buses. PCV policies with passenger PA.</div></div>
+      <div class="vt"><div class="vt-ic">🛺</div><div class="vt-tt">Auto Rickshaw</div><div class="vt-ds">Passenger and goods autos. Affordable 3-wheeler commercial cover.</div></div>
+      <div class="vt"><div class="vt-ic">🚜</div><div class="vt-tt">Tipper / Dumper</div><div class="vt-ds">Construction tippers, dumpers, transit mixers. Specialised GCV.</div></div>
+      <div class="vt"><div class="vt-ic">🚐</div><div class="vt-tt">Tempo / Van</div><div class="vt-ds">Goods vans, Bolero pickups, mini-trucks. Mixed use covered.</div></div>
+      <div class="vt"><div class="vt-ic">⛽</div><div class="vt-tt">Tanker</div><div class="vt-ds">Petrol, water, chemical tankers. Hazardous goods endorsement available.</div></div>
+      <div class="vt"><div class="vt-ic">🚜</div><div class="vt-tt">Tractor</div><div class="vt-ds">Agricultural tractors with or without trailers. Farm use and commercial use.</div></div>
+      <div class="vt"><div class="vt-ic">🏗️</div><div class="vt-tt">Special Vehicles</div><div class="vt-ds">Cranes, forklifts, mobile plants. Contract carriage and miscellaneous categories.</div></div>
+    </div>
+  </div>
+</section>
 
-  <footer class="footer"><div class="footer__top"><div><a href="index.html" class="footer__logo">Cover<span>Credit</span></a><p class="footer__tagline">Honest insurance advice. We guide, not sell.</p><p class="footer__serving">© <span id="current-year">2026</span> Cover Credit. All rights reserved.</p></div><div class="footer__col"><h4>Quick Links</h4><ul><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life Insurance</a></li><li><a href="loans.html">Loans</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="book.html">Book Consultation</a></li></ul></div><div class="footer__col"><h4>Branches</h4><ul><li><a href="#">Visakhapatnam</a></li><li><a href="#">Hyderabad</a></li></ul></div><div class="footer__col"><h4>Contact</h4><div class="footer__contact-item">📞 <a href="tel:+919642834789">+91 96428 34789</a></div><div class="footer__contact-item">✉️ <a href="mailto:info@covercredit.in">info@covercredit.in</a></div></div></div><div class="footer__bottom"><span>© <span id="current-year-2">2026</span> Cover Credit. All rights reserved.</span><div class="footer__bottom-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div></div></footer>
-  <script src="js/nav.js"></script><script src="js/main.js"></script>
+<!-- FEATURES -->
+<section class="sec">
+  <div class="si">
+    <div class="tag rv">What We Cover</div>
+    <h2 class="tit rv d1">Protections your fleet<br/><em>actually needs.</em></h2>
+    <div class="feat-g rv d1">
+      <div class="fg"><div class="fg-top"><div class="fg-ic">📦</div><div class="fg-tt">Goods-In-Transit (GIT)</div></div><div class="fg-ds">Covers loss or damage to goods being transported. Critical for lorry and tempo owners — one accident can destroy the entire consignment value.</div></div>
+      <div class="fg"><div class="fg-top"><div class="fg-ic">🔄</div><div class="fg-tt">IMT-23 Overturning</div></div><div class="fg-ds">Standard GCV policies exclude overturning. IMT-23 add-on reinstates this cover — essential for tipper, tanker, and lorry operators on AP/Telangana highways.</div></div>
+      <div class="fg"><div class="fg-top"><div class="fg-ic">💥</div><div class="fg-tt">Own Damage</div></div><div class="fg-ds">Accidental damage, fire, natural calamity, theft. Repair or replacement of your commercial vehicle at cashless network garages across the region.</div></div>
+      <div class="fg"><div class="fg-top"><div class="fg-ic">⚖️</div><div class="fg-tt">Third-Party Liability</div></div><div class="fg-ds">Mandatory unlimited liability for death/injury to third parties. Property damage liability up to ₹7.5 lakh. Without this, you can't move the vehicle.</div></div>
+      <div class="fg"><div class="fg-top"><div class="fg-ic">👷</div><div class="fg-tt">Driver & Cleaner PA</div></div><div class="fg-ds">Personal accident cover for paid driver and cleaner — often forgotten. ₹2 lakh cover per person in case of accidental death or disability on duty.</div></div>
+      <div class="fg"><div class="fg-top"><div class="fg-ic">🌊</div><div class="fg-tt">Act of God</div></div><div class="fg-ds">Flood, cyclone, earthquake, landslide — especially critical in Andhra Pradesh's coastal districts. Includes engine hydrostatic lock if add-on is included.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="sec sa">
+  <div class="si">
+    <div class="tag rv">Cover Options</div>
+    <h2 class="tit rv d1">Choose the protection<br/><em>your fleet deserves.</em></h2>
+    <div class="plans-g rv d1">
+      <div class="pc">
+        <div class="pc-top" style="background:linear-gradient(145deg,#1a0600,#3d1200);">
+          <svg width="120" height="100" viewBox="0 0 120 100" fill="none"><path d="M60 10 L100 28 L100 65 Q100 88 60 95 Q20 88 20 65 L20 28 Z" fill="rgba(230,81,0,.12)" stroke="#e65100" stroke-width="1.5"/><text x="60" y="60" text-anchor="middle" font-size="20" fill="rgba(255,255,255,.4)">⚖️</text></svg>
+        </div>
+        <div class="pc-body">
+          <div class="pc-tt">Act Only (TP)</div>
+          <div class="pc-pr">From <strong>₹6,500</strong>/year</div>
+          <div class="pc-rows">
+            <div class="pc-row"><span>✓</span>Third-party liability (mandatory)</div>
+            <div class="pc-row"><span>✓</span>Unlimited death/injury liability</div>
+            <div class="pc-row"><span>✓</span>Property damage up to ₹7.5L</div>
+            <div class="pc-row no"><span>✗</span>Own vehicle damage NOT covered</div>
+            <div class="pc-row no"><span>✗</span>Goods-in-transit NOT covered</div>
+          </div>
+          <a href="book.html" class="pc-cta">Get Quote →</a>
+        </div>
+      </div>
+      <div class="pc rec">
+        <div class="pc-top" style="background:linear-gradient(145deg,#1a0600,#2d0e00);">
+          <div class="pc-badge">Recommended</div>
+          <svg width="120" height="100" viewBox="0 0 120 100" fill="none">
+            <path d="M60 8 L105 28 L105 65 Q105 90 60 98 Q15 90 15 65 L15 28 Z" fill="rgba(230,81,0,.18)" stroke="#e65100" stroke-width="2"><animate attributeName="stroke-opacity" values="1;.3;1" dur="2.5s" repeatCount="indefinite"/></path>
+            <circle cx="60" cy="55" r="20" fill="rgba(230,81,0,.1)" stroke="#ff8f00" stroke-width="1"><animate attributeName="r" values="20;23;20" dur="2s" repeatCount="indefinite"/></circle>
+            <path d="M50 55 L57 63 L72 47" stroke="#ffcc80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+          </svg>
+        </div>
+        <div class="pc-body">
+          <div class="pc-tt">Comprehensive GCV</div>
+          <div class="pc-pr">From <strong>₹12,000</strong>/year</div>
+          <div class="pc-rows">
+            <div class="pc-row"><span>✓</span>All third-party cover included</div>
+            <div class="pc-row"><span>✓</span>Own damage to vehicle</div>
+            <div class="pc-row"><span>✓</span>Fire, theft, natural calamity</div>
+            <div class="pc-row"><span>✓</span>Accident, overturning (basic)</div>
+            <div class="pc-row"><span>✓</span>Driver + cleaner PA cover</div>
+          </div>
+          <a href="book.html" class="pc-cta">Get Quote →</a>
+        </div>
+      </div>
+      <div class="pc">
+        <div class="pc-top" style="background:linear-gradient(145deg,#060d1a,#0a1e32);">
+          <svg width="120" height="100" viewBox="0 0 120 100" fill="none"><path d="M60 8 L105 28 L105 65 Q105 90 60 98 Q15 90 15 65 L15 28 Z" fill="rgba(74,222,128,.08)" stroke="#4ade80" stroke-width="1.5"/><text x="60" y="48" text-anchor="middle" font-size="9" fill="#4ade80" font-weight="700" font-family="DM Sans,sans-serif">FULL FLEET</text><text x="60" y="62" text-anchor="middle" font-size="9" fill="#4ade80" font-weight="700" font-family="DM Sans,sans-serif">BUNDLE</text></svg>
+        </div>
+        <div class="pc-body">
+          <div class="pc-tt">Fleet Bundle</div>
+          <div class="pc-pr">From <strong>₹9,500</strong>/vehicle</div>
+          <div class="pc-rows">
+            <div class="pc-row"><span>✓</span>Comprehensive on all vehicles</div>
+            <div class="pc-row"><span>✓</span>IMT-23 overturning add-on</div>
+            <div class="pc-row"><span>✓</span>Goods-in-transit cover</div>
+            <div class="pc-row"><span>✓</span>Fleet discount up to 35%</div>
+            <div class="pc-row"><span>✓</span>Single-point renewal management</div>
+          </div>
+          <a href="book.html" class="pc-cta">Get Quote →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="sec">
+  <div class="si">
+    <div class="calc-lay">
+      <div class="calc-vis rv">
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=700&q=80" alt="Commercial vehicle fleet"/>
+        <div class="calc-ov">
+          <div class="calc-card">
+            <div class="ccard-tt">📋 Tata 1109 LPT · 2021 · Kurnool RTO</div>
+            <div class="ccard-r"><span class="ccard-l">Plan</span><span class="ccard-v">New India Assurance · GCV</span></div>
+            <div class="ccard-r"><span class="ccard-l">GVW</span><span class="ccard-v">12.5 Tonnes</span></div>
+            <div class="ccard-r"><span class="ccard-l">IMT-23 + GIT</span><span class="ccard-v">Included</span></div>
+            <div class="ccard-r"><span class="ccard-l">Claim Settlement</span><span class="ccard-v">97.2%</span></div>
+            <div class="ccard-big" id="calcDisplay">₹14,800/yr</div>
+          </div>
+        </div>
+      </div>
+      <div class="calc-form rv d1">
+        <div class="tag">Premium Estimator</div>
+        <h2 class="tit d1" style="font-size:clamp(1.4rem,2.2vw,2rem);margin-bottom:1.4rem;">Your fleet premium<br/><em>in 30 seconds</em></h2>
+        <div class="cf-row">
+          <div class="cf-lbl">Vehicle Type</div>
+          <div class="cf-pills">
+            <div class="cf-pill on" data-vt="lcv">LCV / Tempo</div>
+            <div class="cf-pill" data-vt="hcv">HCV Lorry</div>
+            <div class="cf-pill" data-vt="bus">Bus/PCV</div>
+          </div>
+        </div>
+        <div class="cf-row">
+          <div class="cf-lbl">Vehicle Age <span id="ageVal2">3 years</span></div>
+          <input type="range" class="cf-range" id="ageRange2" min="0" max="20" value="3"/>
+        </div>
+        <div class="cf-row">
+          <div class="cf-lbl">Coverage</div>
+          <div class="cf-pills">
+            <div class="cf-pill" data-cov2="tp">Act Only</div>
+            <div class="cf-pill on" data-cov2="comp">Comprehensive</div>
+          </div>
+        </div>
+        <div class="cf-row">
+          <div class="cf-lbl">Add-ons</div>
+          <div class="cf-pills">
+            <div class="cf-pill" data-add="imt">IMT-23 (+₹2,400)</div>
+            <div class="cf-pill" data-add="git">Goods-in-Transit (+₹3,200)</div>
+          </div>
+        </div>
+        <div class="cf-res">
+          <div class="cfrl">Estimated Annual Premium</div>
+          <div class="cfrp" id="qfResult2">₹14,800</div>
+          <div class="cfrs">Indicative. Exact rate depends on GVW, RTO, fuel type, route permit zone, and insurer. We compare 15+ for your exact vehicle.</div>
+        </div>
+        <a href="book.html" class="bg" style="width:100%;justify-content:center;margin-top:1rem;">Compare 15+ Insurers Free →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec sa">
+  <div class="si faq-lay">
+    <div>
+      <div class="tag rv">FAQ</div>
+      <h2 class="tit rv d1">Commercial vehicle insurance<br/><em>questions answered</em></h2>
+      <div class="faq-list rv d1">
+        <div class="fi op"><div class="fh"><span class="fq">What is IMT-23 and why do lorry owners in AP need it?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">IMT-23 is an endorsement that reinstates cover for overturning — which is excluded from standard GCV comprehensive policies. Given the hilly terrain between Kurnool and Nandyal, and the winding highway stretches across Telangana, overturning is a real risk. Without IMT-23, your own damage claim after overturning will be rejected. We always add this for lorry, tipper, and tanker operators in this region.</p></div></div>
+        <div class="fi"><div class="fh"><span class="fq">Does my commercial vehicle policy cover the goods inside the lorry?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">No. Standard GCV comprehensive policies cover only the vehicle — not the goods being transported. For goods coverage, you need a Goods-in-Transit (GIT) policy as a separate or add-on policy. GIT covers loss or damage to cargo due to accident, fire, theft, or natural calamity during transit. Without GIT, you are fully liable to the consignee for damaged or lost goods.</p></div></div>
+        <div class="fi"><div class="fh"><span class="fq">Is commercial vehicle insurance different from car insurance?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">Yes, significantly. Commercial vehicles (lorries, buses, autos, taxis) are insured under a GCV (Goods Carrying Vehicle) or PCV (Passenger Carrying Vehicle) policy, which follows different IRDAI tariff rules. Premiums are calculated based on GVW (Gross Vehicle Weight), seating capacity, and usage type — not just IDV. Add-ons like IMT-23, GIT, and fleet discounts are specific to commercial policies.</p></div></div>
+        <div class="fi"><div class="fh"><span class="fq">How does fleet discount work if I own multiple vehicles?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">IRDAI allows fleet discounts on GCV/PCV policies when you insure 5 or more vehicles under a single policy. The discount typically ranges from 10% to 35% depending on the fleet size and the insurer. We negotiate fleet rates with multiple insurers, coordinate all renewal dates, and handle claims for the entire fleet — a single point of contact for your whole commercial fleet.</p></div></div>
+        <div class="fi"><div class="fh"><span class="fq">What happens to my NCB when I renew a commercial vehicle policy?</span><span class="fic">+</span></div><div class="fab2"><p class="fat">Commercial vehicle policies do earn No Claim Bonus (NCB), though at different rates than private vehicles. For own-damage claims, NCB resets to zero. For TP-only claims, NCB on OD is usually unaffected. On renewal, we review your NCB status, help protect it using NCB protection add-ons where available, and ensure you don't lose earned discounts when switching insurers.</p></div></div>
+      </div>
+    </div>
+    <aside class="sb2">
+      <div class="sb2-card rv">
+        <div style="font-size:3rem;margin-bottom:.8rem;">🚛</div>
+        <div class="sb2-tt">Get your fleet covered today</div>
+        <div class="sb2-ds">IMT-23, GIT, fleet discounts. Same-day policy. Digital delivery on WhatsApp.</div>
+        <a href="book.html" class="sb2-btn">📅 Book Free Session</a>
+        <div class="sb2-div">or call directly</div>
+        <a href="tel:+917842854466" class="sb2-ph">📞 +91 78428 54466</a>
+      </div>
+      <div style="background:var(--i2);border:1px solid var(--line);border-radius:14px;padding:1.2rem;" class="rv d1">
+        <div style="font-size:.62rem;font-weight:700;color:rgba(255,255,255,.22);text-transform:uppercase;letter-spacing:1.3px;margin-bottom:.85rem;">Related Pages</div>
+        <a href="bike-insurance.html" style="display:flex;align-items:center;gap:.65rem;padding:.5rem .65rem;background:var(--ink);border:1px solid var(--line);border-radius:9px;margin-bottom:.42rem;font-size:.76rem;font-weight:600;transition:border-color .2s;">🏍️ Bike Insurance →</a>
+        <a href="car-insurance.html" style="display:flex;align-items:center;gap:.65rem;padding:.5rem .65rem;background:var(--ink);border:1px solid var(--line);border-radius:9px;font-size:.76rem;font-weight:600;transition:border-color .2s;">🚗 Car Insurance →</a>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="ctab">
+  <div class="ctab-bg"><img src="https://images.unsplash.com/photo-1491824664880-640fde0cb53c?auto=format&fit=crop&w=1400&q=80" alt="Trucks on highway"/></div>
+  <div class="cta-in">
+    <div>
+      <h2 class="cta-tt rv">Your lorry runs 24 hours.<br/><em>So does your risk.</em></h2>
+      <p class="cta-ds rv d1">Get the right GCV policy — with IMT-23, Goods-in-Transit, and fleet discounts. We compare 15+ insurers and sort your policy same day. Average fleet saving: ₹8,000/year.</p>
+      <div class="cta-pills rv d2"><span class="cpill">✓ IMT-23 specialists</span><span class="cpill">✓ Fleet discounts</span><span class="cpill">✓ GIT cover</span><span class="cpill">✓ Same-day issued</span></div>
+    </div>
+    <div class="cta-btns rv d2">
+      <a href="book.html" class="bg" style="white-space:nowrap;font-size:.95rem;padding:1rem 2rem;">Get My Fleet Quote →</a>
+      <div class="cta-ph">or call: <a href="tel:+917842854466">+91 78428 54466</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="ft">
+  <div class="ft-in">
+    <div class="ft-top">
+      <div><a href="index.html" class="ft-logo">Cover<em>Credit</em></a><p class="ft-ds">Honest insurance and financial advice for families and fleet owners across AP and Telangana. We sell the right policy — no pressure, no jargon.</p><div class="ft-con">📞 <a href="tel:+917842854466">+91 78428 54466</a></div><div class="ft-con">✉️ <a href="mailto:Covercredit.official@gmail.com">Covercredit.official@gmail.com</a></div><div class="ft-con">🕐 Mon–Sat: 9 AM – 7 PM</div></div>
+      <div class="ft-col"><div class="ft-clbl">Vehicle Insurance</div><ul><li><a href="vehicle-insurance.html">Vehicle Overview</a></li><li><a href="bike-insurance.html">Bike Insurance</a></li><li><a href="car-insurance.html">Car Insurance</a></li><li><a href="commercial-vehicle-insurance.html">Commercial Vehicle</a></li></ul></div>
+      <div class="ft-col"><div class="ft-clbl">Insurance</div><ul><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life &amp; Term Insurance</a></li><li><a href="loans.html">Loans &amp; Finance</a></li></ul></div>
+      <div class="ft-col"><div class="ft-clbl">Company</div><ul><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="book.html">Book Consultation</a></li></ul></div>
+    </div>
+    <div class="ft-bot"><span>© <span id="yr"></span> Policy Doc Insurance Advisors. All rights reserved.</span><div class="ft-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></div>
+  </div>
+</footer>
+
+<script>
+// Custom cursor
+const cur=document.getElementById('cur'),cr=document.getElementById('cr');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function tick(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(tick);})();
+document.querySelectorAll('a,button,.pc,.fg,.fi,.cf-pill,.vt').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));});
+
+// Nav scroll
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>40),{passive:true});
+
+// Mobile burger
+const burger=document.getElementById('burger'),mob=document.getElementById('mob');
+burger.addEventListener('click',()=>{burger.classList.toggle('op');mob.classList.toggle('op');document.body.style.overflow=mob.classList.contains('op')?'hidden':'';});
+
+// Scroll reveal
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});},{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+
+// FAQ accordion
+document.querySelectorAll('.fh').forEach(h=>{h.addEventListener('click',()=>{const it=h.parentElement,op=it.classList.contains('op');document.querySelectorAll('.fi').forEach(i=>i.classList.remove('op'));if(!op)it.classList.add('op');});});
+
+// Calculator logic
+let selVt='lcv',selAge2=3,selCov2='comp',selImt=false,selGit=false;
+function calcQ2(){
+  const base={lcv:{tp:6500,comp:12000},hcv:{tp:9000,comp:18000},bus:{tp:8000,comp:15000}};
+  const af=Math.max(0.55,1-(selAge2*0.025));
+  let p=selCov2==='tp'?base[selVt].tp:Math.round(base[selVt].comp*af/100)*100;
+  if(selCov2==='comp'&&selImt)p+=2400;
+  if(selCov2==='comp'&&selGit)p+=3200;
+  const r=document.getElementById('qfResult2'),c=document.getElementById('calcDisplay');
+  if(r)r.textContent='₹'+p.toLocaleString('en-IN');
+  if(c)c.textContent='₹'+p.toLocaleString('en-IN')+'/yr';
+}
+const ar2=document.getElementById('ageRange2');
+if(ar2){ar2.addEventListener('input',()=>{selAge2=parseInt(ar2.value);const av=document.getElementById('ageVal2');if(av)av.textContent=ar2.value+' years';calcQ2();});}
+document.querySelectorAll('[data-vt]').forEach(p=>{p.addEventListener('click',()=>{document.querySelectorAll('[data-vt]').forEach(x=>x.classList.remove('on'));p.classList.add('on');selVt=p.dataset.vt;calcQ2();});});
+document.querySelectorAll('[data-cov2]').forEach(p=>{p.addEventListener('click',()=>{document.querySelectorAll('[data-cov2]').forEach(x=>x.classList.remove('on'));p.classList.add('on');selCov2=p.dataset.cov2;calcQ2();});});
+document.querySelectorAll('[data-add]').forEach(p=>{p.addEventListener('click',()=>{p.classList.toggle('on');if(p.dataset.add==='imt')selImt=p.classList.contains('on');if(p.dataset.add==='git')selGit=p.classList.contains('on');calcQ2();});});
+
+// Image fallback
+document.querySelectorAll('img').forEach(img=>{img.addEventListener('error',function(){const w=this.offsetWidth||400,h=this.offsetHeight||280;this.src='https://picsum.photos/'+w+'/'+h+'?random='+Math.floor(Math.random()*99);this.onerror=null;});});
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
 </body>
 </html>
