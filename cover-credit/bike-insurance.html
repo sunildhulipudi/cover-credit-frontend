@@ -92,83 +92,49 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 
 
 
-/* ═══ CINEMATIC STORY ═══ */
-.cstory{padding:6rem 5%;background:linear-gradient(180deg,#07100a 0%,#06101f 100%);overflow:hidden;position:relative;}
-.cstory-hd{text-align:center;margin-bottom:4rem;}
-.cstory-tag{display:inline-flex;align-items:center;gap:.4rem;font-size:.64rem;font-weight:700;color:#ff6b00;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:.9rem;}
-.cstory-tag::before{content:'';width:18px;height:2px;background:#ff6b00;}
-.cstory-hed{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.5vw,3.2rem);font-weight:900;line-height:1.06;margin-bottom:.6rem;}
-.cstory-hed em{font-style:italic;color:#ff6b00;}
-.cstory-sub{font-size:.9rem;color:rgba(255,255,255,.38);max-width:500px;margin:0 auto;}
-/* Scene strip */
-.cscenes{display:flex;flex-direction:column;gap:4px;position:relative;}
-/* timeline spine */
-.cscenes::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,#ff6b00 15%,#ff6b00 85%,transparent);opacity:.18;transform:translateX(-50%);z-index:0;pointer-events:none;}
-.cscene{display:grid;grid-template-columns:1fr 1fr;min-height:320px;border-radius:18px;overflow:hidden;position:relative;opacity:0;transform:translateY(40px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
-.cscene.cs-rev{grid-template-columns:1fr 1fr;}
-.cscene.visible{opacity:1;transform:translateY(0);}
-.cscene:nth-child(1){transition-delay:.05s;}
-.cscene:nth-child(2){transition-delay:.12s;}
-.cscene:nth-child(3){transition-delay:.19s;}
-.cscene:nth-child(4){transition-delay:.26s;}
-/* Art pane */
-.cs-art{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:280px;}
-.cscene.cs-rev .cs-art{order:2;}
-.cs-art-inner{position:relative;z-index:2;}
-/* Text pane */
-.cs-txt{padding:2.5rem 3rem;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1;}
-.cscene.cs-rev .cs-txt{order:1;}
-.cs-scene-n{font-family:'Bebas Neue',sans-serif;font-size:.75rem;letter-spacing:3px;color:rgba(255,255,255,.18);margin-bottom:.6rem;}
-.cs-action{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,4vw,3.8rem);line-height:.92;letter-spacing:1px;margin-bottom:.9rem;}
-.cs-body{font-size:.88rem;color:rgba(255,255,255,.56);line-height:1.78;margin-bottom:1rem;}
-.cs-body strong{color:rgba(255,255,255,.88);font-weight:700;}
-.cs-chip{display:inline-flex;align-items:center;gap:.4rem;font-size:.68rem;font-weight:700;padding:.28rem .75rem;border-radius:100px;letter-spacing:.4px;}
-/* Glowing art bg rings */
-.art-ring{position:absolute;border-radius:50%;border-width:1px;border-style:solid;}
-/* Scene colours */
-.cs-open .cs-art{background:linear-gradient(135deg,#051208,#0a2010);}
-.cs-open .cs-txt{background:linear-gradient(145deg,#060f04,#0d1f0a);border-left:1px solid rgba(74,222,128,.12);}
-.cs-open .cs-action{color:#4ade80;}
-.cs-open .cs-chip{background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.25);color:#4ade80;}
-.cs-hit .cs-art{background:linear-gradient(135deg,#150000,#2d0505);}
-.cs-hit .cs-txt{background:linear-gradient(145deg,#100000,#1f0505);border-left:1px solid rgba(248,113,113,.12);}
-.cs-hit .cs-action{color:#f87171;text-shadow:0 0 40px rgba(248,113,113,.4);animation:redFlicker 2.2s ease-in-out infinite;}
-.cs-hit .cs-chip{background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.25);color:#f87171;}
-@keyframes redFlicker{0%,90%,100%{opacity:1}92%{opacity:.5}95%{opacity:1}97%{opacity:.6}}
-.cs-mem .cs-art{background:linear-gradient(135deg,#120b00,#251500);}
-.cs-mem .cs-txt{background:linear-gradient(145deg,#100a00,#1e1200);border-left:1px solid rgba(var(--ac-rgb),.15);}
-.cs-mem .cs-chip{background:rgba(var(--ac-rgb),.1);border:1px solid rgba(var(--ac-rgb),.25);color:#ff6b00;}
-.cs-mem .cs-action{color:#ff6b00;text-shadow:0 0 30px rgba(255,107,0,.4);}
-.cs-win .cs-art{background:linear-gradient(135deg,#001508,#002b12);}
-.cs-win .cs-txt{background:linear-gradient(145deg,#001005,#00200b);border-left:1px solid rgba(74,222,128,.15);}
-.cs-win .cs-action{color:#4ade80;text-shadow:0 0 30px rgba(74,222,128,.5);}
-.cs-win .cs-chip{background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.25);color:#4ade80;}
-/* Quote strip */
-.cstory-quote{margin-top:3rem;background:linear-gradient(135deg,rgba(255,107,0,.07),rgba(255,107,0,.02));border:1px solid rgba(255,107,0,.15);border-radius:18px;padding:2.4rem;display:grid;grid-template-columns:56px 1fr;gap:1.6rem;align-items:start;}
-.cq-av{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,rgba(255,107,0,.2),rgba(255,107,0,.05));border:1px solid rgba(255,107,0,.2);display:flex;align-items:center;justify-content:center;font-size:1.6rem;}
-.cq-q{font-family:'Playfair Display',serif;font-size:1.08rem;font-style:italic;line-height:1.68;color:rgba(255,255,255,.85);margin-bottom:.5rem;}
-.cq-q::before{content:'"';font-size:1.8rem;color:rgba(255,107,0,.4);line-height:.5;float:left;margin-right:.3rem;margin-top:.3rem;}
-.cq-nm{font-size:.72rem;font-weight:700;color:rgba(255,255,255,.45);}
-.cq-note{font-size:.66rem;color:rgba(255,255,255,.22);margin-top:.18rem;font-style:italic;}
-@media(max-width:768px){
-  .cscene,.cscene.cs-rev{grid-template-columns:1fr;}
-  .cscene.cs-rev .cs-art{order:0;}
-  .cscene.cs-rev .cs-txt{order:1;}
-  .cs-art{min-height:220px;}
-  .cs-txt{padding:1.8rem;}
-  .cscenes::before{display:none;}
-  .cstory-quote{grid-template-columns:1fr;}
-}
 
-/* Bike riding animation */
-@keyframes bikeRoll{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-@keyframes wheelSpin{to{stroke-dashoffset:-100}}
-@keyframes speedLine{from{transform:translateX(80px);opacity:0}to{transform:translateX(-60px);opacity:.5}}
-@keyframes bikeCrash{0%{transform:rotate(0deg) translateX(0)}100%{transform:rotate(-40deg) translateX(15px)}}
-@keyframes sparkBurst{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(0)}}
-@keyframes cardReveal{0%{opacity:0;transform:scale(.8) rotate(-5deg)}100%{opacity:1;transform:scale(1) rotate(0deg)}}
-@keyframes shieldBreath{0%,100%{filter:drop-shadow(0 0 8px rgba(74,222,128,.3))}50%{filter:drop-shadow(0 0 24px rgba(74,222,128,.7))}}
-@keyframes checkStroke{to{stroke-dashoffset:0}}
+
+/* ═══ CARTOON STORY — BIKE ═══ */
+.story-wrap{padding:4rem 5%;background:#06101f;}
+.story-head{text-align:center;margin-bottom:2.5rem;}
+.story-tag{display:inline-flex;align-items:center;gap:.4rem;font-size:.64rem;font-weight:700;color:#ff6b00;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:.7rem;}
+.story-tag::before{content:'';width:16px;height:2px;background:#ff6b00;}
+.story-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.6vw,2.4rem);font-weight:900;line-height:1.08;margin-bottom:.5rem;}
+.story-title em{font-style:italic;color:#ff6b00;}
+.story-sub{font-size:.85rem;color:rgba(255,255,255,.4);max-width:480px;margin:0 auto;}
+/* 4-panel grid */
+.cartoon-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:1.5rem;}
+.cpanel{background:#0d1826;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;}
+.cpanel svg{width:100%;height:auto;display:block;}
+.cp-caption{padding:.85rem 1rem 1rem;flex:1;}
+.cp-num{font-family:'Bebas Neue',sans-serif;font-size:.65rem;letter-spacing:2px;color:rgba(255,255,255,.22);margin-bottom:.25rem;}
+.cp-tt{font-size:.8rem;font-weight:700;color:rgba(255,255,255,.9);line-height:1.3;margin-bottom:.35rem;}
+.cp-ds{font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6;}
+.cp-ds strong{color:rgba(255,255,255,.75);}
+/* Quote strip */
+.story-quote{background:rgba(255,107,0,.05);border:1px solid rgba(255,107,0,.12);border-radius:12px;padding:1.3rem 1.5rem;display:flex;align-items:flex-start;gap:1.1rem;}
+.sq-av{font-size:1.8rem;flex-shrink:0;}
+.sq-q{font-family:'Playfair Display',serif;font-size:.9rem;font-style:italic;line-height:1.65;color:rgba(255,255,255,.72);margin-bottom:.28rem;}
+.sq-nm{font-size:.68rem;color:rgba(255,255,255,.3);}
+.sq-note{font-size:.62rem;color:rgba(255,255,255,.18);font-style:italic;}
+/* Cartoon animations */
+@keyframes wheelSpin{to{transform:rotate(360deg)}}
+@keyframes bikeHop{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+@keyframes roadScroll{from{transform:translateX(0)}to{transform:translateX(-120px)}}
+@keyframes sunPulse{0%,100%{opacity:.9;r:20}50%{opacity:1;r:22}}
+@keyframes cloudDrift{from{transform:translateX(0)}to{transform:translateX(18px)}}
+@keyframes crashFlash{0%,100%{opacity:0}20%,60%{opacity:1}}
+@keyframes starSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes sparkOut{0%{opacity:1;transform:translate(0,0)}100%{opacity:0;transform:translate(var(--dx),var(--dy))}}
+@keyframes cardFloat{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-5px) rotate(4deg)}}
+@keyframes cardGlow{0%,100%{filter:drop-shadow(0 0 6px rgba(255,107,0,.5))}50%{filter:drop-shadow(0 0 18px rgba(255,107,0,.95))}}
+@keyframes shieldPop{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@keyframes checkDraw{from{stroke-dashoffset:60}to{stroke-dashoffset:0}}
+@keyframes starTwinkle{0%,100%{opacity:0;transform:scale(0)}50%{opacity:1;transform:scale(1)}}
+@keyframes thumbUp{0%,100%{transform:rotate(0deg)}50%{transform:rotate(-12deg)}}
+@keyframes rainFall{from{transform:translateY(-30px)}to{transform:translateY(260px)}}
+@media(max-width:900px){.cartoon-strip{grid-template-columns:1fr 1fr;}}
+@media(max-width:520px){.cartoon-strip{grid-template-columns:1fr;}}
 
 /* ═══ FEATURES GRID ═══ */
 .feat-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem;}
@@ -343,188 +309,397 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
   <div class="sh"><div class="sh-m"><div class="sh-d"></div></div><div class="sh-t">Scroll</div></div>
 </section>
 
-<!-- ═══ CINEMATIC STORY — BIKE ═══ -->
-<section class="cstory" id="bikeStory" style="--ac-rgb:255,107,0;">
+<!-- ═══ CARTOON STORY — BIKE ═══ -->
+<section class="story-wrap" id="bikeStory">
   <div class="si">
-    <div class="cstory-hd">
-      <div class="cstory-tag rv">Hyderabad · Tuesday 8:42 AM</div>
-      <h2 class="cstory-hed rv d1">He didn't panic.<br/>He <em>remembered.</em></h2>
-      <p class="cstory-sub rv d2">Three weeks earlier, Arjun made one smart decision. On a highway outside Hyderabad, that decision paid for itself fifty times over.</p>
+    <div class="story-head rv">
+      <div class="story-tag">Hyderabad · Real Story</div>
+      <h2 class="story-title">Arjun crashed on NH-65.<br/>Didn't pay a <em>single rupee.</em></h2>
+      <p class="story-sub">Three weeks before this happened, he spent 20 minutes with Cover Credit sorting a comprehensive policy. That decision covered a ₹41,200 repair bill.</p>
     </div>
-    <div class="cscenes">
+    <div class="cartoon-strip rv d1">
 
-      <!-- Scene 1: Riding -->
-      <div class="cscene cs-open">
-        <div class="cs-art">
-          <!-- animated bg rings -->
-          <div class="art-ring" style="width:280px;height:280px;border-color:rgba(74,222,128,.06);top:50%;left:50%;transform:translate(-50%,-50%);animation:shieldBreath 3s ease-in-out infinite;"></div>
-          <div class="art-ring" style="width:180px;height:180px;border-color:rgba(74,222,128,.1);top:50%;left:50%;transform:translate(-50%,-50%);animation:shieldBreath 3s ease-in-out infinite .5s;"></div>
-          <!-- Road -->
-          <div style="position:absolute;bottom:3rem;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,rgba(74,222,128,.15),transparent);"></div>
-          <div style="position:absolute;bottom:3rem;height:2px;width:40px;background:rgba(74,222,128,.25);animation:speedLine 1s linear infinite;"></div>
-          <div style="position:absolute;bottom:3rem;height:2px;width:25px;background:rgba(74,222,128,.18);animation:speedLine 1.3s linear infinite .4s;"></div>
-          <!-- SVG Bike riding -->
-          <svg width="220" height="160" viewBox="0 0 220 160" fill="none" style="animation:bikeRoll 2.5s ease-in-out infinite;position:relative;z-index:2;">
-            <!-- Speed lines behind -->
-            <line x1="0" y1="72" x2="50" y2="72" stroke="rgba(74,222,128,.2)" stroke-width="2"><animate attributeName="x2" values="55;0" dur=".5s" repeatCount="indefinite"/><animate attributeName="opacity" values=".5;0" dur=".5s" repeatCount="indefinite"/></line>
-            <line x1="0" y1="85" x2="38" y2="85" stroke="rgba(74,222,128,.13)" stroke-width="1.5"><animate attributeName="x2" values="42;0" dur=".65s" repeatCount="indefinite"/><animate attributeName="opacity" values=".4;0" dur=".65s" repeatCount="indefinite"/></line>
-            <!-- Rear wheel -->
-            <circle cx="55" cy="115" r="30" fill="none" stroke="rgba(74,222,128,.5)" stroke-width="4" stroke-dasharray="8,5">
-              <animate attributeName="stroke-dashoffset" from="0" to="-100" dur=".55s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="55" cy="115" r="10" fill="rgba(74,222,128,.2)"/>
-            <!-- Front wheel -->
-            <circle cx="163" cy="115" r="30" fill="none" stroke="rgba(74,222,128,.5)" stroke-width="4" stroke-dasharray="8,5">
-              <animate attributeName="stroke-dashoffset" from="0" to="-100" dur=".55s" repeatCount="indefinite"/>
-            </circle>
-            <circle cx="163" cy="115" r="10" fill="rgba(74,222,128,.2)"/>
-            <!-- Frame -->
-            <path d="M62 115 L88 68 L130 68 L163 96" fill="none" stroke="#4ade80" stroke-width="3.5" stroke-linecap="round"/>
-            <path d="M88 68 L100 44 L120 44 L120 68" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round"/>
-            <path d="M120 44 L140 34 L144 44" fill="none" stroke="rgba(74,222,128,.7)" stroke-width="2.5" stroke-linecap="round"/>
-            <!-- Rider -->
-            <circle cx="105" cy="36" r="16" fill="#4ade80" opacity=".9"/>
-            <path d="M96 36 Q96 16 105 16 Q114 16 114 36" fill="rgba(0,80,30,.8)"/>
-            <rect x="97" y="33" width="20" height="5" rx="2.5" fill="rgba(0,50,20,.8)"/>
-            <path d="M92 52 Q100 72 114 68 L120 50" fill="#4ade80" opacity=".85"/>
-            <!-- Arm to handlebar -->
-            <path d="M114 58 L136 42" stroke="#4ade80" stroke-width="3" stroke-linecap="round"/>
-            <!-- Shine on helmet -->
-            <path d="M97 30 Q102 22 108 26" stroke="rgba(255,255,255,.35)" stroke-width="2" fill="none" stroke-linecap="round"/>
-          </svg>
-        </div>
-        <div class="cs-txt">
-          <div class="cs-scene-n">SCENE 01 / 04</div>
-          <div class="cs-action">OPEN<br/>ROAD.<br/>FULL<br/>THROTTLE.</div>
-          <p class="cs-body">It's 8:42 AM on a Tuesday. Arjun is doing 60 on his Bajaj Pulsar 150 — outer ring road, light traffic, helmet on, music up. <strong>He's late for a 9 AM meeting and loving every second of it.</strong> Three weeks ago he walked into Cover Credit and sorted his comprehensive policy in 20 minutes. Today, he's forgotten it exists.</p>
-          <div class="cs-chip">🏍️ Pulsar 150 · Comprehensive · Active</div>
+      <div class="cpanel">
+        <svg viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="sky1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a6ba8"/><stop offset="1" stop-color="#4fc3f7"/></linearGradient>
+  <linearGradient id="road1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#546e7a"/><stop offset="1" stop-color="#37474f"/></linearGradient>
+  <linearGradient id="bk1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff5722"/><stop offset="1" stop-color="#bf360c"/></linearGradient>
+  <linearGradient id="helmet1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#37474f"/><stop offset="1" stop-color="#1c2a33"/></linearGradient>
+</defs>
+<!-- Sky -->
+<rect width="280" height="200" fill="url(#sky1)"/>
+<!-- Sun with rays -->
+<circle cx="245" cy="32" r="18" fill="#ffeb3b" opacity=".25"/>
+<circle cx="245" cy="32" r="13" fill="#ffd54f" opacity=".6"/>
+<circle cx="245" cy="32" r="9" fill="#ffee58"/>
+<!-- Clouds -->
+<g style="animation:cloudDrift 6s ease-in-out infinite alternate">
+  <ellipse cx="52" cy="28" rx="28" ry="12" fill="white" opacity=".55"/>
+  <ellipse cx="38" cy="32" rx="18" ry="10" fill="white" opacity=".55"/>
+  <ellipse cx="68" cy="32" rx="16" ry="9" fill="white" opacity=".55"/>
+</g>
+<g style="animation:cloudDrift 8s ease-in-out infinite alternate-reverse">
+  <ellipse cx="175" cy="20" rx="24" ry="10" fill="white" opacity=".4"/>
+  <ellipse cx="162" cy="24" rx="15" ry="8" fill="white" opacity=".4"/>
+  <ellipse cx="188" cy="23" rx="14" ry="7" fill="white" opacity=".4"/>
+</g>
+<!-- Buildings silhouette -->
+<rect x="0" y="85" width="30" height="75" fill="#1a2533"/>
+<rect x="5" y="78" width="20" height="10" fill="#1a2533"/>
+<rect x="8" y="95" width="5" height="5" fill="#ffd54f" opacity=".5"/>
+<rect x="18" y="95" width="5" height="5" fill="#ffd54f" opacity=".35"/>
+<rect x="8" y="106" width="5" height="5" fill="#ffd54f" opacity=".4"/>
+<rect x="35" y="95" width="25" height="65" fill="#212e3d"/>
+<rect x="40" y="103" width="6" height="6" fill="#4fc3f7" opacity=".4"/>
+<rect x="50" y="103" width="6" height="6" fill="#4fc3f7" opacity=".3"/>
+<rect x="40" y="115" width="6" height="6" fill="#4fc3f7" opacity=".35"/>
+<!-- Trees -->
+<rect x="215" y="128" width="8" height="32" fill="#4a3728"/>
+<ellipse cx="219" cy="124" rx="16" ry="18" fill="#2e7d32"/>
+<ellipse cx="219" cy="118" rx="12" ry="14" fill="#388e3c"/>
+<rect x="240" y="138" width="6" height="22" fill="#4a3728"/>
+<ellipse cx="243" cy="135" rx="13" ry="15" fill="#2e7d32"/>
+<!-- Road -->
+<rect x="0" y="158" width="280" height="42" fill="url(#road1)"/>
+<!-- Road shoulder -->
+<rect x="0" y="158" width="280" height="3" fill="#78909c"/>
+<!-- Road center dashes animated -->
+<g style="animation:roadScroll 1s linear infinite">
+  <rect x="10" y="177" width="36" height="4" rx="2" fill="#ffeb3b" opacity=".7"/>
+  <rect x="70" y="177" width="36" height="4" rx="2" fill="#ffeb3b" opacity=".7"/>
+  <rect x="130" y="177" width="36" height="4" rx="2" fill="#ffeb3b" opacity=".7"/>
+  <rect x="190" y="177" width="36" height="4" rx="2" fill="#ffeb3b" opacity=".7"/>
+  <rect x="250" y="177" width="36" height="4" rx="2" fill="#ffeb3b" opacity=".7"/>
+</g>
+<!-- BIKE GROUP — animated hop -->
+<g style="animation:bikeHop 1.2s ease-in-out infinite">
+  <!-- Rear wheel -->
+  <g style="transform-origin:85px 170px;animation:wheelSpin 0.5s linear infinite">
+    <circle cx="85" cy="170" r="22" fill="#263238" stroke="#37474f" stroke-width="2"/>
+    <circle cx="85" cy="170" r="15" fill="#2e3c43"/>
+    <line x1="85" y1="148" x2="85" y2="192" stroke="#546e7a" stroke-width="2"/>
+    <line x1="63" y1="170" x2="107" y2="170" stroke="#546e7a" stroke-width="2"/>
+    <line x1="69" y1="154" x2="101" y2="186" stroke="#546e7a" stroke-width="1.5"/>
+    <line x1="69" y1="186" x2="101" y2="154" stroke="#546e7a" stroke-width="1.5"/>
+    <circle cx="85" cy="170" r="5" fill="#607d8b"/>
+  </g>
+  <!-- Front wheel -->
+  <g style="transform-origin:185px 170px;animation:wheelSpin 0.5s linear infinite">
+    <circle cx="185" cy="170" r="22" fill="#263238" stroke="#37474f" stroke-width="2"/>
+    <circle cx="185" cy="170" r="15" fill="#2e3c43"/>
+    <line x1="185" y1="148" x2="185" y2="192" stroke="#546e7a" stroke-width="2"/>
+    <line x1="163" y1="170" x2="207" y2="170" stroke="#546e7a" stroke-width="2"/>
+    <line x1="169" y1="154" x2="201" y2="186" stroke="#546e7a" stroke-width="1.5"/>
+    <line x1="169" y1="186" x2="201" y2="154" stroke="#546e7a" stroke-width="1.5"/>
+    <circle cx="185" cy="170" r="5" fill="#607d8b"/>
+  </g>
+  <!-- Bike frame -->
+  <path d="M90 170 L110 142 L155 138 L185 155" fill="none" stroke="#ff5722" stroke-width="5" stroke-linecap="round"/>
+  <!-- Engine/body fill -->
+  <ellipse cx="140" cy="146" rx="34" ry="16" fill="url(#bk1)"/>
+  <ellipse cx="138" cy="141" rx="28" ry="11" fill="#ff6d3f"/>
+  <!-- Exhaust -->
+  <path d="M95 168 Q80 172 72 168" stroke="#90a4ae" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- Fork -->
+  <path d="M170 148 L185 155" stroke="#90a4ae" stroke-width="4" stroke-linecap="round"/>
+  <path d="M175 143 L185 155" stroke="#78909c" stroke-width="3" stroke-linecap="round"/>
+  <!-- Handlebar -->
+  <path d="M168 133 L180 126 L184 132" stroke="#607d8b" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <!-- RIDER -->
+  <!-- Legs -->
+  <path d="M122 158 L108 170 L96 168" stroke="#1565c0" stroke-width="7" stroke-linecap="round" fill="none"/>
+  <path d="M138 158 L148 165 L162 162" stroke="#1565c0" stroke-width="7" stroke-linecap="round" fill="none"/>
+  <!-- Body (leaning forward) -->
+  <rect x="118" y="128" width="30" height="34" rx="8" fill="#ff6b00" transform="rotate(-18,133,145)"/>
+  <!-- Arms -->
+  <path d="M140 130 Q158 122 170 128" stroke="#ff6b00" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <!-- Head -->
+  <circle cx="125" cy="118" r="15" fill="#d4956a"/>
+  <!-- Helmet -->
+  <path d="M110 118 Q110 100 125 98 Q140 100 140 118 L137 120 L113 120 Z" fill="url(#helmet1)"/>
+  <!-- Visor glare -->
+  <path d="M113 117 Q125 112 137 117" fill="none" stroke="#4fc3f7" stroke-width="2.5" opacity=".7"/>
+  <!-- Smile visible below visor -->
+  <path d="M120 123 Q125 127 130 123" stroke="#a0522d" stroke-width="2" fill="none"/>
+</g>
+<!-- Speed lines -->
+<line x1="0" y1="138" x2="58" y2="138" stroke="white" stroke-width="2" opacity=".25" style="animation:roadScroll .5s linear infinite"/>
+<line x1="0" y1="148" x2="42" y2="148" stroke="white" stroke-width="1.5" opacity=".15" style="animation:roadScroll .6s linear infinite .1s"/>
+<line x1="0" y1="155" x2="32" y2="155" stroke="white" stroke-width="1" opacity=".12" style="animation:roadScroll .7s linear infinite .2s"/>
+</svg>
+        <div class="cp-caption">
+          <div class="cp-num">01 · RIDING</div>
+          <div class="cp-tt">Tuesday 8:42 AM · NH-65 outer ring road</div>
+          <div class="cp-ds">Arjun on his Pulsar 150. Music up, light traffic, 60kmph. <strong>Three weeks back, a 20-min Cover Credit session = comprehensive policy sorted.</strong> Right now he's forgotten it exists.</div>
         </div>
       </div>
 
-      <!-- Scene 2: Crash -->
-      <div class="cscene cs-rev cs-hit">
-        <div class="cs-art">
-          <!-- Crash ring burst -->
-          <div class="art-ring" style="width:200px;height:200px;border-color:rgba(248,113,113,.12);top:50%;left:50%;transform:translate(-50%,-50%);animation:redFlicker 1.5s ease-in-out infinite;"></div>
-          <!-- Spark particles -->
-          <div style="--tx:-55px;--ty:-60px;position:absolute;width:7px;height:7px;border-radius:50%;background:#f87171;top:52%;left:48%;animation:sparkBurst 1.1s ease-out 0s infinite;"></div>
-          <div style="--tx:45px;--ty:-75px;position:absolute;width:5px;height:5px;border-radius:50%;background:#ffd166;top:50%;left:51%;animation:sparkBurst 0.9s ease-out .15s infinite;"></div>
-          <div style="--tx:-30px;--ty:-85px;position:absolute;width:6px;height:6px;border-radius:50%;background:#f87171;top:48%;left:49%;animation:sparkBurst 1.3s ease-out .05s infinite;"></div>
-          <div style="--tx:60px;--ty:-40px;position:absolute;width:4px;height:4px;border-radius:50%;background:#ff9500;top:53%;left:52%;animation:sparkBurst 0.8s ease-out .3s infinite;"></div>
-          <div style="--tx:-70px;--ty:-30px;position:absolute;width:5px;height:5px;border-radius:50%;background:#ffd166;top:50%;left:47%;animation:sparkBurst 1.0s ease-out .2s infinite;"></div>
-          <div style="--tx:20px;--ty:-90px;position:absolute;width:4px;height:4px;border-radius:50%;background:#f87171;top:45%;left:50%;animation:sparkBurst 1.2s ease-out .1s infinite;"></div>
-          <!-- Fallen bike SVG -->
-          <svg width="200" height="160" viewBox="0 0 200 160" fill="none" style="position:relative;z-index:2;filter:drop-shadow(0 0 20px rgba(248,113,113,.25));">
-            <!-- Skid mark -->
-            <path d="M10 140 Q80 132 150 140" stroke="rgba(248,113,113,.2)" stroke-width="4" fill="none" stroke-dasharray="8,5"/>
-            <!-- Tilted bike at -38 degrees -->
-            <g transform="translate(100,85) rotate(-38) translate(-60,-40)">
-              <circle cx="20" cy="68" r="26" fill="none" stroke="rgba(248,113,113,.55)" stroke-width="3.5"/>
-              <circle cx="20" cy="68" r="8" fill="rgba(248,113,113,.2)"/>
-              <circle cx="100" cy="68" r="26" fill="none" stroke="rgba(248,113,113,.55)" stroke-width="3.5"/>
-              <circle cx="100" cy="68" r="8" fill="rgba(248,113,113,.2)"/>
-              <path d="M26 68 L42 42 L72 42 L100 58" fill="none" stroke="#f87171" stroke-width="3.5" stroke-linecap="round"/>
-              <path d="M42 42 L50 22 L68 22 L68 42" fill="none" stroke="#f87171" stroke-width="3" stroke-linecap="round"/>
-              <path d="M68 22 L82 14" stroke="rgba(248,113,113,.6)" stroke-width="2.5" stroke-linecap="round"/>
-            </g>
-            <!-- Impact star burst -->
-            <path d="M100 50 L105 38 L102 50 L112 44 L104 54 L116 52 L106 60 L114 68 L104 64 L105 76 L98 66 L92 76 L93 64 L82 68 L91 60 L82 52 L94 54 L86 44 L96 50 L94 38 Z" fill="rgba(248,113,113,.15)" stroke="rgba(248,113,113,.3)" stroke-width="1">
-              <animate attributeName="opacity" values=".8;.2;.8" dur="1.4s" repeatCount="indefinite"/>
-            </path>
-          </svg>
-        </div>
-        <div class="cs-txt">
-          <div class="cs-scene-n">SCENE 02 / 04</div>
-          <div class="cs-action">A CAR<br/>CUTS IN.<br/>TYRES<br/>SCREAM.</div>
-          <p class="cs-body">A Swift overtakes and cuts back in without checking mirrors. Arjun brakes hard. The rear tyre locks up. Bike slides 5 metres across wet tarmac. <strong>He picks himself up from the road, helmet cracked, exhaust pipe dented, left indicator gone.</strong> First thought: how bad is this? Second thought — then it hit him.</p>
-          <div class="cs-chip">⚠️ Estimated damage: ₹34,000–₹48,000</div>
-        </div>
-      </div>
-
-      <!-- Scene 3: The memory -->
-      <div class="cscene cs-mem">
-        <div class="cs-art">
-          <div class="art-ring" style="width:240px;height:240px;border-color:rgba(255,107,0,.07);top:50%;left:50%;transform:translate(-50%,-50%);animation:shieldBreath 2.5s ease-in-out infinite;"></div>
-          <!-- Glowing policy card -->
-          <div style="position:relative;z-index:2;animation:cardReveal .8s ease-out forwards;">
-            <svg width="200" height="140" viewBox="0 0 200 140" fill="none">
-              <!-- Hand holding card -->
-              <path d="M70 120 Q80 112 100 110 Q120 108 130 120" fill="rgba(198,132,66,.6)" stroke="rgba(198,132,66,.4)" stroke-width="1.5"/>
-              <!-- Card with glow -->
-              <rect x="30" y="20" width="140" height="88" rx="10" fill="#1a0800" stroke="rgba(255,107,0,.5)" stroke-width="1.5">
-                <animate attributeName="stroke-opacity" values=".5;1;.5" dur="1.8s" repeatCount="indefinite"/>
-              </rect>
-              <defs><linearGradient id="cardGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff6b00" stop-opacity=".18"/><stop offset="1" stop-color="#ff6b00" stop-opacity=".04"/></linearGradient></defs>
-              <rect x="30" y="20" width="140" height="88" rx="10" fill="url(#cardGrad)"/>
-              <!-- Card content -->
-              <rect x="42" y="32" width="28" height="18" rx="4" fill="#ff6b00"/>
-              <text x="56" y="44" text-anchor="middle" font-size="7" fill="white" font-weight="700" font-family="DM Sans,sans-serif">CC</text>
-              <text x="78" y="40" font-size="8.5" fill="white" font-weight="700" font-family="DM Sans,sans-serif">CoverCredit</text>
-              <text x="78" y="51" font-size="6" fill="rgba(255,255,255,.5)" font-family="DM Sans,sans-serif">Insurance Advisors</text>
-              <!-- Divider -->
-              <line x1="42" y1="58" x2="158" y2="58" stroke="rgba(255,107,0,.2)" stroke-width="1"/>
-              <!-- Policy details -->
-              <text x="42" y="70" font-size="6.5" fill="rgba(255,255,255,.5)" font-family="DM Sans,sans-serif">POLICY NO.</text>
-              <text x="42" y="79" font-size="7" fill="rgba(255,255,255,.8)" font-weight="700" font-family="DM Sans,sans-serif">CC-2024-8812</text>
-              <text x="42" y="91" font-size="6.5" fill="rgba(255,255,255,.5)" font-family="DM Sans,sans-serif">COMPREHENSIVE · ACTIVE</text>
-              <text x="42" y="101" font-size="6.5" fill="rgba(255,255,255,.5)" font-family="DM Sans,sans-serif">INSURER HELPLINE:</text>
-              <text x="42" y="101" font-size="6.5" fill="#ffd166" font-weight="700" font-family="DM Sans,sans-serif" x="100">PRINTED ON CARD</text>
-              <!-- Active badge -->
-              <rect x="122" y="65" width="36" height="16" rx="8" fill="rgba(74,222,128,.15)" stroke="rgba(74,222,128,.4)" stroke-width="1">
-                <animate attributeName="stroke-opacity" values=".4;1;.4" dur="1.5s" repeatCount="indefinite"/>
-              </rect>
-              <circle cx="131" cy="73" r="3" fill="#4ade80"><animate attributeName="opacity" values="1;.2;1" dur="1s" repeatCount="indefinite"/></circle>
-              <text x="136" y="76" font-size="6" fill="#4ade80" font-weight="700" font-family="DM Sans,sans-serif">ACTIVE</text>
-            </svg>
-          </div>
-        </div>
-        <div class="cs-txt">
-          <div class="cs-scene-n">SCENE 03 / 04</div>
-          <div class="cs-action">WAIT.<br/>THE<br/>CARD.</div>
-          <p class="cs-body">He reaches into his jacket pocket. Fingers close around a stiff orange card. <strong>His Cover Credit insurance policy card — with his insurer's 24-hour helpline printed right on it.</strong> That 20-minute session three weeks ago. The one where Sunil at Cover Credit walked him through every add-on, explained the cashless garage network, set the right IDV. He chose comprehensive. He nearly didn't.</p>
-          <div class="cs-chip" style="color:#ff6b00;">💡 That ₹1,800/yr decision just saved ₹41,000</div>
+      <div class="cpanel">
+        <svg viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a3a5c"/><stop offset="1" stop-color="#2d6a9f"/></linearGradient>
+  <linearGradient id="road2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#546e7a"/><stop offset="1" stop-color="#37474f"/></linearGradient>
+</defs>
+<!-- Sky slightly darker -->
+<rect width="280" height="200" fill="url(#sky2)"/>
+<!-- Background blurred buildings -->
+<rect x="0" y="95" width="35" height="65" fill="#152030" opacity=".8"/>
+<rect x="38" y="105" width="28" height="55" fill="#1a2533" opacity=".8"/>
+<!-- Road -->
+<rect x="0" y="158" width="280" height="42" fill="url(#road2)"/>
+<rect x="0" y="158" width="280" height="3" fill="#78909c"/>
+<!-- Skid marks -->
+<path d="M40 172 Q110 168 160 175" stroke="#263238" stroke-width="5" fill="none" opacity=".7"/>
+<path d="M50 180 Q120 176 165 183" stroke="#263238" stroke-width="4" fill="none" opacity=".5"/>
+<!-- CRASH IMPACT BURST — center -->
+<g style="animation:crashFlash 1.5s ease-in-out infinite">
+  <circle cx="155" cy="155" r="38" fill="#ff6b00" opacity=".18"/>
+  <circle cx="155" cy="155" r="26" fill="#ffd54f" opacity=".22"/>
+</g>
+<!-- Impact star spikes -->
+<polygon points="155,120 160,140 175,128 162,145 182,145 164,155 180,168 160,160 162,180 152,162 140,180 142,160 123,168 140,154 120,145 140,145 128,128 144,140" fill="#ffd54f" opacity=".6" style="animation:crashFlash 1.5s ease-in-out infinite"/>
+<!-- BANG text -->
+<text x="155" y="150" text-anchor="middle" font-family="Bebas Neue,Impact,sans-serif" font-size="26" fill="#ff6b00" font-weight="900" opacity=".95" style="animation:crashFlash 1.5s ease-in-out infinite">CRASH!</text>
+<!-- White Swift car (the culprit) driving away top right -->
+<g transform="translate(195,115)">
+  <rect x="0" y="10" width="75" height="28" rx="6" fill="#eceff1" stroke="#b0bec5" stroke-width="1"/>
+  <rect x="8" y="2" width="52" height="16" rx="4" fill="#cfd8dc"/>
+  <rect x="12" y="4" width="20" height="11" rx="2" fill="#80d8ff" opacity=".5"/>
+  <rect x="36" y="4" width="20" height="11" rx="2" fill="#80d8ff" opacity=".5"/>
+  <circle cx="15" cy="40" r="9" fill="#37474f"/>
+  <circle cx="60" cy="40" r="9" fill="#37474f"/>
+  <rect x="0" y="16" width="8" height="5" rx="2" fill="#ef5350" opacity=".5"/>
+</g>
+<!-- Fallen bike (tilted ~40 degrees) -->
+<g transform="translate(100,145) rotate(-38) translate(-70,-40)">
+  <circle cx="20" cy="55" r="19" fill="#263238" stroke="#37474f" stroke-width="2"/>
+  <circle cx="20" cy="55" r="12" fill="#2e3c43"/>
+  <circle cx="20" cy="55" r="4" fill="#607d8b"/>
+  <circle cx="120" cy="55" r="19" fill="#263238" stroke="#37474f" stroke-width="2"/>
+  <circle cx="120" cy="55" r="12" fill="#2e3c43"/>
+  <circle cx="120" cy="55" r="4" fill="#607d8b"/>
+  <ellipse cx="75" cy="40" rx="30" ry="13" fill="#ff5722"/>
+  <path d="M28 55 L46 32 L105 28 L120 44" fill="none" stroke="#ff5722" stroke-width="5" stroke-linecap="round"/>
+</g>
+<!-- Biker on ground -->
+<g transform="translate(82,152)">
+  <!-- Body sitting/fallen -->
+  <rect x="-14" y="0" width="28" height="22" rx="7" fill="#ff6b00" transform="rotate(-25,-0,11)"/>
+  <!-- Head -->
+  <circle cx="0" cy="-8" r="13" fill="#d4956a"/>
+  <!-- Helmet -->
+  <path d="M-13 -8 Q-13 -24 0 -26 Q13 -24 13 -8" fill="#263238"/>
+  <!-- Visor -->
+  <path d="M-11 -9 Q0 -14 11 -9" fill="none" stroke="#4fc3f7" stroke-width="2" opacity=".7"/>
+  <!-- Worried eyes (open wide) -->
+  <ellipse cx="-4" cy="-4" rx="3" ry="4" fill="#5d4037"/>
+  <ellipse cx="4" cy="-4" rx="3" ry="4" fill="#5d4037"/>
+  <!-- Stars spinning above head -->
+  <g style="transform-origin:0px -30px;animation:starSpin 1s linear infinite">
+    <text x="-18" y="-28" font-size="11" fill="#ffd54f">★</text>
+    <text x="2" y="-36" font-size="10" fill="#ff6b00">★</text>
+    <text x="12" y="-26" font-size="9" fill="#ffd54f">★</text>
+  </g>
+</g>
+<!-- Flying parts sparks -->
+<circle cx="190" cy="140" r="4" fill="#ffd54f" style="--dx:30px;--dy:-25px;animation:sparkOut 1.2s ease-out infinite"/>
+<circle cx="175" cy="125" r="3" fill="#ff6b00" style="--dx:20px;--dy:-35px;animation:sparkOut 0.9s ease-out 0.2s infinite"/>
+<circle cx="200" cy="150" r="5" fill="#ffeb3b" style="--dx:35px;--dy:-15px;animation:sparkOut 1.1s ease-out 0.1s infinite"/>
+<circle cx="182" cy="135" r="3" fill="#ef5350" style="--dx:25px;--dy:-40px;animation:sparkOut 1s ease-out 0.3s infinite"/>
+<circle cx="165" cy="148" r="4" fill="#ffd54f" style="--dx:-20px;--dy:-30px;animation:sparkOut 1.3s ease-out 0.15s infinite"/>
+</svg>
+        <div class="cp-caption">
+          <div class="cp-num">02 · CRASH</div>
+          <div class="cp-tt">A Swift cuts in. Zero warning.</div>
+          <div class="cp-ds">Rear tyre locks. 5-metre skid. Bike down. Exhaust dented, indicator gone, body scraped. <strong>He gets up. Looks at the damage. Estimated: ₹38,000+.</strong> Then something clicks.</div>
         </div>
       </div>
 
-      <!-- Scene 4: Covered -->
-      <div class="cscene cs-rev cs-win">
-        <div class="cs-art">
-          <!-- Big animated shield -->
-          <div class="art-ring" style="width:260px;height:260px;border-color:rgba(74,222,128,.05);top:50%;left:50%;transform:translate(-50%,-50%);animation:shieldBreath 2s ease-in-out infinite;"></div>
-          <div class="art-ring" style="width:160px;height:160px;border-color:rgba(74,222,128,.1);top:50%;left:50%;transform:translate(-50%,-50%);animation:shieldBreath 2s ease-in-out infinite .6s;"></div>
-          <svg width="200" height="200" viewBox="0 0 200 200" fill="none" style="position:relative;z-index:2;animation:shieldBreath 2.5s ease-in-out infinite;">
-            <path d="M100 15 L162 42 L162 105 Q162 152 100 175 Q38 152 38 105 L38 42 Z" fill="rgba(74,222,128,.08)" stroke="#4ade80" stroke-width="2">
-              <animate attributeName="stroke-opacity" values=".6;1;.6" dur="2s" repeatCount="indefinite"/>
-            </path>
-            <!-- Checkmark drawn on -->
-            <path d="M68 100 L88 120 L132 76" stroke="#4ade80" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"
-              stroke-dasharray="100" stroke-dashoffset="100">
-              <animate attributeName="stroke-dashoffset" from="100" to="0" dur="1s" fill="freeze" begin="0.3s"/>
-            </path>
-            <!-- Glow dots around shield -->
-            <circle cx="100" cy="18" r="4" fill="#4ade80"><animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite"/></circle>
-            <circle cx="162" cy="75" r="3" fill="#4ade80"><animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin=".5s"/></circle>
-            <circle cx="38" cy="75" r="3" fill="#4ade80"><animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="1s"/></circle>
-            <circle cx="100" cy="175" r="4" fill="#4ade80"><animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="1.5s"/></circle>
-          </svg>
+      <div class="cpanel">
+        <svg viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="sky3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a3a5c"/><stop offset="1" stop-color="#2d5f8a"/></linearGradient>
+  <linearGradient id="road3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#546e7a"/><stop offset="1" stop-color="#37474f"/></linearGradient>
+  <linearGradient id="card_g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff6b00"/><stop offset="1" stop-color="#e64a19"/></linearGradient>
+</defs>
+<!-- Sky -->
+<rect width="280" height="200" fill="url(#sky3)"/>
+<!-- Road -->
+<rect x="0" y="155" width="280" height="45" fill="url(#road3)"/>
+<rect x="0" y="155" width="280" height="3" fill="#78909c"/>
+<!-- Kerb/footpath -->
+<rect x="0" y="148" width="280" height="10" fill="#455a64"/>
+<!-- Biker sitting on roadside kerb — relieved pose -->
+<g transform="translate(90,140)">
+  <!-- Legs extended -->
+  <rect x="-20" y="14" width="42" height="10" rx="5" fill="#1565c0"/>
+  <!-- Body upright (leaning slightly back, relaxed) -->
+  <rect x="-13" y="-14" width="28" height="30" rx="8" fill="#ff6b00"/>
+  <!-- Left arm reaching into jacket -->
+  <path d="M-13 -6 Q-30 2 -34 14" stroke="#ff6b00" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <circle cx="-34" cy="16" r="7" fill="#d4956a"/>
+  <!-- Right arm relaxed on knee -->
+  <path d="M15 -2 Q22 8 18 16" stroke="#ff6b00" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <!-- Head -->
+  <circle cx="0" cy="-24" r="14" fill="#d4956a"/>
+  <!-- Helmet -->
+  <path d="M-14 -24 Q-14 -40 0 -42 Q14 -40 14 -24" fill="#263238"/>
+  <!-- Visor -->
+  <path d="M-12 -25 Q0 -30 12 -25" fill="none" stroke="#4fc3f7" stroke-width="2" opacity=".7"/>
+  <!-- RELIEVED SMILE — wider, eyes half closed in relief -->
+  <path d="M-6 -17 Q0 -12 6 -17" stroke="#a0522d" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Eyes — relaxed/happy -->
+  <path d="M-6 -21 Q-3 -23 0 -21" stroke="#5d4037" stroke-width="2" fill="none"/>
+  <path d="M0 -21 Q3 -23 6 -21" stroke="#5d4037" stroke-width="2" fill="none"/>
+</g>
+<!-- THE COVER CREDIT CARD — floating with glow -->
+<g style="animation:cardFloat 2s ease-in-out infinite;animation:cardGlow 2s ease-in-out infinite;transform-origin:175px 98px">
+  <!-- Card shadow -->
+  <rect x="143" y="68" width="90" height="58" rx="8" fill="black" opacity=".3" transform="translate(3,4)"/>
+  <!-- Card body -->
+  <rect x="143" y="68" width="90" height="58" rx="8" fill="url(#card_g)"/>
+  <!-- Card shine -->
+  <rect x="143" y="68" width="90" height="22" rx="8" fill="white" opacity=".08"/>
+  <!-- Logo area -->
+  <rect x="151" y="76" width="18" height="12" rx="3" fill="rgba(255,255,255,.25)"/>
+  <text x="160" y="85" text-anchor="middle" font-size="6" fill="white" font-weight="900" font-family="Bebas Neue,sans-serif">CC</text>
+  <!-- Card text -->
+  <text x="174" y="84" font-size="7.5" fill="white" font-weight="700" font-family="DM Sans,sans-serif" opacity=".95">CoverCredit</text>
+  <text x="174" y="92" font-size="5" fill="rgba(255,255,255,.6)" font-family="DM Sans,sans-serif">Insurance Advisors</text>
+  <line x1="151" y1="97" x2="225" y2="97" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
+  <text x="151" y="106" font-size="5" fill="rgba(255,255,255,.7)" font-family="DM Sans,sans-serif">POLICY CC-2024-8812</text>
+  <text x="151" y="114" font-size="5" fill="rgba(255,255,255,.7)" font-family="DM Sans,sans-serif">COMPREHENSIVE · CASHLESS</text>
+  <!-- Active dot -->
+  <circle cx="186" cy="119" r="3" fill="#4ade80"><animate attributeName="opacity" values="1;.2;1" dur="1s" repeatCount="indefinite"/></circle>
+  <text x="192" y="122" font-size="5" fill="#4ade80" font-weight="700" font-family="DM Sans,sans-serif">ACTIVE</text>
+</g>
+<!-- Orange glow ring around card -->
+<ellipse cx="188" cy="97" rx="60" ry="42" fill="none" stroke="#ff6b00" stroke-width="2" opacity=".3" style="animation:cardGlow 2s ease-in-out infinite"/>
+<ellipse cx="188" cy="97" rx="72" ry="52" fill="none" stroke="#ff6b00" stroke-width="1" opacity=".15" style="animation:cardGlow 2.4s ease-in-out infinite .4s"/>
+<!-- Thought bubble from biker to card -->
+<circle cx="110" cy="112" r="4" fill="#ffd54f" opacity=".7"/>
+<circle cx="122" cy="102" r="6" fill="#ffd54f" opacity=".7"/>
+<ellipse cx="136" cy="91" rx="14" ry="10" fill="#ffd54f" opacity=".8"/>
+<text x="136" y="95" text-anchor="middle" font-size="7" fill="#e65100" font-weight="900" font-family="Bebas Neue,sans-serif">SAFE!</text>
+</svg>
+        <div class="cp-caption">
+          <div class="cp-num">03 · THE CARD</div>
+          <div class="cp-tt">He reaches into his jacket pocket.</div>
+          <div class="cp-ds">Orange card. Cover Credit logo. Insurer's 24-hr helpline printed on it. <strong>Comprehensive. Cashless. Active.</strong> "Sunil told me to always keep this card." Panic stops cold.</div>
         </div>
-        <div class="cs-txt">
-          <div class="cs-scene-n">SCENE 04 / 04</div>
-          <div class="cs-action">ONE<br/>CALL.<br/>ZERO<br/>BILL.</div>
-          <p class="cs-body">Arjun calls the helpline number on his policy card. Surveyor arrives in 45 minutes. Bike towed to a cashless network garage 2km away. <strong>Two days later, he collects his repaired Pulsar — new exhaust, new indicator, full body touch-up. Total paid out of pocket: ₹0.</strong> He rides straight to Cover Credit to renew for another year.</p>
-          <div class="cs-chip">✅ ₹41,200 repair cost · ₹0 paid · Policy was ₹1,800/yr</div>
+      </div>
+
+      <div class="cpanel">
+        <svg viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <linearGradient id="sky4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d47a1"/><stop offset="1" stop-color="#1976d2"/></linearGradient>
+  <linearGradient id="grnd4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#37474f"/><stop offset="1" stop-color="#263238"/></linearGradient>
+  <linearGradient id="bk4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff5722"/><stop offset="1" stop-color="#bf360c"/></linearGradient>
+  <linearGradient id="shld" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#43a047"/><stop offset="1" stop-color="#2e7d32"/></linearGradient>
+</defs>
+<!-- Sky bright - repair done, sunny mood -->
+<rect width="280" height="200" fill="url(#sky4)"/>
+<!-- Big sunshine rays -->
+<g style="transform-origin:240px 30px;animation:starSpin 12s linear infinite" opacity=".2">
+  <line x1="240" y1="0" x2="240" y2="60" stroke="#ffd54f" stroke-width="3"/>
+  <line x1="210" y1="5" x2="240" y2="30" stroke="#ffd54f" stroke-width="2.5"/>
+  <line x1="270" y1="5" x2="240" y2="30" stroke="#ffd54f" stroke-width="2.5"/>
+  <line x1="200" y1="30" x2="240" y2="30" stroke="#ffd54f" stroke-width="2.5"/>
+  <line x1="280" y1="30" x2="240" y2="30" stroke="#ffd54f" stroke-width="2.5"/>
+</g>
+<circle cx="240" cy="30" r="22" fill="#ffd54f" opacity=".2"/>
+<circle cx="240" cy="30" r="16" fill="#ffee58" opacity=".35"/>
+<circle cx="240" cy="30" r="10" fill="#fffde7" opacity=".6"/>
+<!-- Garage wall in background -->
+<rect x="0" y="88" width="280" height="70" fill="#1a2533"/>
+<rect x="0" y="88" width="280" height="5" fill="#263238"/>
+<rect x="0" y="155" width="280" height="5" fill="#263238"/>
+<!-- Garage door -->
+<rect x="30" y="95" width="90" height="62" rx="4" fill="#212e3d"/>
+<rect x="32" y="97" width="86" height="4" fill="#2d3e51"/>
+<rect x="32" y="105" width="86" height="4" fill="#2d3e51"/>
+<rect x="32" y="113" width="86" height="4" fill="#2d3e51"/>
+<rect x="32" y="121" width="86" height="4" fill="#2d3e51"/>
+<rect x="32" y="129" width="86" height="4" fill="#2d3e51"/>
+<rect x="32" y="137" width="86" height="4" fill="#2d3e51"/>
+<rect x="32" y="145" width="86" height="4" fill="#2d3e51"/>
+<!-- "GARAGE" sign -->
+<rect x="30" y="82" width="90" height="16" rx="3" fill="#37474f"/>
+<text x="75" y="93" text-anchor="middle" font-size="8" fill="#90caf9" font-weight="700" font-family="Bebas Neue,sans-serif" letter-spacing="1.5">CASHLESS GARAGE</text>
+<!-- Ground -->
+<rect x="0" y="157" width="280" height="43" fill="url(#grnd4)"/>
+<!-- Repaired bike (shiny, parked) -->
+<g transform="translate(60,157)">
+  <circle cx="-30" cy="5" r="18" fill="#263238" stroke="#37474f" stroke-width="2"/>
+  <circle cx="-30" cy="5" r="12" fill="#2e3c43"/>
+  <circle cx="-30" cy="5" r="4" fill="#607d8b"/>
+  <circle cx="65" cy="5" r="18" fill="#263238" stroke="#37474f" stroke-width="2"/>
+  <circle cx="65" cy="5" r="12" fill="#2e3c43"/>
+  <circle cx="65" cy="5" r="4" fill="#607d8b"/>
+  <ellipse cx="22" cy="-18" rx="32" ry="14" fill="url(#bk4)"/>
+  <ellipse cx="20" cy="-23" rx="26" ry="9" fill="#ff6d3f"/>
+  <!-- Shine on bike -->
+  <ellipse cx="10" cy="-26" rx="10" ry="4" fill="white" opacity=".15" transform="rotate(-20,10,-26)"/>
+  <path d="M-25 5 L-10 -20 L50 -24 L65 -10" fill="none" stroke="#ff5722" stroke-width="4" stroke-linecap="round"/>
+  <path d="M52 -22 L68 -16" stroke="#90a4ae" stroke-width="3" stroke-linecap="round"/>
+</g>
+<!-- HAPPY BIKER standing thumbs up -->
+<g transform="translate(185,138)">
+  <!-- Legs -->
+  <rect x="-10" y="18" width="9" height="22" rx="4" fill="#1565c0"/>
+  <rect x="2" y="18" width="9" height="22" rx="4" fill="#1565c0"/>
+  <!-- Body -->
+  <rect x="-15" y="-4" width="30" height="26" rx="8" fill="#ff6b00"/>
+  <!-- Right arm — THUMBS UP animated -->
+  <g style="transform-origin:-18px 4px;animation:thumbUp 1.5s ease-in-out infinite">
+    <rect x="-32" y="-2" width="18" height="8" rx="4" fill="#ff6b00"/>
+    <!-- Thumb up hand -->
+    <rect x="-34" y="-14" width="10" height="14" rx="3" fill="#d4956a"/>
+    <rect x="-26" y="-8" width="8" height="9" rx="2" fill="#d4956a"/>
+  </g>
+  <!-- Left arm wave -->
+  <rect x="15" y="-4" width="18" height="8" rx="4" fill="#ff6b00" transform="rotate(20,24,0)"/>
+  <!-- Head -->
+  <circle cx="0" cy="-18" r="14" fill="#d4956a"/>
+  <!-- Helmet off — just a cap (relaxed) -->
+  <rect x="-10" y="-30" width="20" height="10" rx="10 10 0 0" fill="#ff6b00"/>
+  <!-- Big happy smile -->
+  <path d="M-7 -14 Q0 -8 7 -14" stroke="#a0522d" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <!-- Happy eyes - curved up -->
+  <path d="M-7 -19 Q-4 -22 -1 -19" stroke="#5d4037" stroke-width="2.2" fill="none"/>
+  <path d="M1 -19 Q4 -22 7 -19" stroke="#5d4037" stroke-width="2.2" fill="none"/>
+  <!-- Rosy cheeks -->
+  <circle cx="-8" cy="-14" r="4" fill="#e57373" opacity=".3"/>
+  <circle cx="8" cy="-14" r="4" fill="#e57373" opacity=".3"/>
+</g>
+<!-- BIG SHIELD floating -->
+<g style="transform-origin:232px 75px;animation:shieldPop 2s ease-in-out infinite">
+  <path d="M232 46 Q248 52 248 68 Q248 82 232 88 Q216 82 216 68 Q216 52 232 46Z" fill="url(#shld)" opacity=".9"/>
+  <!-- Checkmark -->
+  <path d="M224 68 L230 74 L242 60" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-dasharray="30" stroke-dashoffset="30" style="animation:checkDraw 0.8s ease-out 0.3s forwards"/>
+</g>
+<!-- ₹0 floating text -->
+<text x="148" y="62" font-size="18" font-weight="900" font-family="Bebas Neue,sans-serif" fill="#4ade80" opacity=".9" style="animation:cardFloat 2.5s ease-in-out infinite">₹0</text>
+<!-- Stars twinkling -->
+<circle cx="168" cy="50" r="4" fill="#ffd54f" style="animation:starTwinkle 1.4s ease-in-out infinite"/>
+<circle cx="178" cy="40" r="3" fill="#ffd54f" style="animation:starTwinkle 1.4s ease-in-out infinite .4s"/>
+<circle cx="192" cy="52" r="3" fill="#ffd54f" style="animation:starTwinkle 1.4s ease-in-out infinite .8s"/>
+</svg>
+        <div class="cp-caption">
+          <div class="cp-num">04 · ZERO BILL</div>
+          <div class="cp-tt">One call. Cashless garage. 2 days.</div>
+          <div class="cp-ds">New exhaust, indicator, body work. <strong>Repair bill: ₹41,200. Arjun paid: ₹0.</strong> His annual premium was ₹1,800. He rode straight back to Cover Credit to renew.</div>
         </div>
       </div>
 
     </div>
-
-    <!-- Quote -->
-    <div class="cstory-quote rv d1">
-      <div class="cq-av">🧔</div>
+    <div class="story-quote rv d2">
+      <div class="sq-av">🧔</div>
       <div>
-        <div class="cq-q">When I was sitting on that road staring at my dented exhaust, I wasn't even that stressed — because the moment I touched my jacket pocket and felt that card, I knew everything was handled. Sunil had told me exactly what to do if this ever happened. That 20-minute session at Cover Credit was the best thing I did all year.</div>
-        <div class="cq-nm">Arjun K., Bajaj Pulsar 150 owner, Hyderabad</div>
-        <div class="cq-note">Cover Credit helped Arjun choose and purchase his policy. The claim was settled directly between Arjun and his insurer.</div>
+        <div class="sq-q">When I felt that card in my pocket, I literally laughed out loud sitting on the road. Sunil had told me exactly what to do. One call, zero payment, bike back in two days. That 20-minute session saved me ₹41,000.</div>
+        <div class="sq-nm">Arjun K., Bajaj Pulsar 150, Hyderabad</div>
+        <div class="sq-note">Cover Credit helped Arjun choose and buy his policy. Claim settled directly between Arjun and his insurer.</div>
       </div>
     </div>
   </div>
@@ -780,11 +955,12 @@ document.querySelectorAll('[data-btype]').forEach(p=>{p.addEventListener('click'
 document.querySelectorAll('[data-cov]').forEach(p=>{p.addEventListener('click',()=>{document.querySelectorAll('[data-cov]').forEach(x=>x.classList.remove('on'));p.classList.add('on');selCov=p.dataset.cov;calcQ();});});
 document.querySelectorAll('[data-zdep]').forEach(p=>{p.addEventListener('click',()=>{document.querySelectorAll('[data-zdep]').forEach(x=>x.classList.remove('on'));p.classList.add('on');selZdep=parseInt(p.dataset.zdep);calcQ();});});
 
-// Cinematic scene scroll reveal
-const sceneObs = new IntersectionObserver(entries => {
+
+// Filmstrip scroll reveal
+const filmObs = new IntersectionObserver(entries => {
   entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-}, {threshold: 0.12});
-document.querySelectorAll('.cscene').forEach(el => sceneObs.observe(el));
+}, {threshold: 0.08, rootMargin: '0px 0px -40px 0px'});
+document.querySelectorAll('.fpanel').forEach(el => filmObs.observe(el));
 
 document.querySelectorAll('img').forEach(img=>{img.addEventListener('error',function(){const w=this.offsetWidth||400,h=this.offsetHeight||280;this.src='https://picsum.photos/'+w+'/'+h+'?random='+Math.floor(Math.random()*99);this.onerror=null;});});
 document.getElementById('yr').textContent=new Date().getFullYear();
