@@ -90,33 +90,85 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 @keyframes sd{0%{opacity:1;transform:translateY(0)}80%{opacity:0;transform:translateY(10px)}100%{opacity:0}}
 .sh-t{font-size:.58rem;color:rgba(255,255,255,.22);letter-spacing:1.5px;text-transform:uppercase;}
 
-/* ═══ STORY ANIMATION SECTION ═══ */
-.story-sec{padding:5rem 5%;background:linear-gradient(180deg,#06101f 0%,#0d1a08 50%,#06101f 100%);overflow:hidden;}
-.story-inner{max-width:1300px;margin:0 auto;}
-.story-track{display:flex;gap:0;position:relative;margin-top:2.5rem;}
-/* connecting line */
-.story-track::before{content:'';position:absolute;top:110px;left:10%;right:10%;height:2px;background:linear-gradient(90deg,transparent,rgba(255,107,0,.3) 20%,rgba(255,107,0,.6) 50%,rgba(74,222,128,.6) 80%,transparent);z-index:0;}
-.sc{flex:1;display:flex;flex-direction:column;align-items:center;position:relative;z-index:1;padding:0 .5rem;}
-.sc-num{font-family:'Bebas Neue',sans-serif;font-size:.8rem;color:rgba(255,255,255,.2);letter-spacing:2px;margin-bottom:.6rem;}
-/* scene canvas */
-.sc-art{width:180px;height:180px;position:relative;flex-shrink:0;}
-.sc-lbl{margin-top:1rem;text-align:center;}
-.sc-tt{font-size:.82rem;font-weight:700;margin-bottom:.2rem;}
-.sc-ds{font-size:.7rem;color:rgba(255,255,255,.38);line-height:1.5;text-align:center;max-width:150px;margin:0 auto;}
-/* quote bubble appears in scene 3 */
-.quote-bub{position:absolute;background:linear-gradient(135deg,#1a0800,#3d1800);border:1.5px solid rgba(255,107,0,.4);border-radius:12px 12px 12px 0;padding:.5rem .8rem;font-size:.65rem;font-weight:700;color:#ffb380;white-space:nowrap;top:-15px;right:-20px;box-shadow:0 8px 24px rgba(0,0,0,.5);opacity:0;transform:scale(.7);transition:opacity .4s,transform .4s;}
-.quote-bub.show{opacity:1;transform:scale(1);}
-/* scene 4 — shield glow ring */
-@keyframes shieldPulse{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.12);opacity:1}}
-@keyframes rideOut{0%{transform:translateX(0)}100%{transform:translateX(60px)}}
-@keyframes bikeTilt{0%{transform:rotate(0deg)}40%{transform:rotate(-22deg) translateX(10px)}60%{transform:rotate(-22deg) translateX(10px)}100%{transform:rotate(0deg)}}
-@keyframes skidMarks{0%{opacity:0;width:0}100%{opacity:.5;width:60px}}
-@keyframes phoneShake{0%,100%{transform:rotate(0)}20%{transform:rotate(-6deg)}40%{transform:rotate(6deg)}60%{transform:rotate(-3deg)}}
-@keyframes cardFlip{0%{opacity:0;transform:rotateY(90deg)}100%{opacity:1;transform:rotateY(0deg)}}
-@keyframes greenPulse{0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.4)}70%{box-shadow:0 0 0 16px rgba(74,222,128,0)}}
-@keyframes floatUp{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-@keyframes checkDraw{0%{stroke-dashoffset:60}100%{stroke-dashoffset:0}}
-@keyframes sparkle{0%,100%{opacity:0;transform:scale(0)}50%{opacity:1;transform:scale(1)}}
+
+
+/* ═══ CINEMATIC STORY ═══ */
+.cstory{padding:6rem 5%;background:linear-gradient(180deg,#07100a 0%,#06101f 100%);overflow:hidden;position:relative;}
+.cstory-hd{text-align:center;margin-bottom:4rem;}
+.cstory-tag{display:inline-flex;align-items:center;gap:.4rem;font-size:.64rem;font-weight:700;color:#ff6b00;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:.9rem;}
+.cstory-tag::before{content:'';width:18px;height:2px;background:#ff6b00;}
+.cstory-hed{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.5vw,3.2rem);font-weight:900;line-height:1.06;margin-bottom:.6rem;}
+.cstory-hed em{font-style:italic;color:#ff6b00;}
+.cstory-sub{font-size:.9rem;color:rgba(255,255,255,.38);max-width:500px;margin:0 auto;}
+/* Scene strip */
+.cscenes{display:flex;flex-direction:column;gap:4px;position:relative;}
+/* timeline spine */
+.cscenes::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(180deg,transparent,#ff6b00 15%,#ff6b00 85%,transparent);opacity:.18;transform:translateX(-50%);z-index:0;pointer-events:none;}
+.cscene{display:grid;grid-template-columns:1fr 1fr;min-height:320px;border-radius:18px;overflow:hidden;position:relative;opacity:0;transform:translateY(40px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.cscene.cs-rev{grid-template-columns:1fr 1fr;}
+.cscene.visible{opacity:1;transform:translateY(0);}
+.cscene:nth-child(1){transition-delay:.05s;}
+.cscene:nth-child(2){transition-delay:.12s;}
+.cscene:nth-child(3){transition-delay:.19s;}
+.cscene:nth-child(4){transition-delay:.26s;}
+/* Art pane */
+.cs-art{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;min-height:280px;}
+.cscene.cs-rev .cs-art{order:2;}
+.cs-art-inner{position:relative;z-index:2;}
+/* Text pane */
+.cs-txt{padding:2.5rem 3rem;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:1;}
+.cscene.cs-rev .cs-txt{order:1;}
+.cs-scene-n{font-family:'Bebas Neue',sans-serif;font-size:.75rem;letter-spacing:3px;color:rgba(255,255,255,.18);margin-bottom:.6rem;}
+.cs-action{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,4vw,3.8rem);line-height:.92;letter-spacing:1px;margin-bottom:.9rem;}
+.cs-body{font-size:.88rem;color:rgba(255,255,255,.56);line-height:1.78;margin-bottom:1rem;}
+.cs-body strong{color:rgba(255,255,255,.88);font-weight:700;}
+.cs-chip{display:inline-flex;align-items:center;gap:.4rem;font-size:.68rem;font-weight:700;padding:.28rem .75rem;border-radius:100px;letter-spacing:.4px;}
+/* Glowing art bg rings */
+.art-ring{position:absolute;border-radius:50%;border-width:1px;border-style:solid;}
+/* Scene colours */
+.cs-open .cs-art{background:linear-gradient(135deg,#051208,#0a2010);}
+.cs-open .cs-txt{background:linear-gradient(145deg,#060f04,#0d1f0a);border-left:1px solid rgba(74,222,128,.12);}
+.cs-open .cs-action{color:#4ade80;}
+.cs-open .cs-chip{background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.25);color:#4ade80;}
+.cs-hit .cs-art{background:linear-gradient(135deg,#150000,#2d0505);}
+.cs-hit .cs-txt{background:linear-gradient(145deg,#100000,#1f0505);border-left:1px solid rgba(248,113,113,.12);}
+.cs-hit .cs-action{color:#f87171;text-shadow:0 0 40px rgba(248,113,113,.4);animation:redFlicker 2.2s ease-in-out infinite;}
+.cs-hit .cs-chip{background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.25);color:#f87171;}
+@keyframes redFlicker{0%,90%,100%{opacity:1}92%{opacity:.5}95%{opacity:1}97%{opacity:.6}}
+.cs-mem .cs-art{background:linear-gradient(135deg,#120b00,#251500);}
+.cs-mem .cs-txt{background:linear-gradient(145deg,#100a00,#1e1200);border-left:1px solid rgba(var(--ac-rgb),.15);}
+.cs-mem .cs-chip{background:rgba(var(--ac-rgb),.1);border:1px solid rgba(var(--ac-rgb),.25);color:#ff6b00;}
+.cs-mem .cs-action{color:#ff6b00;text-shadow:0 0 30px rgba(255,107,0,.4);}
+.cs-win .cs-art{background:linear-gradient(135deg,#001508,#002b12);}
+.cs-win .cs-txt{background:linear-gradient(145deg,#001005,#00200b);border-left:1px solid rgba(74,222,128,.15);}
+.cs-win .cs-action{color:#4ade80;text-shadow:0 0 30px rgba(74,222,128,.5);}
+.cs-win .cs-chip{background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.25);color:#4ade80;}
+/* Quote strip */
+.cstory-quote{margin-top:3rem;background:linear-gradient(135deg,rgba(255,107,0,.07),rgba(255,107,0,.02));border:1px solid rgba(255,107,0,.15);border-radius:18px;padding:2.4rem;display:grid;grid-template-columns:56px 1fr;gap:1.6rem;align-items:start;}
+.cq-av{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,rgba(255,107,0,.2),rgba(255,107,0,.05));border:1px solid rgba(255,107,0,.2);display:flex;align-items:center;justify-content:center;font-size:1.6rem;}
+.cq-q{font-family:'Playfair Display',serif;font-size:1.08rem;font-style:italic;line-height:1.68;color:rgba(255,255,255,.85);margin-bottom:.5rem;}
+.cq-q::before{content:'"';font-size:1.8rem;color:rgba(255,107,0,.4);line-height:.5;float:left;margin-right:.3rem;margin-top:.3rem;}
+.cq-nm{font-size:.72rem;font-weight:700;color:rgba(255,255,255,.45);}
+.cq-note{font-size:.66rem;color:rgba(255,255,255,.22);margin-top:.18rem;font-style:italic;}
+@media(max-width:768px){
+  .cscene,.cscene.cs-rev{grid-template-columns:1fr;}
+  .cscene.cs-rev .cs-art{order:0;}
+  .cscene.cs-rev .cs-txt{order:1;}
+  .cs-art{min-height:220px;}
+  .cs-txt{padding:1.8rem;}
+  .cscenes::before{display:none;}
+  .cstory-quote{grid-template-columns:1fr;}
+}
+
+/* Bike riding animation */
+@keyframes bikeRoll{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes wheelSpin{to{stroke-dashoffset:-100}}
+@keyframes speedLine{from{transform:translateX(80px);opacity:0}to{transform:translateX(-60px);opacity:.5}}
+@keyframes bikeCrash{0%{transform:rotate(0deg) translateX(0)}100%{transform:rotate(-40deg) translateX(15px)}}
+@keyframes sparkBurst{0%{opacity:1;transform:translate(0,0) scale(1)}100%{opacity:0;transform:translate(var(--tx),var(--ty)) scale(0)}}
+@keyframes cardReveal{0%{opacity:0;transform:scale(.8) rotate(-5deg)}100%{opacity:1;transform:scale(1) rotate(0deg)}}
+@keyframes shieldBreath{0%,100%{filter:drop-shadow(0 0 8px rgba(74,222,128,.3))}50%{filter:drop-shadow(0 0 24px rgba(74,222,128,.7))}}
+@keyframes checkStroke{to{stroke-dashoffset:0}}
 
 /* ═══ FEATURES GRID ═══ */
 .feat-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem;}
@@ -291,240 +343,188 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
   <div class="sh"><div class="sh-m"><div class="sh-d"></div></div><div class="sh-t">Scroll</div></div>
 </section>
 
-<!-- ═══ STORY ANIMATION — The Crash & Remember ═══ -->
-<section class="story-sec">
-  <div class="story-inner">
-    <div class="tag rv" style="justify-content:center;display:flex;">The Moment That Matters</div>
-    <h2 class="tit rv d1" style="text-align:center;max-width:600px;margin:0 auto .4rem;">He crashed. Then he <em>remembered.</em></h2>
-    <p class="sub rv d2" style="text-align:center;margin:0 auto 2.5rem;">"Thankfully I took cover through Cover Credit last month." — That one thought changes everything.</p>
-    <div class="story-track rv d1">
+<!-- ═══ CINEMATIC STORY — BIKE ═══ -->
+<section class="cstory" id="bikeStory" style="--ac-rgb:255,107,0;">
+  <div class="si">
+    <div class="cstory-hd">
+      <div class="cstory-tag rv">Hyderabad · Tuesday 8:42 AM</div>
+      <h2 class="cstory-hed rv d1">He didn't panic.<br/>He <em>remembered.</em></h2>
+      <p class="cstory-sub rv d2">Three weeks earlier, Arjun made one smart decision. On a highway outside Hyderabad, that decision paid for itself fifty times over.</p>
+    </div>
+    <div class="cscenes">
 
-      <!-- Scene 1: Riding confidently -->
-      <div class="sc" id="sc1">
-        <div class="sc-num">01</div>
-        <div class="sc-art">
-          <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Road -->
-            <rect x="0" y="145" width="180" height="35" fill="#1a1a2e"/>
-            <rect x="0" y="148" width="180" height="2" fill="rgba(255,255,255,.06)"/>
-            <!-- Road dashes animated -->
-            <rect x="10" y="161" width="30" height="3" rx="1.5" fill="rgba(255,255,255,.15)"><animate attributeName="x" from="-20" to="180" dur="1.2s" repeatCount="indefinite"/></rect>
-            <rect x="80" y="161" width="30" height="3" rx="1.5" fill="rgba(255,255,255,.15)"><animate attributeName="x" from="-20" to="180" dur="1.2s" repeatCount="indefinite" begin="0.4s"/></rect>
-            <rect x="150" y="161" width="30" height="3" rx="1.5" fill="rgba(255,255,255,.15)"><animate attributeName="x" from="-20" to="180" dur="1.2s" repeatCount="indefinite" begin="0.8s"/></rect>
-            <!-- Bike body -->
-            <g id="bike1" style="animation:floatUp 2s ease-in-out infinite">
-              <!-- Wheels -->
-              <circle cx="48" cy="138" r="16" fill="none" stroke="#444" stroke-width="5"/>
-              <circle cx="48" cy="138" r="6" fill="#666"/>
-              <circle cx="130" cy="138" r="16" fill="none" stroke="#444" stroke-width="5"/>
-              <circle cx="130" cy="138" r="6" fill="#666"/>
-              <!-- Frame -->
-              <path d="M55 138 L75 108 L105 108 L130 122 L110 138 Z" fill="#ff6b00" stroke="#ff9500" stroke-width="1.5"/>
-              <path d="M75 108 L85 90 L100 90 L105 108 Z" fill="#cc5500"/>
-              <!-- Handlebar -->
-              <path d="M100 90 L115 82 L118 90" stroke="#888" stroke-width="3" fill="none" stroke-linecap="round"/>
-              <!-- Rider -->
-              <circle cx="88" cy="82" r="12" fill="#c68642" stroke="#a05528" stroke-width="1.5"/>
-              <!-- Helmet -->
-              <path d="M76 82 Q76 66 88 66 Q100 66 100 82" fill="#ff6b00"/>
-              <rect x="76" y="80" width="24" height="5" rx="2.5" fill="#cc5500"/>
-              <!-- Visor -->
-              <path d="M79 80 Q88 77 97 80" stroke="#1a1a2e" stroke-width="2" fill="none"/>
-              <!-- Body -->
-              <rect x="80" y="94" width="20" height="22" rx="4" fill="#1565c0"/>
-              <!-- Arms -->
-              <path d="M100 98 L112 88" stroke="#c68642" stroke-width="3" stroke-linecap="round"/>
-              <!-- Legs -->
-              <line x1="82" y1="116" x2="78" y2="130" stroke="#1565c0" stroke-width="4" stroke-linecap="round"/>
-              <line x1="92" y1="116" x2="95" y2="128" stroke="#1565c0" stroke-width="4" stroke-linecap="round"/>
-              <!-- Speed lines -->
-              <line x1="0" y1="95" x2="40" y2="95" stroke="rgba(255,107,0,.3)" stroke-width="1.5" stroke-dasharray="4,4"><animate attributeName="x1" from="60" to="-10" dur="0.6s" repeatCount="indefinite"/></line>
-              <line x1="0" y1="110" x2="35" y2="110" stroke="rgba(255,107,0,.2)" stroke-width="1" stroke-dasharray="3,5"><animate attributeName="x1" from="55" to="-10" dur="0.8s" repeatCount="indefinite"/></line>
-            </g>
-          </svg>
-        </div>
-        <div class="sc-lbl">
-          <div class="sc-tt">Riding Free</div>
-          <div class="sc-ds">Arjun heads to work on his Pulsar — confident, covered, care-free.</div>
-        </div>
-      </div>
-
-      <!-- Scene 2: Car cuts in — CRASH -->
-      <div class="sc" id="sc2">
-        <div class="sc-num">02</div>
-        <div class="sc-art" style="position:relative;">
-          <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" id="crashSvg">
-            <!-- Road -->
-            <rect x="0" y="145" width="180" height="35" fill="#1a1a2e"/>
-            <!-- Car cutting in from right -->
-            <g style="animation:none" id="cutCar">
-              <!-- Car body -->
-              <rect x="95" y="110" width="75" height="36" rx="6" fill="#2d5016" stroke="#3d6b1e" stroke-width="1"/>
-              <rect x="105" y="100" width="50" height="18" rx="4" fill="#2d5016"/>
-              <!-- Windows -->
-              <rect x="108" y="102" width="20" height="13" rx="2" fill="rgba(150,220,255,.3)"/>
-              <rect x="131" y="102" width="20" height="13" rx="2" fill="rgba(150,220,255,.3)"/>
-              <!-- Wheels -->
-              <circle cx="110" cy="148" r="10" fill="#222"/>
-              <circle cx="155" cy="148" r="10" fill="#222"/>
-            </g>
-            <!-- Bike crashed/tilted -->
-            <g style="animation:bikeTilt 3s ease-in-out infinite">
-              <circle cx="45" cy="140" r="14" fill="none" stroke="#444" stroke-width="4"/>
-              <circle cx="110" cy="140" r="14" fill="none" stroke="#444" stroke-width="4"/>
-              <path d="M52 140 L68 115 L95 115 L110 128 L94 140 Z" fill="#ff6b00" opacity=".85"/>
-              <!-- Rider fallen -->
-              <circle cx="60" cy="105" r="11" fill="#c68642"/>
-              <path d="M50 105 Q50 91 60 91 Q70 91 70 105" fill="#ff6b00"/>
-              <rect x="53" y="103" width="20" height="4" rx="2" fill="#cc5500"/>
-            </g>
-            <!-- Impact flash -->
-            <g id="impactFlash">
-              <path d="M90 80 L100 65 L95 80 L108 70 L98 85 L112 80 L100 95 L95 80 Z" fill="#ffd166" opacity=".9">
-                <animate attributeName="opacity" values=".9;0;.9;0;.9;0" dur="1.5s" repeatCount="indefinite"/>
-              </path>
-            </g>
-            <!-- Skid marks -->
-            <path d="M20 148 Q50 145 80 148" stroke="rgba(255,255,255,.2)" stroke-width="3" fill="none" stroke-dasharray="5,4"/>
-            <!-- Alert -->
-            <text x="90" y="30" text-anchor="middle" font-size="28" style="animation:pulse 0.8s infinite">⚠️</text>
-          </svg>
-        </div>
-        <div class="sc-lbl">
-          <div class="sc-tt" style="color:#f87171;">The Crash</div>
-          <div class="sc-ds">A car cuts in. Arjun skids. Bike damaged. His heart races.</div>
-        </div>
-      </div>
-
-      <!-- Scene 3: Panic → then remembers Cover Credit -->
-      <div class="sc" id="sc3">
-        <div class="sc-num">03</div>
-        <div class="sc-art" style="position:relative;">
-          <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Rider sitting on ground -->
-            <circle cx="90" cy="120" r="14" fill="#c68642"/>
-            <path d="M78 120 Q78 104 90 104 Q102 104 102 120" fill="#ff6b00"/>
-            <rect x="81" y="118" width="22" height="4" rx="2" fill="#cc5500"/>
-            <rect x="78" y="134" width="24" height="20" rx="4" fill="#1565c0"/>
-            <!-- Wallet/card opening -->
-            <g style="animation:floatUp 1.5s ease-in-out infinite">
-              <rect x="50" y="62" width="40" height="28" rx="5" fill="#1a0800" stroke="rgba(255,107,0,.4)" stroke-width="1.5"/>
-              <!-- Cover Credit card inside wallet -->
-              <rect x="54" y="66" width="32" height="18" rx="3" fill="#ff6b00"/>
-              <text x="58" y="74" font-size="4.5" fill="rgba(255,255,255,.9)" font-weight="700" font-family="DM Sans,sans-serif">CoverCredit</text>
-              <text x="58" y="80" font-size="4" fill="rgba(255,255,255,.6)" font-family="DM Sans,sans-serif">BIKE POLICY</text>
-              <text x="58" y="79" font-size="3.5" fill="rgba(255,255,255,.5)" font-family="DM Sans,sans-serif">✓ ACTIVE</text>
-            </g>
-            <!-- Thought bubble -->
-            <circle cx="108" cy="68" r="3" fill="rgba(255,107,0,.3)"/>
-            <circle cx="116" cy="60" r="4" fill="rgba(255,107,0,.3)"/>
-            <ellipse cx="130" cy="48" rx="22" ry="14" fill="rgba(255,107,0,.12)" stroke="rgba(255,107,0,.3)" stroke-width="1.5"/>
-            <text x="130" y="52" text-anchor="middle" font-size="7" fill="#ffb380" font-weight="700" font-family="DM Sans,sans-serif">I'm covered!</text>
-            <!-- Sparkles of relief -->
-            <circle cx="148" cy="35" r="3" fill="#ffd166"><animate attributeName="opacity" values="0;1;0" dur="1.2s" repeatCount="indefinite"/></circle>
-            <circle cx="112" cy="32" r="2" fill="#ffd166"><animate attributeName="opacity" values="0;1;0" dur="0.9s" repeatCount="indefinite" begin="0.3s"/></circle>
-          </svg>
-        </div>
-        <div class="sc-lbl">
-          <div class="sc-tt" style="color:#f5a623;">The Reminder</div>
-          <div class="sc-ds">He reaches into his wallet. Cover Credit policy card. "I already got this covered."</div>
-        </div>
-      </div>
-
-      <!-- Scene 4: Relief — phone to insurer -->
-      <div class="sc" id="sc4">
-        <div class="sc-num">04</div>
-        <div class="sc-art">
-          <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Calm rider standing -->
-            <circle cx="90" cy="80" r="14" fill="#c68642"/>
-            <path d="M78 80 Q78 64 90 64 Q102 64 102 80" fill="#ff6b00"/>
-            <rect x="81" y="78" width="22" height="4" rx="2" fill="#cc5500"/>
-            <!-- Body relaxed -->
-            <rect x="78" y="94" width="24" height="28" rx="5" fill="#1565c0"/>
-            <!-- Phone raised with confidence -->
-            <rect x="102" y="70" width="16" height="26" rx="4" fill="#1a1a2e" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
-            <rect x="104" y="73" width="12" height="18" rx="2" fill="rgba(74,222,128,.15)"/>
-            <!-- Phone screen shows check -->
-            <path d="M107 82 L110 85 L116 79" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
-              <animate attributeName="stroke-dashoffset" from="30" to="0" dur="0.8s" fill="freeze"/>
-              <animate attributeName="opacity" values="0;1" dur="0.5s" fill="freeze"/>
-            </path>
-            <!-- Phone text -->
-            <text x="118" y="76" font-size="5" fill="rgba(255,255,255,.3)" font-family="DM Sans,sans-serif">Calling</text>
-            <text x="118" y="82" font-size="5" fill="rgba(255,255,255,.3)" font-family="DM Sans,sans-serif">Insurer...</text>
-            <!-- Arm to phone -->
-            <path d="M102 100 L104 80" stroke="#c68642" stroke-width="3.5" stroke-linecap="round"/>
-            <!-- Calm smile -->
-            <path d="M85 87 Q90 91 95 87" stroke="#333" stroke-width="2" fill="none"/>
-            <!-- Big shield in background -->
-            <path d="M90 30 L130 48 L130 90 Q130 118 90 132 Q50 118 50 90 L50 48 Z" fill="rgba(255,107,0,.06)" stroke="rgba(255,107,0,.2)" stroke-width="1.5">
-              <animate attributeName="stroke-opacity" values=".2;.6;.2" dur="2.5s" repeatCount="indefinite"/>
-            </path>
-            <text x="90" y="80" text-anchor="middle" font-size="18" fill="rgba(255,107,0,.25)">🛡️</text>
-          </svg>
-        </div>
-        <div class="sc-lbl">
-          <div class="sc-tt">Calm & In Control</div>
-          <div class="sc-ds">He calls the insurer directly. Cashless claim. No stress. Already arranged.</div>
-        </div>
-      </div>
-
-      <!-- Scene 5: Back on the road -->
-      <div class="sc" id="sc5">
-        <div class="sc-num">05</div>
-        <div class="sc-art">
-          <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <!-- Sunny sky -->
-            <circle cx="150" cy="35" r="22" fill="rgba(255,200,0,.12)" stroke="rgba(255,200,0,.2)" stroke-width="1">
-              <animate attributeName="r" values="22;26;22" dur="3s" repeatCount="indefinite"/>
+      <!-- Scene 1: Riding -->
+      <div class="cscene cs-open">
+        <div class="cs-art">
+          <!-- animated bg rings -->
+          <div class="art-ring" style="width:280px;height:280px;border-color:rgba(74,222,128,.06);top:50%;left:50%;transform:translate(-50%,-50%);animation:shieldBreath 3s ease-in-out infinite;"></div>
+          <div class="art-ring" style="width:180px;height:180px;border-color:rgba(74,222,128,.1);top:50%;left:50%;transform:translate(-50%,-50%);animation:shieldBreath 3s ease-in-out infinite .5s;"></div>
+          <!-- Road -->
+          <div style="position:absolute;bottom:3rem;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,rgba(74,222,128,.15),transparent);"></div>
+          <div style="position:absolute;bottom:3rem;height:2px;width:40px;background:rgba(74,222,128,.25);animation:speedLine 1s linear infinite;"></div>
+          <div style="position:absolute;bottom:3rem;height:2px;width:25px;background:rgba(74,222,128,.18);animation:speedLine 1.3s linear infinite .4s;"></div>
+          <!-- SVG Bike riding -->
+          <svg width="220" height="160" viewBox="0 0 220 160" fill="none" style="animation:bikeRoll 2.5s ease-in-out infinite;position:relative;z-index:2;">
+            <!-- Speed lines behind -->
+            <line x1="0" y1="72" x2="50" y2="72" stroke="rgba(74,222,128,.2)" stroke-width="2"><animate attributeName="x2" values="55;0" dur=".5s" repeatCount="indefinite"/><animate attributeName="opacity" values=".5;0" dur=".5s" repeatCount="indefinite"/></line>
+            <line x1="0" y1="85" x2="38" y2="85" stroke="rgba(74,222,128,.13)" stroke-width="1.5"><animate attributeName="x2" values="42;0" dur=".65s" repeatCount="indefinite"/><animate attributeName="opacity" values=".4;0" dur=".65s" repeatCount="indefinite"/></line>
+            <!-- Rear wheel -->
+            <circle cx="55" cy="115" r="30" fill="none" stroke="rgba(74,222,128,.5)" stroke-width="4" stroke-dasharray="8,5">
+              <animate attributeName="stroke-dashoffset" from="0" to="-100" dur=".55s" repeatCount="indefinite"/>
             </circle>
-            <circle cx="150" cy="35" r="14" fill="rgba(255,200,0,.2)"/>
-            <!-- Road -->
-            <rect x="0" y="145" width="180" height="35" fill="#1a1a2e"/>
-            <!-- Bike moving fast - repaired, gleaming -->
-            <g style="animation:floatUp 1.8s ease-in-out infinite">
-              <circle cx="48" cy="138" r="16" fill="none" stroke="#555" stroke-width="5"/>
-              <circle cx="48" cy="138" r="6" fill="#888"/>
-              <circle cx="130" cy="138" r="16" fill="none" stroke="#555" stroke-width="5"/>
-              <circle cx="130" cy="138" r="6" fill="#888"/>
-              <path d="M55 138 L75 108 L105 108 L130 122 L110 138 Z" fill="#ff6b00" stroke="#ffd166" stroke-width="1.5"/>
-              <path d="M75 108 L85 90 L100 90 L105 108 Z" fill="#cc5500"/>
-              <path d="M100 90 L115 82 L118 90" stroke="#888" stroke-width="3" fill="none" stroke-linecap="round"/>
-              <!-- Gleam effect on bike -->
-              <path d="M60 120 L80 105 L85 107 L65 122 Z" fill="rgba(255,255,255,.08)"/>
-              <!-- Rider happy thumbs up -->
-              <circle cx="88" cy="80" r="12" fill="#c68642" stroke="#a05528" stroke-width="1.5"/>
-              <path d="M76 80 Q76 64 88 64 Q100 64 100 80" fill="#ff6b00"/>
-              <rect x="76" y="78" width="24" height="5" rx="2.5" fill="#cc5500"/>
-              <rect x="78" y="92" width="20" height="22" rx="4" fill="#1565c0"/>
-              <!-- Arm up thumbs up -->
-              <path d="M78 96 L62 84" stroke="#c68642" stroke-width="3.5" stroke-linecap="round"/>
-              <text x="52" y="82" font-size="14">👍</text>
-              <!-- Speed trails -->
-              <line x1="0" y1="100" x2="45" y2="100" stroke="rgba(255,107,0,.35)" stroke-width="2"><animate attributeName="x1" from="55" to="-5" dur="0.5s" repeatCount="indefinite"/></line>
-              <line x1="0" y1="115" x2="38" y2="115" stroke="rgba(255,107,0,.2)" stroke-width="1.5"><animate attributeName="x1" from="50" to="-5" dur="0.65s" repeatCount="indefinite"/></line>
-            </g>
-            <!-- Green shield badge -->
-            <g style="animation:greenPulse 2s ease-in-out infinite">
-              <circle cx="148" cy="80" r="18" fill="rgba(74,222,128,.12)" stroke="#4ade80" stroke-width="1.5"/>
-              <text x="148" y="85" text-anchor="middle" font-size="14">✅</text>
-            </g>
+            <circle cx="55" cy="115" r="10" fill="rgba(74,222,128,.2)"/>
+            <!-- Front wheel -->
+            <circle cx="163" cy="115" r="30" fill="none" stroke="rgba(74,222,128,.5)" stroke-width="4" stroke-dasharray="8,5">
+              <animate attributeName="stroke-dashoffset" from="0" to="-100" dur=".55s" repeatCount="indefinite"/>
+            </circle>
+            <circle cx="163" cy="115" r="10" fill="rgba(74,222,128,.2)"/>
+            <!-- Frame -->
+            <path d="M62 115 L88 68 L130 68 L163 96" fill="none" stroke="#4ade80" stroke-width="3.5" stroke-linecap="round"/>
+            <path d="M88 68 L100 44 L120 44 L120 68" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round"/>
+            <path d="M120 44 L140 34 L144 44" fill="none" stroke="rgba(74,222,128,.7)" stroke-width="2.5" stroke-linecap="round"/>
+            <!-- Rider -->
+            <circle cx="105" cy="36" r="16" fill="#4ade80" opacity=".9"/>
+            <path d="M96 36 Q96 16 105 16 Q114 16 114 36" fill="rgba(0,80,30,.8)"/>
+            <rect x="97" y="33" width="20" height="5" rx="2.5" fill="rgba(0,50,20,.8)"/>
+            <path d="M92 52 Q100 72 114 68 L120 50" fill="#4ade80" opacity=".85"/>
+            <!-- Arm to handlebar -->
+            <path d="M114 58 L136 42" stroke="#4ade80" stroke-width="3" stroke-linecap="round"/>
+            <!-- Shine on helmet -->
+            <path d="M97 30 Q102 22 108 26" stroke="rgba(255,255,255,.35)" stroke-width="2" fill="none" stroke-linecap="round"/>
           </svg>
         </div>
-        <div class="sc-lbl">
-          <div class="sc-tt" style="color:#4ade80;">Back on the Road ✅</div>
-          <div class="sc-ds">Bike repaired, zero out-of-pocket. Arjun rides again — because he was already covered.</div>
+        <div class="cs-txt">
+          <div class="cs-scene-n">SCENE 01 / 04</div>
+          <div class="cs-action">OPEN<br/>ROAD.<br/>FULL<br/>THROTTLE.</div>
+          <p class="cs-body">It's 8:42 AM on a Tuesday. Arjun is doing 60 on his Bajaj Pulsar 150 — outer ring road, light traffic, helmet on, music up. <strong>He's late for a 9 AM meeting and loving every second of it.</strong> Three weeks ago he walked into Cover Credit and sorted his comprehensive policy in 20 minutes. Today, he's forgotten it exists.</p>
+          <div class="cs-chip">🏍️ Pulsar 150 · Comprehensive · Active</div>
+        </div>
+      </div>
+
+      <!-- Scene 2: Crash -->
+      <div class="cscene cs-rev cs-hit">
+        <div class="cs-art">
+          <!-- Crash ring burst -->
+          <div class="art-ring" style="width:200px;height:200px;border-color:rgba(248,113,113,.12);top:50%;left:50%;transform:translate(-50%,-50%);animation:redFlicker 1.5s ease-in-out infinite;"></div>
+          <!-- Spark particles -->
+          <div style="--tx:-55px;--ty:-60px;position:absolute;width:7px;height:7px;border-radius:50%;background:#f87171;top:52%;left:48%;animation:sparkBurst 1.1s ease-out 0s infinite;"></div>
+          <div style="--tx:45px;--ty:-75px;position:absolute;width:5px;height:5px;border-radius:50%;background:#ffd166;top:50%;left:51%;animation:sparkBurst 0.9s ease-out .15s infinite;"></div>
+          <div style="--tx:-30px;--ty:-85px;position:absolute;width:6px;height:6px;border-radius:50%;background:#f87171;top:48%;left:49%;animation:sparkBurst 1.3s ease-out .05s infinite;"></div>
+          <div style="--tx:60px;--ty:-40px;position:absolute;width:4px;height:4px;border-radius:50%;background:#ff9500;top:53%;left:52%;animation:sparkBurst 0.8s ease-out .3s infinite;"></div>
+          <div style="--tx:-70px;--ty:-30px;position:absolute;width:5px;height:5px;border-radius:50%;background:#ffd166;top:50%;left:47%;animation:sparkBurst 1.0s ease-out .2s infinite;"></div>
+          <div style="--tx:20px;--ty:-90px;position:absolute;width:4px;height:4px;border-radius:50%;background:#f87171;top:45%;left:50%;animation:sparkBurst 1.2s ease-out .1s infinite;"></div>
+          <!-- Fallen bike SVG -->
+          <svg width="200" height="160" viewBox="0 0 200 160" fill="none" style="position:relative;z-index:2;filter:drop-shadow(0 0 20px rgba(248,113,113,.25));">
+            <!-- Skid mark -->
+            <path d="M10 140 Q80 132 150 140" stroke="rgba(248,113,113,.2)" stroke-width="4" fill="none" stroke-dasharray="8,5"/>
+            <!-- Tilted bike at -38 degrees -->
+            <g transform="translate(100,85) rotate(-38) translate(-60,-40)">
+              <circle cx="20" cy="68" r="26" fill="none" stroke="rgba(248,113,113,.55)" stroke-width="3.5"/>
+              <circle cx="20" cy="68" r="8" fill="rgba(248,113,113,.2)"/>
+              <circle cx="100" cy="68" r="26" fill="none" stroke="rgba(248,113,113,.55)" stroke-width="3.5"/>
+              <circle cx="100" cy="68" r="8" fill="rgba(248,113,113,.2)"/>
+              <path d="M26 68 L42 42 L72 42 L100 58" fill="none" stroke="#f87171" stroke-width="3.5" stroke-linecap="round"/>
+              <path d="M42 42 L50 22 L68 22 L68 42" fill="none" stroke="#f87171" stroke-width="3" stroke-linecap="round"/>
+              <path d="M68 22 L82 14" stroke="rgba(248,113,113,.6)" stroke-width="2.5" stroke-linecap="round"/>
+            </g>
+            <!-- Impact star burst -->
+            <path d="M100 50 L105 38 L102 50 L112 44 L104 54 L116 52 L106 60 L114 68 L104 64 L105 76 L98 66 L92 76 L93 64 L82 68 L91 60 L82 52 L94 54 L86 44 L96 50 L94 38 Z" fill="rgba(248,113,113,.15)" stroke="rgba(248,113,113,.3)" stroke-width="1">
+              <animate attributeName="opacity" values=".8;.2;.8" dur="1.4s" repeatCount="indefinite"/>
+            </path>
+          </svg>
+        </div>
+        <div class="cs-txt">
+          <div class="cs-scene-n">SCENE 02 / 04</div>
+          <div class="cs-action">A CAR<br/>CUTS IN.<br/>TYRES<br/>SCREAM.</div>
+          <p class="cs-body">A Swift overtakes and cuts back in without checking mirrors. Arjun brakes hard. The rear tyre locks up. Bike slides 5 metres across wet tarmac. <strong>He picks himself up from the road, helmet cracked, exhaust pipe dented, left indicator gone.</strong> First thought: how bad is this? Second thought — then it hit him.</p>
+          <div class="cs-chip">⚠️ Estimated damage: ₹34,000–₹48,000</div>
+        </div>
+      </div>
+
+      <!-- Scene 3: The memory -->
+      <div class="cscene cs-mem">
+        <div class="cs-art">
+          <div class="art-ring" style="width:240px;height:240px;border-color:rgba(255,107,0,.07);top:50%;left:50%;transform:translate(-50%,-50%);animation:shieldBreath 2.5s ease-in-out infinite;"></div>
+          <!-- Glowing policy card -->
+          <div style="position:relative;z-index:2;animation:cardReveal .8s ease-out forwards;">
+            <svg width="200" height="140" viewBox="0 0 200 140" fill="none">
+              <!-- Hand holding card -->
+              <path d="M70 120 Q80 112 100 110 Q120 108 130 120" fill="rgba(198,132,66,.6)" stroke="rgba(198,132,66,.4)" stroke-width="1.5"/>
+              <!-- Card with glow -->
+              <rect x="30" y="20" width="140" height="88" rx="10" fill="#1a0800" stroke="rgba(255,107,0,.5)" stroke-width="1.5">
+                <animate attributeName="stroke-opacity" values=".5;1;.5" dur="1.8s" repeatCount="indefinite"/>
+              </rect>
+              <defs><linearGradient id="cardGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff6b00" stop-opacity=".18"/><stop offset="1" stop-color="#ff6b00" stop-opacity=".04"/></linearGradient></defs>
+              <rect x="30" y="20" width="140" height="88" rx="10" fill="url(#cardGrad)"/>
+              <!-- Card content -->
+              <rect x="42" y="32" width="28" height="18" rx="4" fill="#ff6b00"/>
+              <text x="56" y="44" text-anchor="middle" font-size="7" fill="white" font-weight="700" font-family="DM Sans,sans-serif">CC</text>
+              <text x="78" y="40" font-size="8.5" fill="white" font-weight="700" font-family="DM Sans,sans-serif">CoverCredit</text>
+              <text x="78" y="51" font-size="6" fill="rgba(255,255,255,.5)" font-family="DM Sans,sans-serif">Insurance Advisors</text>
+              <!-- Divider -->
+              <line x1="42" y1="58" x2="158" y2="58" stroke="rgba(255,107,0,.2)" stroke-width="1"/>
+              <!-- Policy details -->
+              <text x="42" y="70" font-size="6.5" fill="rgba(255,255,255,.5)" font-family="DM Sans,sans-serif">POLICY NO.</text>
+              <text x="42" y="79" font-size="7" fill="rgba(255,255,255,.8)" font-weight="700" font-family="DM Sans,sans-serif">CC-2024-8812</text>
+              <text x="42" y="91" font-size="6.5" fill="rgba(255,255,255,.5)" font-family="DM Sans,sans-serif">COMPREHENSIVE · ACTIVE</text>
+              <text x="42" y="101" font-size="6.5" fill="rgba(255,255,255,.5)" font-family="DM Sans,sans-serif">INSURER HELPLINE:</text>
+              <text x="42" y="101" font-size="6.5" fill="#ffd166" font-weight="700" font-family="DM Sans,sans-serif" x="100">PRINTED ON CARD</text>
+              <!-- Active badge -->
+              <rect x="122" y="65" width="36" height="16" rx="8" fill="rgba(74,222,128,.15)" stroke="rgba(74,222,128,.4)" stroke-width="1">
+                <animate attributeName="stroke-opacity" values=".4;1;.4" dur="1.5s" repeatCount="indefinite"/>
+              </rect>
+              <circle cx="131" cy="73" r="3" fill="#4ade80"><animate attributeName="opacity" values="1;.2;1" dur="1s" repeatCount="indefinite"/></circle>
+              <text x="136" y="76" font-size="6" fill="#4ade80" font-weight="700" font-family="DM Sans,sans-serif">ACTIVE</text>
+            </svg>
+          </div>
+        </div>
+        <div class="cs-txt">
+          <div class="cs-scene-n">SCENE 03 / 04</div>
+          <div class="cs-action">WAIT.<br/>THE<br/>CARD.</div>
+          <p class="cs-body">He reaches into his jacket pocket. Fingers close around a stiff orange card. <strong>His Cover Credit insurance policy card — with his insurer's 24-hour helpline printed right on it.</strong> That 20-minute session three weeks ago. The one where Sunil at Cover Credit walked him through every add-on, explained the cashless garage network, set the right IDV. He chose comprehensive. He nearly didn't.</p>
+          <div class="cs-chip" style="color:#ff6b00;">💡 That ₹1,800/yr decision just saved ₹41,000</div>
+        </div>
+      </div>
+
+      <!-- Scene 4: Covered -->
+      <div class="cscene cs-rev cs-win">
+        <div class="cs-art">
+          <!-- Big animated shield -->
+          <div class="art-ring" style="width:260px;height:260px;border-color:rgba(74,222,128,.05);top:50%;left:50%;transform:translate(-50%,-50%);animation:shieldBreath 2s ease-in-out infinite;"></div>
+          <div class="art-ring" style="width:160px;height:160px;border-color:rgba(74,222,128,.1);top:50%;left:50%;transform:translate(-50%,-50%);animation:shieldBreath 2s ease-in-out infinite .6s;"></div>
+          <svg width="200" height="200" viewBox="0 0 200 200" fill="none" style="position:relative;z-index:2;animation:shieldBreath 2.5s ease-in-out infinite;">
+            <path d="M100 15 L162 42 L162 105 Q162 152 100 175 Q38 152 38 105 L38 42 Z" fill="rgba(74,222,128,.08)" stroke="#4ade80" stroke-width="2">
+              <animate attributeName="stroke-opacity" values=".6;1;.6" dur="2s" repeatCount="indefinite"/>
+            </path>
+            <!-- Checkmark drawn on -->
+            <path d="M68 100 L88 120 L132 76" stroke="#4ade80" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"
+              stroke-dasharray="100" stroke-dashoffset="100">
+              <animate attributeName="stroke-dashoffset" from="100" to="0" dur="1s" fill="freeze" begin="0.3s"/>
+            </path>
+            <!-- Glow dots around shield -->
+            <circle cx="100" cy="18" r="4" fill="#4ade80"><animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite"/></circle>
+            <circle cx="162" cy="75" r="3" fill="#4ade80"><animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin=".5s"/></circle>
+            <circle cx="38" cy="75" r="3" fill="#4ade80"><animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="1s"/></circle>
+            <circle cx="100" cy="175" r="4" fill="#4ade80"><animate attributeName="opacity" values="0;1;0" dur="2s" repeatCount="indefinite" begin="1.5s"/></circle>
+          </svg>
+        </div>
+        <div class="cs-txt">
+          <div class="cs-scene-n">SCENE 04 / 04</div>
+          <div class="cs-action">ONE<br/>CALL.<br/>ZERO<br/>BILL.</div>
+          <p class="cs-body">Arjun calls the helpline number on his policy card. Surveyor arrives in 45 minutes. Bike towed to a cashless network garage 2km away. <strong>Two days later, he collects his repaired Pulsar — new exhaust, new indicator, full body touch-up. Total paid out of pocket: ₹0.</strong> He rides straight to Cover Credit to renew for another year.</p>
+          <div class="cs-chip">✅ ₹41,200 repair cost · ₹0 paid · Policy was ₹1,800/yr</div>
         </div>
       </div>
 
     </div>
-    <!-- Quote callout -->
-    <div class="rv d2" style="margin-top:3rem;background:linear-gradient(135deg,rgba(255,107,0,.08),rgba(255,107,0,.03));border:1px solid rgba(255,107,0,.18);border-radius:16px;padding:2rem;display:flex;align-items:center;gap:1.5rem;max-width:800px;margin-left:auto;margin-right:auto;">
-      <div style="font-size:3rem;flex-shrink:0;">💬</div>
+
+    <!-- Quote -->
+    <div class="cstory-quote rv d1">
+      <div class="cq-av">🧔</div>
       <div>
-        <div style="font-family:'Playfair Display',serif;font-size:1.15rem;font-style:italic;margin-bottom:.4rem;line-height:1.5;">"When it happened, the first thing I thought was — thank god I took the Cover Credit policy last month. I called the insurer directly and had everything sorted."</div>
-        <div style="font-size:.74rem;color:rgba(255,255,255,.35);">— Arjun K., Pulsar 150 owner, Hyderabad</div>
+        <div class="cq-q">When I was sitting on that road staring at my dented exhaust, I wasn't even that stressed — because the moment I touched my jacket pocket and felt that card, I knew everything was handled. Sunil had told me exactly what to do if this ever happened. That 20-minute session at Cover Credit was the best thing I did all year.</div>
+        <div class="cq-nm">Arjun K., Bajaj Pulsar 150 owner, Hyderabad</div>
+        <div class="cq-note">Cover Credit helped Arjun choose and purchase his policy. The claim was settled directly between Arjun and his insurer.</div>
       </div>
     </div>
   </div>
@@ -779,6 +779,13 @@ if(ar){ar.addEventListener('input',()=>{selAge=parseInt(ar.value);const av=docum
 document.querySelectorAll('[data-btype]').forEach(p=>{p.addEventListener('click',()=>{document.querySelectorAll('[data-btype]').forEach(x=>x.classList.remove('on'));p.classList.add('on');selBtype=parseInt(p.dataset.btype);calcQ();});});
 document.querySelectorAll('[data-cov]').forEach(p=>{p.addEventListener('click',()=>{document.querySelectorAll('[data-cov]').forEach(x=>x.classList.remove('on'));p.classList.add('on');selCov=p.dataset.cov;calcQ();});});
 document.querySelectorAll('[data-zdep]').forEach(p=>{p.addEventListener('click',()=>{document.querySelectorAll('[data-zdep]').forEach(x=>x.classList.remove('on'));p.classList.add('on');selZdep=parseInt(p.dataset.zdep);calcQ();});});
+
+// Cinematic scene scroll reveal
+const sceneObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold: 0.12});
+document.querySelectorAll('.cscene').forEach(el => sceneObs.observe(el));
+
 document.querySelectorAll('img').forEach(img=>{img.addEventListener('error',function(){const w=this.offsetWidth||400,h=this.offsetHeight||280;this.src='https://picsum.photos/'+w+'/'+h+'?random='+Math.floor(Math.random()*99);this.onerror=null;});});
 document.getElementById('yr').textContent=new Date().getFullYear();
 </script>
