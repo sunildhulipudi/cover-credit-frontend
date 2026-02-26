@@ -1,105 +1,1047 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Book a free 30-minute insurance consultation with Cover Credit. No spam, no obligation, no sales pitch."/>
-  <title>Book Free Consultation | Cover Credit</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/variables.css"/><link rel="stylesheet" href="css/global.css"/><link rel="stylesheet" href="css/components.css"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Book a Free Consultation | Cover Credit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ac:#ff6b00;--ac2:#ff9500;--acr:255,107,0;
+  --ink:#06101f;--i2:#0b1a30;
+  --line:rgba(255,255,255,.08);--fog:rgba(255,255,255,.06);
+  --E:cubic-bezier(.16,1,.3,1);--nh:72px;
+  --gold:#e6a817;--green:#4ade80;--red:#f87171;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--ink);color:#fff;overflow-x:hidden;cursor:none;}
+a{text-decoration:none;color:inherit;}
+
+/* ── CURSOR ── */
+#cur,#cr{position:fixed;top:0;left:0;pointer-events:none;border-radius:50%;z-index:9999;transform:translate(-50%,-50%);}
+#cur{width:10px;height:10px;background:var(--ac);}
+#cr{width:38px;height:38px;border:1.5px solid rgba(255,107,0,.45);z-index:9998;transition:width .2s,height .2s,opacity .2s;}
+body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:.18;}
+
+/* ── NAV (identical to other pages) ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:900;height:var(--nh);padding:0 5%;transition:background .4s;}
+.nav.sc{background:rgba(6,16,31,.97);backdrop-filter:blur(24px);box-shadow:0 1px 0 var(--line);}
+.ni{max-width:1300px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;}.logo em{font-style:normal;color:#f5a623;}
+.nl{display:flex;align-items:center;gap:1.8rem;list-style:none;}
+.nl a{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.65);transition:color .2s;position:relative;}
+.nl a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:#f5a623;transition:width .28s;}
+.nl a:hover,.nl a.act{color:#fff;}.nl a:hover::after,.nl a.act::after{width:100%;}
+.dd{position:relative;}
+.ddt{font-size:.85rem;font-weight:500;color:#fff;cursor:none;display:flex;align-items:center;gap:.26rem;}
+.dda{font-size:.54rem;transition:transform .3s;}.dd:hover .dda{transform:rotate(180deg);}
+.ddm{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(6px);background:var(--i2);border:1px solid var(--line);border-radius:12px;padding:.4rem;min-width:190px;opacity:0;visibility:hidden;transition:opacity .2s,transform .28s var(--E),visibility .2s;box-shadow:0 24px 60px rgba(0,0,0,.5);}
+.dd:hover .ddm{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+.ddm a{display:block;padding:.5rem .82rem;font-size:.8rem;color:rgba(255,255,255,.62);border-radius:8px;transition:background .18s,color .18s;}
+.ddm a:hover{background:rgba(255,255,255,.07);color:#fff;}
+.ncta{background:#f5a623!important;color:#06101f!important;padding:.46rem 1.12rem!important;border-radius:100px;font-weight:700!important;font-size:.8rem!important;}
+.ncta::after{display:none!important;}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:4px;}
+.burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s;}
+.burger.op span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.burger.op span:nth-child(2){opacity:0;}
+.burger.op span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.mob{position:fixed;inset:0;z-index:899;background:var(--ink);display:flex;flex-direction:column;padding:calc(var(--nh)+1.8rem) 5% 3rem;transform:translateX(100%);transition:transform .38s var(--E);}
+.mob.op{transform:translateX(0);}
+.mob a{padding:.9rem 0;font-size:1rem;font-weight:500;color:rgba(255,255,255,.72);border-bottom:1px solid var(--line);}
+.mc{margin-top:1.8rem;background:#f5a623;color:#06101f!important;text-align:center;border-radius:12px;padding:.9rem!important;font-weight:700!important;border:none!important;}
+.fab{position:fixed;bottom:1.8rem;right:1.8rem;z-index:400;display:flex;flex-direction:column;gap:.65rem;align-items:flex-end;}
+.fab a{display:flex;align-items:center;gap:.48rem;padding:.65rem 1rem;border-radius:100px;font-size:.76rem;font-weight:600;cursor:none;transition:transform .18s;}
+.fab a:hover{transform:translateY(-2px);}
+.fwa{background:#25d366;color:#fff;box-shadow:0 6px 20px rgba(37,211,102,.35);}
+.fbk{background:var(--ac);color:#fff;box-shadow:0 6px 20px rgba(255,107,0,.35);}
+
+/* ── PAGE HERO ── */
+.book-hero{padding:calc(var(--nh) + 3.5rem) 5% 3rem;background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(255,107,0,.12),transparent);}
+.book-hero-inner{max-width:680px;margin:0 auto;text-align:center;}
+.book-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,107,0,.1);border:1px solid rgba(255,107,0,.18);border-radius:100px;padding:.32rem .9rem;margin-bottom:1rem;font-size:.65rem;font-weight:700;color:var(--ac);text-transform:uppercase;letter-spacing:2.5px;}
+.book-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--ac);animation:edot 2s infinite;}
+@keyframes edot{0%,100%{opacity:1}50%{opacity:.2}}
+.book-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.06;margin-bottom:.65rem;}
+.book-title em{font-style:italic;color:var(--ac);}
+.book-sub{font-size:.87rem;color:rgba(255,255,255,.38);line-height:1.78;max-width:500px;margin:0 auto 1.5rem;}
+/* Trust badges */
+.book-trust{display:flex;justify-content:center;gap:1.2rem;flex-wrap:wrap;}
+.bt{display:flex;align-items:center;gap:.4rem;font-size:.7rem;color:rgba(255,255,255,.32);}
+.bt-dot{width:6px;height:6px;border-radius:50%;background:var(--green);}
+
+/* ── AUTO-ROUTE BANNER (shown when ?dept= is present) ── */
+.route-banner{display:none;background:rgba(255,107,0,.07);border:1px solid rgba(255,107,0,.18);border-radius:14px;padding:.85rem 1.2rem;margin-bottom:2rem;display:flex;align-items:center;gap:.8rem;}
+.route-banner.show{display:flex;}
+.rb-ico{font-size:1.3rem;flex-shrink:0;}
+.rb-body{flex:1;}
+.rb-title{font-size:.82rem;font-weight:700;color:var(--ac);margin-bottom:.1rem;}
+.rb-sub{font-size:.72rem;color:rgba(255,255,255,.38);}
+.rb-change{font-size:.7rem;color:rgba(255,255,255,.28);background:none;border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:.25rem .7rem;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;flex-shrink:0;}
+.rb-change:hover{border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.6);}
+
+/* ── MAIN WIZARD ── */
+.book-main{max-width:680px;margin:0 auto;padding:0 5% 6rem;}
+
+/* Progress stepper */
+.wiz-prog{display:flex;align-items:center;margin-bottom:2.5rem;}
+.ws{display:flex;flex-direction:column;align-items:center;gap:.3rem;flex:1;position:relative;z-index:1;}
+.ws-circle{width:38px;height:38px;border-radius:50%;border:2px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:.95rem;color:rgba(255,255,255,.22);transition:all .4s var(--E);}
+.ws.done .ws-circle{background:rgba(34,197,94,.12);border-color:var(--green);color:var(--green);}
+.ws.done .ws-circle .wn{display:none;}
+.ws.done .ws-circle::after{content:'✓';font-size:.85rem;}
+.ws.act .ws-circle{background:rgba(255,107,0,.12);border-color:var(--ac);color:var(--ac);box-shadow:0 0 0 5px rgba(255,107,0,.08);}
+.ws-label{font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:rgba(255,255,255,.2);text-align:center;transition:color .3s;white-space:nowrap;}
+.ws.act .ws-label{color:var(--ac);}
+.ws.done .ws-label{color:var(--green);}
+.wl{flex:1;height:1px;background:rgba(255,255,255,.08);margin:0 -2px;margin-top:-1.5rem;z-index:0;transition:background .5s;}
+.wl.done{background:rgba(34,197,94,.35);}
+
+/* Step panels */
+.wp{display:none;animation:wpin .45s var(--E) both;}
+.wp.act{display:block;}
+@keyframes wpin{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:translateX(0)}}
+
+/* Section card */
+.wcard{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:2rem;}
+.wcard-title{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.2);margin-bottom:.3rem;display:flex;align-items:center;gap:.5rem;}
+.wcard-title::before{content:'';width:16px;height:1.5px;background:var(--ac);}
+.wcard-h{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;line-height:1.15;margin-bottom:1.5rem;}
+.wcard-h em{font-style:italic;color:var(--ac);}
+
+/* Department grid */
+.dept-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;}
+.dc{border:1.5px solid rgba(255,255,255,.07);border-radius:14px;padding:1.15rem .9rem;cursor:pointer;transition:all .22s var(--E);background:rgba(255,255,255,.03);text-align:center;position:relative;overflow:hidden;}
+.dc:hover{transform:translateY(-3px);border-color:rgba(255,107,0,.3);background:rgba(255,107,0,.04);}
+.dc.sel{border-color:var(--ac);background:rgba(255,107,0,.07);transform:translateY(-2px);}
+.dc-check{position:absolute;top:.55rem;right:.55rem;width:18px;height:18px;border-radius:50%;background:var(--ac);display:flex;align-items:center;justify-content:center;font-size:.65rem;color:#fff;font-weight:900;opacity:0;transform:scale(0);transition:opacity .2s,transform .25s var(--E);}
+.dc.sel .dc-check{opacity:1;transform:scale(1);}
+.dc-ico{font-size:1.75rem;margin-bottom:.45rem;display:block;transition:transform .2s;}
+.dc:hover .dc-ico,.dc.sel .dc-ico{transform:scale(1.08);}
+.dc-name{font-size:.78rem;font-weight:700;}
+.dc-sub{font-size:.58rem;color:rgba(255,255,255,.3);margin-top:.15rem;}
+.dc.sel .dc-sub{color:rgba(255,107,0,.6);}
+
+/* Form fields */
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
+.fg{display:flex;flex-direction:column;gap:.4rem;}
+.fg.span2{grid-column:1/-1;}
+.fg label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:rgba(255,255,255,.3);}
+.fg label .req{color:var(--red);margin-left:2px;}
+.fi{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.08);border-radius:10px;padding:.75rem 1rem;font-family:'DM Sans',sans-serif;font-size:.85rem;color:#fff;outline:none;transition:border-color .2s,box-shadow .2s;width:100%;}
+.fi::placeholder{color:rgba(255,255,255,.18);}
+.fi:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(255,107,0,.1);}
+select.fi option{background:#0b1a30;color:#fff;}
+textarea.fi{resize:none;min-height:85px;}
+
+/* Pill groups */
+.pill-group{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.1rem;}
+.po{border:1.5px solid rgba(255,255,255,.08);border-radius:100px;padding:.32rem .8rem;cursor:pointer;font-size:.7rem;font-weight:600;color:rgba(255,255,255,.35);transition:all .18s;background:none;font-family:'DM Sans',sans-serif;}
+.po:hover{border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);}
+.po.sel{border-color:var(--ac);background:rgba(255,107,0,.08);color:var(--ac);}
+
+/* Smart section header */
+.smart-hd{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1.8px;color:var(--ac);margin:1.6rem 0 1rem;display:flex;align-items:center;gap:.5rem;}
+.smart-hd::before{content:'';flex:1;height:1px;background:rgba(255,107,0,.15);}
+.smart-hd::after{content:'';flex:1;height:1px;background:rgba(255,107,0,.15);}
+
+/* Contact method + slots */
+.cm-row{display:flex;gap:.55rem;}
+.cm{flex:1;border:1.5px solid rgba(255,255,255,.08);border-radius:12px;padding:.75rem .5rem;cursor:pointer;background:rgba(255,255,255,.03);text-align:center;transition:all .2s;}
+.cm:hover{border-color:rgba(255,107,0,.3);}
+.cm.sel{border-color:var(--ac);background:rgba(255,107,0,.07);}
+.cm-ico{font-size:1.15rem;display:block;margin-bottom:.25rem;}
+.cm-lbl{font-size:.6rem;font-weight:700;color:rgba(255,255,255,.3);display:block;transition:color .2s;}
+.cm.sel .cm-lbl{color:var(--ac);}
+
+.slot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;}
+.slot{border:1.5px solid rgba(255,255,255,.08);border-radius:12px;padding:.65rem .4rem;cursor:pointer;background:rgba(255,255,255,.03);text-align:center;transition:all .2s;}
+.slot:hover{border-color:rgba(255,107,0,.3);}
+.slot.sel{border-color:var(--ac);background:rgba(255,107,0,.07);}
+.slot-t{font-size:.72rem;font-weight:700;display:block;transition:color .2s;}
+.slot.sel .slot-t{color:var(--ac);}
+.slot-l{font-size:.58rem;color:rgba(255,255,255,.25);display:block;margin-top:.12rem;}
+
+/* Wizard nav */
+.wnav{display:flex;justify-content:space-between;align-items:center;margin-top:1.8rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.06);}
+.wback{background:none;border:1.5px solid rgba(255,255,255,.1);border-radius:100px;padding:.58rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;color:rgba(255,255,255,.35);cursor:pointer;transition:all .2s;}
+.wback:hover{border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.7);}
+.wstep{font-size:.68rem;color:rgba(255,255,255,.2);}
+.wnext{background:var(--ac);border:none;border-radius:100px;padding:.65rem 2rem;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:700;color:#fff;cursor:pointer;transition:all .22s;display:flex;align-items:center;gap:.45rem;}
+.wnext:hover{background:var(--ac2);transform:translateY(-1px);box-shadow:0 8px 28px rgba(255,107,0,.35);}
+.wnext:disabled{opacity:.3;cursor:not-allowed;transform:none;box-shadow:none;}
+
+/* ── SUCCESS SCREEN ── */
+.success-wrap{text-align:center;padding:2.5rem 1rem 3rem;}
+.success-ring{width:80px;height:80px;border-radius:50%;background:rgba(34,197,94,.1);border:2px solid rgba(34,197,94,.3);display:flex;align-items:center;justify-content:center;font-size:2.2rem;margin:0 auto 1.5rem;animation:ringpop .5s var(--E) both;}
+@keyframes ringpop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.success-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;margin-bottom:.5rem;}
+.success-sub{font-size:.85rem;color:rgba(255,255,255,.38);line-height:1.75;margin-bottom:1.8rem;}
+.success-ref{display:inline-block;background:rgba(255,107,0,.07);border:1px solid rgba(255,107,0,.16);border-radius:14px;padding:1rem 2rem;margin-bottom:1.8rem;}
+.success-ref-lbl{font-size:.58rem;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.25);margin-bottom:.2rem;}
+.success-ref-code{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:4px;color:var(--ac);}
+.success-actions{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;}
+.sa-btn{display:inline-flex;align-items:center;gap:.5rem;padding:.65rem 1.4rem;border-radius:100px;font-size:.8rem;font-weight:700;cursor:pointer;transition:all .2s;}
+.sa-primary{background:var(--ac);color:#fff;border:none;}
+.sa-primary:hover{background:var(--ac2);}
+.sa-secondary{background:none;border:1.5px solid rgba(255,255,255,.12);color:rgba(255,255,255,.5);}
+.sa-secondary:hover{border-color:rgba(255,255,255,.3);color:#fff;}
+.sa-wa{background:#25d366;color:#fff;border:none;}
+.sa-wa:hover{background:#1ea952;}
+
+/* ── RIGHT PANEL — trust sidebar (desktop) ── */
+.book-layout{display:grid;grid-template-columns:1fr 300px;gap:2.5rem;max-width:1020px;margin:0 auto;padding:0 5% 6rem;align-items:start;}
+.book-sidebar{position:sticky;top:calc(var(--nh) + 1.5rem);}
+.sidebar-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:1.5rem;margin-bottom:1rem;}
+.sc-title{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:1.8px;color:rgba(255,255,255,.2);margin-bottom:1rem;}
+.trust-item{display:flex;align-items:flex-start;gap:.7rem;margin-bottom:.85rem;}
+.trust-item:last-child{margin-bottom:0;}
+.ti-ico{font-size:1rem;flex-shrink:0;margin-top:.05rem;}
+.ti-body{font-size:.72rem;color:rgba(255,255,255,.4);line-height:1.6;}
+.ti-body strong{color:rgba(255,255,255,.75);}
+.advisor-mini{display:flex;align-items:center;gap:.75rem;margin-bottom:1rem;}
+.am-avatar{width:44px;height:44px;border-radius:50%;background:rgba(255,107,0,.15);border:2px solid rgba(255,107,0,.2);display:flex;align-items:center;justify-content:center;font-size:1.2rem;}
+.am-name{font-size:.82rem;font-weight:700;}
+.am-role{font-size:.65rem;color:rgba(255,255,255,.35);}
+.am-avail{display:inline-flex;align-items:center;gap:.35rem;font-size:.65rem;color:var(--green);margin-top:.25rem;}
+.am-avail::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);}
+.wa-block{background:rgba(37,211,102,.06);border:1px solid rgba(37,211,102,.15);border-radius:14px;padding:1rem;text-align:center;}
+.wa-block p{font-size:.7rem;color:rgba(255,255,255,.35);margin-bottom:.75rem;line-height:1.6;}
+.wa-link{display:inline-flex;align-items:center;gap:.4rem;background:#25d366;color:#fff;border-radius:100px;padding:.5rem 1.1rem;font-size:.75rem;font-weight:700;transition:background .2s;}
+.wa-link:hover{background:#1ea952;}
+
+/* ── FOOTER (matching other pages) ── */
+.ft{background:#020a18;border-top:1px solid var(--line);padding:3rem 5% 2rem;}
+.ft-in{max-width:1300px;margin:0 auto;}
+.ft-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.8rem;padding-bottom:2.5rem;border-bottom:1px solid var(--line);margin-bottom:1.6rem;}
+.ft-logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;display:inline-block;margin-bottom:.8rem;}
+.ft-logo em{font-style:normal;color:#f5a623;}
+.ft-ds{font-size:.76rem;color:rgba(255,255,255,.34);line-height:1.7;margin-bottom:.9rem;}
+.ft-con{display:flex;align-items:center;gap:.42rem;font-size:.73rem;color:rgba(255,255,255,.28);margin-bottom:.4rem;}
+.ft-con a{color:rgba(255,255,255,.5);transition:color .18s;}.ft-con a:hover{color:#f5a623;}
+.ft-clbl{font-size:.62rem;font-weight:700;color:rgba(255,255,255,.2);text-transform:uppercase;letter-spacing:1.3px;margin-bottom:.8rem;}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.45rem;}
+.ft-col a{font-size:.74rem;color:rgba(255,255,255,.34);transition:color .18s;}.ft-col a:hover{color:#f5a623;}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem;font-size:.7rem;color:rgba(255,255,255,.16);}
+.ft-links{display:flex;gap:1.3rem;}.ft-links a{color:rgba(255,255,255,.16);transition:color .18s;}.ft-links a:hover{color:rgba(255,255,255,.38);}
+
+/* ── UTILS ── */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s var(--E),transform .6s var(--E);}
+.rv.on{opacity:1;transform:none;}
+.d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.24s;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:900px){
+  .book-layout{grid-template-columns:1fr;}
+  .book-sidebar{display:none;}
+}
+@media(max-width:768px){
+  .nl{display:none;}.burger{display:flex;}
+  .dept-grid{grid-template-columns:repeat(2,1fr);}
+  body{cursor:auto;}#cur,#cr{display:none;}
+  .ft-top{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:480px){
+  .dept-grid{grid-template-columns:1fr 1fr;}
+  .fgrid{grid-template-columns:1fr;}
+  .fg.span2{grid-column:1;}
+  .slot-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
 </head>
 <body>
-  <header>
-    <nav class="nav"><div class="nav__inner"><a href="index.html" class="nav__logo">Cover<span>Credit</span></a><ul class="nav__links"><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life Insurance</a></li><li class="nav__dropdown"><span class="nav__dropdown-trigger">Vehicle Insurance <span class="nav__dropdown-arrow">▼</span></span><div class="nav__dropdown-menu"><a href="bike-insurance.html">Bike Insurance</a><a href="car-insurance.html">Car Insurance</a><a href="commercial-vehicle-insurance.html">Commercial Vehicles</a></div></li><li><a href="loans.html">Loans</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="book.html" class="nav__cta">Book Consultation</a></li></ul><button class="nav__hamburger" id="hamburger"><span></span><span></span><span></span></button></div></nav>
-    <nav class="mobile-nav" id="mobile-nav"><a href="health-insurance.html" class="mobile-nav__item">Health Insurance</a><a href="life-insurance.html" class="mobile-nav__item">Life Insurance</a><a href="bike-insurance.html" class="mobile-nav__item mobile-nav__sub">↳ Bike Insurance</a><a href="car-insurance.html" class="mobile-nav__item mobile-nav__sub">↳ Car Insurance</a><a href="commercial-vehicle-insurance.html" class="mobile-nav__item mobile-nav__sub">↳ Commercial Vehicles</a><a href="loans.html" class="mobile-nav__item">Loans</a><a href="blog.html" class="mobile-nav__item">Blog</a><a href="about.html" class="mobile-nav__item">About</a><a href="contact.html" class="mobile-nav__item">Contact</a><a href="book.html" class="mobile-nav__cta">Book Free Consultation</a></nav>
-  </header>
+<div id="cur"></div><div id="cr"></div>
 
-  <section class="page-hero">
-    <div class="page-hero__inner" style="max-width:var(--max-width);width:var(--container);">
-      <nav class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span>Book Consultation</span></nav>
-      <h1 class="page-hero__title">Book Your Free Consultation</h1>
-      <p class="page-hero__desc">A 30-minute session with our advisor — in Telugu or English. No spam, no obligation, no sales pitch.</p>
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="ni">
+    <a href="index.html" class="logo">Cover<em>Credit</em></a>
+    <ul class="nl">
+      <li class="dd">
+        <span class="ddt">Insurance <span class="dda">▾</span></span>
+        <div class="ddm">
+          <a href="bike-insurance.html">🏍️ Bike Insurance</a>
+          <a href="car-insurance.html">🚗 Car Insurance</a>
+          <a href="health-insurance.html">🏥 Health Insurance</a>
+          <a href="life-insurance.html">❤️ Life Insurance</a>
+          <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicle</a>
+        </div>
+      </li>
+      <li><a href="loans.html">Loans</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="book.html" class="ncta act">Book Free Call</a></li>
+    </ul>
+    <button class="burger" id="burger" onclick="toggleMob()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mob" id="mob">
+  <a href="bike-insurance.html">🏍️ Bike Insurance</a>
+  <a href="car-insurance.html">🚗 Car Insurance</a>
+  <a href="health-insurance.html">🏥 Health Insurance</a>
+  <a href="life-insurance.html">❤️ Life Insurance</a>
+  <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicle</a>
+  <a href="loans.html">Loans</a>
+  <a href="about.html">About</a>
+  <a href="book.html" class="mc">Book Free Consultation →</a>
+</div>
+
+<!-- FAB -->
+<div class="fab">
+  <a href="https://wa.me/917842854466" class="fwa">💬 WhatsApp</a>
+</div>
+
+<!-- HERO -->
+<div class="book-hero">
+  <div class="book-hero-inner rv">
+    <div class="book-eyebrow"><span class="book-eyebrow-dot"></span> Free · No pressure · 30 minutes</div>
+    <h1 class="book-title">Book your free<br/><em>consultation</em></h1>
+    <p class="book-sub">Tell us what you need — our specialist calls you within 2 hours. No spam, no scripts, just clear honest advice.</p>
+    <div class="book-trust">
+      <div class="bt"><span class="bt-dot"></span> ₹0 consultation fee</div>
+      <div class="bt"><span class="bt-dot"></span> 30+ insurers & lenders</div>
+      <div class="bt"><span class="bt-dot"></span> 2-hour response</div>
+      <div class="bt"><span class="bt-dot"></span> No spam ever</div>
     </div>
-  </section>
+  </div>
+</div>
 
-  <section class="section" style="background:var(--bg);">
-    <div class="section-wrap">
-      <div style="max-width:780px;">
+<!-- MAIN LAYOUT -->
+<div class="book-layout">
 
-        <!-- Trust badges -->
-        <div class="dark-grid" style="margin-bottom:2.5rem;">
-          <div class="dark-card" style="background:var(--white);border:1px solid var(--border);">
-            <div class="dark-card__icon">🎯</div>
-            <h3 class="dark-card__title" style="color:var(--primary);">Right Policy Advice</h3>
-            <p class="dark-card__body" style="color:var(--muted);">We recommend what fits — not what earns us more commission.</p>
-          </div>
-          <div class="dark-card" style="background:var(--white);border:1px solid var(--border);">
-            <div class="dark-card__icon">🗣️</div>
-            <h3 class="dark-card__title" style="color:var(--primary);">Telugu / English Support</h3>
-            <p class="dark-card__body" style="color:var(--muted);">We speak your language — literally. No jargon, no confusion.</p>
-          </div>
-          <div class="dark-card" style="background:var(--white);border:1px solid var(--border);">
-            <div class="dark-card__icon">🚫</div>
-            <h3 class="dark-card__title" style="color:var(--primary);">Zero Pressure</h3>
-            <p class="dark-card__body" style="color:var(--muted);">This is a conversation, not a sales call. Take your time.</p>
-          </div>
+  <!-- WIZARD COLUMN -->
+  <div>
+
+    <!-- AUTO-ROUTE BANNER — shown when dept param is in URL -->
+    <div class="route-banner" id="routeBanner">
+      <div class="rb-ico" id="rbIco">🏍️</div>
+      <div class="rb-body">
+        <div class="rb-title" id="rbTitle">Booking for Bike Insurance</div>
+        <div class="rb-sub">We've pre-selected this for you. Jump straight to your details below.</div>
+      </div>
+      <button class="rb-change" onclick="resetToStep1()">Change department</button>
+    </div>
+
+    <!-- PROGRESS STEPS -->
+    <div class="wiz-prog rv d1" id="wizProg">
+      <div class="ws act" id="ws0"><div class="ws-circle"><span class="wn">1</span></div><div class="ws-label">Department</div></div>
+      <div class="wl" id="wl0"></div>
+      <div class="ws" id="ws1"><div class="ws-circle"><span class="wn">2</span></div><div class="ws-label">Your Details</div></div>
+      <div class="wl" id="wl1"></div>
+      <div class="ws" id="ws2"><div class="ws-circle"><span class="wn">3</span></div><div class="ws-label">Specifics</div></div>
+      <div class="wl" id="wl2"></div>
+      <div class="ws" id="ws3"><div class="ws-circle"><span class="wn">4</span></div><div class="ws-label">Schedule</div></div>
+    </div>
+
+    <!-- STEP 1: DEPARTMENT SELECTION -->
+    <div class="wcard wp act rv d2" id="wp0">
+      <div class="wcard-title">Step 1 of 4</div>
+      <h2 class="wcard-h">What can we <em>help you with?</em></h2>
+      <div class="dept-grid">
+        <div class="dc" data-dept="loan" data-label="Home / Personal Loan" data-ico="🏠" onclick="selectDept(this)">
+          <div class="dc-check">✓</div>
+          <span class="dc-ico">🏠</span>
+          <div class="dc-name">Loans</div>
+          <div class="dc-sub">Home, personal, car, LAP</div>
         </div>
-
-        <!-- Booking Form -->
-        <div class="info-box">
-          <h2 class="info-box__title">Book Your Session</h2>
-          <p class="info-box__body">Fill in your details and we'll call you to confirm a convenient time.</p>
-          <form id="book-form" novalidate style="margin-top:1rem;">
-            <div class="form-row">
-              <div class="form-group"><label for="b-name">Your Name *</label><input type="text" id="b-name" placeholder="Full Name" required/></div>
-              <div class="form-group"><label for="b-phone">Phone Number *</label><input type="tel" id="b-phone" placeholder="+91 9XXXXXXXXX" required/></div>
-            </div>
-            <div class="form-group"><label for="b-email">Email (optional)</label><input type="email" id="b-email" placeholder="you@example.com"/></div>
-            <div class="form-group">
-              <label for="b-topic">What do you need help with? *</label>
-              <select id="b-topic" required>
-                <option value="">Select a topic</option>
-                <option>Health Insurance — New / Renewal / Review</option>
-                <option>Life / Term Insurance</option>
-                <option>Bike Insurance</option>
-                <option>Car Insurance</option>
-                <option>Commercial Vehicle Insurance</option>
-                <option>Loan Guidance</option>
-                <option>Claim Assistance</option>
-                <option>Not sure — need general advice</option>
-              </select>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="b-lang">Preferred Language</label>
-                <select id="b-lang">
-                  <option>Telugu</option>
-                  <option>English</option>
-                  <option>Telugu + English (mix)</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="b-time">Preferred Time Slot</label>
-                <select id="b-time">
-                  <option>Morning (9 AM – 12 PM)</option>
-                  <option>Afternoon (12 PM – 3 PM)</option>
-                  <option>Evening (3 PM – 7 PM)</option>
-                  <option>Any time is fine</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-group"><label for="b-note">Anything else you'd like us to know?</label><textarea id="b-note" placeholder="Optional — share any details about your situation or specific questions..."></textarea></div>
-            <button type="submit" class="form-submit" data-label="Book My Free Consultation →">Book My Free Consultation →</button>
-            <div class="form-success" id="book-success">🎉 Booking confirmed! We'll call you within a few hours to confirm your time slot.</div>
-            <p class="form-note">Or call us directly: <a href="tel:+919642834789">+91 96428 34789</a></p>
-          </form>
+        <div class="dc" data-dept="health" data-label="Health Insurance" data-ico="🏥" onclick="selectDept(this)">
+          <div class="dc-check">✓</div>
+          <span class="dc-ico">🏥</span>
+          <div class="dc-name">Health Insurance</div>
+          <div class="dc-sub">Individual & family plans</div>
         </div>
-
+        <div class="dc" data-dept="life" data-label="Life Insurance" data-ico="❤️" onclick="selectDept(this)">
+          <div class="dc-check">✓</div>
+          <span class="dc-ico">❤️</span>
+          <div class="dc-name">Life Insurance</div>
+          <div class="dc-sub">Term & ULIP plans</div>
+        </div>
+        <div class="dc" data-dept="bike" data-label="Bike Insurance" data-ico="🏍️" onclick="selectDept(this)">
+          <div class="dc-check">✓</div>
+          <span class="dc-ico">🏍️</span>
+          <div class="dc-name">Bike Insurance</div>
+          <div class="dc-sub">New & renewal</div>
+        </div>
+        <div class="dc" data-dept="car" data-label="Car Insurance" data-ico="🚗" onclick="selectDept(this)">
+          <div class="dc-check">✓</div>
+          <span class="dc-ico">🚗</span>
+          <div class="dc-name">Car Insurance</div>
+          <div class="dc-sub">Comprehensive & TP</div>
+        </div>
+        <div class="dc" data-dept="commercial" data-label="Commercial Vehicle" data-ico="🚛" onclick="selectDept(this)">
+          <div class="dc-check">✓</div>
+          <span class="dc-ico">🚛</span>
+          <div class="dc-name">Commercial Vehicle</div>
+          <div class="dc-sub">Truck, taxi, bus & fleet</div>
+        </div>
+      </div>
+      <div class="wnav">
+        <span class="wstep">Step 1 of 4 — choose your department</span>
+        <button class="wnext" id="btnNext0" onclick="goTo(1)" disabled>Continue →</button>
       </div>
     </div>
-  </section>
 
-  <footer class="footer"><div class="footer__top"><div><a href="index.html" class="footer__logo">Cover<span>Credit</span></a><p class="footer__tagline">Honest insurance advice. We guide, not sell.</p><p class="footer__serving">© <span id="current-year">2026</span> Cover Credit. All rights reserved.</p></div><div class="footer__col"><h4>Quick Links</h4><ul><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life Insurance</a></li><li><a href="loans.html">Loans</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="book.html">Book Consultation</a></li></ul></div><div class="footer__col"><h4>Branches</h4><ul><li><a href="#">Visakhapatnam</a></li><li><a href="#">Hyderabad</a></li></ul></div><div class="footer__col"><h4>Contact</h4><div class="footer__contact-item">📞 <a href="tel:+919642834789">+91 96428 34789</a></div><div class="footer__contact-item">✉️ <a href="mailto:info@covercredit.in">info@covercredit.in</a></div></div></div><div class="footer__bottom"><span>© <span id="current-year-2">2026</span> Cover Credit. All rights reserved.</span><div class="footer__bottom-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div></div></footer>
-  <script src="js/nav.js"></script><script src="js/forms.js"></script><script src="js/main.js"></script>
+    <!-- STEP 2: COMMON DETAILS -->
+    <div class="wcard wp rv d2" id="wp1">
+      <div class="wcard-title">Step 2 of 4</div>
+      <h2 class="wcard-h">Your contact <em>details</em></h2>
+      <div class="fgrid">
+        <div class="fg">
+          <label>Full Name <span class="req">*</span></label>
+          <input class="fi" type="text" id="fname" placeholder="e.g. Ramesh Reddy" required/>
+        </div>
+        <div class="fg">
+          <label>Phone Number <span class="req">*</span></label>
+          <input class="fi" type="tel" id="fphone" placeholder="+91 98765 43210" required/>
+        </div>
+        <div class="fg">
+          <label>Email Address</label>
+          <input class="fi" type="email" id="femail" placeholder="ramesh@email.com"/>
+        </div>
+        <div class="fg">
+          <label>City / Location <span class="req">*</span></label>
+          <select class="fi" id="fcity">
+            <option value="" disabled selected>Select your city</option>
+            <option>Hyderabad</option>
+            <option>Secunderabad</option>
+            <option>Warangal</option>
+            <option>Karimnagar</option>
+            <option>Nizamabad</option>
+            <option>Vijayawada</option>
+            <option>Visakhapatnam</option>
+            <option>Guntur</option>
+            <option>Tirupati</option>
+            <option>Nellore</option>
+            <option>Other (AP / Telangana)</option>
+          </select>
+        </div>
+      </div>
+      <div class="wnav">
+        <button class="wback" onclick="goTo(0)">← Back</button>
+        <span class="wstep">Step 2 of 4</span>
+        <button class="wnext" onclick="goTo(2)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- STEP 3: SMART FIELDS -->
+    <div class="wcard wp rv d2" id="wp2">
+      <div class="wcard-title">Step 3 of 4</div>
+      <h2 class="wcard-h" id="step3h">A few <em>quick specifics</em></h2>
+
+      <!-- LOAN fields -->
+      <div id="sf-loan" class="sf" style="display:none;">
+        <div class="fgrid">
+          <div class="fg">
+            <label>Loan Type</label>
+            <div class="pill-group">
+              <button class="po sel" onclick="togP(this)">Home Loan</button>
+              <button class="po" onclick="togP(this)">Personal Loan</button>
+              <button class="po" onclick="togP(this)">Car Loan</button>
+              <button class="po" onclick="togP(this)">Loan Against Property</button>
+              <button class="po" onclick="togP(this)">Business / MSME</button>
+              <button class="po" onclick="togP(this)">Education Loan</button>
+            </div>
+          </div>
+          <div class="fg">
+            <label>Loan Amount Needed</label>
+            <select class="fi">
+              <option>Under ₹5 Lakhs</option>
+              <option>₹5–25 Lakhs</option>
+              <option selected>₹25–50 Lakhs</option>
+              <option>₹50L–1 Crore</option>
+              <option>₹1 Crore+</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>Employment Type</label>
+            <div class="pill-group">
+              <button class="po sel" onclick="togP(this)">Salaried</button>
+              <button class="po" onclick="togP(this)">Self-Employed</button>
+              <button class="po" onclick="togP(this)">Govt. Employee</button>
+              <button class="po" onclick="togP(this)">NRI</button>
+            </div>
+          </div>
+          <div class="fg">
+            <label>Monthly Income (approx)</label>
+            <select class="fi">
+              <option>Below ₹25,000</option>
+              <option>₹25,000–₹50,000</option>
+              <option selected>₹50,000–₹1 Lakh</option>
+              <option>₹1L–₹2L</option>
+              <option>₹2L+</option>
+            </select>
+          </div>
+          <div class="fg span2">
+            <label>Existing loans? (if any)</label>
+            <select class="fi">
+              <option>No existing loans</option>
+              <option>1 existing loan (car/personal)</option>
+              <option>2+ existing loans</option>
+              <option>Currently have a home loan (refinance/top-up)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- HEALTH fields -->
+      <div id="sf-health" class="sf" style="display:none;">
+        <div class="fgrid">
+          <div class="fg">
+            <label>Who needs coverage?</label>
+            <div class="pill-group">
+              <button class="po" onclick="togP(this)">Just Me</button>
+              <button class="po sel" onclick="togP(this)">Me + Spouse</button>
+              <button class="po" onclick="togP(this)">Family (2+2)</button>
+              <button class="po" onclick="togP(this)">Family (2+4)</button>
+              <button class="po" onclick="togP(this)">Parents Only</button>
+            </div>
+          </div>
+          <div class="fg">
+            <label>Sum Insured Looking For</label>
+            <div class="pill-group">
+              <button class="po" onclick="togP(this)">₹3–5L</button>
+              <button class="po sel" onclick="togP(this)">₹5–10L</button>
+              <button class="po" onclick="togP(this)">₹10–25L</button>
+              <button class="po" onclick="togP(this)">₹25L+</button>
+            </div>
+          </div>
+          <div class="fg">
+            <label>Do you have existing health insurance?</label>
+            <div class="pill-group">
+              <button class="po sel" onclick="togP(this)">No — first time</button>
+              <button class="po" onclick="togP(this)">Yes — want to switch</button>
+              <button class="po" onclick="togP(this)">Yes — want top-up</button>
+            </div>
+          </div>
+          <div class="fg">
+            <label>Any pre-existing conditions?</label>
+            <div class="pill-group">
+              <button class="po sel" onclick="togP(this)">None</button>
+              <button class="po" onclick="togP(this)">Diabetes</button>
+              <button class="po" onclick="togP(this)">Hypertension</button>
+              <button class="po" onclick="togP(this)">Heart condition</button>
+              <button class="po" onclick="togP(this)">Thyroid</button>
+              <button class="po" onclick="togP(this)">Multiple</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- LIFE fields -->
+      <div id="sf-life" class="sf" style="display:none;">
+        <div class="fgrid">
+          <div class="fg">
+            <label>Your Age Group</label>
+            <div class="pill-group">
+              <button class="po" onclick="togP(this)">18–25</button>
+              <button class="po sel" onclick="togP(this)">26–35</button>
+              <button class="po" onclick="togP(this)">36–45</button>
+              <button class="po" onclick="togP(this)">45+</button>
+            </div>
+          </div>
+          <div class="fg">
+            <label>Smoker?</label>
+            <div class="pill-group">
+              <button class="po sel" onclick="togP(this)">Non-smoker</button>
+              <button class="po" onclick="togP(this)">Smoker</button>
+            </div>
+          </div>
+          <div class="fg">
+            <label>What are you looking for?</label>
+            <div class="pill-group">
+              <button class="po sel" onclick="togP(this)">Pure Term Plan</button>
+              <button class="po" onclick="togP(this)">ULIP / Investment</button>
+              <button class="po" onclick="togP(this)">Endowment</button>
+              <button class="po" onclick="togP(this)">Not sure — advise me</button>
+            </div>
+          </div>
+          <div class="fg">
+            <label>Coverage Amount Needed</label>
+            <div class="pill-group">
+              <button class="po" onclick="togP(this)">₹25–50L</button>
+              <button class="po sel" onclick="togP(this)">₹50L–1Cr</button>
+              <button class="po" onclick="togP(this)">₹1–2Cr</button>
+              <button class="po" onclick="togP(this)">₹2Cr+</button>
+            </div>
+          </div>
+          <div class="fg span2">
+            <label>Number of dependants</label>
+            <div class="pill-group">
+              <button class="po" onclick="togP(this)">None</button>
+              <button class="po" onclick="togP(this)">1</button>
+              <button class="po sel" onclick="togP(this)">2</button>
+              <button class="po" onclick="togP(this)">3+</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BIKE fields -->
+      <div id="sf-bike" class="sf" style="display:none;">
+        <div class="fgrid">
+          <div class="fg">
+            <label>Registration Number</label>
+            <input class="fi" type="text" placeholder="e.g. TS 09 EX 1234"/>
+          </div>
+          <div class="fg">
+            <label>Make & Model</label>
+            <input class="fi" type="text" placeholder="e.g. Honda Activa 6G"/>
+          </div>
+          <div class="fg">
+            <label>Year of Manufacture</label>
+            <div class="pill-group">
+              <button class="po" onclick="togP(this)">2024</button>
+              <button class="po sel" onclick="togP(this)">2023</button>
+              <button class="po" onclick="togP(this)">2022</button>
+              <button class="po" onclick="togP(this)">2021</button>
+              <button class="po" onclick="togP(this)">2020 or earlier</button>
+            </div>
+          </div>
+          <div class="fg">
+            <label>Current / Expiring Insurer</label>
+            <select class="fi">
+              <option>No existing policy (new bike)</option>
+              <option>Bajaj Allianz</option>
+              <option>HDFC ERGO</option>
+              <option>New India Assurance</option>
+              <option>United India</option>
+              <option>Royal Sundaram</option>
+              <option>IFFCO Tokio</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="fg span2">
+            <label>Coverage needed</label>
+            <div class="pill-group">
+              <button class="po sel" onclick="togP(this)">Comprehensive (full cover)</button>
+              <button class="po" onclick="togP(this)">Third Party Only (mandatory)</button>
+              <button class="po" onclick="togP(this)">Not sure — advise me</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CAR fields -->
+      <div id="sf-car" class="sf" style="display:none;">
+        <div class="fgrid">
+          <div class="fg">
+            <label>Registration Number</label>
+            <input class="fi" type="text" placeholder="e.g. TS 09 BX 5678"/>
+          </div>
+          <div class="fg">
+            <label>Make & Model</label>
+            <input class="fi" type="text" placeholder="e.g. Maruti Swift VXi"/>
+          </div>
+          <div class="fg">
+            <label>Year of Manufacture</label>
+            <select class="fi">
+              <option>2024</option><option>2023</option><option>2022</option>
+              <option>2021</option><option>2020</option><option>2019 or earlier</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>Current / Expiring Insurer</label>
+            <select class="fi">
+              <option>No policy yet (new car)</option>
+              <option>Bajaj Allianz</option>
+              <option>HDFC ERGO</option>
+              <option>Tata AIG</option>
+              <option>ICICI Lombard</option>
+              <option>New India Assurance</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>Coverage type needed</label>
+            <div class="pill-group">
+              <button class="po sel" onclick="togP(this)">Comprehensive</button>
+              <button class="po" onclick="togP(this)">Third Party Only</button>
+              <button class="po" onclick="togP(this)">Not sure</button>
+            </div>
+          </div>
+          <div class="fg">
+            <label>Add-ons interested in?</label>
+            <div class="pill-group">
+              <button class="po" onclick="togP(this)">Zero Depreciation</button>
+              <button class="po" onclick="togP(this)">Engine Protection</button>
+              <button class="po" onclick="togP(this)">Roadside Assist</button>
+              <button class="po" onclick="togP(this)">Not sure</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- COMMERCIAL fields -->
+      <div id="sf-commercial" class="sf" style="display:none;">
+        <div class="fgrid">
+          <div class="fg">
+            <label>Vehicle Type</label>
+            <div class="pill-group">
+              <button class="po sel" onclick="togP(this)">Goods Carrier (Truck/Lorry)</button>
+              <button class="po" onclick="togP(this)">Passenger Bus / Minibus</button>
+              <button class="po" onclick="togP(this)">Taxi / Auto Rickshaw</button>
+              <button class="po" onclick="togP(this)">School Bus</button>
+              <button class="po" onclick="togP(this)">Crane / JCB / Excavator</button>
+              <button class="po" onclick="togP(this)">Other commercial</button>
+            </div>
+          </div>
+          <div class="fg">
+            <label>Number of Vehicles</label>
+            <div class="pill-group">
+              <button class="po sel" onclick="togP(this)">1</button>
+              <button class="po" onclick="togP(this)">2–5</button>
+              <button class="po" onclick="togP(this)">6–10</button>
+              <button class="po" onclick="togP(this)">10+ (fleet)</button>
+            </div>
+          </div>
+          <div class="fg">
+            <label>Goods Carrier Type</label>
+            <select class="fi">
+              <option>Long-haul freight</option>
+              <option>Local delivery / last mile</option>
+              <option>Tanker (fuel/chemical/water)</option>
+              <option>Refrigerated goods</option>
+              <option>N/A (not goods carrier)</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>Current / Expiring Insurer</label>
+            <select class="fi">
+              <option>No current policy</option>
+              <option>New India Assurance</option>
+              <option>United India</option>
+              <option>National Insurance</option>
+              <option>Oriental Insurance</option>
+              <option>Bajaj Allianz</option>
+              <option>IFFCO Tokio</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="fg span2">
+            <label>Coverage needed</label>
+            <div class="pill-group">
+              <button class="po sel" onclick="togP(this)">Act Only (mandatory minimum)</button>
+              <button class="po" onclick="togP(this)">Comprehensive with goods</button>
+              <button class="po" onclick="togP(this)">Fleet policy (multiple vehicles)</button>
+              <button class="po" onclick="togP(this)">Not sure — advise me</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wnav">
+        <button class="wback" onclick="goTo(1)">← Back</button>
+        <span class="wstep">Step 3 of 4</span>
+        <button class="wnext" onclick="goTo(3)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- STEP 4: SCHEDULE -->
+    <div class="wcard wp rv d2" id="wp3">
+      <div class="wcard-title">Step 4 of 4</div>
+      <h2 class="wcard-h">When should we <em>call you?</em></h2>
+
+      <div class="fgrid">
+        <div class="fg span2">
+          <label>Preferred Contact Method</label>
+          <div class="cm-row">
+            <div class="cm sel" onclick="selCM(this)"><span class="cm-ico">📞</span><span class="cm-lbl">Phone Call</span></div>
+            <div class="cm" onclick="selCM(this)"><span class="cm-ico">💬</span><span class="cm-lbl">WhatsApp</span></div>
+            <div class="cm" onclick="selCM(this)"><span class="cm-ico">📧</span><span class="cm-lbl">Email</span></div>
+          </div>
+        </div>
+        <div class="fg span2">
+          <label>Best Time to Reach You</label>
+          <div class="slot-grid">
+            <div class="slot sel" onclick="selSlot(this)"><span class="slot-t">9 AM – 12 PM</span><span class="slot-l">Morning</span></div>
+            <div class="slot" onclick="selSlot(this)"><span class="slot-t">12 PM – 4 PM</span><span class="slot-l">Afternoon</span></div>
+            <div class="slot" onclick="selSlot(this)"><span class="slot-t">4 PM – 7 PM</span><span class="slot-l">Evening</span></div>
+          </div>
+        </div>
+        <div class="fg span2">
+          <label>Anything else you'd like us to know? (optional)</label>
+          <textarea class="fi" placeholder="e.g. Existing policy expires next month, looking for zero dep add-on, have 5-year NCB..."></textarea>
+        </div>
+      </div>
+
+      <div class="wnav">
+        <button class="wback" onclick="goTo(2)">← Back</button>
+        <span class="wstep">Last step!</span>
+        <button class="wnext" onclick="submitForm()">Book Free Consultation ✓</button>
+      </div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="wp" id="wp4">
+      <div class="success-wrap">
+        <div class="success-ring">✅</div>
+        <h2 class="success-title">You're booked!</h2>
+        <p class="success-sub">Our specialist will call you within <strong>2 business hours</strong>.<br/>No spam. No pressure. Just honest advice.</p>
+        <div class="success-ref">
+          <div class="success-ref-lbl">Your Reference Number</div>
+          <div class="success-ref-code" id="refCode">CC-2024-0000</div>
+        </div>
+        <div class="success-actions">
+          <a href="https://wa.me/917842854466" class="sa-btn sa-wa">💬 Also WhatsApp Us</a>
+          <a href="index.html" class="sa-btn sa-secondary">← Back to Home</a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /wizard column -->
+
+  <!-- SIDEBAR -->
+  <aside class="book-sidebar rv d3">
+    <div class="sidebar-card">
+      <div class="advisor-mini">
+        <div class="am-avatar">👨‍💼</div>
+        <div>
+          <div class="am-name">Sunil Kumar</div>
+          <div class="am-role">Senior Advisor · Cover Credit</div>
+          <div class="am-avail">Available now</div>
+        </div>
+      </div>
+      <div class="trust-item">
+        <div class="ti-ico">🎯</div>
+        <div class="ti-body"><strong>We find the best rate</strong> — not the most profitable one for us. Our advice is the same whether you're buying a ₹5,000 bike policy or a ₹50L loan.</div>
+      </div>
+      <div class="trust-item">
+        <div class="ti-ico">🔒</div>
+        <div class="ti-body"><strong>Your data stays with us</strong> — never sold, never shared with third parties or junk mailers.</div>
+      </div>
+      <div class="trust-item">
+        <div class="ti-ico">⏱️</div>
+        <div class="ti-body"><strong>2-hour response guarantee</strong> during working hours (Mon–Sat, 9 AM–7 PM).</div>
+      </div>
+      <div class="trust-item">
+        <div class="ti-ico">💰</div>
+        <div class="ti-body"><strong>Zero fees to you</strong> — ever. Our fee comes from the insurer or lender. You pay exactly what you'd pay direct — often less.</div>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sc-title">Prefer WhatsApp?</div>
+      <div class="wa-block">
+        <p>Message us directly — share your details informally and we'll call you back on priority.</p>
+        <a href="https://wa.me/917842854466?text=Hi%20Cover%20Credit%2C%20I%27d%20like%20a%20free%20consultation" class="wa-link">💬 Chat on WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="sidebar-card">
+      <div class="sc-title">What happens next</div>
+      <div class="trust-item">
+        <div class="ti-ico">1️⃣</div>
+        <div class="ti-body">You submit this form (takes 2 minutes)</div>
+      </div>
+      <div class="trust-item">
+        <div class="ti-ico">2️⃣</div>
+        <div class="ti-body">Specialist calls you within 2 hours</div>
+      </div>
+      <div class="trust-item">
+        <div class="ti-ico">3️⃣</div>
+        <div class="ti-body">We compare options, explain everything clearly</div>
+      </div>
+      <div class="trust-item">
+        <div class="ti-ico">4️⃣</div>
+        <div class="ti-body">You decide — zero pressure, zero follow-up spam</div>
+      </div>
+    </div>
+  </aside>
+
+</div><!-- /book-layout -->
+
+<!-- FOOTER -->
+<footer class="ft">
+  <div class="ft-in">
+    <div class="ft-top">
+      <div>
+        <a href="index.html" class="ft-logo">Cover<em>Credit</em></a>
+        <p class="ft-ds">Honest insurance and financial advice for families across AP and Telangana. We sell the right policy — no pressure, no jargon.</p>
+        <div class="ft-con">📞 <a href="tel:+917842854466">+91 78428 54466</a></div>
+        <div class="ft-con">✉️ <a href="mailto:Covercredit.official@gmail.com">Covercredit.official@gmail.com</a></div>
+        <div class="ft-con">🕐 Mon–Sat: 9 AM – 7 PM</div>
+      </div>
+      <div class="ft-col"><div class="ft-clbl">Vehicle Insurance</div><ul>
+        <li><a href="vehicle-insurance.html">Vehicle Overview</a></li>
+        <li><a href="bike-insurance.html">Bike Insurance</a></li>
+        <li><a href="car-insurance.html">Car Insurance</a></li>
+        <li><a href="commercial-vehicle-insurance.html">Commercial Vehicle</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-clbl">Insurance & Finance</div><ul>
+        <li><a href="health-insurance.html">Health Insurance</a></li>
+        <li><a href="life-insurance.html">Life & Term Insurance</a></li>
+        <li><a href="loans.html">Loans & Finance</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-clbl">Company</div><ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="book.html">Book Consultation</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>© <span id="yr"></span> Cover Credit Insurance Advisors. All rights reserved. IRDAI Reg. No. [pending]</span>
+      <div class="ft-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── DEPT CONFIG ──────────────────────────────────────────────
+const deptConfig = {
+  loan:       { label:'Home / Personal Loan',  ico:'🏠', step3h:'Loan <em>specifics</em>' },
+  health:     { label:'Health Insurance',      ico:'🏥', step3h:'Health <em>coverage needs</em>' },
+  life:       { label:'Life Insurance',        ico:'❤️', step3h:'Life insurance <em>details</em>' },
+  bike:       { label:'Bike Insurance',        ico:'🏍️', step3h:'Your bike <em>details</em>' },
+  car:        { label:'Car Insurance',         ico:'🚗', step3h:'Your car <em>details</em>' },
+  commercial: { label:'Commercial Vehicle',    ico:'🚛', step3h:'Fleet & vehicle <em>details</em>' },
+};
+
+let currentDept = null;
+let currentStep = 0;
+
+// ── READ URL PARAM ON LOAD ────────────────────────────────────
+window.addEventListener('DOMContentLoaded', () => {
+  const params = new URLSearchParams(window.location.search);
+  const dept   = params.get('dept');
+
+  if (dept && deptConfig[dept]) {
+    // Auto-select this department
+    currentDept = dept;
+
+    // Highlight the matching card visually
+    document.querySelectorAll('.dc').forEach(c => {
+      c.classList.toggle('sel', c.dataset.dept === dept);
+    });
+
+    // Show the route banner
+    const cfg = deptConfig[dept];
+    document.getElementById('rbIco').textContent   = cfg.ico;
+    document.getElementById('rbTitle').textContent = `Booking for ${cfg.label}`;
+    document.getElementById('routeBanner').classList.add('show');
+
+    // Skip Step 1 — go straight to Step 2
+    goTo(1);
+  }
+
+  // Year in footer
+  document.getElementById('yr').textContent = new Date().getFullYear();
+});
+
+// ── DEPT CARD SELECTION (manual) ─────────────────────────────
+function selectDept(card) {
+  document.querySelectorAll('.dc').forEach(c => c.classList.remove('sel'));
+  card.classList.add('sel');
+  currentDept = card.dataset.dept;
+  document.getElementById('btnNext0').disabled = false;
+}
+
+// ── RESET to step 1 (from banner "Change" button) ─────────────
+function resetToStep1() {
+  document.getElementById('routeBanner').classList.remove('show');
+  // Remove ?dept from URL cleanly
+  history.replaceState(null, '', window.location.pathname);
+  goTo(0);
+}
+
+// ── STEP NAVIGATION ──────────────────────────────────────────
+function goTo(step) {
+  // If going to step 3, wire up the right smart fields
+  if (step === 2 && currentDept) {
+    document.querySelectorAll('.sf').forEach(el => el.style.display = 'none');
+    const sf = document.getElementById('sf-' + currentDept);
+    if (sf) sf.style.display = 'block';
+    const cfg = deptConfig[currentDept];
+    document.getElementById('step3h').innerHTML = cfg ? cfg.step3h : 'A few <em>quick specifics</em>';
+  }
+
+  // Show/hide panels
+  document.querySelectorAll('.wp').forEach((p, i) => {
+    p.classList.toggle('act', i === step);
+  });
+
+  // Update step circles
+  for (let i = 0; i < 4; i++) {
+    const ws = document.getElementById('ws' + i);
+    const wl = document.getElementById('wl' + i);
+    if (i < step)       { ws.classList.add('done'); ws.classList.remove('act'); if (wl) wl.classList.add('done'); }
+    else if (i === step){ ws.classList.add('act');  ws.classList.remove('done'); }
+    else                { ws.classList.remove('act', 'done'); if (wl) wl.classList.remove('done'); }
+  }
+
+  currentStep = step;
+  // Scroll to top of wizard
+  const hero = document.querySelector('.book-hero');
+  if (hero) window.scrollTo({ top: hero.offsetHeight + 72, behavior: 'smooth' });
+}
+
+// ── SUBMIT ────────────────────────────────────────────────────
+function submitForm() {
+  // Generate reference number
+  const ref = 'CC-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000);
+  document.getElementById('refCode').textContent = ref;
+  // Show success
+  document.querySelectorAll('.wp').forEach(p => p.classList.remove('act'));
+  document.getElementById('wp4').classList.add('act');
+  document.querySelector('.wiz-prog').style.opacity = '0';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ── PILL TOGGLES ──────────────────────────────────────────────
+function togP(btn) {
+  btn.closest('.pill-group').querySelectorAll('.po').forEach(b => b.classList.remove('sel'));
+  btn.classList.add('sel');
+}
+
+// ── CONTACT METHOD & SLOTS ────────────────────────────────────
+function selCM(el) {
+  el.closest('.cm-row').querySelectorAll('.cm').forEach(b => b.classList.remove('sel'));
+  el.classList.add('sel');
+}
+function selSlot(el) {
+  el.closest('.slot-grid').querySelectorAll('.slot').forEach(b => b.classList.remove('sel'));
+  el.classList.add('sel');
+}
+
+// ── CURSOR ────────────────────────────────────────────────────
+const cur = document.getElementById('cur');
+const cr  = document.getElementById('cr');
+let mx = 0, my = 0, cx = 0, cy = 0;
+document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cur.style.left = mx + 'px'; cur.style.top = my + 'px'; });
+(function animCR() {
+  cx += (mx - cx) * 0.12; cy += (my - cy) * 0.12;
+  cr.style.left = cx + 'px'; cr.style.top = cy + 'px';
+  requestAnimationFrame(animCR);
+})();
+document.querySelectorAll('a,button,.dc,.cm,.slot,.po').forEach(el => {
+  el.addEventListener('mouseenter', () => document.body.classList.add('hov'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('hov'));
+});
+
+// ── NAV SCROLL ────────────────────────────────────────────────
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('sc', window.scrollY > 20);
+}, { passive: true });
+
+// ── MOBILE MENU ───────────────────────────────────────────────
+function toggleMob() {
+  document.getElementById('burger').classList.toggle('op');
+  document.getElementById('mob').classList.toggle('op');
+}
+
+// ── SCROLL REVEAL ─────────────────────────────────────────────
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+</script>
 </body>
 </html>
