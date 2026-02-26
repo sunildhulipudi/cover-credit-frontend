@@ -94,47 +94,119 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 
 
 
-/* ═══ CARTOON STORY — BIKE ═══ */
-.story-wrap{padding:4rem 5%;background:#06101f;}
-.story-head{text-align:center;margin-bottom:2.5rem;}
-.story-tag{display:inline-flex;align-items:center;gap:.4rem;font-size:.64rem;font-weight:700;color:#ff6b00;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:.7rem;}
-.story-tag::before{content:'';width:16px;height:2px;background:#ff6b00;}
-.story-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.6vw,2.4rem);font-weight:900;line-height:1.08;margin-bottom:.5rem;}
-.story-title em{font-style:italic;color:#ff6b00;}
-.story-sub{font-size:.85rem;color:rgba(255,255,255,.4);max-width:480px;margin:0 auto;}
-/* 4-panel grid */
-.cartoon-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:1.5rem;}
-.cpanel{background:#0d1826;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;}
-.cpanel svg{width:100%;height:auto;display:block;}
-.cp-caption{padding:.85rem 1rem 1rem;flex:1;}
-.cp-num{font-family:'Bebas Neue',sans-serif;font-size:.65rem;letter-spacing:2px;color:rgba(255,255,255,.22);margin-bottom:.25rem;}
-.cp-tt{font-size:.8rem;font-weight:700;color:rgba(255,255,255,.9);line-height:1.3;margin-bottom:.35rem;}
-.cp-ds{font-size:.72rem;color:rgba(255,255,255,.45);line-height:1.6;}
-.cp-ds strong{color:rgba(255,255,255,.75);}
-/* Quote strip */
-.story-quote{background:rgba(255,107,0,.05);border:1px solid rgba(255,107,0,.12);border-radius:12px;padding:1.3rem 1.5rem;display:flex;align-items:flex-start;gap:1.1rem;}
-.sq-av{font-size:1.8rem;flex-shrink:0;}
-.sq-q{font-family:'Playfair Display',serif;font-size:.9rem;font-style:italic;line-height:1.65;color:rgba(255,255,255,.72);margin-bottom:.28rem;}
-.sq-nm{font-size:.68rem;color:rgba(255,255,255,.3);}
-.sq-note{font-size:.62rem;color:rgba(255,255,255,.18);font-style:italic;}
-/* Cartoon animations */
-@keyframes wheelSpin{to{transform:rotate(360deg)}}
-@keyframes bikeHop{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
-@keyframes roadScroll{from{transform:translateX(0)}to{transform:translateX(-120px)}}
-@keyframes sunPulse{0%,100%{opacity:.9;r:20}50%{opacity:1;r:22}}
-@keyframes cloudDrift{from{transform:translateX(0)}to{transform:translateX(18px)}}
-@keyframes crashFlash{0%,100%{opacity:0}20%,60%{opacity:1}}
-@keyframes starSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-@keyframes sparkOut{0%{opacity:1;transform:translate(0,0)}100%{opacity:0;transform:translate(var(--dx),var(--dy))}}
-@keyframes cardFloat{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-5px) rotate(4deg)}}
-@keyframes cardGlow{0%,100%{filter:drop-shadow(0 0 6px rgba(255,107,0,.5))}50%{filter:drop-shadow(0 0 18px rgba(255,107,0,.95))}}
-@keyframes shieldPop{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
-@keyframes checkDraw{from{stroke-dashoffset:60}to{stroke-dashoffset:0}}
-@keyframes starTwinkle{0%,100%{opacity:0;transform:scale(0)}50%{opacity:1;transform:scale(1)}}
-@keyframes thumbUp{0%,100%{transform:rotate(0deg)}50%{transform:rotate(-12deg)}}
-@keyframes rainFall{from{transform:translateY(-30px)}to{transform:translateY(260px)}}
-@media(max-width:900px){.cartoon-strip{grid-template-columns:1fr 1fr;}}
-@media(max-width:520px){.cartoon-strip{grid-template-columns:1fr;}}
+
+/* ══════════════════════════════════════
+   CARTOON STORY STRIP
+══════════════════════════════════════ */
+.cartoon-sec {
+  padding: 5rem 5%;
+  background: #06101f;
+  overflow: hidden;
+}
+.cartoon-inner { max-width: 1300px; margin: 0 auto; }
+.cartoon-hd { text-align: center; margin-bottom: 3rem; }
+.cartoon-kicker {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-size: .64rem; font-weight: 700; color: #ff6b00;
+  text-transform: uppercase; letter-spacing: 2.5px; margin-bottom: .7rem;
+}
+.cartoon-kicker::before { content:''; width:14px; height:2px; background:#ff6b00; }
+.cartoon-hed {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 2.8vw, 2.5rem);
+  font-weight: 900; line-height: 1.08; margin-bottom: .5rem;
+}
+.cartoon-hed em { font-style: italic; color: #ff6b00; }
+.cartoon-sub { font-size: .86rem; color: rgba(255,255,255,.38); max-width: 540px; margin: 0 auto; line-height: 1.65; }
+.cstrip-wrap {
+  position: relative; overflow-x: auto; overflow-y: visible;
+  padding-bottom: 1rem; cursor: grab;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin; scrollbar-color: rgba(255,107,0,.3) transparent;
+}
+.cstrip-wrap:active { cursor: grabbing; }
+.cstrip-wrap::-webkit-scrollbar { height: 4px; }
+.cstrip-wrap::-webkit-scrollbar-thumb { background: rgba(255,107,0,.25); border-radius: 4px; }
+.cstrip { display: flex; gap: 16px; width: max-content; padding: .5rem .25rem 1rem; }
+.cpanel {
+  width: 300px; flex-shrink: 0; border-radius: 20px; overflow: hidden;
+  background: #0b1828; border: 1px solid rgba(255,255,255,.07);
+  display: flex; flex-direction: column;
+  opacity: 0; transform: translateY(22px);
+  transition: opacity .6s ease, transform .6s ease;
+  box-shadow: 0 12px 40px rgba(0,0,0,.4);
+}
+.cpanel.vis { opacity: 1; transform: translateY(0); }
+.cpanel:nth-child(1){transition-delay:0s;} .cpanel:nth-child(2){transition-delay:.12s;}
+.cpanel:nth-child(3){transition-delay:.08s;} .cpanel:nth-child(4){transition-delay:.2s;}
+.cpanel:nth-child(5){transition-delay:.16s;} .cpanel:nth-child(6){transition-delay:.28s;}
+.cp-art { position: relative; height: 310px; overflow: hidden; flex-shrink: 0; }
+.cp-art svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.cp-badge {
+  position: absolute; top: .75rem; left: .75rem;
+  background: rgba(0,0,0,.55); backdrop-filter: blur(6px); border-radius: 100px;
+  font-family: 'Bebas Neue', sans-serif; font-size: .7rem; letter-spacing: 1.5px;
+  padding: .18rem .65rem; color: rgba(255,255,255,.6); z-index: 10;
+}
+.cp-caption {
+  padding: 1.2rem 1.25rem 1.3rem; flex: 1; display: flex; flex-direction: column; gap: .5rem;
+  border-top: 1px solid rgba(255,255,255,.05);
+}
+.cp-caption-title { font-size: .82rem; font-weight: 700; color: rgba(255,255,255,.9); line-height: 1.3; }
+.cp-caption-body { font-size: .73rem; color: rgba(255,255,255,.48); line-height: 1.65; }
+.cp-caption-body strong { color: rgba(255,255,255,.75); font-weight: 600; }
+.cp-callout {
+  display: flex; align-items: flex-start; gap: .5rem;
+  background: rgba(255,107,0,.07); border-left: 2.5px solid #ff6b00;
+  border-radius: 0 8px 8px 0; padding: .55rem .7rem; margin-top: .2rem;
+}
+.cp-callout-icon { font-size: .95rem; flex-shrink: 0; margin-top: .05rem; }
+.cp-callout-text { font-size: .68rem; color: #ffb380; line-height: 1.55; }
+.cp-callout-text strong { color: #ff9248; font-weight: 700; }
+.cp-chip {
+  display: inline-flex; align-items: center; gap: .3rem; font-size: .62rem;
+  font-weight: 700; padding: .2rem .65rem; border-radius: 100px; width: fit-content; margin-top: .15rem;
+}
+.cp-chip-green { background: rgba(74,222,128,.1); border: 1px solid rgba(74,222,128,.25); color: #4ade80; }
+.cp-chip-red   { background: rgba(248,113,113,.1); border: 1px solid rgba(248,113,113,.25); color: #f87171; }
+.cp-chip-gold  { background: rgba(253,186,116,.1); border: 1px solid rgba(253,186,116,.25); color: #fdba74; }
+.cstrip-arrow { flex-shrink:0; display:flex; align-items:center; justify-content:center; width:28px; align-self:center; margin-top:-80px; }
+.cstrip-arrow svg { opacity:.4; }
+.cartoon-quote {
+  margin-top: 2.2rem; background: rgba(255,107,0,.05); border: 1px solid rgba(255,107,0,.12);
+  border-radius: 14px; padding: 1.6rem 1.8rem; display: flex; align-items: flex-start; gap: 1.2rem;
+}
+.cq-avatar {
+  width: 52px; height: 52px; flex-shrink: 0; border-radius: 50%;
+  background: linear-gradient(135deg, rgba(255,107,0,.2), rgba(255,107,0,.05));
+  border: 1px solid rgba(255,107,0,.2); display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
+}
+.cq-text { flex: 1; }
+.cq-quote { font-family: 'Playfair Display', serif; font-size: .95rem; font-style: italic; line-height: 1.68; color: rgba(255,255,255,.72); margin-bottom: .4rem; }
+.cq-who { font-size: .68rem; font-weight: 700; color: rgba(255,255,255,.3); }
+.cq-note { font-size: .62rem; color: rgba(255,255,255,.18); font-style: italic; margin-top: .1rem; }
+@keyframes tyreRoll     { to { transform: rotate(360deg); } }
+@keyframes bikeHop      { 0%,100%{transform:translateY(0) rotate(0deg)} 50%{transform:translateY(-8px) rotate(-1.5deg)} }
+@keyframes sunRay       { 0%,100%{transform:rotate(0deg);opacity:.65} 50%{transform:rotate(18deg);opacity:1} }
+@keyframes cloudDrift   { 0%{transform:translateX(0)} 100%{transform:translateX(14px)} }
+@keyframes rainDrop     { 0%{transform:translateY(-30px);opacity:0} 15%{opacity:.75} 100%{transform:translateY(320px);opacity:0} }
+@keyframes carCutIn     { 0%{transform:translateX(60px);opacity:0} 55%{transform:translateX(-8px);opacity:1} 100%{transform:translateX(0);opacity:1} }
+@keyframes crashShake   { 0%,100%{transform:rotate(0)} 20%{transform:rotate(-5deg)} 40%{transform:rotate(4deg)} 60%{transform:rotate(-2.5deg)} 80%{transform:rotate(2deg)} }
+@keyframes starSpin     { 0%{transform:rotate(0) scale(1)} 50%{transform:rotate(180deg) scale(1.15)} 100%{transform:rotate(360deg) scale(1)} }
+@keyframes phonePulse   { 0%,100%{transform:scale(1)} 30%{transform:scale(1.05) rotate(3.5deg)} 60%{transform:scale(1.05) rotate(-3.5deg)} }
+@keyframes screenGlow   { 0%,100%{opacity:.7} 50%{opacity:1} }
+@keyframes wrenchWiggle { 0%,100%{transform:rotate(-15deg)} 50%{transform:rotate(15deg)} }
+@keyframes thumbsUp     { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-6px) scale(1.08)} }
+@keyframes floatBubble  { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-5px)} }
+@keyframes sparkle      { 0%,100%{opacity:0;transform:scale(0)} 50%{opacity:1;transform:scale(1)} }
+@keyframes dizzySpin    { to{transform:rotate(360deg)} }
+@keyframes blinkEye     { 0%,88%,100%{transform:scaleY(1)} 92%{transform:scaleY(.08)} }
+@keyframes carFloat     { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+@keyframes waterRise    { 0%,100%{transform:scaleY(1) translateY(0)} 50%{transform:scaleY(1.04) translateY(-4px)} }
+@keyframes rainBlow     { 0%{transform:translateY(-20px) translateX(0);opacity:0} 15%{opacity:.7} 100%{transform:translateY(310px) translateX(30px);opacity:0} }
+@keyframes truckCrawl   { 0%,100%{transform:translateX(0)} 50%{transform:translateX(4px)} }
+@keyframes calmBreathe  { 0%,100%{transform:scaleY(1)} 50%{transform:scaleY(.94)} }
+@media(max-width:768px) { .cstrip{gap:10px;padding:.5rem .1rem 1rem;} .cpanel{width:265px;} .cp-art{height:270px;} }
 
 /* ═══ FEATURES GRID ═══ */
 .feat-g{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2rem;}
@@ -246,7 +318,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 <body>
 <div id="cur"></div><div id="cr"></div>
 <div class="fab">
-  <a href="book.html" class="fbk">📅 Book Free Session</a>
+  <a href="book.html?dept=bike" class="fbk">📅 Book Free Session</a>
   <a href="https://wa.me/917842854466" target="_blank" class="fwa">
     <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     WhatsApp
@@ -270,7 +342,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
       </li>
       <li><a href="loans.html">Loans</a></li>
       <li><a href="about.html">About</a></li>
-      <li><a href="book.html" class="ncta">Free Consultation</a></li>
+      <li><a href="book.html?dept=bike" class="ncta">Free Consultation</a></li>
     </ul>
     <button class="burger" id="burger"><span></span><span></span><span></span></button>
   </div>
@@ -283,7 +355,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
   <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicle</a>
   <a href="loans.html">Loans</a>
   <a href="about.html">About</a>
-  <a href="book.html" class="mc">Book Free Consultation →</a>
+  <a href="book.html?dept=bike" class="mc">Book Free Consultation →</a>
 </div>
 
 <!-- HERO -->
@@ -296,7 +368,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
     <h1 class="htit">Ride hard.<br/>Ride with <em>zero worry.</em></h1>
     <p class="hdesc">Comprehensive bike insurance from ₹538/year. We compare 15+ insurers, explain every add-on, and get your policy issued in minutes — not days.</p>
     <div class="hbtns">
-      <a href="book.html" class="bg">Get My Bike Insured →</a>
+      <a href="book.html?dept=bike" class="bg">Get My Bike Insured →</a>
       <a href="tel:+917842854466" class="bgh">📞 +91 78428 54466</a>
     </div>
     <div class="hstats">
@@ -310,396 +382,519 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 </section>
 
 <!-- ═══ CARTOON STORY — BIKE ═══ -->
-<section class="story-wrap" id="bikeStory">
-  <div class="si">
-    <div class="story-head rv">
-      <div class="story-tag">Hyderabad · Real Story</div>
-      <h2 class="story-title">Arjun crashed on NH-65.<br/>Didn't pay a <em>single rupee.</em></h2>
-      <p class="story-sub">Three weeks before this happened, he spent 20 minutes with Cover Credit sorting a comprehensive policy. That decision covered a ₹41,200 repair bill.</p>
+<section class="cartoon-sec">
+  <div class="cartoon-inner">
+    <div class="cartoon-hd rv">
+      <div class="cartoon-kicker">True Story · Hyderabad · NH-65</div>
+      <h2 class="cartoon-hed rv d1">One phone call. Zero bill.<br/>Because he <em>listened to his agent.</em></h2>
+      <p class="cartoon-sub rv d2">Arjun never called Cover Credit when his bike crashed. He didn't need to. His Cover Credit agent had already told him exactly what to do — months before the accident happened.</p>
     </div>
-    <div class="cartoon-strip rv d1">
+    <div class="cstrip-wrap rv d1">
+      <div class="cstrip">
 
-      <div class="cpanel">
-        <svg viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
-<defs>
-  <linearGradient id="sky1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a6ba8"/><stop offset="1" stop-color="#4fc3f7"/></linearGradient>
-  <linearGradient id="road1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#546e7a"/><stop offset="1" stop-color="#37474f"/></linearGradient>
-  <linearGradient id="bk1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff5722"/><stop offset="1" stop-color="#bf360c"/></linearGradient>
-  <linearGradient id="helmet1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#37474f"/><stop offset="1" stop-color="#1c2a33"/></linearGradient>
-</defs>
-<!-- Sky -->
-<rect width="280" height="200" fill="url(#sky1)"/>
-<!-- Sun with rays -->
-<circle cx="245" cy="32" r="18" fill="#ffeb3b" opacity=".25"/>
-<circle cx="245" cy="32" r="13" fill="#ffd54f" opacity=".6"/>
-<circle cx="245" cy="32" r="9" fill="#ffee58"/>
-<!-- Clouds -->
-<g style="animation:cloudDrift 6s ease-in-out infinite alternate">
-  <ellipse cx="52" cy="28" rx="28" ry="12" fill="white" opacity=".55"/>
-  <ellipse cx="38" cy="32" rx="18" ry="10" fill="white" opacity=".55"/>
-  <ellipse cx="68" cy="32" rx="16" ry="9" fill="white" opacity=".55"/>
-</g>
-<g style="animation:cloudDrift 8s ease-in-out infinite alternate-reverse">
-  <ellipse cx="175" cy="20" rx="24" ry="10" fill="white" opacity=".4"/>
-  <ellipse cx="162" cy="24" rx="15" ry="8" fill="white" opacity=".4"/>
-  <ellipse cx="188" cy="23" rx="14" ry="7" fill="white" opacity=".4"/>
-</g>
-<!-- Buildings silhouette -->
-<rect x="0" y="85" width="30" height="75" fill="#1a2533"/>
-<rect x="5" y="78" width="20" height="10" fill="#1a2533"/>
-<rect x="8" y="95" width="5" height="5" fill="#ffd54f" opacity=".5"/>
-<rect x="18" y="95" width="5" height="5" fill="#ffd54f" opacity=".35"/>
-<rect x="8" y="106" width="5" height="5" fill="#ffd54f" opacity=".4"/>
-<rect x="35" y="95" width="25" height="65" fill="#212e3d"/>
-<rect x="40" y="103" width="6" height="6" fill="#4fc3f7" opacity=".4"/>
-<rect x="50" y="103" width="6" height="6" fill="#4fc3f7" opacity=".3"/>
-<rect x="40" y="115" width="6" height="6" fill="#4fc3f7" opacity=".35"/>
-<!-- Trees -->
-<rect x="215" y="128" width="8" height="32" fill="#4a3728"/>
-<ellipse cx="219" cy="124" rx="16" ry="18" fill="#2e7d32"/>
-<ellipse cx="219" cy="118" rx="12" ry="14" fill="#388e3c"/>
-<rect x="240" y="138" width="6" height="22" fill="#4a3728"/>
-<ellipse cx="243" cy="135" rx="13" ry="15" fill="#2e7d32"/>
-<!-- Road -->
-<rect x="0" y="158" width="280" height="42" fill="url(#road1)"/>
-<!-- Road shoulder -->
-<rect x="0" y="158" width="280" height="3" fill="#78909c"/>
-<!-- Road center dashes animated -->
-<g style="animation:roadScroll 1s linear infinite">
-  <rect x="10" y="177" width="36" height="4" rx="2" fill="#ffeb3b" opacity=".7"/>
-  <rect x="70" y="177" width="36" height="4" rx="2" fill="#ffeb3b" opacity=".7"/>
-  <rect x="130" y="177" width="36" height="4" rx="2" fill="#ffeb3b" opacity=".7"/>
-  <rect x="190" y="177" width="36" height="4" rx="2" fill="#ffeb3b" opacity=".7"/>
-  <rect x="250" y="177" width="36" height="4" rx="2" fill="#ffeb3b" opacity=".7"/>
-</g>
-<!-- BIKE GROUP — animated hop -->
-<g style="animation:bikeHop 1.2s ease-in-out infinite">
-  <!-- Rear wheel -->
-  <g style="transform-origin:85px 170px;animation:wheelSpin 0.5s linear infinite">
-    <circle cx="85" cy="170" r="22" fill="#263238" stroke="#37474f" stroke-width="2"/>
-    <circle cx="85" cy="170" r="15" fill="#2e3c43"/>
-    <line x1="85" y1="148" x2="85" y2="192" stroke="#546e7a" stroke-width="2"/>
-    <line x1="63" y1="170" x2="107" y2="170" stroke="#546e7a" stroke-width="2"/>
-    <line x1="69" y1="154" x2="101" y2="186" stroke="#546e7a" stroke-width="1.5"/>
-    <line x1="69" y1="186" x2="101" y2="154" stroke="#546e7a" stroke-width="1.5"/>
-    <circle cx="85" cy="170" r="5" fill="#607d8b"/>
+        <div class="cpanel">
+          <div class="cp-art">
+            <div class="cp-badge">01 · THE RIDE</div>
+            <svg viewBox="0 0 300 310" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky1b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a8fe3"/><stop offset="1" stop-color="#7dd3fc"/></linearGradient>
+    <linearGradient id="road1b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2d3142"/><stop offset="1" stop-color="#1a1d2e"/></linearGradient>
+  </defs>
+  <rect width="300" height="310" fill="url(#sky1b)"/>
+  <!-- Sun -->
+  <g style="animation:sunRay 4s ease-in-out infinite;transform-origin:258px 46px">
+    <circle cx="258" cy="46" r="28" fill="#FFD166" opacity=".25"/>
+    <circle cx="258" cy="46" r="19" fill="#FFD166"/>
+    <line x1="258" y1="12" x2="258" y2="4" stroke="#FFD166" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="258" y1="80" x2="258" y2="88" stroke="#FFD166" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="224" y1="46" x2="216" y2="46" stroke="#FFD166" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="292" y1="46" x2="300" y2="46" stroke="#FFD166" stroke-width="2.5" stroke-linecap="round"/>
+    <line x1="234" y1="22" x2="228" y2="16" stroke="#FFD166" stroke-width="2" stroke-linecap="round"/>
+    <line x1="282" y1="70" x2="288" y2="76" stroke="#FFD166" stroke-width="2" stroke-linecap="round"/>
+    <line x1="282" y1="22" x2="288" y2="16" stroke="#FFD166" stroke-width="2" stroke-linecap="round"/>
+    <line x1="234" y1="70" x2="228" y2="76" stroke="#FFD166" stroke-width="2" stroke-linecap="round"/>
   </g>
-  <!-- Front wheel -->
-  <g style="transform-origin:185px 170px;animation:wheelSpin 0.5s linear infinite">
-    <circle cx="185" cy="170" r="22" fill="#263238" stroke="#37474f" stroke-width="2"/>
-    <circle cx="185" cy="170" r="15" fill="#2e3c43"/>
-    <line x1="185" y1="148" x2="185" y2="192" stroke="#546e7a" stroke-width="2"/>
-    <line x1="163" y1="170" x2="207" y2="170" stroke="#546e7a" stroke-width="2"/>
-    <line x1="169" y1="154" x2="201" y2="186" stroke="#546e7a" stroke-width="1.5"/>
-    <line x1="169" y1="186" x2="201" y2="154" stroke="#546e7a" stroke-width="1.5"/>
-    <circle cx="185" cy="170" r="5" fill="#607d8b"/>
+  <!-- Clouds -->
+  <g style="animation:cloudDrift 6s ease-in-out infinite alternate">
+    <ellipse cx="72" cy="58" rx="38" ry="17" fill="white" opacity=".92"/>
+    <ellipse cx="53" cy="62" rx="24" ry="15" fill="white" opacity=".92"/>
+    <ellipse cx="90" cy="62" rx="22" ry="14" fill="white" opacity=".92"/>
   </g>
-  <!-- Bike frame -->
-  <path d="M90 170 L110 142 L155 138 L185 155" fill="none" stroke="#ff5722" stroke-width="5" stroke-linecap="round"/>
-  <!-- Engine/body fill -->
-  <ellipse cx="140" cy="146" rx="34" ry="16" fill="url(#bk1)"/>
-  <ellipse cx="138" cy="141" rx="28" ry="11" fill="#ff6d3f"/>
-  <!-- Exhaust -->
-  <path d="M95 168 Q80 172 72 168" stroke="#90a4ae" stroke-width="4" fill="none" stroke-linecap="round"/>
-  <!-- Fork -->
-  <path d="M170 148 L185 155" stroke="#90a4ae" stroke-width="4" stroke-linecap="round"/>
-  <path d="M175 143 L185 155" stroke="#78909c" stroke-width="3" stroke-linecap="round"/>
-  <!-- Handlebar -->
-  <path d="M168 133 L180 126 L184 132" stroke="#607d8b" stroke-width="3" fill="none" stroke-linecap="round"/>
-  <!-- RIDER -->
+  <g style="animation:cloudDrift 9s ease-in-out infinite alternate-reverse">
+    <ellipse cx="168" cy="40" rx="30" ry="13" fill="white" opacity=".72"/>
+    <ellipse cx="152" cy="44" rx="20" ry="11" fill="white" opacity=".72"/>
+    <ellipse cx="185" cy="44" rx="17" ry="10" fill="white" opacity=".72"/>
+  </g>
+  <!-- Buildings -->
+  <rect x="0" y="148" width="30" height="82" fill="#1255a0" rx="2"/>
+  <rect x="4" y="156" width="7" height="7" fill="#7dd3fc" opacity=".5"/><rect x="4" y="167" width="7" height="7" fill="#7dd3fc" opacity=".4"/><rect x="4" y="178" width="7" height="7" fill="#7dd3fc" opacity=".3"/>
+  <rect x="15" y="164" width="7" height="7" fill="#7dd3fc" opacity=".45"/><rect x="15" y="175" width="7" height="7" fill="#7dd3fc" opacity=".5"/>
+  <rect x="24" y="162" width="32" height="68" fill="#0d4490" rx="2"/>
+  <rect x="28" y="168" width="8" height="8" fill="#7dd3fc" opacity=".4"/><rect x="40" y="168" width="8" height="8" fill="#7dd3fc" opacity=".5"/>
+  <rect x="28" y="180" width="8" height="8" fill="#7dd3fc" opacity=".35"/><rect x="40" y="180" width="8" height="8" fill="#7dd3fc" opacity=".4"/>
+  <rect x="240" y="145" width="28" height="85" fill="#1255a0" rx="2"/>
+  <rect x="244" y="152" width="7" height="7" fill="#7dd3fc" opacity=".5"/><rect x="256" y="152" width="7" height="7" fill="#7dd3fc" opacity=".4"/>
+  <rect x="244" y="163" width="7" height="7" fill="#7dd3fc" opacity=".4"/>
+  <rect x="268" y="158" width="32" height="72" fill="#1565a0" rx="2"/>
+  <rect x="272" y="164" width="8" height="8" fill="#7dd3fc" opacity=".5"/><rect x="284" y="164" width="8" height="8" fill="#7dd3fc" opacity=".5"/>
+  <rect x="272" y="176" width="8" height="8" fill="#7dd3fc" opacity=".35"/><rect x="284" y="176" width="8" height="8" fill="#7dd3fc" opacity=".4"/>
+  <!-- Road -->
+  <rect x="0" y="228" width="300" height="82" fill="url(#road1b)"/>
+  <rect x="0" y="228" width="300" height="3" fill="rgba(255,255,255,.1)"/>
+  <rect x="0" y="228" width="5" height="82" fill="#e9b000" opacity=".6"/>
+  <rect x="295" y="228" width="5" height="82" fill="#e9b000" opacity=".6"/>
+  <rect x="0" y="262" width="50" height="4" rx="2" fill="rgba(255,255,255,.18)"/>
+  <rect x="70" y="262" width="50" height="4" rx="2" fill="rgba(255,255,255,.18)"/>
+  <rect x="140" y="262" width="50" height="4" rx="2" fill="rgba(255,255,255,.18)"/>
+  <rect x="210" y="262" width="55" height="4" rx="2" fill="rgba(255,255,255,.18)"/>
+  <!-- Bike + rider animated -->
+  <g style="animation:bikeHop 2.2s ease-in-out infinite;transform-origin:155px 222px">
+    <!-- Exhaust smoke -->
+    <circle cx="90" cy="214" r="5" fill="rgba(255,255,255,.14)" style="animation:sparkle 1.3s ease-out infinite"/>
+    <circle cx="79" cy="207" r="7" fill="rgba(255,255,255,.08)" style="animation:sparkle 1.3s ease-out 0.35s infinite"/>
+    <!-- Rear wheel -->
+    <g style="animation:tyreRoll 0.55s linear infinite;transform-origin:108px 228px">
+      <circle cx="108" cy="228" r="28" fill="#1a1a2e" stroke="#555" stroke-width="3"/>
+      <circle cx="108" cy="228" r="18" fill="#2a2a3e"/>
+      <circle cx="108" cy="228" r="8" fill="#666"/>
+      <line x1="108" y1="200" x2="108" y2="256" stroke="#777" stroke-width="2"/>
+      <line x1="80" y1="228" x2="136" y2="228" stroke="#777" stroke-width="2"/>
+    </g>
+    <!-- Front wheel -->
+    <g style="animation:tyreRoll 0.55s linear infinite;transform-origin:202px 228px">
+      <circle cx="202" cy="228" r="28" fill="#1a1a2e" stroke="#555" stroke-width="3"/>
+      <circle cx="202" cy="228" r="18" fill="#2a2a3e"/>
+      <circle cx="202" cy="228" r="8" fill="#666"/>
+      <line x1="202" y1="200" x2="202" y2="256" stroke="#777" stroke-width="2"/>
+      <line x1="174" y1="228" x2="230" y2="228" stroke="#777" stroke-width="2"/>
+    </g>
+    <!-- Frame -->
+    <path d="M116 228 L140 184 L175 184 L202 206" fill="none" stroke="#ff6b00" stroke-width="5" stroke-linecap="round"/>
+    <path d="M140 184 L148 162 L168 162 L168 184" fill="none" stroke="#ff6b00" stroke-width="4.5" stroke-linecap="round"/>
+    <!-- Body fill -->
+    <path d="M118 226 Q140 184 175 184 Q196 186 202 206 L185 226 Z" fill="#ff6b00" opacity=".88"/>
+    <path d="M140 184 L148 162 L168 162 L168 184 Z" fill="#cc5500" opacity=".9"/>
+    <!-- Handlebar -->
+    <path d="M168 162 L183 154 L187 162" stroke="#999" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- Headlight -->
+    <ellipse cx="200" cy="208" rx="7" ry="5" fill="#fff9c4" opacity=".9"/>
+    <ellipse cx="200" cy="208" rx="4" ry="3" fill="white"/>
+    <ellipse cx="200" cy="215" rx="4" ry="2.5" fill="#FFA500"/>
+    <!-- Exhaust -->
+    <path d="M118 222 Q98 224 85 220" stroke="#999" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- Shine -->
+    <path d="M128 200 L148 184 L153 186 L133 202 Z" fill="rgba(255,255,255,.15)"/>
+    <!-- Rider body (blue jacket) -->
+    <path d="M148 180 Q152 200 164 200 L174 200 Q182 200 186 180 Z" fill="#1565c0"/>
+    <!-- Legs -->
+    <line x1="156" y1="199" x2="148" y2="222" stroke="#2d2d2d" stroke-width="7" stroke-linecap="round"/>
+    <line x1="170" y1="199" x2="173" y2="220" stroke="#2d2d2d" stroke-width="7" stroke-linecap="round"/>
+    <!-- Arm -->
+    <path d="M180 186 Q192 170 188 163" stroke="#1565c0" stroke-width="5" fill="none" stroke-linecap="round"/>
+    <!-- Neck -->
+    <rect x="157" y="167" width="10" height="12" rx="3" fill="#c68642"/>
+    <!-- Head with skin -->
+    <circle cx="162" cy="157" r="17" fill="#c68642"/>
+    <!-- Helmet orange -->
+    <path d="M145 157 Q145 135 162 135 Q179 135 179 157 Z" fill="#ff6b00"/>
+    <path d="M145 157 L147 161 L177 161 L179 157" fill="#cc5500" opacity=".85"/>
+    <!-- Visor -->
+    <path d="M148 157 Q162 152 176 157" stroke="#111" stroke-width="2.5" fill="rgba(0,0,0,.2)"/>
+    <!-- Smile visible below visor -->
+    <path d="M156 164 Q162 169 168 164" stroke="#a05528" stroke-width="2" fill="none" stroke-linecap="round"/>
+  </g>
+  <!-- Agent speech bubble -->
+  <g style="animation:floatBubble 3s ease-in-out infinite">
+    <path d="M78 152 L90 166 L60 162 Z" fill="white"/>
+    <rect x="8" y="102" width="170" height="52" rx="11" fill="white"/>
+    <!-- Mini agent face -->
+    <circle cx="24" cy="128" r="10" fill="#f0c070"/>
+    <circle cx="21" cy="126" r="1.8" fill="#333"/>
+    <circle cx="27" cy="126" r="1.8" fill="#333"/>
+    <path d="M20 131 Q24 134 28 131" stroke="#a05528" stroke-width="1.3" fill="none"/>
+    <rect x="18" y="123.5" width="6" height="4.5" rx="1.5" fill="none" stroke="#555" stroke-width="1"/>
+    <rect x="25" y="123.5" width="6" height="4.5" rx="1.5" fill="none" stroke="#555" stroke-width="1"/>
+    <line x1="24" y1="125.5" x2="25" y2="125.5" stroke="#555" stroke-width="1"/>
+    <!-- Dialogue -->
+    <text x="40" y="117" font-size="7.8" fill="#111" font-weight="700" font-family="DM Sans,sans-serif">Sunil (Cover Credit):</text>
+    <text x="40" y="128" font-size="7.2" fill="#333" font-family="DM Sans,sans-serif">"Save the insurer number</text>
+    <text x="40" y="138" font-size="7.2" fill="#333" font-family="DM Sans,sans-serif">on your policy card.</text>
+    <text x="40" y="148" font-size="7.2" fill="#ff6b00" font-weight="700" font-family="DM Sans,sans-serif">Call them directly — not us."</text>
+  </g>
+</svg>
+          </div>
+          <div class="cp-caption">
+            <div class="cp-caption-title">Arjun buys comprehensive cover. Agent gives him one parting tip.</div>
+            <div class="cp-caption-body">Cover Credit agent Sunil compared 15 insurers, explained zero-dep, and got Arjun the right policy in 20 minutes. <strong>As Arjun was leaving, Sunil said one last thing:</strong></div>
+            <div class="cp-callout">
+              <div class="cp-callout-icon">💬</div>
+              <div class="cp-callout-text"><strong>"Save the insurer helpline from your policy card. If anything happens — call them directly. Not us. We're done once you buy."</strong></div>
+            </div>
+            <div class="cp-chip cp-chip-green">🏍️ Comprehensive · Zero-Dep · ₹1,800/yr</div>
+          </div>
+        </div>
+
+        <div class="cstrip-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ff6b00" stroke-width="2.2" stroke-linecap="round"/></svg></div>
+
+        <div class="cpanel">
+          <div class="cp-art">
+            <div class="cp-badge">02 · THE CRASH</div>
+            <svg viewBox="0 0 300 310" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky2b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3d0000"/><stop offset="0.55" stop-color="#aa2200"/><stop offset="1" stop-color="#e65c00"/></linearGradient>
+    <linearGradient id="road2b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#222535"/><stop offset="1" stop-color="#141620"/></linearGradient>
+  </defs>
+  <rect width="300" height="310" fill="url(#sky2b)"/>
+  <!-- Storm clouds -->
+  <ellipse cx="80" cy="62" rx="60" ry="25" fill="#2a0000" opacity=".85"/>
+  <ellipse cx="55" cy="72" rx="35" ry="20" fill="#2a0000" opacity=".85"/>
+  <ellipse cx="205" cy="50" rx="70" ry="28" fill="#1a0000" opacity=".92"/>
+  <ellipse cx="175" cy="62" rx="42" ry="22" fill="#1a0000" opacity=".9"/>
+  <ellipse cx="248" cy="68" rx="42" ry="20" fill="#2a0000" opacity=".75"/>
+  <!-- Road -->
+  <rect x="0" y="222" width="300" height="88" fill="url(#road2b)"/>
+  <rect x="0" y="222" width="300" height="3" fill="rgba(255,255,255,.08)"/>
+  <!-- Road dashes faded (crash) -->
+  <rect x="0" y="260" width="40" height="4" rx="2" fill="rgba(255,255,255,.1)"/>
+  <rect x="200" y="260" width="50" height="4" rx="2" fill="rgba(255,255,255,.1)"/>
+  <rect x="255" y="260" width="45" height="4" rx="2" fill="rgba(255,255,255,.1)"/>
+  <!-- Skid marks -->
+  <path d="M55 240 Q110 232 160 240" stroke="rgba(255,255,255,.14)" stroke-width="6" fill="none"/>
+  <path d="M65 252 Q118 244 165 252" stroke="rgba(255,255,255,.09)" stroke-width="4" fill="none"/>
+  <!-- CRASH SITE -->
+  <!-- Impact starburst -->
+  <g style="animation:starSpin 2.5s ease-in-out infinite;transform-origin:148px 215px">
+    <path d="M148 195 L153 209 L167 204 L156 215 L168 224 L153 220 L148 234 L143 220 L128 224 L140 215 L128 204 L142 209 Z" fill="#FFD166" opacity=".65"/>
+  </g>
+  <!-- Crashed bike tilted hard -->
+  <g transform="translate(150,228) rotate(-42) translate(-72,-32)" style="animation:crashShake 5s ease-in-out infinite">
+    <circle cx="28" cy="55" r="24" fill="#1a1a2e" stroke="#666" stroke-width="2.5"/>
+    <circle cx="28" cy="55" r="8" fill="#333"/>
+    <circle cx="116" cy="55" r="24" fill="#1a1a2e" stroke="#666" stroke-width="2.5"/>
+    <circle cx="116" cy="55" r="8" fill="#333"/>
+    <path d="M34 55 L52 30 L84 30 L116 45" fill="none" stroke="#ff6b00" stroke-width="4" stroke-linecap="round"/>
+    <path d="M52 30 L60 12 L78 12 L78 30" fill="none" stroke="#ff6b00" stroke-width="3.5" stroke-linecap="round"/>
+    <path d="M36 53 Q53 30 84 30 Q105 32 116 47 L96 55 Z" fill="#ff6b00" opacity=".7"/>
+    <!-- Damage crack on body -->
+    <path d="M60 40 L68 50 L60 44" stroke="rgba(0,0,0,.5)" stroke-width="1.5" fill="none"/>
+  </g>
+  <!-- Car (green) cutting in -->
+  <g style="animation:carCutIn 3s ease-out infinite;transform-origin:235px 218px">
+    <rect x="178" y="202" width="102" height="40" rx="9" fill="#27ae60"/>
+    <rect x="192" y="183" width="75" height="27" rx="6" fill="#2ecc71"/>
+    <rect x="198" y="186" width="30" height="19" rx="3" fill="rgba(200,240,255,.32)"/>
+    <rect x="232" y="186" width="30" height="19" rx="3" fill="rgba(200,240,255,.32)"/>
+    <circle cx="240" cy="196" r="7" fill="#d4a373"/>
+    <circle cx="195" cy="244" r="12" fill="#111" stroke="#555" stroke-width="2"/>
+    <circle cx="195" cy="244" r="5" fill="#333"/>
+    <circle cx="255" cy="244" r="12" fill="#111" stroke="#555" stroke-width="2"/>
+    <circle cx="255" cy="244" r="5" fill="#333"/>
+    <rect x="178" y="212" width="8" height="12" rx="2" fill="#e74c3c" opacity=".9"/>
+    <rect x="178" y="226" width="8" height="9" rx="2" fill="#e74c3c" opacity=".7"/>
+  </g>
+  <!-- Cut arrow -->
+  <text x="138" y="215" font-size="26" fill="rgba(255,80,80,.6)" style="animation:crashShake 1.8s ease-in-out infinite">←</text>
+  <!-- Arjun fallen on road -->
+  <rect x="55" y="234" width="38" height="20" rx="6" fill="#1565c0" transform="rotate(-8,55,234)"/>
+  <circle cx="48" cy="227" r="14" fill="#c68642"/>
+  <path d="M35 227 Q48 211 61 227 Z" fill="#ff6b00"/>
+  <path d="M35 227 L38 231 L62 231 L62 227" fill="#cc5500" opacity=".75"/>
+  <path d="M36 228 L48 226 L60 228" stroke="rgba(0,0,0,.35)" stroke-width="1.5" fill="none"/>
+  <path d="M59 232 L80 244" stroke="#c68642" stroke-width="6" stroke-linecap="round"/>
+  <path d="M58 236 L38 248" stroke="#c68642" stroke-width="6" stroke-linecap="round"/>
+  <!-- Dizzy stars -->
+  <g style="animation:dizzySpin 1.6s linear infinite;transform-origin:48px 215px">
+    <text x="22" y="212" font-size="12">⭐</text>
+    <text x="62" y="208" font-size="10">✦</text>
+    <text x="70" y="222" font-size="12">⭐</text>
+  </g>
+  <!-- Frown -->
+  <path d="M42 234 Q48 230 54 234" stroke="#a05528" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- CRASH text -->
+  <text x="96" y="195" font-family="Bebas Neue,sans-serif" font-size="38" fill="#f87171" letter-spacing="1" style="animation:crashShake 2s ease-in-out infinite">CRASH!</text>
+  <!-- Debris -->
+  <rect x="168" y="240" width="8" height="4" rx="2" fill="#ff6b00" transform="rotate(25,168,240)" opacity=".7"/>
+  <rect x="180" y="250" width="5" height="3" rx="1.5" fill="#888" transform="rotate(-15,180,250)" opacity=".7"/>
+  <circle cx="155" cy="248" r="3" fill="#555" opacity=".8"/>
+</svg>
+          </div>
+          <div class="cp-caption">
+            <div class="cp-caption-title">Three weeks later. Car cuts in. Arjun goes down on wet tarmac.</div>
+            <div class="cp-caption-body">A Swift overtakes and cuts without warning. Rear tyre locks. <strong>Bike slides 5 metres. Exhaust dented, indicator snapped, fairing cracked. Estimated repair: ₹38,000–₹44,000.</strong></div>
+            <div class="cp-callout">
+              <div class="cp-callout-icon">💡</div>
+              <div class="cp-callout-text">Panic lasts two seconds. Then he remembers: <strong>"Sunil told me exactly what to do for this moment."</strong></div>
+            </div>
+            <div class="cp-chip cp-chip-red">⚠️ Damage est. ₹38,000–₹44,000</div>
+          </div>
+        </div>
+
+        <div class="cstrip-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#ff6b00" stroke-width="2.2" stroke-linecap="round"/></svg></div>
+
+        <div class="cpanel">
+          <div class="cp-art">
+            <div class="cp-badge">03 · THE CALL</div>
+            <svg viewBox="0 0 300 310" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="sky3b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a0800"/><stop offset="0.45" stop-color="#7c3200"/><stop offset="1" stop-color="#c05000"/></linearGradient>
+    <linearGradient id="grd3b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1f2e"/><stop offset="1" stop-color="#0d0f18"/></linearGradient>
+    <linearGradient id="cardGrad3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff6b00" stop-opacity=".22"/><stop offset="1" stop-color="#ff6b00" stop-opacity=".04"/></linearGradient>
+  </defs>
+  <rect width="300" height="310" fill="url(#sky3b)"/>
+  <!-- Ground / road -->
+  <rect x="0" y="218" width="300" height="92" fill="url(#grd3b)"/>
+  <rect x="0" y="218" width="300" height="3" fill="rgba(255,255,255,.07)"/>
+  <!-- Damaged bike background -->
+  <g opacity=".38" transform="translate(220,208) scale(.48) rotate(-28)">
+    <circle cx="30" cy="55" r="22" fill="#333" stroke="#555" stroke-width="2"/>
+    <circle cx="110" cy="55" r="22" fill="#333" stroke="#555" stroke-width="2"/>
+    <path d="M36 55 L54 30 L84 30 L110 45" fill="none" stroke="#ff6b00" stroke-width="5" stroke-linecap="round"/>
+    <path d="M38 53 Q55 30 84 30 Q104 32 110 47 L90 55 Z" fill="#ff6b00" opacity=".55"/>
+  </g>
+  <!-- Arjun sitting on kerb -->
+  <!-- Feet on ground -->
+  <rect x="115" y="262" width="15" height="8" rx="4" fill="#333" transform="rotate(-8,115,262)"/>
+  <rect x="136" y="264" width="15" height="8" rx="4" fill="#333" transform="rotate(5,136,264)"/>
   <!-- Legs -->
-  <path d="M122 158 L108 170 L96 168" stroke="#1565c0" stroke-width="7" stroke-linecap="round" fill="none"/>
-  <path d="M138 158 L148 165 L162 162" stroke="#1565c0" stroke-width="7" stroke-linecap="round" fill="none"/>
-  <!-- Body (leaning forward) -->
-  <rect x="118" y="128" width="30" height="34" rx="8" fill="#ff6b00" transform="rotate(-18,133,145)"/>
-  <!-- Arms -->
-  <path d="M140 130 Q158 122 170 128" stroke="#ff6b00" stroke-width="6" fill="none" stroke-linecap="round"/>
-  <!-- Head -->
-  <circle cx="125" cy="118" r="15" fill="#d4956a"/>
-  <!-- Helmet -->
-  <path d="M110 118 Q110 100 125 98 Q140 100 140 118 L137 120 L113 120 Z" fill="url(#helmet1)"/>
-  <!-- Visor glare -->
-  <path d="M113 117 Q125 112 137 117" fill="none" stroke="#4fc3f7" stroke-width="2.5" opacity=".7"/>
-  <!-- Smile visible below visor -->
-  <path d="M120 123 Q125 127 130 123" stroke="#a0522d" stroke-width="2" fill="none"/>
-</g>
-<!-- Speed lines -->
-<line x1="0" y1="138" x2="58" y2="138" stroke="white" stroke-width="2" opacity=".25" style="animation:roadScroll .5s linear infinite"/>
-<line x1="0" y1="148" x2="42" y2="148" stroke="white" stroke-width="1.5" opacity=".15" style="animation:roadScroll .6s linear infinite .1s"/>
-<line x1="0" y1="155" x2="32" y2="155" stroke="white" stroke-width="1" opacity=".12" style="animation:roadScroll .7s linear infinite .2s"/>
-</svg>
-        <div class="cp-caption">
-          <div class="cp-num">01 · RIDING</div>
-          <div class="cp-tt">Tuesday 8:42 AM · NH-65 outer ring road</div>
-          <div class="cp-ds">Arjun on his Pulsar 150. Music up, light traffic, 60kmph. <strong>Three weeks back, a 20-min Cover Credit session = comprehensive policy sorted.</strong> Right now he's forgotten it exists.</div>
-        </div>
-      </div>
-
-      <div class="cpanel">
-        <svg viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
-<defs>
-  <linearGradient id="sky2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a3a5c"/><stop offset="1" stop-color="#2d6a9f"/></linearGradient>
-  <linearGradient id="road2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#546e7a"/><stop offset="1" stop-color="#37474f"/></linearGradient>
-</defs>
-<!-- Sky slightly darker -->
-<rect width="280" height="200" fill="url(#sky2)"/>
-<!-- Background blurred buildings -->
-<rect x="0" y="95" width="35" height="65" fill="#152030" opacity=".8"/>
-<rect x="38" y="105" width="28" height="55" fill="#1a2533" opacity=".8"/>
-<!-- Road -->
-<rect x="0" y="158" width="280" height="42" fill="url(#road2)"/>
-<rect x="0" y="158" width="280" height="3" fill="#78909c"/>
-<!-- Skid marks -->
-<path d="M40 172 Q110 168 160 175" stroke="#263238" stroke-width="5" fill="none" opacity=".7"/>
-<path d="M50 180 Q120 176 165 183" stroke="#263238" stroke-width="4" fill="none" opacity=".5"/>
-<!-- CRASH IMPACT BURST — center -->
-<g style="animation:crashFlash 1.5s ease-in-out infinite">
-  <circle cx="155" cy="155" r="38" fill="#ff6b00" opacity=".18"/>
-  <circle cx="155" cy="155" r="26" fill="#ffd54f" opacity=".22"/>
-</g>
-<!-- Impact star spikes -->
-<polygon points="155,120 160,140 175,128 162,145 182,145 164,155 180,168 160,160 162,180 152,162 140,180 142,160 123,168 140,154 120,145 140,145 128,128 144,140" fill="#ffd54f" opacity=".6" style="animation:crashFlash 1.5s ease-in-out infinite"/>
-<!-- BANG text -->
-<text x="155" y="150" text-anchor="middle" font-family="Bebas Neue,Impact,sans-serif" font-size="26" fill="#ff6b00" font-weight="900" opacity=".95" style="animation:crashFlash 1.5s ease-in-out infinite">CRASH!</text>
-<!-- White Swift car (the culprit) driving away top right -->
-<g transform="translate(195,115)">
-  <rect x="0" y="10" width="75" height="28" rx="6" fill="#eceff1" stroke="#b0bec5" stroke-width="1"/>
-  <rect x="8" y="2" width="52" height="16" rx="4" fill="#cfd8dc"/>
-  <rect x="12" y="4" width="20" height="11" rx="2" fill="#80d8ff" opacity=".5"/>
-  <rect x="36" y="4" width="20" height="11" rx="2" fill="#80d8ff" opacity=".5"/>
-  <circle cx="15" cy="40" r="9" fill="#37474f"/>
-  <circle cx="60" cy="40" r="9" fill="#37474f"/>
-  <rect x="0" y="16" width="8" height="5" rx="2" fill="#ef5350" opacity=".5"/>
-</g>
-<!-- Fallen bike (tilted ~40 degrees) -->
-<g transform="translate(100,145) rotate(-38) translate(-70,-40)">
-  <circle cx="20" cy="55" r="19" fill="#263238" stroke="#37474f" stroke-width="2"/>
-  <circle cx="20" cy="55" r="12" fill="#2e3c43"/>
-  <circle cx="20" cy="55" r="4" fill="#607d8b"/>
-  <circle cx="120" cy="55" r="19" fill="#263238" stroke="#37474f" stroke-width="2"/>
-  <circle cx="120" cy="55" r="12" fill="#2e3c43"/>
-  <circle cx="120" cy="55" r="4" fill="#607d8b"/>
-  <ellipse cx="75" cy="40" rx="30" ry="13" fill="#ff5722"/>
-  <path d="M28 55 L46 32 L105 28 L120 44" fill="none" stroke="#ff5722" stroke-width="5" stroke-linecap="round"/>
-</g>
-<!-- Biker on ground -->
-<g transform="translate(82,152)">
-  <!-- Body sitting/fallen -->
-  <rect x="-14" y="0" width="28" height="22" rx="7" fill="#ff6b00" transform="rotate(-25,-0,11)"/>
-  <!-- Head -->
-  <circle cx="0" cy="-8" r="13" fill="#d4956a"/>
-  <!-- Helmet -->
-  <path d="M-13 -8 Q-13 -24 0 -26 Q13 -24 13 -8" fill="#263238"/>
-  <!-- Visor -->
-  <path d="M-11 -9 Q0 -14 11 -9" fill="none" stroke="#4fc3f7" stroke-width="2" opacity=".7"/>
-  <!-- Worried eyes (open wide) -->
-  <ellipse cx="-4" cy="-4" rx="3" ry="4" fill="#5d4037"/>
-  <ellipse cx="4" cy="-4" rx="3" ry="4" fill="#5d4037"/>
-  <!-- Stars spinning above head -->
-  <g style="transform-origin:0px -30px;animation:starSpin 1s linear infinite">
-    <text x="-18" y="-28" font-size="11" fill="#ffd54f">★</text>
-    <text x="2" y="-36" font-size="10" fill="#ff6b00">★</text>
-    <text x="12" y="-26" font-size="9" fill="#ffd54f">★</text>
-  </g>
-</g>
-<!-- Flying parts sparks -->
-<circle cx="190" cy="140" r="4" fill="#ffd54f" style="--dx:30px;--dy:-25px;animation:sparkOut 1.2s ease-out infinite"/>
-<circle cx="175" cy="125" r="3" fill="#ff6b00" style="--dx:20px;--dy:-35px;animation:sparkOut 0.9s ease-out 0.2s infinite"/>
-<circle cx="200" cy="150" r="5" fill="#ffeb3b" style="--dx:35px;--dy:-15px;animation:sparkOut 1.1s ease-out 0.1s infinite"/>
-<circle cx="182" cy="135" r="3" fill="#ef5350" style="--dx:25px;--dy:-40px;animation:sparkOut 1s ease-out 0.3s infinite"/>
-<circle cx="165" cy="148" r="4" fill="#ffd54f" style="--dx:-20px;--dy:-30px;animation:sparkOut 1.3s ease-out 0.15s infinite"/>
-</svg>
-        <div class="cp-caption">
-          <div class="cp-num">02 · CRASH</div>
-          <div class="cp-tt">A Swift cuts in. Zero warning.</div>
-          <div class="cp-ds">Rear tyre locks. 5-metre skid. Bike down. Exhaust dented, indicator gone, body scraped. <strong>He gets up. Looks at the damage. Estimated: ₹38,000+.</strong> Then something clicks.</div>
-        </div>
-      </div>
-
-      <div class="cpanel">
-        <svg viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
-<defs>
-  <linearGradient id="sky3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a3a5c"/><stop offset="1" stop-color="#2d5f8a"/></linearGradient>
-  <linearGradient id="road3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#546e7a"/><stop offset="1" stop-color="#37474f"/></linearGradient>
-  <linearGradient id="card_g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ff6b00"/><stop offset="1" stop-color="#e64a19"/></linearGradient>
-</defs>
-<!-- Sky -->
-<rect width="280" height="200" fill="url(#sky3)"/>
-<!-- Road -->
-<rect x="0" y="155" width="280" height="45" fill="url(#road3)"/>
-<rect x="0" y="155" width="280" height="3" fill="#78909c"/>
-<!-- Kerb/footpath -->
-<rect x="0" y="148" width="280" height="10" fill="#455a64"/>
-<!-- Biker sitting on roadside kerb — relieved pose -->
-<g transform="translate(90,140)">
-  <!-- Legs extended -->
-  <rect x="-20" y="14" width="42" height="10" rx="5" fill="#1565c0"/>
-  <!-- Body upright (leaning slightly back, relaxed) -->
-  <rect x="-13" y="-14" width="28" height="30" rx="8" fill="#ff6b00"/>
-  <!-- Left arm reaching into jacket -->
-  <path d="M-13 -6 Q-30 2 -34 14" stroke="#ff6b00" stroke-width="7" fill="none" stroke-linecap="round"/>
-  <circle cx="-34" cy="16" r="7" fill="#d4956a"/>
-  <!-- Right arm relaxed on knee -->
-  <path d="M15 -2 Q22 8 18 16" stroke="#ff6b00" stroke-width="7" fill="none" stroke-linecap="round"/>
-  <!-- Head -->
-  <circle cx="0" cy="-24" r="14" fill="#d4956a"/>
-  <!-- Helmet -->
-  <path d="M-14 -24 Q-14 -40 0 -42 Q14 -40 14 -24" fill="#263238"/>
-  <!-- Visor -->
-  <path d="M-12 -25 Q0 -30 12 -25" fill="none" stroke="#4fc3f7" stroke-width="2" opacity=".7"/>
-  <!-- RELIEVED SMILE — wider, eyes half closed in relief -->
-  <path d="M-6 -17 Q0 -12 6 -17" stroke="#a0522d" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-  <!-- Eyes — relaxed/happy -->
-  <path d="M-6 -21 Q-3 -23 0 -21" stroke="#5d4037" stroke-width="2" fill="none"/>
-  <path d="M0 -21 Q3 -23 6 -21" stroke="#5d4037" stroke-width="2" fill="none"/>
-</g>
-<!-- THE COVER CREDIT CARD — floating with glow -->
-<g style="animation:cardFloat 2s ease-in-out infinite;animation:cardGlow 2s ease-in-out infinite;transform-origin:175px 98px">
-  <!-- Card shadow -->
-  <rect x="143" y="68" width="90" height="58" rx="8" fill="black" opacity=".3" transform="translate(3,4)"/>
-  <!-- Card body -->
-  <rect x="143" y="68" width="90" height="58" rx="8" fill="url(#card_g)"/>
-  <!-- Card shine -->
-  <rect x="143" y="68" width="90" height="22" rx="8" fill="white" opacity=".08"/>
-  <!-- Logo area -->
-  <rect x="151" y="76" width="18" height="12" rx="3" fill="rgba(255,255,255,.25)"/>
-  <text x="160" y="85" text-anchor="middle" font-size="6" fill="white" font-weight="900" font-family="Bebas Neue,sans-serif">CC</text>
-  <!-- Card text -->
-  <text x="174" y="84" font-size="7.5" fill="white" font-weight="700" font-family="DM Sans,sans-serif" opacity=".95">CoverCredit</text>
-  <text x="174" y="92" font-size="5" fill="rgba(255,255,255,.6)" font-family="DM Sans,sans-serif">Insurance Advisors</text>
-  <line x1="151" y1="97" x2="225" y2="97" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
-  <text x="151" y="106" font-size="5" fill="rgba(255,255,255,.7)" font-family="DM Sans,sans-serif">POLICY CC-2024-8812</text>
-  <text x="151" y="114" font-size="5" fill="rgba(255,255,255,.7)" font-family="DM Sans,sans-serif">COMPREHENSIVE · CASHLESS</text>
-  <!-- Active dot -->
-  <circle cx="186" cy="119" r="3" fill="#4ade80"><animate attributeName="opacity" values="1;.2;1" dur="1s" repeatCount="indefinite"/></circle>
-  <text x="192" y="122" font-size="5" fill="#4ade80" font-weight="700" font-family="DM Sans,sans-serif">ACTIVE</text>
-</g>
-<!-- Orange glow ring around card -->
-<ellipse cx="188" cy="97" rx="60" ry="42" fill="none" stroke="#ff6b00" stroke-width="2" opacity=".3" style="animation:cardGlow 2s ease-in-out infinite"/>
-<ellipse cx="188" cy="97" rx="72" ry="52" fill="none" stroke="#ff6b00" stroke-width="1" opacity=".15" style="animation:cardGlow 2.4s ease-in-out infinite .4s"/>
-<!-- Thought bubble from biker to card -->
-<circle cx="110" cy="112" r="4" fill="#ffd54f" opacity=".7"/>
-<circle cx="122" cy="102" r="6" fill="#ffd54f" opacity=".7"/>
-<ellipse cx="136" cy="91" rx="14" ry="10" fill="#ffd54f" opacity=".8"/>
-<text x="136" y="95" text-anchor="middle" font-size="7" fill="#e65100" font-weight="900" font-family="Bebas Neue,sans-serif">SAFE!</text>
-</svg>
-        <div class="cp-caption">
-          <div class="cp-num">03 · THE CARD</div>
-          <div class="cp-tt">He reaches into his jacket pocket.</div>
-          <div class="cp-ds">Orange card. Cover Credit logo. Insurer's 24-hr helpline printed on it. <strong>Comprehensive. Cashless. Active.</strong> "Sunil told me to always keep this card." Panic stops cold.</div>
-        </div>
-      </div>
-
-      <div class="cpanel">
-        <svg viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg">
-<defs>
-  <linearGradient id="sky4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d47a1"/><stop offset="1" stop-color="#1976d2"/></linearGradient>
-  <linearGradient id="grnd4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#37474f"/><stop offset="1" stop-color="#263238"/></linearGradient>
-  <linearGradient id="bk4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ff5722"/><stop offset="1" stop-color="#bf360c"/></linearGradient>
-  <linearGradient id="shld" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#43a047"/><stop offset="1" stop-color="#2e7d32"/></linearGradient>
-</defs>
-<!-- Sky bright - repair done, sunny mood -->
-<rect width="280" height="200" fill="url(#sky4)"/>
-<!-- Big sunshine rays -->
-<g style="transform-origin:240px 30px;animation:starSpin 12s linear infinite" opacity=".2">
-  <line x1="240" y1="0" x2="240" y2="60" stroke="#ffd54f" stroke-width="3"/>
-  <line x1="210" y1="5" x2="240" y2="30" stroke="#ffd54f" stroke-width="2.5"/>
-  <line x1="270" y1="5" x2="240" y2="30" stroke="#ffd54f" stroke-width="2.5"/>
-  <line x1="200" y1="30" x2="240" y2="30" stroke="#ffd54f" stroke-width="2.5"/>
-  <line x1="280" y1="30" x2="240" y2="30" stroke="#ffd54f" stroke-width="2.5"/>
-</g>
-<circle cx="240" cy="30" r="22" fill="#ffd54f" opacity=".2"/>
-<circle cx="240" cy="30" r="16" fill="#ffee58" opacity=".35"/>
-<circle cx="240" cy="30" r="10" fill="#fffde7" opacity=".6"/>
-<!-- Garage wall in background -->
-<rect x="0" y="88" width="280" height="70" fill="#1a2533"/>
-<rect x="0" y="88" width="280" height="5" fill="#263238"/>
-<rect x="0" y="155" width="280" height="5" fill="#263238"/>
-<!-- Garage door -->
-<rect x="30" y="95" width="90" height="62" rx="4" fill="#212e3d"/>
-<rect x="32" y="97" width="86" height="4" fill="#2d3e51"/>
-<rect x="32" y="105" width="86" height="4" fill="#2d3e51"/>
-<rect x="32" y="113" width="86" height="4" fill="#2d3e51"/>
-<rect x="32" y="121" width="86" height="4" fill="#2d3e51"/>
-<rect x="32" y="129" width="86" height="4" fill="#2d3e51"/>
-<rect x="32" y="137" width="86" height="4" fill="#2d3e51"/>
-<rect x="32" y="145" width="86" height="4" fill="#2d3e51"/>
-<!-- "GARAGE" sign -->
-<rect x="30" y="82" width="90" height="16" rx="3" fill="#37474f"/>
-<text x="75" y="93" text-anchor="middle" font-size="8" fill="#90caf9" font-weight="700" font-family="Bebas Neue,sans-serif" letter-spacing="1.5">CASHLESS GARAGE</text>
-<!-- Ground -->
-<rect x="0" y="157" width="280" height="43" fill="url(#grnd4)"/>
-<!-- Repaired bike (shiny, parked) -->
-<g transform="translate(60,157)">
-  <circle cx="-30" cy="5" r="18" fill="#263238" stroke="#37474f" stroke-width="2"/>
-  <circle cx="-30" cy="5" r="12" fill="#2e3c43"/>
-  <circle cx="-30" cy="5" r="4" fill="#607d8b"/>
-  <circle cx="65" cy="5" r="18" fill="#263238" stroke="#37474f" stroke-width="2"/>
-  <circle cx="65" cy="5" r="12" fill="#2e3c43"/>
-  <circle cx="65" cy="5" r="4" fill="#607d8b"/>
-  <ellipse cx="22" cy="-18" rx="32" ry="14" fill="url(#bk4)"/>
-  <ellipse cx="20" cy="-23" rx="26" ry="9" fill="#ff6d3f"/>
-  <!-- Shine on bike -->
-  <ellipse cx="10" cy="-26" rx="10" ry="4" fill="white" opacity=".15" transform="rotate(-20,10,-26)"/>
-  <path d="M-25 5 L-10 -20 L50 -24 L65 -10" fill="none" stroke="#ff5722" stroke-width="4" stroke-linecap="round"/>
-  <path d="M52 -22 L68 -16" stroke="#90a4ae" stroke-width="3" stroke-linecap="round"/>
-</g>
-<!-- HAPPY BIKER standing thumbs up -->
-<g transform="translate(185,138)">
-  <!-- Legs -->
-  <rect x="-10" y="18" width="9" height="22" rx="4" fill="#1565c0"/>
-  <rect x="2" y="18" width="9" height="22" rx="4" fill="#1565c0"/>
+  <rect x="118" y="240" width="14" height="24" rx="5" fill="#2d2d2d" transform="rotate(-8,118,240)"/>
+  <rect x="138" y="242" width="14" height="24" rx="5" fill="#2d2d2d" transform="rotate(5,138,242)"/>
   <!-- Body -->
-  <rect x="-15" y="-4" width="30" height="26" rx="8" fill="#ff6b00"/>
-  <!-- Right arm — THUMBS UP animated -->
-  <g style="transform-origin:-18px 4px;animation:thumbUp 1.5s ease-in-out infinite">
-    <rect x="-32" y="-2" width="18" height="8" rx="4" fill="#ff6b00"/>
-    <!-- Thumb up hand -->
-    <rect x="-34" y="-14" width="10" height="14" rx="3" fill="#d4956a"/>
-    <rect x="-26" y="-8" width="8" height="9" rx="2" fill="#d4956a"/>
-  </g>
-  <!-- Left arm wave -->
-  <rect x="15" y="-4" width="18" height="8" rx="4" fill="#ff6b00" transform="rotate(20,24,0)"/>
+  <rect x="112" y="200" width="46" height="42" rx="8" fill="#1565c0"/>
+  <!-- Arm holding phone — right -->
+  <path d="M158 215 Q178 210 176 196" stroke="#c68642" stroke-width="7" fill="none" stroke-linecap="round"/>
+  <!-- Arm to card — left -->
+  <path d="M112 218 Q90 210 80 200" stroke="#1565c0" stroke-width="7" fill="none" stroke-linecap="round"/>
   <!-- Head -->
-  <circle cx="0" cy="-18" r="14" fill="#d4956a"/>
-  <!-- Helmet off — just a cap (relaxed) -->
-  <rect x="-10" y="-30" width="20" height="10" rx="10 10 0 0" fill="#ff6b00"/>
-  <!-- Big happy smile -->
-  <path d="M-7 -14 Q0 -8 7 -14" stroke="#a0522d" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-  <!-- Happy eyes - curved up -->
-  <path d="M-7 -19 Q-4 -22 -1 -19" stroke="#5d4037" stroke-width="2.2" fill="none"/>
-  <path d="M1 -19 Q4 -22 7 -19" stroke="#5d4037" stroke-width="2.2" fill="none"/>
-  <!-- Rosy cheeks -->
-  <circle cx="-8" cy="-14" r="4" fill="#e57373" opacity=".3"/>
-  <circle cx="8" cy="-14" r="4" fill="#e57373" opacity=".3"/>
-</g>
-<!-- BIG SHIELD floating -->
-<g style="transform-origin:232px 75px;animation:shieldPop 2s ease-in-out infinite">
-  <path d="M232 46 Q248 52 248 68 Q248 82 232 88 Q216 82 216 68 Q216 52 232 46Z" fill="url(#shld)" opacity=".9"/>
-  <!-- Checkmark -->
-  <path d="M224 68 L230 74 L242 60" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-dasharray="30" stroke-dashoffset="30" style="animation:checkDraw 0.8s ease-out 0.3s forwards"/>
-</g>
-<!-- ₹0 floating text -->
-<text x="148" y="62" font-size="18" font-weight="900" font-family="Bebas Neue,sans-serif" fill="#4ade80" opacity=".9" style="animation:cardFloat 2.5s ease-in-out infinite">₹0</text>
-<!-- Stars twinkling -->
-<circle cx="168" cy="50" r="4" fill="#ffd54f" style="animation:starTwinkle 1.4s ease-in-out infinite"/>
-<circle cx="178" cy="40" r="3" fill="#ffd54f" style="animation:starTwinkle 1.4s ease-in-out infinite .4s"/>
-<circle cx="192" cy="52" r="3" fill="#ffd54f" style="animation:starTwinkle 1.4s ease-in-out infinite .8s"/>
+  <circle cx="135" cy="190" r="18" fill="#c68642"/>
+  <!-- Hair -->
+  <path d="M117 186 Q135 176 153 186" fill="#2d1a00"/>
+  <!-- Thoughtful look eyes -->
+  <ellipse cx="129" cy="190" rx="3.5" ry="3.5" fill="white"/>
+  <ellipse cx="141" cy="190" rx="3.5" ry="3.5" fill="white"/>
+  <circle cx="130" cy="191" r="2.2" fill="#2d1a00"/>
+  <circle cx="142" cy="191" r="2.2" fill="#2d1a00"/>
+  <ellipse cx="129" cy="190" rx="3.5" ry="3.5" fill="#c68642" style="animation:blinkEye 4s ease-in-out infinite"/>
+  <ellipse cx="141" cy="190" rx="3.5" ry="3.5" fill="#c68642" style="animation:blinkEye 4s ease-in-out 0.15s infinite"/>
+  <!-- Mouth slight open (about to speak) -->
+  <path d="M128 198 Q135 202 142 198" stroke="#a05528" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- PHONE -->
+  <g style="animation:phonePulse 1.8s ease-in-out infinite;transform-origin:177px 182px">
+    <rect x="164" y="158" width="42" height="68" rx="8" fill="#0d1117" stroke="rgba(255,107,0,.65)" stroke-width="1.8"/>
+    <rect x="168" y="170" width="34" height="46" rx="5" fill="#07090e"/>
+    <rect x="168" y="170" width="34" height="46" rx="5" fill="rgba(255,107,0,.07)" style="animation:screenGlow 1.8s ease-in-out infinite"/>
+    <!-- Ringing animation circles -->
+    <circle cx="185" cy="184" r="9" fill="rgba(255,107,0,.18)" stroke="rgba(255,107,0,.5)" stroke-width="1.2"><animate attributeName="r" values="9;12;9" dur="1s" repeatCount="indefinite"/></circle>
+    <text x="185" y="187.5" text-anchor="middle" font-size="8" fill="#ff6b00">📞</text>
+    <text x="185" y="200" text-anchor="middle" font-size="5.8" fill="#ffb380" font-family="DM Sans,sans-serif">Calling...</text>
+    <text x="185" y="208" text-anchor="middle" font-size="5.2" fill="rgba(255,255,255,.4)" font-family="DM Sans,sans-serif">HDFC ERGO</text>
+    <text x="185" y="215" text-anchor="middle" font-size="4.8" fill="rgba(255,255,255,.3)" font-family="DM Sans,sans-serif">1800-266-3435</text>
+    <!-- Green call button -->
+    <circle cx="185" cy="223" r="7" fill="#25d366"/>
+    <text x="185" y="226.5" text-anchor="middle" font-size="8" fill="white">✓</text>
+    <rect x="178" y="220" width="14" height="3" rx="1.5" fill="rgba(255,255,255,.1)"/>
+  </g>
+  <!-- POLICY CARD in left hand -->
+  <g style="animation:floatBubble 2.8s ease-in-out infinite;transform-origin:74px 215px">
+    <path d="M58 240 Q68 234 80 236 Q91 238 88 250 Q80 258 68 255 Q56 252 58 240 Z" fill="#c68642"/>
+    <rect x="22" y="196" width="72" height="45" rx="7" fill="#1a0800" stroke="#ff6b00" stroke-width="1.8"/>
+    <rect x="22" y="196" width="72" height="45" rx="7" fill="url(#cardGrad3)"/>
+    <rect x="28" y="202" width="18" height="11" rx="3" fill="#ff6b00"/>
+    <text x="37" y="210" text-anchor="middle" font-size="5.5" fill="white" font-weight="700" font-family="DM Sans,sans-serif">CC</text>
+    <text x="50" y="209" font-size="5.8" fill="white" font-weight="700" font-family="DM Sans,sans-serif">CoverCredit</text>
+    <text x="50" y="217" font-size="4.8" fill="rgba(255,255,255,.5)" font-family="DM Sans,sans-serif">Insurance Advisors</text>
+    <line x1="28" y1="222" x2="89" y2="222" stroke="rgba(255,107,0,.22)" stroke-width="1"/>
+    <text x="28" y="229" font-size="4.8" fill="rgba(255,255,255,.5)" font-family="DM Sans,sans-serif">Policy #CC-2024-8812</text>
+    <text x="28" y="236" font-size="4.5" fill="rgba(255,255,255,.42)" font-family="DM Sans,sans-serif">Comprehensive  ✓ ACTIVE</text>
+    <!-- Highlighted number box -->
+    <rect x="28" y="238" width="62" height="9" rx="2.5" fill="rgba(255,220,0,.18)" stroke="rgba(255,220,0,.5)" stroke-width="1"/>
+    <text x="30" y="245" font-size="4.5" fill="#FFD166" font-weight="700" font-family="DM Sans,sans-serif">📞 1800-266-3435 (INSURER)</text>
+  </g>
+  <!-- Thought bubble -->
+  <g style="animation:floatBubble 3.2s ease-in-out infinite 0.6s">
+    <circle cx="155" cy="162" r="3.5" fill="rgba(255,215,100,.28)"/>
+    <circle cx="160" cy="152" r="5" fill="rgba(255,215,100,.32)"/>
+    <rect x="116" y="112" width="152" height="38" rx="11" fill="rgba(255,215,100,.1)" stroke="rgba(255,215,100,.35)" stroke-width="1.3"/>
+    <text x="192" y="125" text-anchor="middle" font-size="7" fill="#FFD166" font-weight="700" font-family="DM Sans,sans-serif">Sunil said: if anything happens,</text>
+    <text x="192" y="136" text-anchor="middle" font-size="7" fill="#FFD166" font-family="DM Sans,sans-serif">call THIS number — not Cover Credit!</text>
+    <text x="192" y="146" text-anchor="middle" font-size="6.5" fill="rgba(255,215,100,.7)" font-family="DM Sans,sans-serif">Their job is done. Call the insurer.</text>
+  </g>
 </svg>
-        <div class="cp-caption">
-          <div class="cp-num">04 · ZERO BILL</div>
-          <div class="cp-tt">One call. Cashless garage. 2 days.</div>
-          <div class="cp-ds">New exhaust, indicator, body work. <strong>Repair bill: ₹41,200. Arjun paid: ₹0.</strong> His annual premium was ₹1,800. He rode straight back to Cover Credit to renew.</div>
+          </div>
+          <div class="cp-caption">
+            <div class="cp-caption-title">He pulls the Cover Credit policy card. Calls the insurer — not Cover Credit.</div>
+            <div class="cp-caption-body">HDFC ERGO 24-hour helpline — number highlighted on the card. <strong>Surveyor dispatched in 40 minutes. Bike collected for cashless repair. Cover Credit's role: over.</strong></div>
+            <div class="cp-callout">
+              <div class="cp-callout-icon">🎯</div>
+              <div class="cp-callout-text">Cover Credit sells you the right policy and walks away. <strong>Your insurer handles everything after that — and they're built exactly for this.</strong></div>
+            </div>
+            <div class="cp-chip cp-chip-gold">📞 Called HDFC ERGO · Surveyor in 40 min</div>
+          </div>
         </div>
-      </div>
 
+        <div class="cstrip-arrow"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#4ade80" stroke-width="2.2" stroke-linecap="round"/></svg></div>
+
+        <div class="cpanel">
+          <div class="cp-art">
+            <div class="cp-badge">04 · SORTED ✓</div>
+            <svg viewBox="0 0 300 310" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="garaB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#002a18"/><stop offset="1" stop-color="#001108"/></linearGradient>
+    <linearGradient id="flrB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0d2318"/><stop offset="1" stop-color="#040d08"/></linearGradient>
+  </defs>
+  <rect width="300" height="310" fill="url(#garaB)"/>
+  <!-- Ceiling details -->
+  <rect x="0" y="0" width="300" height="14" fill="rgba(0,0,0,.4)"/>
+  <!-- Hanging lights -->
+  <line x1="70" y1="0" x2="70" y2="25" stroke="#888" stroke-width="1.5"/>
+  <ellipse cx="70" cy="30" rx="13" ry="8" fill="#fffde7" opacity=".95"/>
+  <ellipse cx="70" cy="30" rx="22" ry="14" fill="rgba(255,253,200,.1)"/>
+  <line x1="215" y1="0" x2="215" y2="25" stroke="#888" stroke-width="1.5"/>
+  <ellipse cx="215" cy="30" rx="13" ry="8" fill="#fffde7" opacity=".95"/>
+  <ellipse cx="215" cy="30" rx="22" ry="14" fill="rgba(255,253,200,.1)"/>
+  <!-- Garage wall -->
+  <rect x="0" y="14" width="300" height="170" fill="#001e10" opacity=".6"/>
+  <!-- Wall tiles suggestion -->
+  <line x1="0" y1="80" x2="300" y2="80" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+  <line x1="0" y1="140" x2="300" y2="140" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+  <!-- Tool rack -->
+  <rect x="0" y="82" width="20" height="110" fill="rgba(0,0,0,.35)"/>
+  <line x1="3" y1="92" x2="17" y2="92" stroke="#666" stroke-width="1"/>
+  <line x1="3" y1="108" x2="17" y2="108" stroke="#666" stroke-width="1"/>
+  <line x1="3" y1="124" x2="17" y2="124" stroke="#666" stroke-width="1"/>
+  <line x1="3" y1="140" x2="17" y2="140" stroke="#666" stroke-width="1"/>
+  <text x="1" y="104" font-size="12">🔧</text>
+  <text x="1" y="120" font-size="12">🔩</text>
+  <text x="1" y="136" font-size="12">🪛</text>
+  <text x="1" y="152" font-size="12">🔨</text>
+  <!-- Cashless banner -->
+  <rect x="70" y="42" width="160" height="34" rx="7" fill="#16a34a"/>
+  <rect x="70" y="42" width="160" height="34" rx="7" fill="rgba(255,255,255,.06)"/>
+  <text x="150" y="57" text-anchor="middle" font-size="10" fill="white" font-weight="700" font-family="DM Sans,sans-serif">✓ CASHLESS REPAIR</text>
+  <text x="150" y="69" text-anchor="middle" font-size="6.8" fill="rgba(255,255,255,.75)" font-family="DM Sans,sans-serif">Network Garage — ₹0 From You</text>
+  <!-- Floor -->
+  <rect x="0" y="258" width="300" height="52" fill="url(#flrB)"/>
+  <line x1="0" y1="258" x2="300" y2="258" stroke="rgba(255,255,255,.07)" stroke-width="2"/>
+  <!-- Floor pattern -->
+  <rect x="0" y="264" width="28" height="28" fill="rgba(255,255,255,.015)"/>
+  <rect x="56" y="264" width="28" height="28" fill="rgba(255,255,255,.015)"/>
+  <rect x="112" y="264" width="28" height="28" fill="rgba(255,255,255,.015)"/>
+  <rect x="168" y="264" width="28" height="28" fill="rgba(255,255,255,.015)"/>
+  <rect x="224" y="264" width="28" height="28" fill="rgba(255,255,255,.015)"/>
+  <rect x="28" y="236" width="28" height="28" fill="rgba(255,255,255,.015)"/>
+  <rect x="84" y="236" width="28" height="28" fill="rgba(255,255,255,.015)"/>
+  <rect x="140" y="236" width="28" height="28" fill="rgba(255,255,255,.015)"/>
+  <rect x="196" y="236" width="28" height="28" fill="rgba(255,255,255,.015)"/>
+  <rect x="252" y="236" width="28" height="28" fill="rgba(255,255,255,.015)"/>
+  <!-- REPAIRED BIKE gleaming -->
+  <g transform="translate(142,256)">
+    <!-- Rear wheel -->
+    <circle cx="-50" cy="0" r="28" fill="#1a1a2e" stroke="#777" stroke-width="3.5"/>
+    <circle cx="-50" cy="0" r="18" fill="#2a2a3e"/>
+    <circle cx="-50" cy="0" r="7" fill="#999"/>
+    <line x1="-50" y1="-18" x2="-50" y2="18" stroke="#888" stroke-width="2"/>
+    <line x1="-68" y1="0" x2="-32" y2="0" stroke="#888" stroke-width="2"/>
+    <!-- Front wheel -->
+    <circle cx="52" cy="0" r="28" fill="#1a1a2e" stroke="#777" stroke-width="3.5"/>
+    <circle cx="52" cy="0" r="18" fill="#2a2a3e"/>
+    <circle cx="52" cy="0" r="7" fill="#999"/>
+    <line x1="52" y1="-18" x2="52" y2="18" stroke="#888" stroke-width="2"/>
+    <line x1="34" y1="0" x2="70" y2="0" stroke="#888" stroke-width="2"/>
+    <!-- Frame -->
+    <path d="M-44 0 L-22 -42 L16 -42 L52 -22" fill="none" stroke="#ff6b00" stroke-width="5" stroke-linecap="round"/>
+    <path d="M-22 -42 L-13 -63 L10 -63 L10 -42" fill="none" stroke="#ff6b00" stroke-width="4.5" stroke-linecap="round"/>
+    <!-- Body fill -->
+    <path d="M-42 -2 Q-20 -42 16 -42 Q36 -40 52 -22 L34 -2 Z" fill="#ff6b00"/>
+    <path d="M-22 -42 L-13 -63 L10 -63 L10 -42 Z" fill="#cc5500"/>
+    <!-- Handlebar -->
+    <path d="M10 -63 L24 -70" stroke="#aaa" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- Headlight bright -->
+    <ellipse cx="50" cy="-20" rx="8" ry="5.5" fill="#fffde7" opacity=".95"/>
+    <ellipse cx="50" cy="-20" rx="5" ry="3.5" fill="white"/>
+    <!-- New indicator -->
+    <ellipse cx="50" cy="-13" rx="4.5" ry="3" fill="#FFA500"/>
+    <!-- Shine highlights on new paint -->
+    <path d="M-30 -30 L-12 -42 L-7 -40 L-25 -28 Z" fill="rgba(255,255,255,.2)"/>
+    <path d="M-12 -42 L2 -45 L5 -43 L-8 -40 Z" fill="rgba(255,255,255,.14)"/>
+    <!-- Sparkles on bike (new!) -->
+    <text x="58" y="-58" font-size="12" style="animation:sparkle 2.2s ease-in-out infinite">✨</text>
+    <text x="-70" y="-55" font-size="10" style="animation:sparkle 2.2s ease-in-out 0.6s infinite">✨</text>
+    <text x="-5" y="-75" font-size="9" style="animation:sparkle 2.2s ease-in-out 1.1s infinite">✨</text>
+  </g>
+  <!-- MECHANIC finishing up -->
+  <g transform="translate(248,205)">
+    <rect x="-14" y="0" width="30" height="44" rx="7" fill="#1565c0"/>
+    <rect x="-14" y="20" width="30" height="5" fill="#0d47a1"/>
+    <rect x="-12" y="42" width="12" height="28" rx="5" fill="#1565c0"/>
+    <rect x="4" y="42" width="12" height="28" rx="5" fill="#1565c0"/>
+    <rect x="-15" y="66" width="16" height="8" rx="4" fill="#333"/>
+    <rect x="3" y="66" width="16" height="8" rx="4" fill="#333"/>
+    <path d="M16 12 Q30 2 32 -8" stroke="#1565c0" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <!-- Wrench raised in victory -->
+    <g style="animation:wrenchWiggle 1.4s ease-in-out infinite;transform-origin:32px -12px">
+      <rect x="27" y="-24" width="10" height="24" rx="4" fill="#aaa"/>
+      <rect x="25" y="-26" width="14" height="7" rx="3" fill="#999"/>
+      <rect x="25" y="-4" width="14" height="7" rx="3" fill="#999"/>
+    </g>
+    <path d="M-14 12 Q-28 6 -30 0" stroke="#1565c0" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <circle cx="1" cy="-16" r="15" fill="#d4a373"/>
+    <path d="M-13 -19 Q1 -30 15 -19" fill="#2d1a00"/>
+    <rect x="-15" y="-21" width="32" height="7" rx="3" fill="#ff6b00" opacity=".9"/>
+    <!-- Satisfied smile -->
+    <path d="M-5 -8 Q1 -4 7 -8" stroke="#a05528" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <ellipse cx="-4" cy="-13" rx="2.5" ry="2.5" fill="#2d1a00"/>
+    <ellipse cx="6" cy="-13" rx="2.5" ry="2.5" fill="#2d1a00"/>
+  </g>
+  <!-- ARJUN HAPPY thumbs up -->
+  <g transform="translate(50,200)" style="animation:thumbsUp 2.2s ease-in-out infinite">
+    <rect x="-12" y="54" width="14" height="38" rx="5" fill="#2d2d2d"/>
+    <rect x="7" y="54" width="14" height="38" rx="5" fill="#2d2d2d"/>
+    <rect x="-15" y="86" width="18" height="9" rx="4" fill="#222"/>
+    <rect x="4" y="86" width="18" height="9" rx="4" fill="#222"/>
+    <rect x="-17" y="12" width="40" height="44" rx="8" fill="#1565c0"/>
+    <!-- Thumbs up arm -->
+    <path d="M23 22 Q44 16 46 6" stroke="#c68642" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <text x="34" y="2" font-size="20" style="animation:thumbsUp 2.2s ease-in-out infinite">👍</text>
+    <path d="M-17 22 Q-32 26 -34 18" stroke="#1565c0" stroke-width="7" fill="none" stroke-linecap="round"/>
+    <circle cx="3" cy="-4" r="17" fill="#c68642"/>
+    <path d="M-13 -8 Q3 -20 19 -8" fill="#2d1a00"/>
+    <!-- Big happy smile -->
+    <path d="M-6 6 Q3 13 12 6" stroke="#a05528" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <!-- Happy squint eyes -->
+    <path d="M-8 0 Q-5 -5 -2 0" stroke="#2d1a00" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    <path d="M8 0 Q11 -5 14 0" stroke="#2d1a00" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+    <!-- Cheeks -->
+    <ellipse cx="-9" cy="5" rx="5.5" ry="4" fill="#e07040" opacity=".4"/>
+    <ellipse cx="15" cy="5" rx="5.5" ry="4" fill="#e07040" opacity=".4"/>
+  </g>
+  <!-- Zero bill popup -->
+  <g style="animation:floatBubble 2.8s ease-in-out infinite 0.5s">
+    <path d="M105 155 L118 170 L100 167 Z" fill="white"/>
+    <rect x="32" y="118" width="158" height="39" rx="11" fill="white"/>
+    <text x="111" y="134" text-anchor="middle" font-size="9" fill="#16a34a" font-weight="700" font-family="DM Sans,sans-serif">₹0 OUT OF POCKET</text>
+    <text x="111" y="148" text-anchor="middle" font-size="7.2" fill="#555" font-family="DM Sans,sans-serif">Insurer settled ₹41,200 directly</text>
+  </g>
+</svg>
+          </div>
+          <div class="cp-caption">
+            <div class="cp-caption-title">Bike back in 2 days. New parts, new paint, new indicator. ₹0 paid.</div>
+            <div class="cp-caption-body">Cashless network garage. New exhaust, fairing repainted, indicator replaced. <strong>Total repair: ₹41,200. Arjun paid: ₹0.</strong> Policy cost ₹1,800/yr. He got 22× his premium back on the very first incident.</div>
+            <div class="cp-callout">
+              <div class="cp-callout-icon">✅</div>
+              <div class="cp-callout-text"><strong>"I never needed Cover Credit after the accident. Sunil's job was already done. That's exactly how it should work."</strong></div>
+            </div>
+            <div class="cp-chip cp-chip-green">✅ ₹41,200 repaired · ₹0 paid · Policy ₹1,800/yr</div>
+          </div>
+        </div>
+
+      </div>
     </div>
-    <div class="story-quote rv d2">
-      <div class="sq-av">🧔</div>
-      <div>
-        <div class="sq-q">When I felt that card in my pocket, I literally laughed out loud sitting on the road. Sunil had told me exactly what to do. One call, zero payment, bike back in two days. That 20-minute session saved me ₹41,000.</div>
-        <div class="sq-nm">Arjun K., Bajaj Pulsar 150, Hyderabad</div>
-        <div class="sq-note">Cover Credit helped Arjun choose and buy his policy. Claim settled directly between Arjun and his insurer.</div>
+
+    <div class="cartoon-quote rv d2">
+      <div class="cq-avatar">🧔</div>
+      <div class="cq-text">
+        <div class="cq-quote">When I was sitting on that road I wasn't panicking about money — I was thinking about what Sunil had said. I found the card, called the insurer helpline. Surveyor in 40 minutes. Zero payment. Cover Credit's job ended the moment I walked out with my policy. That's exactly what I needed.</div>
+        <div class="cq-who">Arjun K., Bajaj Pulsar 150 owner, Hyderabad</div>
+        <div class="cq-note">Cover Credit is an insurance advisor. We help you choose and buy the right policy. All claims are handled directly between you and your insurer.</div>
       </div>
     </div>
   </div>
@@ -746,7 +941,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
             <div class="pc-row no"><span>✗</span>Own bike damage NOT covered</div>
             <div class="pc-row no"><span>✗</span>Theft NOT covered</div>
           </div>
-          <a href="book.html" class="pc-cta">Get Quote →</a>
+          <a href="book.html?dept=bike" class="pc-cta">Get Quote →</a>
         </div>
       </div>
       <!-- Comprehensive -->
@@ -773,7 +968,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
             <div class="pc-row"><span>✓</span>Flood, fire, natural calamity</div>
             <div class="pc-row"><span>✓</span>Zero-dep add-on available</div>
           </div>
-          <a href="book.html" class="pc-cta">Get Quote →</a>
+          <a href="book.html?dept=bike" class="pc-cta">Get Quote →</a>
         </div>
       </div>
       <!-- Comprehensive + Add-ons -->
@@ -795,7 +990,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
             <div class="pc-row"><span>✓</span>Roadside assistance included</div>
             <div class="pc-row"><span>✓</span>Personal accident ₹15L</div>
           </div>
-          <a href="book.html" class="pc-cta">Get Quote →</a>
+          <a href="book.html?dept=bike" class="pc-cta">Get Quote →</a>
         </div>
       </div>
     </div>
@@ -853,7 +1048,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
           <div class="cfrp" id="qfResult">₹2,100</div>
           <div class="cfrs">Indicative. Exact premium based on bike model, RTO, and insurer. Book a session for accurate comparison.</div>
         </div>
-        <a href="book.html" class="bg" style="width:100%;justify-content:center;margin-top:1rem;">Compare 15+ Insurers Free →</a>
+        <a href="book.html?dept=bike" class="bg" style="width:100%;justify-content:center;margin-top:1rem;">Compare 15+ Insurers Free →</a>
       </div>
     </div>
   </div>
@@ -878,7 +1073,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
         <div style="font-size:3rem;margin-bottom:.8rem;">🏍️</div>
         <div class="sb2-tt">Get your bike insured today</div>
         <div class="sb2-ds">Free comparison. 2-minute quote. Same-day policy on WhatsApp.</div>
-        <a href="book.html" class="sb2-btn">📅 Book Free Session</a>
+        <a href="book.html?dept=bike" class="sb2-btn">📅 Book Free Session</a>
         <div class="sb2-div">or call directly</div>
         <a href="tel:+917842854466" class="sb2-ph">📞 +91 78428 54466</a>
       </div>
@@ -901,7 +1096,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
       <div class="cta-pills rv d2"><span class="cpill">✓ Free comparison</span><span class="cpill">✓ 2 minutes</span><span class="cpill">✓ Same-day policy</span><span class="cpill">✓ Digital delivery</span></div>
     </div>
     <div class="cta-btns rv d2">
-      <a href="book.html" class="bg" style="white-space:nowrap;font-size:.95rem;padding:1rem 2rem;">Get My Free Quote →</a>
+      <a href="book.html?dept=bike" class="bg" style="white-space:nowrap;font-size:.95rem;padding:1rem 2rem;">Get My Free Quote →</a>
       <div class="cta-ph">or call: <a href="tel:+917842854466">+91 78428 54466</a></div>
     </div>
   </div>
@@ -920,7 +1115,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
       </div>
       <div class="ft-col"><div class="ft-clbl">Vehicle Insurance</div><ul><li><a href="vehicle-insurance.html">Vehicle Overview</a></li><li><a href="bike-insurance.html">Bike Insurance</a></li><li><a href="car-insurance.html">Car Insurance</a></li><li><a href="commercial-vehicle-insurance.html">Commercial Vehicle</a></li></ul></div>
       <div class="ft-col"><div class="ft-clbl">Insurance</div><ul><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life &amp; Term Insurance</a></li><li><a href="loans.html">Loans &amp; Finance</a></li></ul></div>
-      <div class="ft-col"><div class="ft-clbl">Company</div><ul><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="book.html">Book Consultation</a></li></ul></div>
+      <div class="ft-col"><div class="ft-clbl">Company</div><ul><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="book.html?dept=bike">Book Consultation</a></li></ul></div>
     </div>
     <div class="ft-bot"><span>© <span id="yr"></span> Cover Credit Insurance Advisors. All rights reserved.</span><div class="ft-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></div>
   </div>
@@ -956,11 +1151,22 @@ document.querySelectorAll('[data-cov]').forEach(p=>{p.addEventListener('click',(
 document.querySelectorAll('[data-zdep]').forEach(p=>{p.addEventListener('click',()=>{document.querySelectorAll('[data-zdep]').forEach(x=>x.classList.remove('on'));p.classList.add('on');selZdep=parseInt(p.dataset.zdep);calcQ();});});
 
 
-// Filmstrip scroll reveal
-const filmObs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
-}, {threshold: 0.08, rootMargin: '0px 0px -40px 0px'});
-document.querySelectorAll('.fpanel').forEach(el => filmObs.observe(el));
+
+// Cartoon panel scroll reveal
+const panelObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('vis'); });
+}, {threshold: 0.08});
+document.querySelectorAll('.cpanel').forEach(el => panelObs.observe(el));
+
+// Drag to scroll on strip
+const strip = document.querySelector('.cstrip-wrap');
+if(strip) {
+  let isDown=false, startX, scrollLeft;
+  strip.addEventListener('mousedown', e => { isDown=true; strip.classList.add('active'); startX=e.pageX-strip.offsetLeft; scrollLeft=strip.scrollLeft; });
+  strip.addEventListener('mouseleave', () => { isDown=false; });
+  strip.addEventListener('mouseup', () => { isDown=false; });
+  strip.addEventListener('mousemove', e => { if(!isDown) return; e.preventDefault(); const x=e.pageX-strip.offsetLeft; strip.scrollLeft=scrollLeft-(x-startX)*1.5; });
+}
 
 document.querySelectorAll('img').forEach(img=>{img.addEventListener('error',function(){const w=this.offsetWidth||400,h=this.offsetHeight||280;this.src='https://picsum.photos/'+w+'/'+h+'?random='+Math.floor(Math.random()*99);this.onerror=null;});});
 document.getElementById('yr').textContent=new Date().getFullYear();
