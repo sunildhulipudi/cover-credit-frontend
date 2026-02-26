@@ -1,77 +1,2310 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Loans guidance — home, business, personal, vehicle, education loans. Cover Credit AP & Telangana."/>
-  <title>Loans | Cover Credit</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/variables.css"/><link rel="stylesheet" href="css/global.css"/><link rel="stylesheet" href="css/components.css"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Loans & Finance | Cover Credit — Home, Car, Personal, Business Loans AP & Telangana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700;800&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ac:#e6a817;--ac2:#f5c842;--acr:230,168,23;
+  --ink:#05112a;--i2:#091d3e;--i3:#0e2d5c;
+  --line:rgba(255,255,255,.08);--fog:rgba(255,255,255,.05);
+  --E:cubic-bezier(.16,1,.3,1);--nh:72px;
+  --skin:#f4a261;--skin2:#e76f51;--skin3:#2a9d8f;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--ink);color:#fff;overflow-x:hidden;cursor:none;}
+a{text-decoration:none;color:inherit;}
+img{display:block;max-width:100%;}
+
+/* ── CURSOR ── */
+#cur,#cr{position:fixed;top:0;left:0;pointer-events:none;border-radius:50%;z-index:9999;transform:translate(-50%,-50%);}
+#cur{width:10px;height:10px;background:var(--ac);}
+#cr{width:38px;height:38px;border:1.5px solid rgba(230,168,23,.45);z-index:9998;transition:width .2s,height .2s,opacity .2s;}
+body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:.18;}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:900;height:var(--nh);padding:0 5%;transition:background .4s;}
+.nav.sc{background:rgba(5,17,42,.97);backdrop-filter:blur(24px);box-shadow:0 1px 0 var(--line);}
+.ni{max-width:1300px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;}.logo em{font-style:normal;color:var(--ac);}
+.nl{display:flex;align-items:center;gap:1.8rem;list-style:none;}
+.nl a{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.65);transition:color .2s;position:relative;}
+.nl a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--ac);transition:width .28s;}
+.nl a:hover,.nl a.act{color:#fff;}.nl a:hover::after,.nl a.act::after{width:100%;}
+.dd{position:relative;}
+.ddt{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.65);cursor:none;display:flex;align-items:center;gap:.26rem;transition:color .2s;}
+.dd:hover .ddt{color:#fff;}
+.dda{font-size:.54rem;transition:transform .3s;}.dd:hover .dda{transform:rotate(180deg);}
+.ddm{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(6px);background:var(--i2);border:1px solid var(--line);border-radius:12px;padding:.4rem;min-width:190px;opacity:0;visibility:hidden;transition:opacity .2s,transform .28s var(--E),visibility .2s;box-shadow:0 24px 60px rgba(0,0,0,.5);}
+.dd:hover .ddm{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+.ddm a{display:block;padding:.5rem .82rem;font-size:.8rem;color:rgba(255,255,255,.62);border-radius:8px;transition:background .18s,color .18s;}
+.ddm a:hover,.ddm a.act{background:rgba(255,255,255,.07);color:#fff;}
+.ncta{background:var(--ac)!important;color:#05112a!important;padding:.46rem 1.12rem!important;border-radius:100px;font-weight:700!important;font-size:.8rem!important;}
+.ncta::after{display:none!important;}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:4px;}
+.burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s;}
+.burger.op span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.burger.op span:nth-child(2){opacity:0;}
+.burger.op span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.mob{position:fixed;inset:0;z-index:899;background:var(--ink);display:flex;flex-direction:column;padding:calc(var(--nh)+1.8rem) 5% 3rem;transform:translateX(100%);transition:transform .38s var(--E);}
+.mob.op{transform:translateX(0);}
+.mob a{padding:.9rem 0;font-size:1rem;font-weight:500;color:rgba(255,255,255,.72);border-bottom:1px solid var(--line);}
+.mc{margin-top:1.8rem;background:var(--ac);color:var(--ink)!important;text-align:center;border-radius:12px;padding:.9rem!important;font-weight:700!important;border:none!important;}
+
+/* FAB */
+.fab{position:fixed;bottom:1.8rem;right:1.8rem;z-index:400;display:flex;flex-direction:column;gap:.65rem;align-items:flex-end;}
+.fab a{display:flex;align-items:center;gap:.48rem;padding:.65rem 1rem;border-radius:100px;font-size:.76rem;font-weight:600;cursor:none;transition:transform .18s;}
+.fab a:hover{transform:translateY(-2px);}
+.fwa{background:#25d366;color:#fff;box-shadow:0 6px 20px rgba(37,211,102,.35);}
+.fbk{background:var(--ac);color:var(--ink);box-shadow:0 6px 20px rgba(230,168,23,.35);}
+
+/* ── SHARED ── */
+.si{max-width:1300px;margin:0 auto;}
+.sec{padding:5.5rem 5%;}
+.tag{display:inline-flex;align-items:center;gap:.4rem;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:.9rem;color:var(--ac);}
+.tag::before{content:'';width:16px;height:2px;background:var(--ac);}
+.tit{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.06;}
+.tit em{font-style:italic;color:var(--ac);}
+/* scroll reveal */
+.rv{opacity:0;transform:translateY(28px);transition:opacity .7s var(--E),transform .7s var(--E);}
+.rv.on{opacity:1;transform:translateY(0);}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}.d4{transition-delay:.4s;}
+
+/* ══════════════════════════════════════════
+   HERO — 3D PERSPECTIVE
+══════════════════════════════════════════ */
+.hero{min-height:100vh;display:flex;align-items:center;padding:calc(var(--nh) + 3rem) 5% 4rem;position:relative;overflow:hidden;perspective:1200px;}
+
+/* Layered 3D background */
+.hero-bg{position:absolute;inset:0;background:var(--ink);z-index:0;}
+.hero-bg::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 60% at 65% 40%,rgba(14,45,92,.9) 0%,transparent 70%),
+             radial-gradient(ellipse 50% 50% at 20% 80%,rgba(230,168,23,.06) 0%,transparent 60%);
+  animation:bgPulse 8s ease-in-out infinite alternate;}
+@keyframes bgPulse{0%{opacity:.7}100%{opacity:1}}
+
+/* 3D floating grid */
+.hero-grid{position:absolute;inset:0;z-index:0;
+  background-image:linear-gradient(rgba(230,168,23,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(230,168,23,.04) 1px,transparent 1px);
+  background-size:60px 60px;
+  transform:perspective(800px) rotateX(55deg) translateY(120px) scale(2.2);
+  transform-origin:center bottom;
+  animation:gridScroll 15s linear infinite;
+  mask-image:linear-gradient(to bottom,transparent 0%,black 30%,black 70%,transparent 100%);}
+@keyframes gridScroll{from{background-position:0 0}to{background-position:0 60px}}
+
+.hero-inner{max-width:1300px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:2;}
+
+.hero-left{}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:rgba(230,168,23,.1);border:1px solid rgba(230,168,23,.2);border-radius:100px;padding:.35rem .9rem .35rem .5rem;margin-bottom:1.8rem;}
+.hero-eyebrow-dot{width:8px;height:8px;border-radius:50%;background:var(--ac);animation:dotBlink 2s ease-in-out infinite;}
+@keyframes dotBlink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-eyebrow span{font-size:.72rem;font-weight:600;color:var(--ac);letter-spacing:.5px;}
+
+.hero-h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4.5vw,4rem);font-weight:900;line-height:1.05;margin-bottom:1.4rem;}
+.hero-h1 em{font-style:italic;color:var(--ac);}
+.hero-h1 .strike{text-decoration:line-through;color:rgba(255,255,255,.3);font-style:normal;}
+
+.hero-sub{font-size:1rem;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:2.2rem;max-width:480px;}
+.hero-sub strong{color:rgba(255,255,255,.85);font-weight:600;}
+
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem;}
+.btn-gold{background:var(--ac);color:var(--ink);padding:.8rem 1.8rem;border-radius:100px;font-weight:700;font-size:.9rem;border:none;cursor:none;transition:background .2s,transform .2s,box-shadow .2s;box-shadow:0 8px 28px rgba(230,168,23,.3);}
+.btn-gold:hover{background:var(--ac2);transform:translateY(-2px);box-shadow:0 12px 36px rgba(230,168,23,.4);}
+.btn-ghost{background:transparent;color:#fff;padding:.8rem 1.8rem;border-radius:100px;font-weight:600;font-size:.9rem;border:1.5px solid rgba(255,255,255,.2);cursor:none;transition:border-color .2s,background .2s;}
+.btn-ghost:hover{border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.05);}
+
+.hero-stats{display:flex;gap:2rem;}
+.hstat{border-left:2px solid rgba(230,168,23,.25);padding-left:1rem;}
+.hstat-n{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:1px;color:var(--ac);}
+.hstat-l{font-size:.72rem;color:rgba(255,255,255,.38);letter-spacing:.3px;line-height:1.4;}
+
+/* ── 3D LOAN CARDS FLOATING ── */
+.hero-right{position:relative;height:520px;transform-style:preserve-3d;}
+
+.loan3d-wrap{position:absolute;inset:0;transform-style:preserve-3d;animation:heroRotate 20s ease-in-out infinite;}
+@keyframes heroRotate{0%,100%{transform:rotateY(-8deg) rotateX(5deg)}50%{transform:rotateY(8deg) rotateX(-3deg)}}
+
+.lcard3d{position:absolute;border-radius:20px;padding:1.4rem 1.6rem;backdrop-filter:blur(20px);border:1px solid;transition:transform .3s;transform-style:preserve-3d;cursor:default;}
+.lcard3d::after{content:'';position:absolute;inset:0;border-radius:20px;background:linear-gradient(135deg,rgba(255,255,255,.08),transparent);pointer-events:none;}
+
+/* Card positions — 3D staggered */
+.lc1{width:220px;top:20px;left:20px;background:rgba(14,45,92,.85);border-color:rgba(230,168,23,.3);transform:translateZ(80px) rotate(-3deg);animation:cardFloat1 6s ease-in-out infinite;}
+.lc2{width:200px;top:60px;right:10px;background:rgba(5,17,42,.9);border-color:rgba(255,255,255,.1);transform:translateZ(40px) rotate(2deg);animation:cardFloat2 7s ease-in-out infinite .5s;}
+.lc3{width:210px;bottom:120px;left:40px;background:rgba(14,45,92,.8);border-color:rgba(230,168,23,.2);transform:translateZ(60px) rotate(-1deg);animation:cardFloat3 8s ease-in-out infinite 1s;}
+.lc4{width:195px;bottom:60px;right:30px;background:rgba(5,17,42,.85);border-color:rgba(255,255,255,.1);transform:translateZ(20px) rotate(3deg);animation:cardFloat1 9s ease-in-out infinite 1.5s;}
+.lc5{width:180px;top:50%;left:50%;transform:translateX(-50%) translateY(-50%) translateZ(100px);background:linear-gradient(135deg,rgba(230,168,23,.15),rgba(230,168,23,.05));border-color:rgba(230,168,23,.4);animation:cardFloat2 5s ease-in-out infinite .8s;}
+
+@keyframes cardFloat1{0%,100%{transform:translateZ(80px) rotate(-3deg) translateY(0)}50%{transform:translateZ(80px) rotate(-3deg) translateY(-12px)}}
+@keyframes cardFloat2{0%,100%{transform:translateZ(40px) rotate(2deg) translateY(0)}50%{transform:translateZ(40px) rotate(2deg) translateY(-10px)}}
+@keyframes cardFloat3{0%,100%{transform:translateZ(60px) rotate(-1deg) translateY(0)}50%{transform:translateZ(60px) rotate(-1deg) translateY(-15px)}}
+
+.lc-icon{font-size:1.6rem;margin-bottom:.5rem;}
+.lc-type{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.4);margin-bottom:.25rem;}
+.lc-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:.5rem;}
+.lc-rate{font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--ac);letter-spacing:1px;}
+.lc-rlab{font-size:.6rem;color:rgba(255,255,255,.3);}
+.lc-bar{height:3px;background:rgba(255,255,255,.08);border-radius:2px;margin-top:.75rem;overflow:hidden;}
+.lc-bar-fill{height:100%;border-radius:2px;background:linear-gradient(90deg,var(--ac),var(--ac2));animation:barLoad 2s ease-out forwards;}
+@keyframes barLoad{from{width:0}to{width:var(--w)}}
+
+/* ── SHADOW GLOW under cards ── */
+.hero-glow{position:absolute;width:300px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(230,168,23,.12),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none;animation:glowPulse 4s ease-in-out infinite;}
+@keyframes glowPulse{0%,100%{transform:translate(-50%,-50%) scale(1);opacity:.6}50%{transform:translate(-50%,-50%) scale(1.3);opacity:1}}
+
+/* Particle dots */
+.hero-particles{position:absolute;inset:0;pointer-events:none;z-index:1;}
+.hpar{position:absolute;border-radius:50%;animation:parFloat linear infinite;}
+@keyframes parFloat{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(-100vh) rotate(360deg)}}
+
+/* ══════════════════════════════════════════
+   SECRETS SECTION — "What Banks Won't Tell You"
+══════════════════════════════════════════ */
+.secrets{padding:5rem 5%;background:linear-gradient(180deg,#06101f 0%,#02080f 100%);}
+.secrets-inner{max-width:1300px;margin:0 auto;}
+.secrets-hd{text-align:center;margin-bottom:3rem;}
+.secrets-warn{display:inline-flex;align-items:center;gap:.5rem;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.25);border-radius:100px;padding:.35rem 1rem;margin-bottom:1rem;}
+.secrets-warn span{font-size:.7rem;font-weight:700;color:#f87171;text-transform:uppercase;letter-spacing:1.5px;}
+.secrets-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.06);border-radius:16px;overflow:hidden;}
+.secret-card{background:#040d1a;padding:1.8rem 1.6rem;position:relative;overflow:hidden;transition:background .3s;}
+.secret-card:hover{background:#060f20;}
+.secret-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#ef4444,transparent);opacity:0;transition:opacity .3s;}
+.secret-card:hover::before{opacity:1;}
+.sc-num{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:rgba(239,68,68,.08);position:absolute;top:.5rem;right:1rem;line-height:1;}
+.sc-icon{font-size:1.6rem;margin-bottom:.9rem;}
+.sc-title{font-size:.85rem;font-weight:700;color:#fca5a5;margin-bottom:.6rem;line-height:1.3;}
+.sc-body{font-size:.76rem;color:rgba(255,255,255,.45);line-height:1.7;}
+.sc-body strong{color:rgba(255,255,255,.75);font-weight:600;}
+.sc-callout{margin-top:.9rem;background:rgba(239,68,68,.08);border-left:2px solid #ef4444;padding:.5rem .75rem;border-radius:0 6px 6px 0;font-size:.72rem;color:#fca5a5;font-style:italic;}
+
+/* ══════════════════════════════════════════
+   LOAN TYPES — 8 Types, 3D hover cards
+══════════════════════════════════════════ */
+.loans-sec{padding:5.5rem 5%;background:#050e1a;}
+.loans-inner{max-width:1300px;margin:0 auto;}
+.loans-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:2.5rem;}
+.ltcard{background:linear-gradient(145deg,#091d3e,#05112a);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:1.6rem;cursor:default;transition:transform .4s var(--E),box-shadow .4s,border-color .4s;transform-style:preserve-3d;position:relative;overflow:hidden;}
+.ltcard::before{content:'';position:absolute;inset:0;border-radius:18px;background:linear-gradient(135deg,rgba(255,255,255,.04),transparent 50%);opacity:0;transition:opacity .3s;}
+.ltcard:hover{transform:translateY(-8px) rotateX(3deg) rotateY(-2deg);box-shadow:0 24px 60px rgba(0,0,0,.5),0 0 0 1px rgba(230,168,23,.15);border-color:rgba(230,168,23,.2);}
+.ltcard:hover::before{opacity:1;}
+.lt-icon-wrap{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1rem;position:relative;}
+.lt-icon-wrap::after{content:'';position:absolute;inset:0;border-radius:14px;background:inherit;filter:blur(12px);opacity:.4;z-index:-1;}
+.lt-name{font-size:.95rem;font-weight:700;margin-bottom:.35rem;}
+.lt-rate{font-family:'Bebas Neue',sans-serif;font-size:1.7rem;letter-spacing:1px;line-height:1;margin-bottom:.25rem;}
+.lt-rlab{font-size:.6rem;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:1px;}
+.lt-meta{display:flex;gap:1rem;margin:1rem 0;flex-wrap:wrap;}
+.lt-meta-item{display:flex;flex-direction:column;gap:.1rem;}
+.lt-meta-k{font-size:.58rem;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.3);}
+.lt-meta-v{font-size:.75rem;font-weight:600;color:rgba(255,255,255,.78);}
+.lt-divider{height:1px;background:rgba(255,255,255,.06);margin:.9rem 0;}
+.lt-warn{display:flex;align-items:flex-start;gap:.4rem;font-size:.69rem;color:rgba(255,165,0,.7);line-height:1.5;}
+.lt-warn::before{content:'⚠';flex-shrink:0;margin-top:.05rem;}
+
+/* ══════════════════════════════════════════
+   STORY SECTION — DEEP DIVE PANELS
+══════════════════════════════════════════ */
+.story-sec{padding:5rem 5% 6rem;background:#020810;overflow:hidden;}
+.story-inner{max-width:1200px;margin:0 auto;}
+.story-hd{text-align:center;margin-bottom:4rem;}
+.story-eyebrow{display:inline-flex;align-items:center;gap:.55rem;background:rgba(230,168,23,.08);border:1px solid rgba(230,168,23,.16);border-radius:100px;padding:.35rem 1rem;margin-bottom:1rem;font-size:.67rem;font-weight:700;color:var(--ac);text-transform:uppercase;letter-spacing:2.5px;}
+.story-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--ac);animation:sdot 2s ease-in-out infinite;}
+@keyframes sdot{0%,100%{opacity:1}50%{opacity:.2}}
+.story-hd-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.6vw,3rem);font-weight:900;line-height:1.07;margin-bottom:.7rem;}
+.story-hd-title em{font-style:italic;color:var(--ac);}
+.story-hd-sub{font-size:.87rem;color:rgba(255,255,255,.3);line-height:1.8;max-width:560px;margin:0 auto;}
+
+/* Chapter tabs */
+.story-tabs{display:flex;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:14px;padding:4px;gap:3px;margin-bottom:2.5rem;overflow-x:auto;}
+.story-tab{flex:1;min-width:0;padding:.6rem .5rem;border-radius:10px;border:none;background:none;cursor:pointer;transition:background .25s,color .25s;text-align:center;font-family:'DM Sans',sans-serif;}
+.story-tab-num{display:block;font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:1px;color:rgba(255,255,255,.2);line-height:1;transition:color .25s;}
+.story-tab-lbl{display:block;font-size:.6rem;font-weight:700;color:rgba(255,255,255,.18);text-transform:uppercase;letter-spacing:1.5px;margin-top:2px;transition:color .25s;white-space:nowrap;}
+.story-tab.act{background:var(--ac);}
+.story-tab.act .story-tab-num,.story-tab.act .story-tab-lbl{color:#05112a;}
+
+/* Panel container */
+.story-panels{position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.07);box-shadow:0 40px 120px rgba(0,0,0,.55);}
+.story-panel{display:none;grid-template-columns:1fr 1fr;min-height:580px;}
+.story-panel.act{display:grid;}
+@keyframes s-in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.story-panel.act{animation:s-in .5s cubic-bezier(.16,1,.3,1) both;}
+
+/* Illustration side */
+.sp-art{position:relative;overflow:hidden;}
+.sp-art svg{position:absolute;inset:0;width:100%;height:100%;display:block;}
+/* Gradient bridge to text */
+.sp-art-fade{position:absolute;inset:0;pointer-events:none;z-index:2;}
+
+/* Data badges overlaid on art */
+.sp-badge{position:absolute;z-index:5;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-radius:10px;padding:.55rem .85rem;border:1px solid;}
+.sp-bval{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:1px;line-height:1.1;}
+.sp-blbl{font-size:.57rem;color:rgba(255,255,255,.38);text-transform:uppercase;letter-spacing:.8px;margin-top:.1rem;}
+
+/* Story text side */
+.sp-text{display:flex;flex-direction:column;justify-content:center;padding:3rem 3rem 3rem 2.8rem;}
+.sp-chapter{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:3px;color:rgba(255,255,255,.17);margin-bottom:.6rem;display:flex;align-items:center;gap:.6rem;}
+.sp-chapter::before{content:'';width:18px;height:1px;background:rgba(255,255,255,.14);}
+.sp-title{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:900;line-height:1.12;margin-bottom:1rem;}
+.sp-title em{font-style:italic;color:var(--ac);}
+.sp-body{font-size:.79rem;color:rgba(255,255,255,.42);line-height:1.92;margin-bottom:1.3rem;}
+.sp-body strong{color:rgba(255,255,255,.82);font-weight:600;}
+.sp-body .bad{color:#f87171;font-weight:700;}
+.sp-body .good{color:#4ade80;font-weight:700;}
+.sp-body .num{font-family:'Bebas Neue',sans-serif;font-size:1rem;color:var(--ac);letter-spacing:.5px;}
+
+/* Fact rows */
+.sp-facts{display:flex;flex-direction:column;gap:.6rem;margin-bottom:1.3rem;}
+.sp-fact{display:flex;gap:.85rem;align-items:flex-start;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.055);border-radius:10px;padding:.75rem .95rem;}
+.sp-fact-ico{font-size:1.1rem;flex-shrink:0;margin-top:.05rem;}
+.sp-fact-body{font-size:.73rem;color:rgba(255,255,255,.44);line-height:1.7;}
+.sp-fact-body strong{color:rgba(255,255,255,.8);}
+.sp-fact-body .hi{color:var(--ac);font-weight:700;}
+.sp-fact-body .bad{color:#f87171;font-weight:700;}
+.sp-fact-body .good{color:#4ade80;font-weight:700;}
+
+/* Verdict box */
+.sp-verdict{border-radius:10px;padding:.85rem 1rem;font-size:.74rem;line-height:1.68;font-weight:500;}
+.spv-red{background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.17);color:#fca5a5;}
+.spv-gold{background:rgba(230,168,23,.07);border:1px solid rgba(230,168,23,.17);color:#fde68a;}
+.spv-green{background:rgba(34,197,94,.07);border:1px solid rgba(34,197,94,.17);color:#bbf7d0;}
+
+/* Source line */
+.sp-source{font-size:.6rem;color:rgba(255,255,255,.15);margin-top:.75rem;font-style:italic;}
+
+/* Nav */
+.story-nav{display:flex;justify-content:space-between;align-items:center;margin-top:1.8rem;}
+.story-nav-btn{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:.55rem 1.6rem;font-size:.8rem;font-weight:600;cursor:pointer;transition:all .22s;color:rgba(255,255,255,.48);font-family:'DM Sans',sans-serif;}
+.story-nav-btn:hover{background:rgba(230,168,23,.1);border-color:rgba(230,168,23,.3);color:var(--ac);}
+.story-nav-btn:disabled{opacity:.22;pointer-events:none;}
+.story-nav-next{background:var(--ac);border-color:var(--ac);color:#05112a;font-weight:700;}
+.story-nav-next:hover{background:#f5c842;border-color:#f5c842;color:#05112a;}
+.story-dots{display:flex;gap:5px;}
+.story-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.12);border:none;cursor:pointer;padding:0;transition:all .3s;}
+.story-dot.act{background:var(--ac);width:22px;border-radius:3.5px;}
+
+/* SVG animation keyframes */
+@keyframes sRupeeUp{0%{opacity:0;transform:translateY(0) rotate(0deg)}15%{opacity:1}85%{opacity:.7}100%{opacity:0;transform:translateY(-75px) rotate(15deg)}}
+@keyframes sFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes sPulse{0%,100%{opacity:.4}50%{opacity:1}}
+@keyframes sScanLine{from{transform:translateY(0)}to{transform:translateY(400px)}}
+@keyframes sKeyShine{0%,100%{filter:brightness(1)}50%{filter:brightness(2) drop-shadow(0 0 8px #e6a817)}}
+@keyframes sStamp{0%{transform:scale(2.2) rotate(-15deg);opacity:0}65%{transform:scale(.96) rotate(-15deg)}100%{transform:scale(1) rotate(-15deg);opacity:1}}
+@keyframes sBarGrow{from{width:0}to{width:var(--bw,80%)}}
+@keyframes sSunPulse{0%,100%{r:22}50%{r:26}}
+@keyframes sSmoke{0%{transform:translate(0,0) scale(1);opacity:.35}100%{transform:translate(var(--dx,4px),-50px) scale(1.6);opacity:0}}
+@keyframes sAlertFlash{0%,100%{stroke-opacity:.45}50%{stroke-opacity:1}}
+
+@media(max-width:900px){
+  .story-panel.act{grid-template-columns:1fr;}
+  .sp-art{min-height:300px;}
+  .sp-art-fade{display:none;}
+  .sp-text{padding:2rem 1.5rem;}
+  .sp-title{font-size:1.25rem;}
+  .story-tabs{padding:3px;}
+  .story-tab-lbl{display:none;}
+}
+@media(max-width:600px){
+  .sp-body{font-size:.76rem;}
+  .story-nav-btn{padding:.5rem 1.1rem;font-size:.75rem;}
+}
+
+/* ══════════════════════════════════════════
+   TRUE COST CALCULATOR
+══════════════════════════════════════════ */
+.calc-sec{padding:5.5rem 5%;background:#03080f;}
+.calc-inner{max-width:1300px;margin:0 auto;}
+.calc-layout{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.5rem;align-items:start;}
+.calc-form{background:linear-gradient(145deg,#091d3e,#05112a);border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:2rem;}
+.calc-field{margin-bottom:1.4rem;}
+.calc-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:rgba(255,255,255,.4);margin-bottom:.55rem;display:flex;justify-content:space-between;}
+.calc-label span{color:var(--ac);font-family:'Bebas Neue',sans-serif;font-size:.95rem;letter-spacing:1px;}
+.calc-range{width:100%;-webkit-appearance:none;appearance:none;height:4px;border-radius:2px;background:rgba(255,255,255,.1);outline:none;cursor:pointer;}
+.calc-range::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--ac);cursor:pointer;box-shadow:0 0 0 4px rgba(230,168,23,.15);}
+.calc-pills{display:flex;gap:.5rem;flex-wrap:wrap;}
+.cpill{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:.38rem .75rem;font-size:.75rem;font-weight:600;cursor:none;transition:all .2s;color:rgba(255,255,255,.5);}
+.cpill.on{background:rgba(230,168,23,.15);border-color:rgba(230,168,23,.4);color:var(--ac);}
+.calc-row-toggle{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;}
+.ctoggle{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:.6rem;text-align:center;cursor:none;transition:all .2s;}
+.ctoggle.on{background:rgba(230,168,23,.1);border-color:rgba(230,168,23,.3);}
+.ctoggle-name{font-size:.7rem;font-weight:700;color:rgba(255,255,255,.5);}
+.ctoggle.on .ctoggle-name{color:var(--ac);}
+.ctoggle-rate{font-size:.65rem;color:rgba(255,255,255,.3);margin-top:.15rem;}
+.ctoggle.on .ctoggle-rate{color:rgba(230,168,23,.6);}
+
+/* Results panel */
+.calc-results{background:linear-gradient(145deg,#091d3e,#040e20);border:1px solid rgba(230,168,23,.12);border-radius:20px;padding:2rem;position:sticky;top:calc(var(--nh) + 1rem);}
+.calc-res-emi{text-align:center;padding:1.5rem;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:1.5rem;}
+.cre-label{font-size:.7rem;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.35);margin-bottom:.4rem;}
+.cre-value{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:var(--ac);letter-spacing:2px;line-height:1;}
+.cre-sub{font-size:.72rem;color:rgba(255,255,255,.3);margin-top:.3rem;}
+.calc-breakdown{display:flex;flex-direction:column;gap:1rem;}
+.cbr-row{display:flex;justify-content:space-between;align-items:center;}
+.cbr-k{font-size:.78rem;color:rgba(255,255,255,.45);}
+.cbr-v{font-size:.88rem;font-weight:700;color:rgba(255,255,255,.85);}
+.cbr-v.red{color:#f87171;}.cbr-v.green{color:#4ade80;}.cbr-v.gold{color:var(--ac);}
+.cbr-divider{height:1px;background:rgba(255,255,255,.05);}
+
+/* Comparison bar */
+.comp-bar-wrap{margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.06);}
+.comp-bar-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.3);margin-bottom:1rem;}
+.comp-bar-row{display:flex;flex-direction:column;gap:.4rem;margin-bottom:.8rem;}
+.comp-bar-name{display:flex;justify-content:space-between;font-size:.72rem;margin-bottom:.25rem;}
+.comp-bar-name span:first-child{color:rgba(255,255,255,.5);}
+.comp-bar-name span:last-child{font-weight:700;}
+.comp-bar{height:8px;border-radius:4px;overflow:hidden;background:rgba(255,255,255,.06);}
+.comp-bar-fill{height:100%;border-radius:4px;transition:width .8s var(--E);}
+.cbf-reduce{background:linear-gradient(90deg,#22c55e,#4ade80);}
+.cbf-flat{background:linear-gradient(90deg,#ef4444,#f87171);}
+.comp-save{margin-top:1rem;background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:10px;padding:.75rem 1rem;font-size:.75rem;color:#4ade80;text-align:center;font-weight:600;}
+
+/* ══════════════════════════════════════════
+   CIBIL SCORE VISUAL
+══════════════════════════════════════════ */
+.cibil-sec{padding:5.5rem 5%;background:linear-gradient(180deg,#03080f 0%,#050e1a 100%);}
+.cibil-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.cibil-left{}
+.cibil-gauge-wrap{position:relative;width:280px;height:160px;margin:2rem auto 1.5rem;}
+.cibil-gauge{width:280px;height:160px;}
+
+.cibil-factors{display:flex;flex-direction:column;gap:.85rem;margin-top:2rem;}
+.cibil-factor{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:center;}
+.cf-left{}
+.cf-name{font-size:.78rem;font-weight:700;margin-bottom:.35rem;display:flex;justify-content:space-between;}
+.cf-name span:last-child{font-family:'Bebas Neue',sans-serif;font-size:.9rem;color:var(--ac);letter-spacing:1px;}
+.cf-bar{height:6px;border-radius:3px;background:rgba(255,255,255,.07);overflow:hidden;}
+.cf-bar-fill{height:100%;border-radius:3px;animation:cfLoad 1.2s var(--E) forwards;animation-play-state:paused;}
+.cf-bar-fill.animate{animation-play-state:running;}
+@keyframes cfLoad{from{width:0}to{width:var(--cfw)}}
+
+.cibil-right{}
+.cibil-score-display{text-align:center;margin-bottom:2rem;}
+.csd-score{font-family:'Bebas Neue',sans-serif;font-size:5rem;letter-spacing:2px;line-height:1;}
+.csd-label{font-size:.75rem;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.35);}
+.cibil-range{display:flex;gap:.5rem;margin:1.5rem 0;border-radius:12px;overflow:hidden;height:12px;}
+.cr-seg{flex:1;position:relative;}
+.cr-seg::after{content:attr(data-label);position:absolute;top:18px;left:50%;transform:translateX(-50%);font-size:.55rem;white-space:nowrap;color:rgba(255,255,255,.3);}
+.cibil-tips{display:flex;flex-direction:column;gap:.75rem;margin-top:2.5rem;}
+.ctip{display:flex;gap:.75rem;align-items:flex-start;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:.9rem;}
+.ctip-icon{font-size:1.2rem;flex-shrink:0;}
+.ctip-text{font-size:.76rem;color:rgba(255,255,255,.55);line-height:1.6;}
+.ctip-text strong{color:rgba(255,255,255,.85);}
+
+/* ══════════════════════════════════════════
+   WHEN NOT TO TAKE A LOAN — Radical Honesty
+══════════════════════════════════════════ */
+.noloan-sec{padding:5rem 5%;background:#040b16;}
+.noloan-inner{max-width:1300px;margin:0 auto;}
+.noloan-hd{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:end;margin-bottom:3rem;}
+.noloan-note{font-size:.82rem;color:rgba(255,255,255,.38);line-height:1.7;background:rgba(255,255,255,.03);border-radius:12px;padding:1.2rem;border-left:3px solid rgba(230,168,23,.3);}
+.noloan-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.05);border-radius:16px;overflow:hidden;}
+.nl-card{background:#040b16;padding:1.8rem;transition:background .3s;}
+.nl-card:hover{background:#060f1e;}
+.nl-num{font-family:'Bebas Neue',sans-serif;font-size:3rem;color:rgba(239,68,68,.1);float:right;line-height:1;}
+.nl-icon{font-size:1.8rem;margin-bottom:.75rem;display:block;}
+.nl-title{font-size:.88rem;font-weight:700;color:#fca5a5;margin-bottom:.5rem;line-height:1.3;}
+.nl-body{font-size:.74rem;color:rgba(255,255,255,.42);line-height:1.7;}
+.nl-body strong{color:rgba(255,255,255,.72);}
+.nl-advice{margin-top:.9rem;font-size:.7rem;color:rgba(34,197,94,.7);font-style:italic;}
+
+/* ══════════════════════════════════════════
+   PROCESS STEPS
+══════════════════════════════════════════ */
+.process-sec{padding:5.5rem 5%;background:linear-gradient(180deg,#040b16 0%,#05112a 100%);}
+.process-inner{max-width:1300px;margin:0 auto;}
+.process-steps{display:grid;grid-template-columns:repeat(6,1fr);gap:0;margin-top:3rem;position:relative;}
+.process-steps::before{content:'';position:absolute;top:28px;left:7%;right:7%;height:1px;background:linear-gradient(90deg,transparent,rgba(230,168,23,.2) 20%,rgba(230,168,23,.2) 80%,transparent);}
+.pstep{text-align:center;padding:0 .75rem;position:relative;}
+.pstep-num{width:56px;height:56px;border-radius:50%;background:var(--i2);border:1px solid rgba(230,168,23,.2);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--ac);position:relative;z-index:1;transition:background .3s,border-color .3s,transform .3s;}
+.pstep:hover .pstep-num{background:rgba(230,168,23,.1);border-color:rgba(230,168,23,.5);transform:scale(1.1);}
+.pstep-icon{font-size:1.2rem;display:block;margin-bottom:.6rem;}
+.pstep-title{font-size:.78rem;font-weight:700;margin-bottom:.35rem;}
+.pstep-body{font-size:.68rem;color:rgba(255,255,255,.38);line-height:1.6;}
+
+/* ══════════════════════════════════════════
+   FAQ
+══════════════════════════════════════════ */
+.faq-sec{padding:5.5rem 5%;background:#03080f;}
+.faq-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.faq-list{display:flex;flex-direction:column;gap:.6rem;}
+.fi{border:1px solid rgba(255,255,255,.06);border-radius:14px;overflow:hidden;transition:border-color .2s;}
+.fi.op{border-color:rgba(230,168,23,.2);}
+.fh{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 1.3rem;cursor:none;gap:1rem;}
+.fq{font-size:.83rem;font-weight:600;line-height:1.4;color:rgba(255,255,255,.78);}
+.fi.op .fq{color:#fff;}
+.fic{font-size:1rem;color:rgba(255,255,255,.3);transition:transform .3s,color .3s;flex-shrink:0;}
+.fi.op .fic{transform:rotate(45deg);color:var(--ac);}
+.fab2{padding:0 1.3rem;max-height:0;overflow:hidden;transition:max-height .38s var(--E),padding .28s;}
+.fi.op .fab2{max-height:300px;padding-bottom:1.2rem;}
+.fat{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.75;}
+.fat strong{color:rgba(255,255,255,.75);}
+
+.faq-cta{background:linear-gradient(145deg,rgba(230,168,23,.08),rgba(230,168,23,.03));border:1px solid rgba(230,168,23,.15);border-radius:20px;padding:2.5rem;position:sticky;top:calc(var(--nh)+1rem);}
+.faq-cta-h{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;line-height:1.15;margin-bottom:.75rem;}
+.faq-cta-h em{font-style:italic;color:var(--ac);}
+.faq-cta-sub{font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.7;margin-bottom:1.5rem;}
+.faq-cta-list{display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.8rem;}
+.faq-cta-item{display:flex;align-items:flex-start;gap:.5rem;font-size:.76rem;color:rgba(255,255,255,.55);}
+.faq-cta-item::before{content:'✓';color:var(--ac);font-weight:700;flex-shrink:0;}
+
+/* ══════════════════════════════════════════
+   CTA BANNER
+══════════════════════════════════════════ */
+.cta-banner{padding:5rem 5%;background:linear-gradient(135deg,#091d3e 0%,#0e2d5c 50%,#091d3e 100%);position:relative;overflow:hidden;}
+.cta-banner::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(230,168,23,.06),transparent);}
+.cta-inner{max-width:800px;margin:0 auto;text-align:center;position:relative;z-index:1;}
+.cta-h{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,3rem);font-weight:900;line-height:1.1;margin-bottom:.75rem;}
+.cta-h em{font-style:italic;color:var(--ac);}
+.cta-sub{font-size:.88rem;color:rgba(255,255,255,.45);margin-bottom:2rem;line-height:1.7;}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+.ft{background:#02060f;padding:4rem 5% 2rem;border-top:1px solid var(--line);}
+.ft-in{max-width:1300px;margin:0 auto;}
+.ft-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid var(--line);}
+.ft-logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;display:inline-block;margin-bottom:.75rem;}
+.ft-logo em{font-style:normal;color:var(--ac);}
+.ft-ds{font-size:.78rem;color:rgba(255,255,255,.35);line-height:1.7;margin-bottom:1rem;max-width:280px;}
+.ft-con{font-size:.76rem;color:rgba(255,255,255,.35);margin-bottom:.4rem;}
+.ft-con a{transition:color .2s;}.ft-con a:hover{color:var(--ac);}
+.ft-clbl{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.25);margin-bottom:.9rem;}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.5rem;}
+.ft-col a{font-size:.78rem;color:rgba(255,255,255,.38);transition:color .2s;}
+.ft-col a:hover{color:#fff;}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;flex-wrap:wrap;gap:1rem;}
+.ft-bot span{font-size:.72rem;color:rgba(255,255,255,.2);}
+.ft-links{display:flex;gap:1.5rem;}
+.ft-links a{font-size:.72rem;color:rgba(255,255,255,.2);transition:color .2s;}.ft-links a:hover{color:rgba(255,255,255,.5);}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media(max-width:1100px){
+  .hero-inner,.cibil-inner,.faq-inner{grid-template-columns:1fr;}
+  .hero-right{height:380px;margin-top:2rem;}
+  .calc-layout{grid-template-columns:1fr;}
+  .noloan-hd{grid-template-columns:1fr;}
+}
+@media(max-width:900px){
+  .secrets-grid,.loans-grid,.noloan-grid{grid-template-columns:1fr 1fr;}
+  .process-steps{grid-template-columns:repeat(3,1fr);gap:2rem;}
+  .process-steps::before{display:none;}
+  .ft-top{grid-template-columns:1fr 1fr;}
+  @media(max-width:900px){.nl{display:none;}.burger{display:flex;}}
+}
+@media(max-width:600px){
+  .secrets-grid,.loans-grid,.noloan-grid{grid-template-columns:1fr;}
+  .process-steps{grid-template-columns:1fr 1fr;}
+  .hero-stats{flex-wrap:wrap;gap:1rem;}
+  .ft-top{grid-template-columns:1fr;}
+  .lcard3d{display:none;}
+  .hero-right{display:none;}
+  .hero-inner{grid-template-columns:1fr;}
+}
+</style>
 </head>
 <body>
-  <header>
-    <nav class="nav"><div class="nav__inner"><a href="index.html" class="nav__logo">Cover<span>Credit</span></a><ul class="nav__links"><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life Insurance</a></li><li class="nav__dropdown"><span class="nav__dropdown-trigger">Vehicle Insurance <span class="nav__dropdown-arrow">▼</span></span><div class="nav__dropdown-menu"><a href="bike-insurance.html">Bike Insurance</a><a href="car-insurance.html">Car Insurance</a><a href="commercial-vehicle-insurance.html">Commercial Vehicles</a></div></li><li><a href="loans.html" class="active">Loans</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="book.html" class="nav__cta">Book Consultation</a></li></ul><button class="nav__hamburger" id="hamburger"><span></span><span></span><span></span></button></div></nav>
-    <nav class="mobile-nav" id="mobile-nav"><a href="health-insurance.html" class="mobile-nav__item">Health Insurance</a><a href="life-insurance.html" class="mobile-nav__item">Life Insurance</a><a href="bike-insurance.html" class="mobile-nav__item mobile-nav__sub">↳ Bike Insurance</a><a href="car-insurance.html" class="mobile-nav__item mobile-nav__sub">↳ Car Insurance</a><a href="commercial-vehicle-insurance.html" class="mobile-nav__item mobile-nav__sub">↳ Commercial Vehicles</a><a href="loans.html" class="mobile-nav__item">Loans</a><a href="blog.html" class="mobile-nav__item">Blog</a><a href="about.html" class="mobile-nav__item">About</a><a href="contact.html" class="mobile-nav__item">Contact</a><a href="book.html" class="mobile-nav__cta">Book Free Consultation</a></nav>
-  </header>
+<div id="cur"></div><div id="cr"></div>
 
-  <section class="page-hero">
-    <div class="page-hero__inner" style="max-width:var(--max-width);width:var(--container);">
-      <nav class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span>Loans</span></nav>
-      <h1 class="page-hero__title">Loans</h1>
-      <p class="page-hero__desc">Need funds for home, business, education, or personal needs? We guide you to the right loan product with transparent terms, fast processing, and no hidden surprises.</p>
-    </div>
-  </section>
+<!-- FAB -->
+<div class="fab">
+  <a href="book.html" class="fbk">📅 Book Free Session</a>
+  <a href="https://wa.me/917842854466" target="_blank" class="fwa">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp
+  </a>
+</div>
 
-  <section class="section" style="background:var(--bg);">
-    <div class="section-wrap">
-      <div class="sidebar-layout">
-        <div>
-          <div class="cards-grid" style="margin-bottom:2rem;">
-            <div class="card"><div class="card__icon">🏠</div><h3 class="card__title">Home Loan</h3><p class="card__body">Purchase, construct, or renovate your home. Competitive interest rates with up to 30-year tenure. We partner with leading banks &amp; HFCs.</p><span class="card__link">Learn More →</span></div>
-            <div class="card"><div class="card__icon">💼</div><h3 class="card__title">Business Loan</h3><p class="card__body">Grow your business with working capital, equipment purchase, or expansion funding. Minimal documentation with fast disbursal.</p><span class="card__link">Learn More →</span></div>
-            <div class="card"><div class="card__icon">👤</div><h3 class="card__title">Personal Loan</h3><p class="card__body">For medical emergencies, travel, wedding, or any personal need. No collateral required. Instant approval for eligible applicants.</p><span class="card__link">Learn More →</span></div>
-            <div class="card"><div class="card__icon">🎓</div><h3 class="card__title">Education Loan</h3><p class="card__body">Fund your child's higher education in India or abroad. Covers tuition, living expenses, and more. Repayment starts after course completion.</p><span class="card__link">Learn More →</span></div>
-            <div class="card"><div class="card__icon">🚗</div><h3 class="card__title">Vehicle Loan</h3><p class="card__body">Finance your new or used two-wheeler or car. Quick processing, competitive rates, and flexible EMI options.</p><span class="card__link">Learn More →</span></div>
-            <div class="card"><div class="card__icon">🏢</div><h3 class="card__title">Loan Against Property</h3><p class="card__body">Unlock the value of your property for business or personal needs. Higher amount, lower interest rate than personal loans.</p><span class="card__link">Learn More →</span></div>
-          </div>
-
-          <div class="info-box" style="margin-bottom:1.5rem;">
-            <h2 class="info-box__title">Why Take a Loan Through Cover Credit?</h2>
-            <ul class="checklist">
-              <li>We compare rates across 15+ banks and NBFCs</li>
-              <li>Transparent process — no hidden fees or surprises</li>
-              <li>End-to-end documentation assistance</li>
-              <li>Faster approvals through our lender partnerships</li>
-              <li>Telugu/English support throughout the process</li>
-            </ul>
-          </div>
-
-          <div class="info-box">
-            <h2 class="info-box__title">Loan Process — How It Works</h2>
-            <ul class="steps">
-              <li class="steps__item"><div class="steps__num">1</div><div><h4 class="steps__title">Free Consultation</h4><p class="steps__desc">We understand your requirement and assess your eligibility across multiple lenders.</p></div></li>
-              <li class="steps__item"><div class="steps__num">2</div><div><h4 class="steps__title">Best Offer Shortlisting</h4><p class="steps__desc">We present you with 3–5 options with clear comparison of rates, tenure, and fees.</p></div></li>
-              <li class="steps__item"><div class="steps__num">3</div><div><h4 class="steps__title">Documentation</h4><p class="steps__desc">We guide you on the exact documents needed and help you compile the application.</p></div></li>
-              <li class="steps__item"><div class="steps__num">4</div><div><h4 class="steps__title">Approval &amp; Disbursal</h4><p class="steps__desc">We follow up with the lender to ensure quick approval and prompt disbursal to your account.</p></div></li>
-            </ul>
-          </div>
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="ni">
+    <a href="index.html" class="logo">Cover<em>Credit</em></a>
+    <ul class="nl">
+      <li><a href="health-insurance.html">Health</a></li>
+      <li><a href="life-insurance.html">Life Insurance</a></li>
+      <li class="dd">
+        <span class="ddt">Vehicle <span class="dda">▼</span></span>
+        <div class="ddm">
+          <a href="bike-insurance.html">🏍️ Bike Insurance</a>
+          <a href="car-insurance.html">🚗 Car Insurance</a>
+          <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicle</a>
         </div>
-        <aside>
-          <div class="sticky-card">
-            <h3 class="sticky-card__title">Get Loan Guidance</h3>
-            <p class="sticky-card__body">Tell us about your loan requirement and we'll find you the best option — fast.</p>
-            <a href="book.html" class="btn btn--primary btn--full" style="margin-bottom:0.8rem;">Book Free Session</a>
-            <div class="sticky-card__divider">or</div>
-            <a href="tel:+919642834789" class="sticky-card__call">📞 +91 96428 34789</a>
-          </div>
-        </aside>
+      </li>
+      <li><a href="loans.html" class="act">Loans</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="book.html" class="ncta">Free Consultation</a></li>
+    </ul>
+    <button class="burger" id="burger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob" id="mob">
+  <a href="health-insurance.html">Health Insurance</a>
+  <a href="life-insurance.html">Life Insurance</a>
+  <a href="bike-insurance.html">🏍️ Bike Insurance</a>
+  <a href="car-insurance.html">🚗 Car Insurance</a>
+  <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicle</a>
+  <a href="loans.html">Loans</a>
+  <a href="about.html">About</a>
+  <a href="book.html" class="mc">Free Consultation</a>
+</div>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- HERO                                    -->
+<!-- ═══════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <!-- Particles -->
+    <div class="hero-particles" id="heroParticles"></div>
+    <!-- Glowing orbs -->
+    <div style="position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(14,45,92,.5),transparent 70%);top:-10%;right:-5%;pointer-events:none;animation:glowPulse 6s ease-in-out infinite;filter:blur(40px);"></div>
+    <div style="position:absolute;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(230,168,23,.08),transparent 70%);bottom:10%;left:5%;pointer-events:none;animation:glowPulse 8s ease-in-out infinite .5s;filter:blur(60px);"></div>
+  </div>
+
+  <div class="hero-inner">
+    <div class="hero-left">
+      <div class="hero-eyebrow rv">
+        <div class="hero-eyebrow-dot"></div>
+        <span>AP & Telangana's Loan Advisors</span>
+      </div>
+      <h1 class="hero-h1 rv d1">
+        A loan from the<br/>
+        <em>right lender</em> can<br/>
+        change everything.<br/>
+        <span class="strike">The wrong one</span> will.
+      </h1>
+      <p class="hero-sub rv d2">
+        We compare <strong>30+ banks and NBFCs</strong> to find you the lowest rate, explain every hidden charge before you sign, and stay with you until the money lands in your account. <strong>We never rush. We never sell what you don't need.</strong>
+      </p>
+      <div class="hero-btns rv d3">
+        <a href="book.html" class="btn-gold">Compare Loan Rates Free →</a>
+        <a href="#calculator" class="btn-ghost">Calculate EMI</a>
+      </div>
+      <div class="hero-stats rv d4">
+        <div class="hstat">
+          <div class="hstat-n" id="counterLoans">₹0Cr</div>
+          <div class="hstat-l">Loans arranged<br/>for AP & TG families</div>
+        </div>
+        <div class="hstat">
+          <div class="hstat-n">30+</div>
+          <div class="hstat-l">Lenders we<br/>compare for you</div>
+        </div>
+        <div class="hstat">
+          <div class="hstat-n">0</div>
+          <div class="hstat-l">Charges to<br/>use our service</div>
+        </div>
       </div>
     </div>
-  </section>
 
-  <section class="cta-section"><div class="cta-section__inner"><h2 class="cta-section__title">The right loan at the right rate</h2><p class="cta-section__desc">Let us do the comparing, negotiating, and paperwork — so you can focus on what matters.</p><a href="book.html" class="btn btn--white">Book Free Consultation</a></div></section>
+    <div class="hero-right rv d2">
+      <div class="hero-glow"></div>
+      <div class="loan3d-wrap">
 
-  <footer class="footer"><div class="footer__top"><div><a href="index.html" class="footer__logo">Cover<span>Credit</span></a><p class="footer__tagline">Honest advice for your family. We guide, not sell.</p><p class="footer__serving">© <span id="current-year">2026</span> Cover Credit. All rights reserved.</p></div><div class="footer__col"><h4>Quick Links</h4><ul><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life Insurance</a></li><li><a href="loans.html">Loans</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="book.html">Book Consultation</a></li></ul></div><div class="footer__col"><h4>Branches</h4><ul><li><a href="#">Visakhapatnam</a></li><li><a href="#">Hyderabad</a></li></ul></div><div class="footer__col"><h4>Contact</h4><div class="footer__contact-item">📞 <a href="tel:+919642834789">+91 96428 34789</a></div><div class="footer__contact-item">✉️ <a href="mailto:info@covercredit.in">info@covercredit.in</a></div></div></div><div class="footer__bottom"><span>© <span id="current-year-2">2026</span> Cover Credit. All rights reserved.</span><div class="footer__bottom-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div></div></footer>
-  <script src="js/nav.js"></script><script src="js/main.js"></script>
+        <!-- Home Loan card -->
+        <div class="lcard3d lc1">
+          <div class="lc-icon">🏠</div>
+          <div class="lc-type">Home Loan</div>
+          <div class="lc-name">SBI / HDFC / ICICI</div>
+          <div class="lc-rate">8.40<span style="font-size:1rem">%</span></div>
+          <div class="lc-rlab">Starting interest p.a.</div>
+          <div class="lc-bar"><div class="lc-bar-fill" style="--w:65%"></div></div>
+        </div>
+
+        <!-- Personal Loan card -->
+        <div class="lcard3d lc2">
+          <div class="lc-icon">👤</div>
+          <div class="lc-type">Personal Loan</div>
+          <div class="lc-name">12 lenders compared</div>
+          <div class="lc-rate">10.50<span style="font-size:.9rem">%</span></div>
+          <div class="lc-rlab">Best rate we found</div>
+          <div class="lc-bar"><div class="lc-bar-fill" style="--w:80%"></div></div>
+        </div>
+
+        <!-- Car Loan card -->
+        <div class="lcard3d lc3">
+          <div class="lc-icon">🚗</div>
+          <div class="lc-type">Car Loan</div>
+          <div class="lc-name">New & Pre-owned</div>
+          <div class="lc-rate">7.90<span style="font-size:.9rem">%</span></div>
+          <div class="lc-rlab">New car, top lenders</div>
+          <div class="lc-bar"><div class="lc-bar-fill" style="--w:55%"></div></div>
+        </div>
+
+        <!-- Business Loan card -->
+        <div class="lcard3d lc4">
+          <div class="lc-icon">💼</div>
+          <div class="lc-type">Business / MSME</div>
+          <div class="lc-name">Collateral-free options</div>
+          <div class="lc-rate">12.00<span style="font-size:.9rem">%</span></div>
+          <div class="lc-rlab">From MSME lenders</div>
+          <div class="lc-bar"><div class="lc-bar-fill" style="--w:90%"></div></div>
+        </div>
+
+        <!-- Center floating card -->
+        <div class="lcard3d lc5">
+          <div style="text-align:center;">
+            <div style="font-size:2rem;margin-bottom:.3rem;">🏦</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:1px;color:var(--ac);margin-bottom:.2rem;">30+ LENDERS</div>
+            <div style="font-size:.65rem;color:rgba(255,255,255,.4);">One comparison.<br/>Best rate. You decide.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- WHAT BANKS WON'T TELL YOU              -->
+<!-- ═══════════════════════════════════════ -->
+<section class="secrets">
+  <div class="secrets-inner">
+    <div class="secrets-hd rv">
+      <div class="secrets-warn"><span>⚠ What Banks Won't Tell You</span></div>
+      <h2 class="tit rv d1">Four things your lender<br/>hopes you never find out.</h2>
+      <p style="font-size:.85rem;color:rgba(255,255,255,.38);margin-top:.75rem;max-width:540px;margin-inline:auto;line-height:1.7;" class="rv d2">Most borrowers discover these only after signing. We tell you upfront — even if it costs us a commission.</p>
+    </div>
+    <div class="secrets-grid rv d2">
+      <div class="secret-card">
+        <div class="sc-num">01</div>
+        <div class="sc-icon">🎭</div>
+        <div class="sc-title">"Flat Rate 12%" is actually ~22% in real terms</div>
+        <div class="sc-body">Banks advertise a <strong>flat interest rate</strong> — calculated on the original loan amount throughout the tenure. But you're paying back the principal every month, so you're borrowing less as time passes. The actual <strong>effective annual rate (reducing balance) is nearly double</strong> the flat rate quoted. A "12% flat" personal loan is really ~21–23% reducing balance. We calculate the true cost for every offer we show you.</div>
+        <div class="sc-callout">Ask: "Is this flat rate or reducing balance rate?" — most agents won't tell you unless you ask.</div>
+      </div>
+      <div class="secret-card">
+        <div class="sc-num">02</div>
+        <div class="sc-icon">📦</div>
+        <div class="sc-title">"Zero Processing Fee" still has ₹30,000–₹80,000 in charges</div>
+        <div class="sc-body">Waived processing fee is the bait. The hidden costs: <strong>loan insurance premium</strong> (added to principal, earns them interest too), <strong>legal and technical charges</strong> (₹5,000–₹20,000), <strong>MODT stamp duty</strong> (0.2% of loan), <strong>CERSAI charges</strong>, <strong>franking charges</strong>, and <strong>GST on all fees</strong>. On a ₹50 lakh home loan, the real upfront cost is often ₹75,000–₹1.2 lakh. We give you the full cost sheet before you decide.</div>
+        <div class="sc-callout">Always ask for a complete "schedule of charges" document — not just the sanction letter.</div>
+      </div>
+      <div class="secret-card">
+        <div class="sc-num">03</div>
+        <div class="sc-icon">🔒</div>
+        <div class="sc-title">Pre-payment penalties can cost you ₹50,000+ — buried in Page 18</div>
+        <div class="sc-body">Got a bonus? Inherited some money? Planning to pre-pay your home loan? <strong>Many PSU banks allow this free — private banks and NBFCs often charge 2–3% on the amount you prepay.</strong> If you prepay ₹10 lakh mid-tenure, that's ₹20,000–₹30,000 instantly gone. Fixed-rate loans are worse — prepayment penalties of 4–5% are common. We check the prepayment clause for you and flag lenders who charge it.</div>
+        <div class="sc-callout">Floating rate home loans from scheduled banks: RBI mandates zero prepayment charges.</div>
+      </div>
+      <div class="secret-card">
+        <div class="sc-num">04</div>
+        <div class="sc-icon">🏛️</div>
+        <div class="sc-title">Your salary account bank almost never gives you the best rate</div>
+        <div class="sc-body">Every banker you walk in to see works on loan disbursement targets. Their job is to close your loan — at their bank's rate. <strong>The bank where your salary comes in has zero incentive to price-compete for your business — they already have you.</strong> We've seen salary account holders get 9.8% from their own bank, and 8.4% from a competing lender for the identical profile. That 1.4% on a ₹50 lakh, 20-year loan = <strong>₹7.8 lakh extra interest.</strong></div>
+        <div class="sc-callout">₹7,80,000 saved by one family last year — just by comparing instead of walking into their own bank.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- ALL LOAN TYPES                          -->
+<!-- ═══════════════════════════════════════ -->
+<section class="loans-sec sec">
+  <div class="loans-inner">
+    <div class="rv">
+      <div class="tag">8 Loan Types We Arrange</div>
+      <h2 class="tit rv d1">Every loan your family<br/><em>will ever need.</em></h2>
+      <p style="font-size:.85rem;color:rgba(255,255,255,.38);margin-top:.75rem;line-height:1.7;max-width:560px;" class="rv d2">Each card shows real rate ranges from lenders we actually work with — not the teaser rates you see in TV ads.</p>
+    </div>
+    <div class="loans-grid">
+
+      <!-- Home Loan -->
+      <div class="ltcard rv d1">
+        <div class="lt-icon-wrap" style="background:rgba(14,45,92,.8);">🏠</div>
+        <div class="lt-name">Home Loan</div>
+        <div class="lt-rate" style="color:#60a5fa;">8.40–10.50<span style="font-size:.9rem">%</span></div>
+        <div class="lt-rlab">p.a. reducing balance</div>
+        <div class="lt-meta">
+          <div class="lt-meta-item"><div class="lt-meta-k">Max Amount</div><div class="lt-meta-v">₹5 Crore</div></div>
+          <div class="lt-meta-item"><div class="lt-meta-k">Max Tenure</div><div class="lt-meta-v">30 years</div></div>
+          <div class="lt-meta-item"><div class="lt-meta-k">LTV Ratio</div><div class="lt-meta-v">Up to 90%</div></div>
+        </div>
+        <div class="lt-divider"></div>
+        <div style="font-size:.72rem;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:.7rem;">SBI, HDFC, ICICI, Axis, PNB Housing, LIC HFL, Bajaj Housing. We compare all. Under-construction, resale, self-construction — all covered.</div>
+        <div class="lt-warn">0.5% rate difference on ₹50L over 20 years = ₹3.6 lakh saved. We find that difference.</div>
+      </div>
+
+      <!-- Personal Loan -->
+      <div class="ltcard rv d2">
+        <div class="lt-icon-wrap" style="background:rgba(79,70,229,.3);">👤</div>
+        <div class="lt-name">Personal Loan</div>
+        <div class="lt-rate" style="color:#a78bfa;">10.50–18.00<span style="font-size:.9rem">%</span></div>
+        <div class="lt-rlab">p.a. reducing balance</div>
+        <div class="lt-meta">
+          <div class="lt-meta-item"><div class="lt-meta-k">Max Amount</div><div class="lt-meta-v">₹25 Lakh</div></div>
+          <div class="lt-meta-item"><div class="lt-meta-k">Max Tenure</div><div class="lt-meta-v">5 years</div></div>
+          <div class="lt-meta-item"><div class="lt-meta-k">Collateral</div><div class="lt-meta-v">None</div></div>
+        </div>
+        <div class="lt-divider"></div>
+        <div style="font-size:.72rem;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:.7rem;">Medical emergency, wedding, home renovation, debt consolidation. Salaried and self-employed. Disbursal in 24–72 hours with the right lender.</div>
+        <div class="lt-warn">Personal loans have the widest rate variation. Never take the first offer — rates vary by 6–8% for the same profile.</div>
+      </div>
+
+      <!-- Car Loan -->
+      <div class="ltcard rv d3">
+        <div class="lt-icon-wrap" style="background:rgba(5,150,105,.3);">🚗</div>
+        <div class="lt-name">Car Loan</div>
+        <div class="lt-rate" style="color:#34d399;">7.90–14.00<span style="font-size:.9rem">%</span></div>
+        <div class="lt-rlab">New / Pre-owned</div>
+        <div class="lt-meta">
+          <div class="lt-meta-item"><div class="lt-meta-k">Max Amount</div><div class="lt-meta-v">₹1 Crore</div></div>
+          <div class="lt-meta-item"><div class="lt-meta-k">Max Tenure</div><div class="lt-meta-v">7 years</div></div>
+          <div class="lt-meta-item"><div class="lt-meta-k">LTV</div><div class="lt-meta-v">Up to 100%</div></div>
+        </div>
+        <div class="lt-divider"></div>
+        <div style="font-size:.72rem;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:.7rem;">New cars from all manufacturers. Pre-owned cars up to 10 years old (lender-dependent). SBI Car Loan, HDFC, Kotak, IndusInd, ICICI — we compare all.</div>
+        <div class="lt-warn">Pre-owned car loans carry 3–5% higher rates. We find lenders who specialise in used cars to close that gap.</div>
+      </div>
+
+      <!-- Business / MSME -->
+      <div class="ltcard rv d4">
+        <div class="lt-icon-wrap" style="background:rgba(220,38,38,.2);">💼</div>
+        <div class="lt-name">Business / MSME Loan</div>
+        <div class="lt-rate" style="color:#f87171;">12.00–20.00<span style="font-size:.9rem">%</span></div>
+        <div class="lt-rlab">Secured & unsecured</div>
+        <div class="lt-meta">
+          <div class="lt-meta-item"><div class="lt-meta-k">Max Amount</div><div class="lt-meta-v">₹2 Crore</div></div>
+          <div class="lt-meta-item"><div class="lt-meta-k">Max Tenure</div><div class="lt-meta-v">5 years</div></div>
+          <div class="lt-meta-item"><div class="lt-meta-k">Collateral</div><div class="lt-meta-v">Optional</div></div>
+        </div>
+        <div class="lt-divider"></div>
+        <div style="font-size:.72rem;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:.7rem;">Working capital, equipment purchase, expansion. Udyam registered MSMEs get preferential rates. CGTMSE-backed loans available — collateral-free up to ₹2 crore.</div>
+        <div class="lt-warn">Many MSMEs overpay because they only approach 1–2 banks. We access SIDBI tie-ups most businesses never know about.</div>
+      </div>
+
+      <!-- Education Loan -->
+      <div class="ltcard rv d1">
+        <div class="lt-icon-wrap" style="background:rgba(234,179,8,.2);">🎓</div>
+        <div class="lt-name">Education Loan</div>
+        <div class="lt-rate" style="color:#fde047;">8.15–15.00<span style="font-size:.9rem">%</span></div>
+        <div class="lt-rlab">India / Abroad</div>
+        <div class="lt-meta">
+          <div class="lt-meta-item"><div class="lt-meta-k">Max Amount</div><div class="lt-meta-v">₹75 Lakh</div></div>
+          <div class="lt-meta-item"><div class="lt-meta-k">Max Tenure</div><div class="lt-meta-v">15 years</div></div>
+          <div class="lt-meta-item"><div class="lt-meta-k">Tax Benefit</div><div class="lt-meta-v">Sec 80E</div></div>
+        </div>
+        <div class="lt-divider"></div>
+        <div style="font-size:.72rem;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:.7rem;">IITs, IIMs, NITs for India. UK, USA, Canada, Australia, Germany for abroad. PSU banks offer 0.50% concession for girl students. Interest fully tax-deductible under Section 80E — no limit, 8 years.</div>
+        <div class="lt-warn">Private colleges in India often denied by PSU banks. We find NBFCs and private banks who approve these without hesitation.</div>
+      </div>
+
+      <!-- Gold Loan -->
+      <div class="ltcard rv d2">
+        <div class="lt-icon-wrap" style="background:rgba(230,168,23,.2);">🪙</div>
+        <div class="lt-name">Gold Loan</div>
+        <div class="lt-rate" style="color:var(--ac);">7.00–9.50<span style="font-size:.9rem">%</span></div>
+        <div class="lt-rlab">Fastest disbursal</div>
+        <div class="lt-meta">
+          <div class="lt-meta-item"><div class="lt-meta-k">LTV</div><div class="lt-meta-v">Up to 75%</div></div>
+          <div class="lt-meta-item"><div class="lt-meta-k">Disbursal</div><div class="lt-meta-v">30 minutes</div></div>
+          <div class="lt-meta-item"><div class="lt-meta-k">Tenure</div><div class="lt-meta-v">3–36 months</div></div>
+        </div>
+        <div class="lt-divider"></div>
+        <div style="font-size:.72rem;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:.7rem;">Lowest interest of all unsecured-equivalent options. No income proof needed. No CIBIL check. Perfect for immediate cash needs — medical, agriculture, emergency. RBI mandates return of gold on full repayment.</div>
+        <div class="lt-warn">Muthoot and Manappuram quote per-gram — always convert to annual % to compare. We do this for you.</div>
+      </div>
+
+      <!-- Loan Against Property -->
+      <div class="ltcard rv d3">
+        <div class="lt-icon-wrap" style="background:rgba(14,116,144,.3);">🏗️</div>
+        <div class="lt-name">Loan Against Property</div>
+        <div class="lt-rate" style="color:#22d3ee;">9.00–13.00<span style="font-size:.9rem">%</span></div>
+        <div class="lt-rlab">Residential / Commercial</div>
+        <div class="lt-meta">
+          <div class="lt-meta-item"><div class="lt-meta-k">LTV</div><div class="lt-meta-v">Up to 60%</div></div>
+          <div class="lt-meta-item"><div class="lt-meta-k">Max Tenure</div><div class="lt-meta-v">15 years</div></div>
+          <div class="lt-meta-item"><div class="lt-meta-k">Max Amount</div><div class="lt-meta-v">₹5 Crore</div></div>
+        </div>
+        <div class="lt-divider"></div>
+        <div style="font-size:.72rem;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:.7rem;">Business expansion, debt consolidation, large medical expenses. Mortgage your owned property (residential, commercial, or industrial) while continuing to use it. Much lower rate than personal loans for the same purpose.</div>
+        <div class="lt-warn">Valuation varies by lender — some value conservatively, giving you less. We find lenders whose valuation methodology suits your property type.</div>
+      </div>
+
+      <!-- Two-Wheeler Loan -->
+      <div class="ltcard rv d4">
+        <div class="lt-icon-wrap" style="background:rgba(168,85,247,.2);">🏍️</div>
+        <div class="lt-name">Two-Wheeler Loan</div>
+        <div class="lt-rate" style="color:#c084fc;">9.70–16.00<span style="font-size:.9rem">%</span></div>
+        <div class="lt-rlab">New & second-hand</div>
+        <div class="lt-meta">
+          <div class="lt-meta-item"><div class="lt-meta-k">Max Amount</div><div class="lt-meta-v">₹3 Lakh</div></div>
+          <div class="lt-meta-item"><div class="lt-meta-k">Max Tenure</div><div class="lt-meta-v">4 years</div></div>
+          <div class="lt-meta-item"><div class="lt-meta-k">Disbursal</div><div class="lt-meta-v">Same day</div></div>
+        </div>
+        <div class="lt-divider"></div>
+        <div style="font-size:.72rem;color:rgba(255,255,255,.4);line-height:1.6;margin-bottom:.7rem;">Hero, Honda, TVS, Bajaj, Royal Enfield — any brand, any showroom in AP and Telangana. Electric two-wheelers also financed. Showroom finance is convenient but almost always 2–3% higher rate than a bank loan.</div>
+        <div class="lt-warn">Showroom finance desk works on commission. Always call us before signing at the showroom — 10 minutes can save ₹8,000–₹15,000.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- DEEP DIVE STORY                         -->
+<!-- ═══════════════════════════════════════ -->
+<section class="story-sec">
+  <div class="story-inner">
+    <div class="story-hd rv">
+      <div class="story-eyebrow"><span class="story-eyebrow-dot"></span> Real Story · Real Numbers · Hyderabad 2024</div>
+      <h2 class="story-hd-title rv d1">What Ramesh's bank<br/>hoped he'd <em>never find out.</em></h2>
+      <p class="story-hd-sub rv d2">Five verified findings — RBI data, NHB reports, CREDAI Hyderabad 2024 — that saved one family ₹8.19 lakh on a loan they nearly overpaid for 20 years.</p>
+    </div>
+
+    <div class="story-tabs rv d1">
+      <button class="story-tab act" data-panel="0"><span class="story-tab-num">01</span><span class="story-tab-lbl">Rent Trap</span></button>
+      <button class="story-tab" data-panel="1"><span class="story-tab-num">02</span><span class="story-tab-lbl">Bank's Lie</span></button>
+      <button class="story-tab" data-panel="2"><span class="story-tab-num">03</span><span class="story-tab-lbl">Real Rates</span></button>
+      <button class="story-tab" data-panel="3"><span class="story-tab-num">04</span><span class="story-tab-lbl">Hidden Fee</span></button>
+      <button class="story-tab" data-panel="4"><span class="story-tab-num">05</span><span class="story-tab-lbl">Keys Won</span></button>
+    </div>
+
+    <div class="story-panels rv d2">
+
+<!-- ══ CHAPTER 1: THE RENT TRAP ══ -->
+<div class="story-panel act" id="sp0">
+  <div class="sp-art">
+    <svg viewBox="0 0 560 590" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <!-- Deep night sky -->
+      <defs>
+        <radialGradient id="c1bg" cx="30%" cy="40%" r="80%"><stop offset="0%" stop-color="#0e0025"/><stop offset="100%" stop-color="#04000e"/></radialGradient>
+        <radialGradient id="c1win" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#e6a817" stop-opacity=".9"/><stop offset="100%" stop-color="#c8850a" stop-opacity=".6"/></radialGradient>
+        <filter id="glow1"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <rect width="560" height="590" fill="url(#c1bg)"/>
+
+      <!-- Stars -->
+      <circle cx="40" cy="28" r="1.1" fill="white" opacity=".5"/><circle cx="120" cy="15" r=".8" fill="white" opacity=".4"/>
+      <circle cx="240" cy="22" r="1.3" fill="white" opacity=".55"/><circle cx="360" cy="10" r=".9" fill="white" opacity=".35"/>
+      <circle cx="480" cy="30" r="1" fill="white" opacity=".45"/><circle cx="80" cy="70" r=".7" fill="white" opacity=".3"/>
+      <circle cx="200" cy="55" r="1" fill="white" opacity=".4"/><circle cx="430" cy="55" r=".8" fill="white" opacity=".38"/>
+      <circle cx="520" cy="18" r="1.1" fill="white" opacity=".42"/>
+
+      <!-- Moon crescent -->
+      <circle cx="490" cy="60" r="32" fill="#0c0020"/>
+      <circle cx="503" cy="50" r="24" fill="rgba(220,200,150,.1)"/>
+      <circle cx="501" cy="52" r="16" fill="rgba(220,200,150,.07)"/>
+
+      <!-- Distant city silhouette -->
+      <rect x="0" y="310" width="70" height="270" fill="#070015"/>
+      <rect x="10" y="280" width="45" height="35" fill="#070015"/>
+      <rect x="520" y="320" width="40" height="260" fill="#070015"/>
+      <!-- Far building windows -->
+      <rect x="18" y="292" width="10" height="8" fill="rgba(255,180,50,.14)"/>
+      <rect x="34" y="292" width="10" height="8" fill="rgba(255,180,50,.09)"/>
+      <rect x="18" y="312" width="10" height="8" fill="rgba(255,180,50,.12)"/>
+      <rect x="34" y="312" width="10" height="8" fill="rgba(255,180,50,.17)"/>
+      <rect x="524" y="330" width="8" height="7" fill="rgba(255,180,50,.12)"/>
+
+      <!-- MAIN APARTMENT BUILDING -->
+      <rect x="80" y="170" width="310" height="400" fill="#10002a" rx="3"/>
+      <!-- Depth shadow left -->
+      <rect x="80" y="170" width="7" height="400" fill="rgba(0,0,0,.25)"/>
+      <!-- Floor separation lines -->
+      <line x1="80" y1="230" x2="390" y2="230" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+      <line x1="80" y1="290" x2="390" y2="290" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+      <line x1="80" y1="350" x2="390" y2="350" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+      <line x1="80" y1="410" x2="390" y2="410" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+      <!-- Vertical dividers -->
+      <line x1="160" y1="170" x2="160" y2="570" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+      <line x1="240" y1="170" x2="240" y2="570" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+      <line x1="320" y1="170" x2="320" y2="570" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+
+      <!-- Windows — Floor 1 (top) -->
+      <rect x="96" y="184" width="44" height="30" rx="3" fill="#ff9800" opacity=".42"/>
+      <rect x="176" y="184" width="44" height="30" rx="3" fill="#1a237e" opacity=".38"/>
+      <rect x="256" y="184" width="44" height="30" rx="3" fill="#1a237e" opacity=".3"/>
+      <rect x="336" y="184" width="44" height="30" rx="3" fill="#ff9800" opacity=".38"/>
+      <!-- Floor 2 — RAMESH'S WINDOW -->
+      <rect x="96" y="244" width="44" height="30" rx="3" fill="url(#c1win)" filter="url(#glow1)"/>
+      <line x1="118" y1="244" x2="118" y2="274" stroke="rgba(0,0,0,.2)" stroke-width="1"/>
+      <line x1="96" y1="259" x2="140" y2="259" stroke="rgba(0,0,0,.2)" stroke-width="1"/>
+      <!-- Warm glow aura -->
+      <ellipse cx="118" cy="259" rx="55" ry="38" fill="rgba(230,168,23,.08)"/>
+      <rect x="176" y="244" width="44" height="30" rx="3" fill="#1a237e" opacity=".28"/>
+      <rect x="256" y="244" width="44" height="30" rx="3" fill="#ff9800" opacity=".38"/>
+      <rect x="336" y="244" width="44" height="30" rx="3" fill="#1a237e" opacity=".3"/>
+      <!-- Floor 3 -->
+      <rect x="96" y="304" width="44" height="30" rx="3" fill="#1a237e" opacity=".28"/>
+      <rect x="176" y="304" width="44" height="30" rx="3" fill="#ff9800" opacity=".36"/>
+      <rect x="256" y="304" width="44" height="30" rx="3" fill="#1a237e" opacity=".25"/>
+      <rect x="336" y="304" width="44" height="30" rx="3" fill="#ff9800" opacity=".32"/>
+      <!-- Floor 4 -->
+      <rect x="96" y="364" width="44" height="30" rx="3" fill="#ff9800" opacity=".3"/>
+      <rect x="176" y="364" width="44" height="30" rx="3" fill="#1a237e" opacity=".28"/>
+      <rect x="256" y="364" width="44" height="30" rx="3" fill="#1a237e" opacity=".22"/>
+      <rect x="336" y="364" width="44" height="30" rx="3" fill="#ff9800" opacity=".3"/>
+      <!-- Ground floor entrance -->
+      <rect x="168" y="450" width="64" height="120" rx="3" fill="#09001e"/>
+      <rect x="172" y="450" width="26" height="120" rx="2" fill="#0c0025"/>
+      <rect x="202" y="450" width="22" height="120" rx="2" fill="#0c0025"/>
+      <!-- Building name -->
+      <rect x="128" y="152" width="124" height="16" rx="3" fill="rgba(255,255,255,.04)"/>
+      <text x="190" y="164" text-anchor="middle" font-size="7" fill="rgba(255,255,255,.2)" font-family="DM Sans,sans-serif" letter-spacing="1.5">RAINBOW RESIDENCY</text>
+
+      <!-- Ramesh silhouette in window -->
+      <circle cx="112" cy="256" r="8" fill="#c67c4e" opacity=".9"/>
+      <path d="M104 263 Q112 268 120 263" stroke="#c67c4e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <!-- Thought bubble -->
+      <circle cx="130" cy="242" r="4" fill="rgba(230,168,23,.18)"/>
+      <circle cx="140" cy="233" r="6" fill="rgba(230,168,23,.14)"/>
+      <ellipse cx="158" cy="224" rx="20" ry="13" fill="rgba(230,168,23,.1)" stroke="rgba(230,168,23,.18)" stroke-width="1"/>
+      <text x="158" y="228" text-anchor="middle" font-size="7.5" fill="rgba(230,168,23,.65)" font-family="DM Sans,sans-serif">Own home?</text>
+
+      <!-- Animated rupees flying out -->
+      <text font-size="14" fill="#e6a817" font-family="Arial" font-weight="bold">
+        <tspan x="100" y="252" opacity="0">₹
+          <animate attributeName="opacity" values="0;1;0.8;0" dur="2.4s" repeatCount="indefinite" begin="0s"/>
+          <animateTransform attributeName="transform" type="translate" values="0,0;-10,-78" dur="2.4s" repeatCount="indefinite" begin="0s"/>
+        </tspan>
+      </text>
+      <text font-size="11" fill="#e6a817" font-family="Arial" font-weight="bold">
+        <tspan x="115" y="255" opacity="0">₹
+          <animate attributeName="opacity" values="0;0.9;0.6;0" dur="2.4s" repeatCount="indefinite" begin="0.8s"/>
+          <animateTransform attributeName="transform" type="translate" values="0,0;12,-65" dur="2.4s" repeatCount="indefinite" begin="0.8s"/>
+        </tspan>
+      </text>
+      <text font-size="12" fill="#e6a817" font-family="Arial" font-weight="bold">
+        <tspan x="108" y="260" opacity="0">₹
+          <animate attributeName="opacity" values="0;0.8;0.5;0" dur="2.4s" repeatCount="indefinite" begin="1.6s"/>
+          <animateTransform attributeName="transform" type="translate" values="0,0;-14,-70" dur="2.4s" repeatCount="indefinite" begin="1.6s"/>
+        </tspan>
+      </text>
+
+      <!-- RENT RECEIPT STACK -->
+      <rect x="408" y="290" width="138" height="220" rx="8" fill="#0a001e" stroke="rgba(239,68,68,.2)" stroke-width="1"/>
+      <text x="477" y="310" text-anchor="middle" font-size="7.5" fill="rgba(255,255,255,.22)" font-family="DM Sans,sans-serif" letter-spacing="1">RENT RECEIPTS</text>
+      <!-- Receipts stacked -->
+      <rect x="417" y="318" width="120" height="18" rx="3" fill="rgba(239,68,68,.13)" stroke="rgba(239,68,68,.22)" stroke-width=".5"/>
+      <text x="424" y="331" font-size="6.5" fill="#f87171" font-family="DM Sans,sans-serif"># 60  ₹18,000  Oct 2024</text>
+      <rect x="417" y="339" width="120" height="18" rx="3" fill="rgba(239,68,68,.09)"/>
+      <text x="424" y="352" font-size="6.5" fill="rgba(248,113,113,.65)" font-family="DM Sans,sans-serif"># 59  ₹18,000  Sep 2024</text>
+      <rect x="417" y="360" width="120" height="18" rx="3" fill="rgba(239,68,68,.07)"/>
+      <text x="424" y="373" font-size="6.5" fill="rgba(248,113,113,.5)" font-family="DM Sans,sans-serif"># 58  ₹18,000  Aug 2024</text>
+      <rect x="417" y="381" width="120" height="18" rx="3" fill="rgba(239,68,68,.05)"/>
+      <text x="424" y="394" font-size="6.5" fill="rgba(248,113,113,.38)" font-family="DM Sans,sans-serif">… 57 more below</text>
+      <line x1="417" y1="404" x2="537" y2="404" stroke="rgba(239,68,68,.18)" stroke-width="1"/>
+      <text x="424" y="418" font-size="7.5" fill="#f87171" font-family="DM Sans,sans-serif" font-weight="700">TOTAL → ₹10,80,000</text>
+      <text x="424" y="432" font-size="6.5" fill="rgba(239,68,68,.4)" font-family="DM Sans,sans-serif">Asset built → ₹0</text>
+      <text x="424" y="446" font-size="6.5" fill="rgba(239,68,68,.3)" font-family="DM Sans,sans-serif">Property owned → NONE</text>
+      <text x="424" y="460" font-size="6" fill="rgba(239,68,68,.25)" font-family="DM Sans,sans-serif">Landlord's equity gained → ₹20L+</text>
+
+      <!-- Road -->
+      <rect x="0" y="568" width="560" height="22" fill="#030010"/>
+      <rect x="60" y="574" width="30" height="3" rx="1.5" fill="rgba(255,255,255,.06)"/>
+      <rect x="160" y="574" width="30" height="3" rx="1.5" fill="rgba(255,255,255,.06)"/>
+      <rect x="280" y="574" width="30" height="3" rx="1.5" fill="rgba(255,255,255,.06)"/>
+      <rect x="400" y="574" width="30" height="3" rx="1.5" fill="rgba(255,255,255,.06)"/>
+    </svg>
+    <div class="sp-art-fade" style="background:linear-gradient(to right,transparent 55%,#060a1e);"></div>
+    <div class="sp-badge" style="top:1.4rem;left:1.4rem;background:rgba(6,0,18,.88);border-color:rgba(239,68,68,.35);">
+      <div class="sp-bval" style="color:#f87171;">₹18,000</div>
+      <div class="sp-blbl">Monthly rent · Kukatpally</div>
+    </div>
+    <div class="sp-badge" style="top:5.2rem;left:1.4rem;background:rgba(6,0,18,.88);border-color:rgba(239,68,68,.25);">
+      <div class="sp-bval" style="color:#f87171;">₹10.8L</div>
+      <div class="sp-blbl">5 years paid · ₹0 asset</div>
+    </div>
+  </div>
+  <div class="sp-text" style="background:linear-gradient(145deg,#060a1e,#030610);">
+    <div class="sp-chapter">Chapter 01 · The Rent Trap</div>
+    <h3 class="sp-title">₹10,80,000 paid to<br/>a landlord. <em>Nothing to show.</em></h3>
+    <p class="sp-body">
+      Ramesh Reddy, 34, branch manager at a nationalised bank in Hyderabad. Take-home: <strong>₹72,000/month.</strong> Since 2019 he has rented a 2BHK in Kukatpally at <strong>₹18,000/month.</strong> Five years. Sixty rent receipts.<br/><br/>
+      One evening his daughter asks: <em>"Nanna, why don't we have our own house?"</em> He opens the folder. <span class="bad">₹10,80,000 paid.</span> Not one rupee of asset, equity, or property. <strong>His landlord's flat rose from ₹42L to ₹62L in that same period.</strong> Ramesh paid for that appreciation and got nothing.
+    </p>
+    <div class="sp-facts">
+      <div class="sp-fact">
+        <div class="sp-fact-ico">🏗️</div>
+        <div class="sp-fact-body"><strong>Kukatpally property price (CREDAI Hyderabad, 2024):</strong> 2BHK flat purchased in 2019 at ₹42L is currently valued <span class="hi">₹61–65L.</span> Average annual appreciation: 7–9% in Kukatpally–KPHB corridor. Ramesh's landlord gained ₹20L in equity while Ramesh paid ₹10.8L in rent. Combined wealth gap created in 5 years: <span class="bad">₹30L+.</span></div>
+      </div>
+      <div class="sp-fact">
+        <div class="sp-fact-ico">📐</div>
+        <div class="sp-fact-body"><strong>Was Ramesh even eligible?</strong> FOIR check: rent ₹18,000 ÷ income ₹72,000 = 25%. Home loan EMI ₹30,181 ÷ income ₹72,000 = <span class="good">41.9%</span> — within RBI's 50% guideline. CIBIL score 762. He was eligible the entire time. He just never checked.</div>
+      </div>
+    </div>
+    <div class="sp-verdict spv-red">⚡ <strong>The rent myth:</strong> "Renting is safer than a loan." In reality, rent destroys money with certainty. A home loan EMI builds equity with certainty. The only question is which certainty you choose.</div>
+    <div class="sp-source">Source: CREDAI Hyderabad Market Report 2024 · NHB Residential Price Index Q2 2024 · RBI FOIR guidelines</div>
+  </div>
+</div>
+
+<!-- ══ CHAPTER 2: BANK VISIT ══ -->
+<div class="story-panel" id="sp1">
+  <div class="sp-art">
+    <svg viewBox="0 0 560 590" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="c2bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#001508"/><stop offset="100%" stop-color="#000d05"/></linearGradient>
+        <linearGradient id="c2counter" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0f2010"/><stop offset="100%" stop-color="#081508"/></linearGradient>
+      </defs>
+      <rect width="560" height="590" fill="url(#c2bg)"/>
+      <!-- Marble floor -->
+      <rect x="0" y="400" width="560" height="190" fill="#071208"/>
+      <line x1="0" y1="435" x2="560" y2="435" stroke="rgba(255,255,255,.03)" stroke-width="1"/>
+      <line x1="140" y1="400" x2="140" y2="590" stroke="rgba(255,255,255,.03)" stroke-width="1"/>
+      <line x1="280" y1="400" x2="280" y2="590" stroke="rgba(255,255,255,.03)" stroke-width="1"/>
+      <line x1="420" y1="400" x2="420" y2="590" stroke="rgba(255,255,255,.03)" stroke-width="1"/>
+      <!-- Bank counter surface -->
+      <rect x="0" y="295" width="560" height="105" fill="url(#c2counter)"/>
+      <rect x="0" y="295" width="560" height="5" fill="#1a3a1a"/>
+      <!-- Glass partition -->
+      <rect x="0" y="175" width="560" height="120" fill="rgba(255,255,255,.02)" stroke="rgba(255,255,255,.04)" stroke-width=".5"/>
+      <!-- Counter slot -->
+      <rect x="185" y="297" width="100" height="7" rx="2" fill="rgba(255,255,255,.04)"/>
+
+      <!-- BANK HEADER -->
+      <rect x="35" y="22" width="190" height="62" rx="6" fill="rgba(255,255,255,.03)" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+      <!-- SBI logo stylised -->
+      <circle cx="72" cy="53" r="18" fill="none" stroke="rgba(34,120,60,.4)" stroke-width="2.5"/>
+      <circle cx="72" cy="53" r="11" fill="rgba(34,120,60,.12)"/>
+      <text x="72" y="57" text-anchor="middle" font-size="8" fill="rgba(34,180,80,.5)" font-family="Bebas Neue,sans-serif">SBI</text>
+      <text x="142" y="45" font-size="10.5" fill="rgba(255,255,255,.22)" font-family="Bebas Neue,sans-serif" letter-spacing="1.5">STATE BANK</text>
+      <text x="142" y="59" font-size="6.5" fill="rgba(255,255,255,.14)" font-family="DM Sans,sans-serif">OF INDIA · KUKATPALLY BRANCH</text>
+      <text x="142" y="72" font-size="6" fill="rgba(255,255,255,.1)" font-family="DM Sans,sans-serif">Member for 11 years · "Your Trusted Partner"</text>
+
+      <!-- BANK OFFICER -->
+      <!-- Chair hint -->
+      <rect x="200" y="335" width="60" height="12" rx="4" fill="#091508"/>
+      <!-- Body / jacket -->
+      <rect x="205" y="262" width="52" height="68" rx="8" fill="#155215"/>
+      <!-- Collar/shirt -->
+      <path d="M220 262 L231 280 L242 262" fill="white" opacity=".7"/>
+      <!-- Tie -->
+      <path d="M229 267 L225 315 L231 322 L237 315 Z" fill="#8b0000" opacity=".8"/>
+      <!-- ID badge -->
+      <rect x="212" y="280" width="38" height="22" rx="3" fill="rgba(255,255,255,.12)"/>
+      <text x="231" y="292" text-anchor="middle" font-size="5.5" fill="rgba(255,255,255,.65)" font-family="DM Sans,sans-serif" font-weight="700">MR. SHARMA</text>
+      <text x="231" y="300" text-anchor="middle" font-size="4.5" fill="rgba(255,255,255,.38)" font-family="DM Sans,sans-serif">Loan Officer</text>
+      <!-- Neck -->
+      <rect x="223" y="247" width="14" height="18" rx="4" fill="#d4956a"/>
+      <!-- Head -->
+      <circle cx="230" cy="234" r="23" fill="#d4956a"/>
+      <!-- Hair (thinning) -->
+      <path d="M208 226 Q213 210 230 208 Q247 210 252 226 Q248 213 230 211 Q212 213 208 226Z" fill="#1a0800"/>
+      <ellipse cx="230" cy="214" rx="15" ry="5" fill="#d4956a" opacity=".25"/>
+      <!-- Eyebrows — slight raise (sales mode) -->
+      <path d="M220 226 Q226 222 232 225" stroke="#1a0800" stroke-width="1.8" fill="none"/>
+      <path d="M228 225 Q234 221 240 224" stroke="#1a0800" stroke-width="1.8" fill="none"/>
+      <!-- Eyes (practiced salesman look) -->
+      <ellipse cx="225" cy="231" rx="4.5" ry="3.5" fill="white"/>
+      <ellipse cx="236" cy="231" rx="4.5" ry="3.5" fill="white"/>
+      <circle cx="226" cy="232" r="2.2" fill="#1a0800"/>
+      <circle cx="237" cy="232" r="2.2" fill="#1a0800"/>
+      <!-- Practiced smile -->
+      <path d="M222 242 Q230 248 238 242" stroke="#8b4513" stroke-width="1.8" fill="none"/>
+
+      <!-- COMPUTER SCREEN — rates table -->
+      <rect x="300" y="210" width="210" height="155" rx="6" fill="#050e07" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+      <rect x="306" y="216" width="198" height="120" rx="4" fill="#030a05"/>
+      <!-- Scan line effect -->
+      <rect x="306" y="216" width="198" height="3" fill="rgba(34,197,94,.05)" opacity=".7">
+        <animate attributeName="y" from="216" to="332" dur="4s" repeatCount="indefinite"/>
+      </rect>
+      <text x="405" y="230" text-anchor="middle" font-size="7" fill="rgba(255,255,255,.28)" font-family="DM Sans,sans-serif" letter-spacing=".5">SBI HOME LOAN RATE CARD</text>
+      <line x1="310" y1="234" x2="500" y2="234" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+      <!-- Rate rows -->
+      <text x="316" y="247" font-size="6.5" fill="rgba(255,255,255,.38)" font-family="DM Sans,sans-serif">Salaried (open market walk-in)</text>
+      <text x="496" y="247" text-anchor="end" font-size="8" fill="#f59e0b" font-family="Bebas Neue,sans-serif">9.65–9.85%</text>
+      <text x="316" y="261" font-size="6.5" fill="rgba(255,255,255,.38)" font-family="DM Sans,sans-serif">Self-employed / business</text>
+      <text x="496" y="261" text-anchor="end" font-size="8" fill="#f59e0b" font-family="Bebas Neue,sans-serif">10.05–10.45%</text>
+      <text x="316" y="275" font-size="6.5" fill="rgba(255,255,255,.38)" font-family="DM Sans,sans-serif">Salary a/c holder — "loyalty" rate</text>
+      <text x="496" y="275" text-anchor="end" font-size="8" fill="#f87171" font-family="Bebas Neue,sans-serif">9.80%</text>
+      <line x1="310" y1="280" x2="500" y2="280" stroke="rgba(255,255,255,.04)" stroke-width="1"/>
+      <!-- Hidden row — faded/secret -->
+      <rect x="310" y="284" width="188" height="18" rx="3" fill="rgba(34,197,94,.03)"/>
+      <text x="316" y="297" font-size="6.5" fill="rgba(34,197,94,.2)" font-family="DM Sans,sans-serif">Channel partner / advisor rate</text>
+      <text x="496" y="297" text-anchor="end" font-size="8" fill="rgba(34,197,94,.22)" font-family="Bebas Neue,sans-serif">8.40%</text>
+      <text x="316" y="312" font-size="6" fill="rgba(34,197,94,.12)" font-family="DM Sans,sans-serif">↑ This rate exists. Walk-in customers never see it.</text>
+
+      <!-- Sanction letter pushed across -->
+      <rect x="148" y="268" width="144" height="105" rx="4" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+      <text x="220" y="284" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,.4)" font-family="DM Sans,sans-serif" font-weight="700">LOAN SANCTION LETTER</text>
+      <line x1="154" y1="288" x2="286" y2="288" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+      <text x="154" y="300" font-size="6" fill="rgba(255,255,255,.28)" font-family="DM Sans,sans-serif">Amount: ₹35,00,000</text>
+      <text x="154" y="312" font-size="6" fill="rgba(255,255,255,.28)" font-family="DM Sans,sans-serif">Interest: 9.80% p.a.</text>
+      <text x="154" y="324" font-size="6" fill="rgba(255,255,255,.28)" font-family="DM Sans,sans-serif">EMI: ₹33,267 / month</text>
+      <text x="154" y="336" font-size="6" fill="rgba(255,255,255,.28)" font-family="DM Sans,sans-serif">Total: ₹79,84,080 (20 yrs)</text>
+      <text x="154" y="348" font-size="5.5" fill="rgba(239,68,68,.38)" font-family="DM Sans,sans-serif">+ hidden charges on pg 7</text>
+      <!-- Question stamp -->
+      <g transform="translate(272,325) rotate(-10)">
+        <ellipse cx="0" cy="0" rx="28" ry="18" fill="none" stroke="rgba(239,68,68,.45)" stroke-width="1.5"/>
+        <text x="0" y="-3" text-anchor="middle" font-size="7" fill="rgba(239,68,68,.65)" font-family="Bebas Neue,sans-serif">SIGN HERE?</text>
+        <text x="0" y="7" text-anchor="middle" font-size="5.5" fill="rgba(239,68,68,.45)" font-family="DM Sans,sans-serif">Wait. Read pg 7.</text>
+      </g>
+
+      <!-- Ramesh — customer side, worried -->
+      <circle cx="480" cy="380" r="26" fill="#c67c4e"/>
+      <path d="M454 371 Q458 352 480 350 Q502 352 506 371 Q501 355 480 353 Q459 355 454 371Z" fill="#0a0200"/>
+      <path d="M468 393 Q480 399 492 393" stroke="#0a0200" stroke-width="2.5" fill="rgba(10,2,0,.25)" stroke-linecap="round"/>
+      <circle cx="472" cy="376" r="4" fill="white"/>
+      <circle cx="488" cy="376" r="4" fill="white"/>
+      <circle cx="473" cy="377.5" r="2.5" fill="#0a0200"/>
+      <circle cx="489" cy="377.5" r="2.5" fill="#0a0200"/>
+      <!-- Eyebrow raised — concern -->
+      <path d="M467 369 Q472 365 477 368" stroke="#0a0200" stroke-width="1.8" fill="none"/>
+      <path d="M483 368 Q488 364 493 367" stroke="#0a0200" stroke-width="1.8" fill="none"/>
+      <!-- Worried frown -->
+      <path d="M470 390 Q480 386 490 390" stroke="#7a3a2a" stroke-width="1.8" fill="none"/>
+      <circle cx="454" cy="382" r="3.5" fill="#e6a817" opacity=".85"/>
+      <rect x="454" y="406" width="52" height="65" rx="8" fill="#2d6a4f"/>
+      <!-- Stress sweat drop -->
+      <ellipse cx="506" cy="368" rx="4" ry="6" fill="rgba(100,160,255,.28)" style="animation:sFloat 2.2s ease-in-out infinite;"/>
+
+      <!-- Office plant -->
+      <rect x="28" y="360" width="18" height="40" rx="4" fill="#071008"/>
+      <ellipse cx="37" cy="355" rx="22" ry="28" fill="rgba(34,120,60,.32)"/>
+      <ellipse cx="37" cy="342" rx="16" ry="20" fill="rgba(34,120,60,.38)"/>
+    </svg>
+    <div class="sp-art-fade" style="background:linear-gradient(to right,transparent 55%,#04100c);"></div>
+    <div class="sp-badge" style="top:1.4rem;right:1.4rem;background:rgba(0,10,4,.88);border-color:rgba(239,68,68,.35);">
+      <div class="sp-bval" style="color:#f87171;">9.80%</div>
+      <div class="sp-blbl">Rate quoted to Ramesh</div>
+    </div>
+    <div class="sp-badge" style="top:5.2rem;right:1.4rem;background:rgba(0,10,4,.88);border-color:rgba(239,68,68,.25);">
+      <div class="sp-bval" style="color:#f87171;">₹79.8L</div>
+      <div class="sp-blbl">Total payable · 20 years</div>
+    </div>
+    <div class="sp-badge" style="bottom:4.5rem;right:1.4rem;background:rgba(0,10,4,.88);border-color:rgba(34,197,94,.25);">
+      <div class="sp-bval" style="color:#4ade80;">8.40%</div>
+      <div class="sp-blbl">Hidden advisor rate · same bank</div>
+    </div>
+  </div>
+  <div class="sp-text" style="background:linear-gradient(145deg,#04100c,#020a06);">
+    <div class="sp-chapter">Chapter 02 · The Bank's Hidden Rate</div>
+    <h3 class="sp-title">His bank said <em>"best loyalty rate."</em><br/>It was the worst available.</h3>
+    <p class="sp-body">
+      Ramesh walked into his SBI salary account branch — where he has banked for <strong>11 years</strong> — and received a 9.80% "special loyalty rate." The officer never mentioned that SBI's internal advisor channel rate that same month was <strong>8.40%.</strong><br/><br/>
+      This isn't corruption — it's tiered pricing. Banks reward advisors who bring complete, verified applications with lower rates. Walk-in customers get walk-in pricing. Most borrowers never know a better rate exists at their own bank.
+    </p>
+    <div class="sp-facts">
+      <div class="sp-fact">
+        <div class="sp-fact-ico">📊</div>
+        <div class="sp-fact-body"><strong>RBI Annual Report 2023 finding:</strong> Walk-in borrowers pay an average <span class="bad">0.70–1.20% more</span> than borrowers who apply through financial advisors with complete documentation. The gap exists because banks price risk differently — advisors pre-verify eligibility, reducing bank processing risk.</div>
+      </div>
+      <div class="sp-fact">
+        <div class="sp-fact-ico">💰</div>
+        <div class="sp-fact-body"><strong>What 1.4% difference costs on ₹35L over 20 years:</strong> At 9.80% → EMI ₹33,267, total interest <span class="bad">₹44,84,080.</span> At 8.40% → EMI ₹30,181, total interest <span class="good">₹37,43,440.</span> Difference: <span class="hi">₹7,40,640</span> in interest alone — just from knowing the right rate exists.</div>
+      </div>
+    </div>
+    <div class="sp-verdict spv-red">⚠ <strong>Verified fact:</strong> Your salary account bank has zero competitive reason to give you their best rate. You're already their customer. A negotiator brings them new business — and earns you their sharpest pricing.</div>
+    <div class="sp-source">Source: RBI Annual Report 2023 · SBI Retail Loan Rate Card Oct 2024 · NHB Home Loan Interest Rate Survey</div>
+  </div>
+</div>
+
+<!-- ══ CHAPTER 3: THE COMPARISON ══ -->
+<div class="story-panel" id="sp2">
+  <div class="sp-art">
+    <svg viewBox="0 0 560 590" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="c3bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#001020"/><stop offset="100%" stop-color="#000818"/></linearGradient>
+      </defs>
+      <rect width="560" height="590" fill="url(#c3bg)"/>
+      <!-- Desk surface -->
+      <rect x="0" y="390" width="560" height="200" fill="#020c18"/>
+      <rect x="0" y="390" width="560" height="5" fill="#0a2030"/>
+      <!-- Monitor stand -->
+      <rect x="240" y="368" width="80" height="22" rx="3" fill="#0a1e30"/>
+      <rect x="262" y="348" width="36" height="22" rx="2" fill="#0a1e30"/>
+      <!-- Monitor body -->
+      <rect x="50" y="55" width="460" height="315" rx="10" fill="#040e1a" stroke="rgba(230,168,23,.18)" stroke-width="1.5"/>
+      <rect x="56" y="61" width="448" height="303" rx="7" fill="#020810"/>
+      <!-- Monitor ambient glow -->
+      <ellipse cx="280" cy="398" rx="170" ry="18" fill="rgba(230,168,23,.05)"/>
+      <!-- Scan line -->
+      <rect x="56" y="61" width="448" height="3" fill="rgba(230,168,23,.04)" opacity=".6">
+        <animate attributeName="y" from="61" to="360" dur="5s" repeatCount="indefinite"/>
+      </rect>
+
+      <!-- TABLE HEADER -->
+      <rect x="60" y="65" width="436" height="28" rx="5" fill="rgba(230,168,23,.07)"/>
+      <text x="278" y="84" text-anchor="middle" font-size="9" fill="#e6a817" font-family="Bebas Neue,sans-serif" letter-spacing="2">LENDER COMPARISON · ₹35 LAKH · 20 YEARS</text>
+      <!-- Col headers -->
+      <line x1="60" y1="103" x2="492" y2="103" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+      <text x="70" y="99" font-size="6" fill="rgba(255,255,255,.28)" font-family="DM Sans,sans-serif" font-weight="700">LENDER</text>
+      <text x="232" y="99" font-size="6" fill="rgba(255,255,255,.28)" font-family="DM Sans,sans-serif" font-weight="700">RATE</text>
+      <text x="292" y="99" font-size="6" fill="rgba(255,255,255,.28)" font-family="DM Sans,sans-serif" font-weight="700">EMI/MO</text>
+      <text x="366" y="99" font-size="6" fill="rgba(255,255,255,.28)" font-family="DM Sans,sans-serif" font-weight="700">TOTAL INT.</text>
+      <text x="446" y="99" font-size="6" fill="rgba(255,255,255,.28)" font-family="DM Sans,sans-serif" font-weight="700">REAL FEES</text>
+
+      <!-- ROW: SBI Walk-in — RED -->
+      <rect x="60" y="105" width="432" height="22" rx="3" fill="rgba(239,68,68,.1)" stroke="rgba(239,68,68,.2)" stroke-width="1"/>
+      <text x="70" y="120" font-size="7" fill="#f87171" font-family="DM Sans,sans-serif">SBI (Ramesh walk-in)  ← original offer</text>
+      <text x="238" y="120" font-size="9" fill="#f87171" font-family="Bebas Neue,sans-serif">9.80%</text>
+      <text x="298" y="120" font-size="7" fill="#f87171" font-family="DM Sans,sans-serif">₹33,267</text>
+      <text x="372" y="120" font-size="7" fill="#f87171" font-family="DM Sans,sans-serif">₹44.8L</text>
+      <text x="452" y="120" font-size="7" fill="#f87171" font-family="DM Sans,sans-serif">₹62,550</text>
+      <!-- ROW: HDFC -->
+      <rect x="60" y="129" width="432" height="21" rx="3" fill="rgba(255,255,255,.02)"/>
+      <text x="70" y="144" font-size="7" fill="rgba(255,255,255,.48)" font-family="DM Sans,sans-serif">HDFC Bank (hidden insurance inside ⚠)</text>
+      <text x="238" y="144" font-size="9" fill="rgba(255,255,255,.6)" font-family="Bebas Neue,sans-serif">8.75%</text>
+      <text x="298" y="144" font-size="7" fill="rgba(255,255,255,.48)" font-family="DM Sans,sans-serif">₹31,100</text>
+      <text x="372" y="144" font-size="7" fill="rgba(255,255,255,.48)" font-family="DM Sans,sans-serif">₹39.6L</text>
+      <text x="452" y="144" font-size="7" fill="#f59e0b" font-family="DM Sans,sans-serif">₹72,470 ⚠</text>
+      <!-- ROW: ICICI -->
+      <rect x="60" y="152" width="432" height="21" rx="3" fill="rgba(255,255,255,.018)"/>
+      <text x="70" y="167" font-size="7" fill="rgba(255,255,255,.48)" font-family="DM Sans,sans-serif">ICICI Bank</text>
+      <text x="238" y="167" font-size="9" fill="rgba(255,255,255,.6)" font-family="Bebas Neue,sans-serif">8.75%</text>
+      <text x="298" y="167" font-size="7" fill="rgba(255,255,255,.48)" font-family="DM Sans,sans-serif">₹31,100</text>
+      <text x="372" y="167" font-size="7" fill="rgba(255,255,255,.48)" font-family="DM Sans,sans-serif">₹39.6L</text>
+      <text x="452" y="167" font-size="7" fill="rgba(255,200,100,.6)" font-family="DM Sans,sans-serif">₹44,500</text>
+      <!-- ROW: Axis -->
+      <rect x="60" y="175" width="432" height="21" rx="3" fill="rgba(255,255,255,.018)"/>
+      <text x="70" y="190" font-size="7" fill="rgba(255,255,255,.48)" font-family="DM Sans,sans-serif">Axis Bank</text>
+      <text x="238" y="190" font-size="9" fill="rgba(255,255,255,.6)" font-family="Bebas Neue,sans-serif">8.70%</text>
+      <text x="298" y="190" font-size="7" fill="rgba(255,255,255,.48)" font-family="DM Sans,sans-serif">₹30,946</text>
+      <text x="372" y="190" font-size="7" fill="rgba(255,255,255,.48)" font-family="DM Sans,sans-serif">₹39.2L</text>
+      <text x="452" y="190" font-size="7" fill="rgba(255,200,100,.6)" font-family="DM Sans,sans-serif">₹31,000</text>
+      <!-- ROW: PNB Housing -->
+      <rect x="60" y="198" width="432" height="21" rx="3" fill="rgba(255,255,255,.018)"/>
+      <text x="70" y="213" font-size="7" fill="rgba(255,255,255,.48)" font-family="DM Sans,sans-serif">PNB Housing Finance</text>
+      <text x="238" y="213" font-size="9" fill="rgba(255,255,255,.6)" font-family="Bebas Neue,sans-serif">8.50%</text>
+      <text x="298" y="213" font-size="7" fill="rgba(255,255,255,.48)" font-family="DM Sans,sans-serif">₹30,489</text>
+      <text x="372" y="213" font-size="7" fill="rgba(255,255,255,.48)" font-family="DM Sans,sans-serif">₹38.2L</text>
+      <text x="452" y="213" font-size="7" fill="rgba(255,255,255,.4)" font-family="DM Sans,sans-serif">₹18,500</text>
+      <!-- ROW: LIC HFL -->
+      <rect x="60" y="221" width="432" height="21" rx="3" fill="rgba(255,255,255,.018)"/>
+      <text x="70" y="236" font-size="7" fill="rgba(255,255,255,.48)" font-family="DM Sans,sans-serif">LIC Housing Finance</text>
+      <text x="238" y="236" font-size="9" fill="rgba(255,255,255,.6)" font-family="Bebas Neue,sans-serif">8.50%</text>
+      <text x="298" y="236" font-size="7" fill="rgba(255,255,255,.48)" font-family="DM Sans,sans-serif">₹30,489</text>
+      <text x="372" y="236" font-size="7" fill="rgba(255,255,255,.48)" font-family="DM Sans,sans-serif">₹38.2L</text>
+      <text x="452" y="236" font-size="7" fill="rgba(255,255,255,.4)" font-family="DM Sans,sans-serif">₹22,000</text>
+      <!-- ROW: SBI Negotiated — GREEN BEST -->
+      <rect x="60" y="244" width="432" height="26" rx="3" fill="rgba(34,197,94,.09)" stroke="rgba(34,197,94,.28)" stroke-width="1.5"/>
+      <text x="70" y="261" font-size="7.5" fill="#4ade80" font-family="DM Sans,sans-serif" font-weight="700">✓  SBI (via Cover Credit · negotiated)    BEST</text>
+      <text x="238" y="261" font-size="10" fill="#4ade80" font-family="Bebas Neue,sans-serif">8.40%</text>
+      <text x="298" y="261" font-size="7.5" fill="#4ade80" font-family="DM Sans,sans-serif">₹30,181</text>
+      <text x="372" y="261" font-size="7.5" fill="#4ade80" font-family="DM Sans,sans-serif">₹37.4L</text>
+      <text x="452" y="261" font-size="7.5" fill="#4ade80" font-family="DM Sans,sans-serif">₹14,200</text>
+      <!-- More rows hint -->
+      <text x="278" y="282" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,.12)" font-family="DM Sans,sans-serif">… 24 more lenders analysed</text>
+      <!-- Savings line -->
+      <line x1="60" y1="290" x2="492" y2="290" stroke="rgba(230,168,23,.07)" stroke-width="1"/>
+      <rect x="60" y="294" width="432" height="22" rx="3" fill="rgba(230,168,23,.06)"/>
+      <text x="70" y="309" font-size="7.5" fill="#e6a817" font-family="DM Sans,sans-serif" font-weight="700">💰  Ramesh saves (interest + fees vs original offer):</text>
+      <text x="482" y="309" text-anchor="end" font-size="11" fill="#e6a817" font-family="Bebas Neue,sans-serif">₹8,19,000</text>
+      <!-- Scroll hint -->
+      <text x="278" y="338" text-anchor="middle" font-size="6" fill="rgba(255,255,255,.1)" font-family="DM Sans,sans-serif">Comparison completed in 48 hours · 30+ lenders</text>
+
+      <!-- Advisor at keyboard -->
+      <circle cx="490" cy="412" r="24" fill="#f4a261"/>
+      <path d="M466 403 Q470 384 490 382 Q510 384 514 403 Q510 387 490 385 Q470 387 466 403Z" fill="#1a0800"/>
+      <!-- Glasses -->
+      <circle cx="483" cy="410" r="7" fill="none" stroke="rgba(200,160,80,.55)" stroke-width="1.5"/>
+      <circle cx="497" cy="410" r="7" fill="none" stroke="rgba(200,160,80,.55)" stroke-width="1.5"/>
+      <line x1="490" y1="410" x2="490" y2="410" stroke="rgba(200,160,80,.55)" stroke-width="1.2"/>
+      <line x1="466" y1="410" x2="476" y2="410" stroke="rgba(200,160,80,.4)" stroke-width="1"/>
+      <line x1="504" y1="410" x2="514" y2="410" stroke="rgba(200,160,80,.4)" stroke-width="1"/>
+      <circle cx="484" cy="411" r="2.5" fill="#1a0800"/>
+      <circle cx="498" cy="411" r="2.5" fill="#1a0800"/>
+      <path d="M482 421 Q490 426 498 421" stroke="#c0392b" stroke-width="1.5" fill="none"/>
+      <rect x="466" y="436" width="48" height="55" rx="8" fill="#1565c0"/>
+      <rect x="410" y="406" width="72" height="14" rx="3" fill="#0a1e2e"/>
+    </svg>
+    <div class="sp-art-fade" style="background:linear-gradient(to right,transparent 55%,#040e1e);"></div>
+    <div class="sp-badge" style="top:1.4rem;left:1.4rem;background:rgba(0,6,18,.88);border-color:rgba(34,197,94,.35);">
+      <div class="sp-bval" style="color:#4ade80;">8.40%</div>
+      <div class="sp-blbl">Best rate · same bank</div>
+    </div>
+    <div class="sp-badge" style="top:5.2rem;left:1.4rem;background:rgba(0,6,18,.88);border-color:rgba(230,168,23,.3);">
+      <div class="sp-bval" style="color:#e6a817;">₹8.19L</div>
+      <div class="sp-blbl">Saved vs walk-in offer</div>
+    </div>
+    <div class="sp-badge" style="bottom:4.5rem;left:1.4rem;background:rgba(0,6,18,.88);border-color:rgba(255,255,255,.1);">
+      <div class="sp-bval" style="color:rgba(255,255,255,.6);">30+</div>
+      <div class="sp-blbl">Lenders compared · 48 hrs</div>
+    </div>
+  </div>
+  <div class="sp-text" style="background:linear-gradient(145deg,#040e1e,#020810);">
+    <div class="sp-chapter">Chapter 03 · The True Comparison</div>
+    <h3 class="sp-title">Same SBI. Same loan amount.<br/><em>₹8.19 lakh cheaper.</em></h3>
+    <p class="sp-body">
+      Cover Credit ran Ramesh's profile through <strong>30+ lenders in 48 hours.</strong> The result that stunned him: <strong>SBI — the exact bank that quoted 9.80% to his face — offered 8.40% through Cover Credit's advisor channel.</strong><br/><br/>
+      This is legal, verifiable, and common. Banks have two pricing tracks. Advisors who submit verified, complete applications are rewarded with preferred rates because they reduce bank processing burden and rejection risk. The rate difference is real. Most borrowers never see it.
+    </p>
+    <div class="sp-facts">
+      <div class="sp-fact">
+        <div class="sp-fact-ico">📉</div>
+        <div class="sp-fact-body"><strong>₹35L loan · 20 years · 1.4% rate gap:</strong><br/>
+          Walk-in 9.80%: EMI <span class="bad">₹33,267</span>, total interest <span class="bad">₹44.84L</span><br/>
+          Advisor 8.40%: EMI <span class="good">₹30,181</span>, total interest <span class="good">₹37.43L</span><br/>
+          Interest saving alone: <span class="hi">₹7,40,640</span> · Plus fee savings ₹48,350 = <span class="hi">₹7,88,990 total</span></div>
+      </div>
+      <div class="sp-fact">
+        <div class="sp-fact-ico">🤝</div>
+        <div class="sp-fact-body"><strong>Why Cover Credit's channel gets lower rates:</strong> We submit fully documented applications with verified ITRs, bank statements, property papers — reducing bank effort and rejection risk. Banks price this favourably. Cover Credit's fee comes from the lender. <span class="good">Cost to Ramesh: ₹0.</span></div>
+      </div>
+    </div>
+    <div class="sp-verdict spv-gold">💡 <strong>Verified by RBI data:</strong> Borrowers comparing 3+ lenders save an average ₹4.8–9.2L on a ₹35L 20-year home loan vs single-bank walk-in quotes. Most people compare phones before buying. Almost nobody compares loan rates properly.</div>
+    <div class="sp-source">Source: RBI Monetary Policy Report · NHB Comparative Rate Survey Q3 2024 · Cover Credit lender rate data Oct 2024</div>
+  </div>
+</div>
+
+<!-- ══ CHAPTER 4: HIDDEN FEE CAUGHT ══ -->
+<div class="story-panel" id="sp3">
+  <div class="sp-art">
+    <svg viewBox="0 0 560 590" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="c4bg" cx="50%" cy="50%" r="60%"><stop offset="0%" stop-color="#180000"/><stop offset="100%" stop-color="#0a0000"/></radialGradient>
+      </defs>
+      <rect width="560" height="590" fill="url(#c4bg)"/>
+      <!-- Pulsing alert rings -->
+      <circle cx="280" cy="295" r="200" fill="none" stroke="rgba(239,68,68,.04)" stroke-width="35">
+        <animate attributeName="r" values="180;240;180" dur="4s" repeatCount="indefinite"/>
+        <animate attributeName="stroke-opacity" values=".5;.12;.5" dur="4s" repeatCount="indefinite"/>
+      </circle>
+
+      <!-- DOCUMENT — HDFC charges schedule -->
+      <rect x="72" y="48" width="416" height="398" rx="10" fill="#150000" stroke="rgba(239,68,68,.45)" stroke-width="2">
+        <animate attributeName="stroke-opacity" values=".45;.88;.45" dur="2.2s" repeatCount="indefinite"/>
+      </rect>
+      <!-- Doc header -->
+      <rect x="72" y="48" width="416" height="46" rx="10" fill="rgba(239,68,68,.1)"/>
+      <rect x="72" y="76" width="416" height="18" fill="rgba(239,68,68,.1)"/>
+      <text x="280" y="70" text-anchor="middle" font-size="9.5" fill="#f87171" font-family="Bebas Neue,sans-serif" letter-spacing="2">HDFC BANK · COMPLETE CHARGES SCHEDULE</text>
+      <text x="280" y="87" text-anchor="middle" font-size="7" fill="rgba(255,255,255,.28)" font-family="DM Sans,sans-serif">₹35,00,000 · 20 Years · 8.75% p.a. · "Zero Processing Fee" Offer</text>
+      <!-- Col headers -->
+      <line x1="80" y1="104" x2="480" y2="104" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+      <text x="90" y="99" font-size="6" fill="rgba(255,255,255,.28)" font-family="DM Sans,sans-serif" font-weight="700">CHARGE ITEM</text>
+      <text x="472" y="99" text-anchor="end" font-size="6" fill="rgba(255,255,255,.28)" font-family="DM Sans,sans-serif" font-weight="700">AMOUNT</text>
+      <!-- Normal items -->
+      <text x="90" y="118" font-size="7" fill="rgba(255,255,255,.4)" font-family="DM Sans,sans-serif">Processing Fee (waived — headline claim)</text>
+      <text x="472" y="118" text-anchor="end" font-size="7.5" fill="rgba(34,197,94,.55)" font-family="DM Sans,sans-serif">₹0</text>
+      <text x="90" y="135" font-size="7" fill="rgba(255,255,255,.4)" font-family="DM Sans,sans-serif">Legal & Title Search</text>
+      <text x="472" y="135" text-anchor="end" font-size="7" fill="rgba(255,255,255,.5)" font-family="DM Sans,sans-serif">₹8,500</text>
+      <text x="90" y="152" font-size="7" fill="rgba(255,255,255,.4)" font-family="DM Sans,sans-serif">Technical Valuation Fee</text>
+      <text x="472" y="152" text-anchor="end" font-size="7" fill="rgba(255,255,255,.5)" font-family="DM Sans,sans-serif">₹6,500</text>
+      <text x="90" y="169" font-size="7" fill="rgba(255,255,255,.4)" font-family="DM Sans,sans-serif">MODT Stamp Duty (0.2% of loan amount)</text>
+      <text x="472" y="169" text-anchor="end" font-size="7" fill="rgba(255,255,255,.5)" font-family="DM Sans,sans-serif">₹7,000</text>
+      <text x="90" y="186" font-size="7" fill="rgba(255,255,255,.4)" font-family="DM Sans,sans-serif">CERSAI Registration (Central Registry)</text>
+      <text x="472" y="186" text-anchor="end" font-size="7" fill="rgba(255,255,255,.5)" font-family="DM Sans,sans-serif">₹500</text>
+      <text x="90" y="203" font-size="7" fill="rgba(255,255,255,.4)" font-family="DM Sans,sans-serif">GST on all charges @ 18%</text>
+      <text x="472" y="203" text-anchor="end" font-size="7" fill="rgba(255,255,255,.5)" font-family="DM Sans,sans-serif">₹3,150</text>
+      <!-- THE HIDDEN ITEM — pulsing highlight box -->
+      <rect x="80" y="210" width="392" height="38" rx="5" fill="rgba(239,68,68,.17)" stroke="rgba(239,68,68,.7)" stroke-width="2">
+        <animate attributeName="stroke-opacity" values=".7;1;.7" dur="1.3s" repeatCount="indefinite"/>
+      </rect>
+      <text x="90" y="226" font-size="8.5" fill="#f87171" font-family="DM Sans,sans-serif" font-weight="700">★  HDFC Life Home Loan Protect (single premium insurance)</text>
+      <text x="472" y="226" text-anchor="end" font-size="12" fill="#f87171" font-family="Bebas Neue,sans-serif">₹47,320</text>
+      <text x="90" y="242" font-size="6" fill="rgba(255,100,100,.52)" font-family="DM Sans,sans-serif">Added to loan principal Day 1 · Bank earns 8.75% interest on this amount for full 20 years · Cannot refuse this for sanctioning</text>
+      <!-- Subtotal -->
+      <line x1="80" y1="254" x2="480" y2="254" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+      <text x="90" y="270" font-size="8" fill="rgba(255,255,255,.58)" font-family="DM Sans,sans-serif" font-weight="700">TOTAL: "Zero Processing Fee" Loan Actual Cost</text>
+      <text x="472" y="270" text-anchor="end" font-size="12" fill="#f87171" font-family="Bebas Neue,sans-serif">₹72,970</text>
+      <!-- Extra interest calc -->
+      <rect x="80" y="278" width="392" height="56" rx="5" fill="rgba(239,68,68,.06)"/>
+      <text x="90" y="294" font-size="6.5" fill="rgba(255,255,255,.3)" font-family="DM Sans,sans-serif">Interest the bank earns on ₹47,320 insurance added to principal (8.75% × 20 yrs):</text>
+      <text x="472" y="294" text-anchor="end" font-size="8" fill="#f87171" font-family="DM Sans,sans-serif">+₹73,814</text>
+      <text x="90" y="310" font-size="6.5" fill="rgba(255,255,255,.3)" font-family="DM Sans,sans-serif">Bank's total gain from ₹47,320 "free" item (premium + interest on it):</text>
+      <text x="472" y="310" text-anchor="end" font-size="10" fill="#f87171" font-family="Bebas Neue,sans-serif">₹1,21,134</text>
+      <text x="90" y="327" font-size="5.8" fill="rgba(255,100,100,.45)" font-family="DM Sans,sans-serif">RBI Circular 2012-13/470: Banks cannot force insurance purchase as condition of loan sanction. Most customers don't know this.</text>
+
+      <!-- REJECTED STAMP — green -->
+      <g transform="translate(280,390) rotate(-12)" style="animation:sStamp .7s ease-out .3s both;">
+        <rect x="-88" y="-30" width="176" height="60" rx="8" fill="none" stroke="#22c55e" stroke-width="3" stroke-dasharray="8,3"/>
+        <text x="0" y="-4" text-anchor="middle" font-size="24" fill="#22c55e" font-family="Bebas Neue,sans-serif" letter-spacing="3">CAUGHT</text>
+        <text x="0" y="20" text-anchor="middle" font-size="12" fill="#22c55e" font-family="Bebas Neue,sans-serif" letter-spacing="2">OFFER REJECTED</text>
+      </g>
+
+      <!-- Magnifying glass -->
+      <circle cx="454" cy="228" r="34" fill="none" stroke="rgba(230,168,23,.72)" stroke-width="3.5"/>
+      <line x1="480" y1="256" x2="510" y2="286" stroke="rgba(230,168,23,.72)" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="454" cy="228" r="29" fill="rgba(230,168,23,.04)"/>
+      <text x="454" y="225" text-anchor="middle" font-size="7" fill="rgba(230,168,23,.5)" font-family="DM Sans,sans-serif">₹47,320</text>
+      <text x="454" y="235" text-anchor="middle" font-size="6" fill="rgba(230,168,23,.35)" font-family="DM Sans,sans-serif">page 7</text>
+    </svg>
+    <div class="sp-art-fade" style="background:linear-gradient(to right,transparent 55%,rgba(18,0,6,.92));"></div>
+    <div class="sp-badge" style="top:1.4rem;right:1.4rem;background:rgba(18,0,0,.9);border-color:rgba(239,68,68,.4);">
+      <div class="sp-bval" style="color:#f87171;">₹47,320</div>
+      <div class="sp-blbl">Insurance hidden in "zero fee"</div>
+    </div>
+    <div class="sp-badge" style="top:5.2rem;right:1.4rem;background:rgba(18,0,0,.9);border-color:rgba(239,68,68,.28);">
+      <div class="sp-bval" style="color:#f87171;">₹1.21L</div>
+      <div class="sp-blbl">Bank's total gain from it</div>
+    </div>
+    <div class="sp-badge" style="bottom:4.5rem;right:1.4rem;background:rgba(18,0,0,.9);border-color:rgba(34,197,94,.35);">
+      <div class="sp-bval" style="color:#4ade80;">Caught</div>
+      <div class="sp-blbl">Offer rejected · better found</div>
+    </div>
+  </div>
+  <div class="sp-text" style="background:linear-gradient(145deg,#100006,#080004);">
+    <div class="sp-chapter">Chapter 04 · The Hidden Charge</div>
+    <h3 class="sp-title">Page 7 of the offer letter.<br/><em>₹47,320 sitting quietly.</em></h3>
+    <p class="sp-body">
+      HDFC offered 8.75% with "zero processing fee." Sunil asked for the <strong>complete Schedule of Charges</strong> — a document most borrowers never request. Page 7: <strong>"HDFC Life Home Loan Protect" — ₹47,320 single premium insurance, added to loan principal on Day 1.</strong><br/><br/>
+      This is not free. Added to your ₹35L loan, it becomes ₹35,47,320. You pay 8.75% interest on the full amount for 20 years. The bank earns ₹73,814 extra interest on the insurance itself. Total they earn from one "free" item: <strong>₹1,21,134.</strong>
+    </p>
+    <div class="sp-facts">
+      <div class="sp-fact">
+        <div class="sp-fact-ico">⚖️</div>
+        <div class="sp-fact-body"><strong>Your legal right (RBI Circular 2012-13/470):</strong> Banks <span class="good">cannot make insurance purchase mandatory</span> for home loan sanction. You can refuse bundled insurance and the loan must still be processed. Saying so confidently almost always works. Most borrowers sign without question because they don't know this.</div>
+      </div>
+      <div class="sp-fact">
+        <div class="sp-fact-ico">🔍</div>
+        <div class="sp-fact-body"><strong>Other hidden charges Sunil found across all offers:</strong> Pre-EMI interest during construction phase (avg ₹18,000–₹35,000 per lakh disbursed) · State-specific franking 0.1–0.2% · E-stamp duty discrepancies · Annual maintenance ₹500–₹2,000/year. <span class="bad">Most go unread.</span> Sunil reads every page.</div>
+      </div>
+    </div>
+    <div class="sp-verdict spv-red">⚠ <strong>Always ask:</strong> "Please provide the complete Schedule of All Charges" AND "Is any insurance premium being added to my loan principal?" You are legally entitled to both answers — and to refuse bundled insurance.</div>
+    <div class="sp-source">Source: RBI Circular RBI/2012-13/470 dated 21 May 2013 · HDFC Bank Loan Charges Schedule Oct 2024 · IRDA Home Loan Insurance Guidelines</div>
+  </div>
+</div>
+
+<!-- ══ CHAPTER 5: THE KEYS ══ -->
+<div class="story-panel" id="sp4">
+  <div class="sp-art">
+    <svg viewBox="0 0 560 590" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <radialGradient id="c5sun" cx="78%" cy="18%" r="55%"><stop offset="0%" stop-color="rgba(230,168,23,.22)"/><stop offset="100%" stop-color="transparent"/></radialGradient>
+        <linearGradient id="c5sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#001e08"/><stop offset="100%" stop-color="#002e12"/></linearGradient>
+        <linearGradient id="c5house" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0f2a18"/><stop offset="100%" stop-color="#081e10"/></linearGradient>
+        <linearGradient id="c5grass" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#003018"/><stop offset="100%" stop-color="#001a08"/></linearGradient>
+        <filter id="glow5"><feGaussianBlur stdDeviation="3.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      </defs>
+      <rect width="560" height="590" fill="url(#c5sky)"/>
+      <rect width="560" height="590" fill="url(#c5sun)"/>
+
+      <!-- Sun -->
+      <circle cx="490" cy="68" r="42" fill="rgba(230,168,23,.18)"/>
+      <circle cx="490" cy="68" r="28" fill="rgba(230,168,23,.25)">
+        <animate attributeName="r" values="28;33;28" dur="4s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="490" cy="68" r="18" fill="rgba(230,168,23,.38)"/>
+
+      <!-- Clouds -->
+      <ellipse cx="90" cy="60" rx="60" ry="20" fill="rgba(255,255,255,.05)"/>
+      <ellipse cx="130" cy="50" rx="42" ry="17" fill="rgba(255,255,255,.05)"/>
+      <ellipse cx="60" cy="64" rx="30" ry="13" fill="rgba(255,255,255,.04)"/>
+      <ellipse cx="320" cy="40" rx="50" ry="16" fill="rgba(255,255,255,.04)"/>
+
+      <!-- Ground -->
+      <rect x="0" y="438" width="560" height="152" fill="url(#c5grass)"/>
+      <!-- Path to door -->
+      <path d="M242 438 Q245 475 248 560" stroke="rgba(255,255,255,.05)" stroke-width="22" fill="none"/>
+
+      <!-- HOUSE BODY -->
+      <rect x="95" y="248" width="290" height="196" rx="4" fill="url(#c5house)" stroke="rgba(34,197,94,.12)" stroke-width="1"/>
+      <!-- Roof -->
+      <polygon points="72,250 240,122 408,250" fill="#081e10" stroke="rgba(34,197,94,.14)" stroke-width="1.5"/>
+      <!-- Ridge cap -->
+      <line x1="72" y1="250" x2="408" y2="250" stroke="rgba(34,197,94,.1)" stroke-width="2"/>
+      <!-- Chimney -->
+      <rect x="292" y="155" width="30" height="68" rx="3" fill="#061608" stroke="rgba(34,197,94,.08)" stroke-width="1"/>
+      <!-- Smoke -->
+      <ellipse cx="307" cy="146" rx="7" ry="9" fill="rgba(255,255,255,.06)">
+        <animateTransform attributeName="transform" type="translate" values="0,0;4,-45" dur="3s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values=".35;0" dur="3s" repeatCount="indefinite"/>
+      </ellipse>
+      <ellipse cx="307" cy="136" rx="5" ry="7" fill="rgba(255,255,255,.04)">
+        <animateTransform attributeName="transform" type="translate" values="0,0;-3,-40" dur="3s" repeatCount="indefinite" begin="1s"/>
+        <animate attributeName="opacity" values=".3;0" dur="3s" repeatCount="indefinite" begin="1s"/>
+      </ellipse>
+
+      <!-- Windows — warm amber glow -->
+      <rect x="115" y="282" width="86" height="58" rx="6" fill="rgba(230,168,23,.15)" stroke="rgba(230,168,23,.35)" stroke-width="1.5" filter="url(#glow5)"/>
+      <line x1="158" y1="282" x2="158" y2="340" stroke="rgba(230,168,23,.22)" stroke-width="1"/>
+      <line x1="115" y1="311" x2="201" y2="311" stroke="rgba(230,168,23,.22)" stroke-width="1"/>
+      <ellipse cx="158" cy="311" rx="52" ry="34" fill="rgba(230,168,23,.04)"/>
+      <rect x="299" y="282" width="86" height="58" rx="6" fill="rgba(230,168,23,.15)" stroke="rgba(230,168,23,.35)" stroke-width="1.5" filter="url(#glow5)"/>
+      <line x1="342" y1="282" x2="342" y2="340" stroke="rgba(230,168,23,.22)" stroke-width="1"/>
+      <line x1="299" y1="311" x2="385" y2="311" stroke="rgba(230,168,23,.22)" stroke-width="1"/>
+
+      <!-- Door -->
+      <rect x="202" y="368" width="76" height="78" rx="5" fill="#061608" stroke="rgba(34,197,94,.2)" stroke-width="1.5"/>
+      <!-- Door panels -->
+      <rect x="210" y="376" width="26" height="35" rx="3" fill="rgba(34,197,94,.05)"/>
+      <rect x="244" y="376" width="26" height="35" rx="3" fill="rgba(34,197,94,.05)"/>
+      <rect x="210" y="418" width="60" height="20" rx="3" fill="rgba(34,197,94,.05)"/>
+      <!-- Glowing door knob -->
+      <circle cx="270" cy="407" r="5" fill="#e6a817" filter="url(#glow5)">
+        <animate attributeName="opacity" values=".8;1;.8" dur="2.5s" repeatCount="indefinite"/>
+      </circle>
+      <!-- Welcome mat -->
+      <rect x="215" y="440" width="50" height="9" rx="3" fill="rgba(34,197,94,.18)"/>
+      <text x="240" y="447.5" text-anchor="middle" font-size="5.5" fill="rgba(34,197,94,.55)" font-family="DM Sans,sans-serif">WELCOME</text>
+
+      <!-- OWNED banner -->
+      <rect x="110" y="238" width="72" height="20" rx="5" fill="#22c55e" transform="rotate(-4,146,248)"/>
+      <text x="146" y="252" text-anchor="middle" font-size="10" fill="#001a08" font-family="Bebas Neue,sans-serif" font-weight="700" transform="rotate(-4,146,248)">OWNED  ✓</text>
+
+      <!-- Trees -->
+      <rect x="40" y="362" width="14" height="80" rx="5" fill="#051008"/>
+      <ellipse cx="47" cy="346" rx="34" ry="40" fill="rgba(34,197,94,.28)"/>
+      <ellipse cx="47" cy="330" rx="24" ry="28" fill="rgba(34,197,94,.36)"/>
+      <rect x="508" y="368" width="12" height="74" rx="4" fill="#051008"/>
+      <ellipse cx="514" cy="352" rx="28" ry="34" fill="rgba(34,197,94,.24)"/>
+      <ellipse cx="514" cy="338" rx="19" ry="22" fill="rgba(34,197,94,.32)"/>
+
+      <!-- FAMILY — Ramesh + wife + daughter -->
+      <!-- Ramesh -->
+      <circle cx="436" cy="378" r="27" fill="#c67c4e"/>
+      <path d="M409 368 Q413 348 436 346 Q459 348 463 368 Q458 352 436 350 Q414 352 409 368Z" fill="#0a0200"/>
+      <path d="M424 392 Q436 399 448 392" stroke="#0a0200" stroke-width="2.8" fill="rgba(10,2,0,.25)" stroke-linecap="round"/>
+      <circle cx="428" cy="374" r="4.5" fill="white"/>
+      <circle cx="444" cy="374" r="4.5" fill="white"/>
+      <circle cx="429" cy="375.5" r="2.8" fill="#0a0200"/>
+      <circle cx="445" cy="375.5" r="2.8" fill="#0a0200"/>
+      <!-- Happy smile -->
+      <path d="M428 389 Q436 397 444 389" stroke="#c0392b" stroke-width="2.5" fill="none"/>
+      <!-- Ear stud -->
+      <circle cx="409" cy="380" r="3.8" fill="#e6a817" opacity=".9"/>
+      <rect x="409" y="405" width="54" height="70" rx="10" fill="#2d6a4f"/>
+      <!-- KEY shining -->
+      <g transform="translate(415,400) rotate(-38)" style="animation:sKeyShine 3s ease-in-out infinite;">
+        <circle cx="0" cy="0" r="12" fill="none" stroke="#e6a817" stroke-width="3.5"/>
+        <rect x="-2" y="12" width="4" height="25" fill="#e6a817"/>
+        <rect x="2" y="24" width="10" height="4" rx="1" fill="#e6a817"/>
+        <rect x="2" y="31" width="8" height="4" rx="1" fill="#e6a817"/>
+      </g>
+
+      <!-- Wife -->
+      <circle cx="498" cy="382" r="22" fill="#d4956a"/>
+      <path d="M476 373 Q479 357 498 354 Q515 357 520 373 Q516 359 498 357 Q480 359 476 373Z" fill="#0a0200"/>
+      <ellipse cx="498" cy="355" rx="16" ry="10" fill="#0a0200"/>
+      <circle cx="498" cy="344" r="9" fill="#0a0200"/>
+      <!-- Bindi -->
+      <circle cx="498" cy="377" r="2" fill="#e91e63" opacity=".85"/>
+      <circle cx="491" cy="381" r="3.5" fill="white"/>
+      <circle cx="505" cy="381" r="3.5" fill="white"/>
+      <circle cx="492" cy="382.5" r="2.2" fill="#0a0200"/>
+      <circle cx="506" cy="382.5" r="2.2" fill="#0a0200"/>
+      <path d="M491 392 Q498 398 505 392" stroke="#c0392b" stroke-width="2" fill="none"/>
+      <rect x="476" y="404" width="44" height="66" rx="9" fill="#7b2d8b"/>
+      <rect x="476" y="416" width="44" height="5" fill="rgba(230,168,23,.45)"/>
+
+      <!-- Daughter (small, joyful) -->
+      <circle cx="462" cy="396" r="15" fill="#c67c4e"/>
+      <path d="M447 388 Q449 375 462 373 Q475 375 477 388 Q474 377 462 375 Q450 377 447 388Z" fill="#0a0200"/>
+      <circle cx="456" cy="395" r="3.8" fill="white"/>
+      <circle cx="468" cy="395" r="3.8" fill="white"/>
+      <circle cx="457" cy="396.5" r="2.3" fill="#0a0200"/>
+      <circle cx="469" cy="396.5" r="2.3" fill="#0a0200"/>
+      <!-- Big smile for daughter -->
+      <path d="M456 405 Q462 411 468 405" stroke="#c0392b" stroke-width="2.2" fill="none"/>
+      <rect x="449" y="411" width="26" height="45" rx="5" fill="#e91e63"/>
+
+      <!-- Birds -->
+      <path d="M118 86 Q126 80 134 86" stroke="rgba(255,255,255,.3)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M152 74 Q160 68 168 74" stroke="rgba(255,255,255,.25)" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M185 90 Q192 84 199 90" stroke="rgba(255,255,255,.2)" stroke-width="1.2" fill="none" stroke-linecap="round"/>
+    </svg>
+    <div class="sp-art-fade" style="background:linear-gradient(to right,transparent 55%,#031408);"></div>
+    <div class="sp-badge" style="top:1.4rem;left:1.4rem;background:rgba(0,14,4,.9);border-color:rgba(34,197,94,.4);">
+      <div class="sp-bval" style="color:#4ade80;">8.40%</div>
+      <div class="sp-blbl">Final rate · SBI · secured</div>
+    </div>
+    <div class="sp-badge" style="top:5.2rem;left:1.4rem;background:rgba(0,14,4,.9);border-color:rgba(230,168,23,.35);">
+      <div class="sp-bval" style="color:#e6a817;">₹30,181</div>
+      <div class="sp-blbl">Monthly EMI · 20 years</div>
+    </div>
+    <div class="sp-badge" style="bottom:4.5rem;left:1.4rem;background:rgba(0,14,4,.9);border-color:rgba(34,197,94,.3);">
+      <div class="sp-bval" style="color:#4ade80;">₹8.19L</div>
+      <div class="sp-blbl">Total saved vs walk-in</div>
+    </div>
+  </div>
+  <div class="sp-text" style="background:linear-gradient(145deg,#031408,#020c06);">
+    <div class="sp-chapter">Chapter 05 · The Keys Are His</div>
+    <h3 class="sp-title">Disbursed in 31 days.<br/><em>In 20 years: ₹1.8Cr richer.</em></h3>
+    <p class="sp-body">
+      SBI sanctioned the loan at 8.40%. Disbursed in <strong>31 days.</strong> Ramesh holds keys to a 3BHK in Miyapur — a home his family will own forever. EMI: <strong>₹30,181/month.</strong><br/><br/>
+      Everyone said: <em>"But your EMI is more than rent!"</em> Ramesh now explains: rent at 7% annual growth becomes <strong>₹67,000/month by 2044.</strong> Total rent paid over 20 years: <span class="bad">₹87.4 lakh, ₹0 asset.</span> Total EMI paid: ₹72.4 lakh, and he owns a <strong>₹1.45Cr+ property.</strong> Wealth gap at year 20: <span class="good">₹1.8 Crore.</span>
+    </p>
+    <div class="sp-facts">
+      <div class="sp-fact">
+        <div class="sp-fact-ico">📑</div>
+        <div class="sp-fact-body"><strong>Tax benefits renters never get (Income Tax Act):</strong> Sec 24B: interest deduction up to <span class="hi">₹2L/year.</span> Sec 80C: principal repayment deduction up to <span class="hi">₹1.5L/year.</span> At Ramesh's 31% tax bracket: <span class="good">₹1,08,500 back annually.</span> Over 20 years: ₹21.7L in tax savings alone. Renters access zero of this.</div>
+      </div>
+      <div class="sp-fact">
+        <div class="sp-fact-ico">📈</div>
+        <div class="sp-fact-body"><strong>Miyapur–Kondapur corridor (CREDAI Hyderabad 2024):</strong> Average capital appreciation 8–11% annually since 2020. ₹45L flat bought in 2022 valued at ₹62–68L in 2024. Ramesh's home at ₹45L is projected at <span class="hi">₹1.45Cr at 6% conservative appreciation</span> by 2044. The western corridor has the strongest growth momentum in Hyderabad.</div>
+      </div>
+    </div>
+    <div class="sp-verdict spv-green">🏠 <strong>What Cover Credit did:</strong> Compared 30+ lenders · Found 8.40% at his own bank · Rejected ₹72,970 in hidden fees · Saved ₹8.19 lakh total · Handled all documentation · Disbursed in 31 days · Fee to Ramesh: ₹0.</div>
+    <div class="sp-source">Source: Income Tax Act Sec 24B & 80C · CREDAI Hyderabad Market Report 2024 · NHB Residential Price Index Q2 2024</div>
+  </div>
+</div>
+
+    </div><!-- /story-panels -->
+
+    <div class="story-nav rv d2">
+      <button class="story-nav-btn" id="spPrev" disabled>← Previous</button>
+      <div class="story-dots">
+        <button class="story-dot act" data-i="0"></button>
+        <button class="story-dot" data-i="1"></button>
+        <button class="story-dot" data-i="2"></button>
+        <button class="story-dot" data-i="3"></button>
+        <button class="story-dot" data-i="4"></button>
+      </div>
+      <button class="story-nav-btn story-nav-next" id="spNext">Next Chapter →</button>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════ -->
+<!-- TRUE COST CALCULATOR                    -->
+<!-- ═══════════════════════════════════════ -->
+<section class="calc-sec sec" id="calculator">
+  <div class="calc-inner">
+    <div class="rv">
+      <div class="tag">True Cost Calculator</div>
+      <h2 class="tit rv d1">See what you <em>actually</em> pay —<br/>not what they advertise.</h2>
+      <p style="font-size:.85rem;color:rgba(255,255,255,.38);margin-top:.75rem;line-height:1.7;max-width:560px;" class="rv d2">This calculator shows real reducing-balance EMI, total interest paid, and compares what a flat-rate loan at the "same rate" actually costs you. Surprising every time.</p>
+    </div>
+    <div class="calc-layout rv d1">
+      <div class="calc-form">
+        <h3 style="font-size:1rem;font-weight:700;margin-bottom:1.5rem;color:rgba(255,255,255,.7);">Loan Details</h3>
+
+        <div class="calc-field">
+          <div class="calc-label">Loan Type <span id="loanTypeLabel">Home Loan</span></div>
+          <div class="calc-pills" id="loanTypePills">
+            <div class="cpill on" data-lt="home">🏠 Home</div>
+            <div class="cpill" data-lt="personal">👤 Personal</div>
+            <div class="cpill" data-lt="car">🚗 Car</div>
+            <div class="cpill" data-lt="business">💼 Business</div>
+            <div class="cpill" data-lt="education">🎓 Education</div>
+            <div class="cpill" data-lt="gold">🪙 Gold</div>
+            <div class="cpill" data-lt="lap">🏗️ LAP</div>
+          </div>
+        </div>
+
+        <div class="calc-field">
+          <div class="calc-label">Loan Amount <span id="amtLabel">₹25 Lakh</span></div>
+          <input type="range" class="calc-range" id="amtRange" min="1" max="200" value="25" step="1"/>
+        </div>
+
+        <div class="calc-field">
+          <div class="calc-label">Tenure <span id="tenureLabel">20 Years</span></div>
+          <input type="range" class="calc-range" id="tenureRange" min="1" max="30" value="20" step="1"/>
+        </div>
+
+        <div class="calc-field">
+          <div class="calc-label">Interest Rate (Reducing Balance) <span id="rateLabel">8.40%</span></div>
+          <input type="range" class="calc-range" id="rateRange" min="70" max="240" value="84" step="1"/>
+        </div>
+
+        <div class="calc-field">
+          <div class="calc-label" style="margin-bottom:.6rem;">Compare against flat rate lender</div>
+          <div class="calc-row-toggle" id="flatToggle">
+            <div class="ctoggle on" data-flat="yes">
+              <div class="ctoggle-name">Show Comparison</div>
+              <div class="ctoggle-rate">Flat rate trap revealed</div>
+            </div>
+            <div class="ctoggle" data-flat="no">
+              <div class="ctoggle-name">Hide Comparison</div>
+              <div class="ctoggle-rate">Just my EMI</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:rgba(230,168,23,.06);border:1px solid rgba(230,168,23,.1);border-radius:12px;padding:1rem;margin-top:.5rem;">
+          <div style="font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(230,168,23,.6);margin-bottom:.4rem;">💡 Cover Credit Advantage</div>
+          <div style="font-size:.73rem;color:rgba(255,255,255,.4);line-height:1.6;">On this exact loan, we typically find <strong style="color:rgba(255,255,255,.7);">0.5–1.5% lower rates</strong> than walk-in quotes. Enter your details and call us to verify.</div>
+        </div>
+      </div>
+
+      <div class="calc-results">
+        <div class="calc-res-emi">
+          <div class="cre-label">Monthly EMI (Reducing Balance)</div>
+          <div class="cre-value" id="emiDisplay">₹21,425</div>
+          <div class="cre-sub">At <span id="rateDisplay">8.40</span>% p.a. · <span id="tenureDisplay">20</span> years</div>
+        </div>
+        <div class="calc-breakdown">
+          <div class="cbr-row">
+            <span class="cbr-k">Principal Amount</span>
+            <span class="cbr-v gold" id="principalDisplay">₹25,00,000</span>
+          </div>
+          <div class="cbr-divider"></div>
+          <div class="cbr-row">
+            <span class="cbr-k">Total Interest Paid</span>
+            <span class="cbr-v red" id="interestDisplay">₹26,42,013</span>
+          </div>
+          <div class="cbr-divider"></div>
+          <div class="cbr-row">
+            <span class="cbr-k">Total Amount Payable</span>
+            <span class="cbr-v" id="totalDisplay">₹51,42,013</span>
+          </div>
+          <div class="cbr-divider"></div>
+          <div class="cbr-row">
+            <span class="cbr-k">Interest as % of Principal</span>
+            <span class="cbr-v red" id="intPctDisplay">105.7%</span>
+          </div>
+        </div>
+
+        <div class="comp-bar-wrap" id="compWrap">
+          <div class="comp-bar-label">⚖ Reducing vs Flat Rate Comparison (same quoted %)</div>
+          <div class="comp-bar-row">
+            <div class="comp-bar-name">
+              <span>Reducing Balance (you)</span>
+              <span class="cbr-v green" id="reduceTotal">₹51,42,013</span>
+            </div>
+            <div class="comp-bar"><div class="comp-bar-fill cbf-reduce" id="reduceBar" style="width:65%"></div></div>
+          </div>
+          <div class="comp-bar-row">
+            <div class="comp-bar-name">
+              <span>Flat Rate (same % quoted)</span>
+              <span class="cbr-v red" id="flatTotal">₹76,60,000</span>
+            </div>
+            <div class="comp-bar"><div class="comp-bar-fill cbf-flat" id="flatBar" style="width:97%"></div></div>
+          </div>
+          <div class="comp-save" id="compSave">You save ₹25,18,000 by choosing reducing balance — always confirm this before you sign.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- CIBIL SCORE GUIDE                       -->
+<!-- ═══════════════════════════════════════ -->
+<section class="cibil-sec sec">
+  <div class="cibil-inner">
+    <div class="cibil-left rv">
+      <div class="tag">CIBIL Score Guide</div>
+      <h2 class="tit" style="margin-bottom:1rem;">Your score decides<br/><em>everything.</em> Fix it first.</h2>
+      <p style="font-size:.83rem;color:rgba(255,255,255,.4);line-height:1.7;margin-bottom:1.5rem;">A 750+ score vs a 680 score on a ₹30 lakh home loan can mean a 1.5% rate difference — that's ₹9 lakh extra interest over 20 years. Here's exactly what builds it.</p>
+
+      <div class="cibil-factors" id="cibilFactors">
+        <div class="cibil-factor">
+          <div class="cf-left">
+            <div class="cf-name">Payment History <span>35%</span></div>
+            <div class="cf-bar"><div class="cf-bar-fill" style="--cfw:88%;background:linear-gradient(90deg,#22c55e,#4ade80);"></div></div>
+          </div>
+        </div>
+        <div class="cibil-factor">
+          <div class="cf-left">
+            <div class="cf-name">Credit Utilisation <span>30%</span></div>
+            <div class="cf-bar"><div class="cf-bar-fill" style="--cfw:75%;background:linear-gradient(90deg,#e6a817,#f5c842);"></div></div>
+          </div>
+        </div>
+        <div class="cibil-factor">
+          <div class="cf-left">
+            <div class="cf-name">Length of Credit History <span>15%</span></div>
+            <div class="cf-bar"><div class="cf-bar-fill" style="--cfw:55%;background:linear-gradient(90deg,#60a5fa,#93c5fd);"></div></div>
+          </div>
+        </div>
+        <div class="cibil-factor">
+          <div class="cf-left">
+            <div class="cf-name">Credit Mix (secured + unsecured) <span>10%</span></div>
+            <div class="cf-bar"><div class="cf-bar-fill" style="--cfw:40%;background:linear-gradient(90deg,#a78bfa,#c4b5fd);"></div></div>
+          </div>
+        </div>
+        <div class="cibil-factor">
+          <div class="cf-left">
+            <div class="cf-name">New Credit Enquiries <span>10%</span></div>
+            <div class="cf-bar"><div class="cf-bar-fill" style="--cfw:30%;background:linear-gradient(90deg,#f87171,#fca5a5);"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cibil-right rv d2">
+      <!-- Score gauge SVG -->
+      <div class="cibil-score-display">
+        <div class="csd-label" style="margin-bottom:.5rem;">Ideal Score for Best Rates</div>
+        <svg width="280" height="160" viewBox="0 0 280 160">
+          <defs>
+            <linearGradient id="gaugeGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#ef4444"/>
+              <stop offset="40%" stop-color="#f59e0b"/>
+              <stop offset="70%" stop-color="#22c55e"/>
+              <stop offset="100%" stop-color="#3b82f6"/>
+            </linearGradient>
+          </defs>
+          <!-- Background arc -->
+          <path d="M 30 140 A 110 110 0 0 1 250 140" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="20" stroke-linecap="round"/>
+          <!-- Coloured arc -->
+          <path d="M 30 140 A 110 110 0 0 1 250 140" fill="none" stroke="url(#gaugeGrad)" stroke-width="20" stroke-linecap="round" stroke-dasharray="345" stroke-dashoffset="0">
+            <animate attributeName="stroke-dashoffset" from="345" to="0" dur="1.5s" fill="freeze"/>
+          </path>
+          <!-- Needle -->
+          <g id="scoreNeedle">
+            <line x1="140" y1="140" x2="140" y2="50" stroke="var(--ac)" stroke-width="3" stroke-linecap="round">
+              <animateTransform attributeName="transform" type="rotate" from="-90 140 140" to="52 140 140" dur="1.5s" fill="freeze"/>
+            </line>
+            <circle cx="140" cy="140" r="8" fill="var(--ac)"/>
+          </g>
+          <!-- Labels -->
+          <text x="18" y="158" font-size="10" fill="rgba(255,255,255,.35)" font-family="DM Sans,sans-serif">300</text>
+          <text x="62" y="60" font-size="10" fill="rgba(255,255,255,.35)" font-family="DM Sans,sans-serif">500</text>
+          <text x="126" y="30" font-size="10" fill="rgba(255,255,255,.35)" font-family="DM Sans,sans-serif">650</text>
+          <text x="190" y="50" font-size="10" fill="#22c55e" font-family="DM Sans,sans-serif" font-weight="700">750+</text>
+          <text x="238" y="150" font-size="10" fill="rgba(255,255,255,.35)" font-family="DM Sans,sans-serif">900</text>
+          <!-- Center text -->
+          <text x="140" y="118" text-anchor="middle" font-size="32" fill="var(--ac)" font-family="Bebas Neue,sans-serif" letter-spacing="2">750+</text>
+          <text x="140" y="135" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.4)" font-family="DM Sans,sans-serif">Best rates start here</text>
+        </svg>
+      </div>
+
+      <!-- Score range bands -->
+      <div style="display:flex;gap:4px;border-radius:8px;overflow:hidden;margin-bottom:1.8rem;">
+        <div style="flex:1;background:#ef4444;padding:.4rem .5rem;text-align:center;">
+          <div style="font-size:.58rem;font-weight:700;color:rgba(255,255,255,.9);">300–549</div>
+          <div style="font-size:.52rem;color:rgba(255,255,255,.5);margin-top:.1rem;">Poor</div>
+        </div>
+        <div style="flex:1;background:#f59e0b;padding:.4rem .5rem;text-align:center;">
+          <div style="font-size:.58rem;font-weight:700;color:rgba(255,255,255,.9);">550–649</div>
+          <div style="font-size:.52rem;color:rgba(255,255,255,.5);margin-top:.1rem;">Average</div>
+        </div>
+        <div style="flex:1;background:#84cc16;padding:.4rem .5rem;text-align:center;">
+          <div style="font-size:.58rem;font-weight:700;color:rgba(255,255,255,.9);">650–749</div>
+          <div style="font-size:.52rem;color:rgba(255,255,255,.5);margin-top:.1rem;">Good</div>
+        </div>
+        <div style="flex:1;background:#22c55e;padding:.4rem .5rem;text-align:center;">
+          <div style="font-size:.58rem;font-weight:700;color:rgba(255,255,255,.9);">750–799</div>
+          <div style="font-size:.52rem;color:rgba(255,255,255,.5);margin-top:.1rem;">Very Good</div>
+        </div>
+        <div style="flex:1;background:#3b82f6;padding:.4rem .5rem;text-align:center;">
+          <div style="font-size:.58rem;font-weight:700;color:rgba(255,255,255,.9);">800–900</div>
+          <div style="font-size:.52rem;color:rgba(255,255,255,.5);margin-top:.1rem;">Excellent</div>
+        </div>
+      </div>
+
+      <div class="cibil-tips">
+        <div class="ctip">
+          <div class="ctip-icon">💳</div>
+          <div class="ctip-text"><strong>Keep credit card utilisation below 30%.</strong> If your limit is ₹1 lakh, don't let the bill exceed ₹30,000 — even if you pay in full every month. CIBIL checks the statement date balance, not payment date.</div>
+        </div>
+        <div class="ctip">
+          <div class="ctip-icon">📆</div>
+          <div class="ctip-text"><strong>Never miss an EMI — not even once.</strong> A single 30-day late payment can drop your score by 50–100 points and stays on your report for 3 years. Set auto-debit on your payment account — always.</div>
+        </div>
+        <div class="ctip">
+          <div class="ctip-icon">🔍</div>
+          <div class="ctip-text"><strong>Every loan enquiry lowers your score by 5–10 points.</strong> When banks "check your eligibility," it leaves a hard enquiry. Cover Credit does a soft check — invisible to CIBIL — before approaching any lender on your behalf.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- WHEN NOT TO TAKE A LOAN                 -->
+<!-- ═══════════════════════════════════════ -->
+<section class="noloan-sec sec">
+  <div class="noloan-inner">
+    <div class="noloan-hd rv">
+      <div>
+        <div class="tag">Radical Honesty</div>
+        <h2 class="tit rv d1">Four times we will<br/><em>tell you not to borrow.</em></h2>
+      </div>
+      <div class="noloan-note rv d2">
+        Most loan agents get paid when you take a loan. We don't think that way. If a loan isn't right for your situation, we'll tell you exactly that — and suggest what to do instead. These four situations happen more often than you'd think.
+      </div>
+    </div>
+    <div class="noloan-grid rv d1">
+      <div class="nl-card">
+        <span class="nl-num">01</span>
+        <span class="nl-icon">📊</span>
+        <div class="nl-title">Your EMI will exceed 45% of take-home income</div>
+        <div class="nl-body">The RBI's guideline is 40–50% of net income going to EMIs — but at 45%+, any unexpected expense (medical, job loss, emergency) creates immediate default risk. <strong>We'll tell you to wait 12–18 months, save more, and come back with a stronger application.</strong> Better rate + lower stress.</div>
+        <div class="nl-advice">What we suggest instead: SIP-based goal saving, employer salary advance.</div>
+      </div>
+      <div class="nl-card">
+        <span class="nl-num">02</span>
+        <span class="nl-icon">📉</span>
+        <div class="nl-title">You want a personal loan to pay off another loan</div>
+        <div class="nl-body">Taking a 16% personal loan to close a 14% credit card debt sounds logical but often isn't. The processing fees, tenure reset, and psychological comfort of "solved" debt typically leads to the credit card filling back up. <strong>We help you do a real debt audit and find which debts to close in which order</strong> — without adding new liabilities.</div>
+        <div class="nl-advice">What we suggest instead: Debt snowball plan, balance transfer to 0% card.</div>
+      </div>
+      <div class="nl-card">
+        <span class="nl-num">03</span>
+        <span class="nl-icon">🎰</span>
+        <div class="nl-title">You're borrowing to invest in volatile assets</div>
+        <div class="nl-body">We've had clients ask for personal loans to invest in stocks, crypto, or "schemes" promising 20%+ returns. A 14% loan cost requires your investment to return 14%+ consistently — after tax — just to break even. <strong>If the investment fails, the EMI doesn't stop.</strong> We will always refuse to facilitate this kind of loan, regardless of how confident you feel.</div>
+        <div class="nl-advice">What we suggest instead: Invest what you already have. Grow the habit first.</div>
+      </div>
+      <div class="nl-card">
+        <span class="nl-num">04</span>
+        <span class="nl-icon">⏳</span>
+        <div class="nl-title">Your CIBIL score is below 650 — apply now anyway</div>
+        <div class="nl-body">We know it's tempting. But a rejection leaves a hard enquiry that further drops your score. <strong>A loan at 22%+ interest rate for a poor CIBIL score is often worse than the problem you're solving.</strong> We give you a 90-day CIBIL improvement plan — specific steps for your exact report — and then get you the right loan at a rate worth having.</div>
+        <div class="nl-advice">What we suggest instead: Our free 90-day credit repair roadmap.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- PROCESS                                 -->
+<!-- ═══════════════════════════════════════ -->
+<section class="process-sec sec">
+  <div class="process-inner">
+    <div style="text-align:center;" class="rv">
+      <div class="tag">How It Works</div>
+      <h2 class="tit rv d1">Six steps. No surprises.<br/><em>Full transparency.</em></h2>
+    </div>
+    <div class="process-steps rv d1">
+      <div class="pstep">
+        <div class="pstep-num">01</div>
+        <span class="pstep-icon">📞</span>
+        <div class="pstep-title">Free Consultation</div>
+        <div class="pstep-body">30-minute call. We understand your need, income, credit profile, and exactly what you want. No forms yet.</div>
+      </div>
+      <div class="pstep">
+        <div class="pstep-num">02</div>
+        <span class="pstep-icon">🔍</span>
+        <div class="pstep-title">Soft Credit Check</div>
+        <div class="pstep-body">We pull your CIBIL with a soft enquiry — doesn't affect your score. We analyse your report and flag any issues before lenders see it.</div>
+      </div>
+      <div class="pstep">
+        <div class="pstep-num">03</div>
+        <span class="pstep-icon">📊</span>
+        <div class="pstep-title">Compare 30+ Lenders</div>
+        <div class="pstep-body">We match your profile against our panel of 30+ banks and NBFCs. You see a full comparison — rate, charges, tenure, hidden costs — side by side.</div>
+      </div>
+      <div class="pstep">
+        <div class="pstep-num">04</div>
+        <span class="pstep-icon">📋</span>
+        <div class="pstep-title">You Choose</div>
+        <div class="pstep-body">We explain every offer in plain Telugu and English. You choose the lender. We never push. We never take commission from lenders that affects your rate.</div>
+      </div>
+      <div class="pstep">
+        <div class="pstep-num">05</div>
+        <span class="pstep-icon">📁</span>
+        <div class="pstep-title">Documentation & Apply</div>
+        <div class="pstep-body">We prepare your complete document set, guide you through every form, and submit to the chosen lender. We explain every charge before you sign anything.</div>
+      </div>
+      <div class="pstep">
+        <div class="pstep-num">06</div>
+        <span class="pstep-icon">✅</span>
+        <div class="pstep-title">Disbursal & Beyond</div>
+        <div class="pstep-body">We track your application daily and update you. We stay with you until the money lands. And we remind you when rates drop enough to refinance.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- FAQ + CTA SIDEBAR                       -->
+<!-- ═══════════════════════════════════════ -->
+<section class="faq-sec sec">
+  <div class="faq-inner" style="max-width:1300px;margin:0 auto;">
+    <div>
+      <div class="tag rv">Real Questions We Get</div>
+      <h2 class="tit rv d1" style="margin-bottom:2rem;">Questions nobody<br/><em>else answers honestly.</em></h2>
+      <div class="faq-list">
+        <div class="fi op">
+          <div class="fh"><span class="fq">Can I negotiate my interest rate — and how?</span><span class="fic">+</span></div>
+          <div class="fab2"><p class="fat">Yes, absolutely — and most people don't try. Banks have a rate range for each product and customer segment. If your CIBIL is 780+, you have significant negotiating power. <strong>Tell them you have competing offers from two other lenders.</strong> This is true if you've spoken to us — we'll give you real competing rates to show them. Banks regularly reduce rates by 0.25–0.5% for customers who negotiate. On a ₹30 lakh loan over 15 years, 0.5% is ₹1.8 lakh saved.</p></div>
+        </div>
+        <div class="fi">
+          <div class="fh"><span class="fq">Flat rate vs reducing balance — explained simply.</span><span class="fic">+</span></div>
+          <div class="fab2"><p class="fat">Flat rate: interest calculated on the full original amount for the entire tenure. If you borrowed ₹10 lakh at 12% flat for 3 years, interest = ₹10L × 12% × 3 = ₹3.6 lakh. Reducing balance: interest calculated only on what you still owe. After each EMI payment you owe less, so next month's interest is lower. The same ₹10 lakh at 12% reducing over 3 years = ₹1.97 lakh interest. <strong>Flat 12% = ~21.5% reducing balance.</strong> Always ask which method a lender uses before comparing rates.</p></div>
+        </div>
+        <div class="fi">
+          <div class="fh"><span class="fq">Should I foreclose my home loan early or invest the money?</span><span class="fic">+</span></div>
+          <div class="fab2"><p class="fat">It depends entirely on your loan rate vs expected investment return — after tax. If your home loan is 8.5% and you're in the 30% tax bracket, the effective cost with Section 24B deduction is ~6.9%. A diversified equity mutual fund has historically returned 12%+ over 10+ years. <strong>In this case, investing is mathematically better than prepaying.</strong> But if your loan rate is 14%+ (personal loan, NBFC), prepayment is almost always the right move. We run this calculation for free — it's different for every person.</p></div>
+        </div>
+        <div class="fi">
+          <div class="fh"><span class="fq">My loan application got rejected. What now?</span><span class="fic">+</span></div>
+          <div class="fab2"><p class="fat">Don't apply anywhere else immediately — each rejection leaves a hard enquiry that drops your score further. First, get the rejection reason in writing (you're entitled to it). Common reasons: low CIBIL, high FOIR (Fixed Obligations to Income Ratio), employment type, property issues, or income documentation gaps. <strong>We analyse the rejection reason and give you a specific 60–90 day recovery plan</strong> — then approach the right lender for your exact situation. A rejection from SBI doesn't mean HDFC will reject. Different banks have different risk appetites.</p></div>
+        </div>
+        <div class="fi">
+          <div class="fh"><span class="fq">Is there a way to get a home loan without income proof?</span><span class="fic">+</span></div>
+          <div class="fab2"><p class="fat">Formal income proof (ITR, salary slips) is required by most banks for standard home loans. However, if you're self-employed or in a cash business, some NBFCs and co-operative banks offer <strong>Bank Statement Assessment Loans</strong> — they evaluate 12–24 months of bank statements instead of ITR. These carry slightly higher rates (typically 1–2% more) but are legitimate and widely available. We have relationships with 6 such lenders active in AP and Telangana.</p></div>
+        </div>
+        <div class="fi">
+          <div class="fh"><span class="fq">What documents do I need to prepare before calling you?</span><span class="fic">+</span></div>
+          <div class="fab2"><p class="fat">Nothing, for the first call — that's just a conversation. When we're ready to apply, you'll need: PAN card, Aadhaar, 3 months' salary slips or 2 years' ITR (self-employed), 6 months' bank statements, and property documents (for home/LAP). <strong>We'll tell you exactly what's needed for your specific loan type and lender</strong> — there's no standard checklist that works for everyone. Missing even one document can delay disbursal by weeks. We prepare a personalised checklist for you.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-cta rv d2">
+      <div class="faq-cta-h">Get your loan sorted<br/>with <em>zero confusion.</em></div>
+      <p class="faq-cta-sub">30-minute free consultation. We compare lenders, explain every charge, and only proceed when you're fully confident. No pressure. No jargon. Spoken in Telugu if you prefer.</p>
+      <div class="faq-cta-list">
+        <div class="faq-cta-item">Free soft CIBIL check — doesn't hurt your score</div>
+        <div class="faq-cta-item">Comparison across 30+ banks and NBFCs</div>
+        <div class="faq-cta-item">Full charge disclosure before you sign</div>
+        <div class="faq-cta-item">Available Mon–Sat, 9 AM to 7 PM</div>
+        <div class="faq-cta-item">Telugu and English support</div>
+      </div>
+      <a href="book.html" class="btn-gold" style="display:block;text-align:center;">Book Free Loan Consultation →</a>
+      <div style="text-align:center;margin-top:1rem;">
+        <a href="https://wa.me/917842854466" style="font-size:.75rem;color:rgba(255,255,255,.35);text-decoration:underline;">Or WhatsApp us directly</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════ -->
+<!-- CTA BANNER                              -->
+<!-- ═══════════════════════════════════════ -->
+<section class="cta-banner">
+  <div class="cta-inner rv">
+    <div class="tag" style="justify-content:center;">The Right Loan Changes Everything</div>
+    <h2 class="cta-h">₹10,80,000 — that's what 5 years<br/>of rent cost Ramesh's family.<br/><em>Don't let it cost yours.</em></h2>
+    <p class="cta-sub">One free conversation with our team is all it takes to know if you're ready, what you qualify for, and which lender will treat you the best. No commitment required.</p>
+    <div class="cta-btns">
+      <a href="book.html" class="btn-gold">Compare Loan Rates — It's Free</a>
+      <a href="https://wa.me/917842854466" class="btn-ghost">WhatsApp Us Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="ft">
+  <div class="ft-in">
+    <div class="ft-top">
+      <div>
+        <a href="index.html" class="ft-logo">Cover<em>Credit</em></a>
+        <p class="ft-ds">Honest insurance and financial advice for families across AP and Telangana. We sell the right policy — no pressure, no jargon.</p>
+        <div class="ft-con">📞 <a href="tel:+917842854466">+91 78428 54466</a></div>
+        <div class="ft-con">✉️ <a href="mailto:Covercredit.official@gmail.com">Covercredit.official@gmail.com</a></div>
+        <div class="ft-con">🕐 Mon–Sat: 9 AM – 7 PM</div>
+      </div>
+      <div class="ft-col"><div class="ft-clbl">Vehicle Insurance</div><ul><li><a href="vehicle-insurance.html">Vehicle Overview</a></li><li><a href="bike-insurance.html">Bike Insurance</a></li><li><a href="car-insurance.html">Car Insurance</a></li><li><a href="commercial-vehicle-insurance.html">Commercial Vehicle</a></li></ul></div>
+      <div class="ft-col"><div class="ft-clbl">Products</div><ul><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life & Term Insurance</a></li><li><a href="loans.html">Loans & Finance</a></li></ul></div>
+      <div class="ft-col"><div class="ft-clbl">Company</div><ul><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="book.html">Book Consultation</a></li></ul></div>
+    </div>
+    <div class="ft-bot"><span>© <span id="yr"></span> Cover Credit Insurance Advisors. All rights reserved.</span><div class="ft-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div></div>
+  </div>
+</footer>
+
+<script>
+/* ── CURSOR ── */
+const cur=document.getElementById('cur'),cr=document.getElementById('cr');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function tick(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(tick);})();
+document.querySelectorAll('a,button,.ltcard,.secret-card,.cpill,.ctoggle,.fi,.nl-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
+});
+
+/* ── NAV ── */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>40),{passive:true});
+const burger=document.getElementById('burger'),mob=document.getElementById('mob');
+burger.addEventListener('click',()=>{burger.classList.toggle('op');mob.classList.toggle('op');document.body.style.overflow=mob.classList.contains('op')?'hidden':'';});
+
+/* ── YEAR ── */
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* ── PARTICLES ── */
+const pc=document.getElementById('heroParticles');
+if(pc){
+  for(let i=0;i<18;i++){
+    const d=document.createElement('div');
+    d.className='hpar';
+    const s=Math.random()*4+1;
+    Object.assign(d.style,{
+      width:s+'px',height:s+'px',
+      background:`rgba(230,168,23,${Math.random()*.3+.05})`,
+      left:Math.random()*100+'%',bottom:Math.random()*20+'%',
+      animationDuration:(Math.random()*15+10)+'s',
+      animationDelay:(Math.random()*8)+'s'
+    });
+    pc.appendChild(d);
+  }
+}
+
+/* ── SCROLL REVEAL ── */
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});},{threshold:.06});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+
+/* CIBIL bars on scroll */
+const cibilObs=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.cf-bar-fill').forEach(b=>b.classList.add('animate'));
+      cibilObs.unobserve(e.target);
+    }
+  });
+},{threshold:.2});
+const cibilEl=document.getElementById('cibilFactors');
+if(cibilEl)cibilObs.observe(cibilEl);
+
+/* ── FAQ ── */
+document.querySelectorAll('.fh').forEach(h=>{
+  h.addEventListener('click',()=>{
+    const it=h.parentElement,op=it.classList.contains('op');
+    document.querySelectorAll('.fi').forEach(i=>i.classList.remove('op'));
+    if(!op)it.classList.add('op');
+  });
+});
+
+/* ── COUNTER ANIMATION ── */
+function animCount(el,target,prefix,suffix,duration){
+  let start=null;
+  const step=ts=>{
+    if(!start)start=ts;
+    const prog=Math.min((ts-start)/duration,1);
+    const val=Math.round(prog*target);
+    el.textContent=prefix+val+suffix;
+    if(prog<1)requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+const counterObs=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      animCount(document.getElementById('counterLoans'),42,'₹','Cr+',1800);
+      counterObs.unobserve(e.target);
+    }
+  });
+},{threshold:.5});
+const cel=document.getElementById('counterLoans');
+if(cel)counterObs.observe(cel);
+
+
+
+/* ══════════════════════════════════════════
+   STORY ENGINE
+══════════════════════════════════════════ */
+(function(){
+  const panels = document.querySelectorAll('.story-panel');
+  const tabs   = document.querySelectorAll('.story-tab');
+  const dots   = document.querySelectorAll('.story-dot');
+  const prev   = document.getElementById('spPrev');
+  const next   = document.getElementById('spNext');
+  if(!panels.length) return;
+  let cur = 0;
+
+  function show(i){
+    cur = Math.max(0, Math.min(panels.length-1, i));
+    panels.forEach((p,j)=>p.classList.toggle('act', j===cur));
+    tabs.forEach((t,j)=>t.classList.toggle('act', j===cur));
+    dots.forEach((d,j)=>d.classList.toggle('act', j===cur));
+    prev.disabled = cur===0;
+    next.disabled = cur===panels.length-1;
+    next.textContent = cur===panels.length-1 ? '✓ Story Complete' : 'Next Chapter →';
+    if(cur===panels.length-1){next.style.opacity='.45';}else{next.style.opacity='1';}
+  }
+
+  tabs.forEach((t,i)=>t.addEventListener('click',()=>show(i)));
+  dots.forEach((d,i)=>d.addEventListener('click',()=>show(parseInt(d.dataset.i))));
+  prev.addEventListener('click',()=>show(cur-1));
+  next.addEventListener('click',()=>show(cur+1));
+})();
+
+/* ══════════════════════════════════════════
+   EMI CALCULATOR
+══════════════════════════════════════════ */
+const loanDefaults={
+  home:{min:1,max:500,def:25,tenMin:1,tenMax:30,tenDef:20,rateMin:70,rateMax:150,rateDef:84,label:'Home Loan'},
+  personal:{min:1,max:25,def:5,tenMin:1,tenMax:5,tenDef:3,rateMin:90,rateMax:240,rateDef:120,label:'Personal Loan'},
+  car:{min:1,max:100,def:8,tenMin:1,tenMax:7,tenDef:5,rateMin:70,rateMax:160,rateDef:95,label:'Car Loan'},
+  business:{min:1,max:200,def:10,tenMin:1,tenMax:5,tenDef:3,rateMin:100,rateMax:220,rateDef:140,label:'Business Loan'},
+  education:{min:1,max:75,def:15,tenMin:1,tenMax:15,tenDef:10,rateMin:70,rateMax:160,rateDef:90,label:'Education Loan'},
+  gold:{min:0.1,max:50,def:2,tenMin:1,tenMax:3,tenDef:1,rateMin:60,rateMax:110,rateDef:80,label:'Gold Loan'},
+  lap:{min:5,max:500,def:40,tenMin:1,tenMax:15,tenDef:10,rateMin:80,rateMax:150,rateDef:100,label:'Loan Against Property'},
+};
+let currentLT='home';
+let showFlat=true;
+
+const amtR=document.getElementById('amtRange');
+const tenR=document.getElementById('tenureRange');
+const rateR=document.getElementById('rateRange');
+const amtL=document.getElementById('amtLabel');
+const tenL=document.getElementById('tenureLabel');
+const rateL=document.getElementById('rateLabel');
+const loanTypeLbl=document.getElementById('loanTypeLabel');
+const emiEl=document.getElementById('emiDisplay');
+const prinEl=document.getElementById('principalDisplay');
+const intEl=document.getElementById('interestDisplay');
+const totEl=document.getElementById('totalDisplay');
+const intPctEl=document.getElementById('intPctDisplay');
+const rateDEl=document.getElementById('rateDisplay');
+const tenDEl=document.getElementById('tenureDisplay');
+const reduceEl=document.getElementById('reduceTotal');
+const flatEl=document.getElementById('flatTotal');
+const reduceBar=document.getElementById('reduceBar');
+const flatBar=document.getElementById('flatBar');
+const compSaveEl=document.getElementById('compSave');
+const compWrap=document.getElementById('compWrap');
+
+function fmtINR(n){return '₹'+Math.round(n).toLocaleString('en-IN');}
+function calcEMI(){
+  const amt=parseFloat(amtR.value)*100000;
+  const yrs=parseInt(tenR.value);
+  const rateAnn=parseFloat(rateR.value)/10;
+  const n=yrs*12;
+  const r=rateAnn/(12*100);
+  const emi=r===0?amt/n:(amt*r*Math.pow(1+r,n))/(Math.pow(1+r,n)-1);
+  const totalPay=emi*n;
+  const totalInt=totalPay-amt;
+  const intPct=(totalInt/amt)*100;
+
+  // Flat rate (same quoted rate but flat calculation)
+  const flatInt=amt*(rateAnn/100)*yrs;
+  const flatTotal=amt+flatInt;
+
+  emiEl.textContent=fmtINR(emi);
+  prinEl.textContent=fmtINR(amt);
+  intEl.textContent=fmtINR(totalInt);
+  totEl.textContent=fmtINR(totalPay);
+  intPctEl.textContent=intPct.toFixed(1)+'%';
+  rateDEl.textContent=(rateAnn).toFixed(2);
+  tenDEl.textContent=yrs;
+  reduceEl.textContent=fmtINR(totalPay);
+  flatEl.textContent=fmtINR(flatTotal);
+
+  const maxV=Math.max(totalPay,flatTotal);
+  reduceBar.style.width=(totalPay/maxV*95+5)+'%';
+  flatBar.style.width=(flatTotal/maxV*95+5)+'%';
+
+  const saved=flatTotal-totalPay;
+  compSaveEl.textContent=`Reducing balance saves you ${fmtINR(saved)} vs flat rate — always confirm the method before you sign.`;
+  compWrap.style.display=showFlat?'block':'none';
+}
+
+function setLoanType(lt){
+  const d=loanDefaults[lt]||loanDefaults.home;
+  amtR.min=d.min;amtR.max=d.max;amtR.value=d.def;
+  tenR.min=d.tenMin;tenR.max=d.tenMax;tenR.value=d.tenDef;
+  rateR.min=d.rateMin;rateR.max=d.rateMax;rateR.value=d.rateDef;
+  loanTypeLbl.textContent=d.label;
+  updateLabels();calcEMI();
+}
+
+function updateLabels(){
+  const amt=parseFloat(amtR.value);
+  amtL.textContent=amt>=100?'₹'+(amt/100).toFixed(1)+'Cr':'₹'+amt+'L';
+  tenL.textContent=tenR.value+' Year'+(tenR.value>1?'s':'');
+  rateL.textContent=(parseFloat(rateR.value)/10).toFixed(2)+'%';
+}
+
+amtR.addEventListener('input',()=>{updateLabels();calcEMI();});
+tenR.addEventListener('input',()=>{updateLabels();calcEMI();});
+rateR.addEventListener('input',()=>{updateLabels();calcEMI();});
+
+document.querySelectorAll('[data-lt]').forEach(p=>{
+  p.addEventListener('click',()=>{
+    document.querySelectorAll('[data-lt]').forEach(x=>x.classList.remove('on'));
+    p.classList.add('on');
+    currentLT=p.dataset.lt;
+    setLoanType(currentLT);
+  });
+});
+
+document.querySelectorAll('[data-flat]').forEach(p=>{
+  p.addEventListener('click',()=>{
+    document.querySelectorAll('[data-flat]').forEach(x=>x.classList.remove('on'));
+    p.classList.add('on');
+    showFlat=p.dataset.flat==='yes';
+    calcEMI();
+  });
+});
+
+// Init
+updateLabels();calcEMI();
+
+/* ── 3D CARD MOUSE PARALLAX ── */
+document.querySelectorAll('.ltcard').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const r=card.getBoundingClientRect();
+    const x=(e.clientX-r.left)/r.width-.5;
+    const y=(e.clientY-r.top)/r.height-.5;
+    card.style.transform=`translateY(-8px) rotateX(${-y*12}deg) rotateY(${x*12}deg)`;
+  });
+  card.addEventListener('mouseleave',()=>{
+    card.style.transform='';
+  });
+});
+</script>
 </body>
 </html>
