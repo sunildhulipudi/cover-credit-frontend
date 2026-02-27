@@ -1,109 +1,1114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Contact Cover Credit — reach us by phone, email or fill the form. Offices in Hyderabad & Visakhapatnam."/>
-  <title>Contact Us | Cover Credit</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/variables.css"/><link rel="stylesheet" href="css/global.css"/><link rel="stylesheet" href="css/components.css"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Contact Cover Credit — call, WhatsApp, or message us. Also join our Refer & Earn partner program and earn commission on every referral."/>
+<title>Contact Us | Cover Credit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ac:#ff6b00;--ac2:#ff9500;--acr:255,107,0;
+  --ink:#06101f;--i2:#0b1a30;
+  --line:rgba(255,255,255,.08);--fog:rgba(255,255,255,.06);
+  --E:cubic-bezier(.16,1,.3,1);--nh:72px;
+  --gold:#f5a623;--green:#25d366;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--ink);color:#fff;overflow-x:hidden;cursor:none;}
+a{text-decoration:none;color:inherit;}
+
+/* ── CURSOR ── */
+#cur,#cr{position:fixed;top:0;left:0;pointer-events:none;border-radius:50%;z-index:9999;transform:translate(-50%,-50%);}
+#cur{width:10px;height:10px;background:var(--ac);}
+#cr{width:38px;height:38px;border:1.5px solid rgba(255,107,0,.45);z-index:9998;transition:width .2s,height .2s,opacity .2s;}
+body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:.18;}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:900;height:var(--nh);padding:0 5%;transition:background .4s;}
+.nav.sc{background:rgba(6,16,31,.97);backdrop-filter:blur(24px);box-shadow:0 1px 0 var(--line);}
+.ni{max-width:1300px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;}.logo em{font-style:normal;color:var(--gold);}
+.nl{display:flex;align-items:center;gap:1.8rem;list-style:none;}
+.nl a{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.65);transition:color .2s;position:relative;}
+.nl a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--gold);transition:width .28s;}
+.nl a:hover,.nl a.act{color:#fff;}.nl a:hover::after,.nl a.act::after{width:100%;}
+.dd{position:relative;}
+.ddt{font-size:.85rem;font-weight:500;color:#fff;cursor:none;display:flex;align-items:center;gap:.26rem;}
+.dda{font-size:.54rem;transition:transform .3s;}.dd:hover .dda{transform:rotate(180deg);}
+.ddm{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(6px);background:var(--i2);border:1px solid var(--line);border-radius:12px;padding:.4rem;min-width:190px;opacity:0;visibility:hidden;transition:opacity .2s,transform .28s var(--E),visibility .2s;box-shadow:0 24px 60px rgba(0,0,0,.5);}
+.dd:hover .ddm{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+.ddm a{display:block;padding:.5rem .82rem;font-size:.8rem;color:rgba(255,255,255,.62);border-radius:8px;transition:background .18s,color .18s;}
+.ddm a:hover{background:rgba(255,255,255,.07);color:#fff;}
+.ncta{background:var(--gold)!important;color:#06101f!important;padding:.46rem 1.12rem!important;border-radius:100px;font-weight:700!important;font-size:.8rem!important;}
+.ncta::after{display:none!important;}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:4px;}
+.burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s;}
+.burger.op span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.burger.op span:nth-child(2){opacity:0;}
+.burger.op span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.mob{position:fixed;inset:0;z-index:899;background:var(--ink);display:flex;flex-direction:column;padding:calc(var(--nh)+1.8rem) 5% 3rem;transform:translateX(100%);transition:transform .38s var(--E);}
+.mob.op{transform:translateX(0);}
+.mob a{padding:.9rem 0;font-size:1rem;font-weight:500;color:rgba(255,255,255,.72);border-bottom:1px solid var(--line);}
+.mc{margin-top:1.8rem;background:var(--gold);color:#06101f!important;text-align:center;border-radius:12px;padding:.9rem!important;font-weight:700!important;border:none!important;}
+
+/* ── FAB ── */
+.fab{position:fixed;bottom:1.8rem;right:1.8rem;z-index:400;display:flex;flex-direction:column;gap:.65rem;align-items:flex-end;}
+.fab a{display:flex;align-items:center;gap:.48rem;padding:.65rem 1rem;border-radius:100px;font-size:.76rem;font-weight:600;cursor:none;transition:transform .18s;}
+.fab a:hover{transform:translateY(-2px);}
+.fwa{background:#25d366;color:#fff;box-shadow:0 6px 20px rgba(37,211,102,.35);}
+.fbk{background:var(--ac);color:#fff;box-shadow:0 6px 20px rgba(255,107,0,.35);}
+
+/* ── UTILS ── */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .65s var(--E),transform .65s var(--E);}
+.rv.on{opacity:1;transform:none;}
+.d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.24s;}.d4{transition-delay:.32s;}.d5{transition-delay:.4s;}
+.tag{display:inline-flex;align-items:center;gap:.38rem;font-size:.66rem;font-weight:700;color:var(--ac);text-transform:uppercase;letter-spacing:2px;margin-bottom:.8rem;}
+.tag::before{content:'';width:14px;height:2px;background:var(--ac);}
+.tit{font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3vw,2.6rem);font-weight:900;line-height:1.1;margin-bottom:.7rem;}
+.tit em{font-style:italic;color:var(--ac);}
+.sub{font-size:.87rem;color:rgba(255,255,255,.42);line-height:1.78;}
+
+/* ══════════════════════════
+   HERO
+══════════════════════════ */
+.hero{
+  padding:calc(var(--nh) + 4rem) 5% 4rem;
+  background:
+    radial-gradient(ellipse 70% 50% at 80% 50%, rgba(255,107,0,.08), transparent),
+    radial-gradient(ellipse 50% 60% at 10% 80%, rgba(37,211,102,.04), transparent);
+  position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'CONTACT';
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(6rem,14vw,16rem);
+  letter-spacing:-4px;
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  color:rgba(255,255,255,.02);white-space:nowrap;pointer-events:none;
+  line-height:1;
+}
+.hero-in{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.hero-left{}
+.hero-kicker{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,107,0,.1);border:1px solid rgba(255,107,0,.18);border-radius:100px;padding:.3rem .9rem;margin-bottom:1rem;font-size:.64rem;font-weight:700;color:var(--ac);text-transform:uppercase;letter-spacing:2.5px;}
+.hero-kicker-dot{width:6px;height:6px;border-radius:50%;background:var(--ac);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.hero-h{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,4.5vw,4rem);font-weight:900;line-height:1.04;letter-spacing:-1.5px;margin-bottom:1rem;}
+.hero-h em{font-style:italic;color:var(--ac);}
+.hero-sub{font-size:.9rem;color:rgba(255,255,255,.4);line-height:1.75;margin-bottom:2rem;max-width:440px;}
+.hero-channels{display:flex;flex-direction:column;gap:.75rem;}
+.hc{display:flex;align-items:center;gap:1rem;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:14px;padding:1rem 1.2rem;transition:all .22s var(--E);}
+.hc:hover{background:rgba(255,107,0,.06);border-color:rgba(255,107,0,.2);transform:translateX(6px);}
+.hc-ico{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.hc-ico.orange{background:rgba(255,107,0,.12);}
+.hc-ico.green{background:rgba(37,211,102,.12);}
+.hc-ico.blue{background:rgba(96,165,250,.12);}
+.hc-body{flex:1;}
+.hc-label{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.28);margin-bottom:.15rem;}
+.hc-val{font-size:.92rem;font-weight:700;color:#fff;}
+.hc-sub{font-size:.68rem;color:rgba(255,255,255,.3);margin-top:.1rem;}
+.hc-arr{color:rgba(255,255,255,.2);font-size:.75rem;transition:transform .2s;}.hc:hover .hc-arr{transform:translateX(3px);color:var(--ac);}
+
+/* ── HERO RIGHT — branches visual ── */
+.hero-right{position:relative;}
+.branch-card{background:var(--i2);border:1px solid var(--line);border-radius:20px;padding:1.8rem;position:relative;overflow:hidden;}
+.branch-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--ac),var(--gold));}
+.branch-title{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:2px;color:var(--ac);margin-bottom:1.2rem;}
+.branch-item{display:flex;align-items:flex-start;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--line);}
+.branch-item:last-child{border-bottom:none;padding-bottom:0;}
+.branch-map{width:44px;height:44px;border-radius:12px;background:rgba(255,107,0,.08);border:1px solid rgba(255,107,0,.15);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.branch-name{font-size:.95rem;font-weight:700;margin-bottom:.2rem;}
+.branch-desc{font-size:.75rem;color:rgba(255,255,255,.35);line-height:1.5;}
+.branch-avail{display:inline-flex;align-items:center;gap:.3rem;font-size:.62rem;font-weight:700;color:#4ade80;margin-top:.3rem;}
+.branch-avail::before{content:'';width:5px;height:5px;border-radius:50%;background:#4ade80;}
+.hours-chip{margin-top:1.2rem;background:rgba(255,107,0,.07);border:1px solid rgba(255,107,0,.14);border-radius:10px;padding:.75rem 1rem;display:flex;align-items:center;justify-content:space-between;}
+.hours-label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:rgba(255,255,255,.3);}
+.hours-val{font-size:.82rem;font-weight:700;color:var(--gold);}
+
+/* ══════════════════════════
+   CONTACT FORM SECTION
+══════════════════════════ */
+.contact-sec{padding:5rem 5%;background:var(--i2);position:relative;}
+.contact-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(255,107,0,.05),transparent);pointer-events:none;}
+.contact-in{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:start;}
+
+/* Form */
+.form-card{background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:24px;padding:2.5rem;}
+.fc-head{margin-bottom:2rem;}
+.fc-tag{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--ac);margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;}
+.fc-tag::before{content:'';width:14px;height:1.5px;background:var(--ac);}
+.fc-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;line-height:1.15;}
+.fc-title em{font-style:italic;color:var(--ac);}
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-bottom:.9rem;}
+.fg{display:flex;flex-direction:column;gap:.4rem;margin-bottom:.9rem;}
+.fg:last-of-type{margin-bottom:0;}
+.fg label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:rgba(255,255,255,.3);}
+.fi{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.08);border-radius:11px;padding:.78rem 1rem;font-family:'DM Sans',sans-serif;font-size:.87rem;color:#fff;outline:none;transition:border-color .2s,box-shadow .2s;width:100%;}
+.fi::placeholder{color:rgba(255,255,255,.18);}
+.fi:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(255,107,0,.1);}
+select.fi option{background:#0b1a30;color:#fff;}
+textarea.fi{resize:none;min-height:110px;}
+.form-submit{width:100%;margin-top:1.2rem;padding:1rem;background:var(--ac);border:none;border-radius:12px;font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:700;color:#fff;cursor:pointer;transition:all .22s;display:flex;align-items:center;justify-content:center;gap:.5rem;}
+.form-submit:hover{background:var(--ac2);transform:translateY(-2px);box-shadow:0 12px 36px rgba(255,107,0,.3);}
+.form-success{display:none;margin-top:1rem;background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.2);border-radius:10px;padding:.9rem 1.1rem;font-size:.84rem;color:#4ade80;text-align:center;}
+.form-error-msg{display:none;margin-top:1rem;background:rgba(248,113,113,.08);border:1px solid rgba(248,113,113,.2);border-radius:10px;padding:.9rem 1.1rem;font-size:.84rem;color:#fca5a5;text-align:center;}
+
+/* Right side of contact section */
+.contact-right{display:flex;flex-direction:column;gap:1.2rem;}
+.cr-card{background:rgba(255,255,255,.025);border:1px solid var(--line);border-radius:18px;padding:1.5rem;}
+.cr-card-title{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:1.8px;color:rgba(255,255,255,.25);margin-bottom:1rem;}
+/* Quick action chips */
+.quick-chips{display:flex;flex-direction:column;gap:.6rem;}
+.qc{display:flex;align-items:center;gap:.85rem;padding:.9rem 1rem;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.02);transition:all .2s;cursor:pointer;}
+.qc:hover{transform:translateX(5px);}
+.qc.call:hover{border-color:rgba(255,107,0,.3);background:rgba(255,107,0,.05);}
+.qc.wa:hover{border-color:rgba(37,211,102,.3);background:rgba(37,211,102,.05);}
+.qc.mail:hover{border-color:rgba(96,165,250,.3);background:rgba(96,165,250,.05);}
+.qc-ico{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.qc.call .qc-ico{background:rgba(255,107,0,.1);}
+.qc.wa .qc-ico{background:rgba(37,211,102,.1);}
+.qc.mail .qc-ico{background:rgba(96,165,250,.1);}
+.qc-body{flex:1;}
+.qc-label{font-size:.7rem;font-weight:700;color:rgba(255,255,255,.35);margin-bottom:.1rem;}
+.qc-val{font-size:.85rem;font-weight:700;}
+.qc.call .qc-val{color:var(--ac);}
+.qc.wa .qc-val{color:#4ade80;}
+.qc.mail .qc-val{color:#93c5fd;}
+/* Hours */
+.hours-row{display:flex;justify-content:space-between;align-items:center;padding:.55rem 0;border-bottom:1px solid var(--line);font-size:.82rem;}
+.hours-row:last-child{border-bottom:none;padding-bottom:0;}
+.hours-day{color:rgba(255,255,255,.4);font-size:.75rem;}
+.hours-time{font-weight:600;}
+/* Promise chips */
+.promise-grid{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;}
+.promise-item{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:10px;padding:.8rem;text-align:center;}
+.promise-ico{font-size:1.3rem;margin-bottom:.3rem;}
+.promise-txt{font-size:.68rem;color:rgba(255,255,255,.4);line-height:1.4;}
+
+/* ══════════════════════════
+   REFER & EARN SECTION
+══════════════════════════ */
+.refer-sec{
+  padding:6rem 5%;
+  background:var(--ink);
+  position:relative;overflow:hidden;
+}
+/* Animated background blobs */
+.refer-bg{position:absolute;inset:0;pointer-events:none;}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.25;}
+.blob-1{width:500px;height:500px;background:radial-gradient(circle,#ff6b00,transparent);top:-100px;right:-100px;animation:blobmove 8s ease-in-out infinite alternate;}
+.blob-2{width:400px;height:400px;background:radial-gradient(circle,#f5a623,transparent);bottom:-80px;left:-80px;animation:blobmove 10s ease-in-out infinite alternate-reverse;}
+.blob-3{width:300px;height:300px;background:radial-gradient(circle,#25d366,transparent);top:50%;left:50%;animation:blobmove 12s ease-in-out infinite alternate;}
+@keyframes blobmove{from{transform:translate(0,0) scale(1)}to{transform:translate(30px,20px) scale(1.08)}}
+
+.refer-in{max-width:1300px;margin:0 auto;position:relative;z-index:1;}
+
+/* Header */
+.refer-head{text-align:center;margin-bottom:4rem;}
+.refer-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.25);border-radius:100px;padding:.4rem 1.1rem;margin-bottom:1.2rem;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:var(--gold);}
+.refer-badge-star{animation:spin 4s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}display:inline-block;}
+.refer-h{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:900;line-height:1.05;margin-bottom:.8rem;}
+.refer-h em{font-style:italic;color:var(--gold);}
+.refer-sub{font-size:.9rem;color:rgba(255,255,255,.4);max-width:500px;margin:0 auto;line-height:1.75;}
+
+/* ── HOW IT WORKS — 4 cartoon steps ── */
+.steps-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-bottom:4rem;position:relative;}
+.steps-row::before{
+  content:'';position:absolute;top:60px;left:calc(12.5% + 30px);right:calc(12.5% + 30px);
+  height:1px;background:linear-gradient(90deg,transparent,rgba(245,166,35,.3),rgba(245,166,35,.3),transparent);
+}
+
+.step-card{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:20px;padding:1.8rem 1.2rem;text-align:center;position:relative;transition:all .3s var(--E);}
+.step-card:hover{background:rgba(255,255,255,.06);transform:translateY(-6px);border-color:rgba(245,166,35,.2);}
+
+/* Cartoon SVG illustrations per step */
+.step-cartoon{width:100px;height:100px;margin:0 auto 1.2rem;position:relative;}
+.step-num{position:absolute;top:-8px;right:-8px;width:24px;height:24px;border-radius:50%;background:var(--gold);color:#06101f;font-family:'Bebas Neue',sans-serif;font-size:.85rem;display:flex;align-items:center;justify-content:center;font-weight:700;}
+.step-title{font-size:.92rem;font-weight:700;margin-bottom:.4rem;}
+.step-desc{font-size:.72rem;color:rgba(255,255,255,.36);line-height:1.6;}
+
+/* ── COMMISSION TABLE ── */
+.commission-block{
+  background:rgba(245,166,35,.05);
+  border:1px solid rgba(245,166,35,.15);
+  border-radius:24px;padding:2.5rem;
+  display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;
+  align-items:center;margin-bottom:4rem;
+}
+.cb-left .tag{color:var(--gold);}
+.cb-left .tag::before{background:var(--gold);}
+.cb-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.5vw,2.1rem);font-weight:900;line-height:1.1;margin-bottom:.8rem;}
+.cb-title em{font-style:italic;color:var(--gold);}
+.cb-sub{font-size:.84rem;color:rgba(255,255,255,.38);line-height:1.7;margin-bottom:1.5rem;}
+.cb-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.18);border-radius:100px;padding:.4rem 1rem;font-size:.75rem;font-weight:700;color:#4ade80;}
+
+.earn-table{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:16px;overflow:hidden;}
+.et-row{display:grid;grid-template-columns:1fr 1fr 1fr;padding:.85rem 1.2rem;border-bottom:1px solid var(--line);align-items:center;}
+.et-row:last-child{border-bottom:none;}
+.et-row.head{background:rgba(255,255,255,.04);}
+.et-head-lbl{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:rgba(255,255,255,.25);}
+.et-dept{display:flex;align-items:center;gap:.5rem;font-size:.82rem;font-weight:600;}
+.et-pct{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.5px;color:var(--gold);}
+.et-amt{font-size:.78rem;color:rgba(255,255,255,.4);}
+
+/* ── PARTNER CARD ── */
+.partner-cta{
+  background:linear-gradient(135deg,rgba(255,107,0,.12),rgba(245,166,35,.08));
+  border:1px solid rgba(255,107,0,.2);border-radius:24px;
+  padding:2.5rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;
+}
+.pc-left{}
+.pc-tag{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--ac);margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem;}
+.pc-tag::before{content:'';width:14px;height:1.5px;background:var(--ac);}
+.pc-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;line-height:1.15;margin-bottom:.5rem;}
+.pc-title em{font-style:italic;color:var(--ac);}
+.pc-sub{font-size:.84rem;color:rgba(255,255,255,.38);line-height:1.65;margin-bottom:1.2rem;}
+.pc-perks{display:flex;gap:.6rem;flex-wrap:wrap;}
+.pc-perk{display:inline-flex;align-items:center;gap:.35rem;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:100px;padding:.28rem .75rem;font-size:.68rem;color:rgba(255,255,255,.5);}
+.pc-right{display:flex;flex-direction:column;align-items:center;gap:1rem;}
+
+/* Cartoon partner character */
+.partner-character{width:160px;height:160px;position:relative;}
+.pc-actions{display:flex;flex-direction:column;gap:.6rem;width:100%;}
+.pc-btn-primary{background:var(--gold);color:#06101f;border:none;border-radius:10px;padding:.75rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;transition:all .2s;text-align:center;display:block;}
+.pc-btn-primary:hover{background:#ffc940;transform:translateY(-2px);}
+.pc-btn-sec{background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:10px;padding:.65rem 1.2rem;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:600;color:rgba(255,255,255,.6);cursor:pointer;transition:all .2s;text-align:center;display:block;}
+.pc-btn-sec:hover{background:rgba(255,255,255,.1);color:#fff;}
+
+/* PARTNER LOGIN MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);z-index:800;align-items:center;justify-content:center;padding:1rem;}
+.modal-overlay.show{display:flex;}
+.modal{background:#0b1a30;border:1px solid rgba(255,255,255,.1);border-radius:24px;padding:2.5rem;width:100%;max-width:440px;position:relative;}
+.modal-close{position:absolute;top:1rem;right:1rem;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.06);border:none;color:rgba(255,255,255,.4);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.modal-close:hover{background:rgba(255,255,255,.12);color:#fff;}
+.modal-logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;margin-bottom:.2rem;}
+.modal-logo em{font-style:normal;color:var(--gold);}
+.modal-sub{font-size:.75rem;color:rgba(255,255,255,.3);margin-bottom:1.8rem;}
+.modal-tabs{display:flex;background:rgba(255,255,255,.04);border-radius:10px;padding:3px;margin-bottom:1.5rem;gap:2px;}
+.mtab{flex:1;padding:.5rem;border-radius:7px;border:none;background:none;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;color:rgba(255,255,255,.35);cursor:pointer;transition:all .2s;}
+.mtab.act{background:var(--gold);color:#06101f;}
+.mform{display:none;flex-direction:column;gap:.8rem;}
+.mform.act{display:flex;}
+.m-fi{background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.08);border-radius:10px;padding:.72rem 1rem;font-family:'DM Sans',sans-serif;font-size:.87rem;color:#fff;outline:none;transition:border-color .2s;width:100%;}
+.m-fi::placeholder{color:rgba(255,255,255,.2);}
+.m-fi:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(245,166,35,.1);}
+.m-label{font-size:.63rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.28);}
+.m-fg{display:flex;flex-direction:column;gap:.35rem;}
+.m-submit{background:var(--gold);border:none;border-radius:10px;padding:.8rem;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:700;color:#06101f;cursor:pointer;transition:all .2s;}
+.m-submit:hover{background:#ffc940;}
+.m-note{font-size:.68rem;color:rgba(255,255,255,.2);text-align:center;line-height:1.5;}
+.m-divider{display:flex;align-items:center;gap:.75rem;font-size:.68rem;color:rgba(255,255,255,.2);}
+.m-divider::before,.m-divider::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.08);}
+.ref-input-wrap{display:flex;gap:.5rem;}
+.ref-input{flex:1;}
+.ref-check-btn{background:rgba(255,107,0,.1);border:1px solid rgba(255,107,0,.2);border-radius:10px;padding:.72rem 1rem;color:var(--ac);font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:700;cursor:pointer;white-space:nowrap;transition:all .2s;}
+.ref-check-btn:hover{background:rgba(255,107,0,.18);}
+
+/* ── FOOTER ── */
+.ft{background:#020a18;border-top:1px solid var(--line);padding:3rem 5% 2rem;}
+.ft-in{max-width:1300px;margin:0 auto;}
+.ft-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.8rem;padding-bottom:2.5rem;border-bottom:1px solid var(--line);margin-bottom:1.6rem;}
+.ft-logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;display:inline-block;margin-bottom:.8rem;}
+.ft-logo em{font-style:normal;color:var(--gold);}
+.ft-ds{font-size:.76rem;color:rgba(255,255,255,.34);line-height:1.7;margin-bottom:.9rem;}
+.ft-con{display:flex;align-items:center;gap:.42rem;font-size:.73rem;color:rgba(255,255,255,.28);margin-bottom:.4rem;}
+.ft-con a{color:rgba(255,255,255,.5);transition:color .18s;}.ft-con a:hover{color:var(--gold);}
+.ft-clbl{font-size:.62rem;font-weight:700;color:rgba(255,255,255,.2);text-transform:uppercase;letter-spacing:1.3px;margin-bottom:.8rem;}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.45rem;}
+.ft-col a{font-size:.74rem;color:rgba(255,255,255,.34);transition:color .18s;}.ft-col a:hover{color:var(--gold);}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.8rem;font-size:.7rem;color:rgba(255,255,255,.16);}
+.ft-links{display:flex;gap:1.3rem;}.ft-links a{color:rgba(255,255,255,.16);transition:color .18s;}.ft-links a:hover{color:rgba(255,255,255,.38);}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){
+  .hero-in,.contact-in,.commission-block{grid-template-columns:1fr;}
+  .hero-right{display:none;}
+  .steps-row{grid-template-columns:1fr 1fr;}
+  .steps-row::before{display:none;}
+  .partner-cta{grid-template-columns:1fr;}
+  .pc-right{flex-direction:row;align-items:center;}
+}
+@media(max-width:768px){
+  .nl{display:none;}.burger{display:flex;}
+  .hero-h{font-size:2.2rem;}
+  .steps-row{grid-template-columns:1fr 1fr;}
+  .commission-block{grid-template-columns:1fr;}
+  .ft-top{grid-template-columns:1fr 1fr;}
+  .frow{grid-template-columns:1fr;}
+  body{cursor:auto;}#cur,#cr{display:none;}
+}
+@media(max-width:480px){
+  .steps-row{grid-template-columns:1fr;}
+  .promise-grid{grid-template-columns:1fr 1fr;}
+  .ft-top{grid-template-columns:1fr;}
+}
+</style>
 </head>
 <body>
-  <header>
-    <nav class="nav"><div class="nav__inner"><a href="index.html" class="nav__logo">Cover<span>Credit</span></a><ul class="nav__links"><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life Insurance</a></li><li class="nav__dropdown"><span class="nav__dropdown-trigger">Vehicle Insurance <span class="nav__dropdown-arrow">▼</span></span><div class="nav__dropdown-menu"><a href="bike-insurance.html">Bike Insurance</a><a href="car-insurance.html">Car Insurance</a><a href="commercial-vehicle-insurance.html">Commercial Vehicles</a></div></li><li><a href="loans.html">Loans</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li><li><a href="contact.html" class="active">Contact</a></li><li><a href="book.html" class="nav__cta">Book Consultation</a></li></ul><button class="nav__hamburger" id="hamburger"><span></span><span></span><span></span></button></div></nav>
-    <nav class="mobile-nav" id="mobile-nav"><a href="health-insurance.html" class="mobile-nav__item">Health Insurance</a><a href="life-insurance.html" class="mobile-nav__item">Life Insurance</a><a href="bike-insurance.html" class="mobile-nav__item mobile-nav__sub">↳ Bike Insurance</a><a href="car-insurance.html" class="mobile-nav__item mobile-nav__sub">↳ Car Insurance</a><a href="commercial-vehicle-insurance.html" class="mobile-nav__item mobile-nav__sub">↳ Commercial Vehicles</a><a href="loans.html" class="mobile-nav__item">Loans</a><a href="blog.html" class="mobile-nav__item">Blog</a><a href="about.html" class="mobile-nav__item">About</a><a href="contact.html" class="mobile-nav__item">Contact</a><a href="book.html" class="mobile-nav__cta">Book Free Consultation</a></nav>
-  </header>
+<div id="cur"></div><div id="cr"></div>
 
-  <section class="page-hero">
-    <div class="page-hero__inner" style="max-width:var(--max-width);width:var(--container);">
-      <nav class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span>Contact</span></nav>
-      <h1 class="page-hero__title">Contact Us</h1>
-      <p class="page-hero__desc">Have a question? Want to discuss your insurance? We're here to help — in Telugu or English.</p>
-    </div>
-  </section>
-
-  <section class="section" style="background:var(--bg);">
-    <div class="section-wrap">
-      <div class="two-col" style="align-items:start;">
-
-        <!-- Contact Form -->
-        <div class="info-box">
-          <h2 class="info-box__title">Send Us a Message</h2>
-          <form id="contact-form" style="margin-top:1rem;" novalidate>
-            <div class="form-row">
-              <div class="form-group"><label for="first-name">First Name</label><input type="text" id="first-name" placeholder="Ravi" required/></div>
-              <div class="form-group"><label for="last-name">Last Name</label><input type="text" id="last-name" placeholder="Kumar"/></div>
-            </div>
-            <div class="form-group"><label for="phone">Phone Number *</label><input type="tel" id="phone" placeholder="+91 9XXXXXXXXX" required/></div>
-            <div class="form-group"><label for="email">Email (optional)</label><input type="email" id="email" placeholder="you@example.com"/></div>
-            <div class="form-group">
-              <label for="interest">I'm interested in</label>
-              <select id="interest">
-                <option>Health Insurance</option>
-                <option>Life Insurance</option>
-                <option>Bike Insurance</option>
-                <option>Car Insurance</option>
-                <option>Commercial Vehicle Insurance</option>
-                <option>Loans</option>
-                <option>Claim Support</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="form-group"><label for="message">Your Message</label><textarea id="message" placeholder="Tell us about your requirement or question..."></textarea></div>
-            <button type="submit" class="form-submit" data-label="Send Message →">Send Message →</button>
-            <div class="form-success" id="contact-success">✅ Message sent! We'll reach out to you within 24 hours.</div>
-          </form>
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="ni">
+    <a href="index.html" class="logo">Cover<em>Credit</em></a>
+    <ul class="nl">
+      <li class="dd">
+        <span class="ddt">Insurance <span class="dda">▾</span></span>
+        <div class="ddm">
+          <a href="bike-insurance.html">🏍️ Bike Insurance</a>
+          <a href="car-insurance.html">🚗 Car Insurance</a>
+          <a href="health-insurance.html">🏥 Health Insurance</a>
+          <a href="life-insurance.html">❤️ Life Insurance</a>
+          <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicle</a>
         </div>
+      </li>
+      <li><a href="loans.html">Loans</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="act">Contact</a></li>
+      <li><a href="book.html" class="ncta">Book Free Call</a></li>
+    </ul>
+    <button class="burger" id="burger" onclick="toggleMob()"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob" id="mob">
+  <a href="bike-insurance.html">🏍️ Bike Insurance</a>
+  <a href="car-insurance.html">🚗 Car Insurance</a>
+  <a href="health-insurance.html">🏥 Health Insurance</a>
+  <a href="life-insurance.html">❤️ Life Insurance</a>
+  <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicle</a>
+  <a href="loans.html">Loans</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a href="book.html" class="mc">Book Free Consultation →</a>
+</div>
 
-        <!-- Contact Info -->
-        <div>
-          <div class="info-box" style="margin-bottom:1.5rem;">
-            <h2 class="info-box__title">Reach Us Directly</h2>
-            <div style="display:flex;flex-direction:column;gap:1.4rem;margin-top:1rem;">
-              <div>
-                <div style="font-size:1.2rem;margin-bottom:0.3rem;">📞</div>
-                <div style="font-size:var(--text-xs);color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.3rem;">Call / WhatsApp</div>
-                <a href="tel:+919642834789" style="font-size:1.1rem;font-weight:700;color:var(--primary);text-decoration:none;">+91 96428 34789</a>
-              </div>
-              <div>
-                <div style="font-size:1.2rem;margin-bottom:0.3rem;">✉️</div>
-                <div style="font-size:var(--text-xs);color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.3rem;">Email</div>
-                <a href="mailto:info@covercredit.in" style="font-size:1rem;color:var(--primary);text-decoration:none;">info@covercredit.in</a>
-              </div>
-              <div>
-                <div style="font-size:1.2rem;margin-bottom:0.3rem;">🕐</div>
-                <div style="font-size:var(--text-xs);color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:0.3rem;">Working Hours</div>
-                <div style="font-size:var(--text-base);color:var(--text);">Mon–Sat: 9:00 AM – 7:00 PM<br/>Claims: 24/7</div>
-              </div>
-            </div>
+<!-- FAB -->
+<div class="fab">
+  <a href="https://wa.me/917842854466" class="fwa">💬 WhatsApp</a>
+  <a href="book.html" class="fbk">📅 Book Call</a>
+</div>
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-in">
+    <div class="hero-left">
+      <div class="rv">
+        <div class="hero-kicker"><span class="hero-kicker-dot"></span> We respond within 2 hours</div>
+      </div>
+      <h1 class="hero-h rv d1">
+        Talk to a real<br/><em>human expert.</em><br/>Not a bot.
+      </h1>
+      <p class="hero-sub rv d2">Call, WhatsApp, or drop us a message. Our advisors speak Telugu & English — no scripts, no jargon, just clear honest advice.</p>
+
+      <div class="hero-channels rv d3">
+        <a href="tel:+917842854466" class="hc">
+          <div class="hc-ico orange">📞</div>
+          <div class="hc-body">
+            <div class="hc-label">Call Us</div>
+            <div class="hc-val">+91 78428 54466</div>
+            <div class="hc-sub">Mon–Sat, 9 AM – 7 PM</div>
           </div>
-
-          <div class="info-box" style="margin-bottom:1.5rem;">
-            <h2 class="info-box__title">Our Branches</h2>
-            <div style="display:flex;flex-direction:column;gap:1rem;margin-top:0.8rem;">
-              <div>
-                <strong style="font-size:var(--text-base);color:var(--primary);">📍 Hyderabad</strong>
-                <p style="font-size:var(--text-sm);color:var(--muted);margin-top:0.2rem;">Serving Hyderabad, Secunderabad, Medchal</p>
-              </div>
-              <div>
-                <strong style="font-size:var(--text-base);color:var(--primary);">📍 Visakhapatnam</strong>
-                <p style="font-size:var(--text-sm);color:var(--muted);margin-top:0.2rem;">Serving Vizag, Bheemunipatnam, Anakapalli</p>
-              </div>
-            </div>
+          <span class="hc-arr">→</span>
+        </a>
+        <a href="https://wa.me/917842854466" class="hc">
+          <div class="hc-ico green">💬</div>
+          <div class="hc-body">
+            <div class="hc-label">WhatsApp</div>
+            <div class="hc-val">Chat in Telugu or English</div>
+            <div class="hc-sub">Usually replies in 15 minutes</div>
           </div>
-
-          <div class="info-box">
-            <h2 class="info-box__title">Prefer a Free Consultation?</h2>
-            <p class="info-box__body">Book a free 30-minute call. No obligation, no spam, no sales pitch.</p>
-            <a href="book.html" class="btn btn--primary btn--full">Book Free Consultation</a>
+          <span class="hc-arr">→</span>
+        </a>
+        <a href="mailto:Covercredit.official@gmail.com" class="hc">
+          <div class="hc-ico blue">✉️</div>
+          <div class="hc-body">
+            <div class="hc-label">Email</div>
+            <div class="hc-val">Covercredit.official@gmail.com</div>
+            <div class="hc-sub">Reply within 24 hours</div>
           </div>
-        </div>
-
+          <span class="hc-arr">→</span>
+        </a>
       </div>
     </div>
-  </section>
 
-  <footer class="footer"><div class="footer__top"><div><a href="index.html" class="footer__logo">Cover<span>Credit</span></a><p class="footer__tagline">Honest insurance advice. We guide, not sell.</p><p class="footer__serving">© <span id="current-year">2026</span> Cover Credit. All rights reserved.</p></div><div class="footer__col"><h4>Quick Links</h4><ul><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life Insurance</a></li><li><a href="loans.html">Loans</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="book.html">Book Consultation</a></li></ul></div><div class="footer__col"><h4>Branches</h4><ul><li><a href="#">Visakhapatnam</a></li><li><a href="#">Hyderabad</a></li></ul></div><div class="footer__col"><h4>Contact</h4><div class="footer__contact-item">📞 <a href="tel:+919642834789">+91 96428 34789</a></div><div class="footer__contact-item">✉️ <a href="mailto:info@covercredit.in">info@covercredit.in</a></div></div></div><div class="footer__bottom"><span>© <span id="current-year-2">2026</span> Cover Credit. All rights reserved.</span><div class="footer__bottom-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div></div></footer>
-  <script src="js/nav.js"></script><script src="js/forms.js"></script><script src="js/main.js"></script>
+    <div class="hero-right rv d2">
+      <div class="branch-card">
+        <div class="branch-title">Our Branches</div>
+        <div class="branch-item">
+          <div class="branch-map">🏙️</div>
+          <div>
+            <div class="branch-name">Hyderabad</div>
+            <div class="branch-desc">Serving Hyderabad, Secunderabad, Medchal, Rangareddy</div>
+            <div class="branch-avail">Available now</div>
+          </div>
+        </div>
+        <div class="branch-item">
+          <div class="branch-map">🌊</div>
+          <div>
+            <div class="branch-name">Visakhapatnam</div>
+            <div class="branch-desc">Serving Vizag, Bheemunipatnam, Anakapalli, Srikakulam</div>
+            <div class="branch-avail">Available now</div>
+          </div>
+        </div>
+        <div class="hours-chip">
+          <div>
+            <div class="hours-label">Working Hours</div>
+            <div class="hours-val">Mon – Sat: 9 AM – 7 PM</div>
+          </div>
+          <div style="font-size:.72rem;color:rgba(255,255,255,.25);">Claims: 24/7</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     CONTACT FORM
+══════════════════════════════════════ -->
+<section class="contact-sec">
+  <div class="contact-in">
+
+    <!-- FORM -->
+    <div class="form-card rv">
+      <div class="fc-head">
+        <div class="fc-tag">Send a Message</div>
+        <h2 class="fc-title">We'll get back to you<br/><em>within 24 hours.</em></h2>
+      </div>
+      <form id="contact-form" novalidate>
+        <div class="frow">
+          <div class="fg" style="margin-bottom:0;">
+            <label>First Name *</label>
+            <input class="fi" type="text" id="first-name" placeholder="Ravi" required/>
+          </div>
+          <div class="fg" style="margin-bottom:0;">
+            <label>Last Name</label>
+            <input class="fi" type="text" id="last-name" placeholder="Kumar"/>
+          </div>
+        </div>
+        <div class="fg">
+          <label>Phone Number *</label>
+          <input class="fi" type="tel" id="phone" placeholder="+91 98765 43210" required/>
+        </div>
+        <div class="fg">
+          <label>Email (optional)</label>
+          <input class="fi" type="email" id="email" placeholder="you@email.com"/>
+        </div>
+        <div class="fg">
+          <label>I'm interested in</label>
+          <select class="fi" id="interest">
+            <option>Health Insurance</option>
+            <option>Life Insurance</option>
+            <option>Bike Insurance</option>
+            <option>Car Insurance</option>
+            <option>Commercial Vehicle Insurance</option>
+            <option>Loans & Finance</option>
+            <option>Claim Support</option>
+            <option>Refer & Earn — Partner Program</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label>Your Message</label>
+          <textarea class="fi" id="message" placeholder="Tell us about your requirement or question…"></textarea>
+        </div>
+        <button type="submit" class="form-submit" id="form-submit-btn">Send Message →</button>
+        <div class="form-success" id="contact-success">✅ Message sent! We'll reach out to you within 24 hours.</div>
+        <div class="form-error-msg" id="contact-error">⚠️ Something went wrong. Please call us directly.</div>
+      </form>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="contact-right">
+
+      <div class="cr-card rv d1">
+        <div class="cr-card-title">Quick Actions</div>
+        <div class="quick-chips">
+          <a href="tel:+917842854466" class="qc call">
+            <div class="qc-ico">📞</div>
+            <div class="qc-body">
+              <div class="qc-label">Call Directly</div>
+              <div class="qc-val">+91 78428 54466</div>
+            </div>
+            <span style="color:rgba(255,255,255,.2);font-size:.8rem;">→</span>
+          </a>
+          <a href="https://wa.me/917842854466?text=Hi%20Cover%20Credit%2C%20I%20need%20help%20with%20insurance" class="qc wa">
+            <div class="qc-ico">💬</div>
+            <div class="qc-body">
+              <div class="qc-label">WhatsApp Us</div>
+              <div class="qc-val">Open Chat Now</div>
+            </div>
+            <span style="color:rgba(255,255,255,.2);font-size:.8rem;">→</span>
+          </a>
+          <a href="mailto:Covercredit.official@gmail.com" class="qc mail">
+            <div class="qc-ico">✉️</div>
+            <div class="qc-body">
+              <div class="qc-label">Email Us</div>
+              <div class="qc-val">Covercredit.official@gmail.com</div>
+            </div>
+            <span style="color:rgba(255,255,255,.2);font-size:.8rem;">→</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="cr-card rv d2">
+        <div class="cr-card-title">Office Hours</div>
+        <div class="hours-row"><span class="hours-day">Monday – Friday</span><span class="hours-time">9:00 AM – 7:00 PM</span></div>
+        <div class="hours-row"><span class="hours-day">Saturday</span><span class="hours-time">9:00 AM – 5:00 PM</span></div>
+        <div class="hours-row"><span class="hours-day">Sunday</span><span class="hours-time" style="color:rgba(255,255,255,.3);">Closed</span></div>
+        <div class="hours-row"><span class="hours-day">Claims Emergency</span><span class="hours-time" style="color:#4ade80;">24 / 7</span></div>
+      </div>
+
+      <div class="cr-card rv d3">
+        <div class="cr-card-title">Our Promise</div>
+        <div class="promise-grid">
+          <div class="promise-item"><div class="promise-ico">🚫</div><div class="promise-txt">No spam calls after enquiry</div></div>
+          <div class="promise-item"><div class="promise-ico">⚡</div><div class="promise-txt">2-hour response guarantee</div></div>
+          <div class="promise-item"><div class="promise-ico">🔒</div><div class="promise-txt">Your data stays private</div></div>
+          <div class="promise-item"><div class="promise-ico">₹0</div><div class="promise-txt">Zero consultation fee</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     REFER & EARN
+══════════════════════════════════════ -->
+<section class="refer-sec" id="refer-earn">
+  <div class="refer-bg">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <div class="refer-in">
+
+    <!-- HEADER -->
+    <div class="refer-head rv">
+      <div class="refer-badge"><span class="refer-badge-star">⭐</span> New Program — Launching Now</div>
+      <h2 class="refer-h">Refer friends. <em>Earn real money.</em><br/>Every single month.</h2>
+      <p class="refer-sub">Share your referral code. When your friend buys insurance or a loan through Cover Credit — you get paid. Simple as that.</p>
+    </div>
+
+    <!-- HOW IT WORKS — 4 CARTOON STEPS -->
+    <div class="steps-row">
+
+      <!-- Step 1 -->
+      <div class="step-card rv d1">
+        <div class="step-cartoon">
+          <div class="step-num">1</div>
+          <!-- Cartoon: Person signing up / getting a card -->
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background circle -->
+            <circle cx="50" cy="50" r="46" fill="rgba(255,107,0,.08)" stroke="rgba(255,107,0,.15)" stroke-width="1"/>
+            <!-- Body -->
+            <ellipse cx="50" cy="75" rx="18" ry="10" fill="#1a3a5c"/>
+            <!-- Head -->
+            <circle cx="50" cy="42" r="16" fill="#fdb97d"/>
+            <!-- Hair -->
+            <ellipse cx="50" cy="30" rx="16" ry="8" fill="#2d1a0e"/>
+            <!-- Eyes -->
+            <circle cx="44" cy="42" r="2.5" fill="#fff"/>
+            <circle cx="56" cy="42" r="2.5" fill="#fff"/>
+            <circle cx="44.8" cy="42.8" r="1.2" fill="#1a1a1a"/>
+            <circle cx="56.8" cy="42.8" r="1.2" fill="#1a1a1a"/>
+            <!-- Smile -->
+            <path d="M44 50 Q50 56 56 50" stroke="#c97a3a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+            <!-- Card in hand -->
+            <rect x="28" y="62" width="24" height="16" rx="3" fill="#ff6b00"/>
+            <rect x="30" y="65" width="14" height="2" rx="1" fill="rgba(255,255,255,.5)"/>
+            <rect x="30" y="70" width="10" height="1.5" rx=".75" fill="rgba(255,255,255,.3)"/>
+            <text x="44" y="73" font-size="5" fill="#fff" font-family="sans-serif">CC</text>
+            <!-- Star sparkle -->
+            <text x="62" y="35" font-size="10" fill="#f5a623">✦</text>
+          </svg>
+        </div>
+        <div class="step-title">Join as Partner</div>
+        <div class="step-desc">Register free. Get your unique referral code and partner login instantly.</div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-card rv d2">
+        <div class="step-cartoon">
+          <div class="step-num">2</div>
+          <!-- Cartoon: Sharing / sending -->
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="46" fill="rgba(37,211,102,.06)" stroke="rgba(37,211,102,.12)" stroke-width="1"/>
+            <!-- Phone -->
+            <rect x="32" y="25" width="36" height="55" rx="6" fill="#1a3a5c" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+            <rect x="35" y="30" width="30" height="40" rx="3" fill="#0d2438"/>
+            <!-- WhatsApp green -->
+            <circle cx="50" cy="50" r="10" fill="#25d366"/>
+            <text x="45" y="54" font-size="10" fill="#fff">💬</text>
+            <!-- Flying message bubbles -->
+            <rect x="62" y="28" width="22" height="12" rx="6" fill="#ff6b00" opacity=".9">
+              <animateTransform attributeName="transform" type="translate" values="0,0;8,-6;0,0" dur="2s" repeatCount="indefinite"/>
+            </rect>
+            <text x="64" y="37" font-size="6" fill="#fff" opacity=".9">CODE!</text>
+            <!-- Dots on phone -->
+            <circle cx="50" cy="76" r="2.5" fill="rgba(255,255,255,.2)"/>
+          </svg>
+        </div>
+        <div class="step-title">Share Your Code</div>
+        <div class="step-desc">Share via WhatsApp, Instagram or word of mouth — however you like.</div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-card rv d3">
+        <div class="step-cartoon">
+          <div class="step-num">3</div>
+          <!-- Cartoon: Friend buying policy -->
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="46" fill="rgba(96,165,250,.06)" stroke="rgba(96,165,250,.12)" stroke-width="1"/>
+            <!-- Two people -->
+            <!-- Person 1 (smaller, friend) -->
+            <circle cx="35" cy="40" r="10" fill="#fdb97d"/>
+            <ellipse cx="35" cy="55" rx="10" ry="7" fill="#2563eb"/>
+            <ellipse cx="35" cy="33" rx="10" ry="6" fill="#1e3a5f"/>
+            <circle cx="32" cy="40" r="1.5" fill="#1a1a1a"/>
+            <circle cx="38" cy="40" r="1.5" fill="#1a1a1a"/>
+            <!-- Document/policy -->
+            <rect x="42" y="32" width="20" height="26" rx="3" fill="#fff" opacity=".9"/>
+            <rect x="45" y="36" width="14" height="2" rx="1" fill="#1e40af"/>
+            <rect x="45" y="41" width="10" height="1.5" rx=".75" fill="#93c5fd"/>
+            <rect x="45" y="45" width="12" height="1.5" rx=".75" fill="#93c5fd"/>
+            <rect x="45" y="49" width="8" height="1.5" rx=".75" fill="#93c5fd"/>
+            <!-- Checkmark -->
+            <circle cx="56" cy="55" r="6" fill="#25d366"/>
+            <text x="53" y="58" font-size="7" fill="#fff">✓</text>
+            <!-- Rupee -->
+            <text x="68" y="45" font-size="16" fill="#f5a623">₹</text>
+          </svg>
+        </div>
+        <div class="step-title">Friend Buys Policy</div>
+        <div class="step-desc">Your friend uses your code when booking — we track it automatically.</div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step-card rv d4">
+        <div class="step-cartoon">
+          <div class="step-num">4</div>
+          <!-- Cartoon: Money raining / earning -->
+          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="46" fill="rgba(245,166,35,.08)" stroke="rgba(245,166,35,.15)" stroke-width="1"/>
+            <!-- Happy person with money bag -->
+            <circle cx="50" cy="42" r="14" fill="#fdb97d"/>
+            <ellipse cx="50" cy="76" rx="16" ry="10" fill="#166534"/>
+            <ellipse cx="50" cy="31" rx="14" ry="7" fill="#2d1a0e"/>
+            <circle cx="45" cy="42" r="2" fill="#1a1a1a"/>
+            <circle cx="55" cy="42" r="2" fill="#1a1a1a"/>
+            <!-- Big smile -->
+            <path d="M43 50 Q50 58 57 50" stroke="#c97a3a" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <!-- Money bag -->
+            <ellipse cx="50" cy="87" rx="10" ry="8" fill="#f5a623"/>
+            <circle cx="50" cy="80" r="6" fill="#f5a623"/>
+            <text x="47" y="90" font-size="8" fill="#06101f" font-weight="bold">₹</text>
+            <!-- Flying coins -->
+            <circle cx="28" cy="35" r="7" fill="#f5a623" opacity=".9">
+              <animateTransform attributeName="transform" type="translate" values="0,0;-3,-8;0,0" dur="1.5s" repeatCount="indefinite"/>
+            </circle>
+            <text x="25" y="38" font-size="7" fill="#06101f">₹</text>
+            <circle cx="72" cy="30" r="6" fill="#f5a623" opacity=".8">
+              <animateTransform attributeName="transform" type="translate" values="0,0;4,-10;0,0" dur="2s" repeatCount="indefinite"/>
+            </circle>
+            <text x="69" y="33" font-size="7" fill="#06101f">₹</text>
+            <circle cx="78" cy="50" r="5" fill="#f5a623" opacity=".7">
+              <animateTransform attributeName="transform" type="translate" values="0,0;6,-5;0,0" dur="2.5s" repeatCount="indefinite"/>
+            </circle>
+          </svg>
+        </div>
+        <div class="step-title">You Earn Commission</div>
+        <div class="step-desc">Get paid directly to your bank account. Track earnings in your partner dashboard.</div>
+      </div>
+
+    </div>
+
+    <!-- COMMISSION TABLE -->
+    <div class="commission-block rv">
+      <div class="cb-left">
+        <div class="tag">Earn Per Referral</div>
+        <h3 class="cb-title">Real money for<br/>every <em>referral you send.</em></h3>
+        <p class="cb-sub">No cap on how much you earn. The more you refer, the more you make — every single month. Paid directly to your bank account.</p>
+        <div class="cb-badge">✅ No investment. No risk. Zero cost to join.</div>
+      </div>
+      <div>
+        <div class="earn-table">
+          <div class="et-row head">
+            <div class="et-head-lbl">Product</div>
+            <div class="et-head-lbl">Commission</div>
+            <div class="et-head-lbl">Avg. Earning</div>
+          </div>
+          <div class="et-row">
+            <div class="et-dept">🏠 <span>Home Loan</span></div>
+            <div class="et-pct">0.5%</div>
+            <div class="et-amt">~₹2,000–5,000</div>
+          </div>
+          <div class="et-row">
+            <div class="et-dept">🏥 <span>Health Insurance</span></div>
+            <div class="et-pct">10%</div>
+            <div class="et-amt">~₹500–1,500</div>
+          </div>
+          <div class="et-row">
+            <div class="et-dept">❤️ <span>Life Insurance</span></div>
+            <div class="et-pct">15%</div>
+            <div class="et-amt">~₹1,000–3,000</div>
+          </div>
+          <div class="et-row">
+            <div class="et-dept">🏍️ <span>Bike Insurance</span></div>
+            <div class="et-pct">8%</div>
+            <div class="et-amt">~₹150–400</div>
+          </div>
+          <div class="et-row">
+            <div class="et-dept">🚗 <span>Car Insurance</span></div>
+            <div class="et-pct">8%</div>
+            <div class="et-amt">~₹400–900</div>
+          </div>
+          <div class="et-row">
+            <div class="et-dept">🚛 <span>Commercial Vehicle</span></div>
+            <div class="et-pct">12%</div>
+            <div class="et-amt">~₹800–2,500</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PARTNER CTA -->
+    <div class="partner-cta rv">
+      <div class="pc-left">
+        <div class="pc-tag">Become a Partner</div>
+        <h3 class="pc-title">Get your referral code.<br/><em>Start earning today.</em></h3>
+        <p class="pc-sub">Register free in 2 minutes. Get a unique referral code, a personal partner dashboard, and monthly payouts. No targets, no pressure.</p>
+        <div class="pc-perks">
+          <span class="pc-perk">🆔 Unique referral code</span>
+          <span class="pc-perk">📊 Partner dashboard login</span>
+          <span class="pc-perk">💸 Monthly bank payouts</span>
+          <span class="pc-perk">📱 Track in real-time</span>
+          <span class="pc-perk">🤝 Dedicated support</span>
+          <span class="pc-perk">🎓 Training included</span>
+        </div>
+      </div>
+      <div class="pc-right">
+        <!-- Partner cartoon character -->
+        <div class="partner-character">
+          <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <!-- Glow circle -->
+            <circle cx="80" cy="80" r="74" fill="rgba(245,166,35,.06)" stroke="rgba(245,166,35,.12)" stroke-width="1"/>
+            <!-- Body / suit -->
+            <ellipse cx="80" cy="125" rx="32" ry="22" fill="#1e3a5f"/>
+            <!-- Tie -->
+            <polygon points="80,95 77,115 80,120 83,115" fill="#ff6b00"/>
+            <!-- Shirt collar -->
+            <polygon points="72,92 80,98 88,92 84,88 76,88" fill="#fff" opacity=".9"/>
+            <!-- Head -->
+            <circle cx="80" cy="72" r="28" fill="#fdb97d"/>
+            <!-- Hair -->
+            <ellipse cx="80" cy="48" rx="28" ry="14" fill="#1a0f0a"/>
+            <ellipse cx="80" cy="44" rx="24" ry="10" fill="#2d1a0e"/>
+            <!-- Eyes (happy/determined) -->
+            <ellipse cx="70" cy="72" rx="4" ry="4.5" fill="#fff"/>
+            <ellipse cx="90" cy="72" rx="4" ry="4.5" fill="#fff"/>
+            <circle cx="71" cy="73" r="2.2" fill="#1a1a2e"/>
+            <circle cx="91" cy="73" r="2.2" fill="#1a1a2e"/>
+            <!-- Eyebrows confident -->
+            <path d="M65 65 Q70 62 75 65" stroke="#5d3015" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M85 65 Q90 62 95 65" stroke="#5d3015" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <!-- Confident smile -->
+            <path d="M70 82 Q80 92 90 82" stroke="#c97a3a" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <!-- Referral card in hand -->
+            <rect x="100" y="90" width="46" height="28" rx="5" fill="#ff6b00" transform="rotate(-8 100 90)"/>
+            <rect x="103" y="94" width="28" height="3" rx="1.5" fill="rgba(255,255,255,.6)" transform="rotate(-8 103 94)"/>
+            <rect x="103" y="100" width="20" height="2" rx="1" fill="rgba(255,255,255,.3)" transform="rotate(-8 103 100)"/>
+            <text x="106" y="112" font-size="7" fill="#fff" opacity=".8" transform="rotate(-8 106 112)">CC-REF-2024</text>
+            <!-- Star badge on chest -->
+            <circle cx="80" cy="108" r="8" fill="#f5a623"/>
+            <text x="77" y="112" font-size="9" fill="#06101f">★</text>
+            <!-- Flying rupees -->
+            <text x="18" y="55" font-size="14" fill="#f5a623" opacity=".8">
+              ₹
+              <animateTransform attributeName="transform" type="translate" values="0,0;-4,-8;0,0" dur="2s" repeatCount="indefinite"/>
+            </text>
+            <text x="128" y="45" font-size="11" fill="#f5a623" opacity=".7">₹
+              <animateTransform attributeName="transform" type="translate" values="0,0;4,-10;0,0" dur="2.5s" repeatCount="indefinite"/>
+            </text>
+            <text x="20" y="110" font-size="10" fill="#f5a623" opacity=".6">₹
+              <animateTransform attributeName="transform" type="translate" values="0,0;-6,-4;0,0" dur="1.8s" repeatCount="indefinite"/>
+            </text>
+          </svg>
+        </div>
+        <div class="pc-actions">
+          <button class="pc-btn-primary" onclick="openModal('register')">🚀 Become a Partner — Free</button>
+          <button class="pc-btn-sec" onclick="openModal('login')">Already a partner? Login →</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="ft">
+  <div class="ft-in">
+    <div class="ft-top">
+      <div>
+        <a href="index.html" class="ft-logo">Cover<em>Credit</em></a>
+        <p class="ft-ds">Honest insurance and financial advice for families across AP and Telangana. We sell the right policy — no pressure, no jargon.</p>
+        <div class="ft-con">📞 <a href="tel:+917842854466">+91 78428 54466</a></div>
+        <div class="ft-con">✉️ <a href="mailto:Covercredit.official@gmail.com">Covercredit.official@gmail.com</a></div>
+        <div class="ft-con">🕐 Mon–Sat: 9 AM – 7 PM</div>
+      </div>
+      <div class="ft-col"><div class="ft-clbl">Vehicle Insurance</div><ul>
+        <li><a href="bike-insurance.html">Bike Insurance</a></li>
+        <li><a href="car-insurance.html">Car Insurance</a></li>
+        <li><a href="commercial-vehicle-insurance.html">Commercial Vehicle</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-clbl">Insurance & Finance</div><ul>
+        <li><a href="health-insurance.html">Health Insurance</a></li>
+        <li><a href="life-insurance.html">Life Insurance</a></li>
+        <li><a href="loans.html">Loans & Finance</a></li>
+        <li><a href="contact.html#refer-earn">Refer & Earn</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-clbl">Company</div><ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="book.html">Book Consultation</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+      </ul></div>
+    </div>
+    <div class="ft-bot">
+      <span>© <span id="yr"></span> Cover Credit Insurance Advisors. All rights reserved.</span>
+      <div class="ft-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════
+     PARTNER MODAL (Register / Login)
+══════════════════════════════════════ -->
+<div class="modal-overlay" id="partner-modal" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-logo">Cover<em>Credit</em></div>
+    <div class="modal-sub">Partner Program — Earn commission on every referral</div>
+
+    <div class="modal-tabs">
+      <button class="mtab act" id="tab-register" onclick="switchTab('register')">🚀 Register Free</button>
+      <button class="mtab" id="tab-login" onclick="switchTab('login')">🔑 Partner Login</button>
+    </div>
+
+    <!-- REGISTER FORM -->
+    <div class="mform act" id="mform-register">
+      <div class="m-fg">
+        <div class="m-label">Full Name *</div>
+        <input class="m-fi" type="text" placeholder="Ravi Kumar" id="r-name"/>
+      </div>
+      <div class="m-fg">
+        <div class="m-label">Phone Number *</div>
+        <input class="m-fi" type="tel" placeholder="+91 98765 43210" id="r-phone"/>
+      </div>
+      <div class="m-fg">
+        <div class="m-label">Email Address *</div>
+        <input class="m-fi" type="email" placeholder="ravi@email.com" id="r-email"/>
+      </div>
+      <div class="m-fg">
+        <div class="m-label">City</div>
+        <select class="m-fi" id="r-city">
+          <option>Hyderabad</option><option>Secunderabad</option><option>Warangal</option>
+          <option>Visakhapatnam</option><option>Vijayawada</option><option>Other AP/Telangana</option>
+        </select>
+      </div>
+      <div class="m-fg">
+        <div class="m-label">Have a Referral Code? (optional)</div>
+        <div class="ref-input-wrap">
+          <input class="m-fi ref-input" type="text" placeholder="e.g. CC-REF-RAVI01" id="r-refcode" style="text-transform:uppercase;"/>
+          <button class="ref-check-btn" onclick="checkRefCode()">Verify</button>
+        </div>
+      </div>
+      <button class="m-submit" onclick="submitRegister()">Get My Referral Code →</button>
+      <div class="m-note">✅ Free forever. No spam. Our team will call you within 2 hours to activate your account.</div>
+    </div>
+
+    <!-- LOGIN FORM -->
+    <div class="mform" id="mform-login">
+      <div class="m-fg">
+        <div class="m-label">Your Referral Code or Phone</div>
+        <input class="m-fi" type="text" placeholder="CC-REF-XXXX or +91 98765…" id="l-identifier" style="text-transform:uppercase;"/>
+      </div>
+      <div class="m-divider">or</div>
+      <div class="m-fg">
+        <div class="m-label">Email Address</div>
+        <input class="m-fi" type="email" placeholder="you@email.com" id="l-email"/>
+      </div>
+      <div class="m-fg">
+        <div class="m-label">Password</div>
+        <input class="m-fi" type="password" placeholder="••••••••" id="l-pass"/>
+      </div>
+      <button class="m-submit" onclick="submitLogin()">Sign In to Dashboard →</button>
+      <div class="m-note">Not yet registered? Switch to Register tab above. Forgot password? WhatsApp us at +91 78428 54466.</div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const API_URL = 'https://cover-credit-backend.onrender.com';
+
+// ── CURSOR ───────────────────────────────────────
+const cur = document.getElementById('cur');
+const cr  = document.getElementById('cr');
+if(cur && cr){
+  let mx=0,my=0,cx=0,cy=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+  (function a(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;cr.style.left=cx+'px';cr.style.top=cy+'px';requestAnimationFrame(a);})();
+  document.querySelectorAll('a,button,input,select,textarea,.hc,.qc,.step-card').forEach(el=>{
+    el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+    el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
+  });
+}
+
+// ── NAV SCROLL ───────────────────────────────────
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('sc',window.scrollY>20);
+},{passive:true});
+
+// ── MOBILE MENU ──────────────────────────────────
+function toggleMob(){
+  document.getElementById('burger').classList.toggle('op');
+  document.getElementById('mob').classList.toggle('op');
+}
+
+// ── SCROLL REVEAL ────────────────────────────────
+const io = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});
+},{threshold:0.1});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+// ── FOOTER YEAR ──────────────────────────────────
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// ── CONTACT FORM ─────────────────────────────────
+document.getElementById('contact-form').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const btn = document.getElementById('form-submit-btn');
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  const payload = {
+    firstName: document.getElementById('first-name').value.trim(),
+    lastName:  document.getElementById('last-name').value.trim(),
+    phone:     document.getElementById('phone').value.trim(),
+    email:     document.getElementById('email').value.trim(),
+    interest:  document.getElementById('interest').value,
+    message:   document.getElementById('message').value.trim(),
+  };
+
+  try {
+    const res  = await fetch(API_URL + '/api/contact', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(payload),
+    });
+    const data = await res.json();
+    if(data.success){
+      document.getElementById('contact-success').style.display = 'block';
+      this.reset();
+    } else {
+      document.getElementById('contact-error').style.display = 'block';
+    }
+  } catch(err){
+    document.getElementById('contact-error').style.display = 'block';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Send Message →';
+  }
+});
+
+// ── PARTNER MODAL ────────────────────────────────
+function openModal(tab){
+  document.getElementById('partner-modal').classList.add('show');
+  switchTab(tab);
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(){
+  document.getElementById('partner-modal').classList.remove('show');
+  document.body.style.overflow = '';
+}
+function closeModalOutside(e){
+  if(e.target === document.getElementById('partner-modal')) closeModal();
+}
+function switchTab(tab){
+  document.querySelectorAll('.mtab').forEach(t=>t.classList.remove('act'));
+  document.querySelectorAll('.mform').forEach(f=>f.classList.remove('act'));
+  document.getElementById('tab-'+tab).classList.add('act');
+  document.getElementById('mform-'+tab).classList.add('act');
+}
+
+// ── REFERRAL CODE CHECK ──────────────────────────
+function checkRefCode(){
+  const code = document.getElementById('r-refcode').value.trim().toUpperCase();
+  if(!code){ alert('Enter a referral code first.'); return; }
+  // Simulate check — in production this hits your API
+  const valid = code.startsWith('CC-');
+  alert(valid
+    ? `✅ Code "${code}" looks valid! It will be linked after registration.`
+    : `❌ Code "${code}" not recognised. Leave blank if you don't have one.`
+  );
+}
+
+// ── REGISTER SUBMIT ──────────────────────────────
+async function submitRegister(){
+  const name  = document.getElementById('r-name').value.trim();
+  const phone = document.getElementById('r-phone').value.trim();
+  const email = document.getElementById('r-email').value.trim();
+  if(!name || !phone){alert('Please fill Name and Phone.');return;}
+
+  // Send as contact form with partner intent
+  try {
+    await fetch(API_URL + '/api/contact', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({
+        firstName: name.split(' ')[0],
+        lastName:  name.split(' ').slice(1).join(' ') || '',
+        phone, email,
+        interest: 'Refer & Earn — Partner Registration',
+        message: `Partner registration request. City: ${document.getElementById('r-city').value}. Ref code used: ${document.getElementById('r-refcode').value || 'None'}`,
+      }),
+    });
+  } catch(e){}
+
+  // Show success
+  document.getElementById('mform-register').innerHTML = `
+    <div style="text-align:center;padding:1.5rem 0;">
+      <div style="font-size:3rem;margin-bottom:1rem;">🎉</div>
+      <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;margin-bottom:.5rem;">You're registered!</div>
+      <div style="font-size:.84rem;color:rgba(255,255,255,.4);line-height:1.7;">
+        Our team will call you at <strong style="color:#fff;">${phone}</strong> within 2 hours<br/>
+        to activate your account and share your referral code.
+      </div>
+      <div style="margin-top:1.2rem;background:rgba(245,166,35,.08);border:1px solid rgba(245,166,35,.15);border-radius:10px;padding:1rem;">
+        <div style="font-size:.62rem;color:rgba(255,255,255,.28);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.3rem;">Your referral code (pending activation)</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:4px;color:var(--gold);">CC-REF-${name.split(' ')[0].toUpperCase().slice(0,5)}01</div>
+      </div>
+      <a href="https://wa.me/917842854466?text=Hi!+I+just+registered+for+the+Cover+Credit+Partner+Program.+My+name+is+${encodeURIComponent(name)}."
+        style="display:inline-flex;align-items:center;gap:.5rem;margin-top:1rem;background:#25d366;color:#fff;border-radius:100px;padding:.6rem 1.2rem;font-size:.8rem;font-weight:700;">
+        💬 WhatsApp us to speed it up
+      </a>
+    </div>`;
+}
+
+// ── LOGIN (placeholder — needs real partner backend) ──
+function submitLogin(){
+  alert('Partner dashboard coming soon! WhatsApp us at +91 78428 54466 to access your account.');
+}
+
+// ── KEYBOARD ESC ─────────────────────────────────
+document.addEventListener('keydown',e=>{if(e.key==='Escape') closeModal();});
+</script>
 </body>
 </html>
