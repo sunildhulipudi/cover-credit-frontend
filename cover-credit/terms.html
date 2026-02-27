@@ -1,53 +1,487 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Terms of Service | Cover Credit</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/variables.css"/><link rel="stylesheet" href="css/global.css"/><link rel="stylesheet" href="css/components.css"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Terms of Service — Cover Credit Insurance Advisors. Rules and conditions for using our website and services."/>
+<title>Terms of Service | Cover Credit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#06101f; --s1:#0b1a30; --s2:#0e2040;
+  --blue:#1976d2; --blue2:#42a5f5; --blue3:#90caf9;
+  --gold:#f5a623; --gold2:#ffd54f;
+  --green:#22c55e;
+  --line:rgba(255,255,255,.07);
+  --muted:rgba(255,255,255,.42);
+  --nh:70px; --ease:cubic-bezier(.16,1,.3,1);
+  --max:1240px;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:#fff;overflow-x:hidden;cursor:none;}
+a{text-decoration:none;color:inherit;}
+strong{font-weight:600;}
+@media(max-width:768px){body{cursor:auto;}}
+
+/* ─── CURSOR ─── */
+#c1,#c2{position:fixed;top:0;left:0;pointer-events:none;border-radius:50%;z-index:9000;transform:translate(-50%,-50%);}
+#c1{width:8px;height:8px;background:var(--blue2);}
+#c2{width:34px;height:34px;border:1.5px solid rgba(66,165,245,.35);transition:width .15s,height .15s,opacity .15s;}
+body.h #c1{width:3px;height:3px;}
+body.h #c2{width:48px;height:48px;opacity:.15;}
+@media(max-width:768px){#c1,#c2{display:none;}}
+
+/* ─── NAV ─── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:800;height:var(--nh);padding:0 5%;transition:background .35s;}
+.nav.s{background:rgba(6,16,31,.96);backdrop-filter:blur(16px);box-shadow:0 1px 0 var(--line);}
+.ni{max-width:var(--max);margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;}
+.logo b{font-weight:900;color:var(--gold);font-style:normal;}
+.nl{display:flex;align-items:center;gap:1.6rem;list-style:none;}
+.nl a{font-size:.83rem;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s;position:relative;}
+.nl a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--gold);transition:width .22s;}
+.nl a:hover,.nl a.on{color:#fff;}.nl a:hover::after,.nl a.on::after{width:100%;}
+.nl .drop{position:relative;}
+.nl .dlab{font-size:.83rem;font-weight:500;color:rgba(255,255,255,.55);cursor:none;display:flex;align-items:center;gap:.28rem;}
+.nl .darr{font-size:.5rem;transition:transform .22s;}.nl .drop:hover .darr{transform:rotate(180deg);}
+.nl .dmenu{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(4px);background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:.32rem;min-width:180px;opacity:0;visibility:hidden;transition:opacity .18s,transform .22s var(--ease),visibility .18s;box-shadow:0 18px 40px rgba(0,0,0,.5);}
+.nl .drop:hover .dmenu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+.nl .dmenu a{display:block;padding:.44rem .72rem;font-size:.77rem;color:rgba(255,255,255,.55);border-radius:7px;transition:background .12s,color .12s;}
+.nl .dmenu a:hover{background:rgba(255,255,255,.06);color:#fff;}
+.ncta{background:var(--gold)!important;color:#06101f!important;padding:.42rem 1.05rem!important;border-radius:100px;font-weight:700!important;font-size:.78rem!important;}
+.ncta::after{display:none!important;}
+.bur{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:4px;}
+.bur span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .28s,opacity .28s;}
+.bur.o span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.bur.o span:nth-child(2){opacity:0;}
+.bur.o span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.mob{position:fixed;inset:0;z-index:799;background:var(--bg);display:flex;flex-direction:column;padding:calc(var(--nh)+1.6rem) 5% 2.5rem;transform:translateX(100%);transition:transform .35s var(--ease);}
+.mob.o{transform:translateX(0);}
+.mob a{padding:.85rem 0;font-size:.95rem;font-weight:500;color:rgba(255,255,255,.65);border-bottom:1px solid var(--line);}
+.mcta{margin-top:1.6rem;background:var(--gold);color:#06101f!important;text-align:center;border-radius:10px;padding:.85rem!important;font-weight:700!important;border:none!important;}
+@media(max-width:768px){.nl{display:none;}.bur{display:flex;}}
+
+/* ─── FAB ─── */
+.fab{position:fixed;bottom:1.5rem;right:1.5rem;z-index:500;display:flex;flex-direction:column;gap:.55rem;align-items:flex-end;}
+.fab a{display:flex;align-items:center;gap:.4rem;padding:.58rem .9rem;border-radius:100px;font-size:.73rem;font-weight:600;cursor:none;transition:transform .16s;}
+.fab a:hover{transform:translateY(-2px);}
+.fwa{background:#25d366;color:#fff;box-shadow:0 4px 16px rgba(37,211,102,.28);}
+.fbk{background:var(--blue);color:#fff;box-shadow:0 4px 16px rgba(25,118,210,.28);}
+@media(max-width:768px){.fab a{cursor:pointer;}}
+
+/* ─── SCROLL REVEAL ─── */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .55s var(--ease),transform .55s var(--ease);}
+.rv.in{opacity:1;transform:none;}
+.d1{transition-delay:.06s;}.d2{transition-delay:.12s;}.d3{transition-delay:.18s;}
+
+/* ─── PAGE HERO ─── */
+.phero{padding:calc(var(--nh) + 3rem) 5% 3rem;background:var(--s1);border-bottom:1px solid var(--line);position:relative;overflow:hidden;}
+.phero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 55% at 20% 50%,rgba(25,118,210,.07),transparent);pointer-events:none;}
+.phero-in{max-width:820px;margin:0 auto;position:relative;z-index:1;}
+.bc{display:flex;align-items:center;gap:.38rem;font-size:.68rem;color:rgba(255,255,255,.25);margin-bottom:1rem;}
+.bc a{color:rgba(255,255,255,.25);transition:color .18s;}.bc a:hover{color:var(--blue2);}
+.phero-badge{display:inline-flex;align-items:center;gap:.38rem;background:rgba(25,118,210,.1);border:1px solid rgba(25,118,210,.2);color:var(--blue3);font-size:.62rem;font-weight:700;padding:.24rem .8rem;border-radius:100px;text-transform:uppercase;letter-spacing:.4px;margin-bottom:.9rem;}
+.phero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:900;line-height:1.08;letter-spacing:-1.5px;margin-bottom:.55rem;}
+.phero-meta{font-size:.76rem;color:rgba(255,255,255,.28);display:flex;align-items:center;gap:1rem;flex-wrap:wrap;}
+.phero-meta span{display:flex;align-items:center;gap:.35rem;}
+
+/* ─── CONTENT LAYOUT ─── */
+.content-wrap{max-width:820px;margin:0 auto;padding:3.5rem 5% 5rem;}
+
+/* ─── TOC ─── */
+.toc{background:var(--s1);border:1px solid var(--line);border-radius:12px;padding:1.4rem 1.6rem;margin-bottom:2.8rem;}
+.toc-title{font-size:.7rem;font-weight:700;color:rgba(255,255,255,.28);text-transform:uppercase;letter-spacing:2px;margin-bottom:.85rem;}
+.toc-list{list-style:none;display:flex;flex-direction:column;gap:.38rem;}
+.toc-list a{font-size:.8rem;color:rgba(255,255,255,.45);display:flex;align-items:center;gap:.5rem;transition:color .18s;}
+.toc-list a::before{content:'';width:10px;height:1.5px;background:rgba(25,118,210,.3);flex-shrink:0;transition:width .2s,background .2s;}
+.toc-list a:hover{color:var(--blue2);}.toc-list a:hover::before{width:18px;background:var(--blue2);}
+
+/* ─── SECTION BLOCKS ─── */
+.policy-sec{margin-bottom:2.4rem;padding-bottom:2.4rem;border-bottom:1px solid var(--line);}
+.policy-sec:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.ps-head{display:flex;align-items:center;gap:.75rem;margin-bottom:.95rem;}
+.ps-num{width:28px;height:28px;border-radius:50%;background:rgba(25,118,210,.12);border:1.5px solid rgba(25,118,210,.25);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:.8rem;color:var(--blue2);flex-shrink:0;}
+.ps-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;line-height:1.2;}
+.ps-body{font-size:.85rem;color:var(--muted);line-height:1.85;}
+.ps-body p{margin-bottom:.7rem;}
+.ps-body p:last-child{margin-bottom:0;}
+.ps-body a{color:var(--blue2);border-bottom:1px solid rgba(66,165,245,.25);padding-bottom:1px;transition:color .18s,border-color .18s;}
+.ps-body a:hover{color:#fff;border-color:rgba(255,255,255,.3);}
+.ps-body strong{color:rgba(255,255,255,.72);}
+.ps-list{list-style:none;display:flex;flex-direction:column;gap:.5rem;margin:.6rem 0 .7rem;}
+.ps-list li{display:flex;align-items:flex-start;gap:.65rem;font-size:.84rem;color:var(--muted);line-height:1.7;}
+.ps-list li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--blue2);opacity:.6;flex-shrink:0;margin-top:.55rem;}
+.ps-highlight{background:rgba(25,118,210,.05);border-left:3px solid rgba(25,118,210,.35);border-radius:0 8px 8px 0;padding:.9rem 1.1rem;margin:.85rem 0;font-size:.83rem;color:rgba(255,255,255,.5);line-height:1.75;}
+.ps-highlight strong{color:rgba(255,255,255,.72);}
+.ps-ok{background:rgba(34,197,94,.05);border:1px solid rgba(34,197,94,.15);border-radius:9px;padding:.85rem 1.1rem;margin:.85rem 0;font-size:.82rem;color:rgba(255,255,255,.5);display:flex;align-items:flex-start;gap:.6rem;line-height:1.7;}
+.ps-ok::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0;font-size:.9rem;}
+.ps-warn{background:rgba(245,166,35,.05);border:1px solid rgba(245,166,35,.15);border-radius:9px;padding:.85rem 1.1rem;margin:.85rem 0;font-size:.82rem;color:rgba(255,255,255,.5);display:flex;align-items:flex-start;gap:.6rem;line-height:1.7;}
+.ps-warn::before{content:'⚠';color:var(--gold);font-weight:700;flex-shrink:0;font-size:.86rem;}
+
+/* ─── CONTACT CARD ─── */
+.contact-card{background:var(--s2);border:1px solid rgba(25,118,210,.15);border-radius:12px;padding:1.4rem 1.6rem;display:flex;align-items:center;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;margin-top:1rem;}
+.cc-text{font-size:.83rem;color:rgba(255,255,255,.45);line-height:1.7;}
+.cc-text strong{color:rgba(255,255,255,.7);display:block;margin-bottom:.2rem;font-size:.9rem;}
+.cc-btns{display:flex;gap:.65rem;flex-wrap:wrap;}
+.cc-btn{display:inline-flex;align-items:center;gap:.35rem;padding:.58rem 1.1rem;border-radius:8px;font-size:.78rem;font-weight:600;cursor:none;transition:transform .15s;}
+.cc-btn:hover{transform:translateY(-2px);}
+.cc-btn.p{background:var(--gold);color:#06101f;}
+.cc-btn.s{background:rgba(255,255,255,.06);border:1px solid var(--line);color:#fff;}
+@media(max-width:768px){.cc-btn{cursor:pointer;}.contact-card{flex-direction:column;align-items:flex-start;}}
+
+/* ─── FOOTER ─── */
+.ft{background:#020b1a;border-top:1px solid var(--line);padding:3.2rem 5% 1.6rem;}
+.ft-in{max-width:var(--max);margin:0 auto;}
+.ft-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:2.2rem;border-bottom:1px solid var(--line);margin-bottom:1.4rem;}
+.fl{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;display:inline-block;margin-bottom:.7rem;}
+.fl b{font-weight:900;color:var(--gold);font-style:normal;}
+.fd{font-size:.73rem;color:rgba(255,255,255,.3);line-height:1.7;margin-bottom:.8rem;}
+.fc2{display:flex;align-items:center;gap:.38rem;font-size:.71rem;color:rgba(255,255,255,.25);margin-bottom:.35rem;}
+.fc2 a{color:rgba(255,255,255,.45);transition:color .16s;}.fc2 a:hover{color:var(--gold);}
+.fcl{font-size:.59rem;font-weight:700;color:rgba(255,255,255,.17);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:.7rem;}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.4rem;}
+.ft-col a{font-size:.71rem;color:rgba(255,255,255,.3);transition:color .16s;}.ft-col a:hover{color:var(--gold);}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.7rem;font-size:.67rem;color:rgba(255,255,255,.13);}
+.ft-lk{display:flex;gap:1.2rem;}.ft-lk a{color:rgba(255,255,255,.13);transition:color .16s;}.ft-lk a:hover{color:rgba(255,255,255,.32);}
+@media(max-width:900px){.ft-top{grid-template-columns:1fr 1fr;}}
+@media(max-width:500px){.ft-top{grid-template-columns:1fr;}}
+</style>
 </head>
 <body>
-  <header>
-    <nav class="nav"><div class="nav__inner"><a href="index.html" class="nav__logo">Cover<span>Credit</span></a><ul class="nav__links"><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life Insurance</a></li><li class="nav__dropdown"><span class="nav__dropdown-trigger">Vehicle Insurance <span class="nav__dropdown-arrow">▼</span></span><div class="nav__dropdown-menu"><a href="bike-insurance.html">Bike Insurance</a><a href="car-insurance.html">Car Insurance</a><a href="commercial-vehicle-insurance.html">Commercial Vehicles</a></div></li><li><a href="loans.html">Loans</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="book.html" class="nav__cta">Book Consultation</a></li></ul><button class="nav__hamburger" id="hamburger"><span></span><span></span><span></span></button></div></nav>
-    <nav class="mobile-nav" id="mobile-nav"><a href="health-insurance.html" class="mobile-nav__item">Health Insurance</a><a href="life-insurance.html" class="mobile-nav__item">Life Insurance</a><a href="bike-insurance.html" class="mobile-nav__item mobile-nav__sub">↳ Bike Insurance</a><a href="car-insurance.html" class="mobile-nav__item mobile-nav__sub">↳ Car Insurance</a><a href="commercial-vehicle-insurance.html" class="mobile-nav__item mobile-nav__sub">↳ Commercial Vehicles</a><a href="loans.html" class="mobile-nav__item">Loans</a><a href="blog.html" class="mobile-nav__item">Blog</a><a href="about.html" class="mobile-nav__item">About</a><a href="contact.html" class="mobile-nav__item">Contact</a><a href="book.html" class="mobile-nav__cta">Book Free Consultation</a></nav>
-  </header>
+<div id="c1"></div><div id="c2"></div>
 
-  <section class="page-hero" style="padding:0;">
-    <div class="page-hero__inner" style="max-width:var(--max-width);width:var(--container);padding:60px 0 50px;">
-      <nav class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span>Terms of Service</span></nav>
-      <h1 class="page-hero__title">Terms of Service</h1>
-      <p class="page-hero__desc">Last updated: February 2026</p>
+<!-- FAB -->
+<div class="fab">
+  <a href="book.html" class="fbk">📅 Book Free Session</a>
+  <a href="https://wa.me/917842854466" target="_blank" class="fwa">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a9.526 9.526 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp
+  </a>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="ni">
+    <a href="index.html" class="logo">Cover<b>Credit</b></a>
+    <ul class="nl">
+      <li><a href="health-insurance.html">Health</a></li>
+      <li><a href="life-insurance.html">Life Insurance</a></li>
+      <li class="drop">
+        <span class="dlab">Vehicle <span class="darr">▼</span></span>
+        <div class="dmenu">
+          <a href="bike-insurance.html">🏍️ Bike Insurance</a>
+          <a href="car-insurance.html">🚗 Car Insurance</a>
+          <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicle</a>
+        </div>
+      </li>
+      <li><a href="loans.html">Loans</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="book.html" class="ncta">Free Consultation</a></li>
+    </ul>
+    <button class="bur" id="bur"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob" id="mob">
+  <a href="health-insurance.html">Health Insurance</a>
+  <a href="life-insurance.html">Life Insurance</a>
+  <a href="bike-insurance.html">🏍️ Bike Insurance</a>
+  <a href="car-insurance.html">🚗 Car Insurance</a>
+  <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicle</a>
+  <a href="loans.html">Loans</a>
+  <a href="blog.html">Blog</a>
+  <a href="about.html">About</a>
+  <a href="book.html" class="mcta">Book Free Consultation →</a>
+</div>
+
+<!-- ═══ PAGE HERO ═══ -->
+<section class="phero">
+  <div class="phero-in">
+    <div class="bc rv"><a href="index.html">Home</a> › <span>Terms of Service</span></div>
+    <div class="phero-badge rv d1">📋 Legal & Terms</div>
+    <h1 class="rv d1">Terms of Service</h1>
+    <div class="phero-meta rv d2">
+      <span>📅 Last updated: February 2026</span>
+      <span>🏢 Cover Credit Insurance Advisors</span>
+      <span>⚖️ Jurisdiction: Hyderabad, Telangana</span>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section" style="background:var(--bg);">
-    <div class="section-wrap">
-      <div class="legal-content">
-        <p>By using the Cover Credit website or services, you agree to the following terms. Please read them carefully before using our services.</p>
-        <h2>Services Provided</h2>
-        <p>Cover Credit provides insurance advisory and loan guidance services. We act as advisors and intermediaries — not as insurers or lenders. All final policy and loan decisions are made by the respective insurance companies or financial institutions.</p>
-        <h2>No Guarantee of Outcomes</h2>
-        <p>While we strive to provide the best advice and support, we cannot guarantee specific outcomes including claim approvals, loan sanctions, or policy issuance. These decisions rest solely with the respective insurers or lenders.</p>
-        <h2>Accuracy of Information</h2>
-        <p>The information provided on this website is for general guidance only. Insurance products, premiums, and regulations change frequently. Always verify current terms and conditions directly with the insurer before purchasing any policy.</p>
-        <h2>User Responsibility</h2>
-        <p>You are responsible for providing accurate and complete information during consultations and policy applications. Misrepresentation of facts may lead to claim rejection or policy cancellation by the insurer — which is beyond our control or liability.</p>
-        <h2>Intellectual Property</h2>
-        <p>All content on this website — including text, branding, logos, and design — is the property of Cover Credit Insurance Advisors. Unauthorised use, reproduction, or distribution is strictly prohibited.</p>
-        <h2>Limitation of Liability</h2>
-        <p>Cover Credit shall not be liable for any indirect, incidental, or consequential damages arising from the use of this website or our services. Our total liability to any client shall not exceed the fees paid to us for the relevant service.</p>
-        <h2>Governing Law</h2>
-        <p>These terms shall be governed by and construed in accordance with the laws of India. Any disputes shall be subject to the jurisdiction of courts in Hyderabad, Telangana.</p>
-        <h2>Changes to These Terms</h2>
-        <p>We reserve the right to update these terms at any time. Continued use of our services after any changes constitutes acceptance of the updated terms.</p>
-        <h2>Contact</h2>
-        <p>For any questions about these terms, contact us at <a href="mailto:info@covercredit.in">info@covercredit.in</a> or call <a href="tel:+919642834789">+91 96428 34789</a>.</p>
+<!-- ═══ CONTENT ═══ -->
+<div class="content-wrap">
+
+  <!-- Intro -->
+  <div class="policy-sec rv">
+    <div class="ps-body">
+      <p>By accessing or using the Cover Credit website (<strong>covercredit.in</strong>) or engaging with our insurance and loan advisory services, you agree to be bound by the following Terms of Service. Please read them carefully before using our services.</p>
+      <p>If you do not agree with any part of these terms, please refrain from using our website or services. For questions, our contact details are at the end of this page.</p>
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc rv d1">
+    <div class="toc-title">Contents</div>
+    <ul class="toc-list">
+      <li><a href="#s1">1 — Services Provided</a></li>
+      <li><a href="#s2">2 — No Guarantee of Outcomes</a></li>
+      <li><a href="#s3">3 — Accuracy of Information</a></li>
+      <li><a href="#s4">4 — User Responsibilities</a></li>
+      <li><a href="#s5">5 — Intellectual Property</a></li>
+      <li><a href="#s6">6 — Limitation of Liability</a></li>
+      <li><a href="#s7">7 — Governing Law & Disputes</a></li>
+      <li><a href="#s8">8 — Changes to These Terms</a></li>
+      <li><a href="#s9">9 — Contact Us</a></li>
+    </ul>
+  </div>
+
+  <!-- Section 1 -->
+  <div class="policy-sec rv" id="s1">
+    <div class="ps-head">
+      <div class="ps-num">1</div>
+      <div class="ps-title">Services Provided</div>
+    </div>
+    <div class="ps-body">
+      <p>Cover Credit provides insurance advisory and loan guidance services across Andhra Pradesh and Telangana. Our role is that of an <strong>advisor and intermediary</strong> — we are not an insurance company, bank, or lending institution.</p>
+      <ul class="ps-list">
+        <li>We compare insurance products from multiple insurers and help you choose a policy suited to your needs</li>
+        <li>We provide loan guidance and assist with documentation and application for home loans, business loans, education loans, vehicle loans, and loan against property</li>
+        <li>We assist clients with insurance claim registration, documentation, and follow-up with insurers</li>
+        <li>We provide policy renewal reminders and ongoing advisory support to existing clients</li>
+      </ul>
+      <div class="ps-highlight"><strong>All final decisions regarding policy issuance, loan sanctions, claim approvals, or rejections</strong> rest solely with the respective insurance companies or financial institutions. Cover Credit acts as a facilitator, not a decision-maker.</div>
+    </div>
+  </div>
+
+  <!-- Section 2 -->
+  <div class="policy-sec rv" id="s2">
+    <div class="ps-head">
+      <div class="ps-num">2</div>
+      <div class="ps-title">No Guarantee of Outcomes</div>
+    </div>
+    <div class="ps-body">
+      <p>While we strive to provide the most accurate, up-to-date, and helpful advice, we <strong>cannot guarantee specific outcomes</strong> including but not limited to:</p>
+      <ul class="ps-list">
+        <li>Approval or issuance of any insurance policy</li>
+        <li>Sanction or disbursement of any loan</li>
+        <li>Approval or settlement of any insurance claim</li>
+        <li>A specific premium, interest rate, or loan amount</li>
+      </ul>
+      <p>These outcomes are determined entirely by the respective insurer or lender based on their own underwriting criteria, policies, and regulations — which are outside our control.</p>
+      <div class="ps-ok">We will always be transparent about what we can and cannot influence, and we will guide you on the best course of action if an outcome is not in your favour.</div>
+    </div>
+  </div>
+
+  <!-- Section 3 -->
+  <div class="policy-sec rv" id="s3">
+    <div class="ps-head">
+      <div class="ps-num">3</div>
+      <div class="ps-title">Accuracy of Information</div>
+    </div>
+    <div class="ps-body">
+      <p>The information provided on this website — including articles, guides, product comparisons, and premium estimates — is intended for <strong>general guidance only</strong>. It is not a substitute for a formal policy document, loan agreement, or professional legal/financial advice.</p>
+      <ul class="ps-list">
+        <li>Insurance premiums, coverage terms, and regulations are subject to change by insurers and IRDAI at any time</li>
+        <li>Loan interest rates, eligibility criteria, and product terms are subject to change by lenders and RBI guidelines</li>
+        <li>We update our content regularly but cannot guarantee that all information on the website reflects the latest product details at any given moment</li>
+      </ul>
+      <div class="ps-warn">Always verify the current terms and conditions directly with the insurer or lender before purchasing a policy or signing a loan agreement. Do not rely solely on website content for final decisions.</div>
+    </div>
+  </div>
+
+  <!-- Section 4 -->
+  <div class="policy-sec rv" id="s4">
+    <div class="ps-head">
+      <div class="ps-num">4</div>
+      <div class="ps-title">User Responsibilities</div>
+    </div>
+    <div class="ps-body">
+      <p>When engaging with Cover Credit's services, you agree to:</p>
+      <ul class="ps-list">
+        <li><strong>Provide accurate and complete information</strong> during consultations, policy applications, loan applications, and claim filings. Providing false or incomplete information may result in claim rejection or policy cancellation by the insurer — which is beyond our responsibility</li>
+        <li><strong>Use the website lawfully</strong> — you must not misuse our website, attempt to gain unauthorised access, or use it for any unlawful purpose</li>
+        <li><strong>Respect intellectual property</strong> — you must not copy, reproduce, or distribute any content from our website without prior written consent</li>
+        <li><strong>Keep your contact details current</strong> — to ensure we can reach you for renewals, claim updates, and important notifications</li>
+      </ul>
+      <div class="ps-highlight"><strong>Misrepresentation of facts during an insurance application is a legal offence under Indian insurance law</strong> and may void your policy. We strongly advise full transparency when disclosing health conditions, vehicle details, or any other material information.</div>
+    </div>
+  </div>
+
+  <!-- Section 5 -->
+  <div class="policy-sec rv" id="s5">
+    <div class="ps-head">
+      <div class="ps-num">5</div>
+      <div class="ps-title">Intellectual Property</div>
+    </div>
+    <div class="ps-body">
+      <p>All content on this website — including but not limited to text, articles, guides, branding, logos, visual design, and layout — is the exclusive property of <strong>Cover Credit Insurance Advisors</strong> and is protected under applicable Indian intellectual property laws.</p>
+      <ul class="ps-list">
+        <li>You may not reproduce, republish, distribute, or commercially exploit any content from this website without prior written permission</li>
+        <li>Sharing individual articles or guides for personal, non-commercial reference is permitted, provided Cover Credit is credited as the source</li>
+        <li>The "CoverCredit" name, logo, and branding may not be used in any way that implies association, endorsement, or affiliation without our consent</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Section 6 -->
+  <div class="policy-sec rv" id="s6">
+    <div class="ps-head">
+      <div class="ps-num">6</div>
+      <div class="ps-title">Limitation of Liability</div>
+    </div>
+    <div class="ps-body">
+      <p>To the maximum extent permitted by applicable law, Cover Credit shall not be liable for:</p>
+      <ul class="ps-list">
+        <li>Any indirect, incidental, special, or consequential loss arising from use of our website or services</li>
+        <li>Loss arising from an insurer's or lender's decision to reject a claim, deny a policy, or refuse a loan application</li>
+        <li>Any loss resulting from reliance on website content that has since been updated or changed by the insurer or lender</li>
+        <li>Interruptions, errors, or downtime of the website for reasons beyond our reasonable control</li>
+      </ul>
+      <p>In any case where Cover Credit is found liable for direct loss, <strong>our total liability shall not exceed the advisory fees paid by you for the specific service</strong> in question. Since our consultations are free of charge, this liability is limited accordingly.</p>
+    </div>
+  </div>
+
+  <!-- Section 7 -->
+  <div class="policy-sec rv" id="s7">
+    <div class="ps-head">
+      <div class="ps-num">7</div>
+      <div class="ps-title">Governing Law & Disputes</div>
+    </div>
+    <div class="ps-body">
+      <p>These Terms of Service shall be governed by and construed in accordance with the <strong>laws of India</strong>, including applicable IRDAI and RBI regulations where relevant.</p>
+      <p>Any disputes arising from your use of our website or services shall be subject to the <strong>exclusive jurisdiction of courts in Hyderabad, Telangana</strong>. We encourage parties to first attempt to resolve any dispute amicably through direct communication before pursuing legal action.</p>
+      <div class="ps-ok">If you have a concern or complaint about our services, please contact us first. We are committed to resolving issues fairly and promptly — most concerns can be addressed with a simple conversation.</div>
+    </div>
+  </div>
+
+  <!-- Section 8 -->
+  <div class="policy-sec rv" id="s8">
+    <div class="ps-head">
+      <div class="ps-num">8</div>
+      <div class="ps-title">Changes to These Terms</div>
+    </div>
+    <div class="ps-body">
+      <p>We reserve the right to update or modify these Terms of Service at any time to reflect changes in our services, legal requirements, or business practices. When changes are made, we will update the "Last updated" date at the top of this page.</p>
+      <p>Your continued use of our website or services after any changes constitutes your acceptance of the updated terms. We recommend reviewing this page periodically. For material changes, we will make reasonable efforts to notify existing clients directly.</p>
+    </div>
+  </div>
+
+  <!-- Section 9 -->
+  <div class="policy-sec rv" id="s9">
+    <div class="ps-head">
+      <div class="ps-num">9</div>
+      <div class="ps-title">Contact Us</div>
+    </div>
+    <div class="ps-body">
+      <p>For any questions about these Terms of Service, or to raise a concern about our services, please get in touch:</p>
+    </div>
+    <div class="contact-card rv d1">
+      <div class="cc-text">
+        <strong>Cover Credit Insurance Advisors</strong>
+        Serving Hyderabad, Visakhapatnam &amp; all of AP &amp; Telangana<br/>
+        Mon–Sat · 9 AM – 7 PM · Telugu &amp; English
+      </div>
+      <div class="cc-btns">
+        <a href="mailto:Covercredit.official@gmail.com" class="cc-btn p">✉️ Email Us</a>
+        <a href="tel:+917842854466" class="cc-btn s">📞 +91 78428 54466</a>
       </div>
     </div>
-  </section>
+  </div>
 
-  <footer class="footer"><div class="footer__top"><div><a href="index.html" class="footer__logo">Cover<span>Credit</span></a><p class="footer__tagline">Honest insurance advice. We guide, not sell.</p><p class="footer__serving">© <span id="current-year">2026</span> Cover Credit. All rights reserved.</p></div><div class="footer__col"><h4>Quick Links</h4><ul><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life Insurance</a></li><li><a href="loans.html">Loans</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="book.html">Book Consultation</a></li></ul></div><div class="footer__col"><h4>Branches</h4><ul><li><a href="#">Visakhapatnam</a></li><li><a href="#">Hyderabad</a></li></ul></div><div class="footer__col"><h4>Contact</h4><div class="footer__contact-item">📞 <a href="tel:+919642834789">+91 96428 34789</a></div><div class="footer__contact-item">✉️ <a href="mailto:info@covercredit.in">info@covercredit.in</a></div></div></div><div class="footer__bottom"><span>© <span id="current-year-2">2026</span> Cover Credit. All rights reserved.</span><div class="footer__bottom-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div></div></footer>
-  <script src="js/nav.js"></script><script src="js/main.js"></script>
+</div><!-- end content-wrap -->
+
+<!-- FOOTER -->
+<footer class="ft">
+  <div class="ft-in">
+    <div class="ft-top">
+      <div>
+        <a href="index.html" class="fl">Cover<b>Credit</b></a>
+        <p class="fd">Honest insurance and loan advisory for families across AP & Telangana. We guide, not sell.</p>
+        <div class="fc2">📞 <a href="tel:+917842854466">+91 78428 54466</a></div>
+        <div class="fc2">✉️ <a href="mailto:Covercredit.official@gmail.com">Covercredit.official@gmail.com</a></div>
+        <div class="fc2">🕐 Mon–Sat: 9 AM – 7 PM</div>
+      </div>
+      <div class="ft-col">
+        <div class="fcl">Insurance</div>
+        <ul>
+          <li><a href="health-insurance.html">Health Insurance</a></li>
+          <li><a href="life-insurance.html">Life & Term Insurance</a></li>
+          <li><a href="bike-insurance.html">Bike Insurance</a></li>
+          <li><a href="car-insurance.html">Car Insurance</a></li>
+          <li><a href="commercial-vehicle-insurance.html">Commercial Vehicle</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <div class="fcl">Loans</div>
+        <ul>
+          <li><a href="loans.html">Home Loans</a></li>
+          <li><a href="loans.html">Business Loans</a></li>
+          <li><a href="loans.html">Education Loans</a></li>
+          <li><a href="loans.html">Loan Against Property</a></li>
+          <li><a href="loans.html">Vehicle Loans</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <div class="fcl">Company</div>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="book.html">Book Consultation</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html" style="color:rgba(255,255,255,.55);">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span>© <span id="yr"></span> Cover Credit. All rights reserved.</span>
+      <div class="ft-lk">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html" style="color:rgba(255,255,255,.28);">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── CURSOR ── */
+const c1=document.getElementById('c1'),c2=document.getElementById('c2');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;c1.style.left=mx+'px';c1.style.top=my+'px';});
+(function lp(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;c2.style.left=rx+'px';c2.style.top=ry+'px';requestAnimationFrame(lp);})();
+document.querySelectorAll('a,button,.cc-btn,.toc-list a').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('h'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('h'));
+});
+
+/* ── NAV ── */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('s',scrollY>40),{passive:true});
+const bur=document.getElementById('bur'),mob=document.getElementById('mob');
+bur.addEventListener('click',()=>{
+  bur.classList.toggle('o');mob.classList.toggle('o');
+  document.body.style.overflow=mob.classList.contains('o')?'hidden':'';
+});
+
+/* ── SCROLL REVEAL ── */
+const ro=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}});
+},{threshold:.06});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+
+/* ── TOC SMOOTH SCROLL ── */
+document.querySelectorAll('.toc-list a').forEach(a=>{
+  a.addEventListener('click',e=>{
+    e.preventDefault();
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+/* ── YEAR ── */
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
 </body>
 </html>
