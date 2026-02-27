@@ -984,15 +984,118 @@ function goTo(step) {
 }
 
 // ── SUBMIT ────────────────────────────────────────────────────
-function submitForm() {
-  // Generate reference number
-  const ref = 'CC-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000);
-  document.getElementById('refCode').textContent = ref;
-  // Show success
-  document.querySelectorAll('.wp').forEach(p => p.classList.remove('act'));
-  document.getElementById('wp4').classList.add('act');
-  document.querySelector('.wiz-prog').style.opacity = '0';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+async function submitForm() {
+  // Disable button to prevent double-submit
+  const btn = document.querySelector('#wp3 .wnext');
+  if (btn) { btn.disabled = true; btn.textContent = 'Submitting…'; }
+
+  // ── Collect Step 2: common details ──
+  const name  = document.getElementById('fname')?.value?.trim()  || '';
+  const phone = document.getElementById('fphone')?.value?.trim() || '';
+  const email = document.getElementById('femail')?.value?.trim() || '';
+  const city  = document.getElementById('fcity')?.value          || '';
+
+  // ── Collect Step 3: dept-specific fields ──
+  const details = {};
+  const sf = document.getElementById('sf-' + currentDept);
+  if (sf) {
+    // All select dropdowns in the smart section
+    sf.querySelectorAll('select').forEach(sel => {
+      const label = sel.closest('.fg')?.querySelector('label')?.textContent?.trim()
+                       .replace(/\s*\*\s*$/, '');
+      if (label && sel.value) details[camelKey(label)] = sel.value;
+    });
+    // All text/tel inputs
+    sf.querySelectorAll('input[type="text"], input[type="tel"]').forEach(inp => {
+      const label = inp.closest('.fg')?.querySelector('label')?.textContent?.trim()
+                       .replace(/\s*\*\s*$/, '');
+      if (label && inp.value.trim()) details[camelKey(label)] = inp.value.trim();
+    });
+    // Selected pills (one per group)
+    sf.querySelectorAll('.pill-group').forEach(group => {
+      const selPill = group.querySelector('.po.sel');
+      const label   = group.closest('.fg')?.querySelector('label')?.textContent?.trim()
+                         .replace(/\s*\*\s*$/, '');
+      if (label && selPill) details[camelKey(label)] = selPill.textContent.trim();
+    });
+  }
+
+  // ── Collect Step 4: contact preferences ──
+  const contactMethod = document.querySelector('#wp3 .cm.sel .cm-lbl')?.textContent?.trim()  || 'Phone Call';
+  const timeSlotRaw   = document.querySelector('#wp3 .slot.sel .slot-t')?.textContent?.trim() || '';
+  const slotLabel     = document.querySelector('#wp3 .slot.sel .slot-l')?.textContent?.trim() || '';
+  // Map to the enum values the backend expects
+  const slotMap = {
+    'Morning':   'Morning (9 AM – 12 PM)',
+    'Afternoon': 'Afternoon (12 PM – 4 PM)',
+    'Evening':   'Evening (4 PM – 7 PM)',
+  };
+  const timeSlot = slotMap[slotLabel] || 'Morning (9 AM – 12 PM)';
+  const notes    = document.querySelector('#wp3 textarea')?.value?.trim() || '';
+
+  // ── Build payload ──
+  const payload = {
+    department:    currentDept,
+    name,
+    phone,
+    email,
+    city,
+    details,
+    contactMethod,
+    timeSlot,
+    notes,
+    referredFrom:  new URLSearchParams(window.location.search).get('dept') ? document.referrer || window.location.href : '',
+  };
+
+  try {
+    const res  = await fetch('/api/book', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(payload),
+    });
+    const data = await res.json();
+
+    if (data.success) {
+      // Show success screen with real reference from server
+      document.getElementById('refCode').textContent = data.reference || ('CC-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000));
+      document.querySelectorAll('.wp').forEach(p => p.classList.remove('act'));
+      document.getElementById('wp4').classList.add('act');
+      document.querySelector('.wiz-prog').style.opacity = '0';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      // Show inline error
+      if (btn) { btn.disabled = false; btn.textContent = 'Book Free Consultation ✓'; }
+      showFormError(data.message || 'Something went wrong. Please try again.');
+    }
+  } catch (err) {
+    console.error('Submit error:', err);
+    if (btn) { btn.disabled = false; btn.textContent = 'Book Free Consultation ✓'; }
+    showFormError('Network error. Please try again or call us at +91 78428 54466.');
+  }
+}
+
+// Convert "Make & Model" → "makeModel" for details object keys
+function camelKey(label) {
+  return label
+    .replace(/[^a-zA-Z0-9\s]/g, '')
+    .trim()
+    .split(/\s+/)
+    .map((w, i) => i === 0 ? w.toLowerCase() : w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+    .join('');
+}
+
+function showFormError(msg) {
+  let err = document.getElementById('form-error');
+  if (!err) {
+    err = document.createElement('div');
+    err.id = 'form-error';
+    err.style.cssText = 'background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.25);border-radius:10px;padding:.75rem 1rem;font-size:.8rem;color:#fca5a5;margin-bottom:1rem;';
+    const nav = document.querySelector('#wp3 .wnav');
+    nav.parentNode.insertBefore(err, nav);
+  }
+  err.textContent = '⚠️ ' + msg;
+  err.style.display = 'block';
+  setTimeout(() => { err.style.display = 'none'; }, 6000);
 }
 
 // ── PILL TOGGLES ──────────────────────────────────────────────
