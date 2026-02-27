@@ -895,6 +895,8 @@ textarea.fi{resize:none;min-height:85px;}
 </footer>
 
 <script>
+const API_URL = 'https://cover-credit-backend.onrender.com'; // ← your Render URL
+
 // ── DEPT CONFIG ──────────────────────────────────────────────
 const deptConfig = {
   loan:       { label:'Home / Personal Loan',  ico:'🏠', step3h:'Loan <em>specifics</em>' },
@@ -1048,7 +1050,7 @@ async function submitForm() {
   };
 
   try {
-    const res  = await fetch('/api/book', {
+    const res  = await fetch(API_URL + '/api/book', {
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
       body:    JSON.stringify(payload),
