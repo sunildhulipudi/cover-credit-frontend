@@ -1,80 +1,1041 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="About Cover Credit — honest insurance advisors for AP & Telangana families. Our story, team, and mission."/>
-  <title>About Us | Cover Credit</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="css/variables.css"/><link rel="stylesheet" href="css/global.css"/><link rel="stylesheet" href="css/components.css"/>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>About Us | Cover Credit — Insurance & Loans, AP & Telangana</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --bg:#06101f; --s1:#0b1a30; --s2:#0e2040;
+  --blue:#1976d2; --blue2:#42a5f5; --blue3:#90caf9;
+  --gold:#f5a623; --gold2:#ffd54f;
+  --green:#22c55e;
+  --line:rgba(255,255,255,.07);
+  --muted:rgba(255,255,255,.42);
+  --nh:70px; --ease:cubic-bezier(.16,1,.3,1);
+  --max:1240px;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--bg);color:#fff;overflow-x:hidden;cursor:none;}
+a{text-decoration:none;color:inherit;}
+strong{font-weight:600;}
+@media(max-width:768px){body{cursor:auto;}}
+
+/* ─── CURSOR ─── */
+#c1,#c2{position:fixed;top:0;left:0;pointer-events:none;border-radius:50%;z-index:9000;transform:translate(-50%,-50%);}
+#c1{width:8px;height:8px;background:var(--blue2);}
+#c2{width:34px;height:34px;border:1.5px solid rgba(66,165,245,.35);transition:width .15s,height .15s,opacity .15s;}
+body.h #c1{width:3px;height:3px;}
+body.h #c2{width:48px;height:48px;opacity:.15;}
+@media(max-width:768px){#c1,#c2{display:none;}}
+
+/* ─── NAV ─── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:800;height:var(--nh);padding:0 5%;transition:background .35s;}
+.nav.s{background:rgba(6,16,31,.96);backdrop-filter:blur(16px);box-shadow:0 1px 0 var(--line);}
+.ni{max-width:var(--max);margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;}
+.logo b{font-weight:900;color:var(--gold);font-style:normal;}
+.nl{display:flex;align-items:center;gap:1.6rem;list-style:none;}
+.nl a{font-size:.83rem;font-weight:500;color:rgba(255,255,255,.55);transition:color .2s;position:relative;}
+.nl a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--gold);transition:width .22s;}
+.nl a:hover,.nl a.on{color:#fff;}.nl a:hover::after,.nl a.on::after{width:100%;}
+.nl .drop{position:relative;}
+.nl .dlab{font-size:.83rem;font-weight:500;color:rgba(255,255,255,.55);cursor:none;display:flex;align-items:center;gap:.28rem;}
+.nl .darr{font-size:.5rem;transition:transform .22s;}.nl .drop:hover .darr{transform:rotate(180deg);}
+.nl .dmenu{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(4px);background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:.32rem;min-width:180px;opacity:0;visibility:hidden;transition:opacity .18s,transform .22s var(--ease),visibility .18s;box-shadow:0 18px 40px rgba(0,0,0,.5);}
+.nl .drop:hover .dmenu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+.nl .dmenu a{display:block;padding:.44rem .72rem;font-size:.77rem;color:rgba(255,255,255,.55);border-radius:7px;transition:background .12s,color .12s;}
+.nl .dmenu a:hover{background:rgba(255,255,255,.06);color:#fff;}
+.ncta{background:var(--gold)!important;color:#06101f!important;padding:.42rem 1.05rem!important;border-radius:100px;font-weight:700!important;font-size:.78rem!important;}
+.ncta::after{display:none!important;}
+.bur{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:4px;}
+.bur span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .28s,opacity .28s;}
+.bur.o span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.bur.o span:nth-child(2){opacity:0;}
+.bur.o span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.mob{position:fixed;inset:0;z-index:799;background:var(--bg);display:flex;flex-direction:column;padding:calc(var(--nh)+1.6rem) 5% 2.5rem;transform:translateX(100%);transition:transform .35s var(--ease);}
+.mob.o{transform:translateX(0);}
+.mob a{padding:.85rem 0;font-size:.95rem;font-weight:500;color:rgba(255,255,255,.65);border-bottom:1px solid var(--line);}
+.mcta{margin-top:1.6rem;background:var(--gold);color:#06101f!important;text-align:center;border-radius:10px;padding:.85rem!important;font-weight:700!important;border:none!important;}
+@media(max-width:768px){.nl{display:none;}.bur{display:flex;}}
+
+/* ─── FAB ─── */
+.fab{position:fixed;bottom:1.5rem;right:1.5rem;z-index:500;display:flex;flex-direction:column;gap:.55rem;align-items:flex-end;}
+.fab a{display:flex;align-items:center;gap:.4rem;padding:.58rem .9rem;border-radius:100px;font-size:.73rem;font-weight:600;cursor:none;transition:transform .16s;}
+.fab a:hover{transform:translateY(-2px);}
+.fwa{background:#25d366;color:#fff;box-shadow:0 4px 16px rgba(37,211,102,.28);}
+.fbk{background:var(--blue);color:#fff;box-shadow:0 4px 16px rgba(25,118,210,.28);}
+@media(max-width:768px){.fab a{cursor:pointer;}}
+
+/* ─── SCROLL REVEAL ─── */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease),transform .6s var(--ease);}
+.rv.in{opacity:1;transform:none;}
+.d1{transition-delay:.07s;}.d2{transition-delay:.14s;}.d3{transition-delay:.21s;}.d4{transition-delay:.28s;}
+
+/* ─── LAYOUT HELPERS ─── */
+.sec{padding:4.5rem 5%;}
+.sec.alt{background:var(--s1);}
+.wrap{max-width:var(--max);margin:0 auto;}
+.eye{display:inline-flex;align-items:center;gap:.35rem;font-size:.62rem;font-weight:700;color:var(--blue2);text-transform:uppercase;letter-spacing:2.5px;margin-bottom:.8rem;}
+.eye::before{content:'';width:12px;height:2px;background:var(--blue2);flex-shrink:0;}
+h2.ht{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:700;line-height:1.15;margin-bottom:.7rem;}
+h2.ht i{font-style:italic;color:var(--blue2);}
+.sub{font-size:.86rem;color:var(--muted);line-height:1.85;max-width:540px;}
+.sub strong{color:rgba(255,255,255,.75);}
+.tel{font-size:.78rem;color:rgba(255,255,255,.28);font-style:italic;margin-top:.45rem;}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.three{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+.four{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+@media(max-width:1000px){.two{grid-template-columns:1fr;gap:2.5rem;}.three{grid-template-columns:1fr 1fr;}.four{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.three{grid-template-columns:1fr;}}
+
+/* ─── HERO ─── */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 65% 50% at 55% 0%,rgba(25,118,210,.09) 0%,transparent 65%),var(--bg);}
+/* faint dot grid */
+.hero-bg::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:30px 30px;mask-image:radial-gradient(ellipse 70% 70% at 55% 40%,black,transparent);}
+.hero-in{position:relative;z-index:1;max-width:var(--max);margin:0 auto;padding:calc(var(--nh)+3.5rem) 5% 5rem;width:100%;display:grid;grid-template-columns:1.05fr 1fr;gap:5rem;align-items:center;}
+.bc{display:flex;align-items:center;gap:.38rem;font-size:.68rem;color:rgba(255,255,255,.25);margin-bottom:1.1rem;}
+.bc a{color:rgba(255,255,255,.25);transition:color .18s;}.bc a:hover{color:var(--blue2);}
+.tag{display:inline-flex;align-items:center;gap:.38rem;background:rgba(25,118,210,.1);border:1px solid rgba(25,118,210,.2);color:var(--blue3);font-size:.64rem;font-weight:700;padding:.26rem .82rem;border-radius:100px;text-transform:uppercase;letter-spacing:.4px;margin-bottom:.95rem;}
+.tag::before{content:'';width:5px;height:5px;background:var(--blue2);border-radius:50%;animation:blink 2.5s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+h1.ht1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,3.8vw,4rem);font-weight:900;line-height:1.04;letter-spacing:-2px;margin-bottom:.95rem;}
+h1.ht1 i{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hero-desc{font-size:.9rem;line-height:1.85;color:rgba(255,255,255,.48);margin-bottom:.5rem;}
+.hero-desc strong{color:rgba(255,255,255,.78);}
+.hero-tel{font-size:.8rem;color:rgba(255,255,255,.27);font-style:italic;margin-bottom:1.7rem;}
+.btns{display:flex;gap:.75rem;flex-wrap:wrap;}
+.bp{display:inline-flex;align-items:center;gap:.36rem;background:var(--gold);color:#06101f;padding:.75rem 1.6rem;border-radius:9px;font-weight:700;font-size:.86rem;cursor:none;transition:transform .16s,box-shadow .16s;}
+.bp:hover{transform:translateY(-2px);box-shadow:0 7px 22px rgba(245,166,35,.32);}
+.bs{display:inline-flex;align-items:center;gap:.36rem;background:rgba(255,255,255,.05);border:1px solid var(--line);color:#fff;padding:.75rem 1.5rem;border-radius:9px;font-weight:500;font-size:.86rem;cursor:none;transition:background .16s,transform .16s;}
+.bs:hover{background:rgba(255,255,255,.09);transform:translateY(-2px);}
+@media(max-width:768px){.bp,.bs{cursor:pointer;}}
+@media(max-width:900px){.hero-in{grid-template-columns:1fr;}.hero-r{display:none;}}
+
+/* ─── THE HERO SVG ANIMATION ─── */
+/* A clean 2D city street scene - car with insurance shield */
+
+/* ─── STATS ROW ─── */
+.stats{background:var(--s2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.stats-in{max-width:var(--max);margin:0 auto;padding:0 5%;display:grid;grid-template-columns:repeat(5,1fr);}
+.st{padding:1.7rem .8rem;text-align:center;border-right:1px solid var(--line);}
+.st:last-child{border-right:none;}
+.st-n{font-family:'Bebas Neue',sans-serif;font-size:2.1rem;letter-spacing:.5px;line-height:1;color:var(--gold);}
+.st-l{font-size:.62rem;color:rgba(255,255,255,.3);margin-top:.25rem;text-transform:uppercase;letter-spacing:.7px;}
+@media(max-width:900px){.stats-in{grid-template-columns:repeat(3,1fr);}.st:nth-child(3){border-right:none;}}
+@media(max-width:500px){.stats-in{grid-template-columns:1fr 1fr;}.st:nth-child(2n){border-right:none;}}
+
+/* ─── TIMELINE ─── */
+.tl{position:relative;padding-left:2.2rem;margin-top:2.2rem;}
+.tl::before{content:'';position:absolute;left:9px;top:6px;bottom:6px;width:2px;background:linear-gradient(180deg,var(--blue),rgba(25,118,210,.1));}
+.tli{position:relative;margin-bottom:2rem;}
+.tli:last-child{margin-bottom:0;}
+.tld{position:absolute;left:-2.2rem;top:2px;width:20px;height:20px;border-radius:50%;background:var(--s1);border:2px solid var(--blue);display:flex;align-items:center;justify-content:center;font-size:.65rem;}
+.tly{font-family:'Bebas Neue',sans-serif;font-size:.72rem;letter-spacing:2px;color:var(--blue2);margin-bottom:.28rem;}
+.tlt{font-size:.9rem;font-weight:700;margin-bottom:.28rem;}
+.tlb{font-size:.77rem;color:var(--muted);line-height:1.7;}
+
+/* ─── FEATURE CARDS ─── */
+.fc{background:var(--bg);border:1px solid var(--line);border-radius:13px;padding:1.4rem;transition:border-color .22s,transform .25s var(--ease);}
+.fc:hover{border-color:rgba(25,118,210,.22);transform:translateY(-4px);}
+.fc-ic{font-size:1.5rem;margin-bottom:.7rem;}
+.fc-tt{font-size:.88rem;font-weight:700;margin-bottom:.38rem;}
+.fc-ds{font-size:.75rem;color:var(--muted);line-height:1.7;}
+.fc-ds strong{color:rgba(255,255,255,.65);}
+
+/* ─── HOW WE WORK ─── */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:2.5rem;}
+.steps::before{content:'';position:absolute;top:34px;left:12%;right:12%;height:1px;background:linear-gradient(90deg,transparent,rgba(25,118,210,.18) 20%,rgba(25,118,210,.18) 80%,transparent);}
+.step{text-align:center;padding:0 1rem;position:relative;z-index:1;}
+.step-ic{width:68px;height:68px;border-radius:50%;background:var(--s1);border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;font-size:1.4rem;transition:border-color .22s,background .22s;position:relative;}
+.step:hover .step-ic{border-color:rgba(25,118,210,.35);background:rgba(25,118,210,.07);}
+.step-nb{position:absolute;top:-4px;right:-4px;width:18px;height:18px;background:var(--blue);border-radius:50%;font-family:'Bebas Neue',sans-serif;font-size:.68rem;display:flex;align-items:center;justify-content:center;color:#fff;}
+.step-tt{font-size:.87rem;font-weight:700;margin-bottom:.35rem;}
+.step-ds{font-size:.74rem;color:var(--muted);line-height:1.65;}
+@media(max-width:768px){.steps{grid-template-columns:1fr 1fr;gap:1.5rem;}.steps::before{display:none;}}
+@media(max-width:400px){.steps{grid-template-columns:1fr;}}
+
+/* ─── LOAN CARDS ─── */
+.lc{background:var(--s2);border:1px solid var(--line);border-radius:13px;padding:1.4rem;transition:border-color .22s,transform .25s var(--ease);}
+.lc:hover{border-color:rgba(245,166,35,.2);transform:translateY(-4px);}
+.lc-ic{font-size:1.5rem;margin-bottom:.65rem;}
+.lc-tt{font-size:.88rem;font-weight:700;margin-bottom:.38rem;}
+.lc-ds{font-size:.75rem;color:var(--muted);line-height:1.7;}
+.lc-ds strong{color:rgba(255,255,255,.65);}
+.lc-ok{display:flex;align-items:center;gap:.32rem;font-size:.69rem;color:var(--green);font-weight:600;margin-top:.65rem;}
+.lc-tel{font-size:.69rem;color:rgba(255,255,255,.22);font-style:italic;margin-top:.28rem;}
+
+/* ─── TEAM ─── */
+.tc{background:var(--s1);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .22s,transform .25s var(--ease);}
+.tc:hover{border-color:rgba(255,255,255,.12);transform:translateY(-4px);}
+.tc-top{height:100px;display:flex;align-items:center;justify-content:center;position:relative;}
+.tc-av{width:58px;height:58px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.7rem;color:#fff;border:2px solid rgba(255,255,255,.1);}
+.tc-badge{position:absolute;top:.55rem;right:.55rem;font-size:.52rem;background:var(--gold);color:#06101f;padding:.1rem .45rem;border-radius:100px;font-weight:700;text-transform:uppercase;}
+.tc-body{padding:.95rem 1rem;}
+.tc-name{font-size:.88rem;font-weight:700;margin-bottom:.15rem;}
+.tc-role{font-size:.61rem;color:var(--blue2);font-weight:700;text-transform:uppercase;letter-spacing:.6px;margin-bottom:.45rem;}
+.tc-bio{font-size:.72rem;color:rgba(255,255,255,.37);line-height:1.65;}
+
+/* ─── CITIES ─── */
+.cities-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem;}
+.sb-title{font-size:.6rem;font-weight:700;color:rgba(255,255,255,.2);text-transform:uppercase;letter-spacing:2px;margin-bottom:.7rem;padding-bottom:.38rem;border-bottom:1px solid var(--line);}
+.cg{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;}
+.ct{display:flex;align-items:center;gap:.38rem;background:var(--bg);border:1px solid var(--line);border-radius:7px;padding:.44rem .65rem;font-size:.71rem;color:rgba(255,255,255,.48);transition:background .16s,color .16s,border-color .16s;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s,background .16s,color .16s,border-color .16s;}
+.ct.v{opacity:1;transform:none;}
+.ct:hover{background:rgba(25,118,210,.07);color:rgba(255,255,255,.8);border-color:rgba(25,118,210,.18);}
+.cdot{width:4.5px;height:4.5px;border-radius:50%;flex-shrink:0;}
+.cdot.b{background:var(--blue2);opacity:.6;}.cdot.g{background:var(--gold);opacity:.6;}
+.cities-note{grid-column:1/-1;background:rgba(25,118,210,.05);border:1px solid rgba(25,118,210,.1);border-radius:9px;padding:.95rem 1.1rem;font-size:.74rem;color:rgba(255,255,255,.36);line-height:1.7;margin-top:.5rem;}
+.cities-note strong{color:rgba(255,255,255,.58);}
+@media(max-width:900px){.cities-wrap{grid-template-columns:1fr;}}
+@media(max-width:500px){.cg{grid-template-columns:1fr 1fr;}}
+
+/* ─── TESTIMONIAL TICKER ─── */
+.ticker{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:.72rem 0;background:var(--bg);}
+.tt{display:flex;width:max-content;animation:tick 36s linear infinite;}
+.tt:hover{animation-play-state:paused;}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ti{display:inline-flex;align-items:center;gap:.65rem;padding:0 2.2rem;white-space:nowrap;}
+.ti-s{color:var(--gold);font-size:.63rem;letter-spacing:1px;}
+.ti-q{font-size:.74rem;color:rgba(255,255,255,.45);font-style:italic;}
+.ti-a{font-size:.64rem;color:rgba(255,255,255,.2);}
+.ti-sep{color:rgba(255,255,255,.07);}
+
+/* ─── CTA BANNER ─── */
+.cta{padding:4.5rem 5%;background:var(--s2);position:relative;overflow:hidden;}
+.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 45% 55% at 50% 50%,rgba(25,118,210,.06),transparent);pointer-events:none;}
+.cta-in{position:relative;z-index:1;max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:center;gap:2.5rem;}
+.cta-tt{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.4vw,2.2rem);font-weight:700;line-height:1.2;margin-bottom:.55rem;}
+.cta-tt i{font-style:italic;color:var(--blue2);}
+.cta-ds{font-size:.83rem;color:var(--muted);line-height:1.75;}
+.cta-tel{font-size:.76rem;color:rgba(255,255,255,.22);font-style:italic;margin-top:.35rem;}
+.cta-side{display:flex;flex-direction:column;gap:.5rem;align-items:center;flex-shrink:0;}
+.cta-ph{font-size:.68rem;color:rgba(255,255,255,.28);}
+.cta-ph a{color:rgba(255,255,255,.5);font-weight:600;}
+@media(max-width:860px){.cta-in{grid-template-columns:1fr;}}
+
+/* ─── FOOTER ─── */
+.ft{background:#020b1a;border-top:1px solid var(--line);padding:3.2rem 5% 1.6rem;}
+.ft-in{max-width:var(--max);margin:0 auto;}
+.ft-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2.5rem;padding-bottom:2.2rem;border-bottom:1px solid var(--line);margin-bottom:1.4rem;}
+.fl{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;display:inline-block;margin-bottom:.7rem;}
+.fl b{font-weight:900;color:var(--gold);font-style:normal;}
+.fd{font-size:.73rem;color:rgba(255,255,255,.3);line-height:1.7;margin-bottom:.8rem;}
+.fc2{display:flex;align-items:center;gap:.38rem;font-size:.71rem;color:rgba(255,255,255,.25);margin-bottom:.35rem;}
+.fc2 a{color:rgba(255,255,255,.45);transition:color .16s;}.fc2 a:hover{color:var(--gold);}
+.fcl{font-size:.59rem;font-weight:700;color:rgba(255,255,255,.17);text-transform:uppercase;letter-spacing:1.2px;margin-bottom:.7rem;}
+.ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.4rem;}
+.ft-col a{font-size:.71rem;color:rgba(255,255,255,.3);transition:color .16s;}.ft-col a:hover{color:var(--gold);}
+.ft-bot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.7rem;font-size:.67rem;color:rgba(255,255,255,.13);}
+.ft-lk{display:flex;gap:1.2rem;}.ft-lk a{color:rgba(255,255,255,.13);transition:color .16s;}.ft-lk a:hover{color:rgba(255,255,255,.32);}
+@media(max-width:900px){.ft-top{grid-template-columns:1fr 1fr;}}
+@media(max-width:500px){.ft-top{grid-template-columns:1fr;}}
+
+/* ─── ANIMATED SVG SCENE KEYFRAMES ─── */
+@keyframes driveX{0%,100%{transform:translateX(0px)}50%{transform:translateX(4px)}}
+@keyframes spinW{to{transform:rotate(360deg)}}
+@keyframes roadMove{from{transform:translateX(0)}to{transform:translateX(-120px)}}
+@keyframes floatUp{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes shieldGlow{0%,100%{opacity:.8;transform:scale(1)}50%{opacity:1;transform:scale(1.04)}}
+@keyframes checkDraw{from{stroke-dashoffset:24}to{stroke-dashoffset:0}}
+@keyframes coinFloat{0%,100%{transform:translateY(0) rotate(0deg)}33%{transform:translateY(-10px) rotate(6deg)}66%{transform:translateY(-5px) rotate(-3deg)}}
+@keyframes dotPulse{0%,100%{r:3;opacity:.7}50%{r:5.5;opacity:.2}}
+@keyframes cardSlideIn{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}
+@keyframes twinkle{0%,100%{opacity:0;transform:scale(.2)}50%{opacity:.7;transform:scale(1)}}
+@keyframes processPop{from{transform:scale(.85);opacity:0}to{transform:scale(1);opacity:1}}
+@keyframes lineGrow{from{stroke-dashoffset:200}to{stroke-dashoffset:0}}
+</style>
 </head>
 <body>
-  <header>
-    <nav class="nav"><div class="nav__inner"><a href="index.html" class="nav__logo">Cover<span>Credit</span></a><ul class="nav__links"><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life Insurance</a></li><li class="nav__dropdown"><span class="nav__dropdown-trigger">Vehicle Insurance <span class="nav__dropdown-arrow">▼</span></span><div class="nav__dropdown-menu"><a href="bike-insurance.html">Bike Insurance</a><a href="car-insurance.html">Car Insurance</a><a href="commercial-vehicle-insurance.html">Commercial Vehicles</a></div></li><li><a href="loans.html">Loans</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html" class="active">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="book.html" class="nav__cta">Book Consultation</a></li></ul><button class="nav__hamburger" id="hamburger"><span></span><span></span><span></span></button></div></nav>
-    <nav class="mobile-nav" id="mobile-nav"><a href="health-insurance.html" class="mobile-nav__item">Health Insurance</a><a href="life-insurance.html" class="mobile-nav__item">Life Insurance</a><a href="bike-insurance.html" class="mobile-nav__item mobile-nav__sub">↳ Bike Insurance</a><a href="car-insurance.html" class="mobile-nav__item mobile-nav__sub">↳ Car Insurance</a><a href="commercial-vehicle-insurance.html" class="mobile-nav__item mobile-nav__sub">↳ Commercial Vehicles</a><a href="loans.html" class="mobile-nav__item">Loans</a><a href="blog.html" class="mobile-nav__item">Blog</a><a href="about.html" class="mobile-nav__item">About</a><a href="contact.html" class="mobile-nav__item">Contact</a><a href="book.html" class="mobile-nav__cta">Book Free Consultation</a></nav>
-  </header>
+<div id="c1"></div><div id="c2"></div>
 
-  <section class="page-hero">
-    <div class="page-hero__inner" style="max-width:var(--max-width);width:var(--container);">
-      <nav class="breadcrumb"><a href="index.html">Home</a><span class="sep">›</span><span>About</span></nav>
-      <h1 class="page-hero__title">About Cover Credit</h1>
-      <p class="page-hero__desc">We're a team of passionate insurance advisors on a mission to make insurance honest, simple, and truly useful for families across AP &amp; Telangana.</p>
+<div class="fab">
+  <a href="book.html" class="fbk">📅 Book Free Session</a>
+  <a href="https://wa.me/917842854466" target="_blank" class="fwa">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a9.526 9.526 0 00-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp
+  </a>
+</div>
+
+<nav class="nav" id="nav">
+  <div class="ni">
+    <a href="index.html" class="logo">Cover<b>Credit</b></a>
+    <ul class="nl">
+      <li><a href="health-insurance.html">Health</a></li>
+      <li><a href="life-insurance.html">Life Insurance</a></li>
+      <li class="drop">
+        <span class="dlab">Vehicle <span class="darr">▼</span></span>
+        <div class="dmenu">
+          <a href="bike-insurance.html">🏍️ Bike Insurance</a>
+          <a href="car-insurance.html">🚗 Car Insurance</a>
+          <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicle</a>
+        </div>
+      </li>
+      <li><a href="loans.html">Loans</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html" class="on">About</a></li>
+      <li><a href="book.html" class="ncta">Free Consultation</a></li>
+    </ul>
+    <button class="bur" id="bur"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob" id="mob">
+  <a href="health-insurance.html">Health Insurance</a>
+  <a href="life-insurance.html">Life Insurance</a>
+  <a href="bike-insurance.html">🏍️ Bike Insurance</a>
+  <a href="car-insurance.html">🚗 Car Insurance</a>
+  <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicle</a>
+  <a href="loans.html">Loans</a>
+  <a href="blog.html">Blog</a>
+  <a href="about.html">About</a>
+  <a href="book.html" class="mcta">Book Free Consultation →</a>
+</div>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-in">
+    <div>
+      <div class="bc"><a href="index.html">Home</a> › <span>About Us</span></div>
+      <div class="tag">🛡️ Insurance & Loan Advisors · AP & Telangana</div>
+      <h1 class="ht1" style="animation:cardSlideIn .7s var(--ease) .2s both">
+        Honest advisors.<br/>Real support.<br/><i>Always available.</i>
+      </h1>
+      <p class="hero-desc" style="animation:cardSlideIn .7s var(--ease) .35s both">
+        Cover Credit is an insurance and loan advisory serving <strong>500+ families across Andhra Pradesh & Telangana.</strong> We compare, explain, and stay with you — from policy day to claim day. No vanishing acts.
+      </p>
+      <p class="hero-tel" style="animation:cardSlideIn .7s var(--ease) .44s both">తెలుగులో కూడా మాట్లాడతాం — మీకు అర్థమయ్యే భాషలో సలహా ఇస్తాం.</p>
+      <div class="btns" style="animation:cardSlideIn .7s var(--ease) .5s both">
+        <a href="book.html" class="bp">Talk to Us Free →</a>
+        <a href="tel:+917842854466" class="bs">📞 +91 78428 54466</a>
+      </div>
     </div>
-  </section>
 
-  <section class="section" style="background:var(--bg);">
-    <div class="section-wrap">
+    <!-- Hero right: animated street scene SVG -->
+    <div class="hero-r" style="animation:cardSlideIn .8s var(--ease) .4s both">
+      <svg viewBox="0 0 430 350" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:460px;display:block;margin:0 auto;">
+        <defs>
+          <linearGradient id="hsky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1e3a"/><stop offset="1" stop-color="#06101f"/></linearGradient>
+          <linearGradient id="hrd" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a2e44"/><stop offset="1" stop-color="#0f1e30"/></linearGradient>
+          <linearGradient id="hcar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#42a5f5"/><stop offset="1" stop-color="#1565c0"/></linearGradient>
+          <linearGradient id="hshield" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#22c55e"/><stop offset="1" stop-color="#16a34a"/></linearGradient>
+          <clipPath id="hclip"><rect width="430" height="350" rx="16"/></clipPath>
+        </defs>
+        <g clip-path="url(#hclip)">
+          <!-- Sky + background -->
+          <rect width="430" height="350" fill="url(#hsky)"/>
+          <!-- Stars -->
+          <circle cx="35" cy="30" r="1.4" fill="white" opacity=".3" style="animation:twinkle 3s infinite"/>
+          <circle cx="88" cy="18" r="1" fill="white" opacity=".22" style="animation:twinkle 3s .5s infinite"/>
+          <circle cx="155" cy="28" r="1.3" fill="white" opacity=".26" style="animation:twinkle 3s 1s infinite"/>
+          <circle cx="298" cy="16" r="1" fill="white" opacity=".2" style="animation:twinkle 3s 1.5s infinite"/>
+          <circle cx="378" cy="34" r="1.4" fill="white" opacity=".28" style="animation:twinkle 3s .8s infinite"/>
+          <circle cx="260" cy="24" r=".9" fill="white" opacity=".18" style="animation:twinkle 3s 2s infinite"/>
+          <!-- City buildings silhouette -->
+          <rect x="0" y="100" width="40" height="122" fill="#0a1828" rx="2"/>
+          <rect x="6" y="116" width="9" height="8" fill="#ffd54f" opacity=".15" rx="1"/>
+          <rect x="21" y="116" width="9" height="8" fill="#ffd54f" opacity=".1" rx="1"/>
+          <rect x="6" y="130" width="9" height="8" fill="#42a5f5" opacity=".12" rx="1"/>
+          <rect x="21" y="144" width="9" height="8" fill="#ffd54f" opacity=".08" rx="1"/>
+          <rect x="44" y="118" width="32" height="104" fill="#0d1e36" rx="2"/>
+          <rect x="50" y="128" width="8" height="7" fill="#ffd54f" opacity=".12" rx="1"/>
+          <rect x="62" y="128" width="8" height="7" fill="#42a5f5" opacity=".1" rx="1"/>
+          <rect x="50" y="140" width="8" height="7" fill="#ffd54f" opacity=".09" rx="1"/>
+          <rect x="62" y="152" width="8" height="7" fill="#ffd54f" opacity=".08" rx="1"/>
+          <!-- Right buildings -->
+          <rect x="354" y="106" width="38" height="116" fill="#0a1828" rx="2"/>
+          <rect x="360" y="120" width="9" height="8" fill="#ffd54f" opacity=".15" rx="1"/>
+          <rect x="375" y="120" width="9" height="8" fill="#42a5f5" opacity=".1" rx="1"/>
+          <rect x="360" y="134" width="9" height="8" fill="#ffd54f" opacity=".1" rx="1"/>
+          <rect x="388" y="114" width="28" height="108" fill="#0d1e36" rx="2"/>
+          <rect x="393" y="124" width="8" height="7" fill="#42a5f5" opacity=".12" rx="1"/>
+          <rect x="405" y="136" width="8" height="7" fill="#ffd54f" opacity=".1" rx="1"/>
+          <!-- Road -->
+          <rect x="0" y="222" width="430" height="72" fill="url(#hrd)"/>
+          <rect x="0" y="222" width="430" height="3" fill="#1d2e42"/>
+          <!-- Animated road dashes -->
+          <g style="animation:roadMove 1.3s linear infinite">
+            <rect x="0" y="256" width="40" height="4" rx="2" fill="rgba(255,213,79,.28)"/>
+            <rect x="58" y="256" width="40" height="4" rx="2" fill="rgba(255,213,79,.28)"/>
+            <rect x="116" y="256" width="40" height="4" rx="2" fill="rgba(255,213,79,.28)"/>
+            <rect x="174" y="256" width="40" height="4" rx="2" fill="rgba(255,213,79,.28)"/>
+            <rect x="232" y="256" width="40" height="4" rx="2" fill="rgba(255,213,79,.28)"/>
+            <rect x="290" y="256" width="40" height="4" rx="2" fill="rgba(255,213,79,.28)"/>
+            <rect x="348" y="256" width="40" height="4" rx="2" fill="rgba(255,213,79,.28)"/>
+            <rect x="406" y="256" width="40" height="4" rx="2" fill="rgba(255,213,79,.28)"/>
+            <rect x="464" y="256" width="40" height="4" rx="2" fill="rgba(255,213,79,.28)"/>
+          </g>
+          <!-- Kerb / pavement -->
+          <rect x="0" y="293" width="430" height="57" fill="#08141f"/>
+          <rect x="0" y="293" width="430" height="3" fill="#0f1e2e"/>
+          <!-- Trees -->
+          <rect x="88" y="202" width="7" height="22" fill="#2e4020"/>
+          <ellipse cx="91" cy="198" rx="15" ry="16" fill="#2e7d32" opacity=".65"/>
+          <ellipse cx="91" cy="191" rx="10" ry="12" fill="#388e3c" opacity=".65"/>
+          <rect x="330" y="202" width="7" height="22" fill="#2e4020"/>
+          <ellipse cx="333" cy="198" rx="15" ry="16" fill="#2e7d32" opacity=".6"/>
+          <ellipse cx="333" cy="191" rx="10" ry="12" fill="#388e3c" opacity=".6"/>
 
-      <!-- Stats -->
-      <div class="stats-row">
-        <div class="stat-box"><div class="stat-number">500+</div><div class="stat-label">Families Served</div></div>
-        <div class="stat-box"><div class="stat-number">₹2Cr+</div><div class="stat-label">Claims Settled</div></div>
-        <div class="stat-box"><div class="stat-number">98%</div><div class="stat-label">Claim Success Rate</div></div>
-        <div class="stat-box"><div class="stat-number">24/7</div><div class="stat-label">Claim Support</div></div>
-        <div class="stat-box"><div class="stat-number">2</div><div class="stat-label">Branches (Vizag &amp; Hyd)</div></div>
-      </div>
+          <!-- THE CAR — gently rocking as it drives -->
+          <g style="animation:driveX 2.2s ease-in-out infinite">
+            <!-- Body -->
+            <rect x="112" y="194" width="200" height="40" rx="9" fill="url(#hcar)"/>
+            <!-- Roof -->
+            <rect x="132" y="170" width="144" height="30" rx="9" fill="#5bb8ff"/>
+            <!-- Windows -->
+            <rect x="140" y="174" width="58" height="22" rx="5" fill="rgba(128,216,255,.35)"/>
+            <rect x="204" y="174" width="58" height="22" rx="5" fill="rgba(128,216,255,.3)"/>
+            <!-- Window glare -->
+            <rect x="143" y="176" width="15" height="5" rx="2" fill="white" opacity=".18"/>
+            <rect x="207" y="176" width="15" height="5" rx="2" fill="white" opacity=".15"/>
+            <!-- Headlight -->
+            <rect x="112" y="202" width="16" height="9" rx="3" fill="#fffde7" opacity=".75"/>
+            <!-- Taillight -->
+            <rect x="296" y="202" width="16" height="9" rx="3" fill="#ef5350" opacity=".45"/>
+            <!-- Bumper stripe -->
+            <rect x="112" y="222" width="200" height="5" rx="2" fill="#1565c0" opacity=".6"/>
+            <!-- Left wheel with spin -->
+            <g style="transform-origin:150px 238px;animation:spinW .65s linear infinite">
+              <circle cx="150" cy="238" r="19" fill="#0d1826" stroke="#1e3050" stroke-width="2.5"/>
+              <circle cx="150" cy="238" r="11" fill="#182436"/>
+              <line x1="150" y1="219" x2="150" y2="257" stroke="#243852" stroke-width="2"/>
+              <line x1="131" y1="238" x2="169" y2="238" stroke="#243852" stroke-width="2"/>
+              <circle cx="150" cy="238" r="4" fill="#2a3e56"/>
+            </g>
+            <!-- Right wheel with spin -->
+            <g style="transform-origin:274px 238px;animation:spinW .65s linear infinite">
+              <circle cx="274" cy="238" r="19" fill="#0d1826" stroke="#1e3050" stroke-width="2.5"/>
+              <circle cx="274" cy="238" r="11" fill="#182436"/>
+              <line x1="274" y1="219" x2="274" y2="257" stroke="#243852" stroke-width="2"/>
+              <line x1="255" y1="238" x2="293" y2="238" stroke="#243852" stroke-width="2"/>
+              <circle cx="274" cy="238" r="4" fill="#2a3e56"/>
+            </g>
+          </g>
 
-      <!-- Story + Mission -->
-      <div class="two-col" style="margin-bottom:2rem;">
-        <div class="info-box">
-          <h2 class="info-box__title">Our Story</h2>
-          <p class="info-box__body">Cover Credit was born from frustration — the kind that every insurance customer in India feels when their agent stops picking up the phone right after selling the policy.</p>
-          <p class="info-box__body">Our founder had personally experienced this with his family's health insurance claim. After navigating a complex claim almost entirely alone, he decided to build something different: an insurance advisory that stays with you from the moment you buy your policy to the day your claim gets paid.</p>
-          <p class="info-box__body">Today, Cover Credit serves hundreds of families across Hyderabad, Visakhapatnam, Vijayawada, and beyond — with a simple promise: we won't disappear after the sale.</p>
-        </div>
-        <div class="info-box">
-          <h2 class="info-box__title">Our Mission</h2>
-          <p class="info-box__body">Insurance in India is often sold, not advised. Agents push products that earn them the highest commission — not the ones that truly protect families.</p>
-          <p class="info-box__body">At Cover Credit, we flip this model. We're relationship managers, not salespeople. Our success is measured by how many claims we help settle, not how many policies we sell.</p>
-          <p class="info-box__body">We believe every family in AP &amp; Telangana deserves access to honest insurance advice — in Telugu if they prefer — without any pressure, jargon, or hidden costs.</p>
-        </div>
-      </div>
+          <!-- SHIELD — gentle float above car -->
+          <g style="animation:shieldGlow 3s ease-in-out infinite;transform-origin:212px 122px">
+            <path d="M212 82 Q238 92 238 112 Q238 135 212 145 Q186 135 186 112 Q186 92 212 82Z" fill="rgba(34,197,94,.11)" stroke="url(#hshield)" stroke-width="2"/>
+            <!-- Check mark animated draw -->
+            <path d="M201 112 L210 121 L226 100" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-dasharray="30" stroke-dashoffset="30">
+              <animate attributeName="stroke-dashoffset" from="30" to="0" dur=".7s" fill="freeze" begin=".6s"/>
+            </path>
+            <!-- Outer glow ring pulsing -->
+            <circle cx="212" cy="113" r="32" fill="none" stroke="#22c55e" stroke-width="1" opacity=".1">
+              <animate attributeName="r" values="28;38;28" dur="3s" repeatCount="indefinite"/>
+              <animate attributeName="opacity" values=".12;0;.12" dur="3s" repeatCount="indefinite"/>
+            </circle>
+          </g>
 
-      <!-- Team -->
-      <span class="section-label">Our Team</span>
-      <h2 class="section-title" style="margin-bottom:2rem;">The people behind Cover Credit</h2>
-      <div class="team-grid" style="margin-bottom:3rem;">
-        <div class="team-card"><div class="team-avatar">A</div><h3 class="team-card__name">Arun K.</h3><div class="team-card__role">Founder &amp; Lead Advisor</div><p class="team-card__bio">Insurance advisor with 8+ years of experience. Specialises in health &amp; life insurance. Fluent in Telugu, Hindi &amp; English.</p></div>
-        <div class="team-card"><div class="team-avatar">S</div><h3 class="team-card__name">Sravani</h3><div class="team-card__role">Claims Specialist</div><p class="team-card__bio">Expert in claim documentation and insurer coordination. Has helped settle 200+ claims across AP &amp; Telangana.</p></div>
-        <div class="team-card"><div class="team-avatar">R</div><h3 class="team-card__name">Ravi</h3><div class="team-card__role">Vehicle Insurance Advisor</div><p class="team-card__bio">10+ years in motor insurance. Handles commercial fleet insurance for businesses across the region.</p></div>
-        <div class="team-card"><div class="team-avatar">P</div><h3 class="team-card__name">Preethi</h3><div class="team-card__role">Loans &amp; Finance Advisor</div><p class="team-card__bio">Former bank relationship manager with deep expertise in home loans, LAP, and business finance solutions.</p></div>
-      </div>
-
-      <!-- Branches -->
-      <div class="info-box">
-        <h2 class="info-box__title">Our Branches</h2>
-        <div class="two-col" style="margin-top:1rem;">
-          <div class="mini-card"><div class="mini-card__icon">📍</div><h4 class="mini-card__title">Hyderabad</h4><p class="mini-card__body">Serving Hyderabad, Secunderabad, Medchal, and surrounding areas.</p></div>
-          <div class="mini-card"><div class="mini-card__icon">📍</div><h4 class="mini-card__title">Visakhapatnam</h4><p class="mini-card__body">Serving Vizag, Bheemunipatnam, Anakapalli, and neighbouring districts.</p></div>
-        </div>
-      </div>
-
+          <!-- Floating status cards -->
+          <!-- "Policy Active" card -->
+          <g style="animation:floatUp 3.2s ease-in-out infinite .5s">
+            <rect x="238" y="88" width="106" height="30" rx="8" fill="rgba(10,24,42,.9)" stroke="rgba(34,197,94,.28)" stroke-width="1"/>
+            <circle cx="252" cy="103" r="4" fill="#22c55e" opacity=".9">
+              <animate attributeName="opacity" values=".9;.3;.9" dur="1.6s" repeatCount="indefinite"/>
+            </circle>
+            <text x="261" y="99" font-size="7.5" fill="#22c55e" font-weight="700" font-family="DM Sans,sans-serif">Policy Active</text>
+            <text x="261" y="110" font-size="6.5" fill="rgba(255,255,255,.3)" font-family="DM Sans,sans-serif">Claim: Covered ✓</text>
+          </g>
+          <!-- "Avg Save" card -->
+          <g style="animation:floatUp 3.8s ease-in-out infinite 1.2s">
+            <rect x="300" y="128" width="118" height="26" rx="7" fill="rgba(10,24,42,.9)" stroke="rgba(245,166,35,.22)" stroke-width="1"/>
+            <text x="359" y="145" text-anchor="middle" font-size="7" fill="#ffd54f" font-weight="700" font-family="DM Sans,sans-serif">⭐ Avg saving ₹1,200/yr</text>
+          </g>
+          <!-- "AP & TG" card left -->
+          <g style="animation:floatUp 4s ease-in-out infinite .2s">
+            <rect x="8" y="80" width="98" height="28" rx="7" fill="rgba(10,24,42,.9)" stroke="rgba(66,165,245,.22)" stroke-width="1"/>
+            <text x="57" y="91" text-anchor="middle" font-size="7" fill="var(--blue2)" font-weight="700" font-family="DM Sans,sans-serif">📍 AP & Telangana</text>
+            <text x="57" y="101" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,.28)" font-family="DM Sans,sans-serif">500+ families</text>
+          </g>
+          <!-- Floating ₹ coins -->
+          <g style="animation:coinFloat 2.8s ease-in-out infinite">
+            <circle cx="356" cy="68" r="14" fill="rgba(245,166,35,.12)" stroke="rgba(245,166,35,.45)" stroke-width="1.5"/>
+            <text x="356" y="73" text-anchor="middle" font-size="11" fill="#ffd54f" font-family="Bebas Neue,sans-serif">₹</text>
+          </g>
+          <g style="animation:coinFloat 2.8s ease-in-out infinite .6s">
+            <circle cx="382" cy="50" r="10" fill="rgba(245,166,35,.1)" stroke="rgba(245,166,35,.35)" stroke-width="1"/>
+            <text x="382" y="54" text-anchor="middle" font-size="8.5" fill="#ffd54f" font-family="Bebas Neue,sans-serif">₹</text>
+          </g>
+          <g style="animation:coinFloat 2.8s ease-in-out infinite 1.1s">
+            <circle cx="328" cy="55" r="8" fill="rgba(245,166,35,.08)" stroke="rgba(245,166,35,.28)" stroke-width="1"/>
+            <text x="328" y="59" text-anchor="middle" font-size="7" fill="#ffd54f" font-family="Bebas Neue,sans-serif">₹</text>
+          </g>
+        </g>
+      </svg>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="cta-section"><div class="cta-section__inner"><h2 class="cta-section__title">Ready to work with us?</h2><p class="cta-section__desc">Book a free 30-minute consultation and experience the Cover Credit difference.</p><a href="book.html" class="btn btn--white">Book Free Consultation</a></div></section>
+<!-- ══════════ STATS ══════════ -->
+<div class="stats">
+  <div class="stats-in">
+    <div class="st rv"><div class="st-n" data-count="500" data-s="+">0</div><div class="st-l">Families Served</div></div>
+    <div class="st rv d1"><div class="st-n">₹2Cr+</div><div class="st-l">Claims Settled</div></div>
+    <div class="st rv d2"><div class="st-n">98%</div><div class="st-l">Claim Success Rate</div></div>
+    <div class="st rv d3"><div class="st-n">24/7</div><div class="st-l">Claim Support</div></div>
+    <div class="st rv d4"><div class="st-n">15+</div><div class="st-l">Insurer Partners</div></div>
+  </div>
+</div>
 
-  <footer class="footer"><div class="footer__top"><div><a href="index.html" class="footer__logo">Cover<span>Credit</span></a><p class="footer__tagline">Honest insurance advice. We guide, not sell.</p><p class="footer__serving">© <span id="current-year">2026</span> Cover Credit. All rights reserved.</p></div><div class="footer__col"><h4>Quick Links</h4><ul><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life Insurance</a></li><li><a href="loans.html">Loans</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="book.html">Book Consultation</a></li></ul></div><div class="footer__col"><h4>Branches</h4><ul><li><a href="#">Visakhapatnam</a></li><li><a href="#">Hyderabad</a></li></ul></div><div class="footer__col"><h4>Contact</h4><div class="footer__contact-item">📞 <a href="tel:+919642834789">+91 96428 34789</a></div><div class="footer__contact-item">✉️ <a href="mailto:info@covercredit.in">info@covercredit.in</a></div></div></div><div class="footer__bottom"><span>© <span id="current-year-2">2026</span> Cover Credit. All rights reserved.</span><div class="footer__bottom-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div></div></footer>
-  <script src="js/nav.js"></script><script src="js/main.js"></script>
+<!-- ══════════ OUR STORY ══════════ -->
+<section class="sec">
+  <div class="wrap two">
+    <div class="rv">
+      <div class="eye">Our Story</div>
+      <h2 class="ht">Built because<br/>we saw <i>what was missing.</i></h2>
+      <p class="sub" style="margin-bottom:.5rem;">Insurance in India has a trust problem. Agents sell policies and stop picking up the phone. Claims get rejected — and clients navigate them alone. <strong>Cover Credit exists to be the opposite of that.</strong></p>
+      <p class="tel">మా లక్ష్యం: మీకు నిజాయితీగా, నిరంతరం సహాయం చేయడం.</p>
+      <div class="tl rv d1">
+        <div class="tli">
+          <div class="tld">🌱</div>
+          <div class="tly">2018 · The Frustration</div>
+          <div class="tlt">A claim rejected. An agent unreachable.</div>
+          <div class="tlb">Our founder watched a family in Hyderabad face a ₹3 lakh hospital bill alone — their insurance was active, but their agent had vanished after the sale. That experience became the reason Cover Credit was built.</div>
+        </div>
+        <div class="tli">
+          <div class="tld">🏢</div>
+          <div class="tly">2019 · The Start</div>
+          <div class="tlt">Began with one rule: never stop picking up the phone.</div>
+          <div class="tlb">Started in Hyderabad. First year: 60 families, 12 claims settled personally, 100% call response rate. Word spread quickly — because the bar was that low everywhere else.</div>
+        </div>
+        <div class="tli">
+          <div class="tld">📍</div>
+          <div class="tly">2021 · AP Expansion</div>
+          <div class="tlt">Grew across Andhra Pradesh — especially for Telugu-language guidance.</div>
+          <div class="tlb">Demand from AP families grew fast. People wanted insurance advice in Telugu, in plain language, without pressure. We expanded to Vijayawada, Vizag, Kurnool and beyond.</div>
+        </div>
+        <div class="tli">
+          <div class="tld">🏆</div>
+          <div class="tly">Today</div>
+          <div class="tlt">500+ families. Both states. Same promise.</div>
+          <div class="tlb">From Srikakulam to Tirupati, Karimnagar to Kurnool — we answer the phone. In Telugu or English. On a Sunday evening if needed.</div>
+        </div>
+      </div>
+    </div>
+    <!-- Right: animated process diagram -->
+    <div class="rv d2">
+      <svg viewBox="0 0 380 420" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;display:block;margin:0 auto;">
+        <defs>
+          <linearGradient id="pbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0a1628"/><stop offset="1" stop-color="#060e1c"/></linearGradient>
+          <linearGradient id="pcard" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1565c0"/><stop offset="1" stop-color="#0d47a1"/></linearGradient>
+        </defs>
+        <rect width="380" height="420" fill="url(#pbg)" rx="14"/>
+        <!-- Grid lines subtle -->
+        <line x1="0" y1="105" x2="380" y2="105" stroke="rgba(255,255,255,.03)" stroke-width="1"/>
+        <line x1="0" y1="210" x2="380" y2="210" stroke="rgba(255,255,255,.03)" stroke-width="1"/>
+        <line x1="0" y1="315" x2="380" y2="315" stroke="rgba(255,255,255,.03)" stroke-width="1"/>
+        <line x1="126" y1="0" x2="126" y2="420" stroke="rgba(255,255,255,.03)" stroke-width="1"/>
+        <line x1="254" y1="0" x2="254" y2="420" stroke="rgba(255,255,255,.03)" stroke-width="1"/>
+
+        <!-- Step 1: Phone call -->
+        <g style="animation:floatUp 4s ease-in-out infinite 0s">
+          <rect x="22" y="18" width="86" height="72" rx="8" fill="rgba(21,101,192,.08)" stroke="rgba(25,118,210,.18)" stroke-width="1"/>
+          <!-- Phone icon -->
+          <rect x="42" y="27" width="44" height="56" rx="6" fill="#0d1e32" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
+          <rect x="47" y="33" width="34" height="38" rx="3" fill="#08121e"/>
+          <!-- chat bubble on screen -->
+          <rect x="50" y="37" width="22" height="9" rx="3.5" fill="rgba(25,118,210,.4)"/>
+          <text x="61" y="44" text-anchor="middle" font-size="5" fill="rgba(255,255,255,.7)" font-family="DM Sans,sans-serif">Hi!</text>
+          <rect x="50" y="50" width="16" height="6" rx="3" fill="rgba(255,255,255,.06)"/>
+          <rect x="63" y="59" width="14" height="6" rx="3" fill="rgba(25,118,210,.25)"/>
+          <!-- home bar -->
+          <rect x="57" y="75" width="14" height="3" rx="1.5" fill="rgba(255,255,255,.1)"/>
+          <!-- live dot -->
+          <circle cx="80" cy="30" r="5" fill="#22c55e">
+            <animate attributeName="opacity" values="1;.3;1" dur="1.5s" repeatCount="indefinite"/>
+          </circle>
+        </g>
+        <text x="65" y="100" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.52)" font-weight="600" font-family="DM Sans,sans-serif">1. Free Call</text>
+
+        <!-- Step 2: Compare bars -->
+        <g style="animation:floatUp 4s ease-in-out infinite .55s">
+          <rect x="147" y="18" width="86" height="72" rx="8" fill="rgba(21,101,192,.08)" stroke="rgba(25,118,210,.18)" stroke-width="1"/>
+          <!-- bar chart -->
+          <rect x="158" y="73" width="10" height="10" rx="2" fill="#42a5f5" opacity=".8">
+            <animate attributeName="height" values="4;10;4" dur="2.5s" repeatCount="indefinite"/>
+            <animate attributeName="y" values="79;73;79" dur="2.5s" repeatCount="indefinite"/>
+          </rect>
+          <rect x="172" y="62" width="10" height="21" rx="2" fill="#22c55e" opacity=".9">
+            <animate attributeName="height" values="6;21;6" dur="2.5s" repeatCount="indefinite" begin=".3s"/>
+            <animate attributeName="y" values="77;62;77" dur="2.5s" repeatCount="indefinite" begin=".3s"/>
+          </rect>
+          <rect x="186" y="67" width="10" height="16" rx="2" fill="#42a5f5" opacity=".7">
+            <animate attributeName="height" values="5;16;5" dur="2.5s" repeatCount="indefinite" begin=".6s"/>
+            <animate attributeName="y" values="78;67;78" dur="2.5s" repeatCount="indefinite" begin=".6s"/>
+          </rect>
+          <rect x="200" y="70" width="10" height="13" rx="2" fill="#ffd54f" opacity=".65">
+            <animate attributeName="height" values="4;13;4" dur="2.5s" repeatCount="indefinite" begin=".9s"/>
+            <animate attributeName="y" values="79;70;79" dur="2.5s" repeatCount="indefinite" begin=".9s"/>
+          </rect>
+          <line x1="156" y1="83" x2="212" y2="83" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
+          <!-- Best label -->
+          <rect x="167" y="36" width="22" height="12" rx="4" fill="rgba(34,197,94,.14)" stroke="rgba(34,197,94,.38)" stroke-width="1"/>
+          <text x="178" y="45" text-anchor="middle" font-size="5.5" fill="#22c55e" font-weight="700" font-family="DM Sans,sans-serif">Best</text>
+          <!-- 15+ label -->
+          <text x="190" y="30" text-anchor="middle" font-size="7" fill="rgba(255,255,255,.22)" font-family="DM Sans,sans-serif">15+ insurers</text>
+        </g>
+        <text x="190" y="100" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.52)" font-weight="600" font-family="DM Sans,sans-serif">2. We Compare</text>
+
+        <!-- Step 3: Policy card -->
+        <g style="animation:floatUp 4s ease-in-out infinite 1.1s">
+          <rect x="272" y="18" width="86" height="72" rx="8" fill="rgba(21,101,192,.08)" stroke="rgba(25,118,210,.18)" stroke-width="1"/>
+          <rect x="284" y="27" width="62" height="54" rx="4" fill="#0d1e32" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+          <rect x="289" y="33" width="52" height="5" rx="2" fill="url(#pcard)" opacity=".55"/>
+          <rect x="289" y="43" width="38" height="2.5" rx="1.25" fill="rgba(255,255,255,.14)"/>
+          <rect x="289" y="49" width="44" height="2.5" rx="1.25" fill="rgba(255,255,255,.11)"/>
+          <rect x="289" y="55" width="32" height="2.5" rx="1.25" fill="rgba(255,255,255,.11)"/>
+          <rect x="289" y="61" width="40" height="2.5" rx="1.25" fill="rgba(255,255,255,.11)"/>
+          <!-- green check -->
+          <circle cx="325" cy="71" r="10" fill="rgba(34,197,94,.12)" stroke="rgba(34,197,94,.4)" stroke-width="1.5"/>
+          <path d="M320 71 L324 75 L332 64" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-dasharray="22" stroke-dashoffset="22">
+            <animate attributeName="stroke-dashoffset" from="22" to="0" dur=".5s" fill="freeze" begin="1s"/>
+          </path>
+        </g>
+        <text x="315" y="100" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.52)" font-weight="600" font-family="DM Sans,sans-serif">3. Policy Issued</text>
+
+        <!-- Connector arrows row 1 -->
+        <polygon points="135,52 143,56 135,60" fill="rgba(25,118,210,.32)"/>
+        <polygon points="260,52 268,56 260,60" fill="rgba(25,118,210,.32)"/>
+
+        <!-- Separator -->
+        <line x1="22" y1="120" x2="358" y2="120" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+
+        <!-- Step 4: Accident / Claim happens -->
+        <g style="animation:floatUp 4.5s ease-in-out infinite .3s">
+          <rect x="22" y="132" width="155" height="85" rx="8" fill="rgba(239,83,80,.05)" stroke="rgba(239,83,80,.13)" stroke-width="1"/>
+          <text x="99" y="152" text-anchor="middle" font-size="7.5" fill="rgba(255,255,255,.35)" font-family="DM Sans,sans-serif" font-weight="600">Claim happens</text>
+          <!-- Simple tilted car -->
+          <rect x="45" y="165" width="90" height="24" rx="5" fill="#42a5f5" opacity=".4" transform="rotate(-4 90 177)"/>
+          <rect x="58" y="155" width="65" height="18" rx="5" fill="#5bb8ff" opacity=".35" transform="rotate(-4 90 164)"/>
+          <!-- Left wheel tilted -->
+          <circle cx="62" cy="193" r="10" fill="#1a2a3e" stroke="#263c52" stroke-width="1.5" transform="rotate(-4 62 193)"/>
+          <circle cx="62" cy="193" r="5" fill="#182436" transform="rotate(-4 62 193)"/>
+          <!-- right wheel -->
+          <circle cx="110" cy="196" r="10" fill="#1a2a3e" stroke="#263c52" stroke-width="1.5" transform="rotate(-4 110 196)"/>
+          <circle cx="110" cy="196" r="5" fill="#182436" transform="rotate(-4 110 196)"/>
+          <!-- Alert badge -->
+          <circle cx="135" cy="158" r="13" fill="rgba(239,83,80,.12)" stroke="rgba(239,83,80,.38)" stroke-width="1.5"/>
+          <text x="135" y="163" text-anchor="middle" font-size="13" fill="#ef5350" font-weight="900" font-family="DM Sans,sans-serif">!</text>
+        </g>
+
+        <!-- Arrow between claim and resolution -->
+        <polygon points="182,175 192,179 182,183" fill="rgba(25,118,210,.35)"/>
+
+        <!-- Step 5: We handle it -->
+        <g style="animation:floatUp 4.5s ease-in-out infinite 1s">
+          <rect x="198" y="132" width="160" height="85" rx="8" fill="rgba(34,197,94,.05)" stroke="rgba(34,197,94,.14)" stroke-width="1"/>
+          <text x="278" y="152" text-anchor="middle" font-size="7.5" fill="rgba(255,255,255,.35)" font-family="DM Sans,sans-serif" font-weight="600">We handle it</text>
+          <!-- Checklist items -->
+          <rect x="212" y="158" width="134" height="13" rx="3" fill="rgba(34,197,94,.07)"/>
+          <text x="222" y="168" font-size="7" fill="#22c55e" font-family="DM Sans,sans-serif">✓  Claim registered same day</text>
+          <rect x="212" y="174" width="134" height="13" rx="3" fill="rgba(34,197,94,.07)"/>
+          <text x="222" y="184" font-size="7" fill="#22c55e" font-family="DM Sans,sans-serif">✓  Surveyor dispatched</text>
+          <rect x="212" y="190" width="134" height="13" rx="3" fill="rgba(34,197,94,.07)"/>
+          <text x="222" y="200" font-size="7" fill="#22c55e" font-family="DM Sans,sans-serif">✓  Settled — ₹0 from your pocket</text>
+        </g>
+
+        <!-- Separator -->
+        <line x1="22" y1="232" x2="358" y2="232" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
+
+        <!-- Row 3: stats / trust signals -->
+        <g style="animation:floatUp 5s ease-in-out infinite 0s">
+          <rect x="22" y="245" width="100" height="60" rx="8" fill="rgba(245,166,35,.06)" stroke="rgba(245,166,35,.15)" stroke-width="1"/>
+          <text x="72" y="268" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="22" fill="#ffd54f">500+</text>
+          <text x="72" y="281" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,.3)" font-family="DM Sans,sans-serif">Families Served</text>
+          <text x="72" y="291" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,.22)" font-family="DM Sans,sans-serif">AP & Telangana</text>
+        </g>
+        <g style="animation:floatUp 5s ease-in-out infinite .5s">
+          <rect x="135" y="245" width="110" height="60" rx="8" fill="rgba(25,118,210,.06)" stroke="rgba(25,118,210,.15)" stroke-width="1"/>
+          <text x="190" y="268" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="22" fill="#42a5f5">98%</text>
+          <text x="190" y="281" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,.3)" font-family="DM Sans,sans-serif">Claim Success</text>
+          <text x="190" y="291" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,.22)" font-family="DM Sans,sans-serif">Across all insurers</text>
+        </g>
+        <g style="animation:floatUp 5s ease-in-out infinite 1s">
+          <rect x="258" y="245" width="100" height="60" rx="8" fill="rgba(34,197,94,.06)" stroke="rgba(34,197,94,.15)" stroke-width="1"/>
+          <text x="308" y="268" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="22" fill="#22c55e">₹2Cr+</text>
+          <text x="308" y="281" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,.3)" font-family="DM Sans,sans-serif">Claims Settled</text>
+          <text x="308" y="291" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,.22)" font-family="DM Sans,sans-serif">₹0 out of pocket</text>
+        </g>
+
+        <!-- Bottom caption -->
+        <text x="190" y="330" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.2)" font-family="DM Sans,sans-serif" font-style="italic">ఇదే మా వాగ్దానం — మీతో ఉంటాం, ప్రతి అడుగులో.</text>
+
+        <!-- Decorative corner stars -->
+        <circle cx="18" cy="400" r="1.4" fill="white" opacity=".18" style="animation:twinkle 3s infinite"/>
+        <circle cx="362" cy="406" r="1.2" fill="var(--gold)" opacity=".22" style="animation:twinkle 3s .7s infinite"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ HOW WE WORK ══════════ -->
+<section class="sec alt">
+  <div class="wrap">
+    <div class="eye rv">How We Work</div>
+    <h2 class="ht rv d1">Four steps.<br/><i>Zero headache.</i></h2>
+    <div class="steps">
+      <div class="step rv d1">
+        <div class="step-ic"><div class="step-nb">1</div>📞</div>
+        <div class="step-tt">Free Consultation</div>
+        <div class="step-ds">30-minute call or WhatsApp. No script, no sales pitch. We understand your needs — health, vehicle, life, or loan. తెలుగులో కూడా మాట్లాడవచ్చు.</div>
+      </div>
+      <div class="step rv d2">
+        <div class="step-ic"><div class="step-nb">2</div>🔍</div>
+        <div class="step-tt">We Compare & Explain</div>
+        <div class="step-ds">15+ insurers or multiple lenders compared in real-time. Every difference explained in plain language — no jargon, no pressure.</div>
+      </div>
+      <div class="step rv d3">
+        <div class="step-ic"><div class="step-nb">3</div>📄</div>
+        <div class="step-tt">Same-Day Issuance</div>
+        <div class="step-ds">Policy delivered digitally on the same day. Loan applications submitted with complete, correct documentation — first time, every time.</div>
+      </div>
+      <div class="step rv d4">
+        <div class="step-ic"><div class="step-nb">4</div>🤝</div>
+        <div class="step-tt">We Stay With You</div>
+        <div class="step-ds">Renewals, claims, and questions — call us anytime. We are your permanent advisor. We pick up. That's the whole point of Cover Credit.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ WHY US ══════════ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="eye rv">Why Cover Credit</div>
+    <h2 class="ht rv d1">What makes us<br/><i>actually different.</i></h2>
+    <div class="three rv d1" style="margin-top:2rem;">
+      <div class="fc">
+        <div class="fc-ic">📵</div>
+        <div class="fc-tt">We don't vanish after the sale</div>
+        <div class="fc-ds">Most agents disappear once the premium is paid. <strong>Our relationship starts at the policy — and lasts through every claim, renewal, and question you ever have.</strong></div>
+      </div>
+      <div class="fc">
+        <div class="fc-ic">⚖️</div>
+        <div class="fc-tt">Right policy, not highest commission</div>
+        <div class="fc-ds">We recommend what genuinely fits your risk and budget — <strong>even when that earns us less.</strong> No upselling. No fine-print surprises.</div>
+      </div>
+      <div class="fc">
+        <div class="fc-ic">💬</div>
+        <div class="fc-tt">Telugu & English — your choice</div>
+        <div class="fc-ds"><strong>తెలుగులో సులభంగా అర్థమయ్యేలా వివరిస్తాం.</strong> Insurance in your language. No confusion, no complexity — just clear guidance.</div>
+      </div>
+      <div class="fc">
+        <div class="fc-ic">🏥</div>
+        <div class="fc-tt">98% claim settlement rate</div>
+        <div class="fc-ds">We guide every claim from registration to payment. <strong>₹2 crore+ settled across AP & Telangana.</strong> Clients rarely pay out of pocket.</div>
+      </div>
+      <div class="fc">
+        <div class="fc-ic">🔄</div>
+        <div class="fc-tt">Compare 15+ insurers instantly</div>
+        <div class="fc-ds">We're not tied to any single insurer. <strong>Live access to 15+ insurance companies and multiple lenders</strong> — so you always get the best available rate.</div>
+      </div>
+      <div class="fc">
+        <div class="fc-ic">💸</div>
+        <div class="fc-tt">Zero advisory fees — ever</div>
+        <div class="fc-ds">Our consultation costs you nothing. We are paid by insurers and lenders — <strong>no hidden charges, no side fees, no surprises on your end.</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ LOANS ══════════ -->
+<section class="sec alt">
+  <div class="wrap">
+    <div class="eye rv">Loans & Finance</div>
+    <h2 class="ht rv d1">Loan rejected?<br/><i>We know how to fix it.</i></h2>
+    <p class="sub rv d2" style="margin-bottom:.45rem;">Most rejections happen because of <strong>how the application was presented</strong> — not because you don't qualify. We prepare your case the right way.</p>
+    <p class="tel rv d2">రుణం తిరస్కరించబడిందా? మేము సరైన దారి చూపిస్తాం.</p>
+    <div class="three rv d2" style="margin-top:1.8rem;">
+      <div class="lc">
+        <div class="lc-ic">🏠</div>
+        <div class="lc-tt">Home Loans</div>
+        <div class="lc-ds">₹10L to ₹2Cr+. Salaried or self-employed. <strong>Best rates from leading banks and NBFCs.</strong> Complete documentation handled by us.</div>
+        <div class="lc-ok">✓ Avg rate secured: 8.4–9.2%</div>
+        <div class="lc-tel">ఇంటి కోసం రుణం — మేము మీకు సహాయం చేస్తాం.</div>
+      </div>
+      <div class="lc">
+        <div class="lc-ic">🏪</div>
+        <div class="lc-tt">Business Loans</div>
+        <div class="lc-ds">MSMEs, shops, traders, contractors. <strong>₹5L to ₹1Cr.</strong> We have helped clients get sanctioned after 2–3 prior bank rejections.</div>
+        <div class="lc-ok">✓ Avg approval: 7–12 working days</div>
+        <div class="lc-tel">వ్యాపార రుణం — తిరస్కరించిన తర్వాత కూడా.</div>
+      </div>
+      <div class="lc">
+        <div class="lc-ic">🎓</div>
+        <div class="lc-tt">Education Loans</div>
+        <div class="lc-ds">Degrees, professional courses, overseas studies. <strong>Moratorium periods, repayment planning, and tax benefits</strong> fully explained before you sign anything.</div>
+        <div class="lc-ok">✓ Covers tuition + living expenses</div>
+      </div>
+      <div class="lc">
+        <div class="lc-ic">🏗️</div>
+        <div class="lc-tt">Loan Against Property</div>
+        <div class="lc-ds">Use existing property for funds at <strong>lower interest than personal loans.</strong> Residential or commercial — we assess and arrange the right LAP.</div>
+        <div class="lc-ok">✓ Lower rates, higher amounts</div>
+      </div>
+      <div class="lc">
+        <div class="lc-ic">🚗</div>
+        <div class="lc-tt">Vehicle Loans</div>
+        <div class="lc-ds">New or used car, two-wheeler, commercial vehicle. <strong>Bundled with insurance for a single-window experience</strong> — EMI and policy sorted together.</div>
+        <div class="lc-ok">✓ Same-day approval possible</div>
+      </div>
+      <div class="lc">
+        <div class="lc-ic">🏥</div>
+        <div class="lc-tt">Medical Emergency Loans</div>
+        <div class="lc-ds">When a hospital bill can't wait. <strong>Fast-track personal loans</strong> for medical emergencies, with guidance on insurance coverage for the same expense.</div>
+        <div class="lc-ok">✓ 24–48 hr processing available</div>
+      </div>
+    </div>
+    <div style="margin-top:1.8rem;" class="rv d3">
+      <a href="loans.html" class="bp">Explore All Loan Options →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TEAM ══════════ -->
+<section class="sec">
+  <div class="wrap">
+    <div class="eye rv">Our Team</div>
+    <h2 class="ht rv d1">People who pick up<br/><i>every single call.</i></h2>
+    <div class="four rv d1" style="margin-top:2rem;">
+      <div class="tc">
+        <div class="tc-top" style="background:linear-gradient(135deg,#0d2040,#1565c0);">
+          <div class="tc-av" style="background:rgba(25,118,210,.28);">A</div>
+          <div class="tc-badge">Founder</div>
+        </div>
+        <div class="tc-body">
+          <div class="tc-name">Arun K.</div>
+          <div class="tc-role">Founder & Lead Advisor</div>
+          <div class="tc-bio">8+ years in insurance advisory. Built Cover Credit after a personal experience with a rejected family claim. Personally overseen 300+ claim settlements. Telugu, Hindi, English.</div>
+        </div>
+      </div>
+      <div class="tc">
+        <div class="tc-top" style="background:linear-gradient(135deg,#1a2e18,#2e7d32);">
+          <div class="tc-av" style="background:rgba(46,125,50,.28);">S</div>
+        </div>
+        <div class="tc-body">
+          <div class="tc-name">Sravani</div>
+          <div class="tc-role">Claims Specialist</div>
+          <div class="tc-bio">200+ claims settled across AP & Telangana. Expert in documentation and insurer coordination. No client claim goes unattended — she takes calls till 9 PM.</div>
+        </div>
+      </div>
+      <div class="tc">
+        <div class="tc-top" style="background:linear-gradient(135deg,#1c1000,#bf360c);">
+          <div class="tc-av" style="background:rgba(230,81,0,.28);">R</div>
+        </div>
+        <div class="tc-body">
+          <div class="tc-name">Ravi</div>
+          <div class="tc-role">Vehicle & Commercial Insurance</div>
+          <div class="tc-bio">10+ years in motor insurance. Handles fleet policies, IMT-23, and commercial vehicle claims from Tirupati to Karimnagar. Lorry owners call him by name.</div>
+        </div>
+      </div>
+      <div class="tc">
+        <div class="tc-top" style="background:linear-gradient(135deg,#1a1428,#6a1fa0);">
+          <div class="tc-av" style="background:rgba(106,31,160,.28);">P</div>
+        </div>
+        <div class="tc-body">
+          <div class="tc-name">Preethi</div>
+          <div class="tc-role">Loans & Finance Advisor</div>
+          <div class="tc-bio">Former bank relationship manager. Specialises in home, business, and education loans. Has secured sanctions where two banks previously said no.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TESTIMONIAL TICKER ══════════ -->
+<div class="ticker">
+  <div class="tt">
+    <div style="display:flex">
+      <div class="ti"><span class="ti-s">★★★★★</span><span class="ti-q">"Sravani settled my father's surgery claim in 4 days. Every insurance agent should work like this."</span><span class="ti-a">— Kiran R., Hyderabad</span><span class="ti-sep">·</span></div>
+      <div class="ti"><span class="ti-s">★★★★★</span><span class="ti-q">"మా దుకాణానికి business loan రావడానికి మూడు banks reject చేశాయి — Cover Credit succeed చేసింది."</span><span class="ti-a">— Raju K., Tirupati</span><span class="ti-sep">·</span></div>
+      <div class="ti"><span class="ti-s">★★★★★</span><span class="ti-q">"Three banks rejected my home loan. Cover Credit got it done in 2 weeks. Preethi is exceptional."</span><span class="ti-a">— Kavitha M., Vijayawada</span><span class="ti-sep">·</span></div>
+      <div class="ti"><span class="ti-s">★★★★★</span><span class="ti-q">"Picked up at 8 PM Sunday when my lorry overturned. Claim registered before midnight."</span><span class="ti-a">— Srikanth T., Kurnool</span><span class="ti-sep">·</span></div>
+      <div class="ti"><span class="ti-s">★★★★★</span><span class="ti-q">"Zero Dep అంటే ఏమిటో తెలుగులో అర్థమయ్యేలా వివరించారు. ఇప్పుడు నాకు సరైన policy ఉంది."</span><span class="ti-a">— Padmavathi S., Vizag</span><span class="ti-sep">·</span></div>
+      <div class="ti"><span class="ti-s">★★★★★</span><span class="ti-q">"Daughter's education loan sanctioned in 8 days. Arun prepared our case the right way."</span><span class="ti-a">— Mahesh V., Guntur</span><span class="ti-sep">·</span></div>
+    </div>
+    <div style="display:flex" aria-hidden="true">
+      <div class="ti"><span class="ti-s">★★★★★</span><span class="ti-q">"Sravani settled my father's surgery claim in 4 days. Every insurance agent should work like this."</span><span class="ti-a">— Kiran R., Hyderabad</span><span class="ti-sep">·</span></div>
+      <div class="ti"><span class="ti-s">★★★★★</span><span class="ti-q">"మా దుకాణానికి business loan రావడానికి మూడు banks reject చేశాయి — Cover Credit succeed చేసింది."</span><span class="ti-a">— Raju K., Tirupati</span><span class="ti-sep">·</span></div>
+      <div class="ti"><span class="ti-s">★★★★★</span><span class="ti-q">"Three banks rejected my home loan. Cover Credit got it done in 2 weeks. Preethi is exceptional."</span><span class="ti-a">— Kavitha M., Vijayawada</span><span class="ti-sep">·</span></div>
+      <div class="ti"><span class="ti-s">★★★★★</span><span class="ti-q">"Picked up at 8 PM Sunday when my lorry overturned. Claim registered before midnight."</span><span class="ti-a">— Srikanth T., Kurnool</span><span class="ti-sep">·</span></div>
+      <div class="ti"><span class="ti-s">★★★★★</span><span class="ti-q">"Zero Dep తెలుగులో అర్థమయ్యేలా వివరించారు."</span><span class="ti-a">— Padmavathi S., Vizag</span><span class="ti-sep">·</span></div>
+      <div class="ti"><span class="ti-s">★★★★★</span><span class="ti-q">"Education loan sanctioned in 8 days."</span><span class="ti-a">— Mahesh V., Guntur</span><span class="ti-sep">·</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ CITIES ══════════ -->
+<section class="sec alt">
+  <div class="wrap">
+    <div class="eye rv">Where We Serve</div>
+    <h2 class="ht rv d1">Every major city in<br/><i>AP & Telangana.</i></h2>
+    <p class="sub rv d2" style="margin-bottom:.4rem;">In-person, phone, and WhatsApp consultations. Remote advisory for towns and villages across both states.</p>
+    <p class="tel rv d2">ఆంధ్రప్రదేశ్ మరియు తెలంగాణ అంతటా మా సేవలు అందుబాటులో ఉన్నాయి.</p>
+    <div class="cities-wrap rv d2">
+      <div>
+        <div class="sb-title">Telangana — 12 Cities</div>
+        <div class="cg" id="tg">
+          <div class="ct"><div class="cdot b"></div>Hyderabad</div>
+          <div class="ct"><div class="cdot b"></div>Warangal</div>
+          <div class="ct"><div class="cdot b"></div>Karimnagar</div>
+          <div class="ct"><div class="cdot b"></div>Nizamabad</div>
+          <div class="ct"><div class="cdot b"></div>Khammam</div>
+          <div class="ct"><div class="cdot b"></div>Nalgonda</div>
+          <div class="ct"><div class="cdot b"></div>Mahbubnagar</div>
+          <div class="ct"><div class="cdot b"></div>Siddipet</div>
+          <div class="ct"><div class="cdot b"></div>Sangareddy</div>
+          <div class="ct"><div class="cdot b"></div>Mancherial</div>
+          <div class="ct"><div class="cdot b"></div>Adilabad</div>
+          <div class="ct"><div class="cdot b"></div>Medchal</div>
+        </div>
+      </div>
+      <div>
+        <div class="sb-title">Andhra Pradesh — 15 Cities</div>
+        <div class="cg" id="ap">
+          <div class="ct"><div class="cdot g"></div>Visakhapatnam</div>
+          <div class="ct"><div class="cdot g"></div>Vijayawada</div>
+          <div class="ct"><div class="cdot g"></div>Guntur</div>
+          <div class="ct"><div class="cdot g"></div>Tirupati</div>
+          <div class="ct"><div class="cdot g"></div>Nellore</div>
+          <div class="ct"><div class="cdot g"></div>Kurnool</div>
+          <div class="ct"><div class="cdot g"></div>Kakinada</div>
+          <div class="ct"><div class="cdot g"></div>Rajahmundry</div>
+          <div class="ct"><div class="cdot g"></div>Srikakulam</div>
+          <div class="ct"><div class="cdot g"></div>Vizianagaram</div>
+          <div class="ct"><div class="cdot g"></div>Ongole</div>
+          <div class="ct"><div class="cdot g"></div>Kadapa</div>
+          <div class="ct"><div class="cdot g"></div>Anantapur</div>
+          <div class="ct"><div class="cdot g"></div>Chittoor</div>
+          <div class="ct"><div class="cdot g"></div>Eluru</div>
+        </div>
+        <div class="cities-note"><strong>Remote consultations everywhere.</strong> Phone, WhatsApp, and video call for any town across AP & Telangana not listed above. మీకు ఎక్కడ ఉన్నా — మేము అందుబాటులో ఉంటాం.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CTA ══════════ -->
+<section class="cta">
+  <div class="cta-in">
+    <div>
+      <h2 class="cta-tt rv">Ready to work with advisors<br/>who <i>stay after the sale?</i></h2>
+      <p class="cta-ds rv d1">Free consultation. No pressure. Insurance or loan advice in Telugu or English — from someone who answers the phone.</p>
+      <p class="cta-tel rv d2">మీకు నచ్చిన భాషలో — ఉచిత సలహా, నిజాయితీగా.</p>
+    </div>
+    <div class="cta-side rv d2">
+      <a href="book.html" class="bp" style="font-size:.9rem;padding:.85rem 1.9rem;white-space:nowrap;">Book Free Consultation →</a>
+      <div class="cta-ph">or call us: <a href="tel:+917842854466">+91 78428 54466</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer class="ft">
+  <div class="ft-in">
+    <div class="ft-top">
+      <div>
+        <a href="index.html" class="fl">Cover<b>Credit</b></a>
+        <p class="fd">Honest insurance and loan advisory for families across AP & Telangana. We guide, not sell. తెలుగులో కూడా సహాయం చేస్తాం.</p>
+        <div class="fc2">📞 <a href="tel:+917842854466">+91 78428 54466</a></div>
+        <div class="fc2">✉️ <a href="mailto:Covercredit.official@gmail.com">Covercredit.official@gmail.com</a></div>
+        <div class="fc2">🕐 Mon–Sat: 9 AM – 7 PM</div>
+      </div>
+      <div class="ft-col">
+        <div class="fcl">Insurance</div>
+        <ul>
+          <li><a href="health-insurance.html">Health Insurance</a></li>
+          <li><a href="life-insurance.html">Life & Term Insurance</a></li>
+          <li><a href="bike-insurance.html">Bike Insurance</a></li>
+          <li><a href="car-insurance.html">Car Insurance</a></li>
+          <li><a href="commercial-vehicle-insurance.html">Commercial Vehicle</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <div class="fcl">Loans</div>
+        <ul>
+          <li><a href="loans.html">Home Loans</a></li>
+          <li><a href="loans.html">Business Loans</a></li>
+          <li><a href="loans.html">Education Loans</a></li>
+          <li><a href="loans.html">Loan Against Property</a></li>
+          <li><a href="loans.html">Vehicle Loans</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <div class="fcl">Company</div>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="book.html">Book Consultation</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ft-bot">
+      <span>© <span id="yr"></span> Cover Credit. All rights reserved.</span>
+      <div class="ft-lk"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── CURSOR ── */
+const c1=document.getElementById('c1'),c2=document.getElementById('c2');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;c1.style.left=mx+'px';c1.style.top=my+'px';});
+(function lp(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;c2.style.left=rx+'px';c2.style.top=ry+'px';requestAnimationFrame(lp);})();
+document.querySelectorAll('a,button,.fc,.lc,.tc,.step,.ct').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('h'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('h'));
+});
+
+/* ── NAV ── */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('s',scrollY>40),{passive:true});
+const bur=document.getElementById('bur'),mob=document.getElementById('mob');
+bur.addEventListener('click',()=>{
+  bur.classList.toggle('o');mob.classList.toggle('o');
+  document.body.style.overflow=mob.classList.contains('o')?'hidden':'';
+});
+
+/* ── SCROLL REVEAL ── */
+const ro=new IntersectionObserver(es=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}});
+},{threshold:.07});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
+
+/* ── COUNTER ── */
+const co=new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      const t=+e.target.dataset.count,s=e.target.dataset.s||'';
+      let v=0;const iv=setInterval(()=>{v=Math.min(v+t/55,t);e.target.textContent=Math.floor(v)+s;if(v>=t)clearInterval(iv);},1800/55);
+      co.unobserve(e.target);
+    }
+  });
+},{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(el=>co.observe(el));
+
+/* ── CITY STAGGER ── */
+function stagger(id,offset=0){
+  const els=[...document.querySelectorAll('#'+id+' .ct')];
+  const ob=new IntersectionObserver(entries=>{
+    if(entries[0].isIntersecting){
+      els.forEach((el,i)=>setTimeout(()=>el.classList.add('v'),offset+i*38));
+      ob.disconnect();
+    }
+  },{threshold:.1});
+  if(els[0])ob.observe(els[0].closest('div'));
+}
+stagger('tg',0);stagger('ap',150);
+
+/* ── YEAR ── */
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
 </body>
 </html>
