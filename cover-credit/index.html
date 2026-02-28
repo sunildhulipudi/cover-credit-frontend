@@ -88,7 +88,7 @@
     .hero__slide.active { opacity: 1; }
     .hero__slide::after { content: ''; position: absolute; inset: 0; background: linear-gradient(110deg, rgba(5,17,42,0.88) 0%, rgba(5,17,42,0.75) 45%, rgba(5,17,42,0.35) 100%); }
     /* UPDATED: Happy family discussing health insurance with doctor */
-    .slide-health   { background-image: url('https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=1600&q=80'); }
+    .slide-health   { background-image: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1600&q=80'); }
     .slide-life     { background-image: url('https://images.unsplash.com/photo-1609220136736-443140cffec6?w=1600&q=80'); }
     .slide-bike     { background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80'); }
     .slide-car      { background-image: url('https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=1600&q=80'); }
@@ -493,7 +493,7 @@
       <!-- HEALTH INSURANCE CARD — Updated to happy family with doctor image -->
       <a href="health-insurance.html" class="service-card service-card--featured">
         <div class="sc-img">
-          <img src="https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=700&q=80&fit=crop" alt="Happy family discussing health insurance with doctor"/>
+          <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&q=80&fit=crop" alt="Two Indian doctors — male and female — smiling with patient family"/>
           <div class="sc-img-overlay"></div>
         </div>
         <div class="sc-body">
@@ -587,7 +587,7 @@
 
       <!-- HEALTH INSURANCE CARD — Updated to happy family with doctor image -->
       <a href="health-insurance.html" class="ins-card">
-        <img src="https://images.unsplash.com/photo-1651008376811-b90baee60c1f?w=700&q=80&fit=crop" alt="Happy family discussion with doctor — Health Insurance"/>
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&q=80&fit=crop" alt="Male and female doctors smiling warmly with patients"/>
         <div class="ins-card__overlay"></div>
         <div class="ins-card__badge">Most Popular</div>
         <div class="ins-card__content">
@@ -879,7 +879,7 @@
         <a href="index.html" class="footer__logo">Cover<span>Credit</span></a>
         <p class="footer__desc">Honest insurance & financial advice for your family. We guide, not sell. Serving AP & Telangana since 2022.</p>
         <div class="footer__contact-item">📞 <a href="tel:+917842854466">+91 78428 54466</a></div>
-        <div class="footer__contact-item">✉️ <a href="mailto:Covercredit.official@gmail.com">Covercredit.official@gmail.com</a></div>
+        <div class="footer__contact-item">✉️ <a href="/cdn-cgi/l/email-protection#03406c756671607166676a772d6c65656a606a626f43646e626a6f2d606c6e"><span class="__cf_email__" data-cfemail="02416d746770617067666b762c6d64646b616b636e42656f636b6e2c616d6f">[email&#160;protected]</span></a></div>
         <div class="footer__contact-item">🕐 Mon–Sat: 9 AM – 7 PM</div>
       </div>
       <div class="footer__col">
@@ -924,7 +924,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const cursor = document.getElementById('cursor');
 const cursorRing = document.getElementById('cursor-ring');
 let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
@@ -1021,12 +1021,4 @@ if (tCards && tNav) {
   tScroll.addEventListener('scroll', () => {
     const dots = tNav.querySelectorAll('.testimonials__dot');
     let active = 0;
-    tCards.forEach((card, i) => { if (card.getBoundingClientRect().left <= window.innerWidth / 2) active = i; });
-    dots.forEach((d, i) => d.classList.toggle('active', i === active));
-  }, { passive: true });
-}
-const yearEl = document.getElementById('current-year');
-if (yearEl) yearEl.textContent = new Date().getFullYear();
-</script>
-</body>
-</html>
+    tCards.forEach((card, i) => { if (card.getBoundingClientRect().left <= window.innerWi
