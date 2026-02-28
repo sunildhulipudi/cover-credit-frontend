@@ -179,12 +179,13 @@
     }
 
     /* Slide images via Unsplash */
-    .slide-health   { background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1600&q=80'); }
-    .slide-life     { background-image: url('https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=1600&q=80'); }
-    .slide-bike     { background-image: url('https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=1600&q=80'); }
-    .slide-car      { background-image: url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=1600&q=80'); }
-    .slide-loan     { background-image: url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=1600&q=80'); }
-    .slide-vehicle  { background-image: url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1600&q=80'); }
+    /* Indian-context hero slides */
+    .slide-health   { background-image: url('https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=1600&q=80'); }
+    .slide-life     { background-image: url('https://images.unsplash.com/photo-1609220136736-443140cffec6?w=1600&q=80'); }
+    .slide-bike     { background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80'); }
+    .slide-car      { background-image: url('https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=1600&q=80'); }
+    .slide-loan     { background-image: url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80'); }
+    .slide-vehicle  { background-image: url('https://images.unsplash.com/photo-1519003300449-424ad0405076?w=1600&q=80'); }
 
     /* Slide caption pill */
     .hero__slide-caption {
@@ -366,11 +367,11 @@
        STATS
     ══════════════════════════════════════ */
     .stats { background:var(--navy-3);position:relative;overflow:hidden; }
-    .stats::before { content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1600&q=70') center/cover no-repeat;opacity:.06; }
+    .stats::before { content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1600&q=70') center/cover no-repeat;opacity:.05; }
     .stats__grid { display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);border-radius:20px;overflow:hidden;position:relative;z-index:1; }
     .stat-item { background:rgba(9,29,62,.8);backdrop-filter:blur(10px);padding:3rem 2rem;text-align:center;position:relative;overflow:hidden; }
     .stat-item::before { content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:60%;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent); }
-    .stat-num { font-family:var(--font-display);font-size:3.5rem;font-weight:700;line-height:1;color:var(--white);margin-bottom:.5rem; }
+    .stat-num { font-family:var(--font-body);font-size:3rem;font-weight:700;line-height:1;color:var(--white);margin-bottom:.5rem;letter-spacing:-1px; }
     .stat-num span { color:var(--gold); }
     .stat-label { font-size:.85rem;color:var(--muted);font-weight:500; }
 
@@ -495,7 +496,7 @@
     .cta::before { content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 80% 50%,rgba(230,168,23,.08),transparent),radial-gradient(ellipse 50% 60% at 10% 80%,rgba(255,255,255,.03),transparent); }
     .cta__img-bg {
       position:absolute; inset:0;
-      background:url('https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1400&q=70') center/cover no-repeat;
+      background:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1400&q=70') center/cover no-repeat;
       opacity:.08; z-index:0;
     }
     .cta__inner { position:relative;z-index:1;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:center;gap:3rem; }
@@ -828,7 +829,7 @@
 
       <a href="health-insurance.html" class="service-card service-card--featured">
         <div class="sc-img">
-          <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=700&q=75" alt="Health Insurance"/>
+          <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=700&q=80&fit=crop" alt="Health Insurance — Indian doctor consultation"/>
           <div class="sc-img-overlay"></div>
         </div>
         <div class="sc-body">
@@ -842,7 +843,7 @@
 
       <a href="life-insurance.html" class="service-card">
         <div class="sc-img">
-          <img src="https://images.unsplash.com/photo-1511895426328-dc8714191011?w=600&q=75" alt="Life Insurance"/>
+          <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=80&fit=crop" alt="Life Insurance — Indian family"/>
           <div class="sc-img-overlay"></div>
         </div>
         <div class="sc-body">
@@ -856,7 +857,7 @@
 
       <a href="car-insurance.html" class="service-card">
         <div class="sc-img">
-          <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0729?w=600&q=75" alt="Vehicle Insurance"/>
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80&fit=crop" alt="Vehicle Insurance"/>
           <div class="sc-img-overlay"></div>
         </div>
         <div class="sc-body">
@@ -870,7 +871,7 @@
 
       <a href="loans.html" class="service-card">
         <div class="sc-img">
-          <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&q=75" alt="Loans"/>
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80&fit=crop" alt="Home Loans — Indian family"/>
           <div class="sc-img-overlay"></div>
         </div>
         <div class="sc-body">
@@ -884,7 +885,7 @@
 
       <a href="loans.html" class="service-card">
         <div class="sc-img">
-          <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=600&q=75" alt="Mutual Funds"/>
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80&fit=crop" alt="Mutual Funds and SIP — investment charts"/>
           <div class="sc-img-overlay"></div>
         </div>
         <div class="sc-body">
@@ -898,7 +899,7 @@
 
       <a href="contact.html" class="service-card">
         <div class="sc-img">
-          <img src="https://images.unsplash.com/photo-1601597111158-2fceff292cdc?w=600&q=75" alt="Banking Services"/>
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80&fit=crop" alt="Banking Services — professional advisor"/>
           <div class="sc-img-overlay"></div>
         </div>
         <div class="sc-body">
@@ -924,7 +925,7 @@
     <div class="ins-strip__row reveal reveal-delay-1">
 
       <a href="health-insurance.html" class="ins-card">
-        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=700&q=75" alt="Health Insurance"/>
+        <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=700&q=80&fit=crop" alt="Health Insurance — Indian doctor"/>
         <div class="ins-card__overlay"></div>
         <div class="ins-card__badge">Most Popular</div>
         <div class="ins-card__content">
@@ -936,7 +937,7 @@
       </a>
 
       <a href="life-insurance.html" class="ins-card">
-        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=700&q=75" alt="Life Insurance"/>
+        <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=700&q=80&fit=crop" alt="Life Insurance — Indian family"/>
         <div class="ins-card__overlay"></div>
         <div class="ins-card__content">
           <div class="ins-card__icon">❤️</div>
@@ -947,7 +948,7 @@
       </a>
 
       <a href="bike-insurance.html" class="ins-card">
-        <img src="https://images.unsplash.com/photo-1558981403-c5f9899a28bc?w=700&q=75" alt="Bike Insurance"/>
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80&fit=crop" alt="Bike Insurance"/>
         <div class="ins-card__overlay"></div>
         <div class="ins-card__content">
           <div class="ins-card__icon">🏍️</div>
@@ -958,7 +959,7 @@
       </a>
 
       <a href="car-insurance.html" class="ins-card">
-        <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=700&q=75" alt="Car Insurance"/>
+        <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=700&q=80&fit=crop" alt="Car Insurance"/>
         <div class="ins-card__overlay"></div>
         <div class="ins-card__content">
           <div class="ins-card__icon">🚗</div>
@@ -969,7 +970,7 @@
       </a>
 
       <a href="loans.html" class="ins-card">
-        <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=700&q=75" alt="Home Loans"/>
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80&fit=crop" alt="Home Loans — Indian house"/>
         <div class="ins-card__overlay"></div>
         <div class="ins-card__content">
           <div class="ins-card__icon">🏠</div>
@@ -980,7 +981,7 @@
       </a>
 
       <a href="commercial-vehicle-insurance.html" class="ins-card">
-        <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=700&q=75" alt="Commercial Vehicle"/>
+        <img src="https://images.unsplash.com/photo-1519003300449-424ad0405076?w=700&q=80&fit=crop" alt="Commercial Vehicle Insurance — truck"/>
         <div class="ins-card__overlay"></div>
         <div class="ins-card__content">
           <div class="ins-card__icon">🚛</div>
@@ -1059,15 +1060,15 @@
         <!-- Image mosaic -->
         <div class="why__img-mosaic">
           <div class="mosaic-img">
-            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=75" alt="Expert advisor"/>
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80&fit=crop&fp-y=0.3" alt="Expert advisor — Indian professional woman"/>
             <div class="mosaic-img-label">Expert Advisors</div>
           </div>
           <div class="mosaic-img">
-            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=75" alt="Documentation"/>
+            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80&fit=crop" alt="Documentation and paperwork"/>
             <div class="mosaic-img-label">Paperwork Done</div>
           </div>
           <div class="mosaic-img">
-            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=75" alt="Finance planning"/>
+            <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=600&q=80&fit=crop" alt="Financial planning — Indian family"/>
             <div class="mosaic-img-label">Smart Planning</div>
           </div>
         </div>
