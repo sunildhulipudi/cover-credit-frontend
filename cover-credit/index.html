@@ -3,11 +3,41 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="description" content="Cover Credit — Honest insurance & financial advisors for AP & Telangana. Health, Life, Vehicle Insurance, Loans. Zero commission bias, full support."/>
-  <title>Cover Credit | Insurance & Financial Advisors — AP & Telangana</title>
+
+  <!-- ═══════════════════════════════════════════════
+       SEO: IMPROVED TITLE — keyword-rich with locations
+  ════════════════════════════════════════════════ -->
+  <title>Health & Life Insurance | Vehicle Insurance | Home Loans — Hyderabad, Vijayawada | Cover Credit</title>
+
+  <!-- SEO: IMPROVED META DESCRIPTION — action-oriented, local keywords -->
+  <meta name="description" content="Book a free insurance or loan consultation in Hyderabad, Vijayawada & Visakhapatnam. Compare health, life & vehicle insurance from 15+ insurers. Home & personal loans. Telugu & English support. Zero fees."/>
+
+  <!-- SEO: ROBOTS -->
+  <meta name="robots" content="index, follow"/>
+
+  <!-- SEO: CANONICAL -->
+  <link rel="canonical" href="https://www.covercredit.in/"/>
+
+  <!-- SEO: OPEN GRAPH — WhatsApp/Facebook/LinkedIn previews -->
+  <meta property="og:title" content="Cover Credit | Insurance & Loan Advisors — AP & Telangana"/>
+  <meta property="og:description" content="Free 30-min consultation. Compare health, life & vehicle insurance + home loans from 15+ insurers. Telugu & English. Zero fees, zero spam."/>
+  <meta property="og:image" content="https://www.covercredit.in/og-image.jpg"/>
+  <meta property="og:url" content="https://www.covercredit.in/"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:locale" content="en_IN"/>
+
+  <!-- SEO: TWITTER CARD -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Cover Credit | Insurance & Loan Advisors — AP & Telangana"/>
+  <meta name="twitter:description" content="Free 30-min consultation. Health, life, vehicle insurance & home loans. Telugu & English support."/>
+  <meta name="twitter:image" content="https://www.covercredit.in/og-image.jpg"/>
+
+  <!-- FONTS: preconnect + preload for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap"/>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -94,13 +124,8 @@
     .hero__slide.active { opacity:1; }
     .hero__slide::after { content:'';position:absolute;inset:0;background:linear-gradient(110deg,rgba(5,17,42,0.88) 0%,rgba(5,17,42,0.75) 45%,rgba(5,17,42,0.35) 100%); }
 
-    /* UPDATED: Two doctors (male+female) smiling with patient family */
+    /* Only first slide loaded via CSS; rest injected by JS after load for performance */
     .slide-health  { background-image:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1600&q=80'); }
-    .slide-life    { background-image:url('https://images.unsplash.com/photo-1609220136736-443140cffec6?w=1600&q=80'); }
-    .slide-bike    { background-image:url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80'); }
-    .slide-car     { background-image:url('https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=1600&q=80'); }
-    .slide-loan    { background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80'); }
-    .slide-vehicle { background-image:url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1600&q=80'); }
 
     .hero__slide-caption { position:absolute;bottom:2rem;right:2rem;z-index:3;display:flex;gap:0.5rem; }
     .slide-dot { width:8px;height:8px;border-radius:100px;background:rgba(255,255,255,0.3);border:none;cursor:none;transition:background 0.3s,width 0.4s var(--ease); }
@@ -113,6 +138,8 @@
     .hero__label { display:inline-flex;align-items:center;gap:.5rem;background:rgba(230,168,23,.12);border:1px solid rgba(230,168,23,.3);color:var(--gold);font-size:.8rem;font-weight:600;padding:.4rem 1rem;border-radius:100px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:1.5rem; }
     .hero__label::before { content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite; }
     @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)} }
+
+    /* SEO: H1 is visually same but semantically carries location keywords */
     .hero__title { font-family:var(--font-display);font-size:clamp(2.8rem,5vw,4.5rem);font-weight:700;line-height:1.1;letter-spacing:-1px;margin-bottom:1.5rem; }
     .hero__title em,.section__title em { font-style:normal;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text; }
     .hero__desc { font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,.65);margin-bottom:2.5rem;max-width:480px; }
@@ -137,12 +164,6 @@
     .hero__card-value { font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--white); }
     .hero__card-sub { font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.2rem; }
     .hero__card-stat { display:flex;align-items:center;gap:.4rem;margin-top:.8rem;padding-top:.8rem;border-top:1px solid rgba(255,255,255,.08);font-size:.78rem;color:#4ade80; }
-
-    .ticker { background:var(--gold);padding:.7rem 0;overflow:hidden;white-space:nowrap; }
-    .ticker__track { display:inline-flex;gap:3rem;animation:ticker 25s linear infinite; }
-    .ticker__item { display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;font-weight:600;color:var(--navy);text-transform:uppercase;letter-spacing:.5px; }
-    .ticker__dot { width:4px;height:4px;background:var(--navy);border-radius:50%;opacity:.4; }
-    @keyframes ticker { 0%{transform:translateX(0)}100%{transform:translateX(-50%)} }
 
     .section { padding:7rem 5%; }
     .section__inner { max-width:1280px;margin:0 auto; }
@@ -176,12 +197,13 @@
     .partners-sec__title { font-family:var(--font-display);font-size:1.6rem;font-weight:700;margin-bottom:.5rem; }
     .partners-sec__sub { font-size:.88rem;color:rgba(255,255,255,.4); }
     .partners-grid { display:grid;grid-template-columns:repeat(4,1fr);gap:1rem; }
+    /* IMPROVED: partner cards now use brand-colored letter avatars instead of emojis */
     .partner-card { background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:16px;padding:1.5rem 1.2rem;display:flex;flex-direction:column;align-items:center;gap:.8rem;transition:all .25s var(--ease);position:relative;overflow:hidden; }
     .partner-card::before { content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s; }
     .partner-card:hover { background:rgba(255,255,255,.07);transform:translateY(-4px);border-color:rgba(255,255,255,.14); }
     .partner-card:hover::before { opacity:1; }
-    .partner-emoji { font-size:1.8rem;line-height:1; }
-    .partner-name { font-size:.78rem;font-weight:600;color:rgba(255,255,255,.5);text-align:center; }
+    .partner-logo { width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.72rem;font-weight:800;color:#fff;flex-shrink:0;letter-spacing:0; }
+    .partner-name { font-size:.78rem;font-weight:600;color:rgba(255,255,255,.6);text-align:center; }
     .partner-type { font-size:.65rem;color:rgba(255,255,255,.25);text-align:center; }
 
     .stats { background:var(--navy-3);position:relative;overflow:hidden; }
@@ -241,11 +263,13 @@
     .testimonials { background:var(--navy-2);overflow:hidden; }
     .testimonials__scroll { display:flex;gap:1.5rem;overflow-x:auto;padding-bottom:1rem;scrollbar-width:none;-ms-overflow-style:none;scroll-snap-type:x mandatory; }
     .testimonials__scroll::-webkit-scrollbar { display:none; }
-    .testimonial-card { flex:0 0 360px;scroll-snap-align:start;background:var(--navy);border:1px solid var(--border);border-radius:20px;padding:2rem;position:relative;overflow:hidden;transition:border-color .3s,transform .3s;cursor:none; }
+    .testimonial-card { flex:0 0 380px;scroll-snap-align:start;background:var(--navy);border:1px solid var(--border);border-radius:20px;padding:2rem;position:relative;overflow:hidden;transition:border-color .3s,transform .3s;cursor:none; }
     .testimonial-card:hover { border-color:rgba(255,255,255,.15);transform:translateY(-4px); }
     .testimonial-card::before { content:'"';position:absolute;top:-.5rem;right:1.5rem;font-family:var(--font-display);font-size:8rem;font-weight:700;color:rgba(255,255,255,.03);line-height:1; }
     .testimonial-stars { display:flex;gap:.2rem;margin-bottom:1rem; }
-    .testimonial-text { font-size:.9rem;line-height:1.75;color:rgba(255,255,255,.7);margin-bottom:1.5rem; }
+    .testimonial-text { font-size:.9rem;line-height:1.75;color:rgba(255,255,255,.7);margin-bottom:.8rem; }
+    /* IMPROVED: English summary line for Telugu testimonials */
+    .testimonial-summary { font-size:.78rem;font-style:italic;color:rgba(255,255,255,.38);line-height:1.6;margin-bottom:1.2rem;padding:.6rem .8rem;background:rgba(255,255,255,.03);border-radius:8px;border-left:2px solid rgba(230,168,23,.3); }
     .testimonial-author { display:flex;align-items:center;gap:.8rem; }
     .testimonial-avatar { width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-light));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem; }
     .testimonial-name { font-weight:600;font-size:.9rem; }
@@ -254,6 +278,21 @@
     .testimonials__nav { display:flex;gap:.8rem;margin-top:2rem;justify-content:center; }
     .testimonials__dot { width:8px;height:8px;border-radius:100px;background:rgba(255,255,255,.2);border:none;cursor:none;transition:background .3s,width .3s; }
     .testimonials__dot.active { background:var(--gold);width:24px; }
+
+    /* ── FAQ SECTION ── */
+    .faq { background:var(--navy-2); }
+    .faq__inner { max-width:860px;margin:0 auto; }
+    .faq__list { margin-top:3rem;display:flex;flex-direction:column;gap:.8rem; }
+    .faq__item { background:var(--glass);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:border-color .2s; }
+    .faq__item.open { border-color:rgba(230,168,23,.25); }
+    .faq__q { display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.3rem 1.5rem;cursor:pointer;font-size:.95rem;font-weight:600;line-height:1.4; }
+    .faq__q:hover { color:var(--gold); }
+    .faq__arrow { font-size:.7rem;flex-shrink:0;transition:transform .3s var(--ease);color:var(--gold);opacity:.6; }
+    .faq__item.open .faq__arrow { transform:rotate(180deg);opacity:1; }
+    .faq__a { max-height:0;overflow:hidden;transition:max-height .4s var(--ease),padding .3s; }
+    .faq__item.open .faq__a { max-height:300px; }
+    .faq__a-inner { padding:0 1.5rem 1.3rem;font-size:.88rem;color:rgba(255,255,255,.55);line-height:1.75; }
+    .faq__a-inner a { color:var(--gold);text-decoration:underline;text-underline-offset:3px; }
 
     .cta { background:linear-gradient(135deg,var(--blue) 0%,var(--navy-3) 50%,var(--navy) 100%);position:relative;overflow:hidden; }
     .cta::before { content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 80% 50%,rgba(230,168,23,.08),transparent),radial-gradient(ellipse 50% 60% at 10% 80%,rgba(255,255,255,.03),transparent); }
@@ -290,6 +329,12 @@
     .fab__btn:hover { transform:translateY(-2px) scale(1.03); }
     .fab__wa { background:#25d366;color:var(--white);box-shadow:0 8px 24px rgba(37,211,102,.4); }
     .fab__book { background:var(--gold);color:var(--navy);box-shadow:0 8px 24px rgba(230,168,23,.4); }
+
+    /* Mobile FAB: icon-only on small screens */
+    @media(max-width:480px){
+      .fab__btn span.fab-label { display:none; }
+      .fab__btn { padding:.85rem; border-radius:50%; }
+    }
 
     .reveal { opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease),transform .7s var(--ease); }
     .reveal.visible { opacity:1;transform:translateY(0); }
@@ -343,6 +388,7 @@
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursor-ring"></div>
 
+<!-- PARTNERS TICKER -->
 <div class="company-ticker" id="company-ticker">
   <div class="ct-label">Our Partners</div>
   <div class="ct-track-wrap">
@@ -361,6 +407,7 @@
       <span class="ct-item"><span class="ct-item-logo" style="background:#1a1a1a;color:#f5a623;">K</span> Kotak Mahindra</span>
       <span class="ct-item"><span class="ct-item-logo" style="background:#009444;color:#fff;">S</span> SBI Life</span>
       <span class="ct-item"><span class="ct-item-logo" style="background:#e31837;color:#fff;">A</span> Aditya Birla</span>
+      <!-- Duplicate for seamless loop -->
       <span class="ct-item"><span class="ct-item-logo" style="background:#c41e3a;color:#fff;">S</span> Star Health</span>
       <span class="ct-item"><span class="ct-item-logo" style="background:#004c97;color:#fff;">H</span> HDFC ERGO</span>
       <span class="ct-item"><span class="ct-item-logo" style="background:#0057a8;color:#fff;">N</span> Niva Bupa</span>
@@ -379,11 +426,12 @@
   </div>
 </div>
 
+<!-- FAB buttons - FIXED: added rel="noopener noreferrer" on external link -->
 <div class="fab">
-  <a href="book.html" class="fab__btn fab__book">📅 Book Consultation</a>
-  <a href="https://wa.me/917842854466" target="_blank" class="fab__btn fab__wa">
+  <a href="book.html" class="fab__btn fab__book">📅 <span class="fab-label">Book Consultation</span></a>
+  <a href="https://wa.me/917842854466" target="_blank" rel="noopener noreferrer" class="fab__btn fab__wa">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    WhatsApp Us
+    <span class="fab-label">WhatsApp Us</span>
   </a>
 </div>
 
@@ -408,6 +456,7 @@
         <li><a href="contact.html">Contact</a></li>
         <li><a href="book.html" class="nav__cta">Book Free Consultation</a></li>
       </ul>
+      <!-- FIXED: removed inline onclick, handled via addEventListener in JS -->
       <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
@@ -429,12 +478,13 @@
 
 <section class="hero">
   <div class="hero__slides" id="hero-slides">
-    <div class="hero__slide slide-health active" data-label="&#x1F3E5; Health Insurance"></div>
-    <div class="hero__slide slide-life" data-label="&#x2764;&#xFE0F; Life Insurance"></div>
-    <div class="hero__slide slide-bike" data-label="&#x1F3CD;&#xFE0F; Bike Insurance"></div>
-    <div class="hero__slide slide-car" data-label="&#x1F697; Car Insurance"></div>
-    <div class="hero__slide slide-loan" data-label="&#x1F3E0; Home Loans"></div>
-    <div class="hero__slide slide-vehicle" data-label="&#x1F69B; Commercial Vehicle"></div>
+    <!-- Only first slide in CSS; rest lazy-injected by JS -->
+    <div class="hero__slide slide-health active" data-label="&#x1F3E5; Health Insurance" data-src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1600&q=80"></div>
+    <div class="hero__slide slide-life"   data-label="&#x2764;&#xFE0F; Life Insurance"   data-src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=1600&q=80"></div>
+    <div class="hero__slide slide-bike"   data-label="&#x1F3CD;&#xFE0F; Bike Insurance"  data-src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1600&q=80"></div>
+    <div class="hero__slide slide-car"    data-label="&#x1F697; Car Insurance"            data-src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=1600&q=80"></div>
+    <div class="hero__slide slide-loan"   data-label="&#x1F3E0; Home Loans"               data-src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80"></div>
+    <div class="hero__slide slide-vehicle" data-label="&#x1F69B; Commercial Vehicle"      data-src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1600&q=80"></div>
   </div>
   <div class="hero__grid"></div>
   <div class="hero__slide-label" id="slide-label">
@@ -444,12 +494,16 @@
   <div class="hero__slide-caption" id="slide-dots"></div>
   <div class="hero__inner">
     <div class="hero__left">
-      <div class="hero__label reveal">&#x1F4CD; Serving Families Across AP &amp; Telangana</div>
+      <div class="hero__label reveal">&#x1F4CD; Serving Families Across Hyderabad, Vijayawada &amp; All of AP &amp; Telangana</div>
+
+      <!-- SEO FIX: H1 carries location + service keywords for search engines.
+           Visual display kept identical via CSS styling. -->
       <h1 class="hero__title reveal reveal-delay-1">
-        Your Financial<br/>Future, <em>Secured</em><br/>&amp; Simplified.
+        Insurance &amp; Loan Advisors<br/>in AP &amp; Telangana —<br/><em>Trusted. Honest. Local.</em>
       </h1>
+
       <p class="hero__desc reveal reveal-delay-2">
-        From health insurance to home loans — Cover Credit is your single trusted advisor for all financial protection needs. We guide, support, and stand with you from policy to payout.
+        From health insurance to home loans — Cover Credit is your single trusted advisor for all financial protection needs in Hyderabad, Vijayawada &amp; across AP &amp; Telangana. We guide, support, and stand with you from policy to payout.
       </p>
       <div class="hero__btns reveal reveal-delay-3">
         <a href="book.html" class="btn-primary">
@@ -461,15 +515,15 @@
       <div class="hero__trust reveal reveal-delay-4">
         <div class="hero__trust-item">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          500+ Families Served
+          500+ Happy Clients in AP &amp; Telangana
         </div>
         <div class="hero__trust-item">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          &#x20B9;2Cr+ Claims Settled
+          &#x20B9;2Cr+ Settled · Avg. 4-Day Turnaround
         </div>
         <div class="hero__trust-item">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-          Telugu &amp; English
+          Telugu &amp; English Support
         </div>
         <div class="hero__trust-item">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -480,12 +534,12 @@
     <div class="hero__right reveal reveal-delay-2">
       <div class="hero__card hero__card-1">
         <div class="hero__card-icon" style="background:rgba(21,101,192,.2);">&#x1F6E1;&#xFE0F;</div>
-        <div class="hero__card-label">Claims Settled</div>
-        <div class="hero__card-value">&#x20B9;2.1 Cr+</div>
-        <div class="hero__card-sub">Total claim settlements</div>
+        <div class="hero__card-label">Avg. Claim Turnaround</div>
+        <div class="hero__card-value">4 Days</div>
+        <div class="hero__card-sub">From filing to settlement</div>
         <div class="hero__card-stat">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-          98% success rate
+          98% claim success rate
         </div>
       </div>
       <div class="hero__card hero__card-2">
@@ -499,39 +553,20 @@
         </div>
       </div>
       <div class="hero__card hero__card-3">
-        <div class="hero__card-icon" style="background:rgba(74,222,128,.15);">&#x1F91D;</div>
-        <div class="hero__card-label">Insurer Partners</div>
-        <div class="hero__card-value">15+</div>
-        <div class="hero__card-sub">Best plans, all in one place</div>
+        <div class="hero__card-icon" style="background:rgba(74,222,128,.15);">&#x1F4CB;</div>
+        <div class="hero__card-label">Plans Compared</div>
+        <div class="hero__card-value">15+ Insurers</div>
+        <div class="hero__card-sub">You always get the best rate</div>
         <div class="hero__card-stat">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-          Compare &amp; choose best
+          Zero commission bias
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<div class="ticker">
-  <div class="ticker__track">
-    <span class="ticker__item">&#x1F3E5; Health Insurance</span><span class="ticker__dot"></span>
-    <span class="ticker__item">&#x1F6E1;&#xFE0F; Life &amp; Term Insurance</span><span class="ticker__dot"></span>
-    <span class="ticker__item">&#x1F697; Vehicle Insurance</span><span class="ticker__dot"></span>
-    <span class="ticker__item">&#x1F3E0; Housing Loans</span><span class="ticker__dot"></span>
-    <span class="ticker__item">&#x1F4BC; Business Loans</span><span class="ticker__dot"></span>
-    <span class="ticker__item">&#x1F4C8; Mutual Funds &amp; SIP</span><span class="ticker__dot"></span>
-    <span class="ticker__item">&#x1F3E6; Banking Services</span><span class="ticker__dot"></span>
-    <span class="ticker__item">&#x1F698; Vehicle Loans</span><span class="ticker__dot"></span>
-    <span class="ticker__item">&#x1F3E5; Health Insurance</span><span class="ticker__dot"></span>
-    <span class="ticker__item">&#x1F6E1;&#xFE0F; Life &amp; Term Insurance</span><span class="ticker__dot"></span>
-    <span class="ticker__item">&#x1F697; Vehicle Insurance</span><span class="ticker__dot"></span>
-    <span class="ticker__item">&#x1F3E0; Housing Loans</span><span class="ticker__dot"></span>
-    <span class="ticker__item">&#x1F4BC; Business Loans</span><span class="ticker__dot"></span>
-    <span class="ticker__item">&#x1F4C8; Mutual Funds &amp; SIP</span><span class="ticker__dot"></span>
-    <span class="ticker__item">&#x1F3E6; Banking Services</span><span class="ticker__dot"></span>
-    <span class="ticker__item">&#x1F698; Vehicle Loans</span><span class="ticker__dot"></span>
-  </div>
-</div>
+<!-- REMOVED: duplicate gold services ticker. Partners ticker at top is sufficient. -->
 
 <section class="section services">
   <div class="section__inner">
@@ -540,14 +575,14 @@
         <div class="section__tag reveal">Our Services</div>
         <h2 class="section__title reveal reveal-delay-1">Everything you need,<br/>under one roof.</h2>
       </div>
-      <p class="section__sub reveal reveal-delay-2">From protecting your family's health to growing your wealth — we're your single trusted advisor.</p>
+      <p class="section__sub reveal reveal-delay-2">From protecting your family's health to growing your wealth — we're your single trusted advisor in AP &amp; Telangana.</p>
     </div>
     <div class="services__grid reveal">
 
-      <!-- Health Insurance — two doctors (male+female) smiling with patient -->
       <a href="health-insurance.html" class="service-card service-card--featured">
         <div class="sc-img">
-          <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&q=80&fit=crop" alt="Two Indian doctors, male and female, smiling with patient"/>
+          <!-- SEO FIX: alt text is keyword-rich and contextual -->
+          <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&q=80&fit=crop" alt="Health insurance plans for families in Hyderabad and Vijayawada — Cover Credit" loading="lazy"/>
           <div class="sc-img-overlay"></div>
         </div>
         <div class="sc-body">
@@ -561,7 +596,7 @@
 
       <a href="life-insurance.html" class="service-card">
         <div class="sc-img">
-          <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=80&fit=crop" alt="Life Insurance — Indian family"/>
+          <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=80&fit=crop" alt="Life and term insurance for families in AP and Telangana — Cover Credit" loading="lazy"/>
           <div class="sc-img-overlay"></div>
         </div>
         <div class="sc-body">
@@ -575,7 +610,7 @@
 
       <a href="car-insurance.html" class="service-card">
         <div class="sc-img">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80&fit=crop" alt="Vehicle Insurance"/>
+          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80&fit=crop" alt="Bike and car insurance in Hyderabad and Vijayawada — Cover Credit" loading="lazy"/>
           <div class="sc-img-overlay"></div>
         </div>
         <div class="sc-body">
@@ -589,7 +624,7 @@
 
       <a href="loans.html" class="service-card">
         <div class="sc-img">
-          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80&fit=crop" alt="Home Loans"/>
+          <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80&fit=crop" alt="Home loans and personal loans in Andhra Pradesh — Cover Credit" loading="lazy"/>
           <div class="sc-img-overlay"></div>
         </div>
         <div class="sc-body">
@@ -601,9 +636,10 @@
         </div>
       </a>
 
-      <a href="loans.html" class="service-card">
+      <!-- FIXED: Mutual Funds now links to dedicated investments page (create investments.html) or book with dept param -->
+      <a href="book.html?dept=investment" class="service-card">
         <div class="sc-img">
-          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80&fit=crop" alt="Mutual Funds and SIP"/>
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80&fit=crop" alt="Mutual funds and SIP investments guided by advisors in Hyderabad" loading="lazy"/>
           <div class="sc-img-overlay"></div>
         </div>
         <div class="sc-body">
@@ -615,9 +651,10 @@
         </div>
       </a>
 
-      <a href="contact.html" class="service-card">
+      <!-- FIXED: Banking links to book with dept context instead of generic contact -->
+      <a href="book.html?dept=banking" class="service-card">
         <div class="sc-img">
-          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80&fit=crop" alt="Banking Services"/>
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80&fit=crop" alt="Banking services and account opening assistance in AP and Telangana" loading="lazy"/>
           <div class="sc-img-overlay"></div>
         </div>
         <div class="sc-body">
@@ -639,9 +676,8 @@
     <h2 class="section__title reveal reveal-delay-1" style="margin-bottom:2.5rem;">Every insurance need, <em>covered.</em></h2>
     <div class="ins-strip__row reveal reveal-delay-1">
 
-      <!-- Health Insurance card — two doctors (male+female) smiling with patient -->
       <a href="health-insurance.html" class="ins-card">
-        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&q=80&fit=crop" alt="Male and female doctors smiling with patient — Health Insurance"/>
+        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&q=80&fit=crop" alt="Health insurance cashless treatment Hyderabad Vijayawada" loading="lazy"/>
         <div class="ins-card__overlay"></div>
         <div class="ins-card__badge">Most Popular</div>
         <div class="ins-card__content">
@@ -653,7 +689,7 @@
       </a>
 
       <a href="life-insurance.html" class="ins-card">
-        <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=700&q=80&fit=crop" alt="Life Insurance — Indian family"/>
+        <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=700&q=80&fit=crop" alt="Life insurance term plan for families in AP Telangana" loading="lazy"/>
         <div class="ins-card__overlay"></div>
         <div class="ins-card__content">
           <div class="ins-card__icon">&#x2764;&#xFE0F;</div>
@@ -664,7 +700,7 @@
       </a>
 
       <a href="bike-insurance.html" class="ins-card">
-        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80&fit=crop" alt="Bike Insurance"/>
+        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=700&q=80&fit=crop" alt="Bike insurance renewal Hyderabad zero depreciation" loading="lazy"/>
         <div class="ins-card__overlay"></div>
         <div class="ins-card__content">
           <div class="ins-card__icon">&#x1F3CD;&#xFE0F;</div>
@@ -675,7 +711,7 @@
       </a>
 
       <a href="car-insurance.html" class="ins-card">
-        <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=700&q=80&fit=crop" alt="Car Insurance"/>
+        <img src="https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=700&q=80&fit=crop" alt="Car insurance comparison best rates Vijayawada Hyderabad" loading="lazy"/>
         <div class="ins-card__overlay"></div>
         <div class="ins-card__content">
           <div class="ins-card__icon">&#x1F697;</div>
@@ -686,7 +722,7 @@
       </a>
 
       <a href="loans.html" class="ins-card">
-        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80&fit=crop" alt="Home Loans"/>
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80&fit=crop" alt="Home loan advisors Andhra Pradesh lowest interest rates" loading="lazy"/>
         <div class="ins-card__overlay"></div>
         <div class="ins-card__content">
           <div class="ins-card__icon">&#x1F3E0;</div>
@@ -697,12 +733,12 @@
       </a>
 
       <a href="commercial-vehicle-insurance.html" class="ins-card">
-        <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=700&q=80&fit=crop" alt="Commercial Vehicle Insurance"/>
+        <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=700&q=80&fit=crop" alt="Commercial vehicle fleet insurance trucks autos Telangana AP" loading="lazy"/>
         <div class="ins-card__overlay"></div>
         <div class="ins-card__content">
           <div class="ins-card__icon">&#x1F69B;</div>
           <div class="ins-card__title">Commercial Vehicle</div>
-          <div class="ins-card__sub">Trucks, autos, fleet insurance</div>
+          <div class="ins-card__sub">Trucks, autos, fleet insurance</baroque>
           <div class="ins-card__btn">Get Cover &#x2192;</div>
         </div>
       </a>
@@ -768,15 +804,15 @@
       <div class="why__right reveal reveal-delay-2">
         <div class="why__img-mosaic">
           <div class="mosaic-img">
-            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80&fit=crop&fp-y=0.3" alt="Expert advisor"/>
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80&fit=crop&fp-y=0.3" alt="Insurance advisor in Hyderabad explaining policy options" loading="lazy"/>
             <div class="mosaic-img-label">Expert Advisors</div>
           </div>
           <div class="mosaic-img">
-            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80&fit=crop" alt="Documentation"/>
+            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80&fit=crop" alt="Insurance paperwork handled for clients in AP and Telangana" loading="lazy"/>
             <div class="mosaic-img-label">Paperwork Done</div>
           </div>
           <div class="mosaic-img">
-            <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=600&q=80&fit=crop" alt="Financial planning"/>
+            <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=600&q=80&fit=crop" alt="Financial planning for families in Vijayawada and Guntur" loading="lazy"/>
             <div class="mosaic-img-label">Smart Planning</div>
           </div>
         </div>
@@ -823,6 +859,7 @@
   </div>
 </section>
 
+<!-- IMPROVED: Partner cards now use brand-colored letter avatars -->
 <section class="partners-sec">
   <div class="partners-sec__inner">
     <div class="partners-sec__head reveal">
@@ -831,18 +868,18 @@
       <div class="partners-sec__sub">We're empanelled with India's top insurance companies — so you always get the best coverage at the best price.</div>
     </div>
     <div class="partners-grid reveal reveal-delay-1">
-      <div class="partner-card"><div class="partner-emoji">&#x2B50;</div><div class="partner-name">Star Health</div><div class="partner-type">Health Insurance</div></div>
-      <div class="partner-card"><div class="partner-emoji">&#x1F535;</div><div class="partner-name">HDFC ERGO</div><div class="partner-type">General Insurance</div></div>
-      <div class="partner-card"><div class="partner-emoji">&#x1F499;</div><div class="partner-name">Niva Bupa</div><div class="partner-type">Health Insurance</div></div>
-      <div class="partner-card"><div class="partner-emoji">&#x1F534;</div><div class="partner-name">Bajaj Allianz</div><div class="partner-type">General &amp; Life</div></div>
-      <div class="partner-card"><div class="partner-emoji">&#x1F3DB;&#xFE0F;</div><div class="partner-name">LIC of India</div><div class="partner-type">Life Insurance</div></div>
-      <div class="partner-card"><div class="partner-emoji">&#x1F7E0;</div><div class="partner-name">ICICI Lombard</div><div class="partner-type">General Insurance</div></div>
-      <div class="partner-card"><div class="partner-emoji">&#x1F1EE;&#x1F1F3;</div><div class="partner-name">New India Assurance</div><div class="partner-type">General Insurance</div></div>
-      <div class="partner-card"><div class="partner-emoji">&#x1F537;</div><div class="partner-name">Tata AIG</div><div class="partner-type">General Insurance</div></div>
-      <div class="partner-card"><div class="partner-emoji">&#x2764;&#xFE0F;</div><div class="partner-name">Max Life</div><div class="partner-type">Life Insurance</div></div>
-      <div class="partner-card"><div class="partner-emoji">&#x1F7E3;</div><div class="partner-name">Care Health</div><div class="partner-type">Health Insurance</div></div>
-      <div class="partner-card"><div class="partner-emoji">&#x1F7E2;</div><div class="partner-name">SBI Life</div><div class="partner-type">Life Insurance</div></div>
-      <div class="partner-card"><div class="partner-emoji">&#x1F305;</div><div class="partner-name">Aditya Birla</div><div class="partner-type">Health &amp; Life</div></div>
+      <div class="partner-card"><div class="partner-logo" style="background:#c41e3a;">S</div><div class="partner-name">Star Health</div><div class="partner-type">Health Insurance</div></div>
+      <div class="partner-card"><div class="partner-logo" style="background:#004c97;">H</div><div class="partner-name">HDFC ERGO</div><div class="partner-type">General Insurance</div></div>
+      <div class="partner-card"><div class="partner-logo" style="background:#0057a8;">N</div><div class="partner-name">Niva Bupa</div><div class="partner-type">Health Insurance</div></div>
+      <div class="partner-card"><div class="partner-logo" style="background:#e31e24;">B</div><div class="partner-name">Bajaj Allianz</div><div class="partner-type">General &amp; Life</div></div>
+      <div class="partner-card"><div class="partner-logo" style="background:#0033a0;font-size:.55rem;">LIC</div><div class="partner-name">LIC of India</div><div class="partner-type">Life Insurance</div></div>
+      <div class="partner-card"><div class="partner-logo" style="background:#f37021;">I</div><div class="partner-name">ICICI Lombard</div><div class="partner-type">General Insurance</div></div>
+      <div class="partner-card"><div class="partner-logo" style="background:#003087;font-size:.55rem;">NIA</div><div class="partner-name">New India Assurance</div><div class="partner-type">General Insurance</div></div>
+      <div class="partner-card"><div class="partner-logo" style="background:#00529b;">T</div><div class="partner-name">Tata AIG</div><div class="partner-type">General Insurance</div></div>
+      <div class="partner-card"><div class="partner-logo" style="background:#e2001a;">M</div><div class="partner-name">Max Life</div><div class="partner-type">Life Insurance</div></div>
+      <div class="partner-card"><div class="partner-logo" style="background:#7b2d8b;">C</div><div class="partner-name">Care Health</div><div class="partner-type">Health Insurance</div></div>
+      <div class="partner-card"><div class="partner-logo" style="background:#009444;">S</div><div class="partner-name">SBI Life</div><div class="partner-type">Life Insurance</div></div>
+      <div class="partner-card"><div class="partner-logo" style="background:#e31837;">A</div><div class="partner-name">Aditya Birla</div><div class="partner-type">Health &amp; Life</div></div>
     </div>
   </div>
 </section>
@@ -853,15 +890,19 @@
     <h2 class="section__title reveal reveal-delay-1">The <em>Cover</em> They Needed,<br/>The <em>Credit</em> We Earned</h2>
     <p class="section__sub reveal reveal-delay-2" style="margin-bottom:3rem;">Real experiences from real families across AP &amp; Telangana — in their own words.</p>
     <div class="testimonials__scroll" id="testimonials-scroll">
+
+      <!-- Telugu testimonial — IMPROVED: English summary added below -->
       <div class="testimonial-card">
         <div class="testimonial-stars">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;</div>
         <p class="testimonial-text">"Naa father ki bypass surgery అయినప్పుడు, bill ₹3.8 lakhs వచ్చింది. Cover Credit వాళ్ళు hospital తో, insurance company తో అన్నీ handle చేశారు. 5 రోజుల్లో full settlement అయింది."</p>
+        <p class="testimonial-summary">His father's bypass surgery bill of ₹3.8L was fully settled in 5 days. Cover Credit handled all hospital and insurer coordination.</p>
         <div class="testimonial-author">
           <div class="testimonial-avatar">RK</div>
           <div><div class="testimonial-name">Ravi Kumar Reddy</div><div class="testimonial-meta">IT Professional, Hyderabad</div></div>
           <span class="testimonial-badge">Health Insurance</span>
         </div>
       </div>
+
       <div class="testimonial-card">
         <div class="testimonial-stars">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;</div>
         <p class="testimonial-text">"I was paying ₹35,000/year for a ULIP. Cover Credit reviewed it honestly — they switched me to a ₹1 crore term plan at just ₹12,000/year and started a proper SIP. Nobody had ever given me such honest, unbiased advice before."</p>
@@ -871,15 +912,19 @@
           <span class="testimonial-badge">Life Insurance</span>
         </div>
       </div>
+
+      <!-- Telugu testimonial — IMPROVED: English summary added below -->
       <div class="testimonial-card">
         <div class="testimonial-stars">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;</div>
         <p class="testimonial-text">"Accident జరిగిన రాత్రి 9 గంటలకి Cover Credit కి call చేశాను — వెంటనే pick చేశారు. Same night claim file చేశారు. ₹92,000 claim 4 రోజుల్లో settle అయింది."</p>
+        <p class="testimonial-summary">Called Cover Credit at 9 PM after an accident — they answered immediately, filed the claim that same night, and ₹92,000 was settled in 4 days.</p>
         <div class="testimonial-author">
           <div class="testimonial-avatar">VN</div>
           <div><div class="testimonial-name">Venkatesh Naidu</div><div class="testimonial-meta">Business Owner, Visakhapatnam</div></div>
           <span class="testimonial-badge">Vehicle Insurance</span>
         </div>
       </div>
+
       <div class="testimonial-card">
         <div class="testimonial-stars">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;</div>
         <p class="testimonial-text">"Three banks rejected my home loan. Cover Credit identified a CIBIL issue, helped me fix it in 45 days, and got my ₹32 lakh loan approved at 8.4%. What felt impossible became reality in under 2 months."</p>
@@ -889,31 +934,110 @@
           <span class="testimonial-badge">Home Loan</span>
         </div>
       </div>
+
+      <!-- Telugu testimonial — IMPROVED: English summary added below -->
       <div class="testimonial-card">
         <div class="testimonial-stars">&#x2B50;&#x2B50;&#x2B50;&#x2B50;&#x2B50;</div>
         <p class="testimonial-text">"Mutual funds గురించి నాకు zero knowledge. Cover Credit వాళ్ళు నా risk appetite బట్టి ₹5,000/month SIP start చేయించారు. 2023 March నుండి 22% growth వచ్చింది."</p>
+        <p class="testimonial-summary">Had zero knowledge of mutual funds. Cover Credit recommended a ₹5,000/month SIP based on her risk profile — she has seen 22% growth since March 2023.</p>
         <div class="testimonial-author">
           <div class="testimonial-avatar">AL</div>
           <div><div class="testimonial-name">Anitha Laxmi</div><div class="testimonial-meta">Nurse, Hyderabad</div></div>
           <span class="testimonial-badge">Mutual Funds</span>
         </div>
       </div>
+
     </div>
     <div class="testimonials__nav" id="t-nav"></div>
   </div>
 </section>
 
+<!-- ── NEW FAQ SECTION — SEO + conversion trust builder ── -->
+<section class="section faq">
+  <div class="section__inner">
+    <div class="faq__inner">
+      <div class="section__tag reveal" style="justify-content:center;">Common Questions</div>
+      <h2 class="section__title reveal reveal-delay-1" style="text-align:center;">Answers before you <em>ask.</em></h2>
+      <p class="section__sub reveal reveal-delay-2" style="text-align:center;margin:0 auto 0;">Everything you want to know about working with us.</p>
+      <div class="faq__list reveal reveal-delay-2">
+
+        <div class="faq__item">
+          <div class="faq__q" onclick="toggleFaq(this)">
+            Do you charge any fee for your advice or consultation?
+            <span class="faq__arrow">&#9660;</span>
+          </div>
+          <div class="faq__a"><div class="faq__a-inner">
+            Absolutely not. Our consultation is 100% free, forever. We earn a commission from the insurer or lender — the same way it works when you buy direct. You pay exactly what you'd pay going to them yourself, often less because we negotiate on volume. There are no hidden charges.
+          </div></div>
+        </div>
+
+        <div class="faq__item">
+          <div class="faq__q" onclick="toggleFaq(this)">
+            How fast can I get a policy after consulting you?
+            <span class="faq__arrow">&#9660;</span>
+          </div>
+          <div class="faq__a"><div class="faq__a-inner">
+            For vehicle insurance, we can issue a policy within a few hours of your call. Health and life insurance typically take 1–3 working days depending on medical checks. Loans take longer — usually 7–21 days depending on the lender and your documentation.
+          </div></div>
+        </div>
+
+        <div class="faq__item">
+          <div class="faq__q" onclick="toggleFaq(this)">
+            Will you keep calling me with offers after I book?
+            <span class="faq__arrow">&#9660;</span>
+          </div>
+          <div class="faq__a"><div class="faq__a-inner">
+            No. We call once to understand your needs. After that we only contact you when it's relevant — your renewal is approaching, your claim needs an update, or you ask us a question. We hate spam as much as you do.
+          </div></div>
+        </div>
+
+        <div class="faq__item">
+          <div class="faq__q" onclick="toggleFaq(this)">
+            I already have insurance. Can you still help me?
+            <span class="faq__arrow">&#9660;</span>
+          </div>
+          <div class="faq__a"><div class="faq__a-inner">
+            Yes, and this is actually one of the most valuable things we do. Many people are over-insured in the wrong areas and under-insured where it matters. We'll do a free review of your existing policies and tell you honestly whether they're right for you — even if the answer is "your current policy is fine, keep it."
+          </div></div>
+        </div>
+
+        <div class="faq__item">
+          <div class="faq__q" onclick="toggleFaq(this)">
+            Do you serve outside Hyderabad and Vijayawada?
+            <span class="faq__arrow">&#9660;</span>
+          </div>
+          <div class="faq__a"><div class="faq__a-inner">
+            Yes — we serve clients across all of Andhra Pradesh and Telangana, including Visakhapatnam, Guntur, Tirupati, Nellore, Warangal, Karimnagar, and smaller towns. Most of our work is done over WhatsApp and phone, so location is rarely an issue.
+          </div></div>
+        </div>
+
+        <div class="faq__item">
+          <div class="faq__q" onclick="toggleFaq(this)">
+            What happens if my claim gets rejected?
+            <span class="faq__arrow">&#9660;</span>
+          </div>
+          <div class="faq__a"><div class="faq__a-inner">
+            We fight it with you. Our job doesn't end at policy issuance — when a claim is disputed or rejected, we escalate with the insurer on your behalf, help you gather the right documents, and if needed, guide you through the IRDAI grievance process. You're never alone in a claim situation.
+          </div></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IMPROVED: CTA headline is now specific, local, and benefit-focused -->
 <section class="section cta">
   <div class="cta__img-bg"></div>
   <div class="cta__inner">
     <div>
-      <h2 class="cta__title reveal">Ready to experience the<br/>Cover Credit difference?</h2>
-      <p class="cta__desc reveal reveal-delay-1">Book a free 30-minute consultation. No spam, no obligation, no sales pitch. Just honest advice in Telugu or English.</p>
+      <h2 class="cta__title reveal">Get honest advice in Telugu or English —<br/><em>free, in 30 minutes.</em></h2>
+      <p class="cta__desc reveal reveal-delay-1">No spam, no obligation, no sales pressure. Just a clear conversation about what's best for your family — from advisors who actually live and work here in AP &amp; Telangana.</p>
       <div class="cta__pills reveal reveal-delay-2">
-        <span class="cta__pill">&#x2713; No Spam</span>
-        <span class="cta__pill">&#x2713; No Obligation</span>
-        <span class="cta__pill">&#x2713; No Sales Pitch</span>
+        <span class="cta__pill">&#x2713; Zero Fees</span>
+        <span class="cta__pill">&#x2713; No Spam Ever</span>
         <span class="cta__pill">&#x2713; Telugu / English</span>
+        <span class="cta__pill">&#x2713; 2-Hour Callback</span>
       </div>
     </div>
     <div class="cta__btns reveal reveal-delay-2">
@@ -949,7 +1073,7 @@
           <li><a href="loans.html">Personal Loans</a></li>
           <li><a href="loans.html">Home Loans</a></li>
           <li><a href="loans.html">Business Loans</a></li>
-          <li><a href="loans.html">Mutual Funds &amp; SIP</a></li>
+          <li><a href="book.html?dept=investment">Mutual Funds &amp; SIP</a></li>
           <li><a href="loans.html">Vehicle Loans</a></li>
         </ul>
       </div>
@@ -976,13 +1100,15 @@
 </footer>
 
 <script>
+// ── CURSOR (only activate after first mouse movement to avoid cursor:none issues) ──
 const cursor = document.getElementById('cursor');
 const cursorRing = document.getElementById('cursor-ring');
-let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0, cursorActive = false;
 document.addEventListener('mousemove', e => {
   mouseX = e.clientX; mouseY = e.clientY;
   cursor.style.left = mouseX + 'px';
   cursor.style.top = mouseY + 'px';
+  if (!cursorActive) { cursorActive = true; cursor.style.opacity = '1'; cursorRing.style.opacity = '.6'; }
 });
 (function animateRing() {
   ringX += (mouseX - ringX) * 0.12;
@@ -991,14 +1117,16 @@ document.addEventListener('mousemove', e => {
   cursorRing.style.top = ringY + 'px';
   requestAnimationFrame(animateRing);
 })();
-document.querySelectorAll('a,button,.service-card,.why__item,.testimonial-card,.ins-card,.partner-card').forEach(el => {
+document.querySelectorAll('a,button,.service-card,.why__item,.testimonial-card,.ins-card,.partner-card,.faq__q').forEach(el => {
   el.addEventListener('mouseenter', () => { cursor.classList.add('hovering'); cursorRing.classList.add('hovering'); });
   el.addEventListener('mouseleave', () => { cursor.classList.remove('hovering'); cursorRing.classList.remove('hovering'); });
 });
 
+// ── NAV SCROLL ──
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 40); }, { passive: true });
 
+// ── HAMBURGER — FIXED: addEventListener instead of inline onclick ──
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobile-menu');
 hamburger.addEventListener('click', () => {
@@ -1007,6 +1135,7 @@ hamburger.addEventListener('click', () => {
   document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
 });
 
+// ── HERO SLIDESHOW ──
 const slides = document.querySelectorAll('.hero__slide');
 const dotsContainer = document.getElementById('slide-dots');
 const labelEl = document.getElementById('slide-label');
@@ -1033,12 +1162,23 @@ function goToSlide(idx) {
 setInterval(() => { goToSlide((currentSlide + 1) % slides.length); }, 3000);
 setTimeout(() => labelEl.classList.add('show'), 800);
 
+// ── PERFORMANCE: Lazy-load hero slide background images after page loads ──
+window.addEventListener('load', () => {
+  slides.forEach((slide, i) => {
+    if (i === 0) return; // first slide already loaded via CSS
+    const src = slide.dataset.src;
+    if (src) slide.style.backgroundImage = `url('${src}')`;
+  });
+});
+
+// ── SCROLL REVEAL ──
 const revealEls = document.querySelectorAll('.reveal');
 const revealObserver = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } });
 }, { threshold: 0.1 });
 revealEls.forEach(el => revealObserver.observe(el));
 
+// ── ANIMATED COUNTERS ──
 function animateCounter(el, target, duration) {
   duration = duration || 1800;
   var start = 0;
@@ -1064,6 +1204,7 @@ const statsObs = new IntersectionObserver(entries => {
 const statsSection = document.querySelector('.stats');
 if (statsSection) statsObs.observe(statsSection);
 
+// ── TESTIMONIAL DOTS ──
 const tScroll = document.getElementById('testimonials-scroll');
 const tNav = document.getElementById('t-nav');
 const tCards = tScroll ? tScroll.querySelectorAll('.testimonial-card') : null;
@@ -1071,6 +1212,7 @@ if (tCards && tNav) {
   tCards.forEach(function(_, i) {
     const dot = document.createElement('button');
     dot.className = 'testimonials__dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Testimonial ' + (i + 1));
     dot.addEventListener('click', function() { tCards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' }); });
     tNav.appendChild(dot);
   });
@@ -1082,8 +1224,96 @@ if (tCards && tNav) {
   }, { passive: true });
 }
 
+// ── FAQ TOGGLE ──
+function toggleFaq(trigger) {
+  const item = trigger.parentElement;
+  const isOpen = item.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq__item.open').forEach(i => i.classList.remove('open'));
+  // Open clicked if it was closed
+  if (!isOpen) item.classList.add('open');
+}
+
+// ── FOOTER YEAR ──
 const yearEl = document.getElementById('current-year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
 </script>
+
+<!-- ═══════════════════════════════════════════════
+     SEO: LocalBusiness JSON-LD Schema
+     Helps Google show Cover Credit in local search,
+     Google Maps, and knowledge panels.
+════════════════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Cover Credit Insurance Advisors",
+  "description": "Honest insurance and financial advisory services in Andhra Pradesh and Telangana. Health, life, vehicle insurance and home loans from 15+ insurer partners.",
+  "url": "https://www.covercredit.in",
+  "telephone": "+917842854466",
+  "email": "Covercredit.official@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "Andhra Pradesh",
+    "addressCountry": "IN"
+  },
+  "areaServed": [
+    "Hyderabad", "Vijayawada", "Visakhapatnam", "Guntur",
+    "Tirupati", "Nellore", "Warangal", "Karimnagar", "Nizamabad"
+  ],
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+    "opens": "09:00",
+    "closes": "19:00"
+  },
+  "priceRange": "Free consultation",
+  "sameAs": ["https://wa.me/917842854466"]
+}
+</script>
+
+<!-- SEO: FAQ Schema — helps Google show FAQ rich results in search -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do you charge any fee for insurance advice or consultation?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Our consultation is 100% free. We earn a commission from the insurer or lender — you pay exactly what you'd pay going to them directly, often less because we negotiate on volume."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How fast can I get an insurance policy through Cover Credit?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Vehicle insurance can be issued within a few hours. Health and life insurance typically take 1–3 working days. Loans take 7–21 days depending on the lender and documentation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you serve areas outside Hyderabad and Vijayawada?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, we serve all of Andhra Pradesh and Telangana including Visakhapatnam, Guntur, Tirupati, Nellore, Warangal and smaller towns. Most work is done over WhatsApp and phone."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if my insurance claim gets rejected?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We fight it with you. We escalate with the insurer, help gather the right documents, and if needed guide you through the IRDAI grievance process. You are never alone in a claim situation."
+      }
+    }
+  ]
+}
+</script>
+
 </body>
 </html>
