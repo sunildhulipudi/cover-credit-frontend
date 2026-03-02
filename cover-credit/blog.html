@@ -658,7 +658,7 @@
     <div class="footer__col">
       <h4>Contact</h4>
       <div class="footer__contact-item">📞 <a href="tel:+917842854466">+91 78428 54466</a></div>
-      <div class="footer__contact-item">✉️ <a href="mailto:Covercredit.official@gmail.com">Covercredit.official@gmail.com</a></div>
+      <div class="footer__contact-item">✉️ <a href="/cdn-cgi/l/email-protection#31725e4754435243545558451f5e5757585258505d71565c50585d1f525e5c"><span class="__cf_email__" data-cfemail="f0b39f869582938295949984de9f9696999399919cb0979d91999cde939f9d">[email&#160;protected]</span></a></div>
       <div class="footer__contact-item">🕐 Mon–Sat: 9 AM – 7 PM</div>
     </div>
   </div>
@@ -671,7 +671,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── CONFIG ───────────────────────────────────────────────
 // ⚠️ Change this to your deployed Render/Railway backend URL in production
 const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
@@ -744,7 +744,7 @@ function renderFeaturedCard() {
     <div class="featured-card-mini" onclick="openPost('${post.slug}')">
       <div class="fc-img">
         ${post.coverImage
-          ? `<img src="${esc(post.coverImage)}" alt="${esc(post.title)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/><div class="fc-img-fallback" style="display:none;">${cat.icon}</div>`
+          ? `<img src="${safeUrl(post.coverImage)}" alt="${esc(post.title)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/><div class="fc-img-fallback" style="display:none;">${cat.icon}</div>`
           : `<div class="fc-img-fallback">${cat.icon}</div>`}
       </div>
       <div class="fc-body">
@@ -840,7 +840,7 @@ function buildCard(p, i) {
     <article class="bcard${isFeat?' featured':''}" style="${anim}" onclick="openPost('${esc(p.slug)}')">
       <div class="card-img">
         ${p.coverImage
-          ? `<img src="${esc(p.coverImage)}" alt="${esc(p.title)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/>
+          ? `<img src="${safeUrl(p.coverImage)}" alt="${esc(p.title)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/>
              <div class="card-img-fallback" style="display:none;">${cat.icon}</div>`
           : `<div class="card-img-fallback">${cat.icon}</div>`}
         <div class="card-img-gradient"></div>
@@ -944,7 +944,7 @@ function populatePost(p) {
     if (old) old.remove();
     const img = document.createElement('img');
     img.className = 'post-cover-img';
-    img.src = p.coverImage;
+    img.src = safeUrl(p.coverImage);
     img.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;object-fit:cover;';
     img.onerror = () => { img.style.display='none'; fb.style.display='flex'; };
     coverDiv.insertBefore(img, coverDiv.firstChild);
@@ -1106,8 +1106,12 @@ function fmtDate(iso) {
   return new Date(iso).toLocaleDateString('en-IN', {day:'numeric',month:'short',year:'numeric'});
 }
 
-function esc(str) {
-  return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+function esc(str) {  return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// safeUrl — for use in img src ONLY — does NOT escape & (would break query params)
+function safeUrl(url) {
+  return String(url||'').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 }
 
 function debounce(fn, ms) {
