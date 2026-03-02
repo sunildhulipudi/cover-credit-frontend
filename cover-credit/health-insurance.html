@@ -1082,6 +1082,42 @@ const stage=document.getElementById('sbStage');if(stage)sbo.observe(stage);
 
 /* ── YEAR ── */
 const yr=document.getElementById('yr');if(yr)yr.textContent=new Date().getFullYear();
+
+(function() {
+  // ── Change this for each page ──────────────────────────
+  var PAGE_NAME = 'health-insurance'; // ← CHANGE THIS PER PAGE
+  // ──────────────────────────────────────────────────────
+
+  var BACKEND = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+    ? 'http://localhost:5000/api'
+    : 'https://cover-credit-backend.onrender.com/api';
+
+  // Don't track admin users or bots
+  var ua = navigator.userAgent.toLowerCase();
+  if (ua.includes('bot') || ua.includes('crawler') || ua.includes('spider')) return;
+  if (document.referrer.includes('cover-credit-backend.onrender.com')) return;
+
+  // Fire once per session per page (sessionStorage prevents double-counting on refresh)
+  var key = 'cc_tracked_' + PAGE_NAME;
+  if (sessionStorage.getItem(key)) return;
+  sessionStorage.setItem(key, '1');
+
+  // Send ping to backend
+  try {
+    fetch(BACKEND + '/track', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        page: PAGE_NAME,
+        path: window.location.pathname,
+        referrer: document.referrer || '',
+      }),
+      keepalive: true, // sends even if page unloads
+    }).catch(function() {}); // silently ignore errors
+  } catch(e) {}
+})();
+
+  
 </script>
 </body>
 </html>
