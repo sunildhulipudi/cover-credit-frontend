@@ -716,12 +716,6 @@ async function fetchPosts() {
     const data = await r.json();
     if (data.success && data.data) {
       allPosts = data.data;
-      // ── DEBUG: log coverImage values from API ──
-      console.log('✅ Posts loaded:', allPosts.length);
-      allPosts.forEach((p,i) => {
-        console.log(`Post ${i+1}: "${p.title}" → coverImage: "${p.coverImage || '(empty)'}"`);
-      });
-      // ─────────────────────────────────────────
       filteredPosts = [...allPosts];
       updateHeroStats();
       renderFeaturedCard();
