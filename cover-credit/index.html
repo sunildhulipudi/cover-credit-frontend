@@ -818,24 +818,54 @@ const yearEl=document.getElementById('current-year');if(yearEl)yearEl.textConten
 })();
 
 // Analytics
-(function(){
-  var PAGE_NAME='home';
-  var BACKEND=(window.location.hostname==='localhost'||window.location.hostname==='127.0.0.1')?'http://localhost:5000/api':'https://cover-credit-backend.onrender.com/api';
-  var ua=navigator.userAgent.toLowerCase();
-  if(/bot|crawler|spider|headless/.test(ua))return;
-  var params=new URLSearchParams(window.location.search);
-  var utmSrc=params.get('utm_source')||'',utmMed=params.get('utm_medium')||'',utmCamp=params.get('utm_campaign')||'';
-  if(utmSrc){sessionStorage.setItem('cc_utm_source',utmSrc);sessionStorage.setItem('cc_utm_medium',utmMed);sessionStorage.setItem('cc_utm_campaign',utmCamp);}
-  else{utmSrc=sessionStorage.getItem('cc_utm_source')||'';utmMed=sessionStorage.getItem('cc_utm_medium')||'';utmCamp=sessionStorage.getItem('cc_utm_campaign')||'';}
-  function detectFromReferrer(ref){if(!ref)return'direct';var r=ref.toLowerCase();if(/google\.|bing\.|yahoo\.|duckduckgo\./.test(r))return'google';if(/whatsapp|wa\.me|wa\.link/.test(r))return'whatsapp';if(/facebook\.|fb\.com|fb\.me|l\.facebook/.test(r))return'facebook';if(/instagram\./.test(r))return'instagram';if(/linkedin\./.test(r))return'linkedin';if(/t\.me|telegram\./.test(r))return'telegram';if(/twitter\.|t\.co|x\.com/.test(r))return'twitter';if(/youtube\.|youtu\.be/.test(r))return'youtube';return'other';}
-  var source=utmSrc?utmSrc.toLowerCase().trim():detectFromReferrer(document.referrer);
-  var key='cc_tracked_'+PAGE_NAME+'_'+source;
-  if(sessionStorage.getItem(key))return;
-  sessionStorage.setItem(key,'1');
-  var isMobile=/iphone|ipod|android.*mobile|blackberry|windows phone/.test(ua);
-  var isTablet=/ipad|android(?!.*mobile)|tablet/.test(ua);
-  var device=isTablet?'tablet':isMobile?'mobile':'desktop';
-  try{fetch(BACKEND+'/track',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({page:PAGE_NAME,path:window.location.pathname,source,device,utmMedium:utmMed,utmCampaign:utmCamp,referrer:document.referrer||''}),keepalive:true}).catch(function(){});}catch(e){}
+(function() {
+  var PAGE_NAME = 'home';
+  var BACKEND = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+    ? 'http://localhost:5000/api'
+    : 'https://cover-credit-backend.onrender.com/api';
+  var ua = navigator.userAgent.toLowerCase();
+  if (/bot|crawler|spider|headless/.test(ua)) return;
+  var params  = new URLSearchParams(window.location.search);
+  var utmSrc  = params.get('utm_source')   || '';
+  var utmMed  = params.get('utm_medium')   || '';
+  var utmCamp = params.get('utm_campaign') || '';
+  if (utmSrc) {
+    sessionStorage.setItem('cc_utm_source', utmSrc);
+    sessionStorage.setItem('cc_utm_medium', utmMed);
+    sessionStorage.setItem('cc_utm_campaign', utmCamp);
+  } else {
+    utmSrc  = sessionStorage.getItem('cc_utm_source')   || '';
+    utmMed  = sessionStorage.getItem('cc_utm_medium')   || '';
+    utmCamp = sessionStorage.getItem('cc_utm_campaign') || '';
+  }
+  function detectSource(ref) {
+    if (!ref) return 'direct';
+    var r = ref.toLowerCase();
+    if (/google\.|bing\.|yahoo\.|duckduckgo\./.test(r)) return 'google';
+    if (/whatsapp|wa\.me|wa\.link/.test(r))             return 'whatsapp';
+    if (/facebook\.|fb\.com|fb\.me|l\.facebook/.test(r))return 'facebook';
+    if (/instagram\./.test(r))                          return 'instagram';
+    if (/linkedin\./.test(r))                           return 'linkedin';
+    if (/t\.me|telegram\./.test(r))                     return 'telegram';
+    if (/twitter\.|t\.co|x\.com/.test(r))               return 'twitter';
+    if (/youtube\.|youtu\.be/.test(r))                  return 'youtube';
+    return 'other';
+  }
+  var source = utmSrc ? utmSrc.toLowerCase().trim() : detectSource(document.referrer);
+  var key = 'cc_tracked_' + PAGE_NAME + '_' + source;
+  if (sessionStorage.getItem(key)) return;
+  sessionStorage.setItem(key, '1');
+  var isMobile = /iphone|ipod|android.*mobile|blackberry|windows phone/.test(ua);
+  var isTablet = /ipad|android(?!.*mobile)|tablet/.test(ua);
+  var device   = isTablet ? 'tablet' : isMobile ? 'mobile' : 'desktop';
+  try {
+    fetch(BACKEND + '/track', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ page: PAGE_NAME, path: window.location.pathname, source: source, device: device, utmMedium: utmMed, utmCampaign: utmCamp, referrer: document.referrer || '' }),
+      keepalive: true,
+    }).catch(function(){});
+  } catch(e) {}
 })();
 </script>
 </body>
