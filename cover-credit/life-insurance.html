@@ -122,19 +122,14 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 /* ══ HERO SLIDESHOW ══ */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding-top:calc(var(--ticker-h) + var(--nh));}
 .hero-slides{position:absolute;inset:0;z-index:0;}
-.hero-slide{position:absolute;inset:0;opacity:0;background-size:cover;background-position:center 30%;transition:opacity 1.2s ease-in-out;}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease-in-out;}
 .hero-slide.active{opacity:1;}
-.hs1{background-image:url('https://images.unsplash.com/photo-1586105251261-72a756497a11?w=1600&q=80');}
-.hs2{background-image:url('https://images.unsplash.com/photo-1609220136736-443140cffec6?w=1600&q=80');}
-.hs3{background-image:url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1600&q=80');background-position:center 20%;}
-.hs4{background-image:url('https://images.unsplash.com/photo-1624711765949-bc41c41cd86b?w=1600&q=80');}
-.hs5{background-image:url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1600&q=80');background-position:center 15%;}
-.hero-slides::after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,rgba(6,16,31,.95) 38%,rgba(6,16,31,.55) 65%,rgba(6,16,31,.2) 100%);z-index:1;}
-.hero-progress{position:absolute;bottom:0;left:0;height:2px;z-index:10;background:linear-gradient(90deg,var(--gold),var(--glow));width:0;}
-@keyframes hprog{0%{width:0}100%{width:100%}}
+.hero-slide img{width:100%;height:100%;object-fit:cover;object-position:center 25%;}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(110deg,rgba(6,16,31,.92) 35%,rgba(6,16,31,.55) 60%,rgba(6,16,31,.15) 100%);}
+.hero-progress{position:absolute;bottom:0;left:0;height:3px;z-index:10;background:linear-gradient(90deg,var(--gold),var(--glow));width:0;}
 .hero-counter{position:absolute;top:calc(var(--ticker-h) + var(--nh) + 1.2rem);right:5%;z-index:10;font-family:'Playfair Display',serif;font-size:.9rem;color:rgba(255,255,255,.3);display:flex;align-items:center;gap:.3rem;}
 .hero-counter .curr{font-size:1.4rem;color:var(--gold);font-weight:700;line-height:1;}
-.hero-dots{position:absolute;bottom:1.8rem;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:.5rem;align-items:center;}
+.hero-dots{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:.5rem;align-items:center;}
 .hero-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3);cursor:none;transition:all .3s;border:none;padding:0;}
 .hero-dot.active{width:22px;border-radius:3px;background:var(--gold);}
 .hgrid{position:absolute;inset:0;z-index:2;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:55px 55px;mask-image:radial-gradient(ellipse 70% 80% at 30% 50%,#000,transparent);}
@@ -152,19 +147,30 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .hsc{background:rgba(255,255,255,.07);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:.9rem 1.2rem;min-width:118px;}
 .hsc-n{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--gold);line-height:1;}
 .hsc-l{font-size:.63rem;color:rgba(255,255,255,.42);margin-top:.22rem;}
-/* Hero right card */
-.h-img-card{position:relative;width:100%;height:420px;border-radius:22px;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 40px 80px rgba(0,0,0,.6);}
-.h-img-card img{width:100%;height:100%;object-fit:cover;transition:opacity .9s ease-in-out;}
-.h-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,16,31,.9) 0%,transparent 55%);}
-.h-img-caption{position:absolute;bottom:1.4rem;left:1.4rem;right:1.4rem;}
-.h-img-cap-tag{display:inline-flex;align-items:center;gap:.3rem;background:rgba(245,166,35,.15);border:1px solid rgba(245,166,35,.3);color:#ffd166;font-size:.6rem;font-weight:700;padding:.2rem .55rem;border-radius:100px;margin-bottom:.5rem;}
-.h-img-cap-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;line-height:1.2;color:#fff;}
-.h-img-cap-sub{font-size:.67rem;color:rgba(255,255,255,.5);margin-top:.2rem;}
+/* Hero right risk card */
+.h-risk-card{background:rgba(6,16,31,.88);backdrop-filter:blur(28px);border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:1.5rem;width:100%;max-width:420px;box-shadow:0 40px 80px rgba(0,0,0,.55);}
+.hrc-head{display:flex;align-items:center;gap:.75rem;margin-bottom:1.1rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.08);}
+.hrc-ic{font-size:1.6rem;}
+.hrc-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;line-height:1.2;}
+.hrc-sub{font-size:.68rem;color:rgba(255,255,255,.4);margin-top:.15rem;}
+.hrc-block{border-radius:12px;padding:.9rem 1rem;margin-bottom:.75rem;}
+.hrc-bad{background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.18);}
+.hrc-good{background:rgba(74,222,128,.07);border:1px solid rgba(74,222,128,.18);}
+.hrc-block-label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:.6rem;}
+.hrc-bad .hrc-block-label{color:#f87171;}
+.hrc-good .hrc-block-label{color:#4ade80;}
+.hrc-row{display:flex;align-items:flex-start;gap:.5rem;font-size:.72rem;color:rgba(255,255,255,.68);line-height:1.5;margin-bottom:.35rem;}
+.hrc-row:last-child{margin-bottom:0;}
+.hrc-icon{flex-shrink:0;font-size:.75rem;margin-top:.1rem;}
+.hrc-bad .hrc-row{color:rgba(255,200,200,.7);}
+.hrc-good .hrc-row{color:rgba(200,255,220,.75);}
+.hrc-good .hrc-icon{color:#4ade80;}
+.hrc-cta{display:block;background:var(--gold);color:var(--ink);text-align:center;padding:.8rem;border-radius:11px;font-weight:700;font-size:.8rem;margin-top:.9rem;transition:transform .18s,box-shadow .18s;}
+.hrc-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,166,35,.35);}
+.hrc-note{text-align:center;font-size:.6rem;color:rgba(255,255,255,.3);margin-top:.5rem;}
 .h-stat-float{position:absolute;background:rgba(11,26,48,.92);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:.7rem .95rem;z-index:2;}
-.hsf1{top:-14px;right:-14px;animation:flt1 5s ease-in-out infinite;}
-.hsf2{bottom:130px;left:-18px;animation:flt2 6.5s ease-in-out infinite;}
+.hsf1{top:-18px;right:-18px;animation:flt1 5s ease-in-out infinite;}
 @keyframes flt1{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-@keyframes flt2{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .hsf-ic{font-size:.9rem;margin-bottom:.2rem;}
 .hsf-val{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--gold);}
 .hsf-lbl{font-size:.57rem;color:rgba(255,255,255,.38);text-transform:uppercase;letter-spacing:.8px;}
@@ -412,7 +418,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 
 /* ══ RESPONSIVE ══ */
 @media(max-width:1024px){
-  .hin{grid-template-columns:1fr;}.h-img-card{display:none;}
+  .hin{grid-template-columns:1fr;}.h-risk-card{display:none;}
   .chat-wrap,.calc-w,.cta-in,.faq-lay,.split-inner{grid-template-columns:1fr;}
   .sb2{position:static;}
   .ft-top{grid-template-columns:1fr 1fr;}
@@ -499,12 +505,23 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 <!-- ══ HERO WITH SLIDESHOW ══ -->
 <section class="hero">
   <div class="hero-slides">
-    <div class="hero-slide hs1 active"></div>
-    <div class="hero-slide hs2"></div>
-    <div class="hero-slide hs3"></div>
-    <div class="hero-slide hs4"></div>
-    <div class="hero-slide hs5"></div>
+    <div class="hero-slide active">
+      <img src="https://images.unsplash.com/photo-1581579438747-104c53d7fbc3?w=1600&q=80" alt="Father with child" loading="eager"/>
+    </div>
+    <div class="hero-slide">
+      <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1600&q=80" alt="Woman managing finances" loading="lazy"/>
+    </div>
+    <div class="hero-slide">
+      <img src="https://images.unsplash.com/photo-1516733968668-dbdce39c4651?w=1600&q=80" alt="Elderly parents" loading="lazy"/>
+    </div>
+    <div class="hero-slide">
+      <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600&q=80" alt="Man signing documents" loading="lazy"/>
+    </div>
+    <div class="hero-slide">
+      <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1600&q=80" alt="Children studying" loading="lazy"/>
+    </div>
   </div>
+  <div class="hero-overlay"></div>
   <div class="hgrid"></div>
   <div class="hero-counter"><span class="curr" id="slideNum">01</span><span>/ 05</span></div>
   <div class="hero-progress" id="heroProgress"></div>
@@ -513,8 +530,8 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
     <div>
       <div class="hbc"><a href="index.html">Home</a> &#8250; Life Insurance</div>
       <div class="hkick">&#128737; Life &amp; Term Insurance</div>
-      <h1 class="htit">If something happens to you —<br/>is your family <em>truly safe?</em></h1>
-      <p class="hdesc">Life insurance is not about death. It is about making sure those who depend on you never struggle — no matter what happens. We find the right plan at the right price, every time.</p>
+      <h1 class="htit">Your family's security<br/>starts with <em>one decision.</em></h1>
+      <p class="hdesc">If something happens to you tomorrow — can your family pay the EMIs, fund the children's education, and continue living with dignity? We make sure they can. Always.</p>
       <div class="hbtns">
         <a href="book.html?dept=life" class="bg">Get Free Plan Comparison &#8594;</a>
         <a href="tel:+917842854466" class="bgh">&#128222; +91 78428 54466</a>
@@ -526,26 +543,42 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
         <div class="hsc"><div class="hsc-n">98%</div><div class="hsc-l">Claim settlement ratio</div></div>
       </div>
     </div>
-    <!-- Right image card -->
+    <!-- Right: Risk vs Protection card -->
     <div style="position:relative;">
-      <div class="h-img-card">
-        <img id="heroCardImg" src="https://images.unsplash.com/photo-1586105251261-72a756497a11?w=600&q=80" alt="Indian family protected" loading="eager"/>
-        <div class="h-img-overlay"></div>
-        <div class="h-img-caption">
-          <div class="h-img-cap-tag">🛡️ Life Insurance</div>
-          <div class="h-img-cap-title" id="heroCardTitle">Your family, completely protected</div>
-          <div class="h-img-cap-sub" id="heroCardSub">Expert life insurance guidance in Telugu &amp; English</div>
+      <div class="h-risk-card">
+        <!-- Card header -->
+        <div class="hrc-head">
+          <div class="hrc-ic">⚠️</div>
+          <div>
+            <div class="hrc-title">What happens to your family</div>
+            <div class="hrc-sub">if you're not here tomorrow?</div>
+          </div>
         </div>
+        <!-- WITHOUT section -->
+        <div class="hrc-block hrc-bad">
+          <div class="hrc-block-label">❌ Without Life Insurance</div>
+          <div class="hrc-row"><span class="hrc-icon">🏠</span><span>Home loan EMI stops → Bank seizes property</span></div>
+          <div class="hrc-row"><span class="hrc-icon">📚</span><span>Children's education gets disrupted</span></div>
+          <div class="hrc-row"><span class="hrc-icon">👩</span><span>Spouse forced into immediate income pressure</span></div>
+          <div class="hrc-row"><span class="hrc-icon">💸</span><span>Savings wiped out in 2–3 years</span></div>
+        </div>
+        <!-- WITH section -->
+        <div class="hrc-block hrc-good">
+          <div class="hrc-block-label">✅ With ₹1 Crore Cover (₹490/mo)</div>
+          <div class="hrc-row"><span class="hrc-icon">✔</span><span>Home loan fully cleared from payout</span></div>
+          <div class="hrc-row"><span class="hrc-icon">✔</span><span>Education funded for 15–20 years</span></div>
+          <div class="hrc-row"><span class="hrc-icon">✔</span><span>₹1 Crore tax-free within 30 days</span></div>
+          <div class="hrc-row"><span class="hrc-icon">✔</span><span>Family's future fully secured</span></div>
+        </div>
+        <!-- CTA inside card -->
+        <a href="book.html?dept=life" class="hrc-cta">Get Protected Today — Free Consultation →</a>
+        <div class="hrc-note">📋 Same-day policy · Telugu &amp; English · No pressure</div>
       </div>
+      <!-- Floating stat -->
       <div class="h-stat-float hsf1">
         <div class="hsf-ic">💰</div>
-        <div class="hsf-val">&#8377;1 Crore</div>
-        <div class="hsf-lbl">From &#8377;490/month</div>
-      </div>
-      <div class="h-stat-float hsf2">
-        <div class="hsf-ic">⚡</div>
-        <div class="hsf-val">Same Day</div>
-        <div class="hsf-lbl">Policy Issued</div>
+        <div class="hsf-val">₹1 Crore</div>
+        <div class="hsf-lbl">From ₹490/month</div>
       </div>
     </div>
   </div>
@@ -564,16 +597,16 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 <div class="photo-row" style="padding-top:3.5rem;">
   <div class="photo-row-inner">
     <div class="photo-card rv d1">
-      <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=80" alt="Indian family financial planning" loading="lazy"/>
-      <div class="photo-card-label"><div class="pcl-main">Financial Planning Together</div><div class="pcl-sub">Secure your family's future today</div></div>
+      <img src="https://images.unsplash.com/photo-1588776814546-ec7e1d2e8f34?w=600&q=80" alt="Indian father with child" loading="lazy"/>
+      <div class="photo-card-label"><div class="pcl-main">Who Depends on You?</div><div class="pcl-sub">A father's protection starts with one decision</div></div>
     </div>
     <div class="photo-card rv d2">
-      <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80" alt="Indian financial advisor" loading="lazy"/>
-      <div class="photo-card-label"><div class="pcl-main">Expert Guidance</div><div class="pcl-sub">15+ insurers compared for you</div></div>
+      <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80" alt="Indian family reviewing insurance documents" loading="lazy"/>
+      <div class="photo-card-label"><div class="pcl-main">Reviewed & Explained Clearly</div><div class="pcl-sub">Every clause in Telugu or English — before you sign</div></div>
     </div>
     <div class="photo-card rv d3">
-      <img src="https://images.unsplash.com/photo-1624711765949-bc41c41cd86b?w=600&q=80" alt="South Indian family" loading="lazy"/>
-      <div class="photo-card-label"><div class="pcl-main">500+ Families Protected</div><div class="pcl-sub">Across AP &amp; Telangana</div></div>
+      <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80" alt="Indian woman managing finances alone" loading="lazy"/>
+      <div class="photo-card-label"><div class="pcl-main">Don't Leave This to Chance</div><div class="pcl-sub">₹1 Crore gives her time to rebuild — on her terms</div></div>
     </div>
   </div>
 </div>
@@ -680,7 +713,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 <section class="split-sec">
   <div class="split-inner si">
     <div class="split-img rv">
-      <img src="https://images.unsplash.com/photo-1595856898942-c47a85dc5f41?w=800&q=80" alt="Hyderabad city" loading="lazy"/>
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" alt="Indian man thinking about family protection" loading="lazy"/>
       <div class="split-badge">
         <div class="sb-val">30 Days</div>
         <div class="sb-lbl">Avg Claim Settlement</div>
@@ -711,9 +744,9 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
       <h2 class="tit" style="text-align:center;">Simple truths, <em>visually told</em></h2>
     </div>
     <div class="cstrip-grid rv d1">
-      <div class="ccard">
+        <div class="ccard">
         <div class="ccard-art" style="background:#0d2137;">
-          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80" alt="Indian office" style="width:100%;height:100%;object-fit:cover;opacity:.85;"/>
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&q=80" alt="Insurance consultation" style="width:100%;height:100%;object-fit:cover;opacity:.85;"/>
         </div>
         <div class="ccard-body">
           <div class="ccard-tt">Expert Comparison</div>
@@ -764,7 +797,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
       </div>
       <div class="ccard">
         <div class="ccard-art" style="background:#0d1a2d;overflow:hidden;">
-          <img src="https://images.unsplash.com/photo-1595856898942-c47a85dc5f41?auto=format&fit=crop&w=400&q=80" alt="Hyderabad city" style="width:100%;height:100%;object-fit:cover;opacity:.75;"/>
+          <img src="https://images.unsplash.com/photo-1588776814546-ec7e1d2e8f34?w=400&q=80" alt="Indian family at home" style="width:100%;height:100%;object-fit:cover;opacity:.8;"/>
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(6,16,31,.85),transparent 50%);display:flex;align-items:flex-end;padding:.8rem;">
             <div style="font-size:.7rem;font-weight:700;color:rgba(255,255,255,.7);">Hyderabad • Vijayawada • Vizag</div>
           </div>
@@ -1193,7 +1226,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
         <a href="index.html" class="ft-logo">Cover<em>Credit</em></a>
         <p class="ft-ds">Honest insurance and financial advice for families across AP and Telangana. We sell the right policy — no pressure, no jargon.</p>
         <div class="ft-con">&#128222; <a href="tel:+917842854466">+91 78428 54466</a></div>
-        <div class="ft-con">&#9993; <a href="mailto:Covercredit.official@gmail.com">Covercredit.official@gmail.com</a></div>
+        <div class="ft-con">&#9993; <a href="/cdn-cgi/l/email-protection#8ccfe3fae9feeffee9e8e5f8a2e3eaeae5efe5ede0ccebe1ede5e0a2efe3e1"><span class="__cf_email__" data-cfemail="93d0fce5f6e1f0e1f6f7fae7bdfcf5f5faf0faf2ffd3f4fef2faffbdf0fcfe">[email&#160;protected]</span></a></div>
         <div class="ft-con">&#128336; Mon–Sat: 9 AM – 7 PM</div>
       </div>
       <div class="ft-col"><div class="ft-clbl">Insurance</div><ul><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life &amp; Term Insurance</a></li><li><a href="bike-insurance.html">Bike Insurance</a></li><li><a href="car-insurance.html">Car Insurance</a></li></ul></div>
@@ -1207,7 +1240,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ── CURSOR ── */
 const cur=document.getElementById('cur'),cr=document.getElementById('cr');
 let mx=0,my=0,rx=0,ry=0;
@@ -1245,11 +1278,11 @@ buildTicker();
 
 /* ── HERO SLIDESHOW (3s) ── */
 const SLIDES=[
-  {img:'https://images.unsplash.com/photo-1586105251261-72a756497a11?w=600&q=80',title:'Your family, completely protected',sub:'Expert life insurance guidance in Telugu & English'},
-  {img:'https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=80',title:'Financial security for every family',sub:'₹1 Crore cover from just ₹490/month'},
-  {img:'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80',title:'15+ insurers compared for you',sub:'Honest advice, no pressure, same-day policy'},
-  {img:'https://images.unsplash.com/photo-1624711765949-bc41c41cd86b?w=600&q=80',title:'South Indian families, fully secured',sub:'Serving AP & Telangana since day one'},
-  {img:'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=600&q=80',title:'Expert advisors, real guidance',sub:'Telugu & English — your language, your comfort'},
+  {img:'https://images.unsplash.com/photo-1581579438747-104c53d7fbc3?w=600&q=80',title:'Who will take care of them if you\'re not here?',sub:'Protect your family today — from just ₹490/month'},
+  {img:'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80',title:'Don\'t leave her to figure it out alone.',sub:'₹1 Crore payout — tax-free — within 30 days'},
+  {img:'https://images.unsplash.com/photo-1516733968668-dbdce39c4651?w=600&q=80',title:'Your parents depend on you too.',sub:'Monthly income riders keep them secure forever'},
+  {img:'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80',title:'One decision. Lifelong protection.',sub:'15+ insurers compared — policy issued same day'},
+  {img:'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80',title:'Their future. Protected.',sub:'Children\'s education funded — no matter what happens'},
 ];
 let curSlide=0,slideTimer=null,progAnim=null;
 
@@ -1261,18 +1294,9 @@ function goToSlide(n){
   curSlide=(n+SLIDES.length)%SLIDES.length;
   slides[curSlide].classList.add('active');
   dots[curSlide].classList.add('active');
+  // Update counter
   const num=document.getElementById('slideNum');
   if(num)num.textContent=String(curSlide+1).padStart(2,'0');
-  // Update card
-  const cardImg=document.getElementById('heroCardImg');
-  const cardTitle=document.getElementById('heroCardTitle');
-  const cardSub=document.getElementById('heroCardSub');
-  if(cardImg){
-    cardImg.style.opacity='0';
-    setTimeout(()=>{cardImg.src=SLIDES[curSlide].img;cardImg.style.opacity='1';},200);
-  }
-  if(cardTitle)cardTitle.textContent=SLIDES[curSlide].title;
-  if(cardSub)cardSub.textContent=SLIDES[curSlide].sub;
   // Progress bar
   const prog=document.getElementById('heroProgress');
   if(prog){
