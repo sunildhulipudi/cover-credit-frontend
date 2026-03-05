@@ -119,123 +119,123 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .bq{display:flex;align-items:center;justify-content:center;gap:.32rem;border:1.5px solid var(--gold);color:var(--gold);background:transparent;padding:.58rem .9rem;border-radius:9px;font-weight:700;font-size:.76rem;cursor:none;width:100%;transition:background .2s,color .2s,transform .15s;margin-top:1rem;}
 .bq:hover{background:var(--gold);color:var(--ink);transform:translateY(-1px);}
 
-/* ══ HERO — SPLIT LAYOUT ══ */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;
-  padding-top:calc(var(--ticker-h) + var(--nh));
-  background:linear-gradient(135deg,#04090f 0%,#06101f 50%,#071428 100%);}
-.hero-bg-glow{position:absolute;inset:0;z-index:0;
-  background:radial-gradient(ellipse 80% 60% at 65% 50%,rgba(13,71,161,.18) 0%,transparent 70%),
-             radial-gradient(ellipse 40% 40% at 20% 80%,rgba(245,166,35,.06) 0%,transparent 60%);}
-.hgrid{position:absolute;inset:0;z-index:1;
-  background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
-  background-size:52px 52px;
-  mask-image:radial-gradient(ellipse 90% 90% at 50% 50%,#000,transparent);}
-.hin{position:relative;z-index:5;max-width:1300px;margin:0 auto;padding:3rem 5% 4rem;width:100%;
-  display:grid;grid-template-columns:1fr 480px;align-items:center;gap:4rem;}
+/* ══ HERO — CINEMATIC SLIDESHOW ══ */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding-top:calc(var(--ticker-h) + var(--nh));}
 
-/* ── Hero left text ── */
-.hbc{display:flex;align-items:center;gap:.38rem;font-size:.72rem;color:rgba(255,255,255,.32);margin-bottom:1.4rem;}
-.hbc a{color:rgba(255,255,255,.32);transition:color .2s;}.hbc a:hover{color:var(--gold);}
-.hkick{display:inline-flex;align-items:center;gap:.42rem;background:rgba(230,92,0,.15);border:1px solid rgba(230,92,0,.3);color:#fda07a;font-size:.68rem;font-weight:700;padding:.3rem .88rem;border-radius:100px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.1rem;}
+/* Background slides */
+.hbg{position:absolute;inset:0;z-index:0;}
+.hbg-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease-in-out;}
+.hbg-slide.active{opacity:1;}
+.hbg-slide img{width:100%;height:100%;object-fit:cover;object-position:center 20%;}
+
+/* Gradient overlay: deep on left for text, fades out toward right so image shows */
+.hbg-overlay{position:absolute;inset:0;z-index:1;
+  background:linear-gradient(100deg,
+    rgba(4,9,18,.96) 0%,
+    rgba(4,9,18,.88) 30%,
+    rgba(4,9,18,.55) 58%,
+    rgba(4,9,18,.15) 78%,
+    rgba(4,9,18,.05) 100%);}
+
+/* Subtle grid texture */
+.hgrid{position:absolute;inset:0;z-index:2;
+  background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);
+  background-size:54px 54px;
+  mask-image:linear-gradient(90deg,rgba(0,0,0,.6) 0%,transparent 55%);}
+
+/* Progress bar at bottom */
+.hprog-bar{position:absolute;bottom:0;left:0;height:3px;z-index:20;
+  background:linear-gradient(90deg,var(--gold),var(--glow));width:0;}
+@keyframes hprog{from{width:0}to{width:100%}}
+
+/* Slide counter top-right */
+.hcounter{position:absolute;top:calc(var(--ticker-h) + var(--nh) + 1.4rem);right:5%;z-index:15;
+  font-family:'Playfair Display',serif;display:flex;align-items:baseline;gap:.3rem;}
+.hcounter-cur{font-size:1.5rem;font-weight:700;color:var(--gold);line-height:1;}
+.hcounter-tot{font-size:.8rem;color:rgba(255,255,255,.28);}
+
+/* Dot indicators */
+.hdots{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);z-index:20;
+  display:flex;gap:.55rem;align-items:center;}
+.hdot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.28);
+  border:none;padding:0;cursor:pointer;transition:all .35s;}
+.hdot.on{width:24px;border-radius:3px;background:var(--gold);}
+
+/* Inner layout */
+.hin{position:relative;z-index:10;max-width:1300px;margin:0 auto;padding:2rem 5% 5rem;
+  width:100%;display:grid;grid-template-columns:1fr 390px;align-items:center;gap:3.5rem;}
+
+/* Left text */
+.hbc{display:flex;align-items:center;gap:.38rem;font-size:.72rem;color:rgba(255,255,255,.3);margin-bottom:1.4rem;}
+.hbc a{color:rgba(255,255,255,.3);transition:color .2s;}.hbc a:hover{color:var(--gold);}
+.hkick{display:inline-flex;align-items:center;gap:.42rem;background:rgba(230,92,0,.15);
+  border:1px solid rgba(230,92,0,.3);color:#fda07a;font-size:.68rem;font-weight:700;
+  padding:.3rem .88rem;border-radius:100px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.1rem;}
 .hkick::before{content:'';width:5px;height:5px;background:#f87171;border-radius:50%;animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
-.htit{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.8vw,3.6rem);font-weight:900;line-height:1.06;letter-spacing:-2px;margin-bottom:1.2rem;max-width:580px;}
-.htit em{font-style:italic;background:linear-gradient(135deg,var(--gold),var(--glow));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hdesc{font-size:.93rem;line-height:1.8;color:rgba(255,255,255,.58);margin-bottom:2rem;max-width:460px;}
+.htit{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.8vw,3.6rem);font-weight:900;
+  line-height:1.06;letter-spacing:-2px;margin-bottom:1.2rem;max-width:580px;}
+.htit em{font-style:italic;background:linear-gradient(135deg,var(--gold),var(--glow));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+
+/* Dynamic subtitle that changes with each slide */
+.hsubtit{font-size:.82rem;font-weight:600;color:var(--gold);letter-spacing:.3px;
+  margin-bottom:.6rem;min-height:1.2em;transition:opacity .4s;}
+
+.hdesc{font-size:.92rem;line-height:1.82;color:rgba(255,255,255,.6);margin-bottom:2rem;max-width:460px;}
 .hbtns{display:flex;gap:.85rem;flex-wrap:wrap;margin-bottom:2rem;}
 .hstats{display:flex;gap:.85rem;flex-wrap:wrap;}
-.hsc{background:rgba(255,255,255,.05);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:.85rem 1.1rem;min-width:110px;}
+.hsc{background:rgba(255,255,255,.06);backdrop-filter:blur(16px);
+  border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:.85rem 1.1rem;min-width:112px;}
 .hsc-n{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--gold);line-height:1;}
 .hsc-l{font-size:.6rem;color:rgba(255,255,255,.38);margin-top:.2rem;}
 
-/* ── Hero right photo collage ── */
-.h-collage{position:relative;width:100%;}
-.h-collage-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:220px 200px;gap:10px;border-radius:20px;overflow:visible;}
-.hcg-item{border-radius:14px;overflow:hidden;position:relative;border:1px solid rgba(255,255,255,.08);}
-.hcg-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s;}
-.hcg-item:hover img{transform:scale(1.05);}
-/* top-left tall item spans 2 rows */
-.hcg-item.tall{grid-row:1/3;border-radius:16px;}
-.hcg-item.tall img{object-position:center top;}
-/* subtle overlay on each photo */
-.hcg-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,16,31,.45) 0%,transparent 50%);}
-/* label on bottom of tall item */
-.hcg-label{position:absolute;bottom:.75rem;left:.75rem;right:.75rem;z-index:2;font-size:.62rem;font-weight:600;color:rgba(255,255,255,.75);background:rgba(6,16,31,.65);backdrop-filter:blur(8px);border-radius:7px;padding:.3rem .6rem;}
+/* Right: foreground photo strip */
+.hstrip{position:relative;display:flex;flex-direction:column;gap:10px;height:520px;}
+.hstrip-img{flex:1;border-radius:14px;overflow:hidden;position:relative;
+  border:1px solid rgba(255,255,255,.1);min-height:0;}
+.hstrip-img img{width:100%;height:100%;object-fit:cover;object-position:center 25%;
+  display:block;transition:transform .6s ease;}
+.hstrip-img:hover img{transform:scale(1.04);}
+.hstrip-img::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(4,9,18,.7) 0%,transparent 50%);}
+.hstrip-label{position:absolute;bottom:.65rem;left:.75rem;right:.75rem;z-index:2;
+  font-size:.62rem;font-weight:600;color:rgba(255,255,255,.8);
+  background:rgba(4,9,18,.6);backdrop-filter:blur(10px);
+  border-radius:7px;padding:.28rem .6rem;}
 
-/* ── Floating badges on collage ── */
-.hf-badge{position:absolute;z-index:10;background:rgba(8,18,38,.92);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.13);border-radius:14px;padding:.75rem 1rem;box-shadow:0 12px 40px rgba(0,0,0,.4);}
-.hfb-top{top:-16px;right:-16px;animation:fbfl1 5s ease-in-out infinite;}
-.hfb-mid{bottom:180px;left:-22px;animation:fbfl2 6s ease-in-out infinite;}
-.hfb-bot{bottom:-16px;right:30px;animation:fbfl3 7s ease-in-out infinite;}
-@keyframes fbfl1{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
-@keyframes fbfl2{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-@keyframes fbfl3{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.hfb-icon{font-size:.95rem;margin-bottom:.18rem;}
-.hfb-val{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--gold);line-height:1.1;}
-.hfb-lbl{font-size:.55rem;color:rgba(255,255,255,.36);text-transform:uppercase;letter-spacing:.8px;margin-top:.1rem;}
-/* green pulse dot badge */
-.hfb-claim{display:flex;align-items:center;gap:.55rem;}
-.hfb-claim-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0;box-shadow:0 0 10px #22c55e;animation:clmpulse 2s ease-in-out infinite;}
-@keyframes clmpulse{0%,100%{box-shadow:0 0 4px #22c55e}50%{box-shadow:0 0 16px #22c55e,0 0 28px rgba(34,197,94,.3)}}
-.hfb-claim-txt .hfb-val{font-size:.85rem;}
+/* Floating badges */
+.hfbadge{position:absolute;z-index:20;background:rgba(6,14,30,.93);
+  backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,.14);
+  border-radius:14px;padding:.7rem 1rem;box-shadow:0 14px 44px rgba(0,0,0,.45);}
+.hfb1{top:-14px;right:-18px;animation:hflt1 5s ease-in-out infinite;}
+.hfb2{top:50%;left:-24px;transform:translateY(-50%);animation:hflt2 6.5s ease-in-out infinite;}
+.hfb3{bottom:-14px;right:20px;animation:hflt3 7s ease-in-out infinite;}
+@keyframes hflt1{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes hflt2{0%,100%{transform:translateY(-50%)}50%{transform:translateY(calc(-50% - 8px))}}
+@keyframes hflt3{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.hfb-ic{font-size:1rem;margin-bottom:.15rem;}
+.hfb-v{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;
+  color:var(--gold);line-height:1.15;}
+.hfb-l{font-size:.54rem;color:rgba(255,255,255,.34);text-transform:uppercase;
+  letter-spacing:.8px;margin-top:.08rem;}
+.hfb-pulse{display:flex;align-items:center;gap:.5rem;}
+.hfb-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0;
+  box-shadow:0 0 8px #22c55e;animation:gpulse 2s ease-in-out infinite;}
+@keyframes gpulse{0%,100%{box-shadow:0 0 4px #22c55e}50%{box-shadow:0 0 16px #22c55e,0 0 28px rgba(34,197,94,.3)}}
 
-.sh{position:absolute;bottom:2rem;left:5%;display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:10;}
-.sh-m{width:22px;height:34px;border:2px solid rgba(255,255,255,.22);border-radius:100px;display:flex;justify-content:center;padding-top:5px;}
-.sh-d{width:3px;height:7px;background:rgba(255,255,255,.45);border-radius:100px;animation:sd 2s ease-in-out infinite;}
+/* Scroll indicator */
+.sh{position:absolute;bottom:2.2rem;left:5%;display:flex;flex-direction:column;
+  align-items:center;gap:.5rem;z-index:10;}
+.sh-m{width:22px;height:34px;border:2px solid rgba(255,255,255,.22);border-radius:100px;
+  display:flex;justify-content:center;padding-top:5px;}
+.sh-d{width:3px;height:7px;background:rgba(255,255,255,.45);border-radius:100px;
+  animation:sd 2s ease-in-out infinite;}
 @keyframes sd{0%{opacity:1;transform:translateY(0)}80%{opacity:0;transform:translateY(10px)}100%{opacity:0}}
 .sh-t{font-size:.6rem;color:rgba(255,255,255,.25);letter-spacing:1.5px;text-transform:uppercase;}
 
-/* Remove old risk card / slideshow styles */
-.h-risk-card,.hrc-head,.hrc-ic,.hrc-title,.hrc-sub,.hrc-block,.hrc-bad,.hrc-good,
-.hrc-block-label,.hrc-row,.hrc-icon,.hrc-cta,.hrc-note,
-.h-stat-float,.hsf1,.hsf-ic,.hsf-val,.hsf-lbl,
-.hero-slides,.hero-slide,.hero-overlay,.hero-progress,.hero-counter,.hero-dots,.hero-dot{display:revert;}
-.hbc{display:flex;align-items:center;gap:.38rem;font-size:.72rem;color:rgba(255,255,255,.38);margin-bottom:1.4rem;}
-.hbc a{color:rgba(255,255,255,.38);transition:color .2s;}.hbc a:hover{color:var(--gold);}
-.hkick{display:inline-flex;align-items:center;gap:.42rem;background:rgba(230,92,0,.15);border:1px solid rgba(230,92,0,.3);color:#fda07a;font-size:.68rem;font-weight:700;padding:.3rem .88rem;border-radius:100px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.1rem;}
-.hkick::before{content:'';width:5px;height:5px;background:#f87171;border-radius:50%;animation:pulse 2s infinite;}
-@keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
-.htit{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.8rem);font-weight:900;line-height:1.06;letter-spacing:-2px;margin-bottom:1.2rem;max-width:620px;}
-.htit em{font-style:italic;background:linear-gradient(135deg,var(--gold),var(--glow));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hdesc{font-size:.95rem;line-height:1.8;color:rgba(255,255,255,.62);margin-bottom:2rem;max-width:480px;}
-.hbtns{display:flex;gap:.85rem;flex-wrap:wrap;margin-bottom:2rem;}
-.hstats{display:flex;gap:1rem;flex-wrap:wrap;}
-.hsc{background:rgba(255,255,255,.07);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:.9rem 1.2rem;min-width:118px;}
-.hsc-n{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:700;color:var(--gold);line-height:1;}
-.hsc-l{font-size:.63rem;color:rgba(255,255,255,.42);margin-top:.22rem;}
-/* Hero right risk card */
-.h-risk-card{background:rgba(6,16,31,.88);backdrop-filter:blur(28px);border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:1.5rem;width:100%;max-width:420px;box-shadow:0 40px 80px rgba(0,0,0,.55);}
-.hrc-head{display:flex;align-items:center;gap:.75rem;margin-bottom:1.1rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,.08);}
-.hrc-ic{font-size:1.6rem;}
-.hrc-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;line-height:1.2;}
-.hrc-sub{font-size:.68rem;color:rgba(255,255,255,.4);margin-top:.15rem;}
-.hrc-block{border-radius:12px;padding:.9rem 1rem;margin-bottom:.75rem;}
-.hrc-bad{background:rgba(239,68,68,.07);border:1px solid rgba(239,68,68,.18);}
-.hrc-good{background:rgba(74,222,128,.07);border:1px solid rgba(74,222,128,.18);}
-.hrc-block-label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:.6rem;}
-.hrc-bad .hrc-block-label{color:#f87171;}
-.hrc-good .hrc-block-label{color:#4ade80;}
-.hrc-row{display:flex;align-items:flex-start;gap:.5rem;font-size:.72rem;color:rgba(255,255,255,.68);line-height:1.5;margin-bottom:.35rem;}
-.hrc-row:last-child{margin-bottom:0;}
-.hrc-icon{flex-shrink:0;font-size:.75rem;margin-top:.1rem;}
-.hrc-bad .hrc-row{color:rgba(255,200,200,.7);}
-.hrc-good .hrc-row{color:rgba(200,255,220,.75);}
-.hrc-good .hrc-icon{color:#4ade80;}
-.hrc-cta{display:block;background:var(--gold);color:var(--ink);text-align:center;padding:.8rem;border-radius:11px;font-weight:700;font-size:.8rem;margin-top:.9rem;transition:transform .18s,box-shadow .18s;}
-.hrc-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,166,35,.35);}
-.hrc-note{text-align:center;font-size:.6rem;color:rgba(255,255,255,.3);margin-top:.5rem;}
-.h-stat-float{position:absolute;background:rgba(11,26,48,.92);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:.7rem .95rem;z-index:2;}
-.hsf1{top:-18px;right:-18px;animation:flt1 5s ease-in-out infinite;}
-@keyframes flt1{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.hsf-ic{font-size:.9rem;margin-bottom:.2rem;}
-.hsf-val{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--gold);}
-.hsf-lbl{font-size:.57rem;color:rgba(255,255,255,.38);text-transform:uppercase;letter-spacing:.8px;}
-.sh{position:absolute;bottom:2.2rem;left:5%;display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:10;}
-.sh-m{width:22px;height:34px;border:2px solid rgba(255,255,255,.25);border-radius:100px;display:flex;justify-content:center;padding-top:5px;}
-.sh-d{width:3px;height:7px;background:rgba(255,255,255,.5);border-radius:100px;animation:sd 2s ease-in-out infinite;}
-@keyframes sd{0%{opacity:1;transform:translateY(0)}80%{opacity:0;transform:translateY(10px)}100%{opacity:0}}
-.sh-t{font-size:.6rem;color:rgba(255,255,255,.28);letter-spacing:1.5px;text-transform:uppercase;}
-
+/* ══ PHOTO ROW ══ */
 /* ══ PHOTO ROW ══ */
 .photo-row{padding:0 5% 4rem;background:var(--ink);}
 .photo-row-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
@@ -474,7 +474,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 
 /* ══ RESPONSIVE ══ */
 @media(max-width:1024px){
-  .hin{grid-template-columns:1fr;}.h-collage{display:none;}
+  .hin{grid-template-columns:1fr;}.hstrip{display:none;}
   .chat-wrap,.calc-w,.cta-in,.faq-lay,.split-inner{grid-template-columns:1fr;}
   .sb2{position:static;}
   .ft-top{grid-template-columns:1fr 1fr;}
@@ -558,17 +558,55 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
   <a href="book.html?dept=life" class="mc">Book Free Consultation &#8594;</a>
 </div>
 
-<!-- ══ HERO — SPLIT COLLAGE ══ -->
+<!-- ══ HERO — CINEMATIC SLIDESHOW ══ -->
 <section class="hero">
-  <div class="hero-bg-glow"></div>
+
+  <!-- BACKGROUND: 5 full-bleed slides scrolling every 3s -->
+  <div class="hbg">
+    <div class="hbg-slide active">
+      <!-- Slide 1: Indian father holding young child — pure emotion -->
+      <img src="https://images.unsplash.com/photo-1602734846297-9299fc2d4703?w=1800&q=85&auto=format&fit=crop" alt="Indian father with child" loading="eager"/>
+    </div>
+    <div class="hbg-slide">
+      <!-- Slide 2: Indian woman sitting alone, bills on table — the 'what if' fear -->
+      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=1800&q=85&auto=format&fit=crop" alt="Indian woman alone managing finances" loading="lazy"/>
+    </div>
+    <div class="hbg-slide">
+      <!-- Slide 3: Elderly Indian couple — dependency angle -->
+      <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=1800&q=85&auto=format&fit=crop" alt="Elderly Indian couple" loading="lazy"/>
+    </div>
+    <div class="hbg-slide">
+      <!-- Slide 4: Indian family together at home — what you're protecting -->
+      <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=1800&q=85&auto=format&fit=crop" alt="Indian family at home" loading="lazy"/>
+    </div>
+    <div class="hbg-slide">
+      <!-- Slide 5: Indian man signing documents — taking action -->
+      <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1800&q=85&auto=format&fit=crop" alt="Man signing insurance documents" loading="lazy"/>
+    </div>
+  </div>
+
+  <!-- Left-heavy gradient so text is readable, right side image shines through -->
+  <div class="hbg-overlay"></div>
   <div class="hgrid"></div>
 
+  <!-- Slide counter top-right -->
+  <div class="hcounter">
+    <span class="hcounter-cur" id="hcur">01</span>
+    <span class="hcounter-tot">/ 05</span>
+  </div>
+
+  <!-- Progress bar bottom -->
+  <div class="hprog-bar" id="hprogbar"></div>
+
+  <!-- Main content grid -->
   <div class="hin">
+
     <!-- LEFT: Text -->
     <div>
       <div class="hbc"><a href="index.html">Home</a> &#8250; Life Insurance</div>
       <div class="hkick">&#128737; Life &amp; Term Insurance</div>
       <h1 class="htit">Your family's security<br/>starts with <em>one decision.</em></h1>
+      <div class="hsubtit" id="hsubtit">Who will take care of them if you're not here?</div>
       <p class="hdesc">If something happens to you tomorrow — can your family pay the EMIs, fund the children's education, and continue living with dignity? We make sure they can. Always.</p>
       <div class="hbtns">
         <a href="book.html?dept=life" class="bg">Get Free Plan Comparison &#8594;</a>
@@ -582,69 +620,81 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
       </div>
     </div>
 
-    <!-- RIGHT: Photo collage -->
-    <div class="h-collage">
-      <div class="h-collage-grid">
-        <!-- Tall left: Indian father holding young child -->
-        <div class="hcg-item tall">
-          <img src="https://images.unsplash.com/photo-1602734846297-9299fc2d4703?w=600&q=80" alt="Indian father with child" loading="eager"/>
-          <div class="hcg-label">Who depends on you?</div>
-        </div>
-        <!-- Top right: Indian family with advisor reviewing documents -->
-        <div class="hcg-item">
-          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80" alt="Family reviewing insurance" loading="eager"/>
-          <div class="hcg-label">Reviewed &amp; explained clearly</div>
-        </div>
-        <!-- Bottom right: Indian mother with children at home -->
-        <div class="hcg-item">
-          <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=80" alt="Indian mother with children" loading="eager"/>
-          <div class="hcg-label">Protect what matters most</div>
-        </div>
+    <!-- RIGHT: Foreground photo strip (3 stacked images, always visible) -->
+    <div class="hstrip">
+
+      <!-- Strip image 1: Indian father with child -->
+      <div class="hstrip-img">
+        <img src="https://images.unsplash.com/photo-1602734846297-9299fc2d4703?w=600&q=80&auto=format&fit=crop" alt="Indian father with child"/>
+        <div class="hstrip-label">Who depends on you?</div>
+      </div>
+
+      <!-- Strip image 2: Indian couple reviewing documents -->
+      <div class="hstrip-img">
+        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80&auto=format&fit=crop" alt="Couple reviewing insurance documents"/>
+        <div class="hstrip-label">One plan. Full protection.</div>
+      </div>
+
+      <!-- Strip image 3: Indian mother with children -->
+      <div class="hstrip-img">
+        <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=80&auto=format&fit=crop" alt="Indian mother with children"/>
+        <div class="hstrip-label">Their future. Secured.</div>
       </div>
 
       <!-- Floating badge 1: Cover amount — top right -->
-      <div class="hf-badge hfb-top">
-        <div class="hfb-icon">&#128176;</div>
-        <div class="hfb-val">&#8377;1 Crore</div>
-        <div class="hfb-lbl">From &#8377;490/month</div>
+      <div class="hfbadge hfb1">
+        <div class="hfb-ic">&#128176;</div>
+        <div class="hfb-v">&#8377;1 Crore</div>
+        <div class="hfb-l">From &#8377;490/month</div>
       </div>
 
-      <!-- Floating badge 2: Claim settlement — left middle -->
-      <div class="hf-badge hfb-mid">
-        <div class="hfb-claim">
-          <div class="hfb-claim-dot"></div>
-          <div class="hfb-claim-txt">
-            <div class="hfb-val" style="font-size:.82rem;">30 Day Settlement</div>
-            <div class="hfb-lbl">Avg claim payout</div>
+      <!-- Floating badge 2: Claim payout — left middle -->
+      <div class="hfbadge hfb2">
+        <div class="hfb-pulse">
+          <div class="hfb-dot"></div>
+          <div>
+            <div class="hfb-v" style="font-size:.82rem;">30 Day Claim</div>
+            <div class="hfb-l">Avg settlement time</div>
           </div>
         </div>
       </div>
 
-      <!-- Floating badge 3: Same day policy — bottom -->
-      <div class="hf-badge hfb-bot">
-        <div class="hfb-icon">&#9889;</div>
-        <div class="hfb-val" style="font-size:.88rem;">Same Day</div>
-        <div class="hfb-lbl">Policy issued</div>
+      <!-- Floating badge 3: Same day policy — bottom right -->
+      <div class="hfbadge hfb3">
+        <div class="hfb-ic">&#9889;</div>
+        <div class="hfb-v" style="font-size:.88rem;">Same Day</div>
+        <div class="hfb-l">Policy issued</div>
       </div>
+
     </div>
+  </div>
+
+  <!-- Slide dot indicators -->
+  <div class="hdots">
+    <button class="hdot on" data-s="0"></button>
+    <button class="hdot" data-s="1"></button>
+    <button class="hdot" data-s="2"></button>
+    <button class="hdot" data-s="3"></button>
+    <button class="hdot" data-s="4"></button>
   </div>
 
   <div class="sh"><div class="sh-m"><div class="sh-d"></div></div><div class="sh-t">Scroll</div></div>
 </section>
 
 <!-- ══ PHOTO ROW ══ -->
+
 <div class="photo-row" style="padding-top:3.5rem;">
   <div class="photo-row-inner">
     <div class="photo-card rv d1">
-      <img src="https://images.unsplash.com/photo-1602734846297-9299fc2d4703?w=600&q=80" alt="Indian father with child" loading="lazy"/>
+      <img src="https://images.unsplash.com/photo-1602734846297-9299fc2d4703?w=600&q=80&auto=format&fit=crop" alt="Indian father with child" loading="lazy"/>
       <div class="photo-card-label"><div class="pcl-main">Who Depends on You?</div><div class="pcl-sub">A father's protection starts with one decision</div></div>
     </div>
     <div class="photo-card rv d2">
-      <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80" alt="Family reviewing insurance documents" loading="lazy"/>
+      <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80&auto=format&fit=crop" alt="Family reviewing insurance documents" loading="lazy"/>
       <div class="photo-card-label"><div class="pcl-main">Reviewed &amp; Explained Clearly</div><div class="pcl-sub">Every clause in Telugu or English — before you sign</div></div>
     </div>
     <div class="photo-card rv d3">
-      <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=80" alt="Indian mother with children" loading="lazy"/>
+      <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=80&auto=format&fit=crop" alt="Indian mother with children" loading="lazy"/>
       <div class="photo-card-label"><div class="pcl-main">Don't Leave This to Chance</div><div class="pcl-sub">₹1 Crore gives her time to rebuild — on her terms</div></div>
     </div>
   </div>
@@ -752,7 +802,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 <section class="split-sec">
   <div class="split-inner si">
     <div class="split-img rv">
-      <img src="https://images.unsplash.com/photo-1545167622-3a6ac756afa4?w=800&q=80" alt="Indian man thinking about family future" loading="lazy"/>
+      <img src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=800&q=80&auto=format&fit=crop" alt="Indian man thinking about family future" loading="lazy"/>
       <div class="split-badge">
         <div class="sb-val">30 Days</div>
         <div class="sb-lbl">Avg Claim Settlement</div>
@@ -785,7 +835,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
     <div class="cstrip-grid rv d1">
         <div class="ccard">
         <div class="ccard-art" style="background:#0d2137;">
-          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&q=80" alt="Indian couple with insurance advisor" style="width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.88;"/>
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&q=80&auto=format&fit=crop" alt="Indian advisor with family" style="width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.88;"/>
         </div>
         <div class="ccard-body">
           <div class="ccard-tt">Expert Comparison</div>
@@ -836,7 +886,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
       </div>
       <div class="ccard">
         <div class="ccard-art" style="background:#0d1a2d;overflow:hidden;">
-          <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=400&q=80" alt="Happy Indian family at home" style="width:100%;height:100%;object-fit:cover;object-position:center;opacity:.85;"/>
+          <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=400&q=80&auto=format&fit=crop" alt="Happy Indian family at home" style="width:100%;height:100%;object-fit:cover;object-position:center;opacity:.85;"/>
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(6,16,31,.85),transparent 50%);display:flex;align-items:flex-end;padding:.8rem;">
             <div style="font-size:.7rem;font-weight:700;color:rgba(255,255,255,.75);">Hyderabad • Vijayawada • Vizag</div>
           </div>
@@ -1315,6 +1365,30 @@ function buildTicker(){
 }
 buildTicker();
 
+/* ── HERO SLIDESHOW (5 images, 3s each) ── */
+(function(){
+  const CAPTIONS=['Who will take care of them if you\'re not here?','Don\'t leave her to figure it out alone.','Your parents depend on you too.','Protect what matters most — your family.','One decision today. Lifelong peace of mind.'];
+  const slides=document.querySelectorAll('.hbg-slide');
+  const dots=document.querySelectorAll('.hdot');
+  const cur=document.getElementById('hcur');
+  const prog=document.getElementById('hprogbar');
+  const subt=document.getElementById('hsubtit');
+  let current=0,timer=null;
+  function goTo(n){
+    slides[current].classList.remove('active');
+    dots[current].classList.remove('on');
+    current=(n+slides.length)%slides.length;
+    slides[current].classList.add('active');
+    dots[current].classList.add('on');
+    if(cur)cur.textContent=String(current+1).padStart(2,'0');
+    if(subt){subt.style.opacity='0';setTimeout(()=>{subt.textContent=CAPTIONS[current];subt.style.opacity='1';},300);}
+    if(prog){prog.style.transition='none';prog.style.width='0%';void prog.offsetWidth;prog.style.transition='width 3s linear';prog.style.width='100%';}
+  }
+  function start(){clearInterval(timer);timer=setInterval(()=>goTo(current+1),3000);}
+  dots.forEach(d=>d.addEventListener('click',()=>{goTo(parseInt(d.dataset.s));start();}));
+  if(prog){prog.style.transition='width 3s linear';prog.style.width='100%';}
+  start();
+})();
 
 /* ── STATS COUNTER ── */
 const so=new IntersectionObserver(es=>{
