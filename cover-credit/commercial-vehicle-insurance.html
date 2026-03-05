@@ -24,7 +24,7 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;object-fi
 #cur{width:10px;height:10px;background:var(--ac);}
 #cr{width:38px;height:38px;border:1.5px solid rgba(230,81,0,.5);z-index:9998;transition:width .2s,height .2s,opacity .2s;}
 body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:.18;}
-.nav{position:fixed;top:0;left:0;right:0;z-index:900;height:var(--nh);padding:0 5%;transition:background .4s;}
+.nav{position:fixed;top:44px;background:rgba(6,16,31,.97);backdrop-filter:blur(24px);left:0;right:0;z-index:900;height:var(--nh);padding:0 5%;transition:background .4s;}
 .nav.sc{background:rgba(6,16,31,.97);backdrop-filter:blur(24px);box-shadow:0 1px 0 var(--line);}
 .ni{max-width:1300px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;}
 .logo{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;}.logo em{font-style:normal;color:#f5a623;}
@@ -45,7 +45,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .burger.op span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
 .burger.op span:nth-child(2){opacity:0;}
 .burger.op span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
-.mob{position:fixed;inset:0;z-index:899;background:var(--ink);display:flex;flex-direction:column;padding:calc(var(--nh)+1.8rem) 5% 3rem;transform:translateX(100%);transition:transform .38s var(--E);}
+.mob{position:fixed;inset:0;z-index:899;background:var(--ink);display:flex;flex-direction:column;padding:calc(44px + var(--nh) + 1.8rem) 5% 3rem;transform:translateX(100%);transition:transform .38s var(--E);}
 .mob.op{transform:translateX(0);}
 .mob a{padding:.9rem 0;font-size:1rem;font-weight:500;color:rgba(255,255,255,.72);border-bottom:1px solid var(--line);}
 .mc{margin-top:1.8rem;background:#f5a623;color:#06101f!important;text-align:center;border-radius:12px;padding:.9rem!important;font-weight:700!important;border:none!important;}
@@ -74,7 +74,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .hi img{width:100%;height:100%;object-fit:cover;object-position:center 60%;transform:scale(1.04);}
 .hi::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(6,16,31,.96) 36%,rgba(6,16,31,.55) 66%,rgba(6,16,31,.18) 100%);}
 .hgrid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:55px 55px;mask-image:radial-gradient(ellipse 70% 80% at 30% 50%,#000,transparent);}
-.hin{position:relative;z-index:2;max-width:1300px;margin:0 auto;padding:calc(var(--nh)+3rem) 5% 5rem;width:100%;}
+.hin{position:relative;z-index:2;max-width:1300px;margin:0 auto;padding:calc(44px + var(--nh) + 1rem) 5% 5rem;width:100%;}
 .hbc{display:flex;align-items:center;gap:.38rem;font-size:.72rem;color:rgba(255,255,255,.32);margin-bottom:1.3rem;}
 .hbc a{color:rgba(255,255,255,.32);transition:color .2s;}.hbc a:hover{color:var(--ac2);}
 .hkick{display:inline-flex;align-items:center;gap:.42rem;background:rgba(230,81,0,.13);border:1px solid rgba(230,81,0,.28);color:#ffcc80;font-size:.68rem;font-weight:700;padding:.3rem .88rem;border-radius:100px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.1rem;}
@@ -246,9 +246,47 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 @media(max-width:1024px){.feat-g,.plans-g,.vtype-g{grid-template-columns:1fr 1fr;}.calc-lay,.faq-lay,.cta-in{grid-template-columns:1fr;}.sb2{position:static;}}
 @media(max-width:768px){.nl{display:none;}.burger{display:flex;}.ft-top{grid-template-columns:1fr 1fr;}body{cursor:auto;}#cur,#cr{display:none;}}
 @media(max-width:520px){.feat-g,.plans-g,.vtype-g{grid-template-columns:1fr;}.ft-top{grid-template-columns:1fr;}}
+
+/* ══ PARTNER TICKER ══ */
+#partnerTicker{position:fixed;top:0;left:0;right:0;z-index:1100;height:44px;background:#020c1f;display:flex;align-items:center;overflow:hidden;}
+#partnerTicker::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:linear-gradient(90deg,transparent,#f5a623,#f5c842,#f5a623,transparent);background-size:200% 100%;animation:tkshimmer 4s linear infinite;}
+@keyframes tkshimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.tk-brand{flex-shrink:0;padding:0 1rem 0 1.2rem;display:flex;align-items:center;gap:.6rem;border-right:1px solid rgba(255,255,255,.08);background:linear-gradient(90deg,#020c1f 80%,transparent);position:relative;z-index:2;white-space:nowrap;}
+.tk-logo{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;letter-spacing:-.3px;}
+.tk-logo em{font-style:normal;color:#f5a623;}
+.tk-cat-label{flex-shrink:0;padding:0 1rem;display:flex;align-items:center;border-right:1px solid rgba(255,255,255,.08);white-space:nowrap;}
+.tk-cat-pill{display:inline-flex;align-items:center;gap:.28rem;padding:.22rem .62rem;border-radius:100px;font-size:.56rem;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#fbbf24;border:1px solid rgba(251,191,36,.28);background:rgba(234,179,8,.1);}
+.tk-track-wrap{flex:1;overflow:hidden;position:relative;}
+.tk-track-wrap::before,.tk-track-wrap::after{content:'';position:absolute;top:0;bottom:0;width:60px;z-index:2;pointer-events:none;}
+.tk-track-wrap::before{left:0;background:linear-gradient(90deg,#020c1f,transparent);}
+.tk-track-wrap::after{right:0;background:linear-gradient(270deg,#020c1f,transparent);}
+.tk-track{display:flex;align-items:center;white-space:nowrap;animation:ticker-scroll 38s linear infinite;}
+.tk-track:hover{animation-play-state:paused;}
+@keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.tk-item{display:inline-flex;align-items:center;padding:0 1.1rem;height:44px;position:relative;}
+.tk-item::after{content:'';position:absolute;right:0;top:28%;bottom:28%;width:1px;background:rgba(255,255,255,.08);}
+.tk-name{font-size:.72rem;font-weight:600;color:rgba(255,255,255,.78);}
+.tk-irdai{flex-shrink:0;padding:0 1.2rem;display:flex;align-items:center;gap:.5rem;border-left:1px solid rgba(255,255,255,.08);background:linear-gradient(270deg,#020c1f 80%,transparent);white-space:nowrap;position:relative;z-index:2;}
+.tk-irdai-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px #22c55e;animation:irdaipulse 2s ease-in-out infinite;}
+@keyframes irdaipulse{0%,100%{box-shadow:0 0 4px #22c55e}50%{box-shadow:0 0 14px #22c55e,0 0 22px rgba(34,197,94,.3)}}
+.tk-irdai-txt{font-size:.56rem;font-weight:700;color:rgba(255,255,255,.32);text-transform:uppercase;letter-spacing:1.5px;}
+@media(max-width:768px){.tk-brand,.tk-irdai{display:none;}}
+/* Ensure .rv content is always visible even if JS fails */
+.rv{animation:rv-show 0.01s 1.5s forwards;}
+@keyframes rv-show{to{opacity:1;transform:none;}}
+.rv.on{opacity:1;transform:none;animation:none;}
+
 </style>
 </head>
 <body>
+<!-- ══ PARTNER TICKER ══ -->
+<div id="partnerTicker">
+  <div class="tk-brand"><span class="tk-logo">Cover<em>Credit</em></span></div>
+  <div class="tk-cat-label"><span class="tk-cat-pill">🚛 Commercial Vehicle Partners</span></div>
+  <div class="tk-track-wrap"><div class="tk-track" id="tkTrack"></div></div>
+  <div class="tk-irdai"><div class="tk-irdai-dot"></div><span class="tk-irdai-txt">IRDAI Verified</span></div>
+</div>
+
 <div id="cur"></div><div id="cr"></div>
 
 <div class="fab">
@@ -905,7 +943,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 <footer class="ft">
   <div class="ft-in">
     <div class="ft-top">
-      <div><a href="index.html" class="ft-logo">Cover<em>Credit</em></a><p class="ft-ds">Honest insurance and financial advice for families and fleet owners across AP and Telangana. We sell the right policy — no pressure, no jargon.</p><div class="ft-con">📞 <a href="tel:+917842854466">+91 78428 54466</a></div><div class="ft-con">✉️ <a href="mailto:Covercredit.official@gmail.com">Covercredit.official@gmail.com</a></div><div class="ft-con">🕐 Mon–Sat: 9 AM – 7 PM</div></div>
+      <div><a href="index.html" class="ft-logo">Cover<em>Credit</em></a><p class="ft-ds">Honest insurance and financial advice for families and fleet owners across AP and Telangana. We sell the right policy — no pressure, no jargon.</p><div class="ft-con">📞 <a href="tel:+917842854466">+91 78428 54466</a></div><div class="ft-con">✉️ <a href="/cdn-cgi/l/email-protection#2f6c40594a5d4c5d4a4b465b01404949464c464e436f48424e4643014c4042"><span class="__cf_email__" data-cfemail="a9eac6dfccdbcadbcccdc0dd87c6cfcfc0cac0c8c5e9cec4c8c0c587cac6c4">[email&#160;protected]</span></a></div><div class="ft-con">🕐 Mon–Sat: 9 AM – 7 PM</div></div>
       <div class="ft-col"><div class="ft-clbl">Vehicle Insurance</div><ul><li><a href="vehicle-insurance.html">Vehicle Overview</a></li><li><a href="bike-insurance.html">Bike Insurance</a></li><li><a href="car-insurance.html">Car Insurance</a></li><li><a href="commercial-vehicle-insurance.html">Commercial Vehicle</a></li></ul></div>
       <div class="ft-col"><div class="ft-clbl">Insurance</div><ul><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life &amp; Term Insurance</a></li><li><a href="loans.html">Loans &amp; Finance</a></li></ul></div>
       <div class="ft-col"><div class="ft-clbl">Company</div><ul><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="book.html">Book Consultation</a></li></ul></div>
@@ -914,7 +952,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Custom cursor
 const cur=document.getElementById('cur'),cr=document.getElementById('cr');
 let mx=0,my=0,rx=0,ry=0;
@@ -1033,13 +1071,30 @@ var BACKEND = (window.location.hostname === 'localhost' || window.location.hostn
         device:      device,
         utmMedium:   utmMed,
         utmCampaign: utmCamp,
-        referrer:    document.referrer || '',
+        referrer:    docsource:      source,
+        device:      device,
+        utmMedium:   utmMed,
+        utmCampaign: utmCamp,
+        referrer:    document.referrer || ''
       }),
-      keepalive: true,
-    }).catch(function () {});
-  } catch (e) {}
+      keepalive: true
+    }).catch(function(){});
+  } catch(e) {}
 })();
-                                                                                                                                  
+</script>
+<script>
+(function(){
+  var partners=['HDFC ERGO','ICICI Lombard','Tata AIG','Liberty','Royal Sundaram','Reliance','Bajaj Allianz'];
+  var track=document.getElementById('tkTrack');
+  if(!track)return;
+  var html='';
+  for(var p=0;p<2;p++){
+    partners.forEach(function(name){
+      html+='<div class="tk-item"><span class="tk-name">'+name+'</span></div>';
+    });
+  }
+  track.innerHTML=html;
+})();
 </script>
 </body>
 </html>
