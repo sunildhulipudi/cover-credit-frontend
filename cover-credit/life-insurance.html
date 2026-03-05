@@ -119,21 +119,77 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .bq{display:flex;align-items:center;justify-content:center;gap:.32rem;border:1.5px solid var(--gold);color:var(--gold);background:transparent;padding:.58rem .9rem;border-radius:9px;font-weight:700;font-size:.76rem;cursor:none;width:100%;transition:background .2s,color .2s,transform .15s;margin-top:1rem;}
 .bq:hover{background:var(--gold);color:var(--ink);transform:translateY(-1px);}
 
-/* ══ HERO SLIDESHOW ══ */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding-top:calc(var(--ticker-h) + var(--nh));}
-.hero-slides{position:absolute;inset:0;z-index:0;}
-.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease-in-out;}
-.hero-slide.active{opacity:1;}
-.hero-slide img{width:100%;height:100%;object-fit:cover;object-position:center 25%;}
-.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(110deg,rgba(6,16,31,.92) 35%,rgba(6,16,31,.55) 60%,rgba(6,16,31,.15) 100%);}
-.hero-progress{position:absolute;bottom:0;left:0;height:3px;z-index:10;background:linear-gradient(90deg,var(--gold),var(--glow));width:0;}
-.hero-counter{position:absolute;top:calc(var(--ticker-h) + var(--nh) + 1.2rem);right:5%;z-index:10;font-family:'Playfair Display',serif;font-size:.9rem;color:rgba(255,255,255,.3);display:flex;align-items:center;gap:.3rem;}
-.hero-counter .curr{font-size:1.4rem;color:var(--gold);font-weight:700;line-height:1;}
-.hero-dots{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);z-index:10;display:flex;gap:.5rem;align-items:center;}
-.hero-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.3);cursor:none;transition:all .3s;border:none;padding:0;}
-.hero-dot.active{width:22px;border-radius:3px;background:var(--gold);}
-.hgrid{position:absolute;inset:0;z-index:2;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:55px 55px;mask-image:radial-gradient(ellipse 70% 80% at 30% 50%,#000,transparent);}
-.hin{position:relative;z-index:5;max-width:1300px;margin:0 auto;padding:3rem 5% 5rem;width:100%;display:grid;grid-template-columns:1fr 420px;align-items:center;gap:3rem;}
+/* ══ HERO — SPLIT LAYOUT ══ */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;
+  padding-top:calc(var(--ticker-h) + var(--nh));
+  background:linear-gradient(135deg,#04090f 0%,#06101f 50%,#071428 100%);}
+.hero-bg-glow{position:absolute;inset:0;z-index:0;
+  background:radial-gradient(ellipse 80% 60% at 65% 50%,rgba(13,71,161,.18) 0%,transparent 70%),
+             radial-gradient(ellipse 40% 40% at 20% 80%,rgba(245,166,35,.06) 0%,transparent 60%);}
+.hgrid{position:absolute;inset:0;z-index:1;
+  background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
+  background-size:52px 52px;
+  mask-image:radial-gradient(ellipse 90% 90% at 50% 50%,#000,transparent);}
+.hin{position:relative;z-index:5;max-width:1300px;margin:0 auto;padding:3rem 5% 4rem;width:100%;
+  display:grid;grid-template-columns:1fr 480px;align-items:center;gap:4rem;}
+
+/* ── Hero left text ── */
+.hbc{display:flex;align-items:center;gap:.38rem;font-size:.72rem;color:rgba(255,255,255,.32);margin-bottom:1.4rem;}
+.hbc a{color:rgba(255,255,255,.32);transition:color .2s;}.hbc a:hover{color:var(--gold);}
+.hkick{display:inline-flex;align-items:center;gap:.42rem;background:rgba(230,92,0,.15);border:1px solid rgba(230,92,0,.3);color:#fda07a;font-size:.68rem;font-weight:700;padding:.3rem .88rem;border-radius:100px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.1rem;}
+.hkick::before{content:'';width:5px;height:5px;background:#f87171;border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
+.htit{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.8vw,3.6rem);font-weight:900;line-height:1.06;letter-spacing:-2px;margin-bottom:1.2rem;max-width:580px;}
+.htit em{font-style:italic;background:linear-gradient(135deg,var(--gold),var(--glow));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hdesc{font-size:.93rem;line-height:1.8;color:rgba(255,255,255,.58);margin-bottom:2rem;max-width:460px;}
+.hbtns{display:flex;gap:.85rem;flex-wrap:wrap;margin-bottom:2rem;}
+.hstats{display:flex;gap:.85rem;flex-wrap:wrap;}
+.hsc{background:rgba(255,255,255,.05);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:.85rem 1.1rem;min-width:110px;}
+.hsc-n{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--gold);line-height:1;}
+.hsc-l{font-size:.6rem;color:rgba(255,255,255,.38);margin-top:.2rem;}
+
+/* ── Hero right photo collage ── */
+.h-collage{position:relative;width:100%;}
+.h-collage-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:220px 200px;gap:10px;border-radius:20px;overflow:visible;}
+.hcg-item{border-radius:14px;overflow:hidden;position:relative;border:1px solid rgba(255,255,255,.08);}
+.hcg-item img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s;}
+.hcg-item:hover img{transform:scale(1.05);}
+/* top-left tall item spans 2 rows */
+.hcg-item.tall{grid-row:1/3;border-radius:16px;}
+.hcg-item.tall img{object-position:center top;}
+/* subtle overlay on each photo */
+.hcg-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(6,16,31,.45) 0%,transparent 50%);}
+/* label on bottom of tall item */
+.hcg-label{position:absolute;bottom:.75rem;left:.75rem;right:.75rem;z-index:2;font-size:.62rem;font-weight:600;color:rgba(255,255,255,.75);background:rgba(6,16,31,.65);backdrop-filter:blur(8px);border-radius:7px;padding:.3rem .6rem;}
+
+/* ── Floating badges on collage ── */
+.hf-badge{position:absolute;z-index:10;background:rgba(8,18,38,.92);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.13);border-radius:14px;padding:.75rem 1rem;box-shadow:0 12px 40px rgba(0,0,0,.4);}
+.hfb-top{top:-16px;right:-16px;animation:fbfl1 5s ease-in-out infinite;}
+.hfb-mid{bottom:180px;left:-22px;animation:fbfl2 6s ease-in-out infinite;}
+.hfb-bot{bottom:-16px;right:30px;animation:fbfl3 7s ease-in-out infinite;}
+@keyframes fbfl1{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes fbfl2{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes fbfl3{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.hfb-icon{font-size:.95rem;margin-bottom:.18rem;}
+.hfb-val{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--gold);line-height:1.1;}
+.hfb-lbl{font-size:.55rem;color:rgba(255,255,255,.36);text-transform:uppercase;letter-spacing:.8px;margin-top:.1rem;}
+/* green pulse dot badge */
+.hfb-claim{display:flex;align-items:center;gap:.55rem;}
+.hfb-claim-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0;box-shadow:0 0 10px #22c55e;animation:clmpulse 2s ease-in-out infinite;}
+@keyframes clmpulse{0%,100%{box-shadow:0 0 4px #22c55e}50%{box-shadow:0 0 16px #22c55e,0 0 28px rgba(34,197,94,.3)}}
+.hfb-claim-txt .hfb-val{font-size:.85rem;}
+
+.sh{position:absolute;bottom:2rem;left:5%;display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:10;}
+.sh-m{width:22px;height:34px;border:2px solid rgba(255,255,255,.22);border-radius:100px;display:flex;justify-content:center;padding-top:5px;}
+.sh-d{width:3px;height:7px;background:rgba(255,255,255,.45);border-radius:100px;animation:sd 2s ease-in-out infinite;}
+@keyframes sd{0%{opacity:1;transform:translateY(0)}80%{opacity:0;transform:translateY(10px)}100%{opacity:0}}
+.sh-t{font-size:.6rem;color:rgba(255,255,255,.25);letter-spacing:1.5px;text-transform:uppercase;}
+
+/* Remove old risk card / slideshow styles */
+.h-risk-card,.hrc-head,.hrc-ic,.hrc-title,.hrc-sub,.hrc-block,.hrc-bad,.hrc-good,
+.hrc-block-label,.hrc-row,.hrc-icon,.hrc-cta,.hrc-note,
+.h-stat-float,.hsf1,.hsf-ic,.hsf-val,.hsf-lbl,
+.hero-slides,.hero-slide,.hero-overlay,.hero-progress,.hero-counter,.hero-dots,.hero-dot{display:revert;}
 .hbc{display:flex;align-items:center;gap:.38rem;font-size:.72rem;color:rgba(255,255,255,.38);margin-bottom:1.4rem;}
 .hbc a{color:rgba(255,255,255,.38);transition:color .2s;}.hbc a:hover{color:var(--gold);}
 .hkick{display:inline-flex;align-items:center;gap:.42rem;background:rgba(230,92,0,.15);border:1px solid rgba(230,92,0,.3);color:#fda07a;font-size:.68rem;font-weight:700;padding:.3rem .88rem;border-radius:100px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.1rem;}
@@ -418,7 +474,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 
 /* ══ RESPONSIVE ══ */
 @media(max-width:1024px){
-  .hin{grid-template-columns:1fr;}.h-risk-card{display:none;}
+  .hin{grid-template-columns:1fr;}.h-collage{display:none;}
   .chat-wrap,.calc-w,.cta-in,.faq-lay,.split-inner{grid-template-columns:1fr;}
   .sb2{position:static;}
   .ft-top{grid-template-columns:1fr 1fr;}
@@ -502,31 +558,13 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
   <a href="book.html?dept=life" class="mc">Book Free Consultation &#8594;</a>
 </div>
 
-<!-- ══ HERO WITH SLIDESHOW ══ -->
+<!-- ══ HERO — SPLIT COLLAGE ══ -->
 <section class="hero">
-  <div class="hero-slides">
-    <div class="hero-slide active">
-      <img src="https://images.unsplash.com/photo-1581579438747-104c53d7fbc3?w=1600&q=80" alt="Father with child" loading="eager"/>
-    </div>
-    <div class="hero-slide">
-      <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1600&q=80" alt="Woman managing finances" loading="lazy"/>
-    </div>
-    <div class="hero-slide">
-      <img src="https://images.unsplash.com/photo-1516733968668-dbdce39c4651?w=1600&q=80" alt="Elderly parents" loading="lazy"/>
-    </div>
-    <div class="hero-slide">
-      <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600&q=80" alt="Man signing documents" loading="lazy"/>
-    </div>
-    <div class="hero-slide">
-      <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1600&q=80" alt="Children studying" loading="lazy"/>
-    </div>
-  </div>
-  <div class="hero-overlay"></div>
+  <div class="hero-bg-glow"></div>
   <div class="hgrid"></div>
-  <div class="hero-counter"><span class="curr" id="slideNum">01</span><span>/ 05</span></div>
-  <div class="hero-progress" id="heroProgress"></div>
 
   <div class="hin">
+    <!-- LEFT: Text -->
     <div>
       <div class="hbc"><a href="index.html">Home</a> &#8250; Life Insurance</div>
       <div class="hkick">&#128737; Life &amp; Term Insurance</div>
@@ -539,57 +577,58 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
       <div class="hstats">
         <div class="hsc"><div class="hsc-n">&#8377;1Cr</div><div class="hsc-l">Cover from &#8377;490/mo</div></div>
         <div class="hsc"><div class="hsc-n">15+</div><div class="hsc-l">Insurers compared</div></div>
-        <div class="hsc"><div class="hsc-n">500+</div><div class="hsc-l">Families secured in AP &amp; TG</div></div>
-        <div class="hsc"><div class="hsc-n">98%</div><div class="hsc-l">Claim settlement ratio</div></div>
+        <div class="hsc"><div class="hsc-n">500+</div><div class="hsc-l">Families in AP &amp; TG</div></div>
+        <div class="hsc"><div class="hsc-n">98%</div><div class="hsc-l">Claim settlement</div></div>
       </div>
     </div>
-    <!-- Right: Risk vs Protection card -->
-    <div style="position:relative;">
-      <div class="h-risk-card">
-        <!-- Card header -->
-        <div class="hrc-head">
-          <div class="hrc-ic">⚠️</div>
-          <div>
-            <div class="hrc-title">What happens to your family</div>
-            <div class="hrc-sub">if you're not here tomorrow?</div>
+
+    <!-- RIGHT: Photo collage -->
+    <div class="h-collage">
+      <div class="h-collage-grid">
+        <!-- Tall left: Indian father holding young child -->
+        <div class="hcg-item tall">
+          <img src="https://images.unsplash.com/photo-1602734846297-9299fc2d4703?w=600&q=80" alt="Indian father with child" loading="eager"/>
+          <div class="hcg-label">Who depends on you?</div>
+        </div>
+        <!-- Top right: Indian family with advisor reviewing documents -->
+        <div class="hcg-item">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80" alt="Family reviewing insurance" loading="eager"/>
+          <div class="hcg-label">Reviewed &amp; explained clearly</div>
+        </div>
+        <!-- Bottom right: Indian mother with children at home -->
+        <div class="hcg-item">
+          <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=80" alt="Indian mother with children" loading="eager"/>
+          <div class="hcg-label">Protect what matters most</div>
+        </div>
+      </div>
+
+      <!-- Floating badge 1: Cover amount — top right -->
+      <div class="hf-badge hfb-top">
+        <div class="hfb-icon">&#128176;</div>
+        <div class="hfb-val">&#8377;1 Crore</div>
+        <div class="hfb-lbl">From &#8377;490/month</div>
+      </div>
+
+      <!-- Floating badge 2: Claim settlement — left middle -->
+      <div class="hf-badge hfb-mid">
+        <div class="hfb-claim">
+          <div class="hfb-claim-dot"></div>
+          <div class="hfb-claim-txt">
+            <div class="hfb-val" style="font-size:.82rem;">30 Day Settlement</div>
+            <div class="hfb-lbl">Avg claim payout</div>
           </div>
         </div>
-        <!-- WITHOUT section -->
-        <div class="hrc-block hrc-bad">
-          <div class="hrc-block-label">❌ Without Life Insurance</div>
-          <div class="hrc-row"><span class="hrc-icon">🏠</span><span>Home loan EMI stops → Bank seizes property</span></div>
-          <div class="hrc-row"><span class="hrc-icon">📚</span><span>Children's education gets disrupted</span></div>
-          <div class="hrc-row"><span class="hrc-icon">👩</span><span>Spouse forced into immediate income pressure</span></div>
-          <div class="hrc-row"><span class="hrc-icon">💸</span><span>Savings wiped out in 2–3 years</span></div>
-        </div>
-        <!-- WITH section -->
-        <div class="hrc-block hrc-good">
-          <div class="hrc-block-label">✅ With ₹1 Crore Cover (₹490/mo)</div>
-          <div class="hrc-row"><span class="hrc-icon">✔</span><span>Home loan fully cleared from payout</span></div>
-          <div class="hrc-row"><span class="hrc-icon">✔</span><span>Education funded for 15–20 years</span></div>
-          <div class="hrc-row"><span class="hrc-icon">✔</span><span>₹1 Crore tax-free within 30 days</span></div>
-          <div class="hrc-row"><span class="hrc-icon">✔</span><span>Family's future fully secured</span></div>
-        </div>
-        <!-- CTA inside card -->
-        <a href="book.html?dept=life" class="hrc-cta">Get Protected Today — Free Consultation →</a>
-        <div class="hrc-note">📋 Same-day policy · Telugu &amp; English · No pressure</div>
       </div>
-      <!-- Floating stat -->
-      <div class="h-stat-float hsf1">
-        <div class="hsf-ic">💰</div>
-        <div class="hsf-val">₹1 Crore</div>
-        <div class="hsf-lbl">From ₹490/month</div>
+
+      <!-- Floating badge 3: Same day policy — bottom -->
+      <div class="hf-badge hfb-bot">
+        <div class="hfb-icon">&#9889;</div>
+        <div class="hfb-val" style="font-size:.88rem;">Same Day</div>
+        <div class="hfb-lbl">Policy issued</div>
       </div>
     </div>
   </div>
 
-  <div class="hero-dots">
-    <button class="hero-dot active" data-slide="0"></button>
-    <button class="hero-dot" data-slide="1"></button>
-    <button class="hero-dot" data-slide="2"></button>
-    <button class="hero-dot" data-slide="3"></button>
-    <button class="hero-dot" data-slide="4"></button>
-  </div>
   <div class="sh"><div class="sh-m"><div class="sh-d"></div></div><div class="sh-t">Scroll</div></div>
 </section>
 
@@ -597,15 +636,15 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 <div class="photo-row" style="padding-top:3.5rem;">
   <div class="photo-row-inner">
     <div class="photo-card rv d1">
-      <img src="https://images.unsplash.com/photo-1588776814546-ec7e1d2e8f34?w=600&q=80" alt="Indian father with child" loading="lazy"/>
+      <img src="https://images.unsplash.com/photo-1602734846297-9299fc2d4703?w=600&q=80" alt="Indian father with child" loading="lazy"/>
       <div class="photo-card-label"><div class="pcl-main">Who Depends on You?</div><div class="pcl-sub">A father's protection starts with one decision</div></div>
     </div>
     <div class="photo-card rv d2">
-      <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80" alt="Indian family reviewing insurance documents" loading="lazy"/>
-      <div class="photo-card-label"><div class="pcl-main">Reviewed & Explained Clearly</div><div class="pcl-sub">Every clause in Telugu or English — before you sign</div></div>
+      <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80" alt="Family reviewing insurance documents" loading="lazy"/>
+      <div class="photo-card-label"><div class="pcl-main">Reviewed &amp; Explained Clearly</div><div class="pcl-sub">Every clause in Telugu or English — before you sign</div></div>
     </div>
     <div class="photo-card rv d3">
-      <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80" alt="Indian woman managing finances alone" loading="lazy"/>
+      <img src="https://images.unsplash.com/photo-1609220136736-443140cffec6?w=600&q=80" alt="Indian mother with children" loading="lazy"/>
       <div class="photo-card-label"><div class="pcl-main">Don't Leave This to Chance</div><div class="pcl-sub">₹1 Crore gives her time to rebuild — on her terms</div></div>
     </div>
   </div>
@@ -713,7 +752,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 <section class="split-sec">
   <div class="split-inner si">
     <div class="split-img rv">
-      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" alt="Indian man thinking about family protection" loading="lazy"/>
+      <img src="https://images.unsplash.com/photo-1545167622-3a6ac756afa4?w=800&q=80" alt="Indian man thinking about family future" loading="lazy"/>
       <div class="split-badge">
         <div class="sb-val">30 Days</div>
         <div class="sb-lbl">Avg Claim Settlement</div>
@@ -746,7 +785,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
     <div class="cstrip-grid rv d1">
         <div class="ccard">
         <div class="ccard-art" style="background:#0d2137;">
-          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&q=80" alt="Insurance consultation" style="width:100%;height:100%;object-fit:cover;opacity:.85;"/>
+          <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=400&q=80" alt="Indian couple with insurance advisor" style="width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.88;"/>
         </div>
         <div class="ccard-body">
           <div class="ccard-tt">Expert Comparison</div>
@@ -797,9 +836,9 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
       </div>
       <div class="ccard">
         <div class="ccard-art" style="background:#0d1a2d;overflow:hidden;">
-          <img src="https://images.unsplash.com/photo-1588776814546-ec7e1d2e8f34?w=400&q=80" alt="Indian family at home" style="width:100%;height:100%;object-fit:cover;opacity:.8;"/>
+          <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=400&q=80" alt="Happy Indian family at home" style="width:100%;height:100%;object-fit:cover;object-position:center;opacity:.85;"/>
           <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(6,16,31,.85),transparent 50%);display:flex;align-items:flex-end;padding:.8rem;">
-            <div style="font-size:.7rem;font-weight:700;color:rgba(255,255,255,.7);">Hyderabad • Vijayawada • Vizag</div>
+            <div style="font-size:.7rem;font-weight:700;color:rgba(255,255,255,.75);">Hyderabad • Vijayawada • Vizag</div>
           </div>
         </div>
         <div class="ccard-body">
@@ -1276,53 +1315,6 @@ function buildTicker(){
 }
 buildTicker();
 
-/* ── HERO SLIDESHOW (3s) ── */
-const SLIDES=[
-  {img:'https://images.unsplash.com/photo-1581579438747-104c53d7fbc3?w=600&q=80',title:'Who will take care of them if you\'re not here?',sub:'Protect your family today — from just ₹490/month'},
-  {img:'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=600&q=80',title:'Don\'t leave her to figure it out alone.',sub:'₹1 Crore payout — tax-free — within 30 days'},
-  {img:'https://images.unsplash.com/photo-1516733968668-dbdce39c4651?w=600&q=80',title:'Your parents depend on you too.',sub:'Monthly income riders keep them secure forever'},
-  {img:'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80',title:'One decision. Lifelong protection.',sub:'15+ insurers compared — policy issued same day'},
-  {img:'https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&q=80',title:'Their future. Protected.',sub:'Children\'s education funded — no matter what happens'},
-];
-let curSlide=0,slideTimer=null,progAnim=null;
-
-function goToSlide(n){
-  const slides=document.querySelectorAll('.hero-slide');
-  const dots=document.querySelectorAll('.hero-dot');
-  slides[curSlide].classList.remove('active');
-  dots[curSlide].classList.remove('active');
-  curSlide=(n+SLIDES.length)%SLIDES.length;
-  slides[curSlide].classList.add('active');
-  dots[curSlide].classList.add('active');
-  // Update counter
-  const num=document.getElementById('slideNum');
-  if(num)num.textContent=String(curSlide+1).padStart(2,'0');
-  // Progress bar
-  const prog=document.getElementById('heroProgress');
-  if(prog){
-    prog.style.transition='none';prog.style.width='0';
-    setTimeout(()=>{prog.style.transition='width 3s linear';prog.style.width='100%';},30);
-  }
-}
-
-function startSlideshow(){
-  if(slideTimer)clearInterval(slideTimer);
-  slideTimer=setInterval(()=>goToSlide(curSlide+1),3000);
-}
-
-// Init progress bar
-const prog=document.getElementById('heroProgress');
-if(prog){prog.style.transition='width 3s linear';prog.style.width='100%';}
-
-// Dot clicks
-document.querySelectorAll('.hero-dot').forEach(dot=>{
-  dot.addEventListener('click',()=>{
-    goToSlide(parseInt(dot.dataset.slide));
-    startSlideshow();
-  });
-});
-
-startSlideshow();
 
 /* ── STATS COUNTER ── */
 const so=new IntersectionObserver(es=>{
