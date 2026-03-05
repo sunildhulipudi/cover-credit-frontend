@@ -37,7 +37,7 @@ a{text-decoration:none;color:inherit;}img{display:block;max-width:100%;object-fi
 #cur{width:10px;height:10px;background:var(--ac);}
 #cr{width:38px;height:38px;border:1.5px solid rgba(25,118,210,.5);z-index:9998;transition:width .2s,height .2s,opacity .2s;}
 body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:.18;}
-.nav{position:fixed;top:44px;background:rgba(6,16,31,.97);backdrop-filter:blur(24px);left:0;right:0;z-index:900;height:var(--nh);padding:0 5%;transition:background .4s;}
+.nav{position:fixed;top:44px;left:0;right:0;z-index:900;height:var(--nh);padding:0 5%;transition:background .4s;}
 .nav.sc{background:rgba(6,16,31,.97);backdrop-filter:blur(24px);box-shadow:0 1px 0 var(--line);}
 .ni{max-width:1300px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;}
 .logo{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;}.logo em{font-style:normal;color:#f5a623;}
@@ -86,7 +86,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .hi img{width:100%;height:100%;object-fit:cover;object-position:center 55%;transform:scale(1.04);}
 .hi::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(6,16,31,.96) 36%,rgba(6,16,31,.55) 66%,rgba(6,16,31,.18) 100%);}
 .hgrid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);background-size:55px 55px;mask-image:radial-gradient(ellipse 70% 80% at 30% 50%,#000,transparent);}
-.hin{position:relative;z-index:2;max-width:1300px;margin:0 auto;padding:calc(44px + var(--nh) + 1rem) 5% 5rem;width:100%;}
+.hin{position:relative;z-index:2;max-width:1300px;margin:0 auto;padding:calc(44px + var(--nh) + 3rem) 5% 5rem;width:100%;}
 .hbc{display:flex;align-items:center;gap:.38rem;font-size:.72rem;color:rgba(255,255,255,.32);margin-bottom:1.3rem;}
 .hbc a{color:rgba(255,255,255,.32);transition:color .2s;}.hbc a:hover{color:var(--ac2);}
 .hkick{display:inline-flex;align-items:center;gap:.42rem;background:rgba(25,118,210,.13);border:1px solid rgba(25,118,210,.28);color:#90caf9;font-size:.68rem;font-weight:700;padding:.3rem .88rem;border-radius:100px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.1rem;}
@@ -207,7 +207,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .fab2{padding:0 1.2rem;max-height:0;overflow:hidden;transition:max-height .38s var(--E),padding .28s;}
 .fi.op .fab2{max-height:260px;padding-bottom:1rem;}
 .fat{font-size:.79rem;color:rgba(255,255,255,.46);line-height:1.72;}
-.sb2{position:sticky;top:calc(var(--nh)+1.2rem);display:flex;flex-direction:column;gap:1rem;}
+.sb2{position:sticky;top:calc(44px + var(--nh) + 1.2rem);display:flex;flex-direction:column;gap:1rem;}
 .sb2-card{background:linear-gradient(145deg,#060d1a,#0a1e3a);border:1px solid rgba(25,118,210,.2);border-radius:16px;padding:1.5rem;}
 .sb2-tt{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:.35rem;}
 .sb2-ds{font-size:.74rem;color:rgba(255,255,255,.44);line-height:1.6;margin-bottom:1rem;}
@@ -269,10 +269,6 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 @keyframes irdaipulse{0%,100%{box-shadow:0 0 4px #22c55e}50%{box-shadow:0 0 14px #22c55e,0 0 22px rgba(34,197,94,.3)}}
 .tk-irdai-txt{font-size:.56rem;font-weight:700;color:rgba(255,255,255,.32);text-transform:uppercase;letter-spacing:1.5px;}
 @media(max-width:768px){.tk-brand,.tk-irdai{display:none;}}
-/* Ensure .rv content is always visible even if JS fails */
-.rv{animation:rv-show 0.01s 1.5s forwards;}
-@keyframes rv-show{to{opacity:1;transform:none;}}
-.rv.on{opacity:1;transform:none;animation:none;}
 
 </style>
 </head>
@@ -889,7 +885,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 <footer class="ft">
   <div class="ft-in">
     <div class="ft-top">
-      <div><a href="index.html" class="ft-logo">Cover<em>Credit</em></a><p class="ft-ds">Honest insurance and financial advice for families across AP and Telangana. We sell the right policy — no pressure, no jargon.</p><div class="ft-con">📞 <a href="tel:+917842854466">+91 78428 54466</a></div><div class="ft-con">✉️ <a href="/cdn-cgi/l/email-protection#074468716275647562636e73296861616e646e666b47606a666e6b2964686a"><span class="__cf_email__" data-cfemail="b0f3dfc6d5c2d3c2d5d4d9c49edfd6d6d9d3d9d1dcf0d7ddd1d9dc9ed3dfdd">[email&#160;protected]</span></a></div><div class="ft-con">🕐 Mon–Sat: 9 AM – 7 PM</div></div>
+      <div><a href="index.html" class="ft-logo">Cover<em>Credit</em></a><p class="ft-ds">Honest insurance and financial advice for families across AP and Telangana. We sell the right policy — no pressure, no jargon.</p><div class="ft-con">📞 <a href="tel:+917842854466">+91 78428 54466</a></div><div class="ft-con">✉️ <a href="/cdn-cgi/l/email-protection#d596baa3b0a7b6a7b0b1bca1fbbab3b3bcb6bcb4b995b2b8b4bcb9fbb6bab8"><span class="__cf_email__" data-cfemail="fcbf938a998e9f8e99989588d2939a9a959f959d90bc9b919d9590d29f9391">[email&#160;protected]</span></a></div><div class="ft-con">🕐 Mon–Sat: 9 AM – 7 PM</div></div>
       <div class="ft-col"><div class="ft-clbl">Vehicle Insurance</div><ul><li><a href="vehicle-insurance.html">Vehicle Overview</a></li><li><a href="bike-insurance.html">Bike Insurance</a></li><li><a href="car-insurance.html">Car Insurance</a></li><li><a href="commercial-vehicle-insurance.html">Commercial Vehicle</a></li></ul></div>
       <div class="ft-col"><div class="ft-clbl">Insurance</div><ul><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life &amp; Term Insurance</a></li><li><a href="loans.html">Loans &amp; Finance</a></li></ul></div>
       <div class="ft-col"><div class="ft-clbl">Company</div><ul><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="book.html?dept=car">Book Consultation</a></li></ul></div>
@@ -1005,7 +1001,7 @@ var BACKEND = (window.location.hostname === 'localhost' || window.location.hostn
       body: JSON.stringify({
         page:        PAGE_NAME,
         path:        window.location.pathname,
-        sourcsource:      source,
+        source:      source,
         device:      device,
         utmMedium:   utmMed,
         utmCampaign: utmCamp,
