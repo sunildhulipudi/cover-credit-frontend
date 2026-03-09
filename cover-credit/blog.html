@@ -1034,7 +1034,7 @@ function handleOverlayClick(e) {
 // ── SHARE ────────────────────────────────────────────────
 function sharePost() {
   if (!activePost) return;
-  const url = `${window.location.origin}${window.location.pathname}?post=${activePost.slug}`;
+const url = `${window.location.origin}/blog/${activePost.slug}`;
   navigator.clipboard.writeText(url).then(() => {
     const btn = document.getElementById('post-share-btn');
     document.getElementById('share-icon').textContent  = '✓';
