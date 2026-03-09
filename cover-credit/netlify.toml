@@ -1,0 +1,5 @@
+[[redirects]]
+  from = "/blog/:slug"
+  to = "https://api.covercredit.in/og/:slug"
+  status = 200
+  force = true
