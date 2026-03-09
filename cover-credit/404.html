@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Page Not Found | Cover Credit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ac:#ff6b00;--ac2:#ff9500;
+  --ink:#06101f;--i2:#0b1a30;
+  --line:rgba(255,255,255,.08);
+  --E:cubic-bezier(.16,1,.3,1);--nh:72px;
+  --gold:#f5a623;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--ink);color:#fff;overflow-x:hidden;cursor:none;min-height:100vh;display:flex;flex-direction:column;}
+a{text-decoration:none;color:inherit;}
+
+/* ── CURSOR ── */
+#cur,#cr{position:fixed;top:0;left:0;pointer-events:none;border-radius:50%;z-index:9999;transform:translate(-50%,-50%);}
+#cur{width:10px;height:10px;background:var(--ac);}
+#cr{width:38px;height:38px;border:1.5px solid rgba(255,107,0,.45);z-index:9998;transition:width .2s,height .2s,opacity .2s;}
+body.hov #cur{width:4px;height:4px;}
+body.hov #cr{width:54px;height:54px;opacity:.18;}
+
+/* ── NAV ── */
+.nav{position:fixed;top:0;left:0;right:0;z-index:900;height:var(--nh);padding:0 5%;background:rgba(6,16,31,.97);backdrop-filter:blur(24px);box-shadow:0 1px 0 var(--line);}
+.ni{max-width:1300px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;}
+.logo em{font-style:normal;color:var(--gold);}
+
+/* ── MAIN 404 ── */
+.page{flex:1;display:flex;align-items:center;justify-content:center;padding:calc(var(--nh) + 2rem) 5% 4rem;position:relative;overflow:hidden;}
+
+/* Big 404 background text */
+.page::before{
+  content:'404';
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(12rem,30vw,28rem);
+  letter-spacing:-8px;
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  color:rgba(255,255,255,.025);
+  pointer-events:none;
+  white-space:nowrap;
+  line-height:1;
+  animation:pulse404 4s ease-in-out infinite;
+}
+@keyframes pulse404{
+  0%,100%{opacity:.025;transform:translate(-50%,-50%) scale(1);}
+  50%{opacity:.04;transform:translate(-50%,-50%) scale(1.02);}
+}
+
+/* Animated background orbs */
+.orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;}
+.orb-1{width:400px;height:400px;background:radial-gradient(circle,rgba(255,107,0,.15),transparent);top:-80px;right:-80px;animation:orbmove 8s ease-in-out infinite alternate;}
+.orb-2{width:350px;height:350px;background:radial-gradient(circle,rgba(245,166,35,.1),transparent);bottom:-60px;left:-60px;animation:orbmove 11s ease-in-out infinite alternate-reverse;}
+@keyframes orbmove{from{transform:translate(0,0)}to{transform:translate(25px,20px)}}
+
+.content{position:relative;z-index:1;text-align:center;max-width:600px;}
+
+/* Broken shield / icon */
+.icon-wrap{margin:0 auto 2rem;width:100px;height:100px;position:relative;}
+.icon-wrap svg{width:100%;height:100%;}
+
+/* Eyebrow tag */
+.eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,107,0,.1);border:1px solid rgba(255,107,0,.18);border-radius:100px;padding:.32rem .9rem;margin-bottom:1.2rem;font-size:.65rem;font-weight:700;color:var(--ac);text-transform:uppercase;letter-spacing:2.5px;}
+.eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--ac);animation:edot 2s infinite;}
+@keyframes edot{0%,100%{opacity:1}50%{opacity:.2}}
+
+h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,5vw,3.5rem);font-weight:900;line-height:1.08;margin-bottom:.8rem;letter-spacing:-1px;}
+h1 em{font-style:italic;color:var(--ac);}
+
+.sub{font-size:.9rem;color:rgba(255,255,255,.38);line-height:1.75;margin-bottom:2.5rem;max-width:420px;margin-left:auto;margin-right:auto;}
+
+/* Action buttons */
+.actions{display:flex;gap:.85rem;justify-content:center;flex-wrap:wrap;margin-bottom:3rem;}
+.btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--ac);color:#fff;border:none;border-radius:100px;padding:.75rem 1.8rem;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;cursor:pointer;transition:all .22s;text-decoration:none;}
+.btn-primary:hover{background:var(--ac2);transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,107,0,.3);}
+.btn-secondary{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,255,255,.05);color:rgba(255,255,255,.6);border:1.5px solid rgba(255,255,255,.1);border-radius:100px;padding:.75rem 1.6rem;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:600;cursor:pointer;transition:all .22s;text-decoration:none;}
+.btn-secondary:hover{border-color:rgba(255,255,255,.25);color:#fff;transform:translateY(-2px);}
+
+/* Quick links grid */
+.quick-links{display:grid;grid-template-columns:repeat(3,1fr);gap:.65rem;max-width:520px;margin:0 auto;}
+.ql{display:flex;align-items:center;gap:.65rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:.85rem 1rem;transition:all .2s;text-decoration:none;}
+.ql:hover{background:rgba(255,107,0,.06);border-color:rgba(255,107,0,.2);transform:translateY(-2px);}
+.ql-ico{font-size:1.15rem;flex-shrink:0;}
+.ql-body{}
+.ql-name{font-size:.78rem;font-weight:700;display:block;}
+.ql-sub{font-size:.62rem;color:rgba(255,255,255,.28);margin-top:.08rem;}
+
+/* ── FOOTER MINI ── */
+.ft-mini{padding:1.5rem 5%;border-top:1px solid var(--line);text-align:center;font-size:.72rem;color:rgba(255,255,255,.16);}
+.ft-mini a{color:rgba(255,255,255,.25);transition:color .18s;margin:0 .6rem;}
+.ft-mini a:hover{color:var(--gold);}
+
+@media(max-width:600px){
+  .quick-links{grid-template-columns:1fr 1fr;}
+  .actions{flex-direction:column;align-items:center;}
+  body{cursor:auto;}#cur,#cr{display:none;}
+}
+</style>
+</head>
+<body>
+<div id="cur"></div><div id="cr"></div>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="ni">
+    <a href="index.html" class="logo">Cover<em>Credit</em></a>
+    <a href="book.html" style="background:var(--gold);color:#06101f;padding:.46rem 1.12rem;border-radius:100px;font-weight:700;font-size:.8rem;">Book Free Call</a>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="page">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <div class="content">
+
+    <!-- Broken shield SVG -->
+    <div class="icon-wrap">
+      <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="46" fill="rgba(255,107,0,.07)" stroke="rgba(255,107,0,.15)" stroke-width="1"/>
+        <!-- Shield outline broken -->
+        <path d="M50 18 L72 26 L72 52 C72 64 62 74 50 78 C38 74 28 64 28 52 L28 26 Z" fill="rgba(255,107,0,.08)" stroke="rgba(255,107,0,.3)" stroke-width="1.5" stroke-dasharray="4 2"/>
+        <!-- Crack lines -->
+        <path d="M50 30 L44 48 L52 48 L46 68" stroke="#ff6b00" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- Small sparks -->
+        <circle cx="38" cy="42" r="2" fill="rgba(255,107,0,.4)"/>
+        <circle cx="63" cy="55" r="1.5" fill="rgba(245,166,35,.4)"/>
+        <circle cx="58" cy="35" r="1" fill="rgba(255,107,0,.3)"/>
+      </svg>
+    </div>
+
+    <div class="eyebrow"><span class="eyebrow-dot"></span> Error 404</div>
+
+    <h1>This page<br/><em>went missing.</em></h1>
+    <p class="sub">Looks like the page you're looking for doesn't exist or may have been moved. Don't worry — our advisors are still just one tap away.</p>
+
+    <div class="actions">
+      <a href="index.html" class="btn-primary">← Back to Home</a>
+      <a href="book.html" class="btn-secondary">📅 Book Free Consultation</a>
+    </div>
+
+    <!-- Quick links -->
+    <div class="quick-links">
+      <a href="health-insurance.html" class="ql">
+        <span class="ql-ico">🏥</span>
+        <div class="ql-body"><span class="ql-name">Health</span><span class="ql-sub">Insurance</span></div>
+      </a>
+      <a href="life-insurance.html" class="ql">
+        <span class="ql-ico">❤️</span>
+        <div class="ql-body"><span class="ql-name">Life</span><span class="ql-sub">Insurance</span></div>
+      </a>
+      <a href="bike-insurance.html" class="ql">
+        <span class="ql-ico">🏍️</span>
+        <div class="ql-body"><span class="ql-name">Bike</span><span class="ql-sub">Insurance</span></div>
+      </a>
+      <a href="car-insurance.html" class="ql">
+        <span class="ql-ico">🚗</span>
+        <div class="ql-body"><span class="ql-name">Car</span><span class="ql-sub">Insurance</span></div>
+      </a>
+      <a href="loans.html" class="ql">
+        <span class="ql-ico">🏠</span>
+        <div class="ql-body"><span class="ql-name">Loans</span><span class="ql-sub">& Finance</span></div>
+      </a>
+      <a href="contact.html" class="ql">
+        <span class="ql-ico">💬</span>
+        <div class="ql-body"><span class="ql-name">Contact</span><span class="ql-sub">Us</span></div>
+      </a>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER MINI -->
+<footer class="ft-mini">
+  <span>© <span id="yr"></span> Cover Credit Insurance Advisors</span>
+  <a href="privacy.html">Privacy</a>
+  <a href="terms.html">Terms</a>
+  <a href="https://wa.me/917842854466">WhatsApp</a>
+</footer>
+
+<script>
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+// Cursor
+const cur = document.getElementById('cur');
+const cr  = document.getElementById('cr');
+if(cur && cr){
+  let mx=0,my=0,cx=0,cy=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+  (function a(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;cr.style.left=cx+'px';cr.style.top=cy+'px';requestAnimationFrame(a);})();
+  document.querySelectorAll('a,button').forEach(el=>{
+    el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+    el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
+  });
+}
+</script>
+</body>
+</html>
