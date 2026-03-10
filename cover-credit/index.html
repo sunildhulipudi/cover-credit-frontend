@@ -857,7 +857,7 @@ const yearEl=document.getElementById('current-year');if(yearEl)yearEl.textConten
 /* Analytics */
 (function(){
   var PAGE_NAME='home';
-  var BACKEND=(window.location.hostname==='localhost'||window.location.hostname==='127.0.0.1')?'http://localhost:5000/api':'https://cover-credit-backend.onrender.com/api';
+  var BACKEND=(window.location.hostname==='localhost'||window.location.hostname==='127.0.0.1')?'http://localhost:5000/api':'https://api.covercredit.in/api';
   var ua=navigator.userAgent.toLowerCase();
   if(/bot|crawler|spider|headless/.test(ua))return;
   var params=new URLSearchParams(window.location.search);
