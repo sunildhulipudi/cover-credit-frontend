@@ -1048,7 +1048,16 @@ ${steps}
 🔸 Card by *Cover Credit* · covercredit.in
 📞 Advisory: +91 78428 54466 (Mon–Sat 9AM–7PM)`;
 
-    window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
+    let phone = document.getElementById('f-phone').value.trim().replace(/\D/g,'');
+    if (phone.length === 10) phone = '91' + phone;
+    else if (phone.startsWith('0')) phone = '91' + phone.slice(1);
+    else if (!phone.startsWith('91') && phone.length > 0) phone = '91' + phone;
+    if (phone.length >= 12) {
+      window.open('https://wa.me/' + phone + '?text=' + encodeURIComponent(msg), '_blank');
+    } else {
+      const ph = prompt('Enter your WhatsApp number (10 digits) to send card to yourself:');
+      if (ph) { let p = ph.replace(/\D/g,''); if(p.length===10) p='91'+p; window.open('https://wa.me/'+p+'?text='+encodeURIComponent(msg),'_blank'); }
+    }
   };
 
   if (!silent) setTimeout(() => document.getElementById('ppLive').scrollIntoView({behavior:'smooth', block:'start'}), 100);
