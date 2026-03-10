@@ -4,675 +4,680 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Free Insurance SOS Card Generator | Cover Credit</title>
-<meta name="description" content="Generate a free printable Insurance SOS Card for any policy — vehicle, health or life."/>
+<meta name="description" content="Generate a free printable Insurance SOS Card for any policy — vehicle, health or life. Step-by-step emergency guide for your dashboard or wallet. Works for any insurer."/>
+<meta property="og:title" content="Free Insurance SOS Card Generator | Cover Credit"/>
+<meta property="og:description" content="Generate a free printable SOS card for any insurance policy. Works for any insurer. Keep it in your dashboard — know exactly what to do in an emergency."/>
+<meta property="og:image" content="https://covercredit.in/og-banner.png"/>
+<meta property="og:url" content="https://covercredit.in/sos-card.html"/>
+<meta property="og:type" content="website"/>
+<link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-377PNCFQLN"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-377PNCFQLN');</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet"/>
 <style>
+/* ═══════════════════════════════════════════════
+   RESET & ROOT
+═══════════════════════════════════════════════ */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 :root{
-  --navy:#06101f;--navy2:#0b1a30;--navy3:#101f38;
-  --gold:#f5a623;--gold2:#f5c842;
-  --gold-dim:rgba(245,166,35,.1);--gold-border:rgba(245,166,35,.22);
-  --text:#f0f0f5;--muted:rgba(240,240,245,.5);--muted2:rgba(240,240,245,.22);
-  --border:rgba(255,255,255,.07);--border2:rgba(255,255,255,.13);
-  --glass:rgba(255,255,255,.03);--glass2:rgba(255,255,255,.06);
-  --E:cubic-bezier(.16,1,.3,1);
-  --safe-top:env(safe-area-inset-top,0px);
-  --safe-bottom:env(safe-area-inset-bottom,0px);
+  --ac:#e65100;--ac2:#ff8f00;--ink:#06101f;--i2:#0b1a30;
+  --line:rgba(255,255,255,.08);--fog:rgba(255,255,255,.06);
+  --E:cubic-bezier(.16,1,.3,1);--nh:72px;
+  --cv:#e65100;--hc:#1565c0;--lc:#2e7d32;--cc:#6a1b9a;--bc:#e65100;
 }
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;}
-body{font-family:'DM Sans',system-ui,sans-serif;background:var(--navy);color:var(--text);overflow-x:hidden;padding-bottom:calc(80px + var(--safe-bottom));}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--ink);color:#fff;overflow-x:hidden;cursor:none;}
+a{text-decoration:none;color:inherit;}
 
-/* BG GLOW */
-body::before{content:'';position:fixed;top:-200px;left:-100px;width:600px;height:600px;background:radial-gradient(circle,rgba(245,166,35,.07),transparent 65%);border-radius:50%;pointer-events:none;z-index:0;animation:drift 20s ease-in-out infinite;}
-@keyframes drift{0%,100%{transform:translate(0,0)}50%{transform:translate(40px,-30px)}}
+/* ═══════════════════════════════════════════════
+   CUSTOM CURSOR
+═══════════════════════════════════════════════ */
+#cur,#cr{position:fixed;top:0;left:0;pointer-events:none;border-radius:50%;z-index:9999;transform:translate(-50%,-50%);}
+#cur{width:10px;height:10px;background:var(--ac);}
+#cr{width:38px;height:38px;border:1.5px solid rgba(230,81,0,.5);z-index:9998;transition:width .2s,height .2s,opacity .2s;}
+body.hov #cur{width:4px;height:4px;}
+body.hov #cr{width:54px;height:54px;opacity:.18;}
 
-/* TICKER */
-#ticker{position:relative;z-index:50;background:rgba(245,166,35,.06);border-bottom:1px solid rgba(245,166,35,.12);padding:.48rem 5%;display:flex;align-items:center;justify-content:center;gap:1.5rem;overflow:hidden;flex-wrap:wrap;}
-#ticker::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold2),var(--gold),transparent);background-size:300%;animation:scan 5s linear infinite;}
-@keyframes scan{0%{background-position:300% 0}100%{background-position:-300% 0}}
-.tk{font-size:.58rem;font-weight:700;color:rgba(245,166,35,.7);text-transform:uppercase;letter-spacing:1.5px;display:inline-flex;align-items:center;gap:.4rem;white-space:nowrap;}
-.tk-dot{width:5px;height:5px;border-radius:50%;background:#4ade80;box-shadow:0 0 8px #4ade80;animation:blink 2s infinite;flex-shrink:0;}
-@keyframes blink{0%,100%{opacity:1}50%{opacity:.15}}
+/* ═══════════════════════════════════════════════
+   TICKER BAR
+═══════════════════════════════════════════════ */
+#ticker{position:fixed;top:0;left:0;right:0;z-index:1100;height:44px;background:#020c1f;display:flex;align-items:center;justify-content:center;gap:2rem;overflow:hidden;}
+#ticker::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:linear-gradient(90deg,transparent,#f5a623,#f5c842,#f5a623,transparent);background-size:200% 100%;animation:shimmer 4s linear infinite;}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.tk-pill{display:inline-flex;align-items:center;gap:.4rem;padding:.22rem .9rem;border-radius:100px;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#fbbf24;border:1px solid rgba(251,191,36,.22);background:rgba(234,179,8,.07);white-space:nowrap;}
+.tk-dot{width:5px;height:5px;border-radius:50%;background:#4ade80;box-shadow:0 0 6px #4ade80;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 
-/* NAV */
-.nav{position:sticky;top:0;z-index:100;padding:0 4%;background:rgba(6,16,31,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;height:56px;}
-.logo{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;text-decoration:none;color:var(--text);}
-.logo em{font-style:normal;color:var(--gold);}
-.nav-right{display:flex;align-items:center;gap:.7rem;}
-.nav-wa{display:flex;align-items:center;gap:.35rem;background:#25d366;color:#fff;padding:.38rem .85rem;border-radius:8px;font-size:.73rem;font-weight:700;text-decoration:none;transition:opacity .2s;}
-.nav-wa:hover{opacity:.85;}
-.nav-cta{background:var(--gold);color:var(--navy);padding:.38rem .85rem;border-radius:8px;font-weight:700;font-size:.73rem;text-decoration:none;white-space:nowrap;}
+/* ═══════════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════════ */
+.nav{position:fixed;top:44px;left:0;right:0;z-index:900;height:var(--nh);padding:0 5%;transition:background .4s;}
+.nav.sc{background:rgba(6,16,31,.97);backdrop-filter:blur(24px);box-shadow:0 1px 0 var(--line);}
+.ni{max-width:1300px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;}
+.logo em{font-style:normal;color:#f5a623;}
+.nl{display:flex;align-items:center;gap:1.8rem;list-style:none;}
+.nl a{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.65);transition:color .2s;position:relative;}
+.nl a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:#f5a623;transition:width .28s;}
+.nl a:hover{color:#fff;}.nl a:hover::after{width:100%;}
+.ncta{background:#f5a623!important;color:#06101f!important;padding:.46rem 1.12rem!important;border-radius:100px;font-weight:700!important;font-size:.8rem!important;}
+.ncta::after{display:none!important;}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:4px;}
+.burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s;}
+.burger.op span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.burger.op span:nth-child(2){opacity:0;}
+.burger.op span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.mob{position:fixed;inset:0;z-index:899;background:var(--ink);display:flex;flex-direction:column;padding:calc(44px + var(--nh) + 1.8rem) 5% 3rem;transform:translateX(100%);transition:transform .38s var(--E);}
+.mob.op{transform:translateX(0);}
+.mob a{padding:.9rem 0;font-size:1rem;font-weight:500;color:rgba(255,255,255,.72);border-bottom:1px solid var(--line);}
+.mc{margin-top:1.8rem;background:#f5a623;color:#06101f!important;text-align:center;border-radius:12px;padding:.9rem!important;font-weight:700!important;border:none!important;}
 
-/* ── PAGE LAYOUT: mobile = single column stacked, desktop = side by side ── */
-.page{position:relative;z-index:1;max-width:1240px;margin:0 auto;padding:1.5rem 4% 2rem;}
+/* ═══════════════════════════════════════════════
+   FAB
+═══════════════════════════════════════════════ */
+.fab{position:fixed;bottom:1.8rem;right:1.8rem;z-index:400;display:flex;flex-direction:column;gap:.65rem;align-items:flex-end;}
+.fab a{display:flex;align-items:center;gap:.48rem;padding:.65rem 1rem;border-radius:100px;font-size:.76rem;font-weight:600;cursor:none;transition:transform .18s;}
+.fab a:hover{transform:translateY(-2px);}
+.fwa{background:#25d366;color:#fff;box-shadow:0 6px 20px rgba(37,211,102,.35);}
+.fbk{background:var(--ac);color:#fff;box-shadow:0 6px 20px rgba(230,81,0,.35);}
 
-/* HERO STRIP — compact, above the form */
-.hero-strip{text-align:center;padding:1.5rem 0 1.8rem;}
-.hero-badge{display:inline-flex;align-items:center;gap:.45rem;background:var(--gold-dim);border:1px solid var(--gold-border);color:var(--gold);font-size:.6rem;font-weight:700;padding:.3rem .9rem;border-radius:100px;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;}
-.hb-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold);animation:blink 2s infinite;}
-h1.htit{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,6vw,3.8rem);font-weight:900;line-height:1.05;letter-spacing:-1.5px;margin-bottom:.7rem;}
-h1.htit em{font-style:italic;background:linear-gradient(120deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.hsub{font-size:.88rem;color:var(--muted);line-height:1.78;max-width:500px;margin:0 auto;}
+/* ═══════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════ */
+.hero{position:relative;padding:calc(44px + var(--nh) + 5rem) 5% 4rem;text-align:center;overflow:hidden;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000,transparent);}
+.hero-glow{position:absolute;top:0;left:50%;transform:translateX(-50%);width:900px;height:500px;background:radial-gradient(ellipse at 50% 0%,rgba(230,81,0,.18) 0%,transparent 70%);pointer-events:none;}
+.hero-content{position:relative;z-index:1;max-width:720px;margin:0 auto;}
+.hbc{display:inline-flex;align-items:center;gap:.38rem;font-size:.72rem;color:rgba(255,255,255,.28);margin-bottom:1.3rem;}
+.hbc a{color:rgba(255,255,255,.28);transition:color .2s;}.hbc a:hover{color:var(--ac2);}
+.hkick{display:inline-flex;align-items:center;gap:.48rem;background:rgba(230,81,0,.1);border:1px solid rgba(230,81,0,.25);color:#ffcc80;font-size:.68rem;font-weight:700;padding:.32rem 1rem;border-radius:100px;text-transform:uppercase;letter-spacing:.8px;margin-bottom:1.2rem;}
+.hkick-dot{width:5px;height:5px;background:var(--ac2);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.15}}
+.htit{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4.5vw,4.2rem);font-weight:900;line-height:1.03;letter-spacing:-2px;margin-bottom:1rem;}
+.htit em{font-style:italic;background:linear-gradient(120deg,#ff8f00,#ffcc02);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hdesc{font-size:.96rem;line-height:1.82;color:rgba(255,255,255,.48);max-width:540px;margin:0 auto 2.2rem;}
+.trust-strip{display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;}
+.ts-item{display:flex;align-items:center;gap:.4rem;font-size:.72rem;color:rgba(255,255,255,.3);}
+.ts-ic{font-size:.95rem;}
 
-/* TOOL GRID */
-.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;margin-top:1.5rem;}
+/* ═══════════════════════════════════════════════
+   MAIN LAYOUT
+═══════════════════════════════════════════════ */
+.main{max-width:1200px;margin:0 auto;padding:2rem 5% 6rem;display:grid;grid-template-columns:480px 1fr;gap:2.5rem;align-items:start;}
 
-/* ── FORM CARD ── */
-.form-card{background:rgba(11,26,48,.92);border:1px solid var(--border2);border-radius:20px;overflow:hidden;position:relative;}
-.form-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold2),var(--gold),transparent);}
-.fc-head{padding:1.4rem 1.5rem 0;}
-.fc-eye{font-size:.56rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:.38rem;}
-.fc-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:.15rem;}
-.fc-sub{font-size:.72rem;color:var(--muted);margin-bottom:1.2rem;}
+/* ═══════════════════════════════════════════════
+   FORM PANEL
+═══════════════════════════════════════════════ */
+.form-panel{position:sticky;top:calc(44px + var(--nh) + 1.5rem);}
+.fp-card{background:var(--i2);border:1px solid var(--line);border-radius:22px;overflow:hidden;}
+.fp-top{padding:1.6rem 1.8rem 0;}
+.fp-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:.25rem;}
+.fp-sub{font-size:.74rem;color:rgba(255,255,255,.32);margin-bottom:1.4rem;}
 
-/* Type tabs */
-.type-tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:.32rem;margin-bottom:1.3rem;}
-.tt{display:flex;flex-direction:column;align-items:center;gap:.25rem;padding:.55rem .2rem;border-radius:11px;border:1.5px solid var(--border);cursor:pointer;transition:all .2s var(--E);background:var(--glass);-webkit-tap-highlight-color:transparent;}
-.tt.active{border-color:var(--gold);background:var(--gold-dim);box-shadow:0 0 16px rgba(245,166,35,.12);}
-.tt-ic{font-size:1.2rem;line-height:1;}
-.tt-lb{font-size:.48rem;font-weight:700;color:var(--muted2);text-transform:uppercase;letter-spacing:.3px;text-align:center;line-height:1.3;}
-.tt.active .tt-lb{color:var(--gold);}
+/* Policy type tabs */
+.pt-label{font-size:.6rem;font-weight:700;color:rgba(255,255,255,.25);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.65rem;}
+.pt-tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:.38rem;margin-bottom:1.6rem;}
+.pt{display:flex;flex-direction:column;align-items:center;gap:.28rem;padding:.6rem .3rem;border-radius:12px;border:1.5px solid var(--line);cursor:pointer;transition:all .22s var(--E);background:var(--fog);}
+.pt:hover{border-color:rgba(230,81,0,.3);}
+.pt.on{border-color:var(--ac);background:rgba(230,81,0,.1);}
+.pt-ic{font-size:1.3rem;line-height:1;}
+.pt-lbl{font-size:.55rem;font-weight:700;color:rgba(255,255,255,.38);text-transform:uppercase;letter-spacing:.5px;text-align:center;line-height:1.3;}
+.pt.on .pt-lbl{color:var(--ac2);}
 
 /* Form body */
-.fc-body{padding:.2rem 1.5rem 1.5rem;}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;}
-.field{margin-bottom:.75rem;}
-.fl{font-size:.55rem;font-weight:700;color:var(--muted2);text-transform:uppercase;letter-spacing:1px;display:flex;align-items:center;justify-content:space-between;margin-bottom:.3rem;}
-.fi{width:100%;background:rgba(255,255,255,.04);border:1.5px solid var(--border);border-radius:10px;padding:.72rem .95rem;font-size:.88rem;color:var(--text);font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;}
-.fi:focus{border-color:rgba(245,166,35,.5);box-shadow:0 0 0 3px rgba(245,166,35,.08);}
-.fi::placeholder{color:var(--muted2);}
-.fi-sel{background:rgba(255,255,255,.04) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='rgba(255,255,255,.25)' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right .85rem center;appearance:none;cursor:pointer;}
-.fi-sel option{background:#0b1a30;}
-.copy-btn{background:none;border:none;cursor:pointer;color:var(--gold);font-size:.56rem;font-weight:700;padding:0;font-family:'DM Sans',sans-serif;}
+.fp-body{padding:0 1.8rem 1.8rem;}
+.field-group{margin-bottom:1rem;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:1rem;}
+.fl{font-size:.6rem;font-weight:700;color:rgba(255,255,255,.28);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:.38rem;}
+.fi{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;padding:.68rem .95rem;font-size:.84rem;color:#fff;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s,background .2s;}
+.fi:focus{border-color:rgba(230,81,0,.45);background:rgba(230,81,0,.05);}
+.fi::placeholder{color:rgba(255,255,255,.18);}
+.fi-sel{appearance:none;background:rgba(255,255,255,.04) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='rgba(255,255,255,.25)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right .9rem center;cursor:pointer;}
+.fi-sel option{background:#0b1a30;color:#fff;}
 
-/* Covers */
-.covers-sec{margin-bottom:.75rem;}
-.covers-lbl{font-size:.55rem;font-weight:700;color:var(--muted2);text-transform:uppercase;letter-spacing:1px;margin-bottom:.45rem;display:block;}
-.covers-pills{display:flex;flex-wrap:wrap;gap:.35rem;}
-.cpill{display:inline-flex;align-items:center;gap:.3rem;padding:.32rem .78rem;border-radius:100px;border:1.5px solid var(--border);font-size:.68rem;font-weight:600;color:var(--muted);cursor:pointer;transition:all .18s;user-select:none;-webkit-tap-highlight-color:transparent;}
-.cpill .pip{width:5px;height:5px;border-radius:50%;flex-shrink:0;}
-.cpill.on{background:rgba(74,222,128,.07);border-color:rgba(74,222,128,.28);color:#4ade80;}
-.cpill.on .pip{background:#4ade80;}
-.cpill.off{background:rgba(248,113,113,.05);border-color:rgba(248,113,113,.2);color:#f87171;}
-.cpill.off .pip{background:#f87171;}
-.fdiv{height:1px;background:var(--border);margin:1rem 0;}
+/* Covers toggle */
+.covers-label{font-size:.6rem;font-weight:700;color:rgba(255,255,255,.28);text-transform:uppercase;letter-spacing:1px;margin-bottom:.55rem;display:block;}
+.covers-pills{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem;}
+.cp-tog{display:inline-flex;align-items:center;gap:.3rem;padding:.3rem .78rem;border-radius:100px;border:1.5px solid var(--line);font-size:.68rem;font-weight:600;color:rgba(255,255,255,.35);cursor:pointer;transition:all .2s;user-select:none;}
+.cp-tog.yes{background:rgba(74,222,128,.1);border-color:rgba(74,222,128,.35);color:#4ade80;}
+.cp-tog.no{background:rgba(248,113,113,.08);border-color:rgba(248,113,113,.28);color:#f87171;}
 
-/* Generate btn */
-.gen-btn{width:100%;padding:1rem;background:linear-gradient(135deg,#c48209,var(--gold),var(--gold2));border:none;border-radius:13px;font-size:1rem;font-weight:700;color:var(--navy);cursor:pointer;font-family:'DM Sans',sans-serif;transition:transform .18s,box-shadow .2s;display:flex;align-items:center;justify-content:center;gap:.55rem;-webkit-tap-highlight-color:transparent;}
-.gen-btn:hover{transform:translateY(-2px);box-shadow:0 14px 36px rgba(245,166,35,.4);}
-.gen-btn:active{transform:scale(.98);}
+/* Divider */
+.f-div{height:1px;background:var(--line);margin:1.2rem 0;}
 
-/* ── PREVIEW PANEL ── */
+/* Generate button */
+.gen-btn{width:100%;padding:1.05rem;background:linear-gradient(135deg,#e65100,#ff8f00);border:none;border-radius:13px;font-size:.95rem;font-weight:700;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;transition:transform .18s,box-shadow .22s;display:flex;align-items:center;justify-content:center;gap:.55rem;margin-top:1.3rem;position:relative;overflow:hidden;}
+.gen-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);opacity:0;transition:opacity .2s;}
+.gen-btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(230,81,0,.45);}
+.gen-btn:hover::before{opacity:1;}
+.gen-btn:active{transform:translateY(0);}
+.gen-btn-ic{font-size:1.1rem;}
+
+/* ═══════════════════════════════════════════════
+   PREVIEW PANEL
+═══════════════════════════════════════════════ */
 .preview-panel{}
-.pp-empty{min-height:400px;border:1.5px dashed rgba(245,166,35,.1);border-radius:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2.5rem 2rem;gap:.75rem;}
-.ppe-ic{font-size:3rem;opacity:.12;}
-.ppe-tt{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--muted2);}
-.ppe-sub{font-size:.72rem;color:rgba(255,255,255,.1);line-height:1.7;max-width:220px;}
-.ppe-steps{display:flex;flex-direction:column;gap:.5rem;text-align:left;width:100%;max-width:260px;margin-top:.3rem;}
-.ppe-step{display:flex;align-items:center;gap:.6rem;font-size:.68rem;color:rgba(255,255,255,.1);}
-.ppe-sn{width:18px;height:18px;border-radius:50%;background:rgba(245,166,35,.06);border:1px solid rgba(245,166,35,.1);display:flex;align-items:center;justify-content:center;font-size:.56rem;font-weight:700;flex-shrink:0;color:rgba(245,166,35,.35);}
-
-.pp-live{display:none;animation:fadeUp .45s var(--E) both;}
+.pp-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:520px;border:1.5px dashed rgba(255,255,255,.1);border-radius:22px;text-align:center;padding:3rem;}
+.pp-empty-ic{font-size:3.5rem;margin-bottom:1rem;opacity:.3;}
+.pp-empty-tt{font-family:'Playfair Display',serif;font-size:1.1rem;color:rgba(255,255,255,.22);margin-bottom:.4rem;}
+.pp-empty-ds{font-size:.74rem;color:rgba(255,255,255,.14);line-height:1.6;}
+.pp-live{display:none;animation:fadeUp .5s var(--E) both;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 
 /* Action bar */
-.action-bar{display:flex;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap;}
-.ab-btn{display:inline-flex;align-items:center;justify-content:center;gap:.4rem;padding:.72rem 1.1rem;border-radius:10px;font-size:.78rem;font-weight:700;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:all .18s;white-space:nowrap;flex:1;min-width:120px;-webkit-tap-highlight-color:transparent;}
-.ab-btn:active{transform:scale(.97);}
-/* Gold = primary action (PDF on desktop, Share on mobile) */
-.ab-primary{background:linear-gradient(135deg,#c48209,var(--gold));color:var(--navy);box-shadow:0 4px 16px rgba(245,166,35,.25);}
-.ab-primary:hover{box-shadow:0 8px 28px rgba(245,166,35,.42);}
-/* WhatsApp — only shown on mobile */
-.ab-wa{background:linear-gradient(135deg,#128c7e,#25d366);color:#fff;box-shadow:0 4px 16px rgba(37,211,102,.18);}
-.ab-wa:hover{box-shadow:0 8px 28px rgba(37,211,102,.34);}
-.ab-ghost{background:var(--glass);color:var(--muted);border:1px solid var(--border);flex:0;min-width:auto;}
+.action-bar{display:flex;gap:.65rem;margin-bottom:1.4rem;flex-wrap:wrap;}
+.ab-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.65rem 1.2rem;border-radius:10px;font-size:.78rem;font-weight:700;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:transform .18s,box-shadow .18s;}
+.ab-btn:hover{transform:translateY(-2px);}
+.ab-print{background:#e65100;color:#fff;box-shadow:0 4px 16px rgba(230,81,0,.3);}
+.ab-wa{background:#25d366;color:#fff;box-shadow:0 4px 16px rgba(37,211,102,.25);}
+.ab-reset{background:var(--fog);color:rgba(255,255,255,.5);border:1px solid var(--line);}
 
 /* Nudge */
-.nudge{background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:14px;padding:.9rem 1.1rem;display:flex;align-items:flex-start;gap:.75rem;margin-bottom:1rem;}
-.nudge-ic{font-size:1.2rem;flex-shrink:0;}
-.nudge-body{font-size:.72rem;color:var(--muted);line-height:1.65;}
-.nudge-body strong{color:var(--text);}
-.nudge-cta{display:inline-flex;align-items:center;gap:.3rem;background:#25d366;color:#fff;padding:.28rem .82rem;border-radius:100px;font-size:.65rem;font-weight:700;margin-top:.4rem;text-decoration:none;transition:transform .15s;}
-.nudge-cta:hover{transform:translateY(-1px);}
+.nudge{background:rgba(230,81,0,.06);border:1px solid rgba(230,81,0,.16);border-radius:14px;padding:1rem 1.2rem;display:flex;align-items:flex-start;gap:.85rem;margin-bottom:1.4rem;}
+.nudge-ic{font-size:1.5rem;flex-shrink:0;margin-top:.1rem;}
+.nudge-body{font-size:.75rem;color:rgba(255,255,255,.48);line-height:1.65;}
+.nudge-body strong{color:rgba(255,255,255,.82);}
+.nudge-wa{display:inline-flex;align-items:center;gap:.3rem;background:#25d366;color:#fff;padding:.32rem .85rem;border-radius:100px;font-size:.68rem;font-weight:700;margin-top:.5rem;transition:transform .15s;cursor:pointer;}
+.nudge-wa:hover{transform:translateY(-1px);}
 
-/* TOAST */
-#toast{position:fixed;bottom:calc(90px + var(--safe-bottom));left:50%;transform:translateX(-50%) translateY(20px);background:var(--navy2);border:1px solid var(--border2);border-radius:12px;padding:.7rem 1.3rem;font-size:.8rem;font-weight:600;color:var(--text);z-index:9999;opacity:0;transition:all .3s var(--E);pointer-events:none;white-space:nowrap;box-shadow:0 12px 40px rgba(0,0,0,.5);max-width:90vw;text-align:center;}
-#toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
-#toast.s{border-color:rgba(74,222,128,.28);color:#4ade80;}
-#toast.e{border-color:rgba(248,113,113,.28);color:#f87171;}
-#toast.i{border-color:var(--gold-border);color:var(--gold);}
+/* ═══════════════════════════════════════════════
+   THE CARD (printable)
+═══════════════════════════════════════════════ */
+#sosCard{background:#fff;color:#111;border-radius:18px;overflow:hidden;box-shadow:0 28px 72px rgba(0,0,0,.55);}
 
-/* BOTTOM BAR — mobile sticky CTA */
-.bottom-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;padding:.75rem 1rem calc(.75rem + var(--safe-bottom));background:rgba(6,16,31,.97);border-top:1px solid var(--border);backdrop-filter:blur(20px);gap:.6rem;}
-.bb-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:.4rem;padding:.82rem 1rem;border-radius:12px;font-size:.85rem;font-weight:700;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;-webkit-tap-highlight-color:transparent;}
-.bb-btn:active{transform:scale(.97);}
-.bb-pdf{background:linear-gradient(135deg,#c48209,var(--gold));color:var(--navy);}
-.bb-wa{background:linear-gradient(135deg,#128c7e,#25d366);color:#fff;}
+/* Card header */
+.card-hd{padding:1.2rem 1.5rem;display:flex;align-items:center;justify-content:space-between;}
+.card-hd.t-cv{background:linear-gradient(135deg,#bf360c 0%,#e65100 50%,#ff8f00 100%);}
+.card-hd.t-health{background:linear-gradient(135deg,#0d2b6b 0%,#1565c0 50%,#1976d2 100%);}
+.card-hd.t-life{background:linear-gradient(135deg,#1a3d1f 0%,#2e7d32 50%,#43a047 100%);}
+.card-hd.t-car{background:linear-gradient(135deg,#380d5c 0%,#6a1b9a 50%,#8e24aa 100%);}
+.card-hd.t-bike{background:linear-gradient(135deg,#b71c1c 0%,#e53935 50%,#f4511e 100%);}
+.chd-left{display:flex;align-items:center;gap:.85rem;}
+.chd-icon{width:48px;height:48px;background:rgba(255,255,255,.18);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;}
+.chd-type{font-size:.54rem;font-weight:700;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:2px;margin-bottom:.18rem;}
+.chd-name{font-family:'Playfair Display',serif;font-size:1.08rem;font-weight:900;color:#fff;line-height:1.1;}
+.chd-right{text-align:right;flex-shrink:0;}
+.chd-sos{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:rgba(255,255,255,.2);line-height:1;letter-spacing:5px;}
+.chd-keep{font-size:.5rem;color:rgba(255,255,255,.48);text-transform:uppercase;letter-spacing:2px;}
 
-/* ── SOS CARD ── */
-#sosCard{background:#fff;color:#111;border-radius:16px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.5);}
-.ch{padding:1.1rem 1.4rem;display:flex;align-items:center;justify-content:space-between;position:relative;overflow:hidden;}
-.ch::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold2),var(--gold),transparent);}
-.ch::after{content:'SOS';position:absolute;right:5.5rem;top:50%;transform:translateY(-50%);font-family:'DM Sans',sans-serif;font-size:4.5rem;font-weight:700;color:rgba(255,255,255,.05);letter-spacing:8px;pointer-events:none;}
-.ch-cv{background:linear-gradient(135deg,#0b1a30,#1a3050);}
-.ch-health{background:linear-gradient(135deg,#0a1f0b,#1b4d1e);}
-.ch-life{background:linear-gradient(135deg,#1a0a00,#3d1f00);}
-.ch-car{background:linear-gradient(135deg,#0b1a30,#0d2545);}
-.ch-bike{background:linear-gradient(135deg,#1a0b0b,#3d1515);}
-.ch-left{display:flex;align-items:center;gap:.85rem;}
-.ch-iw{width:46px;height:46px;background:rgba(245,166,35,.18);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;border:1px solid rgba(245,166,35,.3);flex-shrink:0;}
-.ch-type{font-size:.47rem;font-weight:700;color:rgba(245,166,35,.6);text-transform:uppercase;letter-spacing:2px;margin-bottom:.15rem;}
-.ch-name{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#fff;line-height:1.15;}
-.ch-right{text-align:right;flex-shrink:0;z-index:1;}
-.ch-badge{background:rgba(245,166,35,.18);border:1px solid rgba(245,166,35,.35);border-radius:9px;padding:.35rem .82rem;display:inline-block;}
-.ch-sos{font-family:'DM Sans',sans-serif;font-size:1.4rem;font-weight:700;color:var(--gold);letter-spacing:4px;line-height:1;}
-.ch-keep{font-size:.44rem;color:rgba(245,166,35,.5);text-transform:uppercase;letter-spacing:2px;margin-top:.25rem;}
-.card-body{background:#fff;padding:1rem 1.4rem .35rem;}
-.det-grid{display:grid;grid-template-columns:1fr 1fr;gap:.42rem;margin-bottom:.8rem;}
-.det{background:#f7f8fc;border-radius:9px;padding:.58rem .82rem;border-left:3px solid #ddd;}
-.det-cv{border-left-color:#1565c0;}.det-health{border-left-color:#2e7d32;}.det-life{border-left-color:#c47f00;}.det-car{border-left-color:#1565c0;}.det-bike{border-left-color:#b71c1c;}
-.det-lbl{font-size:.47rem;font-weight:700;color:#bbb;text-transform:uppercase;letter-spacing:1px;margin-bottom:.15rem;}
-.det-val{font-size:.76rem;font-weight:700;color:#111;word-break:break-all;line-height:1.3;}
-.det-val.big{font-size:.88rem;}
-.det-val.ac-cv{color:#1565c0;}.det-val.ac-health{color:#2e7d32;}.det-val.ac-life{color:#c47f00;}.det-val.ac-car{color:#1565c0;}.det-val.ac-bike{color:#b71c1c;}
-.exp-badge{display:inline-flex;align-items:center;gap:.25rem;padding:.08rem .45rem;border-radius:100px;font-size:.47rem;font-weight:700;}
-.exp-ok{background:#e8f5e9;color:#2e7d32;}.exp-warn{background:#fff8e1;color:#f57f17;}.exp-danger{background:#ffebee;color:#c62828;}
-.covers-strip{padding:.1rem 1.4rem .75rem;display:flex;flex-wrap:wrap;gap:.28rem;}
-.ctag{display:inline-flex;align-items:center;gap:.2rem;padding:.18rem .58rem;border-radius:100px;font-size:.56rem;font-weight:700;}
+/* Card body */
+.card-bd{background:#fff;padding:1.2rem 1.5rem 0;}
+.det-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1rem;}
+.det{background:#f8f9fa;border-radius:8px;padding:.6rem .85rem;}
+.det.acc-cv{border-left:3px solid #e65100;}
+.det.acc-health{border-left:3px solid #1565c0;}
+.det.acc-life{border-left:3px solid #2e7d32;}
+.det.acc-car{border-left:3px solid #6a1b9a;}
+.det.acc-bike{border-left:3px solid #e53935;}
+.det-lbl{font-size:.52rem;font-weight:700;color:#bbb;text-transform:uppercase;letter-spacing:1px;margin-bottom:.2rem;}
+.det-val{font-size:.82rem;font-weight:700;color:#111;line-height:1.3;word-break:break-all;}
+.det-val.emph{font-size:.94rem;}
+.det-val.hot{color:#e65100;}
+.det-val.hot-h{color:#1565c0;}
+.det-val.hot-l{color:#2e7d32;}
+.det-val.hot-c{color:#6a1b9a;}
+.det-val.hot-b{color:#e53935;}
+
+/* Covers row */
+.covers-row{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:.95rem;padding:0 1.5rem;}
+.ctag{display:inline-flex;align-items:center;gap:.22rem;padding:.2rem .65rem;border-radius:100px;font-size:.6rem;font-weight:700;}
 .ctag.y{background:#e8f5e9;border:1px solid #a5d6a7;color:#2e7d32;}
 .ctag.n{background:#fce4ec;border:1px solid #f48fb1;color:#c2185b;}
-.steps-hd{display:flex;align-items:center;gap:.6rem;padding:.1rem 1.4rem .5rem;}
-.sh-lbl{font-size:.48rem;font-weight:700;color:#bbb;text-transform:uppercase;letter-spacing:2px;white-space:nowrap;}
-.sh-line{flex:1;height:1px;background:#efefef;}
-.card-steps{display:flex;flex-direction:column;gap:.35rem;padding:0 1.4rem .8rem;}
-.cs{display:flex;align-items:flex-start;gap:.52rem;}
-.cs-n{width:20px;height:20px;border-radius:50%;color:#fff;font-size:.56rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.04rem;}
-.cs-n-cv{background:#1565c0;}.cs-n-health{background:#2e7d32;}.cs-n-life{background:#c47f00;}.cs-n-car{background:#1565c0;}.cs-n-bike{background:#b71c1c;}
-.cs-t{font-size:.68rem;color:#333;line-height:1.5;}
+.ctag.w{background:#fff8e1;border:1px solid #ffe082;color:#f57f17;}
+
+/* Steps divider */
+.steps-div{display:flex;align-items:center;gap:.6rem;margin:0 1.5rem .7rem;}
+.sdiv-lbl{font-size:.54rem;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:1.5px;white-space:nowrap;}
+.sdiv-line{flex:1;height:1px;background:#e8e8e8;}
+
+/* Steps */
+.card-steps{display:flex;flex-direction:column;gap:.38rem;padding:0 1.5rem;margin-bottom:1rem;}
+.cs{display:flex;align-items:flex-start;gap:.55rem;}
+.cs-n{width:21px;height:21px;border-radius:50%;color:#fff;font-size:.6rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.04rem;}
+.cs-n.cv{background:#e65100;}
+.cs-n.health{background:#1565c0;}
+.cs-n.life{background:#2e7d32;}
+.cs-n.car{background:#6a1b9a;}
+.cs-n.bike{background:#e53935;}
+.cs-t{font-size:.72rem;color:#333;line-height:1.48;}
 .cs-t strong{color:#111;font-weight:700;}
-.members-row{padding:.1rem 1.4rem .6rem;}
-.members-lbl{font-size:.48rem;font-weight:700;color:#bbb;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.38rem;}
-.members-tags{display:flex;flex-wrap:wrap;gap:.28rem;}
-.mtag{background:#fff8e1;border:1px solid #ffe082;border-radius:6px;padding:.15rem .58rem;font-size:.6rem;font-weight:700;color:#c47f00;}
-.card-ft{background:linear-gradient(135deg,#06101f,#0b1a30);padding:.8rem 1.4rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(245,166,35,.2);}
-.cft-logo{font-family:'Playfair Display',serif;font-size:.9rem;font-weight:700;color:#fff;}
-.cft-logo em{font-style:normal;color:var(--gold);}
-.cft-tag{font-size:.46rem;color:rgba(255,255,255,.3);margin-top:.04rem;}
-.cft-right{display:flex;align-items:center;gap:.65rem;}
-.cft-phone{font-size:.74rem;font-weight:700;color:var(--gold);}
-#cardQR canvas,#cardQR img{width:34px!important;height:34px!important;}
-.card-stamp{font-size:.45rem;color:#bbb;text-align:center;padding:.34rem;background:#f7f8fc;border-top:1px solid #efefef;}
 
-/* ── BELOW-FOLD CONTENT ── */
-.content-sections{position:relative;z-index:1;margin-top:3rem;}
+/* Members (health) */
+.members-sec{padding:0 1.5rem;margin-bottom:.85rem;}
+.members-lbl{font-size:.54rem;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.5rem;}
+.members-tags{display:flex;gap:.35rem;flex-wrap:wrap;}
+.mtag{background:#e3f2fd;border:1px solid #90caf9;border-radius:6px;padding:.2rem .65rem;font-size:.65rem;font-weight:700;color:#1565c0;}
 
-/* Alert band */
-.ab{background:linear-gradient(135deg,rgba(245,166,35,.07),rgba(245,200,66,.04));border:1px solid rgba(245,166,35,.12);border-radius:20px;padding:2rem 1.8rem;text-align:center;margin-bottom:2rem;}
-.ab-icon{font-size:1.8rem;margin-bottom:.5rem;}
-.ab-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:.4rem;}
-.ab-title em{color:var(--gold);font-style:italic;}
-.ab-text{font-size:.8rem;color:var(--muted);line-height:1.82;margin-bottom:.9rem;}
-.ab-facts{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;}
-.ab-fact{font-size:.73rem;color:var(--muted);display:inline-flex;align-items:center;gap:.38rem;}
-.ab-fact strong{color:var(--gold);}
+/* Card footer */
+.card-ft{background:#f5f5f5;padding:.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid #ebebeb;margin-top:.2rem;}
+.cft-brand{}
+.cft-logo{font-family:'Playfair Display',serif;font-size:.92rem;font-weight:700;color:#111;}
+.cft-logo span{color:#e65100;}
+.cft-tag{font-size:.52rem;color:#aaa;margin-top:.05rem;}
+.cft-right{text-align:right;}
+.cft-phone{font-size:.8rem;font-weight:700;color:#e65100;}
+.cft-url{font-size:.52rem;color:#bbb;}
+.card-gen{font-size:.5rem;color:#ccc;text-align:center;padding:.35rem;background:#fafafa;border-top:1px solid #f0f0f0;}
 
-/* Stats */
-.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.85rem;margin-bottom:2rem;}
-.sg{text-align:center;padding:1.4rem .8rem;background:var(--glass);border:1px solid var(--border);border-radius:16px;}
-.sg-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;margin-bottom:.3rem;}
-.sg-lbl{font-size:.68rem;color:var(--muted);line-height:1.5;}
+/* ═══════════════════════════════════════════════
+   HOW IT WORKS
+═══════════════════════════════════════════════ */
+.how-sec{padding:5rem 5% 4rem;background:var(--i2);border-top:1px solid var(--line);}
+.how-in{max-width:1100px;margin:0 auto;}
+.sec-tag{display:inline-flex;align-items:center;gap:.38rem;font-size:.65rem;font-weight:700;color:var(--ac2);text-transform:uppercase;letter-spacing:2px;margin-bottom:.8rem;}
+.sec-tag::before{content:'';width:14px;height:2px;background:var(--ac2);}
+.sec-tit{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.5vw,2.2rem);font-weight:700;line-height:1.15;margin-bottom:2.5rem;}
+.sec-tit em{font-style:italic;color:var(--ac2);}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+.hg-item{background:var(--ink);border:1px solid var(--line);border-radius:16px;padding:1.5rem 1.2rem;text-align:center;position:relative;}
+.hg-num{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:rgba(230,81,0,.18);line-height:1;margin-bottom:.5rem;}
+.hg-ic{font-size:1.8rem;margin-bottom:.6rem;}
+.hg-tt{font-size:.85rem;font-weight:700;margin-bottom:.35rem;}
+.hg-ds{font-size:.72rem;color:rgba(255,255,255,.34);line-height:1.6;}
+.hg-arr{position:absolute;right:-22px;top:50%;transform:translateY(-50%);font-size:1rem;color:rgba(255,255,255,.1);}
+.hg-item:last-child .hg-arr{display:none;}
 
-/* How it works */
-.how-sec{background:var(--navy2);border:1px solid var(--border);border-radius:20px;padding:2rem 1.8rem;margin-bottom:2rem;}
-.sec-eye{font-size:.58rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:.6rem;display:flex;align-items:center;gap:.45rem;}
-.sec-eye::before{content:'';width:12px;height:2px;background:var(--gold);}
-.sec-tit{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;line-height:1.15;margin-bottom:.45rem;}
-.sec-tit em{font-style:italic;color:var(--gold);}
-.sec-sub{font-size:.8rem;color:var(--muted);line-height:1.78;margin-bottom:1.5rem;}
-.how-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;}
-.hg{background:var(--glass);border:1px solid var(--border);border-radius:14px;padding:1.2rem 1rem;}
-.hg-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:rgba(245,166,35,.1);line-height:1;margin-bottom:.38rem;}
-.hg-ic{font-size:1.5rem;margin-bottom:.45rem;}
-.hg-tt{font-size:.84rem;font-weight:700;margin-bottom:.3rem;}
-.hg-ds{font-size:.7rem;color:var(--muted);line-height:1.6;}
+/* ═══════════════════════════════════════════════
+   CTA STRIP
+═══════════════════════════════════════════════ */
+.cta-strip{background:linear-gradient(135deg,#1a0600,#2d1000,#06101f);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:3.5rem 5%;text-align:center;}
+.cta-strip-in{max-width:700px;margin:0 auto;}
+.cs-tt{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:700;margin-bottom:.6rem;}
+.cs-tt em{font-style:italic;color:var(--ac2);}
+.cs-ds{font-size:.82rem;color:rgba(255,255,255,.4);line-height:1.7;margin-bottom:1.6rem;}
+.cs-btns{display:flex;gap:.85rem;justify-content:center;flex-wrap:wrap;}
+.btn-main{display:inline-flex;align-items:center;gap:.42rem;background:var(--ac);color:#fff;padding:.82rem 1.8rem;border-radius:11px;font-weight:700;font-size:.88rem;transition:transform .18s,box-shadow .18s;}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(230,81,0,.4);}
+.btn-ghost{display:inline-flex;align-items:center;gap:.42rem;background:var(--fog);border:1px solid var(--line);color:#fff;padding:.82rem 1.8rem;border-radius:11px;font-weight:500;font-size:.88rem;transition:background .18s;}
+.btn-ghost:hover{background:rgba(255,255,255,.09);}
 
-/* Testimonials */
-.testi-sec{margin-bottom:2rem;}
-.testi-grid{display:grid;grid-template-columns:1fr;gap:.85rem;margin-top:1.2rem;}
-.tcard{background:var(--glass);border:1px solid var(--border);border-radius:16px;padding:1.3rem;}
-.tcard-stars{color:var(--gold);font-size:.7rem;margin-bottom:.55rem;letter-spacing:2px;}
-.tcard-q{font-size:.78rem;color:var(--muted);line-height:1.75;margin-bottom:.9rem;font-style:italic;}
-.tcard-author{display:flex;align-items:center;gap:.6rem;}
-.tcard-av{width:32px;height:32px;border-radius:50%;background:var(--gold-dim);border:2px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:.85rem;}
-.tcard-name{font-size:.74rem;font-weight:700;}
-.tcard-role{font-size:.62rem;color:var(--muted);}
+/* ═══════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════ */
+.ft{background:#020b1a;border-top:1px solid var(--line);padding:2.5rem 5% 1.5rem;}
+.ft-in{max-width:1300px;margin:0 auto;}
+.ft-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--line);margin-bottom:1.2rem;}
+.ft-logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;}
+.ft-logo em{font-style:normal;color:#f5a623;}
+.ft-links{display:flex;gap:1.5rem;flex-wrap:wrap;}
+.ft-links a{font-size:.76rem;color:rgba(255,255,255,.32);transition:color .18s;}
+.ft-links a:hover{color:#f5a623;}
+.ft-copy{font-size:.68rem;color:rgba(255,255,255,.14);}
 
-/* FAQ */
-.faq-sec{margin-bottom:2rem;}
-.faq-list{margin-top:1.2rem;display:flex;flex-direction:column;gap:.55rem;}
-.faq-item{background:var(--glass);border:1px solid var(--border);border-radius:13px;overflow:hidden;}
-.faq-q{padding:1rem 1.2rem;font-weight:600;font-size:.84rem;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:.8rem;user-select:none;-webkit-tap-highlight-color:transparent;}
-.faq-ch{font-size:.7rem;color:var(--gold);transition:transform .3s;flex-shrink:0;}
-.faq-item.open .faq-ch{transform:rotate(180deg);}
-.faq-a{font-size:.77rem;color:var(--muted);line-height:1.75;padding:0 1.2rem;max-height:0;overflow:hidden;transition:max-height .35s var(--E),padding .35s;}
-.faq-item.open .faq-a{max-height:200px;padding:.1rem 1.2rem 1rem;}
-
-/* CTA band */
-.cta-band{background:linear-gradient(135deg,#040c18,#081225);border:1px solid var(--border);border-radius:20px;padding:2rem 1.8rem;text-align:center;margin-bottom:2rem;}
-.cta-tit{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;line-height:1.12;margin-bottom:.6rem;}
-.cta-tit em{font-style:italic;color:var(--gold);}
-.cta-sub{font-size:.8rem;color:var(--muted);line-height:1.8;margin-bottom:1.4rem;}
-.cta-btns{display:flex;gap:.75rem;justify-content:center;flex-wrap:wrap;}
-.btn-gold{display:inline-flex;align-items:center;gap:.4rem;background:linear-gradient(135deg,#c48209,var(--gold));color:var(--navy);padding:.82rem 1.6rem;border-radius:11px;font-weight:700;font-size:.85rem;text-decoration:none;transition:transform .18s;}
-.btn-gold:hover{transform:translateY(-2px);}
-.btn-ghost{display:inline-flex;align-items:center;gap:.4rem;background:var(--glass);border:1px solid var(--border2);color:var(--text);padding:.82rem 1.6rem;border-radius:11px;font-weight:500;font-size:.85rem;text-decoration:none;}
-
-/* Footer */
-.ft{background:#020b1a;border-top:1px solid var(--border);padding:2rem 4% 1.5rem;position:relative;z-index:1;}
-.ft-in{max-width:1240px;margin:0 auto;}
-.ft-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid var(--border);margin-bottom:1rem;}
-.ft-logo{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;text-decoration:none;color:var(--text);}
-.ft-logo em{font-style:normal;color:var(--gold);}
-.ft-links{display:flex;gap:1.2rem;flex-wrap:wrap;}
-.ft-links a{font-size:.72rem;color:var(--muted2);text-decoration:none;transition:color .18s;}
-.ft-links a:hover{color:var(--gold);}
-.ft-copy{font-size:.64rem;color:rgba(255,255,255,.1);}
-
-/* REVEAL */
-.rv{opacity:0;transform:translateY(18px);transition:opacity .6s var(--E),transform .6s var(--E);}
+/* ═══════════════════════════════════════════════
+   REVEAL ANIMATION
+═══════════════════════════════════════════════ */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .65s var(--E),transform .65s var(--E);}
 .rv.on{opacity:1;transform:none;}
-.d1{transition-delay:.07s;}.d2{transition-delay:.14s;}.d3{transition-delay:.21s;}.d4{transition-delay:.28s;}
+.d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.24s;}
 
-/* ════════════════════════════════════════
-   RESPONSIVE BREAKPOINTS
-════════════════════════════════════════ */
-
-/* DESKTOP (≥ 900px): side-by-side, no bottom bar */
-@media(min-width:900px){
-  body{padding-bottom:0;}
-  .page{padding:1.5rem 4% 3rem;}
-  .tool-grid{grid-template-columns:480px 1fr;}
-  .form-card{position:sticky;top:calc(56px + 1rem);}
-  .bottom-bar{display:none!important;}
-  .how-grid{grid-template-columns:repeat(4,1fr);}
-  .stats-grid{grid-template-columns:repeat(4,1fr);}
-  .testi-grid{grid-template-columns:repeat(3,1fr);}
-  h1.htit{font-size:clamp(2.2rem,4vw,3.8rem);}
-  .hero-strip{padding:2rem 0 2.5rem;}
-  /* On desktop hide WA button from action bar (no Web Share API) */
-  .ab-wa-desktop-hide{display:none;}
-}
-
-/* TABLET (600–899px) */
-@media(min-width:600px) and (max-width:899px){
-  .tool-grid{grid-template-columns:1fr;gap:1.5rem;}
-  .stats-grid{grid-template-columns:repeat(4,1fr);}
-  .testi-grid{grid-template-columns:1fr 1fr;}
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+@media(max-width:1024px){
+  .main{grid-template-columns:1fr;gap:2rem;}
+  .form-panel{position:static;}
   .how-grid{grid-template-columns:1fr 1fr;}
+  .hg-arr{display:none;}
 }
-
-/* MOBILE (< 600px): single column, bottom bar, form first */
-@media(max-width:599px){
-  body{padding-bottom:calc(76px + var(--safe-bottom));}
-  #ticker .tk:not(:first-child){display:none;}
-  .tool-grid{grid-template-columns:1fr;gap:1.2rem;}
-  .bottom-bar{display:flex;}
-  /* Hide action-bar on mobile — use bottom bar instead */
-  .action-bar{display:none;}
-  .nudge{margin-bottom:.8rem;}
-  .row2{grid-template-columns:1fr;}
+@media(max-width:768px){
+  .nl{display:none;}.burger{display:flex;}
+  body{cursor:auto;}#cur,#cr{display:none;}
   .det-grid{grid-template-columns:1fr;}
-  h1.htit{font-size:1.9rem;letter-spacing:-1px;}
-  .hero-strip{padding:1rem 0 1.4rem;}
-  .hero-badge{font-size:.56rem;}
-  .hsub{font-size:.83rem;}
+  .field-row{grid-template-columns:1fr;}
+  .tk-pill:not(:first-child){display:none;}
+}
+@media(max-width:520px){
   .how-grid{grid-template-columns:1fr;}
-  .stats-grid{grid-template-columns:1fr 1fr;}
-  /* desktop-only WA hidden helper not needed on mobile */
-  .ab-wa-desktop-hide{display:flex;}
+  .pt-tabs{grid-template-columns:repeat(5,1fr);}
+  .pt-ic{font-size:1.1rem;}
+  .pt-lbl{font-size:.48rem;}
 }
 
-/* PRINT */
+/* ═══════════════════════════════════════════════
+   PRINT
+═══════════════════════════════════════════════ */
 @media print{
-  body{background:#fff!important;padding:0!important;}
-  #ticker,.nav,.page .hero-strip,.tool-grid .form-card,.action-bar,.nudge,.content-sections,.ft,.bottom-bar,#toast{display:none!important;}
-  .tool-grid{display:block!important;}
-  .preview-panel,.pp-live{display:block!important;}
-  #sosCard{box-shadow:none!important;border-radius:0!important;}
-  @page{margin:.5cm;size:A5 landscape;}
+  body{background:#fff!important;cursor:auto!important;}
+  #cur,#cr,#ticker,.nav,.mob,.fab,
+  .hero,.form-panel,.action-bar,.nudge,
+  .how-sec,.cta-strip,.ft,
+  .pp-empty{display:none!important;}
+  .main{display:block!important;padding:0!important;max-width:100%!important;}
+  .preview-panel{display:block!important;}
+  .pp-live{display:block!important;}
+  #sosCard{box-shadow:none!important;border-radius:0!important;max-width:100%!important;}
+  @page{margin:.5cm;}
 }
 </style>
 </head>
 <body>
-<div id="toast"></div>
+<div id="cur"></div><div id="cr"></div>
 
 <!-- TICKER -->
 <div id="ticker">
-  <span class="tk"><span class="tk-dot"></span> Free · No Login · No Data Stored</span>
-  <span class="tk">🆘 Works for Any Insurer in India</span>
-  <span class="tk">⚡ Generates in 5 Seconds</span>
-  <span class="tk">📲 Share Instantly on WhatsApp</span>
+  <span class="tk-pill"><span class="tk-dot"></span> Free Tool · No Login Required</span>
+  <span class="tk-pill">🆘 Works for Any Insurer</span>
+  <span class="tk-pill">🖨️ Print &amp; Keep in Dashboard</span>
 </div>
 
 <!-- NAV -->
-<nav class="nav">
-  <a href="index.html" class="logo">Cover<em>Credit</em></a>
-  <div class="nav-right">
-    <a href="https://wa.me/917842854466" target="_blank" class="nav-wa">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Chat
-    </a>
-    <a href="book.html" class="nav-cta">Free Consult</a>
+<nav class="nav" id="nav">
+  <div class="ni">
+    <a href="index.html" class="logo">Cover<em>Credit</em></a>
+    <ul class="nl">
+      <li><a href="health-insurance.html">Health</a></li>
+      <li><a href="life-insurance.html">Life Insurance</a></li>
+      <li><a href="commercial-vehicle-insurance.html">Commercial Vehicle</a></li>
+      <li><a href="loans.html">Loans</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="book.html" class="ncta">Free Consultation</a></li>
+    </ul>
+    <button class="burger" id="burger"><span></span><span></span><span></span></button>
   </div>
 </nav>
+<div class="mob" id="mob">
+  <a href="health-insurance.html">Health Insurance</a>
+  <a href="life-insurance.html">Life Insurance</a>
+  <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicle</a>
+  <a href="loans.html">Loans</a>
+  <a href="about.html">About</a>
+  <a href="book.html" class="mc">Book Free Consultation →</a>
+</div>
 
-<!-- PAGE -->
-<div class="page">
+<!-- FAB -->
+<div class="fab">
+  <a href="book.html" class="fbk">📅 Book Free Session</a>
+  <a href="https://wa.me/917842854466" target="_blank" class="fwa">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp
+  </a>
+</div>
 
-  <!-- HERO STRIP — compact -->
-  <div class="hero-strip rv">
-    <div class="hero-badge"><span class="hb-dot"></span> Free · Any Insurer · No Login</div>
-    <h1 class="htit">Your policy. <em>Emergency-ready.</em></h1>
-    <p class="hsub">Generate a printable SOS card in 60 seconds. Know exactly what to do when an accident happens — before panic sets in.</p>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content rv">
+    <div class="hbc"><a href="index.html">Home</a> › Free Tools › SOS Card Generator</div>
+    <div class="hkick"><span class="hkick-dot"></span> Free · No Login · Any Insurer</div>
+    <h1 class="htit">Your policy in your<br/>pocket. <em>Emergency-ready.</em></h1>
+    <p class="hdesc">Generate a printable SOS card for any insurance policy in 60 seconds. Know exactly what to do when it matters most — accident, hospitalisation, or claim.</p>
+    <div class="trust-strip rv d1">
+      <span class="ts-item"><span class="ts-ic">🆓</span> 100% Free</span>
+      <span class="ts-item"><span class="ts-ic">🏦</span> Any Insurer</span>
+      <span class="ts-item"><span class="ts-ic">🖨️</span> Print-Ready</span>
+      <span class="ts-item"><span class="ts-ic">📱</span> WhatsApp Share</span>
+    </div>
   </div>
+</section>
 
-  <!-- TOOL GRID — form + preview side by side on desktop, stacked on mobile -->
-  <div class="tool-grid">
+<!-- MAIN TOOL -->
+<div class="main">
 
-    <!-- FORM CARD -->
-    <div class="form-card rv d1">
-      <div class="fc-head">
-        <div class="fc-eye">It's 100% Free</div>
-        <div class="fc-title">Generate Your SOS Card</div>
-        <div class="fc-sub">No account. No email. Card appears instantly.</div>
-        <div class="type-tabs">
-          <div class="tt active" onclick="setType('cv',this)"><span class="tt-ic">🚛</span><span class="tt-lb">Commercial</span></div>
-          <div class="tt" onclick="setType('health',this)"><span class="tt-ic">🏥</span><span class="tt-lb">Health</span></div>
-          <div class="tt" onclick="setType('life',this)"><span class="tt-ic">🛡️</span><span class="tt-lb">Life/Term</span></div>
-          <div class="tt" onclick="setType('car',this)"><span class="tt-ic">🚗</span><span class="tt-lb">Car</span></div>
-          <div class="tt" onclick="setType('bike',this)"><span class="tt-ic">🏍️</span><span class="tt-lb">Bike</span></div>
+  <!-- FORM PANEL -->
+  <div class="form-panel rv">
+    <div class="fp-card">
+      <div class="fp-top">
+        <div class="fp-title">Generate Your SOS Card</div>
+        <div class="fp-sub">Fill your policy details below. Card generates instantly.</div>
+        <div class="pt-label">Select Policy Type</div>
+        <div class="pt-tabs">
+          <div class="pt on" data-type="cv" onclick="setType('cv',this)"><span class="pt-ic">🚛</span><span class="pt-lbl">Commercial</span></div>
+          <div class="pt" data-type="health" onclick="setType('health',this)"><span class="pt-ic">🏥</span><span class="pt-lbl">Health</span></div>
+          <div class="pt" data-type="life" onclick="setType('life',this)"><span class="pt-ic">🛡️</span><span class="pt-lbl">Life/Term</span></div>
+          <div class="pt" data-type="car" onclick="setType('car',this)"><span class="pt-ic">🚗</span><span class="pt-lbl">Car</span></div>
+          <div class="pt" data-type="bike" onclick="setType('bike',this)"><span class="pt-ic">🏍️</span><span class="pt-lbl">Bike</span></div>
         </div>
       </div>
-      <div class="fc-body">
-        <!-- COMMON -->
-        <div class="row2">
-          <div class="field"><label class="fl">Your Full Name *</label><input class="fi" id="f-name" placeholder="e.g. Raju Kumar Reddy" oninput="liveUpdate()" autocomplete="name"/></div>
-          <div class="field"><label class="fl">Phone Number</label><input class="fi" id="f-phone" placeholder="+91 98765 43210" type="tel" oninput="liveUpdate()" autocomplete="tel"/></div>
+      <div class="fp-body">
+
+        <!-- COMMON FIELDS -->
+        <div class="field-row">
+          <div><label class="fl">Your Full Name *</label><input class="fi" id="f-name" placeholder="e.g. Raju Kumar Reddy" oninput="liveUpdate()"/></div>
+          <div><label class="fl">Phone Number</label><input class="fi" id="f-phone" placeholder="+91 98765 43210" oninput="liveUpdate()"/></div>
         </div>
-        <div class="row2">
-          <div class="field">
+        <div class="field-row">
+          <div>
             <label class="fl">Insurance Company *</label>
-            <select class="fi fi-sel" id="f-insurer" onchange="onInsurerChange()">
+            <select class="fi fi-sel" id="f-insurer" onchange="liveUpdate()">
               <option value="">Select Insurer</option>
               <optgroup label="General / Vehicle / Health">
-                <option>HDFC ERGO General</option><option>ICICI Lombard</option><option>Tata AIG General</option>
-                <option>New India Assurance</option><option>Bajaj Allianz General</option><option>Royal Sundaram</option>
-                <option>Liberty General</option><option>Reliance General</option><option>United India Insurance</option>
-                <option>National Insurance</option><option>Oriental Insurance</option><option>Chola MS General</option>
+                <option>HDFC ERGO General</option>
+                <option>ICICI Lombard</option>
+                <option>Tata AIG General</option>
+                <option>New India Assurance</option>
+                <option>Bajaj Allianz General</option>
+                <option>Royal Sundaram</option>
+                <option>Liberty General</option>
+                <option>Reliance General</option>
+                <option>United India Insurance</option>
+                <option>National Insurance</option>
+                <option>Oriental Insurance</option>
+                <option>Chola MS General</option>
               </optgroup>
               <optgroup label="Health Specialists">
-                <option>Star Health Insurance</option><option>Niva Bupa</option><option>Care Health Insurance</option>
-                <option>Aditya Birla Health</option><option>ManipalCigna Health</option>
+                <option>Star Health Insurance</option>
+                <option>Niva Bupa</option>
+                <option>Care Health Insurance</option>
+                <option>Aditya Birla Health</option>
+                <option>ManipalCigna Health</option>
               </optgroup>
               <optgroup label="Life / Term">
-                <option>LIC of India</option><option>HDFC Life Insurance</option><option>ICICI Prudential Life</option>
-                <option>Tata AIA Life</option><option>Max Life Insurance</option><option>Bajaj Allianz Life</option>
-                <option>India First Life</option><option>Aditya Birla Life</option>
+                <option>LIC of India</option>
+                <option>HDFC Life Insurance</option>
+                <option>ICICI Prudential Life</option>
+                <option>Tata AIA Life</option>
+                <option>Max Life Insurance</option>
+                <option>Bajaj Allianz Life</option>
+                <option>India First Life</option>
+                <option>Aditya Birla Life</option>
               </optgroup>
-              <option value="other">Other</option>
+              <option value="other">Other (I'll type below)</option>
             </select>
           </div>
-          <div class="field">
-            <label class="fl">Policy Number * <span id="pno-cnt" style="font-weight:400;text-transform:none;letter-spacing:0;font-size:.55rem;"></span></label>
-            <input class="fi" id="f-policy" placeholder="Policy / Certificate No." maxlength="30" oninput="onPolicyInput()"/>
-          </div>
+          <div><label class="fl">Policy Number *</label><input class="fi" id="f-policy" placeholder="Policy / Certificate No." oninput="liveUpdate()"/></div>
         </div>
-        <div class="row2">
-          <div class="field">
-            <label class="fl">Helpline * <button class="copy-btn" onclick="copyHelpline()">📋 Copy</button></label>
-            <input class="fi" id="f-helpline" placeholder="1800-xxx-xxxx" type="tel" oninput="liveUpdate()"/>
-          </div>
-          <div class="field"><label class="fl">Expiry Date</label><input class="fi" type="date" id="f-expiry" onchange="liveUpdate()"/></div>
+        <div class="field-row">
+          <div><label class="fl">Insurer Helpline *</label><input class="fi" id="f-helpline" placeholder="1800-xxx-xxxx" oninput="liveUpdate()"/></div>
+          <div><label class="fl">Policy Expiry Date</label><input class="fi" type="date" id="f-expiry" onchange="liveUpdate()"/></div>
         </div>
-        <div class="fdiv"></div>
 
-        <!-- CV -->
+        <div class="f-div"></div>
+
+        <!-- CV FIELDS -->
         <div id="fields-cv">
-          <div class="row2">
-            <div class="field"><label class="fl">Vehicle Number *</label><input class="fi" id="f-vnum" placeholder="TS 09 AB 1234" oninput="liveUpdate()" style="text-transform:uppercase"/></div>
-            <div class="field">
+          <div class="field-row">
+            <div><label class="fl">Vehicle Number *</label><input class="fi" id="f-vnum" placeholder="TS 09 AB 1234" oninput="liveUpdate()"/></div>
+            <div>
               <label class="fl">Vehicle Type</label>
               <select class="fi fi-sel" id="f-vtype" onchange="liveUpdate()">
-                <option value="">Select type</option><option>Lorry / Truck (LCV)</option><option>Lorry / Truck (HCV)</option>
-                <option>Bus / Maxi-cab</option><option>Auto Rickshaw</option><option>Tipper / Dumper</option>
-                <option>Tempo / Van</option><option>Tanker</option><option>Tractor</option><option>Special Vehicle</option>
+                <option value="">Select type</option>
+                <option>Lorry / Truck (LCV)</option>
+                <option>Lorry / Truck (HCV)</option>
+                <option>Bus / Maxi-cab</option>
+                <option>Auto Rickshaw</option>
+                <option>Tipper / Dumper</option>
+                <option>Tempo / Van</option>
+                <option>Tanker</option>
+                <option>Tractor</option>
+                <option>Special Vehicle</option>
               </select>
             </div>
           </div>
-          <div class="covers-sec">
-            <span class="covers-lbl">Active Covers — Tap to toggle</span>
-            <div class="covers-pills" id="cv-covers">
-              <span class="cpill on" data-label="Own Damage"><span class="pip"></span>Own Damage</span>
-              <span class="cpill on" data-label="IMT-23"><span class="pip"></span>IMT-23</span>
-              <span class="cpill on" data-label="Goods-in-Transit"><span class="pip"></span>Goods-in-Transit</span>
-              <span class="cpill on" data-label="Third Party"><span class="pip"></span>Third Party</span>
-              <span class="cpill on" data-label="Driver PA"><span class="pip"></span>Driver PA</span>
-              <span class="cpill off" data-label="Engine Protect"><span class="pip"></span>Engine Protect</span>
-            </div>
+          <label class="covers-label">Active Covers (tap to toggle)</label>
+          <div class="covers-pills" id="cv-covers">
+            <span class="cp-tog yes" data-key="cv-od">✓ Own Damage</span>
+            <span class="cp-tog yes" data-key="cv-imt">✓ IMT-23</span>
+            <span class="cp-tog yes" data-key="cv-git">✓ Goods-in-Transit</span>
+            <span class="cp-tog yes" data-key="cv-tp">✓ Third Party</span>
+            <span class="cp-tog yes" data-key="cv-pa">✓ Driver PA</span>
+            <span class="cp-tog no" data-key="cv-eng">✗ Engine Protect</span>
           </div>
         </div>
 
-        <!-- HEALTH -->
+        <!-- HEALTH FIELDS -->
         <div id="fields-health" style="display:none">
-          <div class="row2">
-            <div class="field"><label class="fl">Sum Insured</label><input class="fi" id="f-si" placeholder="e.g. ₹10,00,000" oninput="liveUpdate()"/></div>
-            <div class="field">
+          <div class="field-row">
+            <div><label class="fl">Sum Insured</label><input class="fi" id="f-si" placeholder="e.g. ₹10,00,000" oninput="liveUpdate()"/></div>
+            <div>
               <label class="fl">Network Type</label>
               <select class="fi fi-sel" id="f-network" onchange="liveUpdate()">
-                <option>Cashless + Reimbursement</option><option>Cashless Only</option><option>Reimbursement Only</option>
+                <option>Cashless + Reimbursement</option>
+                <option>Cashless Only</option>
+                <option>Reimbursement Only</option>
               </select>
             </div>
           </div>
-          <div class="row2">
-            <div class="field"><input class="fi" id="f-m1" placeholder="Member 1 (e.g. Self)" oninput="liveUpdate()"/></div>
-            <div class="field"><input class="fi" id="f-m2" placeholder="Member 2 (e.g. Spouse)" oninput="liveUpdate()"/></div>
+          <label class="covers-label">Covered Members (tap to add up to 4)</label>
+          <div class="field-row">
+            <div><input class="fi" id="f-m1" placeholder="Member 1 (e.g. Self)" oninput="liveUpdate()"/></div>
+            <div><input class="fi" id="f-m2" placeholder="Member 2 (e.g. Spouse)" oninput="liveUpdate()"/></div>
           </div>
-          <div class="row2">
-            <div class="field"><input class="fi" id="f-m3" placeholder="Member 3 (optional)" oninput="liveUpdate()"/></div>
-            <div class="field"><input class="fi" id="f-m4" placeholder="Member 4 (optional)" oninput="liveUpdate()"/></div>
+          <div class="field-row">
+            <div><input class="fi" id="f-m3" placeholder="Member 3 (optional)" oninput="liveUpdate()"/></div>
+            <div><input class="fi" id="f-m4" placeholder="Member 4 (optional)" oninput="liveUpdate()"/></div>
           </div>
-          <div class="covers-sec">
-            <span class="covers-lbl">Active Covers</span>
-            <div class="covers-pills" id="health-covers">
-              <span class="cpill on" data-label="Cashless"><span class="pip"></span>Cashless</span>
-              <span class="cpill on" data-label="Pre-existing (after wait)"><span class="pip"></span>Pre-existing</span>
-              <span class="cpill on" data-label="Day Care"><span class="pip"></span>Day Care</span>
-              <span class="cpill off" data-label="Maternity"><span class="pip"></span>Maternity</span>
-              <span class="cpill off" data-label="Dental"><span class="pip"></span>Dental</span>
-            </div>
+          <label class="covers-label">Active Covers</label>
+          <div class="covers-pills" id="health-covers">
+            <span class="cp-tog yes" data-key="h-cash">✓ Cashless</span>
+            <span class="cp-tog yes" data-key="h-pre">✓ Pre-existing (after wait)</span>
+            <span class="cp-tog yes" data-key="h-day">✓ Day Care</span>
+            <span class="cp-tog no" data-key="h-mat">✗ Maternity</span>
+            <span class="cp-tog no" data-key="h-den">✗ Dental</span>
           </div>
         </div>
 
-        <!-- LIFE -->
+        <!-- LIFE FIELDS -->
         <div id="fields-life" style="display:none">
-          <div class="row2">
-            <div class="field"><label class="fl">Sum Assured</label><input class="fi" id="f-sa" placeholder="e.g. ₹1,00,00,000" oninput="liveUpdate()"/></div>
-            <div class="field"><label class="fl">Nominee Name *</label><input class="fi" id="f-nom" placeholder="Nominee full name" oninput="liveUpdate()"/></div>
+          <div class="field-row">
+            <div><label class="fl">Sum Assured</label><input class="fi" id="f-sa" placeholder="e.g. ₹1,00,00,000" oninput="liveUpdate()"/></div>
+            <div><label class="fl">Nominee Name *</label><input class="fi" id="f-nom" placeholder="Nominee full name" oninput="liveUpdate()"/></div>
           </div>
-          <div class="row2">
-            <div class="field"><label class="fl">Nominee Phone *</label><input class="fi" id="f-nomph" placeholder="+91 98765 43210" type="tel" oninput="liveUpdate()"/></div>
-            <div class="field"><label class="fl">Nominee Relation</label><input class="fi" id="f-nomrel" placeholder="e.g. Spouse / Son" oninput="liveUpdate()"/></div>
+          <div class="field-row">
+            <div><label class="fl">Nominee Phone *</label><input class="fi" id="f-nomph" placeholder="+91 98765 43210" oninput="liveUpdate()"/></div>
+            <div><label class="fl">Nominee Relation</label><input class="fi" id="f-nomrel" placeholder="e.g. Spouse / Son" oninput="liveUpdate()"/></div>
           </div>
-          <div class="covers-sec">
-            <span class="covers-lbl">Riders / Add-ons</span>
-            <div class="covers-pills" id="life-covers">
-              <span class="cpill on" data-label="Death Benefit"><span class="pip"></span>Death Benefit</span>
-              <span class="cpill off" data-label="Accidental Death"><span class="pip"></span>Accidental Death</span>
-              <span class="cpill off" data-label="Critical Illness"><span class="pip"></span>Critical Illness</span>
-              <span class="cpill off" data-label="Return of Premium"><span class="pip"></span>Return of Premium</span>
-            </div>
+          <label class="covers-label">Riders / Add-ons</label>
+          <div class="covers-pills" id="life-covers">
+            <span class="cp-tog yes" data-key="l-death">✓ Death Benefit</span>
+            <span class="cp-tog no" data-key="l-acc">✗ Accidental Death</span>
+            <span class="cp-tog no" data-key="l-ci">✗ Critical Illness</span>
+            <span class="cp-tog no" data-key="l-rop">✗ Return of Premium</span>
           </div>
         </div>
 
-        <!-- CAR -->
+        <!-- CAR FIELDS -->
         <div id="fields-car" style="display:none">
-          <div class="row2">
-            <div class="field"><label class="fl">Vehicle Number *</label><input class="fi" id="f-cnum" placeholder="AP 28 CK 5678" oninput="liveUpdate()" style="text-transform:uppercase"/></div>
-            <div class="field"><label class="fl">Car Make &amp; Model</label><input class="fi" id="f-cmodel" placeholder="e.g. Maruti Swift 2022" oninput="liveUpdate()"/></div>
+          <div class="field-row">
+            <div><label class="fl">Vehicle Number *</label><input class="fi" id="f-cnum" placeholder="AP 28 CK 5678" oninput="liveUpdate()"/></div>
+            <div><label class="fl">Car Make &amp; Model</label><input class="fi" id="f-cmodel" placeholder="e.g. Maruti Swift 2022" oninput="liveUpdate()"/></div>
           </div>
-          <div class="covers-sec">
-            <span class="covers-lbl">Active Covers</span>
-            <div class="covers-pills" id="car-covers">
-              <span class="cpill on" data-label="Own Damage"><span class="pip"></span>Own Damage</span>
-              <span class="cpill on" data-label="Third Party"><span class="pip"></span>Third Party</span>
-              <span class="cpill off" data-label="Zero Depreciation"><span class="pip"></span>Zero Depreciation</span>
-              <span class="cpill off" data-label="Engine Protection"><span class="pip"></span>Engine Protection</span>
-              <span class="cpill off" data-label="RSA 24×7"><span class="pip"></span>RSA 24×7</span>
-              <span class="cpill off" data-label="Consumables"><span class="pip"></span>Consumables</span>
-            </div>
+          <label class="covers-label">Active Covers</label>
+          <div class="covers-pills" id="car-covers">
+            <span class="cp-tog yes" data-key="c-od">✓ Own Damage</span>
+            <span class="cp-tog yes" data-key="c-tp">✓ Third Party</span>
+            <span class="cp-tog no" data-key="c-zdep">✗ Zero Depreciation</span>
+            <span class="cp-tog no" data-key="c-eng">✗ Engine Protection</span>
+            <span class="cp-tog no" data-key="c-rsa">✗ RSA 24×7</span>
+            <span class="cp-tog no" data-key="c-cons">✗ Consumables</span>
           </div>
         </div>
 
-        <!-- BIKE -->
+        <!-- BIKE FIELDS -->
         <div id="fields-bike" style="display:none">
-          <div class="row2">
-            <div class="field"><label class="fl">Vehicle Number *</label><input class="fi" id="f-bnum" placeholder="TS 11 EF 9012" oninput="liveUpdate()" style="text-transform:uppercase"/></div>
-            <div class="field"><label class="fl">Bike Make &amp; Model</label><input class="fi" id="f-bmodel" placeholder="e.g. RE Classic 350" oninput="liveUpdate()"/></div>
+          <div class="field-row">
+            <div><label class="fl">Vehicle Number *</label><input class="fi" id="f-bnum" placeholder="TS 11 EF 9012" oninput="liveUpdate()"/></div>
+            <div><label class="fl">Bike Make &amp; Model</label><input class="fi" id="f-bmodel" placeholder="e.g. RE Classic 350" oninput="liveUpdate()"/></div>
           </div>
-          <div class="covers-sec">
-            <span class="covers-lbl">Active Covers</span>
-            <div class="covers-pills" id="bike-covers">
-              <span class="cpill on" data-label="Own Damage"><span class="pip"></span>Own Damage</span>
-              <span class="cpill on" data-label="Third Party"><span class="pip"></span>Third Party</span>
-              <span class="cpill on" data-label="Owner PA"><span class="pip"></span>Owner PA</span>
-              <span class="cpill off" data-label="Zero Depreciation"><span class="pip"></span>Zero Depreciation</span>
-              <span class="cpill off" data-label="Pillion PA"><span class="pip"></span>Pillion PA</span>
-            </div>
+          <label class="covers-label">Active Covers</label>
+          <div class="covers-pills" id="bike-covers">
+            <span class="cp-tog yes" data-key="b-od">✓ Own Damage</span>
+            <span class="cp-tog yes" data-key="b-tp">✓ Third Party</span>
+            <span class="cp-tog yes" data-key="b-pa">✓ Owner PA</span>
+            <span class="cp-tog no" data-key="b-zdep">✗ Zero Depreciation</span>
+            <span class="cp-tog no" data-key="b-pill">✗ Pillion PA</span>
           </div>
         </div>
 
-        <button class="gen-btn" onclick="generateCard()">🆘 Generate My SOS Card — Free</button>
-      </div>
-    </div>
-
-    <!-- PREVIEW PANEL -->
-    <div class="preview-panel rv d2">
-      <div class="pp-empty" id="ppEmpty">
-        <div class="ppe-ic">🆘</div>
-        <div class="ppe-tt">Your card appears here</div>
-        <div class="ppe-sub">Fill your policy details and tap Generate</div>
-        <div class="ppe-steps">
-          <div class="ppe-step"><div class="ppe-sn">1</div>Select your policy type</div>
-          <div class="ppe-step"><div class="ppe-sn">2</div>Enter name, insurer, policy no.</div>
-          <div class="ppe-step"><div class="ppe-sn">3</div>Toggle your active covers</div>
-          <div class="ppe-step"><div class="ppe-sn">4</div>Download PDF or share on WhatsApp</div>
-        </div>
-      </div>
-      <div class="pp-live" id="ppLive">
-        <!-- Desktop action bar (hidden on mobile — bottom bar used instead) -->
-        <div class="action-bar">
-          <button class="ab-btn ab-primary" onclick="downloadPDF()">⬇️ Download PDF</button>
-          <!-- WA btn shown on desktop too but uses fallback -->
-          <button class="ab-btn ab-wa ab-wa-desktop-hide" id="waBtn">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-            Share on WhatsApp
-          </button>
-          <button class="ab-btn ab-ghost" onclick="resetForm()">↺ Reset</button>
-        </div>
-        <div class="nudge" id="nudgeBox"></div>
-        <div id="sosCard"></div>
+        <button class="gen-btn" onclick="generateCard()">
+          <span class="gen-btn-ic">🆘</span> Generate My SOS Card
+        </button>
       </div>
     </div>
   </div>
 
-  <!-- BELOW-FOLD CONTENT -->
-  <div class="content-sections">
-
-    <!-- Alert band -->
-    <div class="ab rv">
-      <div class="ab-icon">⚠️</div>
-      <div class="ab-title">The <em>silent claim killer</em> no one talks about</div>
-      <p class="ab-text">Most vehicle claims must be registered within 24 hours. Miss it, and you lose lakhs. 61% of policyholders don't know their helpline by heart. Your SOS card has every step before you ever need it.</p>
-      <div class="ab-facts">
-        <span class="ab-fact"><strong>61%</strong> don't know their helpline by heart</span>
-        <span class="ab-fact"><strong>38%</strong> rejections due to procedural errors</span>
-        <span class="ab-fact"><strong>1 in 4</strong> lorry owners have missing GIT cover</span>
+  <!-- PREVIEW PANEL -->
+  <div class="preview-panel">
+    <div class="pp-empty" id="ppEmpty">
+      <div class="pp-empty-ic">🆘</div>
+      <div class="pp-empty-tt">Your card will appear here</div>
+      <div class="pp-empty-ds">Fill in your policy details on the left<br/>and click Generate to see your card live</div>
+    </div>
+    <div class="pp-live" id="ppLive">
+      <div class="action-bar">
+        <button class="ab-btn ab-print" onclick="window.print()">🖨️ Print Card</button>
+        <button class="ab-btn ab-wa" id="waShareBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Send to WhatsApp
+        </button>
+        <button class="ab-btn ab-reset" onclick="resetForm()">↺ New Card</button>
       </div>
+      <div class="nudge" id="nudgeBox"></div>
+      <div id="sosCard"></div>
     </div>
-
-    <!-- Stats -->
-    <div class="stats-grid">
-      <div class="sg rv"><div class="sg-num">20+</div><div class="sg-lbl">Insurers with<br/>auto-filled helplines</div></div>
-      <div class="sg rv d1"><div class="sg-num">5</div><div class="sg-lbl">Policy types<br/>supported</div></div>
-      <div class="sg rv d2"><div class="sg-num">₹0</div><div class="sg-lbl">Cost — free<br/>forever</div></div>
-      <div class="sg rv d3"><div class="sg-num">100%</div><div class="sg-lbl">Private — no data<br/>stored anywhere</div></div>
-    </div>
-
-    <!-- How it works -->
-    <div class="how-sec rv">
-      <div class="sec-eye">How It Works</div>
-      <h2 class="sec-tit">Ready in <em>60 seconds.</em></h2>
-      <p class="sec-sub">No account needed. No downloads. Works for any insurer in India.</p>
-      <div class="how-grid">
-        <div class="hg"><div class="hg-num">01</div><div class="hg-ic">📋</div><div class="hg-tt">Pick Policy Type</div><div class="hg-ds">CV, health, life, car or bike — each card is tailored to that policy's emergency steps.</div></div>
-        <div class="hg"><div class="hg-num">02</div><div class="hg-ic">✍️</div><div class="hg-tt">Fill Details</div><div class="hg-ds">Name, insurer, policy number — we auto-fill helplines for 20+ major insurers.</div></div>
-        <div class="hg"><div class="hg-num">03</div><div class="hg-ic">🆘</div><div class="hg-tt">Card Generates</div><div class="hg-ds">Your personalised SOS card appears instantly with emergency steps for your policy.</div></div>
-        <div class="hg"><div class="hg-num">04</div><div class="hg-ic">📲</div><div class="hg-tt">Save & Share</div><div class="hg-ds">On mobile: share directly to WhatsApp — image attaches automatically. On desktop: download PDF.</div></div>
-      </div>
-    </div>
-
-    <!-- Testimonials -->
-    <div class="testi-sec">
-      <div class="sec-eye rv">Real Stories</div>
-      <h2 class="sec-tit rv d1">Policyholders who used <em>the card</em></h2>
-      <div class="testi-grid">
-        <div class="tcard rv d1">
-          <div class="tcard-stars">★★★★★</div>
-          <p class="tcard-q">My lorry met with an accident on NH-65 at 2 AM. I had the card in my dashboard. Called the helpline immediately, surveyor was there by morning. Claim settled in 11 days.</p>
-          <div class="tcard-author"><div class="tcard-av">🚛</div><div><div class="tcard-name">Venkat Reddy</div><div class="tcard-role">Transport owner, Hyderabad</div></div></div>
-        </div>
-        <div class="tcard rv d2">
-          <div class="tcard-stars">★★★★★</div>
-          <p class="tcard-q">My father had a cardiac episode while travelling. The SOS card showed the helpline and which documents to carry. Cashless admission in under 2 hours.</p>
-          <div class="tcard-author"><div class="tcard-av">🏥</div><div><div class="tcard-name">Priya Nambiar</div><div class="tcard-role">Software professional, Bengaluru</div></div></div>
-        </div>
-        <div class="tcard rv d3">
-          <div class="tcard-stars">★★★★★</div>
-          <p class="tcard-q">Someone hit my car and fled. The SOS card told me: photos first, then FIR, then helpline. Followed exactly. Full OD claim came through.</p>
-          <div class="tcard-author"><div class="tcard-av">🚗</div><div><div class="tcard-name">Arjun Malhotra</div><div class="tcard-role">Business owner, Pune</div></div></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- FAQ -->
-    <div class="faq-sec">
-      <div class="sec-eye rv">FAQ</div>
-      <h2 class="sec-tit rv d1">Questions people <em>actually ask</em></h2>
-      <div class="faq-list rv d2">
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is this tool really free? What's the catch? <span class="faq-ch">▼</span></div><div class="faq-a">Completely free. No login, no payment, ever. Cover Credit earns when we help you buy or review insurance — not from this tool.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Does my data get stored? <span class="faq-ch">▼</span></div><div class="faq-a">No. Everything runs inside your browser. Nothing is sent to our servers. When you close the tab, the data is gone.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How does WhatsApp sharing work on mobile? <span class="faq-ch">▼</span></div><div class="faq-a">On mobile, we use the Web Share API — your phone's native share sheet opens, you tap WhatsApp, and the card image is already attached. You just hit Send. No downloading, no manual attaching.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I use it for any insurer? <span class="faq-ch">▼</span></div><div class="faq-a">Yes. Select "Other" and type your helpline manually. Works for every insurer in India.</div></div>
-        <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Not sure if I have the right covers? <span class="faq-ch">▼</span></div><div class="faq-a">Cover Credit checks your actual policy document for free. We identify missing covers like IMT-23, Zero Dep, GIT and tell you what to add at renewal. No pressure, no fees.</div></div>
-      </div>
-    </div>
-
-    <!-- CTA band -->
-    <div class="cta-band rv">
-      <h2 class="cta-tit">Not sure if your covers are <em>actually right?</em></h2>
-      <p class="cta-sub">Many policyholders discover missing covers only when a claim gets rejected. Our advisors check your policy for free.</p>
-      <div class="cta-btns">
-        <a href="book.html" class="btn-gold">📅 Free Policy Review</a>
-        <a href="tel:+917842854466" class="btn-ghost">📞 +91 78428 54466</a>
-      </div>
-    </div>
-
   </div>
-</div><!-- /page -->
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how-sec">
+  <div class="how-in">
+    <div class="sec-tag rv">How It Works</div>
+    <h2 class="sec-tit rv d1">Ready in <em>60 seconds.</em><br/>Useful for a lifetime.</h2>
+    <div class="how-grid rv d1">
+      <div class="hg-item">
+        <div class="hg-num">01</div>
+        <div class="hg-ic">📋</div>
+        <div class="hg-tt">Select Policy Type</div>
+        <div class="hg-ds">Commercial vehicle, health, life, car or bike — pick what you need the card for</div>
+        <div class="hg-arr">→</div>
+      </div>
+      <div class="hg-item">
+        <div class="hg-num">02</div>
+        <div class="hg-ic">✍️</div>
+        <div class="hg-tt">Fill Your Details</div>
+        <div class="hg-ds">Name, insurer, policy number, helpline, expiry — plus covers that are active</div>
+        <div class="hg-arr">→</div>
+      </div>
+      <div class="hg-item">
+        <div class="hg-num">03</div>
+        <div class="hg-ic">🆘</div>
+        <div class="hg-tt">Card Generates Live</div>
+        <div class="hg-ds">Your personalised card with emergency steps appears instantly — no account needed</div>
+        <div class="hg-arr">→</div>
+      </div>
+      <div class="hg-item">
+        <div class="hg-num">04</div>
+        <div class="hg-ic">🖨️</div>
+        <div class="hg-tt">Print &amp; Keep It</div>
+        <div class="hg-ds">Print it, laminate it, keep it in your dashboard or wallet. Share on WhatsApp too</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <div class="cta-strip-in rv">
+    <h2 class="cs-tt">Not sure if your covers are <em>actually right?</em></h2>
+    <p class="cs-ds">Many policyholders discover missing covers only when a claim is rejected. Our advisors check your policy for free — IMT-23, GIT, zero dep, and more.</p>
+    <div class="cs-btns">
+      <a href="book.html" class="btn-main">📅 Free Policy Review</a>
+      <a href="tel:+917842854466" class="btn-ghost">📞 +91 78428 54466</a>
+    </div>
+  </div>
+</div>
 
 <!-- FOOTER -->
 <footer class="ft">
@@ -681,198 +686,434 @@ h1.htit em{font-style:italic;background:linear-gradient(120deg,var(--gold),var(-
       <a href="index.html" class="ft-logo">Cover<em>Credit</em></a>
       <div class="ft-links">
         <a href="health-insurance.html">Health</a>
-        <a href="life-insurance.html">Life</a>
-        <a href="commercial-vehicle-insurance.html">Commercial</a>
+        <a href="life-insurance.html">Life Insurance</a>
+        <a href="commercial-vehicle-insurance.html">Commercial Vehicle</a>
         <a href="loans.html">Loans</a>
         <a href="about.html">About</a>
+        <a href="book.html">Book Consultation</a>
         <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
       </div>
     </div>
-    <div class="ft-copy">© <span id="yr"></span> Cover Credit Insurance Advisors · Free tool — works for any insurer in India.</div>
+    <div class="ft-copy">© <span id="yr"></span> Cover Credit Insurance Advisors. All rights reserved. · Free tool — works for any insurer.</div>
   </div>
 </footer>
 
-<!-- MOBILE BOTTOM BAR (shown only on mobile after card generated) -->
-<div class="bottom-bar" id="bottomBar" style="display:none;">
-  <button class="bb-btn bb-wa" id="waBtnMobile">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-    Share on WhatsApp
-  </button>
-  <button class="bb-btn bb-pdf" onclick="downloadPDF()">⬇️ Download PDF</button>
-</div>
-
 <script>
-/* ─── DATA ─── */
-const HELPLINES={'HDFC ERGO General':'1800-266-0700','ICICI Lombard':'1800-2666','Tata AIG General':'1800-266-7780','New India Assurance':'1800-209-1415','Bajaj Allianz General':'1800-209-5858','Royal Sundaram':'1800-568-9999','Liberty General':'1800-266-5844','Reliance General':'1800-3009','United India Insurance':'1800-425-333','National Insurance':'1800-345-0330','Oriental Insurance':'1800-118-485','Star Health Insurance':'1800-425-2255','Niva Bupa':'1860-500-8888','Care Health Insurance':'1800-102-4499','Aditya Birla Health':'1800-270-7000','LIC of India':'1800-227-717','HDFC Life Insurance':'1860-267-9999','ICICI Prudential Life':'1860-266-7766','Tata AIA Life':'1860-266-9966','Max Life Insurance':'1860-120-5577','Bajaj Allianz Life':'1800-209-7272'};
-const STEPS={cv:[{t:'Call helpline immediately',d:'Tell them your policy number. Register the claim even if damage looks minor. Available 24×7.'},{t:'Do not move the vehicle',d:'Take 20+ photos of all damage before anything is moved. Surveyor must see the original scene.'},{t:'File FIR at nearest police station',d:'Mandatory for claims above ₹1 lakh, third-party damage, or theft. Get FIR copy.'},{t:'Note all witnesses',d:'Get name & phone of anyone who saw the incident.'},{t:'Keep every bill & receipt',d:'Towing, medical, lodging — submit all. Use cashless garage network only.'}],health:[{t:'Call helpline — find nearest network hospital',d:'Get cashless hospital list for your city before going.'},{t:'Show this card + Aadhaar at admission',d:'Say "cashless claim". Hospital contacts insurer directly — you pay nothing.'},{t:'Keep all original documents',d:'Test reports, prescriptions, bills, discharge summary.'},{t:'Non-network hospital? Pay and claim back',d:'Submit reimbursement within 15 days of discharge.'}],life:[{t:'Nominee: call helpline first',d:'A claim reference number is generated — required for all further steps.'},{t:'Gather documents',d:'Death certificate, original policy bond, Aadhaar + PAN of nominee, FIR if accidental.'},{t:'Submit claim within 90 days',d:'A dedicated claim officer is assigned within 72 hours.'},{t:'Contact Cover Credit for free help',d:'Our advisors guide nominee families through the full process at zero charge.'}],car:[{t:'Register claim with helpline immediately',d:'Call within 24 hours — delays can void your claim rights.'},{t:'Do not repair before surveyor visits',d:'Photograph all damage. Never admit fault to third parties.'},{t:'Use cashless garages only',d:'Call helpline for nearest approved garage.'},{t:'Third party involved?',d:'File FIR, exchange insurance details. Never settle cash on the spot.'}],bike:[{t:'Move to safety, then call helpline',d:'Register the claim immediately even for minor incidents.'},{t:'Photograph everything before moving bike',d:'Damage, road, other vehicles, skid marks.'},{t:'Injuries? Hospital first',d:'Your Owner PA cover applies. Keep all medical bills.'},{t:'File FIR if:',d:'Third party involved, stolen, or damage above ₹25,000. File within 24 hours.'}]};
-const NUDGES={cv:'<strong>Is your lorry missing IMT-23 or Goods-in-Transit cover?</strong> Most lorry owners discover this gap only after a claim rejection. We check for free.',health:'<strong>Not sure which hospitals accept your policy cashlessly in your city?</strong> We verify your network free of charge.',life:'<strong>Does your nominee know the claim process?</strong> We guide nominee families for free — no charge ever.',car:'<strong>Missing Zero Depreciation or Engine Protection?</strong> The most commonly missed car insurance covers. Free check takes 5 minutes.',bike:'<strong>Pillion rider not covered?</strong> Standard bike policies don\'t cover pillion injuries. We can add it at renewal.'};
-const META={cv:{icon:'🚛',label:'Commercial Vehicle Insurance',keep:'Keep in dashboard',hd:'ch-cv',det:'det-cv',ac:'ac-cv',sn:'cs-n-cv'},health:{icon:'🏥',label:'Health Insurance',keep:'Keep in wallet',hd:'ch-health',det:'det-health',ac:'ac-health',sn:'cs-n-health'},life:{icon:'🛡️',label:'Life / Term Insurance',keep:'Keep with documents',hd:'ch-life',det:'det-life',ac:'ac-life',sn:'cs-n-life'},car:{icon:'🚗',label:'Car Insurance',keep:'Keep in dashboard',hd:'ch-car',det:'det-car',ac:'ac-car',sn:'cs-n-car'},bike:{icon:'🏍️',label:'Bike Insurance',keep:'Keep in vehicle',hd:'ch-bike',det:'det-bike',ac:'ac-bike',sn:'cs-n-bike'}};
+/* ═══════════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════════ */
+let currentType = 'cv';
+let cardGenerated = false;
 
-let currentType='cv',cardGenerated=false;
-const isMobile=()=>window.innerWidth<900||('ontouchstart' in window);
-const canWebShare=()=>!!navigator.share&&!!navigator.canShare;
+const HELPLINES = {
+  'HDFC ERGO General':'1800-266-0700',
+  'ICICI Lombard':'1800-2666',
+  'Tata AIG General':'1800-266-7780',
+  'New India Assurance':'1800-209-1415',
+  'Bajaj Allianz General':'1800-209-5858',
+  'Royal Sundaram':'1800-568-9999',
+  'Liberty General':'1800-266-5844',
+  'Reliance General':'1800-3009',
+  'United India Insurance':'1800-425-333',
+  'National Insurance':'1800-345-0330',
+  'Oriental Insurance':'1800-118-485',
+  'Star Health Insurance':'1800-425-2255',
+  'Niva Bupa':'1860-500-8888',
+  'Care Health Insurance':'1800-102-4499',
+  'Aditya Birla Health':'1800-270-7000',
+  'LIC of India':'1800-227-717',
+  'HDFC Life Insurance':'1860-267-9999',
+  'ICICI Prudential Life':'1860-266-7766',
+  'Tata AIA Life':'1860-266-9966',
+  'Max Life Insurance':'1860-120-5577',
+  'Bajaj Allianz Life':'1800-209-7272',
+};
 
-function v(id){return(document.getElementById(id)||{}).value||'';}
-function fmtDate(val){if(!val)return'—';return new Date(val).toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});}
-function getCovers(gid){return Array.from(document.querySelectorAll('#'+gid+' .cpill')).map(p=>({label:p.dataset.label,on:p.classList.contains('on')}));}
-function expiryBadge(val){if(!val)return'';const d=new Date(val),diff=Math.ceil((d-new Date())/(864e5));if(diff<0)return'<span class="exp-badge exp-danger">⚠️ EXPIRED</span>';if(diff<=30)return`<span class="exp-badge exp-warn">⏳ ${diff}d left</span>`;return'<span class="exp-badge exp-ok">✓ Valid</span>';}
+const STEPS = {
+  cv:[
+    {t:'Call helpline immediately',d:'Tell them your policy number: <strong id="cs-pno-cv">—</strong>. Available 24×7.'},
+    {t:'Don\'t move the vehicle',d:'Take 20+ photos of all damage before anything is moved. Surveyor must see the scene.'},
+    {t:'File FIR at nearest police station',d:'Mandatory for claims above ₹1 lakh, third-party damage, or theft.'},
+    {t:'Note witnesses',d:'Get name &amp; phone of anyone who saw the accident. Vital for disputed claims.'},
+    {t:'Keep every bill',d:'Towing, medical, lodging — submit all. Use cashless garage network, don\'t pay directly.'},
+  ],
+  health:[
+    {t:'Go to a network hospital',d:'Call <strong id="cs-hl-h">helpline</strong> for nearest cashless hospital in your city before going.'},
+    {t:'Show this card + Aadhaar',d:'Tell the admission desk "cashless claim". Pre-authorisation takes 2–4 hours.'},
+    {t:'Don\'t pay upfront at network hospitals',d:'Insurer settles directly. Keep copies of all test reports, prescriptions, bills.'},
+    {t:'Emergency at non-network hospital?',d:'Pay and collect all original bills + discharge summary. Apply reimbursement within 15 days.'},
+  ],
+  life:[
+    {t:'Nominee must call helpline first',d:'Reference number obtained from this call is required for all further steps.'},
+    {t:'Documents needed',d:'Death certificate, original policy bond, Aadhaar + PAN of nominee, FIR copy if accidental.'},
+    {t:'File claim within 90 days',d:'Don\'t delay. A claim officer will be assigned within 72 hours of registration.'},
+    {t:'Call Cover Credit for free help',d:'We assist nominee families through the full claim process at absolutely no charge.'},
+  ],
+  car:[
+    {t:'Call helpline — register the claim',d:'Policy number: <strong id="cs-pno-c">—</strong>. Surveyor dispatched within hours.'},
+    {t:'Don\'t repair before surveyor visit',d:'Take 20+ photos of damage. Don\'t admit fault to third parties at the scene.'},
+    {t:'Use cashless network garages only',d:'Call helpline for nearest approved garage. Repairs outside network may void claim.'},
+    {t:'Third party involved?',d:'File FIR, exchange names, phone numbers &amp; insurer details. Never settle cash on the spot.'},
+  ],
+  bike:[
+    {t:'Move to safety, then call helpline',d:'Policy: <strong id="cs-pno-b">—</strong>. Register claim immediately even if minor.'},
+    {t:'Photograph everything first',d:'Bike damage, road, other vehicles, skid marks. Do not move bike before photos.'},
+    {t:'Injuries?',d:'Hospital first — your Owner PA cover applies. Keep all medical bills &amp; discharge summary.'},
+    {t:'FIR needed if:',d:'Third party involved, bike stolen, or damage above ₹25,000. File within 24 hours.'},
+  ],
+};
 
-function showToast(msg,type,dur=3200){
-  const t=document.getElementById('toast');
-  t.textContent=(type==='e'?'❌ ':type==='i'?'💡 ':'✅ ')+msg;
-  t.className='show '+(type||'s');
-  clearTimeout(t._t);t._t=setTimeout(()=>t.className='',dur);
+const NUDGES = {
+  cv:'<strong>Is your lorry missing IMT-23 or Goods-in-Transit?</strong> Most lorry owners discover the gap only after a claim rejection. We\'ll check your policy for free.',
+  health:'<strong>Not sure if your health policy covers your city\'s hospitals cashlessly?</strong> We\'ll verify your network and sum insured — free of charge.',
+  life:'<strong>Is your nominee aware of the claim process?</strong> Many life insurance claims are delayed because nominees don\'t know what to do. We guide families for free.',
+  car:'<strong>Missing Zero Depreciation or Engine Protection?</strong> These are the most commonly missed covers in car insurance. Free check takes 5 minutes.',
+  bike:'<strong>Pillion rider cover missing?</strong> If you carry a pillion and they\'re injured, standard bike insurance won\'t cover them. We can add it at renewal.',
+};
+
+const TYPE_META = {
+  cv:{icon:'🚛',label:'Commercial Vehicle Insurance',keep:'Keep in dashboard',color:'t-cv',acc:'acc-cv',num:'cs-n cv',hot:'hot'},
+  health:{icon:'🏥',label:'Health Insurance',keep:'Keep in wallet',color:'t-health',acc:'acc-health',num:'cs-n health',hot:'hot-h'},
+  life:{icon:'🛡️',label:'Life / Term Insurance',keep:'Keep with documents',color:'t-life',acc:'acc-life',num:'cs-n life',hot:'hot-l'},
+  car:{icon:'🚗',label:'Car Insurance',keep:'Keep in dashboard',color:'t-car',acc:'acc-car',num:'cs-n car',hot:'hot-c'},
+  bike:{icon:'🏍️',label:'Bike Insurance',keep:'Keep in vehicle',color:'t-bike',acc:'acc-bike',num:'cs-n bike',hot:'hot-b'},
+};
+
+/* ═══════════════════════════════════════════════
+   TYPE SWITCH
+═══════════════════════════════════════════════ */
+function setType(type, el) {
+  currentType = type;
+  document.querySelectorAll('.pt').forEach(p => p.classList.remove('on'));
+  el.classList.add('on');
+  ['cv','health','life','car','bike'].forEach(t => {
+    document.getElementById('fields-' + t).style.display = t === type ? 'block' : 'none';
+  });
+  if (cardGenerated) liveUpdate();
 }
 
-function setType(type,el){
-  currentType=type;
-  document.querySelectorAll('.tt').forEach(t=>t.classList.remove('active'));
-  el.classList.add('active');
-  ['cv','health','life','car','bike'].forEach(t=>document.getElementById('fields-'+t).style.display=t===type?'block':'none');
-  if(cardGenerated)generateCard(true);
-}
-function onInsurerChange(){const hl=HELPLINES[v('f-insurer')];if(hl)document.getElementById('f-helpline').value=hl;liveUpdate();}
-function onPolicyInput(){const len=v('f-policy').length;document.getElementById('pno-cnt').textContent=len?len+'/30':'';liveUpdate();}
-function copyHelpline(){const hl=v('f-helpline');if(!hl){showToast('Enter helpline first','e');return;}navigator.clipboard.writeText(hl).then(()=>showToast('Helpline copied!')).catch(()=>showToast('Copy failed','e'));}
-document.querySelectorAll('.cpill').forEach(p=>p.addEventListener('click',function(){this.classList.toggle('on');this.classList.toggle('off');if(cardGenerated)generateCard(true);}));
-function liveUpdate(){if(cardGenerated)generateCard(true);}
+/* ═══════════════════════════════════════════════
+   AUTO-FILL HELPLINE
+═══════════════════════════════════════════════ */
+document.getElementById('f-insurer').addEventListener('change', function() {
+  const hl = HELPLINES[this.value];
+  if (hl) document.getElementById('f-helpline').value = hl;
+  liveUpdate();
+});
 
-function buildCard(){
-  const t=currentType,m=META[t];
-  const name=v('f-name')||'Your Name',insurer=v('f-insurer')||'—',pno=v('f-policy')||'—',hl=v('f-helpline')||'—',expv=v('f-expiry'),expiry=fmtDate(expv);
-  const today=new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
-  let dets='',extra='',cg='';
-  if(t==='cv'){const vn=v('f-vnum')||'—',vt=v('f-vtype')||'—';cg='cv-covers';dets=`<div class="det ${m.det}"><div class="det-lbl">Vehicle No.</div><div class="det-val big">${vn}</div></div><div class="det ${m.det}"><div class="det-lbl">Vehicle Type</div><div class="det-val">${vt}</div></div><div class="det ${m.det}"><div class="det-lbl">Insurer</div><div class="det-val">${insurer}</div></div><div class="det ${m.det}"><div class="det-lbl">Policy No.</div><div class="det-val">${pno}</div></div><div class="det ${m.det}"><div class="det-lbl">Claims Helpline</div><div class="det-val big ${m.ac}">${hl}</div></div><div class="det ${m.det}"><div class="det-lbl">Expiry ${expiryBadge(expv)}</div><div class="det-val">${expiry}</div></div>`;}
-  else if(t==='health'){const si=v('f-si')||'—',net=v('f-network')||'—',mems=[v('f-m1'),v('f-m2'),v('f-m3'),v('f-m4')].filter(Boolean);cg='health-covers';dets=`<div class="det ${m.det}"><div class="det-lbl">Primary Member</div><div class="det-val big">${name}</div></div><div class="det ${m.det}"><div class="det-lbl">Insurer</div><div class="det-val">${insurer}</div></div><div class="det ${m.det}"><div class="det-lbl">Policy No.</div><div class="det-val">${pno}</div></div><div class="det ${m.det}"><div class="det-lbl">Sum Insured</div><div class="det-val big ${m.ac}">${si}</div></div><div class="det ${m.det}"><div class="det-lbl">Claims Helpline</div><div class="det-val big ${m.ac}">${hl}</div></div><div class="det ${m.det}"><div class="det-lbl">Network</div><div class="det-val">${net}</div></div>`;if(mems.length)extra=`<div class="members-row"><div class="members-lbl">Covered Members</div><div class="members-tags">${mems.map(mm=>`<span class="mtag">👤 ${mm}</span>`).join('')}</div></div>`;}
-  else if(t==='life'){const sa=v('f-sa')||'—',nom=v('f-nom')||'—',nomph=v('f-nomph')||'—',nomrel=v('f-nomrel')||'—';cg='life-covers';dets=`<div class="det ${m.det}"><div class="det-lbl">Policy Holder</div><div class="det-val big">${name}</div></div><div class="det ${m.det}"><div class="det-lbl">Insurer</div><div class="det-val">${insurer}</div></div><div class="det ${m.det}"><div class="det-lbl">Policy No.</div><div class="det-val">${pno}</div></div><div class="det ${m.det}"><div class="det-lbl">Sum Assured</div><div class="det-val big ${m.ac}">${sa}</div></div><div class="det ${m.det}"><div class="det-lbl">Nominee</div><div class="det-val">${nom} (${nomrel})</div></div><div class="det ${m.det}"><div class="det-lbl">Nominee Phone</div><div class="det-val ${m.ac}">${nomph}</div></div>`;}
-  else if(t==='car'){const cn=v('f-cnum')||'—',cm=v('f-cmodel')||'—';cg='car-covers';dets=`<div class="det ${m.det}"><div class="det-lbl">Vehicle No.</div><div class="det-val big">${cn}</div></div><div class="det ${m.det}"><div class="det-lbl">Vehicle</div><div class="det-val">${cm}</div></div><div class="det ${m.det}"><div class="det-lbl">Insurer</div><div class="det-val">${insurer}</div></div><div class="det ${m.det}"><div class="det-lbl">Policy No.</div><div class="det-val">${pno}</div></div><div class="det ${m.det}"><div class="det-lbl">Claims Helpline</div><div class="det-val big ${m.ac}">${hl}</div></div><div class="det ${m.det}"><div class="det-lbl">Expiry ${expiryBadge(expv)}</div><div class="det-val">${expiry}</div></div>`;}
-  else{const bn=v('f-bnum')||'—',bm=v('f-bmodel')||'—';cg='bike-covers';dets=`<div class="det ${m.det}"><div class="det-lbl">Vehicle No.</div><div class="det-val big">${bn}</div></div><div class="det ${m.det}"><div class="det-lbl">Bike</div><div class="det-val">${bm}</div></div><div class="det ${m.det}"><div class="det-lbl">Insurer</div><div class="det-val">${insurer}</div></div><div class="det ${m.det}"><div class="det-lbl">Policy No.</div><div class="det-val">${pno}</div></div><div class="det ${m.det}"><div class="det-lbl">Claims Helpline</div><div class="det-val big ${m.ac}">${hl}</div></div><div class="det ${m.det}"><div class="det-lbl">Expiry ${expiryBadge(expv)}</div><div class="det-val">${expiry}</div></div>`;}
-  const covers=getCovers(cg);
-  const coversHtml=covers.map(c=>`<span class="ctag ${c.on?'y':'n'}">${c.on?'✓':'✗'} ${c.label}</span>`).join('');
-  const stepsHtml=STEPS[t].map((s,i)=>`<div class="cs"><div class="cs-n ${m.sn}">${i+1}</div><div class="cs-t"><strong>${s.t}</strong> — ${s.d}</div></div>`).join('');
-  return `<div class="ch ${m.hd}"><div class="ch-left"><div class="ch-iw">${m.icon}</div><div><div class="ch-type">${m.label}</div><div class="ch-name">${t==='life'?'Policy Info Card':'Emergency SOS Card'} · ${name}</div></div></div><div class="ch-right"><div class="ch-badge"><div class="ch-sos">SOS</div></div><div class="ch-keep">${m.keep}</div></div></div><div class="card-body"><div class="det-grid">${dets}</div></div>${extra}<div class="covers-strip">${coversHtml}</div><div class="steps-hd"><div class="sh-lbl">${t==='life'?'Nominee — Do This Now':'Emergency — Do This Immediately'}</div><div class="sh-line"></div></div><div class="card-steps">${stepsHtml}</div><div class="card-ft"><div><div class="cft-logo">Cover<em>Credit</em></div><div class="cft-tag">covercredit.in · Free advisory</div></div><div class="cft-right"><div class="cft-phone">+91 78428 54466</div><div id="cardQR"></div></div></div><div class="card-stamp">Generated free at covercredit.in/sos-card on ${today} · Mon–Sat 9AM–7PM</div>`;
+/* ═══════════════════════════════════════════════
+   COVER TOGGLE
+═══════════════════════════════════════════════ */
+document.querySelectorAll('.cp-tog').forEach(pill => {
+  pill.addEventListener('click', function() {
+    if (this.classList.contains('yes')) {
+      this.classList.remove('yes');
+      this.classList.add('no');
+      this.textContent = '✗ ' + this.textContent.replace(/^[✓✗]\s*/,'');
+    } else {
+      this.classList.remove('no');
+      this.classList.add('yes');
+      this.textContent = '✓ ' + this.textContent.replace(/^[✓✗]\s*/,'');
+    }
+    if (cardGenerated) liveUpdate();
+  });
+});
+
+/* ═══════════════════════════════════════════════
+   LIVE UPDATE
+═══════════════════════════════════════════════ */
+function liveUpdate() {
+  if (cardGenerated) generateCard(true);
 }
 
-function generateCard(silent){
-  const name=v('f-name').trim();
-  if(!silent&&!name){
-    const el=document.getElementById('f-name');
-    el.focus();el.style.borderColor='rgba(245,166,35,.8)';el.style.boxShadow='0 0 0 3px rgba(245,166,35,.12)';
-    setTimeout(()=>{el.style.borderColor='';el.style.boxShadow='';},2500);
-    showToast('Please enter your name first','e');return;
+/* ═══════════════════════════════════════════════
+   GET COVERS
+═══════════════════════════════════════════════ */
+function getCovers(type) {
+  const pills = document.querySelectorAll(`#${type}-covers .cp-tog`);
+  return Array.from(pills).map(p => ({
+    label: p.textContent.replace(/^[✓✗]\s*/,''),
+    active: p.classList.contains('yes')
+  }));
+}
+
+/* ═══════════════════════════════════════════════
+   FORMAT DATE
+═══════════════════════════════════════════════ */
+function fmtDate(val) {
+  if (!val) return '—';
+  const d = new Date(val);
+  return d.toLocaleDateString('en-IN', {day:'numeric', month:'long', year:'numeric'});
+}
+
+/* ═══════════════════════════════════════════════
+   BUILD CARD HTML
+═══════════════════════════════════════════════ */
+function buildCard() {
+  const type = currentType;
+  const meta = TYPE_META[type];
+  const name = document.getElementById('f-name').value.trim() || 'Your Name';
+  const insurer = document.getElementById('f-insurer').value || '—';
+  const policyNo = document.getElementById('f-policy').value.trim() || '—';
+  const helpline = document.getElementById('f-helpline').value.trim() || '—';
+  const expiry = fmtDate(document.getElementById('f-expiry').value);
+  const covers = getCovers(type === 'cv' ? 'cv' : type === 'health' ? 'health' : type === 'life' ? 'life' : type === 'car' ? 'car' : 'bike');
+  const today = new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
+
+  let detailsHtml = '';
+  let extraHtml = '';
+
+  if (type === 'cv') {
+    const vnum = document.getElementById('f-vnum').value.trim() || '—';
+    const vtype = document.getElementById('f-vtype').value || '—';
+    detailsHtml = `
+      <div class="det ${meta.acc}"><div class="det-lbl">Vehicle Number</div><div class="det-val emph">${vnum}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Vehicle Type</div><div class="det-val">${vtype}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Insurer</div><div class="det-val">${insurer}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Policy Number</div><div class="det-val">${policyNo}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Claims Helpline</div><div class="det-val emph ${meta.hot}">${helpline}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Policy Expiry</div><div class="det-val">${expiry}</div></div>`;
+  } else if (type === 'health') {
+    const si = document.getElementById('f-si').value.trim() || '—';
+    const net = document.getElementById('f-network').value || '—';
+    const members = [document.getElementById('f-m1').value, document.getElementById('f-m2').value, document.getElementById('f-m3').value, document.getElementById('f-m4').value].filter(Boolean);
+    detailsHtml = `
+      <div class="det ${meta.acc}"><div class="det-lbl">Primary Member</div><div class="det-val emph">${name}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Insurer</div><div class="det-val">${insurer}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Policy Number</div><div class="det-val">${policyNo}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Sum Insured</div><div class="det-val emph ${meta.hot}">${si}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Claims Helpline</div><div class="det-val emph ${meta.hot}">${helpline}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Network Type</div><div class="det-val">${net}</div></div>`;
+    if (members.length) {
+      extraHtml = `<div class="members-sec">
+        <div class="members-lbl">Covered Members</div>
+        <div class="members-tags">${members.map(m=>`<span class="mtag">👤 ${m}</span>`).join('')}</div>
+      </div>`;
+    }
+  } else if (type === 'life') {
+    const sa = document.getElementById('f-sa').value.trim() || '—';
+    const nom = document.getElementById('f-nom').value.trim() || '—';
+    const nomph = document.getElementById('f-nomph').value.trim() || '—';
+    const nomrel = document.getElementById('f-nomrel').value.trim() || '—';
+    detailsHtml = `
+      <div class="det ${meta.acc}"><div class="det-lbl">Policy Holder</div><div class="det-val emph">${name}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Insurer</div><div class="det-val">${insurer}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Policy Number</div><div class="det-val">${policyNo}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Sum Assured</div><div class="det-val emph ${meta.hot}">${sa}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Nominee</div><div class="det-val">${nom} (${nomrel})</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Nominee Phone</div><div class="det-val ${meta.hot}">${nomph}</div></div>`;
+  } else if (type === 'car') {
+    const cnum = document.getElementById('f-cnum').value.trim() || '—';
+    const cmodel = document.getElementById('f-cmodel').value.trim() || '—';
+    detailsHtml = `
+      <div class="det ${meta.acc}"><div class="det-lbl">Vehicle Number</div><div class="det-val emph">${cnum}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Vehicle</div><div class="det-val">${cmodel}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Insurer</div><div class="det-val">${insurer}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Policy Number</div><div class="det-val">${policyNo}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Claims Helpline</div><div class="det-val emph ${meta.hot}">${helpline}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Policy Expiry</div><div class="det-val">${expiry}</div></div>`;
+  } else {
+    const bnum = document.getElementById('f-bnum').value.trim() || '—';
+    const bmodel = document.getElementById('f-bmodel').value.trim() || '—';
+    detailsHtml = `
+      <div class="det ${meta.acc}"><div class="det-lbl">Vehicle Number</div><div class="det-val emph">${bnum}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Bike</div><div class="det-val">${bmodel}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Insurer</div><div class="det-val">${insurer}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Policy Number</div><div class="det-val">${policyNo}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Claims Helpline</div><div class="det-val emph ${meta.hot}">${helpline}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Policy Expiry</div><div class="det-val">${expiry}</div></div>`;
   }
-  document.getElementById('sosCard').innerHTML=buildCard();
-  document.getElementById('ppEmpty').style.display='none';
-  document.getElementById('ppLive').style.display='block';
-  cardGenerated=true;
 
-  // QR
-  try{const qr=document.getElementById('cardQR');qr.innerHTML='';new QRCode(qr,{text:'https://covercredit.in',width:34,height:34,colorDark:'#06101f',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.L});}catch(e){}
+  const coversHtml = covers.map(c => `<span class="ctag ${c.active ? 'y' : 'n'}">${c.active ? '✓' : '✗'} ${c.label}</span>`).join('');
+  const stepsHtml = STEPS[type].map((s,i) => `
+    <div class="cs">
+      <div class="${meta.num}">${i+1}</div>
+      <div class="cs-t"><strong>${s.t}</strong> — ${s.d}</div>
+    </div>`).join('');
+
+  return `
+    <div class="card-hd ${meta.color}">
+      <div class="chd-left">
+        <div class="chd-icon">${meta.icon}</div>
+        <div>
+          <div class="chd-type">${meta.label}</div>
+          <div class="chd-name">${type === 'life' ? 'Policy Info Card' : 'Emergency SOS Card'}<br/>${name}</div>
+        </div>
+      </div>
+      <div class="chd-right">
+        <div class="chd-sos">SOS</div>
+        <div class="chd-keep">${meta.keep}</div>
+      </div>
+    </div>
+    <div class="card-bd">
+      <div class="det-grid">${detailsHtml}</div>
+    </div>
+    ${extraHtml}
+    <div class="covers-row">${coversHtml}</div>
+    <div class="steps-div"><div class="sdiv-lbl">${type === 'life' ? 'Nominee — Do This' : 'Emergency — Do This Immediately'}</div><div class="sdiv-line"></div></div>
+    <div class="card-steps">${stepsHtml}</div>
+    <div class="card-ft">
+      <div class="cft-brand">
+        <div class="cft-logo">Cover<span>Credit</span></div>
+        <div class="cft-tag">Free advisory · Your policy arranged by Cover Credit</div>
+      </div>
+      <div class="cft-right">
+        <div class="cft-phone">+91 78428 54466</div>
+        <div class="cft-url">covercredit.in</div>
+      </div>
+    </div>
+    <div class="card-gen">Generated free at covercredit.in/sos-card on ${today} · Works for any insurer · Mon–Sat 9AM–7PM</div>`;
+}
+
+/* ═══════════════════════════════════════════════
+   GENERATE
+═══════════════════════════════════════════════ */
+function generateCard(silent) {
+  const name = document.getElementById('f-name').value.trim();
+  if (!silent && !name) {
+    document.getElementById('f-name').focus();
+    document.getElementById('f-name').style.borderColor = 'rgba(230,81,0,.6)';
+    setTimeout(() => document.getElementById('f-name').style.borderColor = '', 2000);
+    return;
+  }
+
+  document.getElementById('sosCard').innerHTML = buildCard();
+  document.getElementById('ppEmpty').style.display = 'none';
+  document.getElementById('ppLive').style.display = 'block';
+  document.getElementById('ppLive').style.animation = 'none';
+  setTimeout(() => document.getElementById('ppLive').style.animation = '', 10);
+  cardGenerated = true;
 
   // Nudge
-  const nm=name||'there';
-  const waMsg=`Hi Cover Credit, I generated a SOS card for my ${currentType} policy. Can you review my covers for free? — ${nm}`;
-  document.getElementById('nudgeBox').innerHTML=`<div class="nudge-ic">💡</div><div class="nudge-body">${NUDGES[currentType]}<br/><a class="nudge-cta" href="https://wa.me/917842854466?text=${encodeURIComponent(waMsg)}" target="_blank">✅ Check My Covers Free →</a></div>`;
+  const nudge = document.getElementById('nudgeBox');
+  const waMsg = `Hi Cover Credit, I generated a SOS card for my ${currentType} policy. Can you review my covers for free? — ${name}`;
+  nudge.innerHTML = `<div class="nudge-ic">💡</div><div class="nudge-body">${NUDGES[currentType]}<br/><a class="nudge-wa" href="https://wa.me/917842854466?text=${encodeURIComponent(waMsg)}" target="_blank">✅ Check My Covers Free →</a></div>`;
 
-  // Show bottom bar on mobile
-  if(isMobile()){
-    document.getElementById('bottomBar').style.display='flex';
-  }
+  // WA share — full card as text
+  document.getElementById('waShareBtn').onclick = () => {
+    const type = currentType;
+    const n = document.getElementById('f-name').value.trim() || '—';
+    const insurer = document.getElementById('f-insurer').value || '—';
+    const policyNo = document.getElementById('f-policy').value.trim() || '—';
+    const helpline = document.getElementById('f-helpline').value.trim() || '—';
+    const expiry = fmtDate(document.getElementById('f-expiry').value);
+    const covers = getCovers(type === 'cv' ? 'cv' : type === 'health' ? 'health' : type === 'life' ? 'life' : type === 'car' ? 'car' : 'bike');
+    const coverLines = covers.map(c => `${c.active ? '✅' : '❌'} ${c.label}`).join('\n');
+    const steps = STEPS[type].map((s,i) => `${i+1}. *${s.t}*`).join('\n');
+    const typeLabels = {cv:'🚛 Commercial Vehicle',health:'🏥 Health',life:'🛡️ Life/Term',car:'🚗 Car',bike:'🏍️ Bike'};
 
-  if(!silent){
-    showToast('SOS Card generated!');
-    // Scroll to card on mobile, slight delay
-    setTimeout(()=>{
-      const card=document.getElementById('sosCard');
-      if(card){card.scrollIntoView({behavior:'smooth',block:'start'});}
-    },200);
-  }
-}
-
-/* ─── CAPTURE CARD AS PNG BLOB ─── */
-async function captureCardBlob(){
-  const canvas=await html2canvas(document.getElementById('sosCard'),{scale:2.5,useCORS:true,backgroundColor:'#ffffff',logging:false,allowTaint:true});
-  return new Promise(res=>canvas.toBlob(res,'image/png',1.0));
-}
-
-/* ─── WEB SHARE API (mobile) ─── */
-async function shareOnMobile(){
-  if(!cardGenerated){showToast('Generate your card first','e');return;}
-  showToast('Preparing card image…','i',5000);
-  try{
-    const blob=await captureCardBlob();
-    const nm=(v('f-name').trim()||'SOS').replace(/\s+/g,'_');
-    const file=new File([blob],`SOS_Card_${nm}.png`,{type:'image/png'});
-    const shareData={title:'My Insurance SOS Card',text:`🆘 Insurance SOS Card for ${v('f-name').trim()||'me'}\n📞 Helpline: ${v('f-helpline')||'—'}\n\nGenerated free at covercredit.in/sos-card`,files:[file]};
-    if(navigator.canShare&&navigator.canShare(shareData)){
-      await navigator.share(shareData);
-      showToast('Shared successfully!');
-    }else{
-      // canShare returned false — fallback to download
-      await downloadViaAnchor(blob,nm);
-      showToast('Image saved — attach it in WhatsApp','i',5000);
+    let extraLines = '';
+    if (type === 'cv') {
+      const vnum = document.getElementById('f-vnum').value.trim() || '—';
+      const vtype = document.getElementById('f-vtype').value || '—';
+      extraLines = `🚛 Vehicle: ${vnum} (${vtype})\n`;
+    } else if (type === 'health') {
+      const si = document.getElementById('f-si').value.trim() || '—';
+      const members = [document.getElementById('f-m1').value, document.getElementById('f-m2').value, document.getElementById('f-m3').value, document.getElementById('f-m4').value].filter(Boolean);
+      extraLines = `💰 Sum Insured: ${si}\n👥 Members: ${members.join(', ') || '—'}\n`;
+    } else if (type === 'life') {
+      const sa = document.getElementById('f-sa').value.trim() || '—';
+      const nom = document.getElementById('f-nom').value.trim() || '—';
+      const nomph = document.getElementById('f-nomph').value.trim() || '—';
+      extraLines = `💰 Sum Assured: ${sa}\n👤 Nominee: ${nom} — ${nomph}\n`;
+    } else if (type === 'car') {
+      const cnum = document.getElementById('f-cnum').value.trim() || '—';
+      const cmodel = document.getElementById('f-cmodel').value.trim() || '—';
+      extraLines = `🚗 Vehicle: ${cnum} (${cmodel})\n`;
+    } else {
+      const bnum = document.getElementById('f-bnum').value.trim() || '—';
+      const bmodel = document.getElementById('f-bmodel').value.trim() || '—';
+      extraLines = `🏍️ Vehicle: ${bnum} (${bmodel})\n`;
     }
-  }catch(e){
-    if(e.name==='AbortError'){showToast('Share cancelled','i');return;}
-    console.error(e);
-    showToast('Share failed — downloading instead','e');
-    try{const b=await captureCardBlob();const nm=(v('f-name').trim()||'SOS').replace(/\s+/g,'_');await downloadViaAnchor(b,nm);}catch(e2){}
-  }
+
+    const msg =
+`🆘 *MY INSURANCE SOS CARD*
+Generated at covercredit.in/sos-card
+
+*${typeLabels[type]} Insurance*
+👤 Name: ${n}
+🏦 Insurer: ${insurer}
+📄 Policy No: ${policyNo}
+📞 *Helpline: ${helpline}*
+📅 Expiry: ${expiry}
+${extraLines}
+*MY COVERS:*
+${coverLines}
+
+*IN AN EMERGENCY:*
+${steps}
+
+———
+🔸 Card by *Cover Credit* · covercredit.in
+📞 Advisory: +91 78428 54466 (Mon–Sat 9AM–7PM)`;
+
+    let phone = document.getElementById('f-phone').value.trim().replace(/\D/g,'');
+    if (phone.length === 10) phone = '91' + phone;
+    else if (phone.startsWith('0')) phone = '91' + phone.slice(1);
+    else if (!phone.startsWith('91') && phone.length > 0) phone = '91' + phone;
+    if (phone.length >= 12) {
+      window.open('https://wa.me/' + phone + '?text=' + encodeURIComponent(msg), '_blank');
+    } else {
+      const ph = prompt('Enter your WhatsApp number (10 digits) to send card to yourself:');
+      if (ph) { let p = ph.replace(/\D/g,''); if(p.length===10) p='91'+p; window.open('https://wa.me/'+p+'?text='+encodeURIComponent(msg),'_blank'); }
+    }
+  };
+
+  if (!silent) setTimeout(() => document.getElementById('ppLive').scrollIntoView({behavior:'smooth', block:'start'}), 100);
 }
 
-/* ─── DOWNLOAD HELPER ─── */
-function downloadViaAnchor(blob,nm){
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');a.href=url;a.download=`SOS_Card_${nm}.png`;a.click();
-  setTimeout(()=>URL.revokeObjectURL(url),10000);
+function resetForm() {
+  cardGenerated = false;
+  document.getElementById('ppEmpty').style.display = 'flex';
+  document.getElementById('ppLive').style.display = 'none';
+  document.getElementById('f-name').value = '';
+  window.scrollTo({top: 0, behavior: 'smooth'});
 }
 
-/* ─── PDF DOWNLOAD ─── */
-async function downloadPDF(){
-  if(!cardGenerated){showToast('Generate your card first','e');return;}
-  showToast('Preparing your PDF…','i',5000);
-  try{
-    const canvas=await html2canvas(document.getElementById('sosCard'),{scale:2.5,useCORS:true,backgroundColor:'#ffffff',logging:false});
-    const imgData=canvas.toDataURL('image/png',1.0);
-    const {jsPDF}=window.jspdf;
-    const pdf=new jsPDF({orientation:'landscape',unit:'mm',format:'a5'});
-    const pw=pdf.internal.pageSize.getWidth(),ph=pdf.internal.pageSize.getHeight();
-    const ratio=Math.min(pw/canvas.width*10,ph/canvas.height*10);
-    const fw=canvas.width*ratio/10,fh=canvas.height*ratio/10;
-    pdf.addImage(imgData,'PNG',(pw-fw)/2,(ph-fh)/2,fw,fh);
-    const nm=(v('f-name').trim()||'SOS').replace(/\s+/g,'_');
-    pdf.save(`SOS_Card_${nm}.pdf`);
-    showToast('PDF downloaded!');
-  }catch(e){
-    console.error(e);
-    showToast('PDF failed — trying image download…','e');
-    try{const b=await captureCardBlob();const nm=(v('f-name').trim()||'SOS').replace(/\s+/g,'_');downloadViaAnchor(b,nm);}catch(e2){}
-  }
-}
+/* ═══════════════════════════════════════════════
+   CURSOR + NAV + SCROLL REVEAL
+═══════════════════════════════════════════════ */
+const cur = document.getElementById('cur'), cr = document.getElementById('cr');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.style.left=mx+'px'; cur.style.top=my+'px'; });
+(function tick(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(tick);})();
+document.querySelectorAll('a,button,.pt,.cp-tog').forEach(el => {
+  el.addEventListener('mouseenter', () => document.body.classList.add('hov'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('hov'));
+});
 
-/* ─── WIRE UP WA BUTTONS ─── */
-// Mobile bottom bar WA button
-document.getElementById('waBtnMobile').addEventListener('click',shareOnMobile);
-// Desktop action bar WA button (uses same share fn — will fallback gracefully)
-document.getElementById('waBtn').addEventListener('click',shareOnMobile);
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('sc', scrollY > 40), {passive:true});
 
-/* ─── RESET ─── */
-function resetForm(){
-  cardGenerated=false;
-  document.getElementById('ppEmpty').style.display='flex';
-  document.getElementById('ppLive').style.display='none';
-  document.getElementById('bottomBar').style.display='none';
-  ['f-name','f-phone','f-policy','f-helpline','f-expiry','f-vnum','f-si','f-sa','f-nom','f-nomph','f-nomrel','f-cnum','f-cmodel','f-bnum','f-bmodel','f-m1','f-m2','f-m3','f-m4'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
-  document.getElementById('f-insurer').value='';
-  window.scrollTo({top:0,behavior:'smooth'});
-}
+const burger = document.getElementById('burger'), mob = document.getElementById('mob');
+burger.addEventListener('click', () => { burger.classList.toggle('op'); mob.classList.toggle('op'); document.body.style.overflow = mob.classList.contains('op') ? 'hidden' : ''; });
 
-function toggleFaq(el){el.parentElement.classList.toggle('open');}
+const ro = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);} }), {threshold:.08});
+document.querySelectorAll('.rv').forEach(el => ro.observe(el));
 
-/* ─── REVEAL ─── */
-const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}}),{threshold:.06});
-document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
-document.getElementById('yr').textContent=new Date().getFullYear();
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ═══════════════════════════════════════════════
+   ANALYTICS TRACKING
+═══════════════════════════════════════════════ */
+(function(){
+  var PAGE_NAME='sos-card';
+  var BACKEND=(window.location.hostname==='localhost'||window.location.hostname==='127.0.0.1')?'http://localhost:5000/api':'https://api.covercredit.in/api';
+  var ua=navigator.userAgent.toLowerCase();
+  if(/bot|crawler|spider|headless/.test(ua))return;
+  var params=new URLSearchParams(window.location.search);
+  var utmSrc=params.get('utm_source')||sessionStorage.getItem('cc_utm_source')||'';
+  var utmMed=params.get('utm_medium')||sessionStorage.getItem('cc_utm_medium')||'';
+  var utmCamp=params.get('utm_campaign')||sessionStorage.getItem('cc_utm_campaign')||'';
+  function detectRef(ref){if(!ref)return'direct';var r=ref.toLowerCase();if(/google\.|bing\./.test(r))return'google';if(/whatsapp|wa\.me/.test(r))return'whatsapp';if(/facebook\.|fb\.com/.test(r))return'facebook';return'other';}
+  var source=utmSrc?utmSrc.toLowerCase().trim():detectRef(document.referrer);
+  var key='cc_tracked_'+PAGE_NAME+'_'+source;
+  if(sessionStorage.getItem(key))return;
+  sessionStorage.setItem(key,'1');
+  var isMobile=/iphone|ipod|android.*mobile/.test(ua);
+  try{fetch(BACKEND+'/track',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({page:PAGE_NAME,path:window.location.pathname,source:source,device:isMobile?'mobile':'desktop',utmMedium:utmMed,utmCampaign:utmCamp,referrer:document.referrer||''}),keepalive:true}).catch(function(){});}catch(e){}
+})();
 </script>
 </body>
 </html>
