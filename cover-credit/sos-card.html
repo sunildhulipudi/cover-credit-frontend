@@ -990,9 +990,66 @@ function generateCard(silent) {
   const waMsg = `Hi Cover Credit, I generated a SOS card for my ${currentType} policy. Can you review my covers for free? — ${name}`;
   nudge.innerHTML = `<div class="nudge-ic">💡</div><div class="nudge-body">${NUDGES[currentType]}<br/><a class="nudge-wa" href="https://wa.me/917842854466?text=${encodeURIComponent(waMsg)}" target="_blank">✅ Check My Covers Free →</a></div>`;
 
-  // WA share
-  const waShareMsg = `I just generated my Insurance SOS Card on Cover Credit. Try it free at covercredit.in/sos-card`;
-  document.getElementById('waShareBtn').onclick = () => window.open(`https://wa.me/?text=${encodeURIComponent(waShareMsg)}`, '_blank');
+  // WA share — full card as text
+  document.getElementById('waShareBtn').onclick = () => {
+    const type = currentType;
+    const n = document.getElementById('f-name').value.trim() || '—';
+    const insurer = document.getElementById('f-insurer').value || '—';
+    const policyNo = document.getElementById('f-policy').value.trim() || '—';
+    const helpline = document.getElementById('f-helpline').value.trim() || '—';
+    const expiry = fmtDate(document.getElementById('f-expiry').value);
+    const covers = getCovers(type === 'cv' ? 'cv' : type === 'health' ? 'health' : type === 'life' ? 'life' : type === 'car' ? 'car' : 'bike');
+    const coverLines = covers.map(c => `${c.active ? '✅' : '❌'} ${c.label}`).join('\n');
+    const steps = STEPS[type].map((s,i) => `${i+1}. *${s.t}*`).join('\n');
+    const typeLabels = {cv:'🚛 Commercial Vehicle',health:'🏥 Health',life:'🛡️ Life/Term',car:'🚗 Car',bike:'🏍️ Bike'};
+
+    let extraLines = '';
+    if (type === 'cv') {
+      const vnum = document.getElementById('f-vnum').value.trim() || '—';
+      const vtype = document.getElementById('f-vtype').value || '—';
+      extraLines = `🚛 Vehicle: ${vnum} (${vtype})\n`;
+    } else if (type === 'health') {
+      const si = document.getElementById('f-si').value.trim() || '—';
+      const members = [document.getElementById('f-m1').value, document.getElementById('f-m2').value, document.getElementById('f-m3').value, document.getElementById('f-m4').value].filter(Boolean);
+      extraLines = `💰 Sum Insured: ${si}\n👥 Members: ${members.join(', ') || '—'}\n`;
+    } else if (type === 'life') {
+      const sa = document.getElementById('f-sa').value.trim() || '—';
+      const nom = document.getElementById('f-nom').value.trim() || '—';
+      const nomph = document.getElementById('f-nomph').value.trim() || '—';
+      extraLines = `💰 Sum Assured: ${sa}\n👤 Nominee: ${nom} — ${nomph}\n`;
+    } else if (type === 'car') {
+      const cnum = document.getElementById('f-cnum').value.trim() || '—';
+      const cmodel = document.getElementById('f-cmodel').value.trim() || '—';
+      extraLines = `🚗 Vehicle: ${cnum} (${cmodel})\n`;
+    } else {
+      const bnum = document.getElementById('f-bnum').value.trim() || '—';
+      const bmodel = document.getElementById('f-bmodel').value.trim() || '—';
+      extraLines = `🏍️ Vehicle: ${bnum} (${bmodel})\n`;
+    }
+
+    const msg =
+`🆘 *MY INSURANCE SOS CARD*
+Generated at covercredit.in/sos-card
+
+*${typeLabels[type]} Insurance*
+👤 Name: ${n}
+🏦 Insurer: ${insurer}
+📄 Policy No: ${policyNo}
+📞 *Helpline: ${helpline}*
+📅 Expiry: ${expiry}
+${extraLines}
+*MY COVERS:*
+${coverLines}
+
+*IN AN EMERGENCY:*
+${steps}
+
+———
+🔸 Card by *Cover Credit* · covercredit.in
+📞 Advisory: +91 78428 54466 (Mon–Sat 9AM–7PM)`;
+
+    window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, '_blank');
+  };
 
   if (!silent) setTimeout(() => document.getElementById('ppLive').scrollIntoView({behavior:'smooth', block:'start'}), 100);
 }
