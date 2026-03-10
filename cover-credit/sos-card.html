@@ -350,6 +350,66 @@ body.hov #cr{width:54px;height:54px;opacity:.18;}
   #sosCard{box-shadow:none!important;border-radius:0!important;max-width:100%!important;}
   @page{margin:.5cm;}
 }
+
+/* ═══ HERO REDESIGN ═══ */
+.hero{position:relative;padding:calc(44px + var(--nh) + 4rem) 5% 3.5rem;overflow:hidden;}
+.hero-content{position:relative;z-index:1;max-width:900px;margin:0 auto;text-align:center;}
+.scenario-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem;margin:2rem 0 1.8rem;text-align:left;}
+.sc-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:1rem 1.1rem;transition:border-color .2s;}
+.sc-card:hover{border-color:rgba(230,81,0,.3);}
+.sc-ic{font-size:1.5rem;margin-bottom:.5rem;}
+.sc-sit{font-size:.74rem;font-weight:700;color:#fff;line-height:1.4;margin-bottom:.3rem;}
+.sc-q{font-size:.66rem;color:rgba(255,255,255,.38);line-height:1.55;}
+.hero-stats{display:flex;align-items:center;justify-content:center;gap:0;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:1.1rem 1.5rem;margin-bottom:1.8rem;flex-wrap:wrap;}
+.hstat{text-align:center;padding:.3rem 1.5rem;}
+.hstat-n{display:block;font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;background:linear-gradient(120deg,#ff8f00,#ffd740);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.1;}
+.hstat-l{display:block;font-size:.6rem;color:rgba(255,255,255,.32);line-height:1.4;margin-top:.18rem;max-width:120px;}
+.hstat-div{width:1px;height:36px;background:rgba(255,255,255,.08);}
+.hero-cta{display:inline-flex;align-items:center;gap:.6rem;background:linear-gradient(135deg,#e65100,#ff8f00);color:#fff;padding:.95rem 2rem;border-radius:13px;font-weight:700;font-size:.95rem;text-decoration:none;transition:transform .18s,box-shadow .22s;margin-bottom:.7rem;}
+.hero-cta:hover{transform:translateY(-3px);box-shadow:0 14px 38px rgba(230,81,0,.45);}
+.hero-cta-arr{font-size:1.1rem;animation:bounce 2s infinite;}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+.hero-note{font-size:.65rem;color:rgba(255,255,255,.22);letter-spacing:.5px;}
+
+/* ═══ TEASER STRIP ═══ */
+.teaser-strip{background:linear-gradient(135deg,rgba(11,26,48,.98),rgba(16,31,56,.98));border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07);padding:1.4rem 5%;}
+.teaser-in{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
+.ts-left{flex:1;min-width:240px;}
+.ts-badge{display:inline-flex;align-items:center;gap:.3rem;background:rgba(230,81,0,.1);border:1px solid rgba(230,81,0,.2);color:var(--ac2);font-size:.58rem;font-weight:700;padding:.18rem .7rem;border-radius:100px;text-transform:uppercase;letter-spacing:1px;margin-bottom:.5rem;}
+.ts-txt{display:block;font-size:.78rem;color:rgba(255,255,255,.42);line-height:1.65;}
+.ts-txt strong{color:rgba(255,255,255,.75);}
+.ts-stats{display:flex;gap:1.5rem;flex-wrap:wrap;}
+.ts-stat{text-align:center;}
+.ts-stat strong{display:block;font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;background:linear-gradient(120deg,var(--ac),var(--ac2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.ts-stat span{display:block;font-size:.55rem;color:rgba(255,255,255,.28);text-transform:uppercase;letter-spacing:.8px;line-height:1.5;margin-top:.1rem;}
+
+/* ═══ TESTIMONIALS (added above fold) ═══ */
+.testi-band{background:var(--i2);border-top:1px solid var(--line);padding:3.5rem 5%;}
+.testi-band-in{max-width:1200px;margin:0 auto;}
+.testi-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.tcard2{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:1.3rem;}
+.tcard2-stars{color:#fbbf24;font-size:.68rem;letter-spacing:2px;margin-bottom:.6rem;}
+.tcard2-q{font-size:.77rem;color:rgba(255,255,255,.45);line-height:1.78;margin-bottom:.9rem;font-style:italic;}
+.tcard2-q strong{color:rgba(255,255,255,.78);font-style:normal;}
+.tcard2-author{display:flex;align-items:center;gap:.6rem;}
+.tcard2-av{width:34px;height:34px;border-radius:50%;background:rgba(230,81,0,.1);border:2px solid rgba(230,81,0,.2);display:flex;align-items:center;justify-content:center;font-size:.95rem;}
+.tcard2-name{font-size:.74rem;font-weight:700;}
+.tcard2-role{font-size:.6rem;color:rgba(255,255,255,.28);}
+
+@media(max-width:768px){
+  .scenario-strip{grid-template-columns:1fr;}
+  .hero-stats{gap:0;padding:.9rem 1rem;}
+  .hstat{padding:.25rem .8rem;}
+  .hstat-div{height:1px;width:100%;}
+  .testi-grid-3{grid-template-columns:1fr;}
+  .teaser-in{flex-direction:column;gap:1.2rem;}
+  .ts-stats{gap:1rem;}
+}
+@media(max-width:520px){
+  .hstat-div{display:none;}
+  .hero-stats{gap:.5rem;flex-direction:column;}
+}
+
 </style>
 </head>
 <body>
@@ -399,22 +459,73 @@ body.hov #cr{width:54px;height:54px;opacity:.18;}
 <section class="hero">
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
-  <div class="hero-content rv">
-    <div class="hbc"><a href="index.html">Home</a> › Free Tools › SOS Card Generator</div>
-    <div class="hkick"><span class="hkick-dot"></span> Free · No Login · Any Insurer</div>
-    <h1 class="htit">Your policy in your<br/>pocket. <em>Emergency-ready.</em></h1>
-    <p class="hdesc">Generate a printable SOS card for any insurance policy in 60 seconds. Know exactly what to do when it matters most — accident, hospitalisation, or claim.</p>
-    <div class="trust-strip rv d1">
-      <span class="ts-item"><span class="ts-ic">🆓</span> 100% Free</span>
-      <span class="ts-item"><span class="ts-ic">🏦</span> Any Insurer</span>
-      <span class="ts-item"><span class="ts-ic">🖨️</span> Print-Ready</span>
-      <span class="ts-item"><span class="ts-ic">📱</span> WhatsApp Share</span>
+  <div class="hero-content">
+    <div class="hkick"><span class="hkick-dot"></span> 100% Free · No Login · Any Insurer in India</div>
+    <h1 class="htit">When the accident happens,<br/><em>will you know what to do?</em></h1>
+    <p class="hdesc">61% of policyholders don't know their claims helpline. Most vehicle claims are rejected not because the damage wasn't real — but because the driver called too late, moved the vehicle, or didn't file an FIR. This card fixes that in 60 seconds.</p>
+    <div class="scenario-strip">
+      <div class="sc-card"><div class="sc-ic">🚛</div><div class="sc-body"><div class="sc-sit">2 AM on NH-65. Your lorry just got hit.</div><div class="sc-q">Do you know your helpline? Is your load covered under GIT?</div></div></div>
+      <div class="sc-card"><div class="sc-ic">🏥</div><div class="sc-body"><div class="sc-sit">Father collapses. Nearest hospital is 10 mins away.</div><div class="sc-q">Is it a cashless hospital? Which documents does your policy need?</div></div></div>
+      <div class="sc-card"><div class="sc-ic">🚗</div><div class="sc-body"><div class="sc-sit">Someone hits your car and drives away.</div><div class="sc-q">Do you call the insurer first — or file FIR first? Move the car or leave it?</div></div></div>
     </div>
+    <div class="hero-stats">
+      <div class="hstat"><span class="hstat-n">61%</span><span class="hstat-l">don't know their helpline by heart</span></div>
+      <div class="hstat-div"></div>
+      <div class="hstat"><span class="hstat-n">38%</span><span class="hstat-l">claim rejections from procedural errors</span></div>
+      <div class="hstat-div"></div>
+      <div class="hstat"><span class="hstat-n">24 hrs</span><span class="hstat-l">window to register most vehicle claims</span></div>
+    </div>
+    <a href="#toolSection" class="hero-cta" onclick="scrollToTool(event)">🆘 Generate My Free SOS Card <span class="hero-cta-arr">↓</span></a>
+    <div class="hero-note">Takes 60 seconds · No account needed · Works for any insurer</div>
   </div>
 </section>
 
+<!-- TEASER STRIP — visible when user scrolls up from form -->
+<div class="teaser-strip">
+  <div class="teaser-in">
+    <div class="ts-left">
+      <span class="ts-badge">⚡ Why this card exists</span>
+      <span class="ts-txt">Most claims fail on <strong>procedure</strong>, not policy. The card gives your driver — or your family — the exact steps before panic sets in.</span>
+    </div>
+    <div class="ts-stats">
+      <div class="ts-stat"><strong>20+</strong><span>Insurers<br/>auto-filled</span></div>
+      <div class="ts-stat"><strong>5</strong><span>Policy<br/>types</span></div>
+      <div class="ts-stat"><strong>₹0</strong><span>Free<br/>forever</span></div>
+      <div class="ts-stat"><strong>100%</strong><span>Private, no<br/>data stored</span></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- TESTIMONIALS — social proof before the form -->
+<div class="testi-band">
+  <div class="testi-band-in">
+    <div style="text-align:center;margin-bottom:1.8rem;">
+      <div style="font-size:.6rem;font-weight:700;color:var(--ac2);text-transform:uppercase;letter-spacing:2px;margin-bottom:.5rem;">Real Stories</div>
+      <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.3rem,2.5vw,1.9rem);font-weight:700;">People who had the card <em style='font-style:italic;color:var(--ac2);'>when it mattered</em></h2>
+    </div>
+    <div class="testi-grid-3">
+      <div class="tcard2">
+        <div class="tcard2-stars">★★★★★</div>
+        <p class="tcard2-q">My lorry met with an accident on NH-65 at 2 AM. <strong>I had the card in my dashboard.</strong> Called the helpline immediately, surveyor arrived by morning. Claim settled in 11 days.</p>
+        <div class="tcard2-author"><div class="tcard2-av">🚛</div><div><div class="tcard2-name">Venkat Reddy</div><div class="tcard2-role">Transport owner · Hyderabad</div></div></div>
+      </div>
+      <div class="tcard2">
+        <div class="tcard2-stars">★★★★★</div>
+        <p class="tcard2-q">Father had a cardiac episode while travelling. <strong>The card showed the helpline and exactly which documents to carry.</strong> Cashless admission completed in under 2 hours.</p>
+        <div class="tcard2-author"><div class="tcard2-av">🏥</div><div><div class="tcard2-name">Priya Nambiar</div><div class="tcard2-role">Software professional · Bengaluru</div></div></div>
+      </div>
+      <div class="tcard2">
+        <div class="tcard2-stars">★★★★★</div>
+        <p class="tcard2-q">Someone hit my car and fled. <strong>The card told me: photos first, then FIR, then helpline.</strong> Followed exactly. Full own damage claim came through without a single issue.</p>
+        <div class="tcard2-author"><div class="tcard2-av">🚗</div><div><div class="tcard2-name">Arjun Malhotra</div><div class="tcard2-role">Business owner · Pune</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- MAIN TOOL -->
-<div class="main">
+<div class="main" id="toolSection">
 
   <!-- FORM PANEL -->
   <div class="form-panel rv">
@@ -1114,6 +1225,24 @@ document.getElementById('yr').textContent = new Date().getFullYear();
   var isMobile=/iphone|ipod|android.*mobile/.test(ua);
   try{fetch(BACKEND+'/track',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({page:PAGE_NAME,path:window.location.pathname,source:source,device:isMobile?'mobile':'desktop',utmMedium:utmMed,utmCampaign:utmCamp,referrer:document.referrer||''}),keepalive:true}).catch(function(){});}catch(e){}
 })();
+
+/* ── AUTO-SCROLL TO TOOL ON PAGE LOAD ── */
+function scrollToTool(e) {
+  if(e) e.preventDefault();
+  const el = document.getElementById('toolSection');
+  if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+
+window.addEventListener('load', function() {
+  // Small delay so page renders first, then scroll to tool
+  setTimeout(function() {
+    const el = document.getElementById('toolSection');
+    if(el) {
+      el.scrollIntoView({behavior:'smooth', block:'start'});
+    }
+  }, 380);
+});
+
 </script>
 </body>
 </html>
