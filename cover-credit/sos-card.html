@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>Free Insurance SOS Card Generator | Cover Credit</title>
+<meta name="description" content="Generate a free printable Insurance SOS Card for any policy — vehicle, health or life. Step-by-step emergency guide for your dashboard or wallet. Works for any insurer."/>
+<meta property="og:title" content="Free Insurance SOS Card Generator | Cover Credit"/>
+<meta property="og:description" content="Generate a free printable SOS card for any insurance policy. Works for any insurer. Keep it in your dashboard — know exactly what to do in an emergency."/>
+<meta property="og:image" content="https://covercredit.in/og-banner.png"/>
+<meta property="og:url" content="https://covercredit.in/sos-card.html"/>
+<meta property="og:type" content="website"/>
+<link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-377PNCFQLN"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-377PNCFQLN');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet"/>
+<style>
+/* ═══════════════════════════════════════════════
+   RESET & ROOT
+═══════════════════════════════════════════════ */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ac:#e65100;--ac2:#ff8f00;--ink:#06101f;--i2:#0b1a30;
+  --line:rgba(255,255,255,.08);--fog:rgba(255,255,255,.06);
+  --E:cubic-bezier(.16,1,.3,1);--nh:72px;
+  --cv:#e65100;--hc:#1565c0;--lc:#2e7d32;--cc:#6a1b9a;--bc:#e65100;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--ink);color:#fff;overflow-x:hidden;cursor:none;}
+a{text-decoration:none;color:inherit;}
+
+/* ═══════════════════════════════════════════════
+   CUSTOM CURSOR
+═══════════════════════════════════════════════ */
+#cur,#cr{position:fixed;top:0;left:0;pointer-events:none;border-radius:50%;z-index:9999;transform:translate(-50%,-50%);}
+#cur{width:10px;height:10px;background:var(--ac);}
+#cr{width:38px;height:38px;border:1.5px solid rgba(230,81,0,.5);z-index:9998;transition:width .2s,height .2s,opacity .2s;}
+body.hov #cur{width:4px;height:4px;}
+body.hov #cr{width:54px;height:54px;opacity:.18;}
+
+/* ═══════════════════════════════════════════════
+   TICKER BAR
+═══════════════════════════════════════════════ */
+#ticker{position:fixed;top:0;left:0;right:0;z-index:1100;height:44px;background:#020c1f;display:flex;align-items:center;justify-content:center;gap:2rem;overflow:hidden;}
+#ticker::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:linear-gradient(90deg,transparent,#f5a623,#f5c842,#f5a623,transparent);background-size:200% 100%;animation:shimmer 4s linear infinite;}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.tk-pill{display:inline-flex;align-items:center;gap:.4rem;padding:.22rem .9rem;border-radius:100px;font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#fbbf24;border:1px solid rgba(251,191,36,.22);background:rgba(234,179,8,.07);white-space:nowrap;}
+.tk-dot{width:5px;height:5px;border-radius:50%;background:#4ade80;box-shadow:0 0 6px #4ade80;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+
+/* ═══════════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════════ */
+.nav{position:fixed;top:44px;left:0;right:0;z-index:900;height:var(--nh);padding:0 5%;transition:background .4s;}
+.nav.sc{background:rgba(6,16,31,.97);backdrop-filter:blur(24px);box-shadow:0 1px 0 var(--line);}
+.ni{max-width:1300px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;}
+.logo{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;}
+.logo em{font-style:normal;color:#f5a623;}
+.nl{display:flex;align-items:center;gap:1.8rem;list-style:none;}
+.nl a{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.65);transition:color .2s;position:relative;}
+.nl a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:#f5a623;transition:width .28s;}
+.nl a:hover{color:#fff;}.nl a:hover::after{width:100%;}
+.ncta{background:#f5a623!important;color:#06101f!important;padding:.46rem 1.12rem!important;border-radius:100px;font-weight:700!important;font-size:.8rem!important;}
+.ncta::after{display:none!important;}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:4px;}
+.burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s;}
+.burger.op span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
+.burger.op span:nth-child(2){opacity:0;}
+.burger.op span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
+.mob{position:fixed;inset:0;z-index:899;background:var(--ink);display:flex;flex-direction:column;padding:calc(44px + var(--nh) + 1.8rem) 5% 3rem;transform:translateX(100%);transition:transform .38s var(--E);}
+.mob.op{transform:translateX(0);}
+.mob a{padding:.9rem 0;font-size:1rem;font-weight:500;color:rgba(255,255,255,.72);border-bottom:1px solid var(--line);}
+.mc{margin-top:1.8rem;background:#f5a623;color:#06101f!important;text-align:center;border-radius:12px;padding:.9rem!important;font-weight:700!important;border:none!important;}
+
+/* ═══════════════════════════════════════════════
+   FAB
+═══════════════════════════════════════════════ */
+.fab{position:fixed;bottom:1.8rem;right:1.8rem;z-index:400;display:flex;flex-direction:column;gap:.65rem;align-items:flex-end;}
+.fab a{display:flex;align-items:center;gap:.48rem;padding:.65rem 1rem;border-radius:100px;font-size:.76rem;font-weight:600;cursor:none;transition:transform .18s;}
+.fab a:hover{transform:translateY(-2px);}
+.fwa{background:#25d366;color:#fff;box-shadow:0 6px 20px rgba(37,211,102,.35);}
+.fbk{background:var(--ac);color:#fff;box-shadow:0 6px 20px rgba(230,81,0,.35);}
+
+/* ═══════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════ */
+.hero{position:relative;padding:calc(44px + var(--nh) + 5rem) 5% 4rem;text-align:center;overflow:hidden;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000,transparent);}
+.hero-glow{position:absolute;top:0;left:50%;transform:translateX(-50%);width:900px;height:500px;background:radial-gradient(ellipse at 50% 0%,rgba(230,81,0,.18) 0%,transparent 70%);pointer-events:none;}
+.hero-content{position:relative;z-index:1;max-width:720px;margin:0 auto;}
+.hbc{display:inline-flex;align-items:center;gap:.38rem;font-size:.72rem;color:rgba(255,255,255,.28);margin-bottom:1.3rem;}
+.hbc a{color:rgba(255,255,255,.28);transition:color .2s;}.hbc a:hover{color:var(--ac2);}
+.hkick{display:inline-flex;align-items:center;gap:.48rem;background:rgba(230,81,0,.1);border:1px solid rgba(230,81,0,.25);color:#ffcc80;font-size:.68rem;font-weight:700;padding:.32rem 1rem;border-radius:100px;text-transform:uppercase;letter-spacing:.8px;margin-bottom:1.2rem;}
+.hkick-dot{width:5px;height:5px;background:var(--ac2);border-radius:50%;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.15}}
+.htit{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4.5vw,4.2rem);font-weight:900;line-height:1.03;letter-spacing:-2px;margin-bottom:1rem;}
+.htit em{font-style:italic;background:linear-gradient(120deg,#ff8f00,#ffcc02);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hdesc{font-size:.96rem;line-height:1.82;color:rgba(255,255,255,.48);max-width:540px;margin:0 auto 2.2rem;}
+.trust-strip{display:flex;align-items:center;justify-content:center;gap:2rem;flex-wrap:wrap;}
+.ts-item{display:flex;align-items:center;gap:.4rem;font-size:.72rem;color:rgba(255,255,255,.3);}
+.ts-ic{font-size:.95rem;}
+
+/* ═══════════════════════════════════════════════
+   MAIN LAYOUT
+═══════════════════════════════════════════════ */
+.main{max-width:1200px;margin:0 auto;padding:2rem 5% 6rem;display:grid;grid-template-columns:480px 1fr;gap:2.5rem;align-items:start;}
+
+/* ═══════════════════════════════════════════════
+   FORM PANEL
+═══════════════════════════════════════════════ */
+.form-panel{position:sticky;top:calc(44px + var(--nh) + 1.5rem);}
+.fp-card{background:var(--i2);border:1px solid var(--line);border-radius:22px;overflow:hidden;}
+.fp-top{padding:1.6rem 1.8rem 0;}
+.fp-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:.25rem;}
+.fp-sub{font-size:.74rem;color:rgba(255,255,255,.32);margin-bottom:1.4rem;}
+
+/* Policy type tabs */
+.pt-label{font-size:.6rem;font-weight:700;color:rgba(255,255,255,.25);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.65rem;}
+.pt-tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:.38rem;margin-bottom:1.6rem;}
+.pt{display:flex;flex-direction:column;align-items:center;gap:.28rem;padding:.6rem .3rem;border-radius:12px;border:1.5px solid var(--line);cursor:pointer;transition:all .22s var(--E);background:var(--fog);}
+.pt:hover{border-color:rgba(230,81,0,.3);}
+.pt.on{border-color:var(--ac);background:rgba(230,81,0,.1);}
+.pt-ic{font-size:1.3rem;line-height:1;}
+.pt-lbl{font-size:.55rem;font-weight:700;color:rgba(255,255,255,.38);text-transform:uppercase;letter-spacing:.5px;text-align:center;line-height:1.3;}
+.pt.on .pt-lbl{color:var(--ac2);}
+
+/* Form body */
+.fp-body{padding:0 1.8rem 1.8rem;}
+.field-group{margin-bottom:1rem;}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:1rem;}
+.fl{font-size:.6rem;font-weight:700;color:rgba(255,255,255,.28);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:.38rem;}
+.fi{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:10px;padding:.68rem .95rem;font-size:.84rem;color:#fff;font-family:'DM Sans',sans-serif;outline:none;transition:border-color .2s,background .2s;}
+.fi:focus{border-color:rgba(230,81,0,.45);background:rgba(230,81,0,.05);}
+.fi::placeholder{color:rgba(255,255,255,.18);}
+.fi-sel{appearance:none;background:rgba(255,255,255,.04) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='7'%3E%3Cpath d='M1 1l4.5 4.5L10 1' stroke='rgba(255,255,255,.25)' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat right .9rem center;cursor:pointer;}
+.fi-sel option{background:#0b1a30;color:#fff;}
+
+/* Covers toggle */
+.covers-label{font-size:.6rem;font-weight:700;color:rgba(255,255,255,.28);text-transform:uppercase;letter-spacing:1px;margin-bottom:.55rem;display:block;}
+.covers-pills{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem;}
+.cp-tog{display:inline-flex;align-items:center;gap:.3rem;padding:.3rem .78rem;border-radius:100px;border:1.5px solid var(--line);font-size:.68rem;font-weight:600;color:rgba(255,255,255,.35);cursor:pointer;transition:all .2s;user-select:none;}
+.cp-tog.yes{background:rgba(74,222,128,.1);border-color:rgba(74,222,128,.35);color:#4ade80;}
+.cp-tog.no{background:rgba(248,113,113,.08);border-color:rgba(248,113,113,.28);color:#f87171;}
+
+/* Divider */
+.f-div{height:1px;background:var(--line);margin:1.2rem 0;}
+
+/* Generate button */
+.gen-btn{width:100%;padding:1.05rem;background:linear-gradient(135deg,#e65100,#ff8f00);border:none;border-radius:13px;font-size:.95rem;font-weight:700;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;transition:transform .18s,box-shadow .22s;display:flex;align-items:center;justify-content:center;gap:.55rem;margin-top:1.3rem;position:relative;overflow:hidden;}
+.gen-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);opacity:0;transition:opacity .2s;}
+.gen-btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(230,81,0,.45);}
+.gen-btn:hover::before{opacity:1;}
+.gen-btn:active{transform:translateY(0);}
+.gen-btn-ic{font-size:1.1rem;}
+
+/* ═══════════════════════════════════════════════
+   PREVIEW PANEL
+═══════════════════════════════════════════════ */
+.preview-panel{}
+.pp-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:520px;border:1.5px dashed rgba(255,255,255,.1);border-radius:22px;text-align:center;padding:3rem;}
+.pp-empty-ic{font-size:3.5rem;margin-bottom:1rem;opacity:.3;}
+.pp-empty-tt{font-family:'Playfair Display',serif;font-size:1.1rem;color:rgba(255,255,255,.22);margin-bottom:.4rem;}
+.pp-empty-ds{font-size:.74rem;color:rgba(255,255,255,.14);line-height:1.6;}
+.pp-live{display:none;animation:fadeUp .5s var(--E) both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+
+/* Action bar */
+.action-bar{display:flex;gap:.65rem;margin-bottom:1.4rem;flex-wrap:wrap;}
+.ab-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.65rem 1.2rem;border-radius:10px;font-size:.78rem;font-weight:700;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:transform .18s,box-shadow .18s;}
+.ab-btn:hover{transform:translateY(-2px);}
+.ab-print{background:#e65100;color:#fff;box-shadow:0 4px 16px rgba(230,81,0,.3);}
+.ab-wa{background:#25d366;color:#fff;box-shadow:0 4px 16px rgba(37,211,102,.25);}
+.ab-reset{background:var(--fog);color:rgba(255,255,255,.5);border:1px solid var(--line);}
+
+/* Nudge */
+.nudge{background:rgba(230,81,0,.06);border:1px solid rgba(230,81,0,.16);border-radius:14px;padding:1rem 1.2rem;display:flex;align-items:flex-start;gap:.85rem;margin-bottom:1.4rem;}
+.nudge-ic{font-size:1.5rem;flex-shrink:0;margin-top:.1rem;}
+.nudge-body{font-size:.75rem;color:rgba(255,255,255,.48);line-height:1.65;}
+.nudge-body strong{color:rgba(255,255,255,.82);}
+.nudge-wa{display:inline-flex;align-items:center;gap:.3rem;background:#25d366;color:#fff;padding:.32rem .85rem;border-radius:100px;font-size:.68rem;font-weight:700;margin-top:.5rem;transition:transform .15s;cursor:pointer;}
+.nudge-wa:hover{transform:translateY(-1px);}
+
+/* ═══════════════════════════════════════════════
+   THE CARD (printable)
+═══════════════════════════════════════════════ */
+#sosCard{background:#fff;color:#111;border-radius:18px;overflow:hidden;box-shadow:0 28px 72px rgba(0,0,0,.55);}
+
+/* Card header */
+.card-hd{padding:1.2rem 1.5rem;display:flex;align-items:center;justify-content:space-between;}
+.card-hd.t-cv{background:linear-gradient(135deg,#bf360c 0%,#e65100 50%,#ff8f00 100%);}
+.card-hd.t-health{background:linear-gradient(135deg,#0d2b6b 0%,#1565c0 50%,#1976d2 100%);}
+.card-hd.t-life{background:linear-gradient(135deg,#1a3d1f 0%,#2e7d32 50%,#43a047 100%);}
+.card-hd.t-car{background:linear-gradient(135deg,#380d5c 0%,#6a1b9a 50%,#8e24aa 100%);}
+.card-hd.t-bike{background:linear-gradient(135deg,#b71c1c 0%,#e53935 50%,#f4511e 100%);}
+.chd-left{display:flex;align-items:center;gap:.85rem;}
+.chd-icon{width:48px;height:48px;background:rgba(255,255,255,.18);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;}
+.chd-type{font-size:.54rem;font-weight:700;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:2px;margin-bottom:.18rem;}
+.chd-name{font-family:'Playfair Display',serif;font-size:1.08rem;font-weight:900;color:#fff;line-height:1.1;}
+.chd-right{text-align:right;flex-shrink:0;}
+.chd-sos{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:rgba(255,255,255,.2);line-height:1;letter-spacing:5px;}
+.chd-keep{font-size:.5rem;color:rgba(255,255,255,.48);text-transform:uppercase;letter-spacing:2px;}
+
+/* Card body */
+.card-bd{background:#fff;padding:1.2rem 1.5rem 0;}
+.det-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1rem;}
+.det{background:#f8f9fa;border-radius:8px;padding:.6rem .85rem;}
+.det.acc-cv{border-left:3px solid #e65100;}
+.det.acc-health{border-left:3px solid #1565c0;}
+.det.acc-life{border-left:3px solid #2e7d32;}
+.det.acc-car{border-left:3px solid #6a1b9a;}
+.det.acc-bike{border-left:3px solid #e53935;}
+.det-lbl{font-size:.52rem;font-weight:700;color:#bbb;text-transform:uppercase;letter-spacing:1px;margin-bottom:.2rem;}
+.det-val{font-size:.82rem;font-weight:700;color:#111;line-height:1.3;word-break:break-all;}
+.det-val.emph{font-size:.94rem;}
+.det-val.hot{color:#e65100;}
+.det-val.hot-h{color:#1565c0;}
+.det-val.hot-l{color:#2e7d32;}
+.det-val.hot-c{color:#6a1b9a;}
+.det-val.hot-b{color:#e53935;}
+
+/* Covers row */
+.covers-row{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:.95rem;padding:0 1.5rem;}
+.ctag{display:inline-flex;align-items:center;gap:.22rem;padding:.2rem .65rem;border-radius:100px;font-size:.6rem;font-weight:700;}
+.ctag.y{background:#e8f5e9;border:1px solid #a5d6a7;color:#2e7d32;}
+.ctag.n{background:#fce4ec;border:1px solid #f48fb1;color:#c2185b;}
+.ctag.w{background:#fff8e1;border:1px solid #ffe082;color:#f57f17;}
+
+/* Steps divider */
+.steps-div{display:flex;align-items:center;gap:.6rem;margin:0 1.5rem .7rem;}
+.sdiv-lbl{font-size:.54rem;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:1.5px;white-space:nowrap;}
+.sdiv-line{flex:1;height:1px;background:#e8e8e8;}
+
+/* Steps */
+.card-steps{display:flex;flex-direction:column;gap:.38rem;padding:0 1.5rem;margin-bottom:1rem;}
+.cs{display:flex;align-items:flex-start;gap:.55rem;}
+.cs-n{width:21px;height:21px;border-radius:50%;color:#fff;font-size:.6rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.04rem;}
+.cs-n.cv{background:#e65100;}
+.cs-n.health{background:#1565c0;}
+.cs-n.life{background:#2e7d32;}
+.cs-n.car{background:#6a1b9a;}
+.cs-n.bike{background:#e53935;}
+.cs-t{font-size:.72rem;color:#333;line-height:1.48;}
+.cs-t strong{color:#111;font-weight:700;}
+
+/* Members (health) */
+.members-sec{padding:0 1.5rem;margin-bottom:.85rem;}
+.members-lbl{font-size:.54rem;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.5rem;}
+.members-tags{display:flex;gap:.35rem;flex-wrap:wrap;}
+.mtag{background:#e3f2fd;border:1px solid #90caf9;border-radius:6px;padding:.2rem .65rem;font-size:.65rem;font-weight:700;color:#1565c0;}
+
+/* Card footer */
+.card-ft{background:#f5f5f5;padding:.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid #ebebeb;margin-top:.2rem;}
+.cft-brand{}
+.cft-logo{font-family:'Playfair Display',serif;font-size:.92rem;font-weight:700;color:#111;}
+.cft-logo span{color:#e65100;}
+.cft-tag{font-size:.52rem;color:#aaa;margin-top:.05rem;}
+.cft-right{text-align:right;}
+.cft-phone{font-size:.8rem;font-weight:700;color:#e65100;}
+.cft-url{font-size:.52rem;color:#bbb;}
+.card-gen{font-size:.5rem;color:#ccc;text-align:center;padding:.35rem;background:#fafafa;border-top:1px solid #f0f0f0;}
+
+/* ═══════════════════════════════════════════════
+   HOW IT WORKS
+═══════════════════════════════════════════════ */
+.how-sec{padding:5rem 5% 4rem;background:var(--i2);border-top:1px solid var(--line);}
+.how-in{max-width:1100px;margin:0 auto;}
+.sec-tag{display:inline-flex;align-items:center;gap:.38rem;font-size:.65rem;font-weight:700;color:var(--ac2);text-transform:uppercase;letter-spacing:2px;margin-bottom:.8rem;}
+.sec-tag::before{content:'';width:14px;height:2px;background:var(--ac2);}
+.sec-tit{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.5vw,2.2rem);font-weight:700;line-height:1.15;margin-bottom:2.5rem;}
+.sec-tit em{font-style:italic;color:var(--ac2);}
+.how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+.hg-item{background:var(--ink);border:1px solid var(--line);border-radius:16px;padding:1.5rem 1.2rem;text-align:center;position:relative;}
+.hg-num{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:rgba(230,81,0,.18);line-height:1;margin-bottom:.5rem;}
+.hg-ic{font-size:1.8rem;margin-bottom:.6rem;}
+.hg-tt{font-size:.85rem;font-weight:700;margin-bottom:.35rem;}
+.hg-ds{font-size:.72rem;color:rgba(255,255,255,.34);line-height:1.6;}
+.hg-arr{position:absolute;right:-22px;top:50%;transform:translateY(-50%);font-size:1rem;color:rgba(255,255,255,.1);}
+.hg-item:last-child .hg-arr{display:none;}
+
+/* ═══════════════════════════════════════════════
+   CTA STRIP
+═══════════════════════════════════════════════ */
+.cta-strip{background:linear-gradient(135deg,#1a0600,#2d1000,#06101f);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:3.5rem 5%;text-align:center;}
+.cta-strip-in{max-width:700px;margin:0 auto;}
+.cs-tt{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:700;margin-bottom:.6rem;}
+.cs-tt em{font-style:italic;color:var(--ac2);}
+.cs-ds{font-size:.82rem;color:rgba(255,255,255,.4);line-height:1.7;margin-bottom:1.6rem;}
+.cs-btns{display:flex;gap:.85rem;justify-content:center;flex-wrap:wrap;}
+.btn-main{display:inline-flex;align-items:center;gap:.42rem;background:var(--ac);color:#fff;padding:.82rem 1.8rem;border-radius:11px;font-weight:700;font-size:.88rem;transition:transform .18s,box-shadow .18s;}
+.btn-main:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(230,81,0,.4);}
+.btn-ghost{display:inline-flex;align-items:center;gap:.42rem;background:var(--fog);border:1px solid var(--line);color:#fff;padding:.82rem 1.8rem;border-radius:11px;font-weight:500;font-size:.88rem;transition:background .18s;}
+.btn-ghost:hover{background:rgba(255,255,255,.09);}
+
+/* ═══════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════ */
+.ft{background:#020b1a;border-top:1px solid var(--line);padding:2.5rem 5% 1.5rem;}
+.ft-in{max-width:1300px;margin:0 auto;}
+.ft-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--line);margin-bottom:1.2rem;}
+.ft-logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;}
+.ft-logo em{font-style:normal;color:#f5a623;}
+.ft-links{display:flex;gap:1.5rem;flex-wrap:wrap;}
+.ft-links a{font-size:.76rem;color:rgba(255,255,255,.32);transition:color .18s;}
+.ft-links a:hover{color:#f5a623;}
+.ft-copy{font-size:.68rem;color:rgba(255,255,255,.14);}
+
+/* ═══════════════════════════════════════════════
+   REVEAL ANIMATION
+═══════════════════════════════════════════════ */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .65s var(--E),transform .65s var(--E);}
+.rv.on{opacity:1;transform:none;}
+.d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.24s;}
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+@media(max-width:1024px){
+  .main{grid-template-columns:1fr;gap:2rem;}
+  .form-panel{position:static;}
+  .how-grid{grid-template-columns:1fr 1fr;}
+  .hg-arr{display:none;}
+}
+@media(max-width:768px){
+  .nl{display:none;}.burger{display:flex;}
+  body{cursor:auto;}#cur,#cr{display:none;}
+  .det-grid{grid-template-columns:1fr;}
+  .field-row{grid-template-columns:1fr;}
+  .tk-pill:not(:first-child){display:none;}
+}
+@media(max-width:520px){
+  .how-grid{grid-template-columns:1fr;}
+  .pt-tabs{grid-template-columns:repeat(5,1fr);}
+  .pt-ic{font-size:1.1rem;}
+  .pt-lbl{font-size:.48rem;}
+}
+
+/* ═══════════════════════════════════════════════
+   PRINT
+═══════════════════════════════════════════════ */
+@media print{
+  body{background:#fff!important;cursor:auto!important;}
+  #cur,#cr,#ticker,.nav,.mob,.fab,
+  .hero,.form-panel,.action-bar,.nudge,
+  .how-sec,.cta-strip,.ft,
+  .pp-empty{display:none!important;}
+  .main{display:block!important;padding:0!important;max-width:100%!important;}
+  .preview-panel{display:block!important;}
+  .pp-live{display:block!important;}
+  #sosCard{box-shadow:none!important;border-radius:0!important;max-width:100%!important;}
+  @page{margin:.5cm;}
+}
+</style>
+</head>
+<body>
+<div id="cur"></div><div id="cr"></div>
+
+<!-- TICKER -->
+<div id="ticker">
+  <span class="tk-pill"><span class="tk-dot"></span> Free Tool · No Login Required</span>
+  <span class="tk-pill">🆘 Works for Any Insurer</span>
+  <span class="tk-pill">🖨️ Print &amp; Keep in Dashboard</span>
+</div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="ni">
+    <a href="index.html" class="logo">Cover<em>Credit</em></a>
+    <ul class="nl">
+      <li><a href="health-insurance.html">Health</a></li>
+      <li><a href="life-insurance.html">Life Insurance</a></li>
+      <li><a href="commercial-vehicle-insurance.html">Commercial Vehicle</a></li>
+      <li><a href="loans.html">Loans</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="book.html" class="ncta">Free Consultation</a></li>
+    </ul>
+    <button class="burger" id="burger"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob" id="mob">
+  <a href="health-insurance.html">Health Insurance</a>
+  <a href="life-insurance.html">Life Insurance</a>
+  <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicle</a>
+  <a href="loans.html">Loans</a>
+  <a href="about.html">About</a>
+  <a href="book.html" class="mc">Book Free Consultation →</a>
+</div>
+
+<!-- FAB -->
+<div class="fab">
+  <a href="book.html" class="fbk">📅 Book Free Session</a>
+  <a href="https://wa.me/917842854466" target="_blank" class="fwa">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp
+  </a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content rv">
+    <div class="hbc"><a href="index.html">Home</a> › Free Tools › SOS Card Generator</div>
+    <div class="hkick"><span class="hkick-dot"></span> Free · No Login · Any Insurer</div>
+    <h1 class="htit">Your policy in your<br/>pocket. <em>Emergency-ready.</em></h1>
+    <p class="hdesc">Generate a printable SOS card for any insurance policy in 60 seconds. Know exactly what to do when it matters most — accident, hospitalisation, or claim.</p>
+    <div class="trust-strip rv d1">
+      <span class="ts-item"><span class="ts-ic">🆓</span> 100% Free</span>
+      <span class="ts-item"><span class="ts-ic">🏦</span> Any Insurer</span>
+      <span class="ts-item"><span class="ts-ic">🖨️</span> Print-Ready</span>
+      <span class="ts-item"><span class="ts-ic">📱</span> WhatsApp Share</span>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN TOOL -->
+<div class="main">
+
+  <!-- FORM PANEL -->
+  <div class="form-panel rv">
+    <div class="fp-card">
+      <div class="fp-top">
+        <div class="fp-title">Generate Your SOS Card</div>
+        <div class="fp-sub">Fill your policy details below. Card generates instantly.</div>
+        <div class="pt-label">Select Policy Type</div>
+        <div class="pt-tabs">
+          <div class="pt on" data-type="cv" onclick="setType('cv',this)"><span class="pt-ic">🚛</span><span class="pt-lbl">Commercial</span></div>
+          <div class="pt" data-type="health" onclick="setType('health',this)"><span class="pt-ic">🏥</span><span class="pt-lbl">Health</span></div>
+          <div class="pt" data-type="life" onclick="setType('life',this)"><span class="pt-ic">🛡️</span><span class="pt-lbl">Life/Term</span></div>
+          <div class="pt" data-type="car" onclick="setType('car',this)"><span class="pt-ic">🚗</span><span class="pt-lbl">Car</span></div>
+          <div class="pt" data-type="bike" onclick="setType('bike',this)"><span class="pt-ic">🏍️</span><span class="pt-lbl">Bike</span></div>
+        </div>
+      </div>
+      <div class="fp-body">
+
+        <!-- COMMON FIELDS -->
+        <div class="field-row">
+          <div><label class="fl">Your Full Name *</label><input class="fi" id="f-name" placeholder="e.g. Raju Kumar Reddy" oninput="liveUpdate()"/></div>
+          <div><label class="fl">Phone Number</label><input class="fi" id="f-phone" placeholder="+91 98765 43210" oninput="liveUpdate()"/></div>
+        </div>
+        <div class="field-row">
+          <div>
+            <label class="fl">Insurance Company *</label>
+            <select class="fi fi-sel" id="f-insurer" onchange="liveUpdate()">
+              <option value="">Select Insurer</option>
+              <optgroup label="General / Vehicle / Health">
+                <option>HDFC ERGO General</option>
+                <option>ICICI Lombard</option>
+                <option>Tata AIG General</option>
+                <option>New India Assurance</option>
+                <option>Bajaj Allianz General</option>
+                <option>Royal Sundaram</option>
+                <option>Liberty General</option>
+                <option>Reliance General</option>
+                <option>United India Insurance</option>
+                <option>National Insurance</option>
+                <option>Oriental Insurance</option>
+                <option>Chola MS General</option>
+              </optgroup>
+              <optgroup label="Health Specialists">
+                <option>Star Health Insurance</option>
+                <option>Niva Bupa</option>
+                <option>Care Health Insurance</option>
+                <option>Aditya Birla Health</option>
+                <option>ManipalCigna Health</option>
+              </optgroup>
+              <optgroup label="Life / Term">
+                <option>LIC of India</option>
+                <option>HDFC Life Insurance</option>
+                <option>ICICI Prudential Life</option>
+                <option>Tata AIA Life</option>
+                <option>Max Life Insurance</option>
+                <option>Bajaj Allianz Life</option>
+                <option>India First Life</option>
+                <option>Aditya Birla Life</option>
+              </optgroup>
+              <option value="other">Other (I'll type below)</option>
+            </select>
+          </div>
+          <div><label class="fl">Policy Number *</label><input class="fi" id="f-policy" placeholder="Policy / Certificate No." oninput="liveUpdate()"/></div>
+        </div>
+        <div class="field-row">
+          <div><label class="fl">Insurer Helpline *</label><input class="fi" id="f-helpline" placeholder="1800-xxx-xxxx" oninput="liveUpdate()"/></div>
+          <div><label class="fl">Policy Expiry Date</label><input class="fi" type="date" id="f-expiry" onchange="liveUpdate()"/></div>
+        </div>
+
+        <div class="f-div"></div>
+
+        <!-- CV FIELDS -->
+        <div id="fields-cv">
+          <div class="field-row">
+            <div><label class="fl">Vehicle Number *</label><input class="fi" id="f-vnum" placeholder="TS 09 AB 1234" oninput="liveUpdate()"/></div>
+            <div>
+              <label class="fl">Vehicle Type</label>
+              <select class="fi fi-sel" id="f-vtype" onchange="liveUpdate()">
+                <option value="">Select type</option>
+                <option>Lorry / Truck (LCV)</option>
+                <option>Lorry / Truck (HCV)</option>
+                <option>Bus / Maxi-cab</option>
+                <option>Auto Rickshaw</option>
+                <option>Tipper / Dumper</option>
+                <option>Tempo / Van</option>
+                <option>Tanker</option>
+                <option>Tractor</option>
+                <option>Special Vehicle</option>
+              </select>
+            </div>
+          </div>
+          <label class="covers-label">Active Covers (tap to toggle)</label>
+          <div class="covers-pills" id="cv-covers">
+            <span class="cp-tog yes" data-key="cv-od">✓ Own Damage</span>
+            <span class="cp-tog yes" data-key="cv-imt">✓ IMT-23</span>
+            <span class="cp-tog yes" data-key="cv-git">✓ Goods-in-Transit</span>
+            <span class="cp-tog yes" data-key="cv-tp">✓ Third Party</span>
+            <span class="cp-tog yes" data-key="cv-pa">✓ Driver PA</span>
+            <span class="cp-tog no" data-key="cv-eng">✗ Engine Protect</span>
+          </div>
+        </div>
+
+        <!-- HEALTH FIELDS -->
+        <div id="fields-health" style="display:none">
+          <div class="field-row">
+            <div><label class="fl">Sum Insured</label><input class="fi" id="f-si" placeholder="e.g. ₹10,00,000" oninput="liveUpdate()"/></div>
+            <div>
+              <label class="fl">Network Type</label>
+              <select class="fi fi-sel" id="f-network" onchange="liveUpdate()">
+                <option>Cashless + Reimbursement</option>
+                <option>Cashless Only</option>
+                <option>Reimbursement Only</option>
+              </select>
+            </div>
+          </div>
+          <label class="covers-label">Covered Members (tap to add up to 4)</label>
+          <div class="field-row">
+            <div><input class="fi" id="f-m1" placeholder="Member 1 (e.g. Self)" oninput="liveUpdate()"/></div>
+            <div><input class="fi" id="f-m2" placeholder="Member 2 (e.g. Spouse)" oninput="liveUpdate()"/></div>
+          </div>
+          <div class="field-row">
+            <div><input class="fi" id="f-m3" placeholder="Member 3 (optional)" oninput="liveUpdate()"/></div>
+            <div><input class="fi" id="f-m4" placeholder="Member 4 (optional)" oninput="liveUpdate()"/></div>
+          </div>
+          <label class="covers-label">Active Covers</label>
+          <div class="covers-pills" id="health-covers">
+            <span class="cp-tog yes" data-key="h-cash">✓ Cashless</span>
+            <span class="cp-tog yes" data-key="h-pre">✓ Pre-existing (after wait)</span>
+            <span class="cp-tog yes" data-key="h-day">✓ Day Care</span>
+            <span class="cp-tog no" data-key="h-mat">✗ Maternity</span>
+            <span class="cp-tog no" data-key="h-den">✗ Dental</span>
+          </div>
+        </div>
+
+        <!-- LIFE FIELDS -->
+        <div id="fields-life" style="display:none">
+          <div class="field-row">
+            <div><label class="fl">Sum Assured</label><input class="fi" id="f-sa" placeholder="e.g. ₹1,00,00,000" oninput="liveUpdate()"/></div>
+            <div><label class="fl">Nominee Name *</label><input class="fi" id="f-nom" placeholder="Nominee full name" oninput="liveUpdate()"/></div>
+          </div>
+          <div class="field-row">
+            <div><label class="fl">Nominee Phone *</label><input class="fi" id="f-nomph" placeholder="+91 98765 43210" oninput="liveUpdate()"/></div>
+            <div><label class="fl">Nominee Relation</label><input class="fi" id="f-nomrel" placeholder="e.g. Spouse / Son" oninput="liveUpdate()"/></div>
+          </div>
+          <label class="covers-label">Riders / Add-ons</label>
+          <div class="covers-pills" id="life-covers">
+            <span class="cp-tog yes" data-key="l-death">✓ Death Benefit</span>
+            <span class="cp-tog no" data-key="l-acc">✗ Accidental Death</span>
+            <span class="cp-tog no" data-key="l-ci">✗ Critical Illness</span>
+            <span class="cp-tog no" data-key="l-rop">✗ Return of Premium</span>
+          </div>
+        </div>
+
+        <!-- CAR FIELDS -->
+        <div id="fields-car" style="display:none">
+          <div class="field-row">
+            <div><label class="fl">Vehicle Number *</label><input class="fi" id="f-cnum" placeholder="AP 28 CK 5678" oninput="liveUpdate()"/></div>
+            <div><label class="fl">Car Make &amp; Model</label><input class="fi" id="f-cmodel" placeholder="e.g. Maruti Swift 2022" oninput="liveUpdate()"/></div>
+          </div>
+          <label class="covers-label">Active Covers</label>
+          <div class="covers-pills" id="car-covers">
+            <span class="cp-tog yes" data-key="c-od">✓ Own Damage</span>
+            <span class="cp-tog yes" data-key="c-tp">✓ Third Party</span>
+            <span class="cp-tog no" data-key="c-zdep">✗ Zero Depreciation</span>
+            <span class="cp-tog no" data-key="c-eng">✗ Engine Protection</span>
+            <span class="cp-tog no" data-key="c-rsa">✗ RSA 24×7</span>
+            <span class="cp-tog no" data-key="c-cons">✗ Consumables</span>
+          </div>
+        </div>
+
+        <!-- BIKE FIELDS -->
+        <div id="fields-bike" style="display:none">
+          <div class="field-row">
+            <div><label class="fl">Vehicle Number *</label><input class="fi" id="f-bnum" placeholder="TS 11 EF 9012" oninput="liveUpdate()"/></div>
+            <div><label class="fl">Bike Make &amp; Model</label><input class="fi" id="f-bmodel" placeholder="e.g. RE Classic 350" oninput="liveUpdate()"/></div>
+          </div>
+          <label class="covers-label">Active Covers</label>
+          <div class="covers-pills" id="bike-covers">
+            <span class="cp-tog yes" data-key="b-od">✓ Own Damage</span>
+            <span class="cp-tog yes" data-key="b-tp">✓ Third Party</span>
+            <span class="cp-tog yes" data-key="b-pa">✓ Owner PA</span>
+            <span class="cp-tog no" data-key="b-zdep">✗ Zero Depreciation</span>
+            <span class="cp-tog no" data-key="b-pill">✗ Pillion PA</span>
+          </div>
+        </div>
+
+        <button class="gen-btn" onclick="generateCard()">
+          <span class="gen-btn-ic">🆘</span> Generate My SOS Card
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- PREVIEW PANEL -->
+  <div class="preview-panel">
+    <div class="pp-empty" id="ppEmpty">
+      <div class="pp-empty-ic">🆘</div>
+      <div class="pp-empty-tt">Your card will appear here</div>
+      <div class="pp-empty-ds">Fill in your policy details on the left<br/>and click Generate to see your card live</div>
+    </div>
+    <div class="pp-live" id="ppLive">
+      <div class="action-bar">
+        <button class="ab-btn ab-print" onclick="window.print()">🖨️ Print Card</button>
+        <button class="ab-btn ab-wa" id="waShareBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Send to WhatsApp
+        </button>
+        <button class="ab-btn ab-reset" onclick="resetForm()">↺ New Card</button>
+      </div>
+      <div class="nudge" id="nudgeBox"></div>
+      <div id="sosCard"></div>
+    </div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how-sec">
+  <div class="how-in">
+    <div class="sec-tag rv">How It Works</div>
+    <h2 class="sec-tit rv d1">Ready in <em>60 seconds.</em><br/>Useful for a lifetime.</h2>
+    <div class="how-grid rv d1">
+      <div class="hg-item">
+        <div class="hg-num">01</div>
+        <div class="hg-ic">📋</div>
+        <div class="hg-tt">Select Policy Type</div>
+        <div class="hg-ds">Commercial vehicle, health, life, car or bike — pick what you need the card for</div>
+        <div class="hg-arr">→</div>
+      </div>
+      <div class="hg-item">
+        <div class="hg-num">02</div>
+        <div class="hg-ic">✍️</div>
+        <div class="hg-tt">Fill Your Details</div>
+        <div class="hg-ds">Name, insurer, policy number, helpline, expiry — plus covers that are active</div>
+        <div class="hg-arr">→</div>
+      </div>
+      <div class="hg-item">
+        <div class="hg-num">03</div>
+        <div class="hg-ic">🆘</div>
+        <div class="hg-tt">Card Generates Live</div>
+        <div class="hg-ds">Your personalised card with emergency steps appears instantly — no account needed</div>
+        <div class="hg-arr">→</div>
+      </div>
+      <div class="hg-item">
+        <div class="hg-num">04</div>
+        <div class="hg-ic">🖨️</div>
+        <div class="hg-tt">Print &amp; Keep It</div>
+        <div class="hg-ds">Print it, laminate it, keep it in your dashboard or wallet. Share on WhatsApp too</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<div class="cta-strip">
+  <div class="cta-strip-in rv">
+    <h2 class="cs-tt">Not sure if your covers are <em>actually right?</em></h2>
+    <p class="cs-ds">Many policyholders discover missing covers only when a claim is rejected. Our advisors check your policy for free — IMT-23, GIT, zero dep, and more.</p>
+    <div class="cs-btns">
+      <a href="book.html" class="btn-main">📅 Free Policy Review</a>
+      <a href="tel:+917842854466" class="btn-ghost">📞 +91 78428 54466</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="ft">
+  <div class="ft-in">
+    <div class="ft-top">
+      <a href="index.html" class="ft-logo">Cover<em>Credit</em></a>
+      <div class="ft-links">
+        <a href="health-insurance.html">Health</a>
+        <a href="life-insurance.html">Life Insurance</a>
+        <a href="commercial-vehicle-insurance.html">Commercial Vehicle</a>
+        <a href="loans.html">Loans</a>
+        <a href="about.html">About</a>
+        <a href="book.html">Book Consultation</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
+    <div class="ft-copy">© <span id="yr"></span> Cover Credit Insurance Advisors. All rights reserved. · Free tool — works for any insurer.</div>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════════ */
+let currentType = 'cv';
+let cardGenerated = false;
+
+const HELPLINES = {
+  'HDFC ERGO General':'1800-266-0700',
+  'ICICI Lombard':'1800-2666',
+  'Tata AIG General':'1800-266-7780',
+  'New India Assurance':'1800-209-1415',
+  'Bajaj Allianz General':'1800-209-5858',
+  'Royal Sundaram':'1800-568-9999',
+  'Liberty General':'1800-266-5844',
+  'Reliance General':'1800-3009',
+  'United India Insurance':'1800-425-333',
+  'National Insurance':'1800-345-0330',
+  'Oriental Insurance':'1800-118-485',
+  'Star Health Insurance':'1800-425-2255',
+  'Niva Bupa':'1860-500-8888',
+  'Care Health Insurance':'1800-102-4499',
+  'Aditya Birla Health':'1800-270-7000',
+  'LIC of India':'1800-227-717',
+  'HDFC Life Insurance':'1860-267-9999',
+  'ICICI Prudential Life':'1860-266-7766',
+  'Tata AIA Life':'1860-266-9966',
+  'Max Life Insurance':'1860-120-5577',
+  'Bajaj Allianz Life':'1800-209-7272',
+};
+
+const STEPS = {
+  cv:[
+    {t:'Call helpline immediately',d:'Tell them your policy number: <strong id="cs-pno-cv">—</strong>. Available 24×7.'},
+    {t:'Don\'t move the vehicle',d:'Take 20+ photos of all damage before anything is moved. Surveyor must see the scene.'},
+    {t:'File FIR at nearest police station',d:'Mandatory for claims above ₹1 lakh, third-party damage, or theft.'},
+    {t:'Note witnesses',d:'Get name &amp; phone of anyone who saw the accident. Vital for disputed claims.'},
+    {t:'Keep every bill',d:'Towing, medical, lodging — submit all. Use cashless garage network, don\'t pay directly.'},
+  ],
+  health:[
+    {t:'Go to a network hospital',d:'Call <strong id="cs-hl-h">helpline</strong> for nearest cashless hospital in your city before going.'},
+    {t:'Show this card + Aadhaar',d:'Tell the admission desk "cashless claim". Pre-authorisation takes 2–4 hours.'},
+    {t:'Don\'t pay upfront at network hospitals',d:'Insurer settles directly. Keep copies of all test reports, prescriptions, bills.'},
+    {t:'Emergency at non-network hospital?',d:'Pay and collect all original bills + discharge summary. Apply reimbursement within 15 days.'},
+  ],
+  life:[
+    {t:'Nominee must call helpline first',d:'Reference number obtained from this call is required for all further steps.'},
+    {t:'Documents needed',d:'Death certificate, original policy bond, Aadhaar + PAN of nominee, FIR copy if accidental.'},
+    {t:'File claim within 90 days',d:'Don\'t delay. A claim officer will be assigned within 72 hours of registration.'},
+    {t:'Call Cover Credit for free help',d:'We assist nominee families through the full claim process at absolutely no charge.'},
+  ],
+  car:[
+    {t:'Call helpline — register the claim',d:'Policy number: <strong id="cs-pno-c">—</strong>. Surveyor dispatched within hours.'},
+    {t:'Don\'t repair before surveyor visit',d:'Take 20+ photos of damage. Don\'t admit fault to third parties at the scene.'},
+    {t:'Use cashless network garages only',d:'Call helpline for nearest approved garage. Repairs outside network may void claim.'},
+    {t:'Third party involved?',d:'File FIR, exchange names, phone numbers &amp; insurer details. Never settle cash on the spot.'},
+  ],
+  bike:[
+    {t:'Move to safety, then call helpline',d:'Policy: <strong id="cs-pno-b">—</strong>. Register claim immediately even if minor.'},
+    {t:'Photograph everything first',d:'Bike damage, road, other vehicles, skid marks. Do not move bike before photos.'},
+    {t:'Injuries?',d:'Hospital first — your Owner PA cover applies. Keep all medical bills &amp; discharge summary.'},
+    {t:'FIR needed if:',d:'Third party involved, bike stolen, or damage above ₹25,000. File within 24 hours.'},
+  ],
+};
+
+const NUDGES = {
+  cv:'<strong>Is your lorry missing IMT-23 or Goods-in-Transit?</strong> Most lorry owners discover the gap only after a claim rejection. We\'ll check your policy for free.',
+  health:'<strong>Not sure if your health policy covers your city\'s hospitals cashlessly?</strong> We\'ll verify your network and sum insured — free of charge.',
+  life:'<strong>Is your nominee aware of the claim process?</strong> Many life insurance claims are delayed because nominees don\'t know what to do. We guide families for free.',
+  car:'<strong>Missing Zero Depreciation or Engine Protection?</strong> These are the most commonly missed covers in car insurance. Free check takes 5 minutes.',
+  bike:'<strong>Pillion rider cover missing?</strong> If you carry a pillion and they\'re injured, standard bike insurance won\'t cover them. We can add it at renewal.',
+};
+
+const TYPE_META = {
+  cv:{icon:'🚛',label:'Commercial Vehicle Insurance',keep:'Keep in dashboard',color:'t-cv',acc:'acc-cv',num:'cs-n cv',hot:'hot'},
+  health:{icon:'🏥',label:'Health Insurance',keep:'Keep in wallet',color:'t-health',acc:'acc-health',num:'cs-n health',hot:'hot-h'},
+  life:{icon:'🛡️',label:'Life / Term Insurance',keep:'Keep with documents',color:'t-life',acc:'acc-life',num:'cs-n life',hot:'hot-l'},
+  car:{icon:'🚗',label:'Car Insurance',keep:'Keep in dashboard',color:'t-car',acc:'acc-car',num:'cs-n car',hot:'hot-c'},
+  bike:{icon:'🏍️',label:'Bike Insurance',keep:'Keep in vehicle',color:'t-bike',acc:'acc-bike',num:'cs-n bike',hot:'hot-b'},
+};
+
+/* ═══════════════════════════════════════════════
+   TYPE SWITCH
+═══════════════════════════════════════════════ */
+function setType(type, el) {
+  currentType = type;
+  document.querySelectorAll('.pt').forEach(p => p.classList.remove('on'));
+  el.classList.add('on');
+  ['cv','health','life','car','bike'].forEach(t => {
+    document.getElementById('fields-' + t).style.display = t === type ? 'block' : 'none';
+  });
+  if (cardGenerated) liveUpdate();
+}
+
+/* ═══════════════════════════════════════════════
+   AUTO-FILL HELPLINE
+═══════════════════════════════════════════════ */
+document.getElementById('f-insurer').addEventListener('change', function() {
+  const hl = HELPLINES[this.value];
+  if (hl) document.getElementById('f-helpline').value = hl;
+  liveUpdate();
+});
+
+/* ═══════════════════════════════════════════════
+   COVER TOGGLE
+═══════════════════════════════════════════════ */
+document.querySelectorAll('.cp-tog').forEach(pill => {
+  pill.addEventListener('click', function() {
+    if (this.classList.contains('yes')) {
+      this.classList.remove('yes');
+      this.classList.add('no');
+      this.textContent = '✗ ' + this.textContent.replace(/^[✓✗]\s*/,'');
+    } else {
+      this.classList.remove('no');
+      this.classList.add('yes');
+      this.textContent = '✓ ' + this.textContent.replace(/^[✓✗]\s*/,'');
+    }
+    if (cardGenerated) liveUpdate();
+  });
+});
+
+/* ═══════════════════════════════════════════════
+   LIVE UPDATE
+═══════════════════════════════════════════════ */
+function liveUpdate() {
+  if (cardGenerated) generateCard(true);
+}
+
+/* ═══════════════════════════════════════════════
+   GET COVERS
+═══════════════════════════════════════════════ */
+function getCovers(type) {
+  const pills = document.querySelectorAll(`#${type}-covers .cp-tog`);
+  return Array.from(pills).map(p => ({
+    label: p.textContent.replace(/^[✓✗]\s*/,''),
+    active: p.classList.contains('yes')
+  }));
+}
+
+/* ═══════════════════════════════════════════════
+   FORMAT DATE
+═══════════════════════════════════════════════ */
+function fmtDate(val) {
+  if (!val) return '—';
+  const d = new Date(val);
+  return d.toLocaleDateString('en-IN', {day:'numeric', month:'long', year:'numeric'});
+}
+
+/* ═══════════════════════════════════════════════
+   BUILD CARD HTML
+═══════════════════════════════════════════════ */
+function buildCard() {
+  const type = currentType;
+  const meta = TYPE_META[type];
+  const name = document.getElementById('f-name').value.trim() || 'Your Name';
+  const insurer = document.getElementById('f-insurer').value || '—';
+  const policyNo = document.getElementById('f-policy').value.trim() || '—';
+  const helpline = document.getElementById('f-helpline').value.trim() || '—';
+  const expiry = fmtDate(document.getElementById('f-expiry').value);
+  const covers = getCovers(type === 'cv' ? 'cv' : type === 'health' ? 'health' : type === 'life' ? 'life' : type === 'car' ? 'car' : 'bike');
+  const today = new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
+
+  let detailsHtml = '';
+  let extraHtml = '';
+
+  if (type === 'cv') {
+    const vnum = document.getElementById('f-vnum').value.trim() || '—';
+    const vtype = document.getElementById('f-vtype').value || '—';
+    detailsHtml = `
+      <div class="det ${meta.acc}"><div class="det-lbl">Vehicle Number</div><div class="det-val emph">${vnum}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Vehicle Type</div><div class="det-val">${vtype}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Insurer</div><div class="det-val">${insurer}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Policy Number</div><div class="det-val">${policyNo}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Claims Helpline</div><div class="det-val emph ${meta.hot}">${helpline}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Policy Expiry</div><div class="det-val">${expiry}</div></div>`;
+  } else if (type === 'health') {
+    const si = document.getElementById('f-si').value.trim() || '—';
+    const net = document.getElementById('f-network').value || '—';
+    const members = [document.getElementById('f-m1').value, document.getElementById('f-m2').value, document.getElementById('f-m3').value, document.getElementById('f-m4').value].filter(Boolean);
+    detailsHtml = `
+      <div class="det ${meta.acc}"><div class="det-lbl">Primary Member</div><div class="det-val emph">${name}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Insurer</div><div class="det-val">${insurer}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Policy Number</div><div class="det-val">${policyNo}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Sum Insured</div><div class="det-val emph ${meta.hot}">${si}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Claims Helpline</div><div class="det-val emph ${meta.hot}">${helpline}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Network Type</div><div class="det-val">${net}</div></div>`;
+    if (members.length) {
+      extraHtml = `<div class="members-sec">
+        <div class="members-lbl">Covered Members</div>
+        <div class="members-tags">${members.map(m=>`<span class="mtag">👤 ${m}</span>`).join('')}</div>
+      </div>`;
+    }
+  } else if (type === 'life') {
+    const sa = document.getElementById('f-sa').value.trim() || '—';
+    const nom = document.getElementById('f-nom').value.trim() || '—';
+    const nomph = document.getElementById('f-nomph').value.trim() || '—';
+    const nomrel = document.getElementById('f-nomrel').value.trim() || '—';
+    detailsHtml = `
+      <div class="det ${meta.acc}"><div class="det-lbl">Policy Holder</div><div class="det-val emph">${name}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Insurer</div><div class="det-val">${insurer}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Policy Number</div><div class="det-val">${policyNo}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Sum Assured</div><div class="det-val emph ${meta.hot}">${sa}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Nominee</div><div class="det-val">${nom} (${nomrel})</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Nominee Phone</div><div class="det-val ${meta.hot}">${nomph}</div></div>`;
+  } else if (type === 'car') {
+    const cnum = document.getElementById('f-cnum').value.trim() || '—';
+    const cmodel = document.getElementById('f-cmodel').value.trim() || '—';
+    detailsHtml = `
+      <div class="det ${meta.acc}"><div class="det-lbl">Vehicle Number</div><div class="det-val emph">${cnum}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Vehicle</div><div class="det-val">${cmodel}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Insurer</div><div class="det-val">${insurer}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Policy Number</div><div class="det-val">${policyNo}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Claims Helpline</div><div class="det-val emph ${meta.hot}">${helpline}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Policy Expiry</div><div class="det-val">${expiry}</div></div>`;
+  } else {
+    const bnum = document.getElementById('f-bnum').value.trim() || '—';
+    const bmodel = document.getElementById('f-bmodel').value.trim() || '—';
+    detailsHtml = `
+      <div class="det ${meta.acc}"><div class="det-lbl">Vehicle Number</div><div class="det-val emph">${bnum}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Bike</div><div class="det-val">${bmodel}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Insurer</div><div class="det-val">${insurer}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Policy Number</div><div class="det-val">${policyNo}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Claims Helpline</div><div class="det-val emph ${meta.hot}">${helpline}</div></div>
+      <div class="det ${meta.acc}"><div class="det-lbl">Policy Expiry</div><div class="det-val">${expiry}</div></div>`;
+  }
+
+  const coversHtml = covers.map(c => `<span class="ctag ${c.active ? 'y' : 'n'}">${c.active ? '✓' : '✗'} ${c.label}</span>`).join('');
+  const stepsHtml = STEPS[type].map((s,i) => `
+    <div class="cs">
+      <div class="${meta.num}">${i+1}</div>
+      <div class="cs-t"><strong>${s.t}</strong> — ${s.d}</div>
+    </div>`).join('');
+
+  return `
+    <div class="card-hd ${meta.color}">
+      <div class="chd-left">
+        <div class="chd-icon">${meta.icon}</div>
+        <div>
+          <div class="chd-type">${meta.label}</div>
+          <div class="chd-name">${type === 'life' ? 'Policy Info Card' : 'Emergency SOS Card'}<br/>${name}</div>
+        </div>
+      </div>
+      <div class="chd-right">
+        <div class="chd-sos">SOS</div>
+        <div class="chd-keep">${meta.keep}</div>
+      </div>
+    </div>
+    <div class="card-bd">
+      <div class="det-grid">${detailsHtml}</div>
+    </div>
+    ${extraHtml}
+    <div class="covers-row">${coversHtml}</div>
+    <div class="steps-div"><div class="sdiv-lbl">${type === 'life' ? 'Nominee — Do This' : 'Emergency — Do This Immediately'}</div><div class="sdiv-line"></div></div>
+    <div class="card-steps">${stepsHtml}</div>
+    <div class="card-ft">
+      <div class="cft-brand">
+        <div class="cft-logo">Cover<span>Credit</span></div>
+        <div class="cft-tag">Free advisory · Your policy arranged by Cover Credit</div>
+      </div>
+      <div class="cft-right">
+        <div class="cft-phone">+91 78428 54466</div>
+        <div class="cft-url">covercredit.in</div>
+      </div>
+    </div>
+    <div class="card-gen">Generated free at covercredit.in/sos-card on ${today} · Works for any insurer · Mon–Sat 9AM–7PM</div>`;
+}
+
+/* ═══════════════════════════════════════════════
+   GENERATE
+═══════════════════════════════════════════════ */
+function generateCard(silent) {
+  const name = document.getElementById('f-name').value.trim();
+  if (!silent && !name) {
+    document.getElementById('f-name').focus();
+    document.getElementById('f-name').style.borderColor = 'rgba(230,81,0,.6)';
+    setTimeout(() => document.getElementById('f-name').style.borderColor = '', 2000);
+    return;
+  }
+
+  document.getElementById('sosCard').innerHTML = buildCard();
+  document.getElementById('ppEmpty').style.display = 'none';
+  document.getElementById('ppLive').style.display = 'block';
+  document.getElementById('ppLive').style.animation = 'none';
+  setTimeout(() => document.getElementById('ppLive').style.animation = '', 10);
+  cardGenerated = true;
+
+  // Nudge
+  const nudge = document.getElementById('nudgeBox');
+  const waMsg = `Hi Cover Credit, I generated a SOS card for my ${currentType} policy. Can you review my covers for free? — ${name}`;
+  nudge.innerHTML = `<div class="nudge-ic">💡</div><div class="nudge-body">${NUDGES[currentType]}<br/><a class="nudge-wa" href="https://wa.me/917842854466?text=${encodeURIComponent(waMsg)}" target="_blank">✅ Check My Covers Free →</a></div>`;
+
+  // WA share
+  const waShareMsg = `I just generated my Insurance SOS Card on Cover Credit. Try it free at covercredit.in/sos-card`;
+  document.getElementById('waShareBtn').onclick = () => window.open(`https://wa.me/?text=${encodeURIComponent(waShareMsg)}`, '_blank');
+
+  if (!silent) setTimeout(() => document.getElementById('ppLive').scrollIntoView({behavior:'smooth', block:'start'}), 100);
+}
+
+function resetForm() {
+  cardGenerated = false;
+  document.getElementById('ppEmpty').style.display = 'flex';
+  document.getElementById('ppLive').style.display = 'none';
+  document.getElementById('f-name').value = '';
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}
+
+/* ═══════════════════════════════════════════════
+   CURSOR + NAV + SCROLL REVEAL
+═══════════════════════════════════════════════ */
+const cur = document.getElementById('cur'), cr = document.getElementById('cr');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.style.left=mx+'px'; cur.style.top=my+'px'; });
+(function tick(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(tick);})();
+document.querySelectorAll('a,button,.pt,.cp-tog').forEach(el => {
+  el.addEventListener('mouseenter', () => document.body.classList.add('hov'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('hov'));
+});
+
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('sc', scrollY > 40), {passive:true});
+
+const burger = document.getElementById('burger'), mob = document.getElementById('mob');
+burger.addEventListener('click', () => { burger.classList.toggle('op'); mob.classList.toggle('op'); document.body.style.overflow = mob.classList.contains('op') ? 'hidden' : ''; });
+
+const ro = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);} }), {threshold:.08});
+document.querySelectorAll('.rv').forEach(el => ro.observe(el));
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+
+/* ═══════════════════════════════════════════════
+   ANALYTICS TRACKING
+═══════════════════════════════════════════════ */
+(function(){
+  var PAGE_NAME='sos-card';
+  var BACKEND=(window.location.hostname==='localhost'||window.location.hostname==='127.0.0.1')?'http://localhost:5000/api':'https://api.covercredit.in/api';
+  var ua=navigator.userAgent.toLowerCase();
+  if(/bot|crawler|spider|headless/.test(ua))return;
+  var params=new URLSearchParams(window.location.search);
+  var utmSrc=params.get('utm_source')||sessionStorage.getItem('cc_utm_source')||'';
+  var utmMed=params.get('utm_medium')||sessionStorage.getItem('cc_utm_medium')||'';
+  var utmCamp=params.get('utm_campaign')||sessionStorage.getItem('cc_utm_campaign')||'';
+  function detectRef(ref){if(!ref)return'direct';var r=ref.toLowerCase();if(/google\.|bing\./.test(r))return'google';if(/whatsapp|wa\.me/.test(r))return'whatsapp';if(/facebook\.|fb\.com/.test(r))return'facebook';return'other';}
+  var source=utmSrc?utmSrc.toLowerCase().trim():detectRef(document.referrer);
+  var key='cc_tracked_'+PAGE_NAME+'_'+source;
+  if(sessionStorage.getItem(key))return;
+  sessionStorage.setItem(key,'1');
+  var isMobile=/iphone|ipod|android.*mobile/.test(ua);
+  try{fetch(BACKEND+'/track',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({page:PAGE_NAME,path:window.location.pathname,source:source,device:isMobile?'mobile':'desktop',utmMedium:utmMed,utmCampaign:utmCamp,referrer:document.referrer||''}),keepalive:true}).catch(function(){});}catch(e){}
+})();
+</script>
+</body>
+</html>
