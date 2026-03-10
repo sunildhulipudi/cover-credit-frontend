@@ -246,37 +246,33 @@
     .why__step-title{font-weight:600;font-size:.95rem;margin-bottom:.3rem}
     .why__step-desc{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.5}
 
-    /* ═══ NETWORK SECTION — FIXED ═══ */
+    /* NETWORK SECTION */
     .network-sec{padding:5rem 5%;background:var(--navy-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;overflow:hidden}
     .network-sec::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 50% 0%,rgba(230,168,23,.04),transparent);pointer-events:none}
     .network-in{max-width:1280px;margin:0 auto}
-    /* Header */
     .nw-head{text-align:center;margin-bottom:2.5rem}
     .nw-tag{display:inline-flex;align-items:center;gap:.4rem;font-size:.68rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:.9rem}
     .nw-tag::before,.nw-tag::after{content:'';width:14px;height:2px;background:var(--gold)}
     .nw-title{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;line-height:1.1;margin-bottom:.6rem}
     .nw-title em{font-style:normal;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     .nw-sub{font-size:.88rem;color:rgba(255,255,255,.38);line-height:1.78;max-width:540px;margin:0 auto}
-    /* Tabs */
     .nw-tabs{display:flex;gap:.5rem;justify-content:center;margin-bottom:2rem;flex-wrap:wrap}
     .nwt{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.08);border-radius:100px;padding:.5rem 1.3rem;font-family:var(--font-body);font-size:.8rem;font-weight:600;color:rgba(255,255,255,.4);cursor:pointer;transition:all .22s;position:relative;overflow:hidden}
     .nwt:hover{border-color:rgba(230,168,23,.3);color:rgba(255,255,255,.7)}
     .nwt.act{background:rgba(230,168,23,.1);border-color:var(--gold);color:var(--gold)}
     .nwt.act::after{content:'';position:absolute;bottom:0;left:0;height:2px;background:var(--gold);animation:tabProg 5s linear}
     @keyframes tabProg{from{width:0%}to{width:100%}}
-    /* Panels */
     .nw-panels{position:relative}
     .nw-panel{display:none;animation:panelFade .4s var(--ease)}
     .nw-panel.act{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem}
     @keyframes panelFade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-    /* Logo cards — ALWAYS show name, grayscale default, full color on hover */
-    .logo-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:1rem .8rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;height:96px;transition:all .25s;filter:grayscale(80%) brightness(1.4) opacity(.75);position:relative;overflow:hidden;cursor:default}
+    /* ✅ FIXED: logo-card now sized for favicons */
+    .logo-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:1rem .8rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.6rem;height:96px;transition:all .25s;filter:grayscale(40%) brightness(1.2) opacity(.8);position:relative;overflow:hidden;cursor:default}
     .logo-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent);opacity:0;transition:opacity .3s}
     .logo-card:hover{filter:grayscale(0%) brightness(1) opacity(1);background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15);transform:translateY(-3px)}
     .logo-card:hover::before{opacity:1}
-    .logo-card img{max-width:90px;max-height:34px;object-fit:contain}
-    .logo-card-name{font-size:.58rem;font-weight:700;color:rgba(255,255,255,.4);text-align:center;line-height:1.3;letter-spacing:.3px}
-    /* Count bar */
+    .logo-card img{width:40px;height:40px;max-width:40px;max-height:40px;object-fit:contain;border-radius:8px;flex-shrink:0}
+    .logo-card-name{font-size:.58rem;font-weight:700;color:rgba(255,255,255,.5);text-align:center;line-height:1.3;letter-spacing:.3px}
     .nw-count{display:flex;align-items:center;justify-content:center;gap:2.5rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--border);flex-wrap:wrap}
     .nw-count-item{text-align:center}
     .nw-num{font-size:2rem;font-weight:700;color:var(--gold);display:block;line-height:1;letter-spacing:-1px}
@@ -630,7 +626,7 @@
   </div>
 </section>
 
-<!-- ═══ NETWORK SECTION — fully fixed, inside body, before footer ═══ -->
+<!-- ═══ NETWORK SECTION — FIXED WITH GOOGLE FAVICONS ═══ -->
 <section class="network-sec" id="our-network">
   <div class="network-in">
     <div class="nw-head reveal">
@@ -647,50 +643,50 @@
     <div class="nw-panels reveal reveal-delay-2">
       <!-- HEALTH -->
       <div class="nw-panel act" id="nwp-health">
-        <div class="logo-card"><img src="https://logo.clearbit.com/starhealth.in"         alt="Star Health"    onerror="this.style.display='none'"/><span class="logo-card-name">Star Health</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/nivabupa.com"           alt="Niva Bupa"      onerror="this.style.display='none'"/><span class="logo-card-name">Niva Bupa</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/hdfcergo.com"           alt="HDFC ERGO"      onerror="this.style.display='none'"/><span class="logo-card-name">HDFC ERGO</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/icicilombard.com"       alt="ICICI Lombard"  onerror="this.style.display='none'"/><span class="logo-card-name">ICICI Lombard</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/careinsurance.com"      alt="Care Health"    onerror="this.style.display='none'"/><span class="logo-card-name">Care Health</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/tataaig.com"            alt="Tata AIG"       onerror="this.style.display='none'"/><span class="logo-card-name">Tata AIG</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/adityabirlacapital.com" alt="Aditya Birla"   onerror="this.style.display='none'"/><span class="logo-card-name">Aditya Birla</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/cholams.com"            alt="Chola MS"       onerror="this.style.display='none'"/><span class="logo-card-name">Chola MS</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/libertyinsurance.in"    alt="Liberty"        onerror="this.style.display='none'"/><span class="logo-card-name">Liberty General</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=starhealth.in&sz=128" alt="Star Health" onerror="this.style.display='none'"/><span class="logo-card-name">Star Health</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=nivabupa.com&sz=128" alt="Niva Bupa" onerror="this.style.display='none'"/><span class="logo-card-name">Niva Bupa</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=hdfcergo.com&sz=128" alt="HDFC ERGO" onerror="this.style.display='none'"/><span class="logo-card-name">HDFC ERGO</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=icicilombard.com&sz=128" alt="ICICI Lombard" onerror="this.style.display='none'"/><span class="logo-card-name">ICICI Lombard</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=careinsurance.com&sz=128" alt="Care Health" onerror="this.style.display='none'"/><span class="logo-card-name">Care Health</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=tataaig.com&sz=128" alt="Tata AIG" onerror="this.style.display='none'"/><span class="logo-card-name">Tata AIG</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=adityabirlacapital.com&sz=128" alt="Aditya Birla" onerror="this.style.display='none'"/><span class="logo-card-name">Aditya Birla</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=cholams.com&sz=128" alt="Chola MS" onerror="this.style.display='none'"/><span class="logo-card-name">Chola MS</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=libertyinsurance.in&sz=128" alt="Liberty General" onerror="this.style.display='none'"/><span class="logo-card-name">Liberty General</span></div>
       </div>
       <!-- LIFE -->
       <div class="nw-panel" id="nwp-life">
-        <div class="logo-card"><img src="https://logo.clearbit.com/licindia.in"            alt="LIC"            onerror="this.style.display='none'"/><span class="logo-card-name">LIC of India</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/hdfclife.com"           alt="HDFC Life"      onerror="this.style.display='none'"/><span class="logo-card-name">HDFC Life</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/iciciprulife.com"       alt="ICICI Pru"      onerror="this.style.display='none'"/><span class="logo-card-name">ICICI Prudential</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/tataaia.com"            alt="Tata AIA"       onerror="this.style.display='none'"/><span class="logo-card-name">Tata AIA</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/maxlifeinsurance.com"   alt="Max Life"       onerror="this.style.display='none'"/><span class="logo-card-name">Max Life</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/bajajallianzlife.com"   alt="Bajaj Allianz"  onerror="this.style.display='none'"/><span class="logo-card-name">Bajaj Allianz Life</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/indiafirstlife.com"     alt="India First"    onerror="this.style.display='none'"/><span class="logo-card-name">India First Life</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/adityabirlacapital.com" alt="Aditya Birla"   onerror="this.style.display='none'"/><span class="logo-card-name">Aditya Birla Life</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/godigit.com"            alt="Digit"          onerror="this.style.display='none'"/><span class="logo-card-name">Digit Life</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=licindia.in&sz=128" alt="LIC of India" onerror="this.style.display='none'"/><span class="logo-card-name">LIC of India</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=hdfclife.com&sz=128" alt="HDFC Life" onerror="this.style.display='none'"/><span class="logo-card-name">HDFC Life</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=iciciprulife.com&sz=128" alt="ICICI Prudential" onerror="this.style.display='none'"/><span class="logo-card-name">ICICI Prudential</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=tataaia.com&sz=128" alt="Tata AIA" onerror="this.style.display='none'"/><span class="logo-card-name">Tata AIA</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=maxlifeinsurance.com&sz=128" alt="Max Life" onerror="this.style.display='none'"/><span class="logo-card-name">Max Life</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=bajajallianzlife.com&sz=128" alt="Bajaj Allianz Life" onerror="this.style.display='none'"/><span class="logo-card-name">Bajaj Allianz Life</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=indiafirstlife.com&sz=128" alt="India First Life" onerror="this.style.display='none'"/><span class="logo-card-name">India First Life</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=adityabirlacapital.com&sz=128" alt="Aditya Birla Life" onerror="this.style.display='none'"/><span class="logo-card-name">Aditya Birla Life</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=godigit.com&sz=128" alt="Digit Life" onerror="this.style.display='none'"/><span class="logo-card-name">Digit Life</span></div>
       </div>
       <!-- MOTOR -->
       <div class="nw-panel" id="nwp-motor">
-        <div class="logo-card"><img src="https://logo.clearbit.com/hdfcergo.com"           alt="HDFC ERGO"      onerror="this.style.display='none'"/><span class="logo-card-name">HDFC ERGO</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/icicilombard.com"       alt="ICICI Lombard"  onerror="this.style.display='none'"/><span class="logo-card-name">ICICI Lombard</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/tataaig.com"            alt="Tata AIG"       onerror="this.style.display='none'"/><span class="logo-card-name">Tata AIG</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/royalsundaram.in"       alt="Royal Sundaram" onerror="this.style.display='none'"/><span class="logo-card-name">Royal Sundaram</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/reliancegeneral.co.in"  alt="Reliance"       onerror="this.style.display='none'"/><span class="logo-card-name">Reliance General</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/bajajallianz.com"       alt="Bajaj Allianz"  onerror="this.style.display='none'"/><span class="logo-card-name">Bajaj Allianz</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/libertyinsurance.in"    alt="Liberty"        onerror="this.style.display='none'"/><span class="logo-card-name">Liberty General</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=hdfcergo.com&sz=128" alt="HDFC ERGO" onerror="this.style.display='none'"/><span class="logo-card-name">HDFC ERGO</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=icicilombard.com&sz=128" alt="ICICI Lombard" onerror="this.style.display='none'"/><span class="logo-card-name">ICICI Lombard</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=tataaig.com&sz=128" alt="Tata AIG" onerror="this.style.display='none'"/><span class="logo-card-name">Tata AIG</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=royalsundaram.in&sz=128" alt="Royal Sundaram" onerror="this.style.display='none'"/><span class="logo-card-name">Royal Sundaram</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=reliancegeneral.co.in&sz=128" alt="Reliance General" onerror="this.style.display='none'"/><span class="logo-card-name">Reliance General</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=bajajallianz.com&sz=128" alt="Bajaj Allianz" onerror="this.style.display='none'"/><span class="logo-card-name">Bajaj Allianz</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=libertyinsurance.in&sz=128" alt="Liberty General" onerror="this.style.display='none'"/><span class="logo-card-name">Liberty General</span></div>
       </div>
       <!-- LOANS -->
       <div class="nw-panel" id="nwp-loans">
-        <div class="logo-card"><img src="https://logo.clearbit.com/icicibank.com"          alt="ICICI Bank"     onerror="this.style.display='none'"/><span class="logo-card-name">ICICI Bank</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/hdfcbank.com"           alt="HDFC Bank"      onerror="this.style.display='none'"/><span class="logo-card-name">HDFC Bank</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/axisbank.com"           alt="Axis Bank"      onerror="this.style.display='none'"/><span class="logo-card-name">Axis Bank</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/kotak.com"              alt="Kotak"          onerror="this.style.display='none'"/><span class="logo-card-name">Kotak Mahindra</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/idfcfirstbank.com"      alt="IDFC First"     onerror="this.style.display='none'"/><span class="logo-card-name">IDFC First Bank</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/indusind.com"           alt="IndusInd"       onerror="this.style.display='none'"/><span class="logo-card-name">IndusInd Bank</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/pnbindia.in"            alt="PNB"            onerror="this.style.display='none'"/><span class="logo-card-name">Punjab Natl Bank</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/tatacapital.com"        alt="TATA Capital"   onerror="this.style.display='none'"/><span class="logo-card-name">TATA Capital</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/piramalfinance.com"     alt="Piramal"        onerror="this.style.display='none'"/><span class="logo-card-name">Piramal Finance</span></div>
-        <div class="logo-card"><img src="https://logo.clearbit.com/poonawalafinance.com"   alt="Poonawala"      onerror="this.style.display='none'"/><span class="logo-card-name">Poonawala Finance</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=icicibank.com&sz=128" alt="ICICI Bank" onerror="this.style.display='none'"/><span class="logo-card-name">ICICI Bank</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=hdfcbank.com&sz=128" alt="HDFC Bank" onerror="this.style.display='none'"/><span class="logo-card-name">HDFC Bank</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=axisbank.com&sz=128" alt="Axis Bank" onerror="this.style.display='none'"/><span class="logo-card-name">Axis Bank</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=kotak.com&sz=128" alt="Kotak Mahindra" onerror="this.style.display='none'"/><span class="logo-card-name">Kotak Mahindra</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=idfcfirstbank.com&sz=128" alt="IDFC First Bank" onerror="this.style.display='none'"/><span class="logo-card-name">IDFC First Bank</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=indusind.com&sz=128" alt="IndusInd Bank" onerror="this.style.display='none'"/><span class="logo-card-name">IndusInd Bank</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=pnbindia.in&sz=128" alt="Punjab Natl Bank" onerror="this.style.display='none'"/><span class="logo-card-name">Punjab Natl Bank</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=tatacapital.com&sz=128" alt="TATA Capital" onerror="this.style.display='none'"/><span class="logo-card-name">TATA Capital</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=piramalfinance.com&sz=128" alt="Piramal Finance" onerror="this.style.display='none'"/><span class="logo-card-name">Piramal Finance</span></div>
+        <div class="logo-card"><img src="https://www.google.com/s2/favicons?domain=poonawalafinance.com&sz=128" alt="Poonawala Finance" onerror="this.style.display='none'"/><span class="logo-card-name">Poonawala Finance</span></div>
       </div>
     </div>
     <div class="nw-count reveal reveal-delay-3">
