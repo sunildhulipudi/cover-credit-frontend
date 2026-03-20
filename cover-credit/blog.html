@@ -448,9 +448,9 @@
 
     /* Force all child elements to use readable colours */
     .post-content *{
-      color:inherit;
-      max-width:100%;
-    }
+  color:inherit !important;
+  max-width:100%;
+}
 
     /* Headings */
     .post-content h1{
@@ -1253,14 +1253,20 @@ function populatePost(p) {
 }
 
 // ── SANITISE CONTENT ─────────────────────────────────────
-// Keeps all HTML structure but strips scripts and
-// overrides inline colour styles so they render correctly
+
 function sanitiseContent(html) {
-  // Remove script tags
   html = html.replace(/<script[\s\S]*?<\/script>/gi, '');
-  // Remove onclick and other JS event attributes
   html = html.replace(/\s+on\w+="[^"]*"/gi, '');
   html = html.replace(/\s+on\w+='[^']*'/gi, '');
+  // Strip inline color and background styles injected by editors
+  html = html.replace(/\sstyle="([^"]*)"/gi, (match, styles) => {
+    const cleaned = styles
+      .replace(/color\s*:[^;]+;?/gi, '')
+      .replace(/background(-color)?\s*:[^;]+;?/gi, '')
+      .replace(/font-size\s*:[^;]+;?/gi, '')
+      .trim();
+    return cleaned ? ` style="${cleaned}"` : '';
+  });
   return html;
 }
 
