@@ -792,7 +792,7 @@
     <div class="footer__col">
       <h4>Contact</h4>
       <div class="footer__contact-item">📞 <a href="tel:+917842854466">+91 78428 54466</a></div>
-      <div class="footer__contact-item">✉️ <a href="mailto:Covercredit.official@gmail.com">Covercredit.official@gmail.com</a></div>
+      <div class="footer__contact-item">✉️ <a href="/cdn-cgi/l/email-protection#82c1edf4e7f0e1f0e7e6ebf6acede4e4ebe1ebe3eec2e5efe3ebeeace1edef"><span class="__cf_email__" data-cfemail="43002c352631203126272a376d2c25252a202a222f03242e222a2f6d202c2e">[email&#160;protected]</span></a></div>
       <div class="footer__contact-item">🕐 Mon–Sat: 9 AM – 7 PM</div>
     </div>
   </div>
@@ -805,7 +805,7 @@
   </div>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // ── CONFIG ──────────────────────────────────────────────
 const API_BASE = window.location.hostname==='localhost'||window.location.hostname==='127.0.0.1'
   ? 'http://localhost:5000/api'
@@ -1305,7 +1305,8 @@ function copyLink() {
 
 function shareWhatsApp() {
   if (!activePost) return;
-  const url = `${SITE}/blog?post=${activePost.slug}`;
+  // Use /og/:slug route so WhatsApp/Facebook crawlers get correct cover image & title
+  const url = `https://api.covercredit.in/og/${activePost.slug}`;
   const msg = encodeURIComponent(`I read this on CoverCredit and thought you'd find it useful:\n\n"${activePost.title}"\n\n${url}`);
   window.open(`${WA_BASE}?text=${msg}`, '_blank');
 }
@@ -1460,7 +1461,18 @@ function debounce(fn,ms){let t;return(...args)=>{clearTimeout(t);t=setTimeout(()
   var utmSrc=params.get('utm_source')||'';var utmMed=params.get('utm_medium')||'';var utmCamp=params.get('utm_campaign')||'';
   if(utmSrc){sessionStorage.setItem('cc_utm_source',utmSrc);sessionStorage.setItem('cc_utm_medium',utmMed);sessionStorage.setItem('cc_utm_campaign',utmCamp);}
   else{utmSrc=sessionStorage.getItem('cc_utm_source')||'';utmMed=sessionStorage.getItem('cc_utm_medium')||'';utmCamp=sessionStorage.getItem('cc_utm_campaign')||'';}
-  function detectFromReferrer(ref){if(!ref)return'direct';var r=ref.toLowerCase();if(/google\.|bing\.|yahoo\.|duckduckgo\./.test(r))return'google';if(/whatsapp|wa\.me|wa\.link/.test(r))return'whatsapp';if(/facebook\.|fb\.com|fb\.me|l\.facebook/.test(r))return'facebook';if(/instagram\./.test(r))return'instagram';if(/linkedin\./.test(r))return'linkedin';if(/t\.me|telegram\./.test(r))return'telegram';if(/twitter\.|t\.co|x\.com/.test(r))return'twitter';return'other';}
+  function detectFromReferrer(ref){
+    if(!ref)return'direct';
+    var r=ref.toLowerCase();
+    if(/google\.|bing\.|yahoo\.|duckduckgo\./.test(r))return'google';
+    if(/whatsapp|wa\.me|wa\.link/.test(r))return'whatsapp';
+    if(/facebook\.|fb\.com|fb\.me|l\.facebook/.test(r))return'facebook';
+    if(/instagram\./.test(r))return'instagram';
+    if(/linkedin\./.test(r))return'linkedin';
+    if(/t\.me|telegram\./.test(r))return'telegram';
+    if(/twitter\.|t\.co|x\.com/.test(r))return'twitter';
+    return'other';
+  }
   var source=utmSrc?utmSrc.toLowerCase().trim():detectFromReferrer(document.referrer);
   var key='cc_tracked_'+PAGE_NAME+'_'+source;
   if(sessionStorage.getItem(key))return;
@@ -1468,7 +1480,14 @@ function debounce(fn,ms){let t;return(...args)=>{clearTimeout(t);t=setTimeout(()
   var isMobile=/iphone|ipod|android.*mobile|blackberry|windows phone/.test(ua);
   var isTablet=/ipad|android(?!.*mobile)|tablet/.test(ua);
   var device=isTablet?'tablet':isMobile?'mobile':'desktop';
-  try{fetch(BACKEND+'/track',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({page:PAGE_NAME,path:window.location.pathname,source,device,utmMedium:utmMed,utmCampaign:utmCamp,referrer:document.referrer||''}),keepalive:true}).catch(function(){});}catch(e){}
+  try{
+    fetch(BACKEND+'/track',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({page:PAGE_NAME,path:window.location.pathname,source:source,device:device,utmMedium:utmMed,utmCampaign:utmCamp,referrer:document.referrer||''}),
+      keepalive:true
+    }).catch(function(){});
+  }catch(e){}
 })();
 </script>
 </body>
