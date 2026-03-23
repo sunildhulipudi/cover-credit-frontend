@@ -1,0 +1,9 @@
+# CoverCredit — Netlify Redirects
+# ─────────────────────────────────────────────────────────
+# Proxy /og/:slug to backend — keeps covercredit.in in the URL
+# WhatsApp/Facebook crawlers hit this URL and get correct OG tags
+# Humans get instantly redirected to the blog post by the backend
+/og/*   https://api.covercredit.in/og/:splat   200
+
+# All other routes — SPA fallback
+/*      /index.html     200
