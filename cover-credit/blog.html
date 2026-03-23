@@ -1314,7 +1314,7 @@ function shareWhatsApp() {
   const title = activePost.title;
   // Use /og/:slug as the shared URL — backend serves correct OG tags per post
   // so WhatsApp shows the right cover image, title, and description
-  const shareUrl = `${API_BASE.replace('/api','')}/og/${slug}`;
+  const shareUrl = `https://api.covercredit.in/og/${slug}`;
   const msg = encodeURIComponent(`I read this on CoverCredit and thought you'd find it useful:\n\n"${title}"\n\n${shareUrl}`);
   // wa.me/?text= (NO phone number) = opens share PICKER so user picks who to send to
   // Ping backend first so Render is awake when WhatsApp's crawler hits it
