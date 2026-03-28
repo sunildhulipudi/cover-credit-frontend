@@ -7,10 +7,9 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png"/>
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
-  <meta name="description" content="Check your insurance policy details — expiry date, NCB, insurer, cover amount. Instant lookup for Cover Credit clients."/>
+  <meta name="description" content="Check your insurance policy details or vehicle insurance status instantly. Cover Credit — serving AP & Telangana families."/>
   <link rel="canonical" href="https://covercredit.in/policy-check"/>
 
-  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-377PNCFQLN"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-377PNCFQLN');</script>
 
@@ -20,27 +19,22 @@
 
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-
     :root{
       --ink:#06101f;--i2:#0b1a30;--i3:#0d2040;
       --ac:#1976d2;--ac2:#42a5f5;--ac3:#90caf9;
       --gold:#f5a623;--gold2:#ffd54f;
       --line:rgba(255,255,255,.07);--fog:rgba(255,255,255,.04);
       --nh:72px;--E:cubic-bezier(.16,1,.3,1);
-      --green:#25d366;--red:#ef5350;--orange:#ff9800;
     }
-
     html{scroll-behavior:smooth;}
     body{font-family:'DM Sans',system-ui,sans-serif;background:var(--ink);color:#fff;min-height:100vh;overflow-x:hidden;cursor:none;}
     a{text-decoration:none;color:inherit;}
     button{font-family:inherit;cursor:none;}
 
-    /* ── CURSOR ── */
     #cur,#cr{position:fixed;top:0;left:0;pointer-events:none;border-radius:50%;z-index:9999;transform:translate(-50%,-50%);}
     #cur{width:10px;height:10px;background:var(--ac);}
     #cr{width:38px;height:38px;border:1.5px solid rgba(25,118,210,.5);z-index:9998;transition:width .2s,height .2s,opacity .2s;}
 
-    /* ── AMBIENT ── */
     .orb{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(90px);}
     .orb1{width:600px;height:600px;background:rgba(25,118,210,.07);top:-100px;right:-100px;animation:orb 20s ease-in-out infinite;}
     .orb2{width:400px;height:400px;background:rgba(245,166,35,.04);bottom:10%;left:-80px;animation:orb 25s ease-in-out infinite reverse;}
@@ -48,15 +42,12 @@
     .grid-ov{position:fixed;inset:0;z-index:1;pointer-events:none;
       background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);
       background-size:55px 55px;mask-image:radial-gradient(ellipse 80% 80% at 50% 40%,#000,transparent);}
-    @keyframes orb{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-20px) scale(1.1)}66%{transform:translate(-15px,20px) scale(.93)}}
 
-    /* ── FAB ── */
     .fab{position:fixed;bottom:1.8rem;right:1.8rem;z-index:1100;display:flex;flex-direction:column;gap:.65rem;align-items:flex-end;}
     .fab a{display:flex;align-items:center;gap:.48rem;padding:.65rem 1rem;border-radius:100px;font-size:.76rem;font-weight:600;transition:transform .18s;}
     .fab a:hover{transform:translateY(-2px);}
     .fab-wa{background:#25d366;color:#fff;box-shadow:0 6px 20px rgba(37,211,102,.35);}
 
-    /* ── NAV ── */
     .nav{position:fixed;top:0;left:0;right:0;z-index:900;height:var(--nh);padding:0 5%;transition:background .4s;}
     .nav.sc{background:rgba(6,16,31,.97);backdrop-filter:blur(24px);box-shadow:0 1px 0 var(--line);}
     .nav__inner{max-width:1200px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;}
@@ -66,204 +57,225 @@
     .nav__links a{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.6);transition:color .2s;}
     .nav__links a:hover{color:#fff;}
     .nav__cta{background:var(--gold)!important;color:#06101f!important;padding:.46rem 1.12rem!important;border-radius:100px;font-weight:700!important;font-size:.8rem!important;}
+    .nav__hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:4px;}
+    .nav__hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:transform .3s,opacity .3s;}
 
-    /* ── PAGE ── */
-    .page{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:calc(var(--nh) + 3rem) 5% 4rem;}
+    .page{position:relative;z-index:2;min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:calc(var(--nh) + 3rem) 5% 4rem;}
 
-    /* ── HERO TEXT ── */
-    .hero-wrap{text-align:center;margin-bottom:2.8rem;animation:fadeUp .9s var(--E) .1s both;}
-    .hero-eyebrow{display:inline-flex;align-items:center;gap:.55rem;background:rgba(25,118,210,.1);border:1px solid rgba(25,118,210,.28);color:#90caf9;font-size:.65rem;font-weight:700;padding:.3rem .9rem;border-radius:100px;text-transform:uppercase;letter-spacing:1px;margin-bottom:1.1rem;}
+    /* ── HERO ── */
+    .hero-wrap{text-align:center;margin-bottom:2.2rem;animation:fadeUp .9s var(--E) .1s both;}
+    .hero-eyebrow{display:inline-flex;align-items:center;gap:.55rem;background:rgba(25,118,210,.1);border:1px solid rgba(25,118,210,.28);color:#90caf9;font-size:.65rem;font-weight:700;padding:.3rem .9rem;border-radius:100px;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem;}
     .badge-dot{width:6px;height:6px;background:#42a5f5;border-radius:50%;animation:pulseDot 2s ease-in-out infinite;}
-    .hero-wrap h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.1;letter-spacing:-1.5px;margin-bottom:.8rem;}
+    .hero-wrap h1{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,4vw,3rem);font-weight:900;line-height:1.1;letter-spacing:-1.5px;margin-bottom:.7rem;}
     .hero-wrap h1 em{font-style:italic;color:var(--ac2);}
-    .hero-wrap p{font-size:.92rem;color:rgba(255,255,255,.45);max-width:460px;margin:0 auto;line-height:1.7;}
+    .hero-wrap p{font-size:.9rem;color:rgba(255,255,255,.42);max-width:480px;margin:0 auto;line-height:1.7;}
+
+    /* ── MODE SWITCHER ── */
+    .mode-switcher{
+      display:flex;gap:0;
+      background:rgba(255,255,255,.04);border:1px solid var(--line);
+      border-radius:12px;overflow:hidden;
+      width:100%;max-width:520px;
+      margin-bottom:1.6rem;
+      animation:fadeUp .9s var(--E) .2s both;
+    }
+    .mode-btn{
+      flex:1;padding:.85rem .5rem;font-family:inherit;font-size:.82rem;font-weight:600;
+      background:none;border:none;color:rgba(255,255,255,.38);
+      cursor:pointer;transition:all .2s;
+      display:flex;align-items:center;justify-content:center;gap:.4rem;
+    }
+    .mode-btn.active{background:var(--i3);color:#fff;border-radius:10px;margin:4px;box-shadow:0 2px 8px rgba(0,0,0,.3);}
+    .mode-btn .mode-ico{font-size:1rem;}
 
     /* ── LOOKUP CARD ── */
     .lookup-card{
-      background:var(--i3);
-      border:1px solid var(--line);
-      border-radius:20px;
-      padding:2.2rem 2.4rem;
-      width:100%;max-width:520px;
-      animation:fadeUp .9s var(--E) .25s both;
+      background:var(--i3);border:1px solid var(--line);border-radius:20px;
+      padding:2rem 2.2rem;width:100%;max-width:520px;
+      animation:fadeUp .9s var(--E) .3s both;
       position:relative;overflow:hidden;
     }
-    .lookup-card::before{
-      content:'';position:absolute;top:0;left:0;right:0;height:3px;
-      background:linear-gradient(90deg,var(--ac),var(--gold));
-    }
-    .lookup-card h2{
-      font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;
-      margin-bottom:.4rem;color:#fff;
-    }
-    .lookup-card p{font-size:.8rem;color:rgba(255,255,255,.38);margin-bottom:1.6rem;line-height:1.6;}
+    .lookup-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--ac),var(--gold));}
 
-    /* ── INPUT GROUP ── */
+    .lookup-card h2{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;margin-bottom:.3rem;color:#fff;}
+    .lookup-card p{font-size:.78rem;color:rgba(255,255,255,.35);margin-bottom:1.4rem;line-height:1.6;}
+
     .input-group{position:relative;margin-bottom:1rem;}
-    .input-group label{display:block;font-size:.75rem;font-weight:600;color:rgba(255,255,255,.45);margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.8px;}
+    .input-group label{display:block;font-size:.72rem;font-weight:600;color:rgba(255,255,255,.4);margin-bottom:.45rem;text-transform:uppercase;letter-spacing:.8px;}
     .policy-input{
-      width:100%;padding:1rem 1.2rem;
-      background:rgba(255,255,255,.05);
-      border:1.5px solid rgba(255,255,255,.1);
-      border-radius:10px;
-      color:#fff;font-family:inherit;font-size:1rem;font-weight:600;
-      letter-spacing:1px;text-transform:uppercase;
-      outline:none;transition:border-color .2s,background .2s;
+      width:100%;padding:.95rem 1.1rem;
+      background:rgba(255,255,255,.05);border:1.5px solid rgba(255,255,255,.1);
+      border-radius:10px;color:#fff;font-family:inherit;font-size:.98rem;font-weight:600;
+      letter-spacing:1px;text-transform:uppercase;outline:none;transition:border-color .2s,background .2s;
     }
-    .policy-input::placeholder{color:rgba(255,255,255,.2);font-weight:400;letter-spacing:0;text-transform:none;}
+    .policy-input::placeholder{color:rgba(255,255,255,.18);font-weight:400;letter-spacing:0;text-transform:none;}
     .policy-input:focus{border-color:var(--ac);background:rgba(25,118,210,.06);}
 
-    /* ── CHECK BUTTON ── */
     .check-btn{
-      width:100%;padding:1rem;
-      background:var(--ac);border:none;border-radius:10px;
-      color:#fff;font-family:inherit;font-size:1rem;font-weight:700;
+      width:100%;padding:.95rem;background:var(--ac);border:none;border-radius:10px;
+      color:#fff;font-family:inherit;font-size:.95rem;font-weight:700;
       cursor:pointer;transition:background .2s,transform .15s,box-shadow .2s;
       display:flex;align-items:center;justify-content:center;gap:.6rem;
     }
     .check-btn:hover{background:#1565c0;transform:translateY(-1px);box-shadow:0 8px 28px rgba(25,118,210,.4);}
     .check-btn:disabled{background:rgba(25,118,210,.4);cursor:not-allowed;transform:none;box-shadow:none;}
-    .check-btn .spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;}
+    .spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;}
 
-    /* ── ERROR ── */
-    .error-box{
-      margin-top:1rem;padding:.9rem 1.1rem;
-      background:rgba(239,83,80,.1);border:1px solid rgba(239,83,80,.25);
-      border-radius:10px;font-size:.84rem;color:#ff8a80;
-      display:none;align-items:center;gap:.6rem;
-    }
+    .error-box{margin-top:.9rem;padding:.85rem 1rem;background:rgba(239,83,80,.1);border:1px solid rgba(239,83,80,.25);border-radius:10px;font-size:.82rem;color:#ff8a80;display:none;align-items:center;gap:.55rem;}
     .error-box.show{display:flex;}
 
-    /* ── RESULT CARD ── */
-    .result-wrap{
-      width:100%;max-width:520px;
-      animation:fadeUp .7s var(--E) both;
-      display:none;
+    /* ── PARIVAHAN INFO BOX ── */
+    .parivahan-info{
+      background:rgba(245,166,35,.06);border:1px solid rgba(245,166,35,.18);
+      border-radius:12px;padding:1rem 1.2rem;margin-bottom:1.2rem;
     }
+    .parivahan-info p{font-size:.76rem;color:rgba(255,255,255,.4);line-height:1.7;}
+    .parivahan-info strong{color:rgba(255,255,255,.65);}
+    .parivahan-info ul{padding-left:1rem;margin-top:.4rem;}
+    .parivahan-info li{font-size:.74rem;color:rgba(255,255,255,.35);margin-bottom:.2rem;}
+    .parivahan-info .li-yes{color:rgba(74,222,128,.6);}
+    .parivahan-info .li-no{color:rgba(255,138,128,.5);}
+
+    /* ── RESULT ── */
+    .result-wrap{width:100%;max-width:520px;display:none;animation:fadeUp .7s var(--E) both;}
     .result-wrap.show{display:block;}
+    .result-card{background:var(--i3);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.4);}
 
-    .result-card{
-      background:var(--i3);border:1px solid var(--line);
-      border-radius:20px;overflow:hidden;
-      box-shadow:0 24px 60px rgba(0,0,0,.4);
-    }
-
-    /* Result header */
-    .result-header{
-      padding:1.6rem 2rem;
-      background:linear-gradient(135deg,#0d2040,#1565c0);
-      position:relative;overflow:hidden;
-    }
-    .result-header::after{
-      content:'';position:absolute;bottom:-30px;right:-30px;
-      width:120px;height:120px;border-radius:50%;
-      background:rgba(245,166,35,.1);
-    }
-    .result-badge{
-      display:inline-flex;align-items:center;gap:.4rem;
-      padding:.2rem .75rem;border-radius:100px;font-size:.65rem;font-weight:700;
-      text-transform:uppercase;letter-spacing:.8px;margin-bottom:.75rem;
-    }
+    .result-header{padding:1.5rem 1.9rem;background:linear-gradient(135deg,#0d2040,#1565c0);position:relative;overflow:hidden;}
+    .result-header::after{content:'';position:absolute;bottom:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:rgba(245,166,35,.1);}
+    .result-badge{display:inline-flex;align-items:center;gap:.4rem;padding:.2rem .75rem;border-radius:100px;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;margin-bottom:.65rem;}
     .badge-active{background:rgba(37,211,102,.2);border:1px solid rgba(37,211,102,.3);color:#4ade80;}
     .badge-expired{background:rgba(239,83,80,.2);border:1px solid rgba(239,83,80,.3);color:#ff8a80;}
     .badge-expiring{background:rgba(255,152,0,.2);border:1px solid rgba(255,152,0,.3);color:#ffcc80;}
-    .result-name{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:#fff;margin-bottom:.2rem;}
-    .result-policy-num{font-size:.78rem;color:rgba(255,255,255,.45);font-weight:500;letter-spacing:1px;}
+    .badge-external{background:rgba(66,165,245,.2);border:1px solid rgba(66,165,245,.3);color:#90caf9;}
+    .result-name{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:900;color:#fff;margin-bottom:.2rem;}
+    .result-sub{font-size:.76rem;color:rgba(255,255,255,.4);font-weight:500;letter-spacing:.5px;}
 
-    /* Result body */
-    .result-body{padding:1.6rem 2rem;}
-    .result-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;margin-bottom:1.4rem;}
-    .result-item{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:10px;padding:.9rem 1.1rem;}
+    .result-body{padding:1.5rem 1.9rem;}
+    .result-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.3rem;}
+    .result-item{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:10px;padding:.85rem 1rem;}
     .result-item.full{grid-column:1/-1;}
     .result-item.highlight{background:rgba(25,118,210,.1);border-color:rgba(25,118,210,.2);}
-    .result-item.ncb-item{background:rgba(245,166,35,.08);border-color:rgba(245,166,35,.2);}
-    .result-item.danger{background:rgba(239,83,80,.08);border-color:rgba(239,83,80,.2);}
-    .ri-label{font-size:.65rem;font-weight:700;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.8px;margin-bottom:.35rem;}
-    .ri-value{font-size:1.05rem;font-weight:700;color:#fff;line-height:1.2;}
-    .ri-value.big{font-family:'Playfair Display',serif;font-size:1.4rem;}
+    .result-item.ncb-item{background:rgba(245,166,35,.07);border-color:rgba(245,166,35,.18);}
+    .result-item.danger{background:rgba(239,83,80,.07);border-color:rgba(239,83,80,.2);}
+    .ri-label{font-size:.63rem;font-weight:700;color:rgba(255,255,255,.32);text-transform:uppercase;letter-spacing:.8px;margin-bottom:.32rem;}
+    .ri-value{font-size:1rem;font-weight:700;color:#fff;line-height:1.2;}
+    .ri-value.big{font-family:'Playfair Display',serif;font-size:1.35rem;}
     .ri-value.gold{color:var(--gold2);}
     .ri-value.green{color:#4ade80;}
     .ri-value.red{color:#ff8a80;}
     .ri-value.orange{color:#ffcc80;}
-    .ri-sub{font-size:.7rem;color:rgba(255,255,255,.3);margin-top:.2rem;}
+    .ri-sub{font-size:.68rem;color:rgba(255,255,255,.27);margin-top:.18rem;}
 
-    /* NCB meter */
-    .ncb-meter{margin-top:.5rem;}
-    .ncb-track{height:5px;background:rgba(255,255,255,.1);border-radius:100px;overflow:hidden;}
-    .ncb-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .8s var(--E);}
-    .ncb-steps{display:flex;justify-content:space-between;margin-top:.3rem;}
-    .ncb-step{font-size:.58rem;color:rgba(255,255,255,.2);}
+    /* ── NCB METER ── */
+    .ncb-meter{margin-top:.45rem;}
+    .ncb-track{height:5px;background:rgba(255,255,255,.08);border-radius:100px;overflow:hidden;}
+    .ncb-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .9s var(--E);}
+    .ncb-steps{display:flex;justify-content:space-between;margin-top:.28rem;}
+    .ncb-step{font-size:.57rem;color:rgba(255,255,255,.18);}
 
-    /* Expiry countdown */
-    .expiry-count{display:flex;align-items:center;gap:.5rem;margin-top:.3rem;}
-    .expiry-pill{padding:.15rem .6rem;border-radius:100px;font-size:.68rem;font-weight:700;}
-    .ep-good{background:rgba(37,211,102,.15);color:#4ade80;}
-    .ep-warn{background:rgba(255,152,0,.15);color:#ffcc80;}
-    .ep-danger{background:rgba(239,83,80,.15);color:#ff8a80;}
+    /* ── NCB INFO POPUP ── */
+    .ncb-info-btn{
+      display:inline-flex;align-items:center;gap:.3rem;
+      margin-top:.55rem;padding:.25rem .65rem;border-radius:100px;
+      background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.2);
+      color:rgba(245,166,35,.7);font-size:.67rem;font-weight:600;
+      cursor:pointer;transition:all .18s;font-family:'DM Sans',sans-serif;
+    }
+    .ncb-info-btn:hover{background:rgba(245,166,35,.18);color:var(--gold2);}
 
-    /* Action buttons */
-    .result-actions{display:flex;gap:.7rem;flex-wrap:wrap;}
-    .ra-btn{flex:1;padding:.75rem 1rem;border-radius:10px;font-family:inherit;font-size:.8rem;font-weight:700;cursor:pointer;transition:all .18s;display:flex;align-items:center;justify-content:center;gap:.4rem;min-width:120px;text-decoration:none;}
+    /* NCB modal overlay */
+    .ncb-modal-overlay{
+      display:none;position:fixed;inset:0;z-index:2000;
+      background:rgba(0,0,0,.6);backdrop-filter:blur(8px);
+      align-items:center;justify-content:center;padding:1.5rem;
+    }
+    .ncb-modal-overlay.show{display:flex;}
+    .ncb-modal{
+      background:var(--i3);border:1px solid var(--line);
+      border-radius:18px;padding:2rem 2.2rem;
+      width:100%;max-width:440px;position:relative;
+      animation:fadeUp .4s var(--E) both;
+    }
+    .ncb-modal::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:18px 18px 0 0;}
+    .ncb-modal-close{position:absolute;top:.9rem;right:.9rem;background:rgba(255,255,255,.08);border:none;border-radius:50%;width:28px;height:28px;color:rgba(255,255,255,.5);cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center;transition:all .18s;}
+    .ncb-modal-close:hover{background:rgba(239,83,80,.2);color:#ff8a80;}
+    .ncb-modal h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--gold2);margin-bottom:.3rem;}
+    .ncb-modal-sub{font-size:.76rem;color:rgba(255,255,255,.38);margin-bottom:1.3rem;line-height:1.6;}
+    .ncb-ladder{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.3rem;}
+    .ncb-row{display:flex;align-items:center;gap:.8rem;padding:.6rem .9rem;border-radius:9px;background:rgba(255,255,255,.04);}
+    .ncb-row.current{background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.2);}
+    .ncb-years{font-size:.72rem;color:rgba(255,255,255,.38);width:100px;flex-shrink:0;}
+    .ncb-pct-badge{width:46px;height:26px;border-radius:100px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0;}
+    .ncb-pct-badge.cur{background:var(--gold);color:#06101f;}
+    .ncb-pct-badge.dim{background:rgba(255,255,255,.08);color:rgba(255,255,255,.35);}
+    .ncb-saving{font-size:.72rem;color:rgba(255,255,255,.38);flex:1;text-align:right;}
+    .ncb-current-tag{font-size:.6rem;font-weight:700;color:var(--gold2);background:rgba(245,166,35,.12);padding:.12rem .5rem;border-radius:100px;margin-left:.3rem;}
+    .ncb-advisor-note{background:rgba(25,118,210,.08);border:1px solid rgba(25,118,210,.18);border-radius:10px;padding:.9rem 1rem;}
+    .ncb-advisor-note p{font-size:.75rem;color:rgba(255,255,255,.45);line-height:1.65;}
+    .ncb-advisor-note strong{color:rgba(255,255,255,.65);}
+
+    /* ── EXPIRY PILL ── */
+    .expiry-count{display:flex;align-items:center;gap:.4rem;margin-top:.25rem;}
+    .expiry-pill{padding:.14rem .55rem;border-radius:100px;font-size:.66rem;font-weight:700;}
+    .ep-good{background:rgba(37,211,102,.12);color:#4ade80;}
+    .ep-warn{background:rgba(255,152,0,.12);color:#ffcc80;}
+    .ep-danger{background:rgba(239,83,80,.12);color:#ff8a80;}
+
+    /* ── PARIVAHAN RESULT ── */
+    .parivahan-result{background:rgba(66,165,245,.06);border:1px solid rgba(66,165,245,.15);border-radius:12px;padding:1.1rem 1.3rem;margin-bottom:1.1rem;}
+    .parivahan-result-title{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:rgba(66,165,245,.7);margin-bottom:.7rem;}
+    .parivahan-result p{font-size:.78rem;color:rgba(255,255,255,.38);margin-bottom:.3rem;line-height:1.5;}
+    .parivahan-result strong{color:rgba(255,255,255,.62);}
+    .parivahan-open-btn{display:inline-flex;align-items:center;gap:.4rem;margin-top:.7rem;padding:.5rem 1rem;background:rgba(66,165,245,.12);border:1px solid rgba(66,165,245,.22);border-radius:100px;font-size:.74rem;font-weight:700;color:#90caf9;cursor:pointer;transition:all .18s;text-decoration:none;}
+    .parivahan-open-btn:hover{background:rgba(66,165,245,.22);}
+
+    /* ── ACTION BUTTONS ── */
+    .result-actions{display:flex;gap:.6rem;flex-wrap:wrap;}
+    .ra-btn{flex:1;padding:.7rem .9rem;border-radius:10px;font-family:inherit;font-size:.78rem;font-weight:700;cursor:pointer;transition:all .18s;display:flex;align-items:center;justify-content:center;gap:.4rem;min-width:110px;text-decoration:none;}
     .ra-wa{background:#25d366;color:#fff;border:none;}
     .ra-wa:hover{background:#1db954;transform:translateY(-1px);}
     .ra-renew{background:var(--gold);color:#06101f;border:none;}
     .ra-renew:hover{background:#e8950f;transform:translateY(-1px);}
-    .ra-reset{background:transparent;color:rgba(255,255,255,.4);border:1px solid rgba(255,255,255,.12);}
-    .ra-reset:hover{color:#fff;border-color:rgba(255,255,255,.3);}
 
-    /* ── HELPER TEXT ── */
-    .help-text{
-      width:100%;max-width:520px;
-      text-align:center;margin-top:1.4rem;
-      font-size:.76rem;color:rgba(255,255,255,.22);
-      line-height:1.6;animation:fadeUp .9s var(--E) .4s both;
-    }
-    .help-text a{color:rgba(255,255,255,.4);text-decoration:underline;}
-    .help-text a:hover{color:rgba(255,255,255,.65);}
-
-    /* ── NOT CLIENT MSG ── */
-    .not-client{
-      width:100%;max-width:520px;
-      background:var(--i3);border:1px solid var(--line);border-radius:16px;
-      padding:1.8rem 2rem;text-align:center;
-      display:none;animation:fadeUp .7s var(--E) both;
-    }
+    /* ── NOT CLIENT ── */
+    .not-client{width:100%;max-width:520px;background:var(--i3);border:1px solid var(--line);border-radius:16px;padding:1.7rem 1.9rem;text-align:center;display:none;animation:fadeUp .7s var(--E) both;}
     .not-client.show{display:block;}
-    .not-client-icon{font-size:2.5rem;margin-bottom:.8rem;}
-    .not-client h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:.5rem;color:#fff;}
-    .not-client p{font-size:.82rem;color:rgba(255,255,255,.4);line-height:1.7;margin-bottom:1.2rem;}
-    .not-client-btn{display:inline-flex;align-items:center;gap:.5rem;background:#25d366;color:#fff;padding:.7rem 1.4rem;border-radius:100px;font-weight:700;font-size:.84rem;transition:transform .18s;}
+    .not-client h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:.5rem;color:#fff;}
+    .not-client p{font-size:.8rem;color:rgba(255,255,255,.38);line-height:1.7;margin-bottom:1.1rem;}
+    .not-client-btn{display:inline-flex;align-items:center;gap:.4rem;background:#25d366;color:#fff;padding:.65rem 1.3rem;border-radius:100px;font-weight:700;font-size:.82rem;transition:transform .18s;}
     .not-client-btn:hover{transform:translateY(-1px);}
 
-    /* ── FOOTER ── */
-    .footer-simple{position:relative;z-index:2;text-align:center;padding:1.5rem 5%;border-top:1px solid var(--line);font-size:.72rem;color:rgba(255,255,255,.15);}
-    .footer-simple a{color:rgba(255,255,255,.25);transition:color .2s;}
+    .help-text{width:100%;max-width:520px;text-align:center;margin-top:1.3rem;font-size:.74rem;color:rgba(255,255,255,.2);line-height:1.6;animation:fadeUp .9s var(--E) .45s both;}
+    .help-text a{color:rgba(255,255,255,.38);text-decoration:underline;}
+    .help-text a:hover{color:rgba(255,255,255,.6);}
+
+    .footer-simple{position:relative;z-index:2;text-align:center;padding:1.4rem 5%;border-top:1px solid var(--line);font-size:.7rem;color:rgba(255,255,255,.14);}
+    .footer-simple a{color:rgba(255,255,255,.24);transition:color .2s;}
     .footer-simple a:hover{color:rgba(255,255,255,.5);}
 
-    /* ── KEYFRAMES ── */
-    @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
     @keyframes pulseDot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.25;transform:scale(.6)}}
     @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes orb{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-20px) scale(1.1)}66%{transform:translate(-15px,20px) scale(.93)}}
 
-    /* ── RESPONSIVE ── */
     @media(max-width:540px){
-      .lookup-card,.result-card{border-radius:14px;}
-      .lookup-card{padding:1.6rem 1.4rem;}
-      .result-body{padding:1.4rem 1.4rem;}
+      .lookup-card{padding:1.5rem 1.3rem;}
+      .result-body{padding:1.3rem 1.3rem;}
       .result-grid{grid-template-columns:1fr;}
       .result-item.full{grid-column:1;}
       .nav__links{display:none;}
+      .nav__hamburger{display:flex;}
       body{cursor:auto;}
       #cur,#cr{display:none;}
+      .mode-btn{font-size:.75rem;}
     }
   </style>
 </head>
 <body>
 
-<div id="cur"></div>
-<div id="cr"></div>
-<div class="orb orb1"></div>
-<div class="orb orb2"></div>
+<div id="cur"></div><div id="cr"></div>
+<div class="orb orb1"></div><div class="orb orb2"></div>
 <canvas id="bg"></canvas>
 <div class="grid-ov"></div>
 
@@ -288,317 +300,482 @@
       <li><a href="about.html">About</a></li>
       <li><a href="book.html" class="nav__cta">Free Consultation</a></li>
     </ul>
+    <button class="nav__hamburger" id="burger"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
 <!-- PAGE -->
 <div class="page">
 
-  <!-- Hero -->
   <div class="hero-wrap">
-    <div class="hero-eyebrow"><div class="badge-dot"></div>Client Portal</div>
+    <div class="hero-eyebrow"><div class="badge-dot"></div>Insurance Check</div>
     <h1>Check your <em>policy details</em></h1>
-    <p>Enter your policy number to instantly view your cover, NCB, expiry date and renewal status.</p>
+    <p>Look up your policy details or check vehicle insurance status for any vehicle in India.</p>
   </div>
 
-  <!-- Lookup form -->
-  <div class="lookup-card" id="lookup-card">
-    <h2>Policy Lookup</h2>
-    <p>Enter the policy number exactly as it appears on your insurance document.</p>
-
-    <div class="input-group">
-      <label>Policy Number</label>
-      <input
-        class="policy-input"
-        id="policy-input"
-        type="text"
-        placeholder="e.g. P-2024-123456"
-        maxlength="30"
-        autocomplete="off"
-        autocorrect="off"
-        spellcheck="false"
-      />
-    </div>
-
-    <button class="check-btn" id="check-btn" onclick="checkPolicy()">
-      <span id="btn-text">Check My Policy →</span>
+  <!-- Mode switcher -->
+  <div class="mode-switcher" id="mode-switcher">
+    <button class="mode-btn active" id="mode-policy-btn" onclick="switchMode('policy')">
+      <span class="mode-ico">📋</span> My Policy (Cover Credit clients)
     </button>
+    <button class="mode-btn" id="mode-vehicle-btn" onclick="switchMode('vehicle')">
+      <span class="mode-ico">🚗</span> Any Vehicle Check
+    </button>
+  </div>
 
-    <div class="error-box" id="error-box">
-      <span>⚠️</span>
-      <span id="error-msg">Policy not found.</span>
+  <!-- ── POLICY LOOKUP (Cover Credit clients) ── -->
+  <div class="lookup-card" id="lookup-card">
+    <div id="lookup-inner-policy">
+      <h2>Policy Lookup</h2>
+      <p>Enter the policy number exactly as it appears on your insurance document.</p>
+      <div class="input-group">
+        <label>Policy Number</label>
+        <input class="policy-input" id="policy-input" type="text"
+          placeholder="e.g. P-2024-123456" maxlength="30"
+          autocomplete="off" autocorrect="off" spellcheck="false"/>
+      </div>
+      <button class="check-btn" id="check-btn-policy" onclick="checkPolicy()">
+        <span id="btn-text-policy">Check My Policy →</span>
+      </button>
+      <div class="error-box" id="error-box-policy">
+        <span>⚠️</span><span id="error-msg-policy">Policy not found.</span>
+      </div>
+    </div>
+
+    <div id="lookup-inner-vehicle" style="display:none;">
+      <h2>Vehicle Insurance Check</h2>
+      <p>Enter any vehicle registration number to check insurance validity via <strong>Parivahan (Govt of India)</strong>.</p>
+
+      <div class="parivahan-info">
+        <p><strong>What this shows:</strong></p>
+        <ul>
+          <li class="li-yes">✓ Insurance valid or expired</li>
+          <li class="li-yes">✓ Insurer name</li>
+          <li class="li-yes">✓ Policy expiry date</li>
+          <li class="li-no">✗ NCB percentage (not publicly available)</li>
+          <li class="li-no">✗ Cover amount or premium</li>
+        </ul>
+      </div>
+
+      <div class="input-group">
+        <label>Vehicle Registration Number</label>
+        <input class="policy-input" id="vehicle-input" type="text"
+          placeholder="e.g. TS09EA1234" maxlength="15"
+          autocomplete="off" autocorrect="off" spellcheck="false"/>
+      </div>
+      <button class="check-btn" id="check-btn-vehicle" onclick="checkVehicle()">
+        <span id="btn-text-vehicle">Check Vehicle Insurance →</span>
+      </button>
+      <div class="error-box" id="error-box-vehicle">
+        <span>⚠️</span><span id="error-msg-vehicle">Could not check vehicle.</span>
+      </div>
     </div>
   </div>
 
-  <!-- Result -->
+  <!-- Policy result -->
   <div class="result-wrap" id="result-wrap">
     <div class="result-card" id="result-card"></div>
-    <div style="text-align:center;margin-top:1.2rem;">
-      <button onclick="resetLookup()" style="background:none;border:none;color:rgba(255,255,255,.35);font-family:inherit;font-size:.8rem;cursor:pointer;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.35)'">← Check another policy</button>
+    <div style="text-align:center;margin-top:1rem;">
+      <button onclick="resetLookup()" style="background:none;border:none;color:rgba(255,255,255,.3);font-family:inherit;font-size:.78rem;cursor:pointer;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.3)'">← Check another</button>
     </div>
   </div>
 
-  <!-- Not a client msg -->
+  <!-- Vehicle result -->
+  <div class="result-wrap" id="vehicle-result-wrap">
+    <div class="result-card" id="vehicle-result-card"></div>
+    <div style="text-align:center;margin-top:1rem;">
+      <button onclick="resetLookup()" style="background:none;border:none;color:rgba(255,255,255,.3);font-family:inherit;font-size:.78rem;cursor:pointer;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,.3)'">← Check another vehicle</button>
+    </div>
+  </div>
+
+  <!-- Not a client -->
   <div class="not-client" id="not-client">
-    <div class="not-client-icon">📋</div>
+    <div style="font-size:2.2rem;margin-bottom:.7rem;">📋</div>
     <h3>Policy not found</h3>
-    <p>This policy number isn't in our system. This tool is for Cover Credit clients only. If you recently took a policy through us, it may not have been added yet.</p>
-    <a class="not-client-btn" href="https://wa.me/917842854466?text=Hi Cover Credit, I want to check my policy details." target="_blank">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Ask us on WhatsApp
+    <p>This policy number isn't in our system yet. The policy check tool is for Cover Credit clients. If you have a policy not managed by us, we can add it for free.</p>
+    <a class="not-client-btn" href="https://wa.me/917842854466?text=Hi Cover Credit, I want to check my policy details. Can you add it to your system?" target="_blank">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp us to add your policy
     </a>
   </div>
 
   <p class="help-text">
-    This tool is for Cover Credit clients only. Policy details are added by our team after your policy is issued.<br/>
-    Questions? <a href="https://wa.me/917842854466" target="_blank">WhatsApp us</a> or call <a href="tel:+917842854466">+91 78428 54466</a>
+    Policy portal for Cover Credit clients · Vehicle check works for any Indian vehicle<br/>
+    Questions? <a href="https://wa.me/917842854466" target="_blank">WhatsApp us</a> · <a href="tel:+917842854466">+91 78428 54466</a>
   </p>
 
-</div><!-- /page -->
+</div>
+
+<!-- ── NCB INFO MODAL ── -->
+<div class="ncb-modal-overlay" id="ncb-modal-overlay" onclick="closeNCBModal(event)">
+  <div class="ncb-modal">
+    <button class="ncb-modal-close" onclick="closeNCBModal()">✕</button>
+    <h3>Your NCB Explained</h3>
+    <p class="ncb-modal-sub">No Claim Bonus — the reward you earn for driving safely and not claiming.</p>
+
+    <div class="ncb-ladder" id="ncb-ladder-content">
+      <!-- Filled by JS -->
+    </div>
+
+    <div class="ncb-advisor-note">
+      <p>
+        <strong>⚠️ Important note about this NCB figure:</strong><br/>
+        The NCB percentage shown here is an <strong>estimate provided by your Cover Credit advisor</strong> based on your claim history and policy start date.
+        The exact NCB applicable at renewal is confirmed by your insurer. It may differ slightly if you made any claims this year.
+        <br/><br/>
+        To confirm your exact NCB before renewal, <strong>contact your insurer directly</strong> or <strong>ask your Cover Credit advisor</strong> — we'll verify it for you for free.
+      </p>
+    </div>
+  </div>
+</div>
 
 <footer class="footer-simple">
   <span>© <span id="yr"></span> Cover Credit. All rights reserved.</span>
-  &nbsp;·&nbsp;
-  <a href="privacy.html">Privacy Policy</a>
-  &nbsp;·&nbsp;
-  <a href="index.html">Home</a>
+  &nbsp;·&nbsp;<a href="privacy.html">Privacy</a>
+  &nbsp;·&nbsp;<a href="index.html">Home</a>
 </footer>
 
 <script>
-const API_BASE = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
-  ? 'http://localhost:5000/api'
-  : 'https://api.covercredit.in/api';
+const API_BASE = window.location.hostname==='localhost'||window.location.hostname==='127.0.0.1'
+  ? 'http://localhost:5000/api' : 'https://api.covercredit.in/api';
 
 document.getElementById('yr').textContent = new Date().getFullYear();
+let currentMode = 'policy';
+let currentNCB  = 0;
 
 // ── CURSOR ───────────────────────────────────────────────
-const cur = document.getElementById('cur'), cr = document.getElementById('cr');
+const cur=document.getElementById('cur'),cr=document.getElementById('cr');
 let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.style.left=mx+'px'; cur.style.top=my+'px'; });
-(function tick(){ rx+=(mx-rx)*.1; ry+=(my-ry)*.1; cr.style.left=rx+'px'; cr.style.top=ry+'px'; requestAnimationFrame(tick); })();
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function tick(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(tick);})();
 
 // ── NAV ──────────────────────────────────────────────────
-window.addEventListener('scroll', () => document.getElementById('nav').classList.toggle('sc', scrollY > 40), {passive:true});
+window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('sc',scrollY>40),{passive:true});
+document.getElementById('burger')?.addEventListener('click',()=>document.getElementById('burger').classList.toggle('op'));
 
 // ── CANVAS ───────────────────────────────────────────────
 (function(){
-  const canvas=document.getElementById('bg'), ctx=canvas.getContext('2d');
+  const canvas=document.getElementById('bg'),ctx=canvas.getContext('2d');
   let W,H,P=[];
-  function resize(){ W=canvas.width=innerWidth; H=canvas.height=innerHeight; }
-  resize(); window.addEventListener('resize', resize);
-  for(let i=0;i<50;i++) P.push({x:Math.random()*9999,y:Math.random()*9999,r:Math.random()*1.2+.2,vx:(Math.random()-.5)*.15,vy:(Math.random()-.5)*.15-.05,life:Math.random()});
+  function resize(){W=canvas.width=innerWidth;H=canvas.height=innerHeight;}
+  resize();window.addEventListener('resize',resize);
+  for(let i=0;i<50;i++)P.push({x:Math.random()*9999,y:Math.random()*9999,r:Math.random()*1.2+.2,vx:(Math.random()-.5)*.15,vy:(Math.random()-.5)*.15-.05,life:Math.random()});
   (function anim(){
     ctx.clearRect(0,0,W,H);
     P.forEach(p=>{
-      p.x+=p.vx; p.y+=p.vy; p.life+=.003;
-      const a = p.life<.3?p.life/.3:p.life>.7?1-(p.life-.7)/.3:1;
-      ctx.globalAlpha=a*.25; ctx.beginPath(); ctx.arc(p.x%W,(p.y)%H,p.r,0,Math.PI*2);
-      ctx.fillStyle='rgba(25,118,210,1)'; ctx.fill(); ctx.globalAlpha=1;
-      if(p.life>1) { p.x=Math.random()*W; p.y=Math.random()*H; p.life=0; }
+      p.x+=p.vx;p.y+=p.vy;p.life+=.003;
+      const a=p.life<.3?p.life/.3:p.life>.7?1-(p.life-.7)/.3:1;
+      ctx.globalAlpha=a*.22;ctx.beginPath();ctx.arc(p.x%W,p.y%H,p.r,0,Math.PI*2);
+      ctx.fillStyle='rgba(25,118,210,1)';ctx.fill();ctx.globalAlpha=1;
+      if(p.life>1){p.x=Math.random()*W;p.y=Math.random()*H;p.life=0;}
     });
     requestAnimationFrame(anim);
   })();
 })();
 
-// ── ENTER KEY ────────────────────────────────────────────
-document.getElementById('policy-input').addEventListener('keydown', e => {
-  if (e.key === 'Enter') checkPolicy();
-});
-
-// ── CHECK POLICY ─────────────────────────────────────────
-async function checkPolicy() {
-  const input  = document.getElementById('policy-input').value.trim().toUpperCase();
-  const errBox = document.getElementById('error-box');
-  const btn    = document.getElementById('check-btn');
-  const btnTxt = document.getElementById('btn-text');
-
-  errBox.classList.remove('show');
+// ── MODE SWITCHER ─────────────────────────────────────────
+function switchMode(mode) {
+  currentMode = mode;
+  document.getElementById('mode-policy-btn').classList.toggle('active', mode==='policy');
+  document.getElementById('mode-vehicle-btn').classList.toggle('active', mode==='vehicle');
+  document.getElementById('lookup-inner-policy').style.display = mode==='policy' ? 'block' : 'none';
+  document.getElementById('lookup-inner-vehicle').style.display = mode==='vehicle' ? 'block' : 'none';
+  document.getElementById('lookup-card').style.display = 'block';
   document.getElementById('result-wrap').classList.remove('show');
+  document.getElementById('vehicle-result-wrap').classList.remove('show');
   document.getElementById('not-client').classList.remove('show');
+  document.getElementById('error-box-policy').classList.remove('show');
+  document.getElementById('error-box-vehicle').classList.remove('show');
+}
 
-  if (!input) {
-    showError('Please enter your policy number.');
-    document.getElementById('policy-input').focus();
-    return;
-  }
-  if (input.length < 4) {
-    showError('Policy number is too short. Please check and try again.');
-    return;
-  }
+// ── ENTER KEY ─────────────────────────────────────────────
+document.getElementById('policy-input').addEventListener('keydown', e => { if(e.key==='Enter') checkPolicy(); });
+document.getElementById('vehicle-input').addEventListener('keydown', e => { if(e.key==='Enter') checkVehicle(); });
 
-  // Loading state
+// ── CHECK POLICY (Cover Credit clients) ──────────────────
+async function checkPolicy() {
+  const input = document.getElementById('policy-input').value.trim().toUpperCase();
+  document.getElementById('error-box-policy').classList.remove('show');
+  if (!input || input.length < 4) { showError('policy','Please enter your policy number.'); return; }
+
+  const btn = document.getElementById('check-btn-policy');
+  const txt = document.getElementById('btn-text-policy');
   btn.disabled = true;
-  btnTxt.innerHTML = '<div class="spinner"></div> Checking…';
+  txt.innerHTML = '<div class="spinner"></div> Checking…';
 
   try {
     const r    = await fetch(`${API_BASE}/policy/${encodeURIComponent(input)}`);
     const data = await r.json();
-
     if (data.success) {
-      renderResult(data.data);
+      renderPolicyResult(data.data);
       document.getElementById('lookup-card').style.display = 'none';
     } else {
-      // Not found
       document.getElementById('lookup-card').style.display = 'none';
       document.getElementById('not-client').classList.add('show');
     }
-  } catch (err) {
-    showError('Could not connect. Please check your internet and try again.');
+  } catch(err) {
+    showError('policy','Could not connect. Please check your internet and try again.');
   } finally {
     btn.disabled = false;
-    btnTxt.textContent = 'Check My Policy →';
+    txt.textContent = 'Check My Policy →';
   }
 }
 
-function showError(msg) {
-  document.getElementById('error-msg').textContent = msg;
-  document.getElementById('error-box').classList.add('show');
+// ── CHECK VEHICLE (Parivahan) ─────────────────────────────
+function checkVehicle() {
+  const raw   = document.getElementById('vehicle-input').value.trim().toUpperCase().replace(/\s/g,'');
+  document.getElementById('error-box-vehicle').classList.remove('show');
+
+  if (!raw || raw.length < 6) { showError('vehicle','Please enter a valid vehicle registration number.'); return; }
+
+  // Basic format validation — Indian vehicle number patterns
+  const pattern = /^[A-Z]{2}[0-9]{1,2}[A-Z]{1,3}[0-9]{4}$/;
+  if (!pattern.test(raw)) {
+    showError('vehicle', `"${raw}" doesn't look like a valid Indian vehicle number. Example: TS09EA1234`);
+    return;
+  }
+
+  renderVehicleResult(raw);
+  document.getElementById('lookup-card').style.display = 'none';
 }
 
-function resetLookup() {
-  document.getElementById('lookup-card').style.display = 'block';
-  document.getElementById('result-wrap').classList.remove('show');
-  document.getElementById('not-client').classList.remove('show');
-  document.getElementById('policy-input').value = '';
-  document.getElementById('error-box').classList.remove('show');
-  document.getElementById('policy-input').focus();
-}
+// ── RENDER POLICY RESULT ──────────────────────────────────
+function renderPolicyResult(p) {
+  const now     = new Date();
+  const expDate = new Date(p.expiresAt);
+  const expired = expDate < now;
+  const daysLeft= p.daysLeft || 0;
+  const expiring= !expired && daysLeft <= 30;
 
-// ── RENDER RESULT ─────────────────────────────────────────
-function renderResult(p) {
-  const now      = new Date();
-  const expDate  = new Date(p.expiresAt);
-  const expired  = expDate < now;
-  const daysLeft = p.daysLeft || 0;
-  const expiring = !expired && daysLeft <= 30;
-
-  // Status badge
   let badgeCls, badgeText;
-  if (expired)         { badgeCls='badge-expired';  badgeText='⚠️ Expired'; }
-  else if (expiring)   { badgeCls='badge-expiring'; badgeText='⏰ Renew Soon'; }
-  else                 { badgeCls='badge-active';   badgeText='✓ Active'; }
+  if (expired)       { badgeCls='badge-expired';  badgeText='⚠️ Expired'; }
+  else if (expiring) { badgeCls='badge-expiring'; badgeText='⏰ Renew Soon'; }
+  else               { badgeCls='badge-active';   badgeText='✓ Active'; }
 
-  // Expiry countdown
-  let expiryCountHtml = '';
-  if (expired) {
-    expiryCountHtml = `<div class="expiry-count"><span class="expiry-pill ep-danger">Expired ${Math.abs(daysLeft)} days ago</span></div>`;
-  } else if (daysLeft <= 30) {
-    expiryCountHtml = `<div class="expiry-count"><span class="expiry-pill ep-warn">${daysLeft} days remaining</span></div>`;
-  } else {
-    expiryCountHtml = `<div class="expiry-count"><span class="expiry-pill ep-good">${daysLeft} days remaining</span></div>`;
-  }
+  let expiryPill = '';
+  if (expired)            expiryPill = `<div class="expiry-count"><span class="expiry-pill ep-danger">Expired ${Math.abs(daysLeft)} days ago</span></div>`;
+  else if (daysLeft<=30)  expiryPill = `<div class="expiry-count"><span class="expiry-pill ep-warn">${daysLeft} days remaining</span></div>`;
+  else                    expiryPill = `<div class="expiry-count"><span class="expiry-pill ep-good">${daysLeft} days remaining</span></div>`;
 
-  // Cover amount formatting
-  const cover   = formatINR(p.coverAmount);
-  const premium = formatINR(p.premium);
-
-  // NCB
-  const ncbPct  = p.ncb || 0;
-  const ncbFill = (ncbPct / 50) * 100;
-  const ncbNext = ncbPct < 50 ? nextNCB(ncbPct) : null;
-
-  // Type label
   const typeMap = {
-    'health':'🏥 Health Insurance','life':'❤️ Life Insurance',
-    'vehicle-bike':'🏍️ Bike Insurance','vehicle-car':'🚗 Car Insurance',
-    'vehicle-commercial':'🚛 Commercial Vehicle','travel':'✈️ Travel Insurance','home':'🏠 Home Insurance',
+    'health':'🏥 Health','life':'❤️ Life','vehicle-bike':'🏍️ Bike',
+    'vehicle-car':'🚗 Car','vehicle-commercial':'🚛 Commercial','travel':'✈️ Travel','home':'🏠 Home',
   };
   const typeLabel = typeMap[p.type] || p.type;
+  const isVehicle = p.type && p.type.startsWith('vehicle');
+  const ncbPct    = p.ncb || 0;
+  const ncbFill   = (ncbPct / 50) * 100;
+  const ncbNext   = nextNCB(ncbPct);
+  currentNCB      = ncbPct;
 
-  // WA renewal message
-  const waMsg = encodeURIComponent(`Hi Cover Credit, my policy ${p.policyNumber} is due for renewal${expiring?' soon':expired?' (already expired)':''}. Please help me renew.`);
+  const waMsg = encodeURIComponent(`Hi Cover Credit, my policy ${p.policyNumber} is due for renewal${expiring?' soon':expired?' (expired)':''}. Please help.`);
 
-  const html = `
+  document.getElementById('result-card').innerHTML = `
     <div class="result-header">
       <div class="result-badge ${badgeCls}">${badgeText}</div>
       <div class="result-name">${esc(p.clientName)}</div>
-      <div class="result-policy-num">Policy No: ${esc(p.policyNumber)}${p.vehicleNumber ? ' · ' + esc(p.vehicleNumber) : ''}</div>
+      <div class="result-sub">Policy: ${esc(p.policyNumber)}${p.vehicleNumber?' · '+esc(p.vehicleNumber):''}</div>
     </div>
     <div class="result-body">
       <div class="result-grid">
-
-        <!-- Insurer -->
         <div class="result-item highlight">
           <div class="ri-label">Insurer</div>
           <div class="ri-value">${esc(p.insurerName)}</div>
           <div class="ri-sub">${typeLabel}</div>
         </div>
-
-        <!-- Cover Amount -->
         <div class="result-item">
           <div class="ri-label">Cover Amount</div>
-          <div class="ri-value big gold">${cover}</div>
+          <div class="ri-value big gold">${formatINR(p.coverAmount)}</div>
           <div class="ri-sub">Sum insured</div>
         </div>
-
-        <!-- Expiry -->
-        <div class="result-item ${expired?'danger':expiring?'':''} full">
+        <div class="result-item ${expired?'danger':''} full">
           <div class="ri-label">Policy Expiry</div>
           <div class="ri-value ${expired?'red':expiring?'orange':'green'}">${fmtDate(p.expiresAt)}</div>
-          ${expiryCountHtml}
+          ${expiryPill}
         </div>
-
-        <!-- Premium -->
         <div class="result-item">
           <div class="ri-label">Annual Premium</div>
-          <div class="ri-value">${premium}</div>
+          <div class="ri-value">${formatINR(p.premium)}</div>
           <div class="ri-sub">Per year</div>
         </div>
-
-        <!-- Start date -->
         <div class="result-item">
           <div class="ri-label">Start Date</div>
           <div class="ri-value">${fmtDate(p.startDate)}</div>
-          <div class="ri-sub">Policy start</div>
         </div>
-
-        <!-- NCB -->
-        ${p.type.startsWith('vehicle') ? `
+        ${isVehicle ? `
         <div class="result-item ncb-item full">
           <div class="ri-label">No Claim Bonus (NCB)</div>
-          <div class="ri-value gold">${ncbPct}%</div>
-          <div class="ncb-meter">
-            <div class="ncb-track"><div class="ncb-fill" style="width:${ncbFill}%"></div></div>
-            <div class="ncb-steps"><span class="ncb-step">0%</span><span class="ncb-step">20%</span><span class="ncb-step">25%</span><span class="ncb-step">35%</span><span class="ncb-step">45%</span><span class="ncb-step">50%</span></div>
+          <div class="ri-value gold">${ncbPct}%
+            <span style="font-size:.7rem;font-weight:400;color:rgba(255,255,255,.3);margin-left:.3rem;">
+              ${ncbPct===0?'(no claims needed)':ncbPct===50?'(maximum)':''}
+            </span>
           </div>
-          ${ncbNext ? `<div class="ri-sub" style="margin-top:.4rem;">One more claim-free year → ${ncbNext}% NCB</div>` : `<div class="ri-sub" style="margin-top:.4rem;">Maximum NCB reached 🎉</div>`}
+          <div class="ncb-meter">
+            <div class="ncb-track"><div class="ncb-fill" id="ncb-fill-bar" style="width:0%"></div></div>
+            <div class="ncb-steps">
+              <span class="ncb-step">0%</span><span class="ncb-step">20%</span>
+              <span class="ncb-step">25%</span><span class="ncb-step">35%</span>
+              <span class="ncb-step">45%</span><span class="ncb-step">50%</span>
+            </div>
+          </div>
+          ${ncbNext ? `<div class="ri-sub" style="margin-top:.35rem;">One more claim-free year → <strong style="color:var(--gold2)">${ncbNext}%</strong></div>` : `<div class="ri-sub" style="margin-top:.35rem;">🎉 Maximum NCB reached</div>`}
+          <button class="ncb-info-btn" onclick="openNCBModal()">ℹ️ How is this NCB calculated?</button>
         </div>` : ''}
-
       </div>
-
-      <!-- Actions -->
       <div class="result-actions">
         <a class="ra-btn ra-wa" href="https://wa.me/917842854466?text=${waMsg}" target="_blank">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Ask us
         </a>
-        ${(expired || expiring) ? `<a class="ra-btn ra-renew" href="https://wa.me/917842854466?text=${waMsg}" target="_blank">🔄 Renew Now</a>` : ''}
+        ${(expired||expiring)?`<a class="ra-btn ra-renew" href="https://wa.me/917842854466?text=${waMsg}" target="_blank">🔄 Renew Now</a>`:''}
       </div>
     </div>`;
 
-  document.getElementById('result-card').innerHTML = html;
   document.getElementById('result-wrap').classList.add('show');
+
+  // Animate NCB bar
+  if (isVehicle) {
+    setTimeout(() => {
+      const bar = document.getElementById('ncb-fill-bar');
+      if (bar) bar.style.width = ncbFill + '%';
+    }, 300);
+  }
 }
 
-// ── HELPERS ──────────────────────────────────────────────
+// ── RENDER VEHICLE RESULT (Parivahan redirect) ────────────
+function renderVehicleResult(vehicleNum) {
+  // Format the vehicle number for display
+  const formatted = vehicleNum.replace(/([A-Z]{2})([0-9]{1,2})([A-Z]{1,3})([0-9]{4})/, '$1 $2 $3 $4');
+
+  // Parivahan URL - this opens the official government portal
+  const parivahanUrl = `https://vahan.parivahan.gov.in/vahan4dashboard/vahan/searchstatus.xhtml`;
+  const mparivahan   = `https://mparivahan.in/`;
+  const rcUrl        = `https://parivahan.gov.in/rcdlstatus/?pur_cd=102`;
+
+  document.getElementById('vehicle-result-card').innerHTML = `
+    <div class="result-header">
+      <div class="result-badge badge-external">🚗 Vehicle Check</div>
+      <div class="result-name">${formatted}</div>
+      <div class="result-sub">Vehicle Registration Number</div>
+    </div>
+    <div class="result-body">
+
+      <div class="parivahan-result">
+        <div class="parivahan-result-title">📡 Parivahan — Govt of India</div>
+        <p>Vehicle insurance status for <strong>${formatted}</strong> is available on the official Parivahan portal. Click below to open it directly — enter the vehicle number there to see insurance validity and insurer name.</p>
+        <a class="parivahan-open-btn" href="${parivahanUrl}" target="_blank" rel="noopener">
+          🔗 Open Parivahan Portal
+        </a>
+        &nbsp;
+        <a class="parivahan-open-btn" href="${rcUrl}" target="_blank" rel="noopener" style="background:rgba(37,211,102,.1);border-color:rgba(37,211,102,.2);color:#4ade80;">
+          📱 RC & Insurance Status
+        </a>
+      </div>
+
+      <div class="result-item full" style="margin-bottom:1rem;">
+        <div class="ri-label">What Parivahan shows</div>
+        <div style="display:flex;flex-direction:column;gap:.4rem;margin-top:.3rem;">
+          <div style="display:flex;align-items:center;gap:.6rem;font-size:.8rem;color:rgba(74,222,128,.7);">
+            <span>✓</span><span>Insurance valid / expired</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:.6rem;font-size:.8rem;color:rgba(74,222,128,.7);">
+            <span>✓</span><span>Insurer name</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:.6rem;font-size:.8rem;color:rgba(74,222,128,.7);">
+            <span>✓</span><span>Policy expiry date</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:.6rem;font-size:.8rem;color:rgba(255,138,128,.5);">
+            <span>✗</span><span>NCB, cover amount, premium not shown publicly</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-item full" style="background:rgba(245,166,35,.06);border-color:rgba(245,166,35,.15);margin-bottom:1rem;">
+        <div class="ri-label" style="color:rgba(245,166,35,.6);">Want full NCB + cover details?</div>
+        <div style="font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.65;margin-top:.3rem;">
+          NCB and full policy details are only available through your insurer or advisor.
+          Share your policy number with Cover Credit — we'll add it to your portal for free and remind you before renewal.
+        </div>
+      </div>
+
+      <div class="result-actions">
+        <a class="ra-btn ra-wa"
+          href="https://wa.me/917842854466?text=Hi Cover Credit, I want to know the NCB and full details for vehicle ${formatted}. Can you help?"
+          target="_blank">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Get NCB details on WhatsApp
+        </a>
+      </div>
+    </div>`;
+
+  document.getElementById('vehicle-result-wrap').classList.add('show');
+}
+
+// ── NCB MODAL ─────────────────────────────────────────────
+function openNCBModal() {
+  const ladder = [
+    { years: 'No prior insurance', pct: 0,  saving: 'No discount yet' },
+    { years: '1 claim-free year',  pct: 20, saving: '₹1,000 on ₹5,000 premium' },
+    { years: '2 claim-free years', pct: 25, saving: '₹1,250 on ₹5,000 premium' },
+    { years: '3 claim-free years', pct: 35, saving: '₹1,750 on ₹5,000 premium' },
+    { years: '4 claim-free years', pct: 45, saving: '₹2,250 on ₹5,000 premium' },
+    { years: '5+ claim-free years',pct: 50, saving: '₹2,500 on ₹5,000 premium' },
+  ];
+
+  document.getElementById('ncb-ladder-content').innerHTML = ladder.map(row => `
+    <div class="ncb-row${row.pct===currentNCB?' current':''}">
+      <div class="ncb-years">${row.years}${row.pct===currentNCB?'<span class="ncb-current-tag">You</span>':''}</div>
+      <div class="ncb-pct-badge ${row.pct===currentNCB?'cur':'dim'}">${row.pct}%</div>
+      <div class="ncb-saving">${row.saving}</div>
+    </div>`).join('');
+
+  document.getElementById('ncb-modal-overlay').classList.add('show');
+}
+
+function closeNCBModal(e) {
+  if (!e || e.target === document.getElementById('ncb-modal-overlay')) {
+    document.getElementById('ncb-modal-overlay').classList.remove('show');
+  }
+}
+
+document.addEventListener('keydown', e => { if (e.key==='Escape') closeNCBModal(); });
+
+// ── RESET ─────────────────────────────────────────────────
+function resetLookup() {
+  document.getElementById('lookup-card').style.display = 'block';
+  document.getElementById('result-wrap').classList.remove('show');
+  document.getElementById('vehicle-result-wrap').classList.remove('show');
+  document.getElementById('not-client').classList.remove('show');
+  document.getElementById('policy-input').value  = '';
+  document.getElementById('vehicle-input').value = '';
+  document.getElementById('error-box-policy').classList.remove('show');
+  document.getElementById('error-box-vehicle').classList.remove('show');
+}
+
+function showError(type, msg) {
+  document.getElementById(`error-msg-${type}`).textContent = msg;
+  document.getElementById(`error-box-${type}`).classList.add('show');
+}
+
+// ── HELPERS ───────────────────────────────────────────────
 function fmtDate(iso) {
   if (!iso) return '—';
-  return new Date(iso).toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
+  return new Date(iso).toLocaleDateString('en-IN', {day:'numeric',month:'short',year:'numeric'});
 }
 function formatINR(n) {
   if (!n) return '—';
   if (n >= 10000000) return '₹' + (n/10000000).toFixed(1) + ' Cr';
   if (n >= 100000)   return '₹' + (n/100000).toFixed(1) + ' L';
-  if (n >= 1000)     return '₹' + (n/1000).toFixed(1) + 'K';
+  if (n >= 1000)     return '₹' + (n/1000).toFixed(0) + 'K';
   return '₹' + n;
 }
 function nextNCB(current) {
-  const ladder = [0, 20, 25, 35, 45, 50];
+  const ladder = [0,20,25,35,45,50];
   const idx = ladder.indexOf(current);
-  return idx >= 0 && idx < ladder.length - 1 ? ladder[idx + 1] : null;
+  return idx >= 0 && idx < ladder.length-1 ? ladder[idx+1] : null;
 }
 function esc(str) {
-  return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
 }
 </script>
 </body>
