@@ -310,61 +310,168 @@ body.hov #cr{width:54px;height:54px;opacity:.18;}
 .nudge-wa:hover{transform:translateY(-1px);}
 
 /* ═══════════════════════════════════════════
-   SINGLE SOS CARD
+   MODERN SOS CARD — dark, compact, premium
 ═══════════════════════════════════════════ */
-#sosCard,#bundleSheet{background:#fff;color:#111;border-radius:18px;overflow:hidden;box-shadow:0 28px 72px rgba(0,0,0,.55);}
-.card-hd{padding:1.2rem 1.5rem;display:flex;align-items:center;justify-content:space-between;}
-.card-hd.t-cv{background:linear-gradient(135deg,#bf360c 0%,#e65100 50%,#ff8f00 100%);}
-.card-hd.t-health{background:linear-gradient(135deg,#0d2b6b 0%,#1565c0 50%,#1976d2 100%);}
-.card-hd.t-life{background:linear-gradient(135deg,#1a3d1f 0%,#2e7d32 50%,#43a047 100%);}
-.card-hd.t-car{background:linear-gradient(135deg,#380d5c 0%,#6a1b9a 50%,#8e24aa 100%);}
-.card-hd.t-bike{background:linear-gradient(135deg,#b71c1c 0%,#e53935 50%,#f4511e 100%);}
-.chd-left{display:flex;align-items:center;gap:.85rem;}
-.chd-icon{width:48px;height:48px;background:rgba(255,255,255,.18);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;}
-.chd-type{font-size:.54rem;font-weight:700;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:2px;margin-bottom:.18rem;}
-.chd-name{font-family:'Playfair Display',serif;font-size:1.08rem;font-weight:900;color:#fff;line-height:1.1;}
-.chd-right{text-align:right;flex-shrink:0;}
-.chd-sos{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:rgba(255,255,255,.2);line-height:1;letter-spacing:5px;}
-.chd-keep{font-size:.5rem;color:rgba(255,255,255,.48);text-transform:uppercase;letter-spacing:2px;}
-.card-bd{background:#fff;padding:1.2rem 1.5rem 0;}
-.det-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1rem;}
-.det{background:#f8f9fa;border-radius:8px;padding:.6rem .85rem;}
-.det.acc-cv{border-left:3px solid #e65100;}
-.det.acc-health{border-left:3px solid #1565c0;}
-.det.acc-life{border-left:3px solid #2e7d32;}
-.det.acc-car{border-left:3px solid #6a1b9a;}
-.det.acc-bike{border-left:3px solid #e53935;}
-.det-lbl{font-size:.52rem;font-weight:700;color:#bbb;text-transform:uppercase;letter-spacing:1px;margin-bottom:.2rem;}
-.det-val{font-size:.82rem;font-weight:700;color:#111;line-height:1.3;word-break:break-all;}
-.det-val.emph{font-size:.94rem;}
-.det-val.hot{color:#e65100;}.det-val.hot-h{color:#1565c0;}.det-val.hot-l{color:#2e7d32;}.det-val.hot-c{color:#6a1b9a;}.det-val.hot-b{color:#e53935;}
-.covers-row{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:.95rem;padding:0 1.5rem;}
-.ctag{display:inline-flex;align-items:center;gap:.22rem;padding:.2rem .65rem;border-radius:100px;font-size:.6rem;font-weight:700;}
-.ctag.y{background:#e8f5e9;border:1px solid #a5d6a7;color:#2e7d32;}
-.ctag.n{background:#fce4ec;border:1px solid #f48fb1;color:#c2185b;}
-.steps-div{display:flex;align-items:center;gap:.6rem;margin:0 1.5rem .7rem;}
-.sdiv-lbl{font-size:.54rem;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:1.5px;white-space:nowrap;}
-.sdiv-line{flex:1;height:1px;background:#e8e8e8;}
-.card-steps{display:flex;flex-direction:column;gap:.38rem;padding:0 1.5rem;margin-bottom:1rem;}
-.cs{display:flex;align-items:flex-start;gap:.55rem;}
-.cs-n{width:21px;height:21px;border-radius:50%;color:#fff;font-size:.6rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.04rem;}
-.cs-n.cv{background:#e65100;}.cs-n.health{background:#1565c0;}.cs-n.life{background:#2e7d32;}.cs-n.car{background:#6a1b9a;}.cs-n.bike{background:#e53935;}
-.cs-t{font-size:.72rem;color:#333;line-height:1.48;}
-.cs-t strong{color:#111;font-weight:700;}
-.members-sec{padding:0 1.5rem;margin-bottom:.85rem;}
-.members-lbl{font-size:.54rem;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.5rem;}
-.members-tags{display:flex;gap:.35rem;flex-wrap:wrap;}
-.mtag{background:#e3f2fd;border:1px solid #90caf9;border-radius:6px;padding:.2rem .65rem;font-size:.65rem;font-weight:700;color:#1565c0;}
-.card-ft{background:#f5f5f5;padding:.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid #ebebeb;margin-top:.2rem;}
-.cft-brand{display:flex;flex-direction:column;justify-content:center;}
-.cft-logo{font-family:'Playfair Display',serif;font-size:.92rem;font-weight:700;color:#111;line-height:1.2;}
-.cft-logo span{color:#e65100;font-style:normal;}
-.cft-tag{font-size:.52rem;color:#aaa;margin-top:.05rem;}
-.cft-right{text-align:right;display:flex;flex-direction:column;justify-content:center;}
-.cft-phone{font-size:.8rem;font-weight:700;color:#e65100;}
-.cft-url{font-size:.52rem;color:#bbb;}
-.card-disclaimer{font-size:.48rem;color:#bbb;text-align:center;padding:.4rem 1.5rem;background:#fafafa;border-top:1px solid #f0f0f0;line-height:1.5;}
-.card-gen{font-size:.5rem;color:#ccc;text-align:center;padding:.35rem;background:#fafafa;}
+#sosCard{
+  background:#0f0f0f;
+  color:#fff;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 32px 80px rgba(0,0,0,.65);
+  font-family:'DM Sans',sans-serif;
+  width:100%;
+  max-width:520px;
+}
+
+/* Accent stripe — thin coloured top bar per policy type */
+.nc-stripe{height:4px;width:100%;}
+.nc-stripe.t-cv    {background:linear-gradient(90deg,#e65100,#ff8f00);}
+.nc-stripe.t-health{background:linear-gradient(90deg,#1565c0,#42a5f5);}
+.nc-stripe.t-life  {background:linear-gradient(90deg,#2e7d32,#66bb6a);}
+.nc-stripe.t-car   {background:linear-gradient(90deg,#6a1b9a,#ab47bc);}
+.nc-stripe.t-bike  {background:linear-gradient(90deg,#c62828,#ef5350);}
+
+/* Card header — dark, tight */
+.nc-hd{
+  padding:1.1rem 1.4rem .8rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.nc-hd-left{display:flex;align-items:center;gap:.75rem;}
+.nc-badge{
+  width:36px;height:36px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;flex-shrink:0;
+}
+.nc-badge.t-cv    {background:rgba(230,81,0,.18);border:1px solid rgba(230,81,0,.3);}
+.nc-badge.t-health{background:rgba(21,101,192,.18);border:1px solid rgba(21,101,192,.3);}
+.nc-badge.t-life  {background:rgba(46,125,50,.18);border:1px solid rgba(46,125,50,.3);}
+.nc-badge.t-car   {background:rgba(106,27,154,.18);border:1px solid rgba(106,27,154,.3);}
+.nc-badge.t-bike  {background:rgba(198,40,40,.18);border:1px solid rgba(198,40,40,.3);}
+.nc-policy-type{font-size:.55rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:.15rem;}
+.nc-policy-type.t-cv    {color:#ff8f00;}
+.nc-policy-type.t-health{color:#42a5f5;}
+.nc-policy-type.t-life  {color:#66bb6a;}
+.nc-policy-type.t-car   {color:#ab47bc;}
+.nc-policy-type.t-bike  {color:#ef5350;}
+.nc-holder-name{font-size:.9rem;font-weight:700;color:#fff;line-height:1.1;}
+.nc-hd-right{text-align:right;}
+.nc-sos-text{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:6px;line-height:1;}
+.nc-sos-text.t-cv    {color:rgba(230,81,0,.4);}
+.nc-sos-text.t-health{color:rgba(21,101,192,.4);}
+.nc-sos-text.t-life  {color:rgba(46,125,50,.4);}
+.nc-sos-text.t-car   {color:rgba(106,27,154,.4);}
+.nc-sos-text.t-bike  {color:rgba(198,40,40,.4);}
+.nc-keep{font-size:.45rem;color:rgba(255,255,255,.25);letter-spacing:2px;text-transform:uppercase;margin-top:.15rem;}
+
+/* Helpline hero — THE dominant element */
+.nc-helpline-block{
+  padding:1.1rem 1.4rem .9rem;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.nc-hl-label{font-size:.5rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.3rem;}
+.nc-hl-number{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2.6rem;
+  letter-spacing:3px;
+  line-height:1;
+}
+.nc-hl-number.t-cv    {color:#ff8f00;}
+.nc-hl-number.t-health{color:#42a5f5;}
+.nc-hl-number.t-life  {color:#66bb6a;}
+.nc-hl-number.t-car   {color:#ab47bc;}
+.nc-hl-number.t-bike  {color:#ef5350;}
+.nc-hl-sub{font-size:.62rem;color:rgba(255,255,255,.35);margin-top:.3rem;}
+
+/* Info row — 3 or 4 compact items in one line */
+.nc-info-row{
+  display:flex;
+  gap:0;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.nc-info-cell{
+  flex:1;
+  padding:.7rem 1.4rem;
+  border-right:1px solid rgba(255,255,255,.07);
+}
+.nc-info-cell:last-child{border-right:none;}
+.nc-info-lbl{font-size:.45rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:.22rem;}
+.nc-info-val{font-size:.75rem;font-weight:700;color:rgba(255,255,255,.88);line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nc-info-val.accent{color:#ff8f00;}
+.nc-info-val.accent-h{color:#42a5f5;}
+.nc-info-val.accent-l{color:#66bb6a;}
+.nc-info-val.accent-c{color:#ab47bc;}
+.nc-info-val.accent-b{color:#ef5350;}
+
+/* Covers strip */
+.nc-covers{
+  display:flex;gap:.3rem;flex-wrap:wrap;
+  padding:.65rem 1.4rem;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+.nc-cover-tag{
+  font-size:.55rem;font-weight:700;
+  padding:.18rem .55rem;border-radius:100px;
+  letter-spacing:.3px;
+}
+.nc-cover-tag.y{background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.25);color:#4ade80;}
+.nc-cover-tag.n{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.28);}
+
+/* Steps — compact numbered list */
+.nc-steps{padding:.75rem 1.4rem .65rem;}
+.nc-steps-label{font-size:.45rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:.55rem;}
+.nc-step{display:flex;align-items:flex-start;gap:.55rem;margin-bottom:.38rem;}
+.nc-step:last-child{margin-bottom:0;}
+.nc-step-n{
+  width:18px;height:18px;border-radius:50%;
+  font-size:.5rem;font-weight:900;color:#0f0f0f;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;
+}
+.nc-step-n.t-cv    {background:#ff8f00;}
+.nc-step-n.t-health{background:#42a5f5;}
+.nc-step-n.t-life  {background:#66bb6a;}
+.nc-step-n.t-car   {background:#ab47bc;}
+.nc-step-n.t-bike  {background:#ef5350;}
+.nc-step-txt{font-size:.65rem;color:rgba(255,255,255,.55);line-height:1.5;}
+.nc-step-txt strong{color:rgba(255,255,255,.9);font-weight:700;}
+
+/* Members row (health only) */
+.nc-members{
+  display:flex;gap:.3rem;flex-wrap:wrap;
+  padding:.5rem 1.4rem;
+  border-top:1px solid rgba(255,255,255,.07);
+}
+.nc-member-tag{
+  font-size:.55rem;font-weight:600;
+  padding:.18rem .6rem;border-radius:6px;
+  background:rgba(66,165,245,.1);
+  border:1px solid rgba(66,165,245,.2);
+  color:#90caf9;
+}
+
+/* Footer — branding */
+.nc-footer{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.65rem 1.4rem;
+  background:rgba(255,255,255,.03);
+  border-top:1px solid rgba(255,255,255,.07);
+}
+.nc-brand{font-family:'Playfair Display',serif;font-size:.85rem;font-weight:700;color:rgba(255,255,255,.7);letter-spacing:.3px;}
+.nc-brand span{color:#ff8f00;}
+.nc-brand-tag{font-size:.45rem;color:rgba(255,255,255,.2);margin-top:.1rem;}
+.nc-footer-right{text-align:right;}
+.nc-footer-phone{font-size:.68rem;font-weight:700;color:rgba(255,255,255,.5);}
+.nc-footer-url{font-size:.42rem;color:rgba(255,255,255,.18);}
+
+/* Disclaimer — ultra compact */
+.nc-disclaimer{
+  font-size:.42rem;color:rgba(255,255,255,.15);
+  text-align:center;padding:.4rem 1.4rem;
+  line-height:1.5;border-top:1px solid rgba(255,255,255,.05);
+  background:#0a0a0a;
+}
 
 /* BUNDLE SHEET */
 .bundle-sheet-wrap{background:#fff;color:#111;border-radius:18px;overflow:hidden;box-shadow:0 28px 72px rgba(0,0,0,.55);}
@@ -1263,89 +1370,119 @@ function removeFromBundle(i) {
    BUILD SINGLE CARD HTML
 ═══════════════════════════════════════════ */
 function buildSingleCardHTML(snap) {
-  const meta = TYPE_META[snap.type];
+  const t = snap.type;
   const today = new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
-  let detailsHtml = '';
-  let extraHtml = '';
 
-  if (snap.type === 'cv') {
-    detailsHtml = `
-      <div class="det ${meta.acc}"><div class="det-lbl">Vehicle Number</div><div class="det-val emph">${snap.vnum}</div></div>
-      <div class="det ${meta.acc}"><div class="det-lbl">Vehicle Type</div><div class="det-val">${snap.vtype}</div></div>
-      <div class="det ${meta.acc}"><div class="det-lbl">Insurer</div><div class="det-val">${snap.insurer}</div></div>
-      <div class="det ${meta.acc}"><div class="det-lbl">Policy Number</div><div class="det-val">${snap.policyNo}</div></div>
-      <div class="det ${meta.acc}"><div class="det-lbl">Claims Helpline</div><div class="det-val emph ${meta.hot}">${snap.helpline}</div></div>
-      <div class="det ${meta.acc}"><div class="det-lbl">Policy Expiry</div><div class="det-val">${fmtDate(snap.expiry)}</div></div>`;
-  } else if (snap.type === 'health') {
-    detailsHtml = `
-      <div class="det ${meta.acc}"><div class="det-lbl">Primary Member</div><div class="det-val emph">${snap.name}</div></div>
-      <div class="det ${meta.acc}"><div class="det-lbl">Insurer</div><div class="det-val">${snap.insurer}</div></div>
-      <div class="det ${meta.acc}"><div class="det-lbl">Policy Number</div><div class="det-val">${snap.policyNo}</div></div>
-      <div class="det ${meta.acc}"><div class="det-lbl">Sum Insured</div><div class="det-val emph ${meta.hot}">${snap.si}</div></div>
-      <div class="det ${meta.acc}"><div class="det-lbl">Claims Helpline</div><div class="det-val emph ${meta.hot}">${snap.helpline}</div></div>
-      <div class="det ${meta.acc}"><div class="det-lbl">Network Type</div><div class="det-val">${snap.network}</div></div>`;
-    if (snap.members.length) {
-      extraHtml = `<div class="members-sec"><div class="members-lbl">Covered Members</div><div class="members-tags">${snap.members.map(m=>`<span class="mtag">👤 ${m}</span>`).join('')}</div></div>`;
-    }
-  } else if (snap.type === 'life') {
-    detailsHtml = `
-      <div class="det ${meta.acc}"><div class="det-lbl">Policy Holder</div><div class="det-val emph">${snap.name}</div></div>
-      <div class="det ${meta.acc}"><div class="det-lbl">Insurer</div><div class="det-val">${snap.insurer}</div></div>
-      <div class="det ${meta.acc}"><div class="det-lbl">Policy Number</div><div class="det-val">${snap.policyNo}</div></div>
-      <div class="det ${meta.acc}"><div class="det-lbl">Sum Assured</div><div class="det-val emph ${meta.hot}">${snap.sa}</div></div>
-      <div class="det ${meta.acc}"><div class="det-lbl">Nominee</div><div class="det-val">${snap.nom} (${snap.nomrel})</div></div>
-      <div class="det ${meta.acc}"><div class="det-lbl">Nominee Phone</div><div class="det-val ${meta.hot}">${snap.nomph}</div></div>`;
-  } else if (snap.type === 'car') {
-    detailsHtml = `
-      <div class="det ${meta.acc}"><div class="det-lbl">Vehicle Number</div><div class="det-val emph">${snap.cnum}</div></div>
-      <div class="det ${meta.acc}"><div class="det-lbl">Vehicle</div><div class="det-val">${snap.cmodel}</div></div>
-      <div class="det ${meta.acc}"><div class="det-lbl">Insurer</div><div class="det-val">${snap.insurer}</div></div>
-      <div class="det ${meta.acc}"><div class="det-lbl">Policy Number</div><div class="det-val">${snap.policyNo}</div></div>
-      <div class="det ${meta.acc}"><div class="det-lbl">Claims Helpline</div><div class="det-val emph ${meta.hot}">${snap.helpline}</div></div>
-      <div class="det ${meta.acc}"><div class="det-lbl">Policy Expiry</div><div class="det-val">${fmtDate(snap.expiry)}</div></div>`;
+  /* accent colour class shorthand */
+  const acMap = {cv:'t-cv',health:'t-health',life:'t-life',car:'t-car',bike:'t-bike'};
+  const ac = acMap[t];
+  const accentVal = {cv:'accent',health:'accent-h',life:'accent-l',car:'accent-c',bike:'accent-b'}[t];
+  const meta = TYPE_META[t];
+
+  /* — vehicle / policy identifier row — */
+  let row1 = '', row2 = '';
+  if (t === 'cv') {
+    row1 = `
+      <div class="nc-info-cell"><div class="nc-info-lbl">Vehicle</div><div class="nc-info-val ${accentVal}">${snap.vnum}</div></div>
+      <div class="nc-info-cell"><div class="nc-info-lbl">Type</div><div class="nc-info-val">${snap.vtype || '—'}</div></div>
+      <div class="nc-info-cell"><div class="nc-info-lbl">Policy no.</div><div class="nc-info-val">${snap.policyNo}</div></div>
+      <div class="nc-info-cell"><div class="nc-info-lbl">Expiry</div><div class="nc-info-val">${fmtDate(snap.expiry)}</div></div>`;
+  } else if (t === 'health') {
+    row1 = `
+      <div class="nc-info-cell"><div class="nc-info-lbl">Insurer</div><div class="nc-info-val">${snap.insurer}</div></div>
+      <div class="nc-info-cell"><div class="nc-info-lbl">Sum insured</div><div class="nc-info-val ${accentVal}">${snap.si || '—'}</div></div>
+      <div class="nc-info-cell"><div class="nc-info-lbl">Policy no.</div><div class="nc-info-val">${snap.policyNo}</div></div>
+      <div class="nc-info-cell"><div class="nc-info-lbl">Network</div><div class="nc-info-val">${(snap.network||'').split(' ')[0]}</div></div>`;
+  } else if (t === 'life') {
+    row1 = `
+      <div class="nc-info-cell"><div class="nc-info-lbl">Insurer</div><div class="nc-info-val">${snap.insurer}</div></div>
+      <div class="nc-info-cell"><div class="nc-info-lbl">Sum assured</div><div class="nc-info-val ${accentVal}">${snap.sa || '—'}</div></div>
+      <div class="nc-info-cell"><div class="nc-info-lbl">Nominee</div><div class="nc-info-val">${snap.nom}</div></div>
+      <div class="nc-info-cell"><div class="nc-info-lbl">Nominee phone</div><div class="nc-info-val ${accentVal}">${snap.nomph}</div></div>`;
+  } else if (t === 'car') {
+    row1 = `
+      <div class="nc-info-cell"><div class="nc-info-lbl">Vehicle</div><div class="nc-info-val ${accentVal}">${snap.cnum}</div></div>
+      <div class="nc-info-cell"><div class="nc-info-lbl">Model</div><div class="nc-info-val">${snap.cmodel || '—'}</div></div>
+      <div class="nc-info-cell"><div class="nc-info-lbl">Policy no.</div><div class="nc-info-val">${snap.policyNo}</div></div>
+      <div class="nc-info-cell"><div class="nc-info-lbl">Expiry</div><div class="nc-info-val">${fmtDate(snap.expiry)}</div></div>`;
   } else {
-    detailsHtml = `
-      <div class="det ${meta.acc}"><div class="det-lbl">Vehicle Number</div><div class="det-val emph">${snap.bnum}</div></div>
-      <div class="det ${meta.acc}"><div class="det-lbl">Bike</div><div class="det-val">${snap.bmodel}</div></div>
-      <div class="det ${meta.acc}"><div class="det-lbl">Insurer</div><div class="det-val">${snap.insurer}</div></div>
-      <div class="det ${meta.acc}"><div class="det-lbl">Policy Number</div><div class="det-val">${snap.policyNo}</div></div>
-      <div class="det ${meta.acc}"><div class="det-lbl">Claims Helpline</div><div class="det-val emph ${meta.hot}">${snap.helpline}</div></div>
-      <div class="det ${meta.acc}"><div class="det-lbl">Policy Expiry</div><div class="det-val">${fmtDate(snap.expiry)}</div></div>`;
+    row1 = `
+      <div class="nc-info-cell"><div class="nc-info-lbl">Vehicle</div><div class="nc-info-val ${accentVal}">${snap.bnum}</div></div>
+      <div class="nc-info-cell"><div class="nc-info-lbl">Bike</div><div class="nc-info-val">${snap.bmodel || '—'}</div></div>
+      <div class="nc-info-cell"><div class="nc-info-lbl">Policy no.</div><div class="nc-info-val">${snap.policyNo}</div></div>
+      <div class="nc-info-cell"><div class="nc-info-lbl">Expiry</div><div class="nc-info-val">${fmtDate(snap.expiry)}</div></div>`;
   }
 
-  const coversHtml = snap.covers.map(c => `<span class="ctag ${c.active ? 'y' : 'n'}">${c.active ? '✓' : '✗'} ${c.label}</span>`).join('');
+  /* insurer row for vehicle types */
+  if (['cv','car','bike'].includes(t)) {
+    row2 = `<div class="nc-info-row"><div class="nc-info-cell" style="flex:2"><div class="nc-info-lbl">Insurer</div><div class="nc-info-val">${snap.insurer}</div></div></div>`;
+  }
 
-  /* FIX: inject helpline directly into step text */
-  const stepsHtml = STEPS[snap.type].map((s,i) => {
-    let stepDesc = s.d;
-    if (i === 0) {
-      stepDesc = `Call <strong>${snap.helpline}</strong> — tell them policy no. <strong>${snap.policyNo}</strong>.`;
-    }
-    return `<div class="cs"><div class="${meta.numClass}">${i+1}</div><div class="cs-t"><strong>${s.t}</strong> — ${stepDesc}</div></div>`;
+  /* covers */
+  const coversHtml = snap.covers.map(c =>
+    `<span class="nc-cover-tag ${c.active ? 'y' : 'n'}">${c.active ? '✓' : '✗'} ${c.label}</span>`
+  ).join('');
+
+  /* steps */
+  const stepsHtml = STEPS[t].map((s,i) => {
+    const desc = i === 0
+      ? `Call <strong>${snap.helpline}</strong> — policy <strong>${snap.policyNo}</strong>.`
+      : s.d;
+    return `<div class="nc-step">
+      <div class="nc-step-n ${ac}">${i+1}</div>
+      <div class="nc-step-txt"><strong>${s.t}</strong> — ${desc}</div>
+    </div>`;
   }).join('');
 
+  /* members (health) */
+  const membersHtml = (t === 'health' && snap.members.length)
+    ? `<div class="nc-members">${snap.members.map(m=>`<span class="nc-member-tag">👤 ${m}</span>`).join('')}</div>`
+    : '';
+
   return `
-    <div class="card-hd ${meta.color}">
-      <div class="chd-left">
-        <div class="chd-icon">${meta.icon}</div>
+    <div class="nc-stripe ${ac}"></div>
+    <div class="nc-hd">
+      <div class="nc-hd-left">
+        <div class="nc-badge ${ac}">${meta.icon}</div>
         <div>
-          <div class="chd-type">${meta.label}</div>
-          <div class="chd-name">${snap.type === 'life' ? 'Policy Info Card' : 'Emergency SOS Card'}<br/>${snap.name}</div>
+          <div class="nc-policy-type ${ac}">${meta.label}</div>
+          <div class="nc-holder-name">${snap.name}</div>
         </div>
       </div>
-      <div class="chd-right"><div class="chd-sos">SOS</div><div class="chd-keep">${meta.keep}</div></div>
+      <div class="nc-hd-right">
+        <div class="nc-sos-text ${ac}">SOS</div>
+        <div class="nc-keep">${meta.keep}</div>
+      </div>
     </div>
-    <div class="card-bd"><div class="det-grid">${detailsHtml}</div></div>
-    ${extraHtml}
-    <div class="covers-row">${coversHtml}</div>
-    <div class="steps-div"><div class="sdiv-lbl">${snap.type === 'life' ? 'Nominee — Do This' : 'In an emergency — do this immediately'}</div><div class="sdiv-line"></div></div>
-    <div class="card-steps">${stepsHtml}</div>
-    <div class="card-ft">
-      <div class="cft-brand"><div class="cft-logo">Cover<span>Credit</span></div><div class="cft-tag">Free advisory · covercredit.in</div></div>
-      <div class="cft-right"><div class="cft-phone">+91 78428 54466</div><div class="cft-url">covercredit.in/sos-card</div></div>
+
+    <div class="nc-helpline-block">
+      <div class="nc-hl-label">Claims helpline — call immediately</div>
+      <div class="nc-hl-number ${ac}">${snap.helpline}</div>
+      <div class="nc-hl-sub">${snap.insurer} · Available 24×7</div>
     </div>
-    <div class="card-disclaimer">Steps are general guidance — refer to your policy document for exact claim conditions. Cover Credit is not liable for claim outcomes.</div>
-    <div class="card-gen">Generated free at covercredit.in/sos-card on ${today} · Works for any insurer · Mon–Sat 9AM–7PM</div>`;
+
+    <div class="nc-info-row">${row1}</div>
+    ${row2}
+    ${membersHtml}
+
+    <div class="nc-covers">${coversHtml}</div>
+
+    <div class="nc-steps">
+      <div class="nc-steps-label">In an emergency — do this immediately</div>
+      ${stepsHtml}
+    </div>
+
+    <div class="nc-footer">
+      <div>
+        <div class="nc-brand">Cover<span>Credit</span></div>
+        <div class="nc-brand-tag">Free advisory · covercredit.in</div>
+      </div>
+      <div class="nc-footer-right">
+        <div class="nc-footer-phone">+91 78428 54466</div>
+        <div class="nc-footer-url">covercredit.in/sos-card</div>
+      </div>
+    </div>
+    <div class="nc-disclaimer">Steps are general guidance — refer to your policy for exact claim conditions. Cover Credit is not liable for claim outcomes. · Generated ${today}</div>`;
 }
 
 /* ═══════════════════════════════════════════
