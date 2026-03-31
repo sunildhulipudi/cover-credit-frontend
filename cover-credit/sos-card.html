@@ -310,168 +310,146 @@ body.hov #cr{width:54px;height:54px;opacity:.18;}
 .nudge-wa:hover{transform:translateY(-1px);}
 
 /* ═══════════════════════════════════════════
-   MODERN SOS CARD — dark, compact, premium
+   SOS CARD — compact, professional, integrated branding
 ═══════════════════════════════════════════ */
 #sosCard{
-  background:#0f0f0f;
+  background:#111318;
   color:#fff;
-  border-radius:20px;
+  border-radius:16px;
   overflow:hidden;
-  box-shadow:0 32px 80px rgba(0,0,0,.65);
+  box-shadow:0 24px 64px rgba(0,0,0,.7);
   font-family:'DM Sans',sans-serif;
   width:100%;
-  max-width:520px;
+  max-width:480px;
 }
 
-/* Accent stripe — thin coloured top bar per policy type */
-.nc-stripe{height:4px;width:100%;}
-.nc-stripe.t-cv    {background:linear-gradient(90deg,#e65100,#ff8f00);}
-.nc-stripe.t-health{background:linear-gradient(90deg,#1565c0,#42a5f5);}
-.nc-stripe.t-life  {background:linear-gradient(90deg,#2e7d32,#66bb6a);}
-.nc-stripe.t-car   {background:linear-gradient(90deg,#6a1b9a,#ab47bc);}
-.nc-stripe.t-bike  {background:linear-gradient(90deg,#c62828,#ef5350);}
+/* ── top accent bar ── */
+.nc-bar{height:3px;}
+.nc-bar.t-cv    {background:linear-gradient(90deg,#e65100,#ffb300);}
+.nc-bar.t-health{background:linear-gradient(90deg,#1565c0,#29b6f6);}
+.nc-bar.t-life  {background:linear-gradient(90deg,#2e7d32,#69f0ae);}
+.nc-bar.t-car   {background:linear-gradient(90deg,#6a1b9a,#ce93d8);}
+.nc-bar.t-bike  {background:linear-gradient(90deg,#b71c1c,#ff7043);}
 
-/* Card header — dark, tight */
+/* ── header: type + name + brand woven in ── */
 .nc-hd{
-  padding:1.1rem 1.4rem .8rem;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  border-bottom:1px solid rgba(255,255,255,.07);
+  padding:.9rem 1.2rem .75rem;
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:start;
+  gap:.5rem;
 }
-.nc-hd-left{display:flex;align-items:center;gap:.75rem;}
-.nc-badge{
-  width:36px;height:36px;border-radius:9px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.1rem;flex-shrink:0;
+.nc-type-pill{
+  display:inline-flex;align-items:center;gap:.35rem;
+  font-size:.5rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  margin-bottom:.3rem;
 }
-.nc-badge.t-cv    {background:rgba(230,81,0,.18);border:1px solid rgba(230,81,0,.3);}
-.nc-badge.t-health{background:rgba(21,101,192,.18);border:1px solid rgba(21,101,192,.3);}
-.nc-badge.t-life  {background:rgba(46,125,50,.18);border:1px solid rgba(46,125,50,.3);}
-.nc-badge.t-car   {background:rgba(106,27,154,.18);border:1px solid rgba(106,27,154,.3);}
-.nc-badge.t-bike  {background:rgba(198,40,40,.18);border:1px solid rgba(198,40,40,.3);}
-.nc-policy-type{font-size:.55rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:.15rem;}
-.nc-policy-type.t-cv    {color:#ff8f00;}
-.nc-policy-type.t-health{color:#42a5f5;}
-.nc-policy-type.t-life  {color:#66bb6a;}
-.nc-policy-type.t-car   {color:#ab47bc;}
-.nc-policy-type.t-bike  {color:#ef5350;}
-.nc-holder-name{font-size:.9rem;font-weight:700;color:#fff;line-height:1.1;}
-.nc-hd-right{text-align:right;}
-.nc-sos-text{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:6px;line-height:1;}
-.nc-sos-text.t-cv    {color:rgba(230,81,0,.4);}
-.nc-sos-text.t-health{color:rgba(21,101,192,.4);}
-.nc-sos-text.t-life  {color:rgba(46,125,50,.4);}
-.nc-sos-text.t-car   {color:rgba(106,27,154,.4);}
-.nc-sos-text.t-bike  {color:rgba(198,40,40,.4);}
-.nc-keep{font-size:.45rem;color:rgba(255,255,255,.25);letter-spacing:2px;text-transform:uppercase;margin-top:.15rem;}
+.nc-type-pill .dot{width:5px;height:5px;border-radius:50%;}
+.nc-type-pill.t-cv    {color:#ffb300;} .nc-type-pill.t-cv     .dot{background:#ffb300;}
+.nc-type-pill.t-health{color:#29b6f6;} .nc-type-pill.t-health .dot{background:#29b6f6;}
+.nc-type-pill.t-life  {color:#69f0ae;} .nc-type-pill.t-life   .dot{background:#69f0ae;}
+.nc-type-pill.t-car   {color:#ce93d8;} .nc-type-pill.t-car    .dot{background:#ce93d8;}
+.nc-type-pill.t-bike  {color:#ff7043;} .nc-type-pill.t-bike   .dot{background:#ff7043;}
+.nc-name{font-size:1rem;font-weight:700;color:#fff;line-height:1.15;margin-bottom:.08rem;}
+/* brand woven into header — subtle, not a footer island */
+.nc-brand-inline{
+  display:inline-flex;align-items:center;gap:.25rem;
+  font-family:'Playfair Display',serif;
+  font-size:.6rem;font-weight:700;
+  color:rgba(255,255,255,.28);
+  letter-spacing:.2px;
+}
+.nc-brand-inline em{font-style:normal;color:#ff8f00;}
+.nc-hd-right{text-align:right;padding-top:.1rem;}
+.nc-sos{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:5px;line-height:1;color:rgba(255,255,255,.08);}
 
-/* Helpline hero — THE dominant element */
-.nc-helpline-block{
-  padding:1.1rem 1.4rem .9rem;
-  border-bottom:1px solid rgba(255,255,255,.07);
-}
-.nc-hl-label{font-size:.5rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.3rem;}
-.nc-hl-number{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:2.6rem;
-  letter-spacing:3px;
-  line-height:1;
-}
-.nc-hl-number.t-cv    {color:#ff8f00;}
-.nc-hl-number.t-health{color:#42a5f5;}
-.nc-hl-number.t-life  {color:#66bb6a;}
-.nc-hl-number.t-car   {color:#ab47bc;}
-.nc-hl-number.t-bike  {color:#ef5350;}
-.nc-hl-sub{font-size:.62rem;color:rgba(255,255,255,.35);margin-top:.3rem;}
-
-/* Info row — 3 or 4 compact items in one line */
-.nc-info-row{
-  display:flex;
-  gap:0;
-  border-bottom:1px solid rgba(255,255,255,.07);
-}
-.nc-info-cell{
-  flex:1;
-  padding:.7rem 1.4rem;
-  border-right:1px solid rgba(255,255,255,.07);
-}
-.nc-info-cell:last-child{border-right:none;}
-.nc-info-lbl{font-size:.45rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:.22rem;}
-.nc-info-val{font-size:.75rem;font-weight:700;color:rgba(255,255,255,.88);line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.nc-info-val.accent{color:#ff8f00;}
-.nc-info-val.accent-h{color:#42a5f5;}
-.nc-info-val.accent-l{color:#66bb6a;}
-.nc-info-val.accent-c{color:#ab47bc;}
-.nc-info-val.accent-b{color:#ef5350;}
-
-/* Covers strip */
-.nc-covers{
-  display:flex;gap:.3rem;flex-wrap:wrap;
-  padding:.65rem 1.4rem;
-  border-bottom:1px solid rgba(255,255,255,.07);
-}
-.nc-cover-tag{
-  font-size:.55rem;font-weight:700;
-  padding:.18rem .55rem;border-radius:100px;
-  letter-spacing:.3px;
-}
-.nc-cover-tag.y{background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.25);color:#4ade80;}
-.nc-cover-tag.n{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.28);}
-
-/* Steps — compact numbered list */
-.nc-steps{padding:.75rem 1.4rem .65rem;}
-.nc-steps-label{font-size:.45rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.25);margin-bottom:.55rem;}
-.nc-step{display:flex;align-items:flex-start;gap:.55rem;margin-bottom:.38rem;}
-.nc-step:last-child{margin-bottom:0;}
-.nc-step-n{
-  width:18px;height:18px;border-radius:50%;
-  font-size:.5rem;font-weight:900;color:#0f0f0f;
-  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;
-}
-.nc-step-n.t-cv    {background:#ff8f00;}
-.nc-step-n.t-health{background:#42a5f5;}
-.nc-step-n.t-life  {background:#66bb6a;}
-.nc-step-n.t-car   {background:#ab47bc;}
-.nc-step-n.t-bike  {background:#ef5350;}
-.nc-step-txt{font-size:.65rem;color:rgba(255,255,255,.55);line-height:1.5;}
-.nc-step-txt strong{color:rgba(255,255,255,.9);font-weight:700;}
-
-/* Members row (health only) */
-.nc-members{
-  display:flex;gap:.3rem;flex-wrap:wrap;
-  padding:.5rem 1.4rem;
-  border-top:1px solid rgba(255,255,255,.07);
-}
-.nc-member-tag{
-  font-size:.55rem;font-weight:600;
-  padding:.18rem .6rem;border-radius:6px;
-  background:rgba(66,165,245,.1);
-  border:1px solid rgba(66,165,245,.2);
-  color:#90caf9;
-}
-
-/* Footer — branding */
-.nc-footer{
+/* ── helpline — the one number that matters ── */
+.nc-hl{
+  margin:.0 1.2rem;
+  padding:.75rem 1rem;
+  border-radius:10px;
   display:flex;align-items:center;justify-content:space-between;
-  padding:.65rem 1.4rem;
-  background:rgba(255,255,255,.03);
-  border-top:1px solid rgba(255,255,255,.07);
+  margin:0 1rem .85rem;
 }
-.nc-brand{font-family:'Playfair Display',serif;font-size:.85rem;font-weight:700;color:rgba(255,255,255,.7);letter-spacing:.3px;}
-.nc-brand span{color:#ff8f00;}
-.nc-brand-tag{font-size:.45rem;color:rgba(255,255,255,.2);margin-top:.1rem;}
-.nc-footer-right{text-align:right;}
-.nc-footer-phone{font-size:.68rem;font-weight:700;color:rgba(255,255,255,.5);}
-.nc-footer-url{font-size:.42rem;color:rgba(255,255,255,.18);}
+.nc-hl.t-cv    {background:rgba(230,81,0,.12);border:1px solid rgba(255,179,0,.2);}
+.nc-hl.t-health{background:rgba(21,101,192,.12);border:1px solid rgba(41,182,246,.2);}
+.nc-hl.t-life  {background:rgba(46,125,50,.12);border:1px solid rgba(105,240,174,.2);}
+.nc-hl.t-car   {background:rgba(106,27,154,.12);border:1px solid rgba(206,147,216,.2);}
+.nc-hl.t-bike  {background:rgba(183,28,28,.12);border:1px solid rgba(255,112,67,.2);}
+.nc-hl-left{}
+.nc-hl-tag{font-size:.45rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.2rem;}
+.nc-hl-num{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:3px;line-height:1;}
+.nc-hl-num.t-cv    {color:#ffb300;}
+.nc-hl-num.t-health{color:#29b6f6;}
+.nc-hl-num.t-life  {color:#69f0ae;}
+.nc-hl-num.t-car   {color:#ce93d8;}
+.nc-hl-num.t-bike  {color:#ff7043;}
+.nc-hl-insurer{font-size:.58rem;color:rgba(255,255,255,.3);margin-top:.18rem;}
+.nc-hl-badge{font-size:.48rem;font-weight:700;padding:.22rem .6rem;border-radius:100px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.1);letter-spacing:.5px;}
 
-/* Disclaimer — ultra compact */
-.nc-disclaimer{
-  font-size:.42rem;color:rgba(255,255,255,.15);
-  text-align:center;padding:.4rem 1.4rem;
-  line-height:1.5;border-top:1px solid rgba(255,255,255,.05);
-  background:#0a0a0a;
+/* ── info grid ── */
+.nc-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:rgba(255,255,255,.06);
+  margin:0 1rem .85rem;
+  border-radius:10px;overflow:hidden;
 }
+.nc-grid.cols2{grid-template-columns:repeat(2,1fr);}
+.nc-grid.cols4{grid-template-columns:repeat(4,1fr);}
+.nc-cell{background:#111318;padding:.55rem .7rem;}
+.nc-cell-lbl{font-size:.42rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:.18rem;}
+.nc-cell-val{font-size:.72rem;font-weight:700;color:rgba(255,255,255,.82);line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.nc-cell-val.hi{color:#ffb300;}
+.nc-cell-val.hi-h{color:#29b6f6;}
+.nc-cell-val.hi-l{color:#69f0ae;}
+.nc-cell-val.hi-c{color:#ce93d8;}
+.nc-cell-val.hi-b{color:#ff7043;}
+
+/* ── covers ── */
+.nc-covers{
+  display:flex;gap:.25rem;flex-wrap:wrap;
+  padding:0 1rem .8rem;
+}
+.nct{font-size:.5rem;font-weight:700;padding:.15rem .5rem;border-radius:100px;letter-spacing:.2px;}
+.nct.y{background:rgba(105,240,174,.08);border:1px solid rgba(105,240,174,.2);color:#69f0ae;}
+.nct.n{background:transparent;border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.2);}
+
+/* ── emergency steps ── */
+.nc-steps{padding:0 1rem .8rem;}
+.nc-steps-hd{
+  font-size:.44rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
+  color:rgba(255,255,255,.2);margin-bottom:.5rem;
+  display:flex;align-items:center;gap:.5rem;
+}
+.nc-steps-hd::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.07);}
+.nc-step{display:flex;align-items:baseline;gap:.5rem;margin-bottom:.3rem;}
+.nc-step:last-child{margin-bottom:0;}
+.nc-snum{
+  font-family:'Bebas Neue',sans-serif;font-size:.75rem;
+  letter-spacing:1px;flex-shrink:0;line-height:1.3;
+}
+.nc-snum.t-cv    {color:#ffb300;}
+.nc-snum.t-health{color:#29b6f6;}
+.nc-snum.t-life  {color:#69f0ae;}
+.nc-snum.t-car   {color:#ce93d8;}
+.nc-snum.t-bike  {color:#ff7043;}
+.nc-stxt{font-size:.6rem;color:rgba(255,255,255,.45);line-height:1.5;}
+.nc-stxt strong{color:rgba(255,255,255,.82);font-weight:700;}
+
+/* ── bottom bar — branding integrated ── */
+.nc-bottom{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.55rem 1rem;
+  border-top:1px solid rgba(255,255,255,.06);
+  background:rgba(255,255,255,.02);
+}
+.nc-bottom-brand{display:flex;align-items:center;gap:.5rem;}
+.nc-bottom-logo{font-family:'Playfair Display',serif;font-size:.75rem;font-weight:700;color:rgba(255,255,255,.55);}
+.nc-bottom-logo em{font-style:normal;color:#ff8f00;}
+.nc-bottom-divider{width:1px;height:12px;background:rgba(255,255,255,.12);}
+.nc-bottom-url{font-size:.48rem;color:rgba(255,255,255,.2);font-weight:500;}
+.nc-bottom-right{font-size:.5rem;font-weight:700;color:rgba(255,255,255,.3);}
+.nc-fine{font-size:.38rem;color:rgba(255,255,255,.1);text-align:center;padding:.3rem 1rem;background:#0d1014;line-height:1.6;}
 
 /* BUNDLE SHEET */
 .bundle-sheet-wrap{background:#fff;color:#111;border-radius:18px;overflow:hidden;box-shadow:0 28px 72px rgba(0,0,0,.55);}
@@ -1372,121 +1350,103 @@ function removeFromBundle(i) {
 function buildSingleCardHTML(snap) {
   const t = snap.type;
   const today = new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
-
-  /* accent colour class shorthand */
-  const acMap = {cv:'t-cv',health:'t-health',life:'t-life',car:'t-car',bike:'t-bike'};
-  const ac = acMap[t];
-  const accentVal = {cv:'accent',health:'accent-h',life:'accent-l',car:'accent-c',bike:'accent-b'}[t];
   const meta = TYPE_META[t];
 
-  /* — vehicle / policy identifier row — */
-  let row1 = '', row2 = '';
+  /* accent helpers */
+  const hi = {cv:'hi',health:'hi-h',life:'hi-l',car:'hi-c',bike:'hi-b'}[t];
+  const ac = 't-' + t;
+  const sn = 't-' + t;
+
+  /* info grid cells — always exactly 4, laid out in cols4 grid */
+  let cells = '';
   if (t === 'cv') {
-    row1 = `
-      <div class="nc-info-cell"><div class="nc-info-lbl">Vehicle</div><div class="nc-info-val ${accentVal}">${snap.vnum}</div></div>
-      <div class="nc-info-cell"><div class="nc-info-lbl">Type</div><div class="nc-info-val">${snap.vtype || '—'}</div></div>
-      <div class="nc-info-cell"><div class="nc-info-lbl">Policy no.</div><div class="nc-info-val">${snap.policyNo}</div></div>
-      <div class="nc-info-cell"><div class="nc-info-lbl">Expiry</div><div class="nc-info-val">${fmtDate(snap.expiry)}</div></div>`;
+    cells = `
+      <div class="nc-cell"><div class="nc-cell-lbl">Vehicle</div><div class="nc-cell-val ${hi}">${snap.vnum}</div></div>
+      <div class="nc-cell"><div class="nc-cell-lbl">Type</div><div class="nc-cell-val">${snap.vtype||'—'}</div></div>
+      <div class="nc-cell"><div class="nc-cell-lbl">Policy no.</div><div class="nc-cell-val">${snap.policyNo}</div></div>
+      <div class="nc-cell"><div class="nc-cell-lbl">Expires</div><div class="nc-cell-val">${fmtDate(snap.expiry)}</div></div>`;
   } else if (t === 'health') {
-    row1 = `
-      <div class="nc-info-cell"><div class="nc-info-lbl">Insurer</div><div class="nc-info-val">${snap.insurer}</div></div>
-      <div class="nc-info-cell"><div class="nc-info-lbl">Sum insured</div><div class="nc-info-val ${accentVal}">${snap.si || '—'}</div></div>
-      <div class="nc-info-cell"><div class="nc-info-lbl">Policy no.</div><div class="nc-info-val">${snap.policyNo}</div></div>
-      <div class="nc-info-cell"><div class="nc-info-lbl">Network</div><div class="nc-info-val">${(snap.network||'').split(' ')[0]}</div></div>`;
+    cells = `
+      <div class="nc-cell"><div class="nc-cell-lbl">Policy no.</div><div class="nc-cell-val">${snap.policyNo}</div></div>
+      <div class="nc-cell"><div class="nc-cell-lbl">Sum insured</div><div class="nc-cell-val ${hi}">${snap.si||'—'}</div></div>
+      <div class="nc-cell"><div class="nc-cell-lbl">Network</div><div class="nc-cell-val">${(snap.network||'').replace(' Only','').replace('+ Reimbursement','+ Reimb.')}</div></div>
+      <div class="nc-cell"><div class="nc-cell-lbl">Members</div><div class="nc-cell-val">${snap.members.length||1}</div></div>`;
   } else if (t === 'life') {
-    row1 = `
-      <div class="nc-info-cell"><div class="nc-info-lbl">Insurer</div><div class="nc-info-val">${snap.insurer}</div></div>
-      <div class="nc-info-cell"><div class="nc-info-lbl">Sum assured</div><div class="nc-info-val ${accentVal}">${snap.sa || '—'}</div></div>
-      <div class="nc-info-cell"><div class="nc-info-lbl">Nominee</div><div class="nc-info-val">${snap.nom}</div></div>
-      <div class="nc-info-cell"><div class="nc-info-lbl">Nominee phone</div><div class="nc-info-val ${accentVal}">${snap.nomph}</div></div>`;
+    cells = `
+      <div class="nc-cell"><div class="nc-cell-lbl">Policy no.</div><div class="nc-cell-val">${snap.policyNo}</div></div>
+      <div class="nc-cell"><div class="nc-cell-lbl">Sum assured</div><div class="nc-cell-val ${hi}">${snap.sa||'—'}</div></div>
+      <div class="nc-cell"><div class="nc-cell-lbl">Nominee</div><div class="nc-cell-val">${snap.nom}</div></div>
+      <div class="nc-cell"><div class="nc-cell-lbl">Nominee phone</div><div class="nc-cell-val ${hi}">${snap.nomph}</div></div>`;
   } else if (t === 'car') {
-    row1 = `
-      <div class="nc-info-cell"><div class="nc-info-lbl">Vehicle</div><div class="nc-info-val ${accentVal}">${snap.cnum}</div></div>
-      <div class="nc-info-cell"><div class="nc-info-lbl">Model</div><div class="nc-info-val">${snap.cmodel || '—'}</div></div>
-      <div class="nc-info-cell"><div class="nc-info-lbl">Policy no.</div><div class="nc-info-val">${snap.policyNo}</div></div>
-      <div class="nc-info-cell"><div class="nc-info-lbl">Expiry</div><div class="nc-info-val">${fmtDate(snap.expiry)}</div></div>`;
+    cells = `
+      <div class="nc-cell"><div class="nc-cell-lbl">Vehicle</div><div class="nc-cell-val ${hi}">${snap.cnum}</div></div>
+      <div class="nc-cell"><div class="nc-cell-lbl">Model</div><div class="nc-cell-val">${snap.cmodel||'—'}</div></div>
+      <div class="nc-cell"><div class="nc-cell-lbl">Policy no.</div><div class="nc-cell-val">${snap.policyNo}</div></div>
+      <div class="nc-cell"><div class="nc-cell-lbl">Expires</div><div class="nc-cell-val">${fmtDate(snap.expiry)}</div></div>`;
   } else {
-    row1 = `
-      <div class="nc-info-cell"><div class="nc-info-lbl">Vehicle</div><div class="nc-info-val ${accentVal}">${snap.bnum}</div></div>
-      <div class="nc-info-cell"><div class="nc-info-lbl">Bike</div><div class="nc-info-val">${snap.bmodel || '—'}</div></div>
-      <div class="nc-info-cell"><div class="nc-info-lbl">Policy no.</div><div class="nc-info-val">${snap.policyNo}</div></div>
-      <div class="nc-info-cell"><div class="nc-info-lbl">Expiry</div><div class="nc-info-val">${fmtDate(snap.expiry)}</div></div>`;
+    cells = `
+      <div class="nc-cell"><div class="nc-cell-lbl">Vehicle</div><div class="nc-cell-val ${hi}">${snap.bnum}</div></div>
+      <div class="nc-cell"><div class="nc-cell-lbl">Bike</div><div class="nc-cell-val">${snap.bmodel||'—'}</div></div>
+      <div class="nc-cell"><div class="nc-cell-lbl">Policy no.</div><div class="nc-cell-val">${snap.policyNo}</div></div>
+      <div class="nc-cell"><div class="nc-cell-lbl">Expires</div><div class="nc-cell-val">${fmtDate(snap.expiry)}</div></div>`;
   }
 
-  /* insurer row for vehicle types */
-  if (['cv','car','bike'].includes(t)) {
-    row2 = `<div class="nc-info-row"><div class="nc-info-cell" style="flex:2"><div class="nc-info-lbl">Insurer</div><div class="nc-info-val">${snap.insurer}</div></div></div>`;
-  }
-
-  /* covers */
-  const coversHtml = snap.covers.map(c =>
-    `<span class="nc-cover-tag ${c.active ? 'y' : 'n'}">${c.active ? '✓' : '✗'} ${c.label}</span>`
+  /* covers — active only shown boldly, inactive faded */
+  const covers = snap.covers.map(c =>
+    `<span class="nct ${c.active?'y':'n'}">${c.active?'✓ ':''}${c.label}</span>`
   ).join('');
 
-  /* steps */
-  const stepsHtml = STEPS[t].map((s,i) => {
-    const desc = i === 0
-      ? `Call <strong>${snap.helpline}</strong> — policy <strong>${snap.policyNo}</strong>.`
-      : s.d;
-    return `<div class="nc-step">
-      <div class="nc-step-n ${ac}">${i+1}</div>
-      <div class="nc-step-txt"><strong>${s.t}</strong> — ${desc}</div>
-    </div>`;
+  /* steps — numbered with Bebas, only first 3 for compactness */
+  const steps = STEPS[t].slice(0,4).map((s,i) => {
+    const desc = i===0
+      ? `Call <strong>${snap.helpline}</strong> · Policy <strong>${snap.policyNo}</strong>`
+      : `<strong>${s.t}</strong> — ${s.d}`;
+    return `<div class="nc-step"><div class="nc-snum ${sn}">${i+1}.</div><div class="nc-stxt">${desc}</div></div>`;
   }).join('');
 
-  /* members (health) */
-  const membersHtml = (t === 'health' && snap.members.length)
-    ? `<div class="nc-members">${snap.members.map(m=>`<span class="nc-member-tag">👤 ${m}</span>`).join('')}</div>`
-    : '';
+  /* members for health */
+  const members = (t==='health' && snap.members.length)
+    ? `<div style="display:flex;gap:.25rem;flex-wrap:wrap;padding:0 1rem .7rem;">${
+        snap.members.map(m=>`<span style="font-size:.5rem;padding:.15rem .55rem;border-radius:100px;background:rgba(41,182,246,.08);border:1px solid rgba(41,182,246,.18);color:#29b6f6;font-weight:700;">👤 ${m}</span>`).join('')
+      }</div>` : '';
 
   return `
-    <div class="nc-stripe ${ac}"></div>
+    <div class="nc-bar ${ac}"></div>
+
     <div class="nc-hd">
-      <div class="nc-hd-left">
-        <div class="nc-badge ${ac}">${meta.icon}</div>
-        <div>
-          <div class="nc-policy-type ${ac}">${meta.label}</div>
-          <div class="nc-holder-name">${snap.name}</div>
-        </div>
+      <div>
+        <div class="nc-type-pill ${ac}"><span class="dot"></span>${meta.icon} ${meta.label}</div>
+        <div class="nc-name">${snap.name}</div>
+        <div class="nc-brand-inline">Cover<em>Credit</em> · covercredit.in · +91 78428 54466</div>
       </div>
       <div class="nc-hd-right">
-        <div class="nc-sos-text ${ac}">SOS</div>
-        <div class="nc-keep">${meta.keep}</div>
+        <div class="nc-sos">SOS</div>
       </div>
     </div>
 
-    <div class="nc-helpline-block">
-      <div class="nc-hl-label">Claims helpline — call immediately</div>
-      <div class="nc-hl-number ${ac}">${snap.helpline}</div>
-      <div class="nc-hl-sub">${snap.insurer} · Available 24×7</div>
+    <div class="nc-hl ${ac}">
+      <div class="nc-hl-left">
+        <div class="nc-hl-tag">Claims helpline · 24×7</div>
+        <div class="nc-hl-num ${ac}">${snap.helpline}</div>
+        <div class="nc-hl-insurer">${snap.insurer}</div>
+      </div>
+      <div class="nc-hl-badge">${meta.keep}</div>
     </div>
 
-    <div class="nc-info-row">${row1}</div>
-    ${row2}
-    ${membersHtml}
+    <div class="nc-grid cols4">${cells}</div>
 
-    <div class="nc-covers">${coversHtml}</div>
+    ${members}
+
+    <div class="nc-covers">${covers}</div>
 
     <div class="nc-steps">
-      <div class="nc-steps-label">In an emergency — do this immediately</div>
-      ${stepsHtml}
+      <div class="nc-steps-hd">In an emergency</div>
+      ${steps}
     </div>
 
-    <div class="nc-footer">
-      <div>
-        <div class="nc-brand">Cover<span>Credit</span></div>
-        <div class="nc-brand-tag">Free advisory · covercredit.in</div>
-      </div>
-      <div class="nc-footer-right">
-        <div class="nc-footer-phone">+91 78428 54466</div>
-        <div class="nc-footer-url">covercredit.in/sos-card</div>
-      </div>
-    </div>
-    <div class="nc-disclaimer">Steps are general guidance — refer to your policy for exact claim conditions. Cover Credit is not liable for claim outcomes. · Generated ${today}</div>`;
+    <div class="nc-fine">General guidance only · Refer to your policy document for exact claim conditions · Generated ${today} · covercredit.in/sos-card</div>`;
 }
 
-/* ═══════════════════════════════════════════
-   BUILD COMPACT BUNDLE CARD HTML
 ═══════════════════════════════════════════ */
 function buildBundleCardHTML(snap) {
   const meta = TYPE_META[snap.type];
