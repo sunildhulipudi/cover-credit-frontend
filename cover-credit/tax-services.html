@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-377PNCFQLN"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-377PNCFQLN');</script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Cover Credit — Tax & Compliance Services. ITR Filing, GST Returns, GST Registration, Company Registration, Firm Registration, Annual Filings, Tax Audit. AP & Telangana."/>
+  <title>Tax &amp; Compliance Services | CoverCredit — AP &amp; Telangana</title>
+  <meta property="og:type" content="website"/>
+  <meta property="og:site_name" content="Cover Credit"/>
+  <meta property="og:url" content="https://covercredit.in/tax-services"/>
+  <meta property="og:title" content="Tax &amp; Compliance Services | CoverCredit"/>
+  <meta property="og:description" content="ITR Filing, GST Returns, GST Registration, Company &amp; Firm Registration, Annual Filings, Tax Audit — expert help in Telugu &amp; English."/>
+  <meta property="og:image" content="https://covercredit.in/og-banner.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --navy:#05112a;--navy-2:#091d3e;--navy-3:#0e2d5c;
+      --blue:#1565c0;--blue-light:#1976d2;
+      --gold:#e6a817;--gold-light:#f5c842;
+      --white:#ffffff;--off-white:#f0f4ff;--muted:#8899bb;--text:#1a2744;
+      --border:rgba(255,255,255,0.08);--glass:rgba(255,255,255,0.05);--glass-2:rgba(255,255,255,0.1);
+      --font-display:'Cormorant Garamond',Georgia,serif;
+      --font-body:'Outfit',system-ui,sans-serif;
+      --ease:cubic-bezier(0.16,1,0.3,1);
+      --ticker-h:44px;--nav-h:72px;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font-body);background:var(--navy);color:var(--white);overflow-x:hidden;cursor:none}
+    a{text-decoration:none;color:inherit}
+    img{display:block;max-width:100%;object-fit:cover}
+    .cursor{width:12px;height:12px;background:var(--gold);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s,width .3s var(--ease),height .3s var(--ease),background .3s;mix-blend-mode:difference}
+    .cursor-ring{width:40px;height:40px;border:1.5px solid var(--gold);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .15s var(--ease),width .4s var(--ease),height .4s var(--ease),opacity .3s;opacity:.6}
+    .cursor.hovering{width:6px;height:6px}
+    .cursor-ring.hovering{width:60px;height:60px;opacity:.3}
+    /* TICKER */
+    .company-ticker{position:fixed;top:0;left:0;right:0;z-index:1100;height:var(--ticker-h);background:#020c1f;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:stretch;overflow:hidden}
+    .company-ticker::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;z-index:10;background:linear-gradient(90deg,transparent,rgba(230,168,23,0) 15%,rgba(230,168,23,0.8) 40%,#f5c842 50%,rgba(230,168,23,0.8) 60%,rgba(230,168,23,0) 85%,transparent);background-size:200% 100%;animation:ctShimmer 4s linear infinite}
+    @keyframes ctShimmer{from{background-position:-100% 0}to{background-position:200% 0}}
+    .company-ticker::after{content:'';position:absolute;top:0;bottom:0;right:0;width:80px;z-index:5;pointer-events:none;background:linear-gradient(to left,#020c1f 30%,transparent)}
+    .ct-label{flex-shrink:0;display:flex;align-items:center;gap:8px;padding:0 18px 0 20px;position:relative;z-index:6;background:linear-gradient(90deg,#020c1f 80%,transparent);border-right:1px solid rgba(255,255,255,0.07)}
+    .ct-label-brand{font-family:var(--font-display);font-size:.78rem;font-weight:700;color:#fff;white-space:nowrap}
+    .ct-label-brand span{color:var(--gold)}
+    .ct-label-divider{width:1px;height:13px;background:rgba(255,255,255,0.12)}
+    .ct-label-text{font-size:.58rem;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:rgba(255,255,255,0.28);white-space:nowrap}
+    .ct-badge{flex-shrink:0;display:flex;align-items:center;gap:6px;padding:0 16px;position:relative;z-index:6;background:linear-gradient(270deg,#020c1f 70%,transparent);border-left:1px solid rgba(255,255,255,0.07)}
+    .ct-badge-dot{width:5px;height:5px;border-radius:50%;background:#22c55e;box-shadow:0 0 6px #22c55e;animation:ctBlink 2s ease-in-out infinite}
+    @keyframes ctBlink{0%,100%{opacity:1}50%{opacity:.35}}
+    .ct-badge-text{font-size:.52rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.28);white-space:nowrap}
+    .ct-track-wrap{flex:1;overflow:hidden;position:relative}
+    .ct-track-wrap::before{content:'';position:absolute;top:0;bottom:0;left:0;width:40px;z-index:2;background:linear-gradient(to right,#020c1f 20%,transparent)}
+    .ct-track{display:inline-flex;align-items:center;height:var(--ticker-h);white-space:nowrap;animation:ctScroll 55s linear infinite;will-change:transform}
+    .company-ticker:hover .ct-track{animation-play-state:paused}
+    @keyframes ctScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .ct-pill{display:inline-flex;align-items:center;padding:0 16px;flex-shrink:0}
+    .ct-pill span{font-size:.52rem;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;padding:2px 9px;border-radius:100px;white-space:nowrap}
+    .ct-pill--tax span{background:rgba(230,168,23,.13);color:#fcd34d;border:1px solid rgba(245,200,66,.25)}
+    .ct-pill--gst span{background:rgba(74,222,128,.12);color:#86efac;border:1px solid rgba(74,222,128,.25)}
+    .ct-pill--reg span{background:rgba(168,85,247,.15);color:#d8b4fe;border:1px solid rgba(168,85,247,.25)}
+    .ct-item{display:inline-flex;align-items:center;padding:0 22px;flex-shrink:0;position:relative;cursor:default}
+    .ct-item::after{content:'';position:absolute;right:0;top:25%;bottom:25%;width:1px;background:rgba(255,255,255,0.06)}
+    .ct-item-name{font-family:var(--font-body);font-size:.7rem;font-weight:600;color:rgba(255,255,255,0.42);white-space:nowrap;transition:color 0.2s}
+    .company-ticker:hover .ct-item:hover .ct-item-name{color:rgba(255,255,255,0.9)}
+    @media(max-width:580px){.ct-label-brand,.ct-label-divider,.ct-label-text,.ct-badge{display:none}}
+    /* NAV */
+    .nav{position:fixed;top:var(--ticker-h);left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;padding:0 5%;transition:background 0.4s,backdrop-filter 0.4s,box-shadow 0.4s}
+    .nav.scrolled{background:rgba(5,17,42,0.96);backdrop-filter:blur(20px);box-shadow:0 1px 0 var(--border)}
+    .nav__inner{width:100%;max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+    .nav__logo{font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--white);letter-spacing:-0.5px}
+    .nav__logo span{color:var(--gold)}
+    .nav__links{display:flex;align-items:center;gap:2rem;list-style:none}
+    .nav__links a{font-size:.88rem;font-weight:500;color:rgba(255,255,255,.75);transition:color .2s;position:relative}
+    .nav__links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--gold);transition:width .3s var(--ease)}
+    .nav__links a:hover,.nav__links a.active{color:var(--white)}
+    .nav__links a:hover::after,.nav__links a.active::after{width:100%}
+    .nav__dropdown{position:relative}
+    .nav__dropdown-trigger{font-size:.88rem;font-weight:500;color:rgba(255,255,255,.75);cursor:pointer;transition:color .2s;display:flex;align-items:center;gap:.3rem}
+    .nav__dropdown:hover .nav__dropdown-trigger{color:var(--white)}
+    .nav__dropdown-arrow{font-size:.6rem;transition:transform .3s}
+    .nav__dropdown:hover .nav__dropdown-arrow{transform:rotate(180deg)}
+    .nav__dropdown-menu{position:absolute;top:calc(100% + 16px);left:50%;transform:translateX(-50%) translateY(8px);background:var(--navy-2);border:1px solid var(--border);border-radius:12px;padding:.5rem;min-width:200px;opacity:0;visibility:hidden;transition:opacity .2s,transform .3s var(--ease),visibility .2s;backdrop-filter:blur(20px);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+    .nav__dropdown:hover .nav__dropdown-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+    .nav__dropdown-menu a{display:block;padding:.6rem 1rem;font-size:.85rem;color:rgba(255,255,255,.7);border-radius:8px;transition:background .2s,color .2s}
+    .nav__dropdown-menu a:hover{background:var(--glass-2);color:var(--white)}
+    .nav__cta{background:var(--gold)!important;color:var(--navy)!important;padding:.55rem 1.3rem!important;border-radius:100px;font-weight:600!important;font-size:.85rem!important;transition:background .2s,transform .2s!important}
+    .nav__cta::after{display:none!important}
+    .nav__cta:hover{background:var(--gold-light)!important;transform:translateY(-1px)}
+    .nav__hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:4px}
+    .nav__hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:transform .3s,opacity .3s}
+    .nav__hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+    .nav__hamburger.open span:nth-child(2){opacity:0}
+    .nav__hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+    .mobile-menu{position:fixed;inset:0;z-index:999;background:var(--navy);display:flex;flex-direction:column;padding:calc(var(--ticker-h) + var(--nav-h) + 2rem) 5% 3rem;transform:translateX(100%);transition:transform .4s var(--ease)}
+    .mobile-menu.open{transform:translateX(0)}
+    .mobile-menu a{padding:1rem 0;font-size:1.1rem;font-weight:500;color:rgba(255,255,255,.8);border-bottom:1px solid var(--border);transition:color .2s}
+    .mobile-menu a:hover{color:var(--gold)}
+    .mobile-menu__cta{margin-top:2rem;background:var(--gold);color:var(--navy)!important;text-align:center;border-radius:12px;padding:1rem!important;font-weight:700!important;border:none!important}
+    /* HERO */
+    .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:calc(var(--ticker-h) + var(--nav-h))}
+    .hero__slides{position:absolute;inset:0;z-index:0}
+    .hero__slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.2s ease-in-out}
+    .hero__slide.active{opacity:1}
+    .hero__slide::after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,rgba(5,17,42,0.92) 0%,rgba(5,17,42,0.78) 45%,rgba(5,17,42,0.4) 100%)}
+    .slide-itr{background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&q=80')}
+    .slide-gst{background-image:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600&q=80')}
+    .slide-company{background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80')}
+    .slide-audit{background-image:url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1600&q=80')}
+    .slide-filing{background-image:url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1600&q=80')}
+    .slide-firm{background-image:url('https://images.unsplash.com/photo-1521791055366-0d553872952f?w=1600&q=80')}
+    .hero__slide-caption{position:absolute;bottom:2rem;right:2rem;z-index:3;display:flex;gap:0.5rem}
+    .slide-dot{width:8px;height:8px;border-radius:100px;background:rgba(255,255,255,0.3);border:none;cursor:none;transition:background 0.3s,width 0.4s var(--ease)}
+    .slide-dot.active{background:var(--gold);width:28px}
+    .hero__slide-label{position:absolute;bottom:2rem;left:5%;z-index:3;display:flex;align-items:center;gap:0.6rem;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.7);opacity:0;transform:translateY(8px);transition:opacity 0.5s,transform 0.5s}
+    .hero__slide-label.show{opacity:1;transform:translateY(0)}
+    .slide-label-dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+    .hero__grid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent)}
+    .hero__inner{position:relative;z-index:2;max-width:1280px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4rem;padding:5rem 5% 4rem}
+    .hero__label{display:inline-flex;align-items:center;gap:.5rem;background:rgba(230,168,23,.12);border:1px solid rgba(230,168,23,.3);color:var(--gold);font-size:.8rem;font-weight:600;padding:.4rem 1rem;border-radius:100px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:1.5rem}
+    .hero__label::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+    .hero__title{font-family:var(--font-display);font-size:clamp(2.8rem,5vw,4.5rem);font-weight:700;line-height:1.1;letter-spacing:-1px;margin-bottom:1.5rem}
+    .hero__title em{font-style:normal;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .hero__desc{font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,.65);margin-bottom:2.5rem;max-width:480px}
+    .hero__btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+    .btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy);padding:.9rem 2rem;border-radius:12px;font-weight:700;font-size:.95rem;transition:transform .2s var(--ease),box-shadow .2s;box-shadow:0 0 0 0 rgba(230,168,23,.4)}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(230,168,23,.35)}
+    .btn-outline{display:inline-flex;align-items:center;gap:.5rem;background:var(--glass);border:1px solid var(--border);color:var(--white);padding:.9rem 2rem;border-radius:12px;font-weight:500;font-size:.95rem;transition:background .2s,transform .2s;backdrop-filter:blur(10px)}
+    .btn-outline:hover{background:var(--glass-2);transform:translateY(-2px)}
+    .hero__trust{display:flex;gap:2rem;flex-wrap:wrap}
+    .hero__trust-item{display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:rgba(255,255,255,.5)}
+    .hero__trust-item svg{color:var(--gold);flex-shrink:0}
+    .hero__right{position:relative;height:520px}
+    .hero__card{position:absolute;background:rgba(9,29,62,.85);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:1.5rem;transition:transform .4s var(--ease)}
+    .hero__card-1{top:0;right:0;width:260px;animation:cardFloat1 6s ease-in-out infinite}
+    .hero__card-2{top:30%;left:0;width:230px;animation:cardFloat2 7s ease-in-out infinite}
+    .hero__card-3{bottom:0;right:10%;width:250px;animation:cardFloat3 5.5s ease-in-out infinite}
+    @keyframes cardFloat1{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-16px) rotate(1deg)}}
+    @keyframes cardFloat2{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-12px) rotate(0)}}
+    @keyframes cardFloat3{0%,100%{transform:translateY(0) rotate(.5deg)}50%{transform:translateY(-20px) rotate(-.5deg)}}
+    .hero__card-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:.8rem}
+    .hero__card-label{font-size:.72rem;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:.3rem}
+    .hero__card-value{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--white)}
+    .hero__card-sub{font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.2rem}
+    .hero__card-stat{display:flex;align-items:center;gap:.4rem;margin-top:.8rem;padding-top:.8rem;border-top:1px solid rgba(255,255,255,.08);font-size:.78rem;color:#4ade80}
+    /* TICKER GOLD */
+    .ticker{background:var(--gold);padding:.7rem 0;overflow:hidden;white-space:nowrap}
+    .ticker__track{display:inline-flex;gap:3rem;animation:ticker 25s linear infinite}
+    .ticker__item{display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;font-weight:600;color:var(--navy);text-transform:uppercase;letter-spacing:.5px}
+    .ticker__dot{width:4px;height:4px;background:var(--navy);border-radius:50%;opacity:.4}
+    @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+    /* SECTION */
+    .section{padding:7rem 5%}
+    .section__inner{max-width:1280px;margin:0 auto}
+    .section__tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:1.2rem}
+    .section__tag::before{content:'';width:24px;height:2px;background:var(--gold)}
+    .section__title{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,3rem);font-weight:700;line-height:1.15;margin-bottom:1.2rem}
+    .section__title em{font-style:normal;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .section__sub{font-size:1rem;color:rgba(255,255,255,.55);line-height:1.7;max-width:560px}
+    /* SERVICES */
+    .services{background:var(--navy)}
+    .services__head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:4rem;flex-wrap:wrap}
+    .services__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(255,255,255,.06);border-radius:24px;overflow:hidden}
+    .service-card{background:var(--navy-2);padding:0;position:relative;overflow:hidden;transition:transform .3s;cursor:none;text-decoration:none;color:var(--white);display:flex;flex-direction:column}
+    .sc-img{width:100%;height:180px;overflow:hidden;flex-shrink:0;position:relative}
+    .sc-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s var(--ease);filter:brightness(0.75)}
+    .service-card:hover .sc-img img{transform:scale(1.07)}
+    .sc-img-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,var(--navy-2) 100%)}
+    .sc-body{padding:1.8rem 2rem 2rem;flex:1;display:flex;flex-direction:column}
+    .service-card__num{font-family:var(--font-display);font-size:.8rem;font-weight:700;color:rgba(255,255,255,.12);margin-bottom:.8rem}
+    .service-card__icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1rem;transition:transform .3s var(--ease)}
+    .service-card:hover .service-card__icon{transform:scale(1.1) rotate(-5deg)}
+    .service-card__title{font-family:var(--font-display);font-size:1.3rem;font-weight:600;margin-bottom:.7rem;line-height:1.2}
+    .service-card__desc{font-size:.86rem;color:rgba(255,255,255,.48);line-height:1.65;flex:1;margin-bottom:1.4rem}
+    .sc-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem}
+    .sctag{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.4);padding:.15rem .6rem;border-radius:100px;font-size:.68rem;font-weight:500}
+    .service-card__link{display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;font-weight:600;color:var(--gold);transition:gap .2s;margin-top:auto}
+    .service-card:hover .service-card__link{gap:.7rem}
+    .service-card--featured .sc-img{height:220px}
+    .service-card--featured .service-card__title{font-size:1.5rem}
+    /* INS STRIP */
+    .ins-strip{padding:0 5% 6rem;background:var(--navy)}
+    .ins-strip__inner{max-width:1280px;margin:0 auto}
+    .ins-strip__row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+    .ins-card{border-radius:20px;overflow:hidden;position:relative;height:240px;cursor:none;transition:transform .35s var(--ease);text-decoration:none;display:block}
+    .ins-card:hover{transform:translateY(-6px)}
+    .ins-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease),filter .4s;filter:brightness(.65) saturate(1.1)}
+    .ins-card:hover img{transform:scale(1.06);filter:brightness(.75) saturate(1.2)}
+    .ins-card__overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,17,42,.92) 0%,rgba(5,17,42,.3) 60%,transparent 100%)}
+    .ins-card__content{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1.4rem}
+    .ins-card__icon{font-size:1.6rem;margin-bottom:.5rem}
+    .ins-card__title{font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:.3rem}
+    .ins-card__sub{font-size:.75rem;color:rgba(255,255,255,.55);line-height:1.5}
+    .ins-card__btn{display:inline-flex;align-items:center;gap:.3rem;margin-top:.8rem;font-size:.75rem;font-weight:600;color:var(--gold);transition:gap .2s}
+    .ins-card:hover .ins-card__btn{gap:.6rem}
+    .ins-card__badge{position:absolute;top:1rem;left:1rem;background:var(--gold);color:var(--navy);font-size:.6rem;font-weight:700;padding:.2rem .6rem;border-radius:100px;text-transform:uppercase;letter-spacing:.5px}
+    /* STATS */
+    .stats{background:var(--navy-3);position:relative;overflow:hidden}
+    .stats::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&q=70') center/cover no-repeat;opacity:.05}
+    .stats__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);border-radius:20px;overflow:hidden;position:relative;z-index:1}
+    .stat-item{background:rgba(9,29,62,.8);backdrop-filter:blur(10px);padding:3rem 2rem;text-align:center;position:relative;overflow:hidden}
+    .stat-item::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:60%;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+    .stat-num{font-family:var(--font-body);font-size:3rem;font-weight:700;line-height:1;color:var(--white);margin-bottom:.5rem;letter-spacing:-1px}
+    .stat-num span{color:var(--gold)}
+    .stat-label{font-size:.85rem;color:var(--muted);font-weight:500}
+    /* DEADLINES */
+    .deadline-section{background:var(--navy-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+    .deadline-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3rem}
+    .deadline-card{background:var(--glass);border:1px solid var(--border);border-radius:16px;padding:1.5rem;position:relative;overflow:hidden;transition:all .3s}
+    .deadline-card:hover{background:var(--glass-2);border-color:rgba(230,168,23,.25);transform:translateY(-3px)}
+    .deadline-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--gold)}
+    .deadline-card.urgent::before{background:#ef4444}
+    .deadline-card.safe::before{background:#22c55e}
+    .dc-service{font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.4rem}
+    .dc-date{font-size:.82rem;color:var(--muted);margin-bottom:.8rem}
+    .dc-badge{display:inline-block;font-size:.65rem;font-weight:700;padding:.2rem .6rem;border-radius:100px;background:rgba(230,168,23,.15);color:var(--gold);text-transform:uppercase;letter-spacing:.5px}
+    .dc-badge.urgent{background:rgba(239,68,68,.15);color:#ef4444}
+    .dc-badge.safe{background:rgba(34,197,94,.15);color:#22c55e}
+    .dc-note{font-size:.78rem;color:rgba(255,255,255,.4);margin-top:.6rem;line-height:1.5}
+    /* WHY */
+    .why{background:var(--navy)}
+    .why__layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
+    .why__list{display:flex;flex-direction:column;gap:1.5rem;margin-top:3rem}
+    .why__item{display:flex;gap:1.2rem;padding:1.5rem;background:var(--glass);border:1px solid var(--border);border-radius:16px;transition:background .2s,border-color .2s,transform .2s;cursor:none}
+    .why__item:hover{background:var(--glass-2);border-color:rgba(255,255,255,.15);transform:translateX(4px)}
+    .why__item-icon{width:44px;height:44px;flex-shrink:0;background:linear-gradient(135deg,var(--blue),var(--blue-light));border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+    .why__item-title{font-size:.95rem;font-weight:600;margin-bottom:.3rem}
+    .why__item-desc{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.6}
+    .why__right{display:flex;flex-direction:column;gap:1.2rem}
+    .why__img-mosaic{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;border-radius:20px;overflow:hidden}
+    .mosaic-img{border-radius:12px;overflow:hidden;position:relative}
+    .mosaic-img img{width:100%;height:140px;object-fit:cover;filter:brightness(0.8);transition:transform .5s var(--ease),filter .5s}
+    .mosaic-img:hover img{transform:scale(1.05);filter:brightness(0.95)}
+    .mosaic-img:first-child{grid-row:span 2}
+    .mosaic-img:first-child img{height:100%}
+    .mosaic-img-label{position:absolute;bottom:.6rem;left:.7rem;background:rgba(5,17,42,.8);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.1);border-radius:6px;padding:.2rem .6rem;font-size:.62rem;font-weight:600;color:rgba(255,255,255,.7)}
+    .why__visual{background:var(--glass);border:1px solid var(--border);border-radius:28px;overflow:hidden;padding:2.5rem;backdrop-filter:blur(10px)}
+    .why__visual-tag{font-size:.72rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:1rem}
+    .why__visual-title{font-family:var(--font-display);font-size:2rem;font-weight:700;line-height:1.2;margin-bottom:2rem}
+    .why__process{display:flex;flex-direction:column;gap:0}
+    .why__step{display:flex;gap:1.2rem;position:relative;padding-bottom:1.8rem}
+    .why__step:last-child{padding-bottom:0}
+    .why__step-line{position:absolute;left:19px;top:40px;width:2px;height:calc(100% - 20px);background:linear-gradient(var(--border),transparent)}
+    .why__step:last-child .why__step-line{display:none}
+    .why__step-num{width:40px;height:40px;flex-shrink:0;border-radius:50%;background:linear-gradient(135deg,var(--gold),var(--gold-light));color:var(--navy);font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center}
+    .why__step-content{padding-top:.5rem}
+    .why__step-title{font-weight:600;font-size:.95rem;margin-bottom:.3rem}
+    .why__step-desc{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.5}
+    /* CTA */
+    .cta{background:linear-gradient(135deg,var(--blue) 0%,var(--navy-3) 50%,var(--navy) 100%);position:relative;overflow:hidden}
+    .cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 80% 50%,rgba(230,168,23,.08),transparent),radial-gradient(ellipse 50% 60% at 10% 80%,rgba(255,255,255,.03),transparent)}
+    .cta__img-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1400&q=70') center/cover no-repeat;opacity:.08;z-index:0}
+    .cta__inner{position:relative;z-index:1;max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr auto;align-items:center;gap:3rem}
+    .cta__title{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;line-height:1.2;margin-bottom:1rem}
+    .cta__desc{font-size:.95rem;color:rgba(255,255,255,.65);line-height:1.7}
+    .cta__pills{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.2rem}
+    .cta__pill{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:.3rem .8rem;border-radius:100px;font-size:.78rem;color:rgba(255,255,255,.65)}
+    .cta__btns{display:flex;flex-direction:column;gap:.8rem;align-items:center}
+    .cta__phone{font-size:.82rem;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:.4rem}
+    .cta__phone a{color:rgba(255,255,255,.75);font-weight:600}
+    /* FOOTER */
+    .footer{background:#020b1a;border-top:1px solid var(--border);padding:4rem 5% 2rem}
+    .footer__inner{max-width:1280px;margin:0 auto}
+    .footer__top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid var(--border);margin-bottom:2rem}
+    .footer__logo{font-family:var(--font-display);font-size:1.6rem;font-weight:700;color:var(--white);display:inline-block;margin-bottom:1rem}
+    .footer__logo span{color:var(--gold)}
+    .footer__desc{font-size:.85rem;color:var(--muted);line-height:1.7;margin-bottom:1.5rem}
+    .footer__contact-item{display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:rgba(255,255,255,.5);margin-bottom:.6rem}
+    .footer__contact-item a{color:rgba(255,255,255,.7);transition:color .2s}
+    .footer__contact-item a:hover{color:var(--gold)}
+    .footer__col-title{font-size:.75rem;font-weight:700;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:1.2rem}
+    .footer__col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+    .footer__col a{font-size:.85rem;color:rgba(255,255,255,.5);transition:color .2s}
+    .footer__col a:hover{color:var(--gold)}
+    .footer__bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;font-size:.78rem;color:rgba(255,255,255,.25)}
+    .footer__bottom-links{display:flex;gap:1.5rem}
+    .footer__bottom-links a{color:rgba(255,255,255,.25);transition:color .2s}
+    .footer__bottom-links a:hover{color:var(--muted)}
+    /* FAB */
+    .fab{position:fixed;bottom:2rem;right:2rem;z-index:500;display:flex;flex-direction:column;gap:.8rem;align-items:flex-end}
+    .fab__btn{display:flex;align-items:center;gap:.6rem;padding:.8rem 1.2rem;border-radius:100px;font-size:.85rem;font-weight:600;cursor:none;border:none;transition:transform .2s var(--ease),box-shadow .2s;text-decoration:none}
+    .fab__btn:hover{transform:translateY(-2px) scale(1.03)}
+    .fab__wa{background:#25d366;color:var(--white);box-shadow:0 8px 24px rgba(37,211,102,.4)}
+    .fab__book{background:var(--gold);color:var(--navy);box-shadow:0 8px 24px rgba(230,168,23,.4)}
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}.reveal-delay-4{transition-delay:.4s}
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .hero__inner{grid-template-columns:1fr}.hero__right{display:none}
+      .services__grid{grid-template-columns:1fr 1fr}.why__layout{grid-template-columns:1fr}
+      .stats__grid{grid-template-columns:1fr 1fr}.footer__top{grid-template-columns:1fr 1fr}
+      .cta__inner{grid-template-columns:1fr;text-align:center}.cta__pills{justify-content:center}.cta__btns{flex-direction:row}
+      .deadline-grid{grid-template-columns:1fr 1fr}.ins-strip__row{grid-template-columns:1fr 1fr 1fr}
+    }
+    @media(max-width:768px){
+      :root{--ticker-h:38px}.nav__links{display:none}.nav__hamburger{display:flex}
+      .services__grid{grid-template-columns:1fr}.stats__grid{grid-template-columns:1fr 1fr}
+      .footer__top{grid-template-columns:1fr}.hero__title{font-size:2.4rem}
+      body{cursor:auto}.cursor,.cursor-ring{display:none}
+      .deadline-grid{grid-template-columns:1fr}.ins-strip__row{grid-template-columns:1fr 1fr}
+      .why__img-mosaic{grid-template-columns:1fr 1fr}.mosaic-img:first-child{grid-row:span 1}.mosaic-img:first-child img{height:140px}
+    }
+    @media(max-width:480px){
+      .stats__grid{grid-template-columns:1fr 1fr}.hero__btns{flex-direction:column}
+      .section{padding:5rem 5%}.ins-strip__row{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- PARTNER TICKER -->
+<div class="company-ticker" id="company-ticker" aria-hidden="true">
+  <div class="ct-label">
+    <span class="ct-label-brand">Cover<span>Credit</span></span>
+    <span class="ct-label-divider"></span>
+    <span class="ct-label-text">Tax &amp; Compliance</span>
+  </div>
+  <div class="ct-track-wrap"><div class="ct-track" id="ct-track"></div></div>
+  <div class="ct-badge"><span class="ct-badge-dot"></span><span class="ct-badge-text">Expert Advisors</span></div>
+</div>
+
+<!-- FAB -->
+<div class="fab">
+  <a href="book.html" class="fab__btn fab__book">&#x1F4C5; Book Consultation</a>
+  <a href="https://wa.me/917842854466" target="_blank" class="fab__btn fab__wa">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    WhatsApp Us
+  </a>
+</div>
+
+<!-- NAV -->
+<header>
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">Cover<span>Credit</span></a>
+      <ul class="nav__links">
+        <li><a href="health-insurance.html">Health Insurance</a></li>
+        <li><a href="life-insurance.html">Life Insurance</a></li>
+        <li class="nav__dropdown">
+          <span class="nav__dropdown-trigger">Vehicle <span class="nav__dropdown-arrow">&#9660;</span></span>
+          <div class="nav__dropdown-menu">
+            <a href="bike-insurance.html">&#x1F3CD;&#xFE0F; Bike Insurance</a>
+            <a href="car-insurance.html">&#x1F697; Car Insurance</a>
+            <a href="commercial-vehicle-insurance.html">&#x1F69B; Commercial Vehicles</a>
+          </div>
+        </li>
+        <li><a href="loans.html">Loans</a></li>
+        <li><a href="tax-services.html" class="active">Tax &amp; Compliance</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="book.html" class="nav__cta">Book Free Consultation</a></li>
+      </ul>
+      <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="health-insurance.html">Health Insurance</a>
+    <a href="life-insurance.html">Life Insurance</a>
+    <a href="bike-insurance.html">Bike Insurance</a>
+    <a href="car-insurance.html">Car Insurance</a>
+    <a href="commercial-vehicle-insurance.html">Commercial Vehicles</a>
+    <a href="loans.html">Loans &amp; Finance</a>
+    <a href="tax-services.html">Tax &amp; Compliance</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About Us</a>
+    <a href="contact.html">Contact</a>
+    <a href="book.html" class="mobile-menu__cta">Book Free Consultation &#x2192;</a>
+  </div>
+</header>
+
+<!-- HERO with scrolling background slides -->
+<section class="hero">
+  <div class="hero__slides" id="hero-slides">
+    <div class="hero__slide slide-itr active"  data-label="&#x1F4C4; Income Tax Returns"></div>
+    <div class="hero__slide slide-gst"         data-label="&#x1F9FE; GST Returns &amp; Registration"></div>
+    <div class="hero__slide slide-company"     data-label="&#x1F3E2; Company Registration"></div>
+    <div class="hero__slide slide-audit"       data-label="&#x1F50D; Tax Audit"></div>
+    <div class="hero__slide slide-filing"      data-label="&#x1F4C5; Annual Filings"></div>
+    <div class="hero__slide slide-firm"        data-label="&#x1F91D; Firm Registration"></div>
+  </div>
+  <div class="hero__grid"></div>
+  <div class="hero__slide-label" id="slide-label"><span class="slide-label-dot"></span><span id="slide-label-text">&#x1F4C4; Income Tax Returns</span></div>
+  <div class="hero__slide-caption" id="slide-dots"></div>
+  <div class="hero__inner">
+    <div class="hero__left">
+      <div class="hero__label reveal">&#x1F4CB; Tax &amp; Compliance Services — AP &amp; Telangana</div>
+      <h1 class="hero__title reveal reveal-delay-1">File Taxes.<br/>Stay <em>Compliant.</em><br/>Grow Freely.</h1>
+      <p class="hero__desc reveal reveal-delay-2">From ITR filing to company registration — we handle every tax and compliance need with accuracy, on time. Focus on your business; we'll handle the paperwork.</p>
+      <div class="hero__btns reveal reveal-delay-3">
+        <a href="book.html" class="btn-primary">Book Free Consultation <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="tel:+917842854466" class="btn-outline">&#x1F4DE; +91 78428 54466</a>
+      </div>
+      <div class="hero__trust reveal reveal-delay-4">
+        <div class="hero__trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>500+ Returns Filed</div>
+        <div class="hero__trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>100% On-Time</div>
+        <div class="hero__trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Telugu &amp; English</div>
+        <div class="hero__trust-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>&#x20B9;0 Penalties</div>
+      </div>
+    </div>
+    <div class="hero__right reveal reveal-delay-2">
+      <div class="hero__card hero__card-1">
+        <div class="hero__card-icon" style="background:rgba(230,168,23,.15)">&#x1F4C4;</div>
+        <div class="hero__card-label">Returns Filed</div><div class="hero__card-value">500+</div>
+        <div class="hero__card-sub">ITR, GST &amp; more</div>
+        <div class="hero__card-stat"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>100% on-time filing</div>
+      </div>
+      <div class="hero__card hero__card-2">
+        <div class="hero__card-icon" style="background:rgba(239,68,68,.12)">&#x1F6AB;</div>
+        <div class="hero__card-label">Penalties Incurred</div><div class="hero__card-value">&#x20B9;0</div>
+        <div class="hero__card-sub">Zero penalties, ever</div>
+        <div class="hero__card-stat"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>All deadlines met</div>
+      </div>
+      <div class="hero__card hero__card-3">
+        <div class="hero__card-icon" style="background:rgba(74,222,128,.12)">&#x26A1;</div>
+        <div class="hero__card-label">Avg. Turnaround</div><div class="hero__card-value">48 hrs</div>
+        <div class="hero__card-sub">Fast processing time</div>
+        <div class="hero__card-stat"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>Quick &amp; hassle-free</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GOLD TICKER -->
+<div class="ticker">
+  <div class="ticker__track">
+    <span class="ticker__item">&#x1F4C4; Income Tax Returns</span><span class="ticker__dot"></span>
+    <span class="ticker__item">&#x1F9FE; GST Returns</span><span class="ticker__dot"></span>
+    <span class="ticker__item">&#x2705; GST Registration</span><span class="ticker__dot"></span>
+    <span class="ticker__item">&#x1F3E2; Company Registration</span><span class="ticker__dot"></span>
+    <span class="ticker__item">&#x1F91D; Firm Registration</span><span class="ticker__dot"></span>
+    <span class="ticker__item">&#x1F4C5; Annual Filings</span><span class="ticker__dot"></span>
+    <span class="ticker__item">&#x1F50D; Tax Audit</span><span class="ticker__dot"></span>
+    <span class="ticker__item">&#x1F4C4; Income Tax Returns</span><span class="ticker__dot"></span>
+    <span class="ticker__item">&#x1F9FE; GST Returns</span><span class="ticker__dot"></span>
+    <span class="ticker__item">&#x2705; GST Registration</span><span class="ticker__dot"></span>
+    <span class="ticker__item">&#x1F3E2; Company Registration</span><span class="ticker__dot"></span>
+    <span class="ticker__item">&#x1F91D; Firm Registration</span><span class="ticker__dot"></span>
+    <span class="ticker__item">&#x1F4C5; Annual Filings</span><span class="ticker__dot"></span>
+    <span class="ticker__item">&#x1F50D; Tax Audit</span><span class="ticker__dot"></span>
+  </div>
+</div>
+
+<!-- SERVICES GRID -->
+<section class="section services">
+  <div class="section__inner">
+    <div class="services__head">
+      <div>
+        <div class="section__tag reveal">Our Tax Services</div>
+        <h2 class="section__title reveal reveal-delay-1">Everything you need,<br/><em>under one roof.</em></h2>
+      </div>
+      <p class="section__sub reveal reveal-delay-2">Expert guidance in Telugu &amp; English — ITR, GST, company registration and more, with zero missed deadlines.</p>
+    </div>
+    <div class="services__grid reveal">
+
+      <a href="book.html" class="service-card service-card--featured">
+        <div class="sc-img"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=700&q=80&fit=crop" alt="Income Tax Returns"/><div class="sc-img-overlay"></div></div>
+        <div class="sc-body">
+          <div class="service-card__num">01</div>
+          <div class="service-card__icon" style="background:rgba(230,168,23,.15)">&#x1F4C4;</div>
+          <h3 class="service-card__title">Income Tax Returns (ITR)</h3>
+          <p class="service-card__desc">Accurate ITR filing for salaried individuals, freelancers, and businesses. We maximise your refunds and ensure zero errors before every submission.</p>
+          <div class="sc-tags"><span class="sctag">Salaried</span><span class="sctag">Business</span><span class="sctag">Freelancer</span><span class="sctag">NRI</span></div>
+          <span class="service-card__link">Get Started <span>&#x2192;</span></span>
+        </div>
+      </a>
+
+      <a href="book.html" class="service-card">
+        <div class="sc-img"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80&fit=crop" alt="GST Returns"/><div class="sc-img-overlay"></div></div>
+        <div class="sc-body">
+          <div class="service-card__num">02</div>
+          <div class="service-card__icon" style="background:rgba(21,101,192,.2)">&#x1F9FE;</div>
+          <h3 class="service-card__title">GST Returns</h3>
+          <p class="service-card__desc">Monthly, quarterly, and annual GST return filing — GSTR-1, GSTR-3B, GSTR-9. No penalties, no missed deadlines, ever.</p>
+          <div class="sc-tags"><span class="sctag">GSTR-1</span><span class="sctag">GSTR-3B</span><span class="sctag">GSTR-9</span><span class="sctag">Reconciliation</span></div>
+          <span class="service-card__link">Get Started <span>&#x2192;</span></span>
+        </div>
+      </a>
+
+      <a href="book.html" class="service-card">
+        <div class="sc-img"><img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=80&fit=crop" alt="GST Registration"/><div class="sc-img-overlay"></div></div>
+        <div class="sc-body">
+          <div class="service-card__num">03</div>
+          <div class="service-card__icon" style="background:rgba(74,222,128,.12)">&#x2705;</div>
+          <h3 class="service-card__title">GST Registration</h3>
+          <p class="service-card__desc">Get your GSTIN quickly. We handle the application, document preparation, and follow-ups with the GST portal end-to-end.</p>
+          <div class="sc-tags"><span class="sctag">New Business</span><span class="sctag">Voluntary Reg.</span><span class="sctag">Fast Process</span></div>
+          <span class="service-card__link">Get Started <span>&#x2192;</span></span>
+        </div>
+      </a>
+
+      <a href="book.html" class="service-card">
+        <div class="sc-img"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80&fit=crop" alt="Company Registration"/><div class="sc-img-overlay"></div></div>
+        <div class="sc-body">
+          <div class="service-card__num">04</div>
+          <div class="service-card__icon" style="background:rgba(168,85,247,.15)">&#x1F3E2;</div>
+          <h3 class="service-card__title">Company Registration</h3>
+          <p class="service-card__desc">Register your Pvt. Ltd., OPC, or LLP with MCA. Full support from name approval to certificate of incorporation.</p>
+          <div class="sc-tags"><span class="sctag">Pvt. Ltd.</span><span class="sctag">OPC</span><span class="sctag">LLP</span><span class="sctag">Section 8</span></div>
+          <span class="service-card__link">Get Started <span>&#x2192;</span></span>
+        </div>
+      </a>
+
+      <a href="book.html" class="service-card">
+        <div class="sc-img"><img src="https://images.unsplash.com/photo-1521791055366-0d553872952f?w=600&q=80&fit=crop" alt="Firm Registration"/><div class="sc-img-overlay"></div></div>
+        <div class="sc-body">
+          <div class="service-card__num">05</div>
+          <div class="service-card__icon" style="background:rgba(20,184,166,.15)">&#x1F91D;</div>
+          <h3 class="service-card__title">Firm Registration</h3>
+          <p class="service-card__desc">Register your Partnership Firm or Sole Proprietorship. We prepare the deed, register with the Registrar, and handle all formalities.</p>
+          <div class="sc-tags"><span class="sctag">Partnership</span><span class="sctag">Proprietorship</span><span class="sctag">Partnership Deed</span></div>
+          <span class="service-card__link">Get Started <span>&#x2192;</span></span>
+        </div>
+      </a>
+
+      <a href="book.html" class="service-card">
+        <div class="sc-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&fit=crop" alt="Annual Filings"/><div class="sc-img-overlay"></div></div>
+        <div class="sc-body">
+          <div class="service-card__num">06</div>
+          <div class="service-card__icon" style="background:rgba(234,179,8,.15)">&#x1F4C5;</div>
+          <h3 class="service-card__title">Annual Filings (MCA)</h3>
+          <p class="service-card__desc">ROC annual filings — AOC-4, MGT-7, ADT-1. Stay compliant with the Ministry of Corporate Affairs, every year on time.</p>
+          <div class="sc-tags"><span class="sctag">AOC-4</span><span class="sctag">MGT-7</span><span class="sctag">ROC Compliance</span></div>
+          <span class="service-card__link">Get Started <span>&#x2192;</span></span>
+        </div>
+      </a>
+
+      <a href="book.html" class="service-card service-card--featured">
+        <div class="sc-img"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&q=80&fit=crop" alt="Tax Audit"/><div class="sc-img-overlay"></div></div>
+        <div class="sc-body">
+          <div class="service-card__num">07</div>
+          <div class="service-card__icon" style="background:rgba(239,68,68,.12)">&#x1F50D;</div>
+          <h3 class="service-card__title">Tax Audit (u/s 44AB)</h3>
+          <p class="service-card__desc">Mandatory tax audit for businesses above the turnover threshold. We prepare Form 3CA/3CB, Form 3CD, and file well before the due date.</p>
+          <div class="sc-tags"><span class="sctag">Form 3CA/3CB</span><span class="sctag">Form 3CD</span><span class="sctag">Turnover &gt;₹1Cr</span></div>
+          <span class="service-card__link">Get Started <span>&#x2192;</span></span>
+        </div>
+      </a>
+
+      <a href="book.html" class="service-card" style="background:linear-gradient(135deg,rgba(230,168,23,.1),rgba(230,168,23,.03));border-bottom:1px solid rgba(230,168,23,.15)">
+        <div class="sc-body" style="justify-content:center;align-items:center;text-align:center;padding:3rem 2rem">
+          <div style="font-size:2.5rem;margin-bottom:1.2rem">&#x1F4AC;</div>
+          <h3 class="service-card__title">Not sure what you need?</h3>
+          <p class="service-card__desc" style="text-align:center">Talk to our expert in Telugu or English. Free 30-min consultation — no obligation, no fees.</p>
+          <span class="service-card__link" style="justify-content:center">Book Free Call <span>&#x2192;</span></span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- QUICK OVERVIEW CARDS (ins-strip) -->
+<div class="ins-strip">
+  <div class="ins-strip__inner">
+    <div class="section__tag reveal" style="margin-bottom:1.2rem">Quick Overview</div>
+    <h2 class="section__title reveal reveal-delay-1" style="margin-bottom:2.5rem">All compliance needs, <em>covered.</em></h2>
+    <div class="ins-strip__row reveal reveal-delay-1">
+      <a href="book.html" class="ins-card">
+        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=700&q=80&fit=crop" alt="ITR Filing"/>
+        <div class="ins-card__overlay"></div>
+        <div class="ins-card__badge">Most Common</div>
+        <div class="ins-card__content">
+          <div class="ins-card__icon">&#x1F4C4;</div>
+          <div class="ins-card__title">ITR Filing</div>
+          <div class="ins-card__sub">Individuals, freelancers &amp; businesses</div>
+          <div class="ins-card__btn">File Now &#x2192;</div>
+        </div>
+      </a>
+      <a href="book.html" class="ins-card">
+        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=700&q=80&fit=crop" alt="GST Returns"/>
+        <div class="ins-card__overlay"></div>
+        <div class="ins-card__content">
+          <div class="ins-card__icon">&#x1F9FE;</div>
+          <div class="ins-card__title">GST Returns</div>
+          <div class="ins-card__sub">GSTR-1, GSTR-3B, GSTR-9 monthly filing</div>
+          <div class="ins-card__btn">File Now &#x2192;</div>
+        </div>
+      </a>
+      <a href="book.html" class="ins-card">
+        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=700&q=80&fit=crop" alt="GST Registration"/>
+        <div class="ins-card__overlay"></div>
+        <div class="ins-card__content">
+          <div class="ins-card__icon">&#x2705;</div>
+          <div class="ins-card__title">GST Registration</div>
+          <div class="ins-card__sub">Get your GSTIN in just a few days</div>
+          <div class="ins-card__btn">Register &#x2192;</div>
+        </div>
+      </a>
+      <a href="book.html" class="ins-card">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=700&q=80&fit=crop" alt="Company Registration"/>
+        <div class="ins-card__overlay"></div>
+        <div class="ins-card__content">
+          <div class="ins-card__icon">&#x1F3E2;</div>
+          <div class="ins-card__title">Company Registration</div>
+          <div class="ins-card__sub">Pvt. Ltd., OPC &amp; LLP with MCA</div>
+          <div class="ins-card__btn">Register &#x2192;</div>
+        </div>
+      </a>
+      <a href="book.html" class="ins-card">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&q=80&fit=crop" alt="Tax Audit"/>
+        <div class="ins-card__overlay"></div>
+        <div class="ins-card__content">
+          <div class="ins-card__icon">&#x1F50D;</div>
+          <div class="ins-card__title">Tax Audit</div>
+          <div class="ins-card__sub">Form 3CA/3CB &amp; 3CD — u/s 44AB</div>
+          <div class="ins-card__btn">Get Audit &#x2192;</div>
+        </div>
+      </a>
+      <a href="book.html" class="ins-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=700&q=80&fit=crop" alt="Annual Filings"/>
+        <div class="ins-card__overlay"></div>
+        <div class="ins-card__content">
+          <div class="ins-card__icon">&#x1F4C5;</div>
+          <div class="ins-card__title">Annual Filings</div>
+          <div class="ins-card__sub">AOC-4, MGT-7 ROC compliance</div>
+          <div class="ins-card__btn">File Now &#x2192;</div>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<section class="section stats">
+  <div class="section__inner">
+    <div class="stats__grid">
+      <div class="stat-item reveal"><div class="stat-num"><span id="stat1">0</span><span>+</span></div><div class="stat-label">Returns Filed</div></div>
+      <div class="stat-item reveal reveal-delay-1"><div class="stat-num"><span id="stat2">0</span><span>%</span></div><div class="stat-label">On-Time Filing Rate</div></div>
+      <div class="stat-item reveal reveal-delay-2"><div class="stat-num">&#x20B9;<span id="stat3">0</span></div><div class="stat-label">Penalties Incurred</div></div>
+      <div class="stat-item reveal reveal-delay-3"><div class="stat-num"><span id="stat4">0</span><span>hrs</span></div><div class="stat-label">Avg. Turnaround</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- KEY DEADLINES -->
+<section class="section deadline-section">
+  <div class="section__inner">
+    <div class="section__tag reveal">Key Deadlines</div>
+    <h2 class="section__title reveal reveal-delay-1">Never miss a deadline <em>again.</em></h2>
+    <p class="section__sub reveal reveal-delay-2">We start 3–4 weeks early on every filing — so you're never rushed or penalised at the last minute.</p>
+    <div class="deadline-grid reveal reveal-delay-2">
+      <div class="deadline-card urgent">
+        <div class="dc-service">ITR Filing (Individuals)</div>
+        <div class="dc-date">Due: 31 July every year</div>
+        <span class="dc-badge urgent">Critical</span>
+        <div class="dc-note">Late filing penalty ₹5,000 u/s 234F. Don't wait.</div>
+      </div>
+      <div class="deadline-card">
+        <div class="dc-service">GSTR-3B (Monthly)</div>
+        <div class="dc-date">Due: 20th of every month</div>
+        <span class="dc-badge">Monthly</span>
+        <div class="dc-note">Interest at 18% p.a. on late payment of tax liability.</div>
+      </div>
+      <div class="deadline-card">
+        <div class="dc-service">GSTR-1 (Monthly)</div>
+        <div class="dc-date">Due: 11th of every month</div>
+        <span class="dc-badge">Monthly</span>
+        <div class="dc-note">Late fee ₹50/day (₹20/day for nil returns).</div>
+      </div>
+      <div class="deadline-card urgent">
+        <div class="dc-service">Tax Audit (u/s 44AB)</div>
+        <div class="dc-date">Due: 30 September every year</div>
+        <span class="dc-badge urgent">Critical</span>
+        <div class="dc-note">Penalty 0.5% of turnover or ₹1.5L, whichever is lower.</div>
+      </div>
+      <div class="deadline-card">
+        <div class="dc-service">ROC Annual Filing (AOC-4)</div>
+        <div class="dc-date">Due: 30 October every year</div>
+        <span class="dc-badge">Annual</span>
+        <div class="dc-note">₹100 additional fee per day after the due date.</div>
+      </div>
+      <div class="deadline-card safe">
+        <div class="dc-service">ITR — Business / Audit Cases</div>
+        <div class="dc-date">Due: 31 October every year</div>
+        <span class="dc-badge safe">Extended</span>
+        <div class="dc-note">Applicable where tax audit is mandatory under the Act.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY COVER CREDIT -->
+<section class="section why">
+  <div class="section__inner">
+    <div class="why__layout">
+      <div>
+        <div class="section__tag reveal">Why Cover Credit</div>
+        <h2 class="section__title reveal reveal-delay-1">We don't just file.<br/>We <em>protect</em> you.</h2>
+        <p class="section__sub reveal reveal-delay-2">Missing a deadline can cost you thousands. We make sure that never happens.</p>
+        <div class="why__list">
+          <div class="why__item reveal reveal-delay-1"><div class="why__item-icon">&#x23F0;</div><div><div class="why__item-title">Deadline Reminders — Always Ahead</div><div class="why__item-desc">We track every due date and send reminders 3–4 weeks early, so you're never caught off guard.</div></div></div>
+          <div class="why__item reveal reveal-delay-2"><div class="why__item-icon">&#x1F4DE;</div><div><div class="why__item-title">One Expert, One Number</div><div class="why__item-desc">No call centres, no bouncing between departments. One dedicated expert who knows your full picture.</div></div></div>
+          <div class="why__item reveal reveal-delay-3"><div class="why__item-icon">&#x1F512;</div><div><div class="why__item-title">100% Secure &amp; Confidential</div><div class="why__item-desc">Your financial data is protected with strict confidentiality. We never share or misuse your information.</div></div></div>
+          <div class="why__item reveal reveal-delay-4"><div class="why__item-icon">&#x1F30D;</div><div><div class="why__item-title">Telugu &amp; English Support</div><div class="why__item-desc">No jargon. We explain everything in the language you're most comfortable with.</div></div></div>
+        </div>
+      </div>
+      <div class="why__right reveal reveal-delay-2">
+        <div class="why__img-mosaic">
+          <div class="mosaic-img"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&q=80&fit=crop" alt="Tax expert"/><div class="mosaic-img-label">Expert Advisors</div></div>
+          <div class="mosaic-img"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80&fit=crop" alt="Documentation"/><div class="mosaic-img-label">Paperwork Done</div></div>
+          <div class="mosaic-img"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&q=80&fit=crop" alt="Filing"/><div class="mosaic-img-label">On-Time Filing</div></div>
+        </div>
+        <div class="why__visual">
+          <div class="why__visual-tag">How it works</div>
+          <div class="why__visual-title">From documents<br/>to done — in 48 hrs.</div>
+          <div class="why__process">
+            <div class="why__step"><div class="why__step-num">1</div><div class="why__step-line"></div><div class="why__step-content"><div class="why__step-title">Book Free Consultation</div><div class="why__step-desc">Tell us what you need. Transparent pricing upfront — no surprises.</div></div></div>
+            <div class="why__step"><div class="why__step-num">2</div><div class="why__step-line"></div><div class="why__step-content"><div class="why__step-title">Share Documents</div><div class="why__step-desc">Send documents via WhatsApp or email. Secure and fully confidential.</div></div></div>
+            <div class="why__step"><div class="why__step-num">3</div><div class="why__step-line"></div><div class="why__step-content"><div class="why__step-title">Review &amp; Approve</div><div class="why__step-desc">We prepare and share everything with you for a quick review before filing.</div></div></div>
+            <div class="why__step"><div class="why__step-num">4</div><div class="why__step-line"></div><div class="why__step-content"><div class="why__step-title">Filed &amp; Acknowledged</div><div class="why__step-desc">We file and send you the official acknowledgement — done, well before the deadline.</div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section cta">
+  <div class="cta__img-bg"></div>
+  <div class="cta__inner">
+    <div>
+      <h2 class="cta__title reveal">Ready to get your taxes<br/><em>sorted for good?</em></h2>
+      <p class="cta__desc reveal reveal-delay-1">Book a free 30-minute consultation. No spam, no obligation, no sales pitch. Honest advice in Telugu or English.</p>
+      <div class="cta__pills reveal reveal-delay-2">
+        <span class="cta__pill">&#x2713; No Spam</span>
+        <span class="cta__pill">&#x2713; No Hidden Fees</span>
+        <span class="cta__pill">&#x2713; Telugu / English</span>
+        <span class="cta__pill">&#x2713; 48hr Turnaround</span>
+      </div>
+    </div>
+    <div class="cta__btns reveal reveal-delay-2">
+      <a href="book.html" class="btn-primary" style="white-space:nowrap">Book Free Consultation &#x2192;</a>
+      <div class="cta__phone">or call: <a href="tel:+917842854466">+91 78428 54466</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div>
+        <a href="index.html" class="footer__logo">Cover<span>Credit</span></a>
+        <p class="footer__desc">Honest insurance &amp; financial advice for your family. We guide, not sell. Serving AP &amp; Telangana since 2022.</p>
+        <div class="footer__contact-item">&#x1F4DE; <a href="tel:+917842854466">+91 78428 54466</a></div>
+        <div class="footer__contact-item">&#x2709;&#xFE0F; <a href="mailto:Covercredit.official@gmail.com">Covercredit.official@gmail.com</a></div>
+        <div class="footer__contact-item">&#x1F550; Mon&ndash;Sat: 9 AM &ndash; 7 PM</div>
+      </div>
+      <div class="footer__col"><div class="footer__col-title">Insurance</div><ul><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life &amp; Term Insurance</a></li><li><a href="bike-insurance.html">Bike Insurance</a></li><li><a href="car-insurance.html">Car Insurance</a></li><li><a href="commercial-vehicle-insurance.html">Commercial Vehicles</a></li></ul></div>
+      <div class="footer__col"><div class="footer__col-title">Finance &amp; Tax</div><ul><li><a href="loans.html">Personal Loans</a></li><li><a href="loans.html">Home Loans</a></li><li><a href="loans.html">Business Loans</a></li><li><a href="tax-services.html">ITR Filing</a></li><li><a href="tax-services.html">GST Services</a></li><li><a href="tax-services.html">Company Registration</a></li></ul></div>
+      <div class="footer__col"><div class="footer__col-title">Company</div><ul><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li><li><a href="book.html">Book Consultation</a></li><li><a href="contact.html#refer-earn">Refer &amp; Earn</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div>
+    </div>
+    <div class="footer__bottom">
+      <span>&#xA9; <span id="current-year"></span> Cover Credit Insurance Advisors. All rights reserved.</span>
+      <div class="footer__bottom-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- SOS FAB -->
+<a href="sos-card.html" id="cc-sos-fab" aria-label="Generate free SOS card">
+  <span class="cc-fab-ic">&#x1F198;</span>
+  <span class="cc-fab-txt">Free SOS Card</span>
+</a>
+<style>
+#cc-sos-fab{position:fixed;bottom:10.5rem;right:1.5rem;z-index:888;display:inline-flex;align-items:center;gap:.45rem;background:linear-gradient(135deg,#b71c1c,#e53935,#ef6c00);color:#fff;text-decoration:none;padding:.58rem 1.1rem .58rem .85rem;border-radius:100px;font-family:'Outfit',system-ui,sans-serif;font-size:.74rem;font-weight:700;white-space:nowrap;box-shadow:0 6px 22px rgba(229,57,53,.4);opacity:0;transform:translateY(10px) scale(.92);animation:cc-fab-entry .5s cubic-bezier(.16,1,.3,1) .6s forwards;transition:transform .2s,box-shadow .2s}
+@keyframes cc-fab-entry{to{opacity:1;transform:none}}
+#cc-sos-fab:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(229,57,53,.55)}
+#cc-sos-fab::after{content:'';position:absolute;inset:-4px;border-radius:100px;border:2px solid rgba(229,57,53,.45);animation:cc-ring 2.6s ease-out infinite}
+@keyframes cc-ring{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.18);opacity:0}}
+.cc-fab-ic{font-size:.95rem;flex-shrink:0}.cc-fab-txt{font-size:.72rem}
+@media(max-width:600px){#cc-sos-fab{bottom:9rem;right:1rem}}
+</style>
+
+<script>
+/* Cursor */
+const cursor=document.getElementById('cursor'),cursorRing=document.getElementById('cursor-ring');
+let mouseX=0,mouseY=0,ringX=0,ringY=0;
+document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY;cursor.style.left=mouseX+'px';cursor.style.top=mouseY+'px';});
+(function loop(){ringX+=(mouseX-ringX)*.12;ringY+=(mouseY-ringY)*.12;cursorRing.style.left=ringX+'px';cursorRing.style.top=ringY+'px';requestAnimationFrame(loop);})();
+document.querySelectorAll('a,button,.service-card,.why__item,.ins-card,.deadline-card').forEach(el=>{el.addEventListener('mouseenter',()=>{cursor.classList.add('hovering');cursorRing.classList.add('hovering');});el.addEventListener('mouseleave',()=>{cursor.classList.remove('hovering');cursorRing.classList.remove('hovering');});});
+
+/* Nav scroll */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40),{passive:true});
+
+/* Hamburger */
+const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobile-menu');
+hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';});
+
+/* Hero slideshow — same logic as index */
+const slides=document.querySelectorAll('.hero__slide'),dotsContainer=document.getElementById('slide-dots'),labelEl=document.getElementById('slide-label'),labelText=document.getElementById('slide-label-text');
+let currentSlide=0;
+slides.forEach((_,i)=>{const dot=document.createElement('button');dot.className='slide-dot'+(i===0?' active':'');dot.setAttribute('aria-label','Slide '+(i+1));dot.addEventListener('click',()=>goToSlide(i));dotsContainer.appendChild(dot);});
+function goToSlide(idx){slides[currentSlide].classList.remove('active');dotsContainer.querySelectorAll('.slide-dot')[currentSlide].classList.remove('active');currentSlide=idx;slides[currentSlide].classList.add('active');dotsContainer.querySelectorAll('.slide-dot')[currentSlide].classList.add('active');labelText.textContent=slides[currentSlide].dataset.label||'';}
+setInterval(()=>goToSlide((currentSlide+1)%slides.length),3000);
+setTimeout(()=>labelEl.classList.add('show'),800);
+
+/* Reveal on scroll */
+const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target);}});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+
+/* Counters */
+function animateCounter(el,target,decimals){decimals=decimals||0;var start=0;(function step(ts){if(!start)start=ts;var p=Math.min((ts-start)/1800,1),eased=1-Math.pow(1-p,3),val=eased*target;el.textContent=decimals?val.toFixed(decimals):Math.floor(val);if(p<1)requestAnimationFrame(step);else el.textContent=decimals?target.toFixed(decimals):target;})(0);}
+const statsObs=new IntersectionObserver(entries=>{if(entries[0].isIntersecting){animateCounter(document.getElementById('stat1'),500);animateCounter(document.getElementById('stat2'),100);animateCounter(document.getElementById('stat3'),0);animateCounter(document.getElementById('stat4'),48);statsObs.disconnect();}},{threshold:0.3});
+const statsSection=document.querySelector('.stats');if(statsSection)statsObs.observe(statsSection);
+
+/* Footer year */
+const yearEl=document.getElementById('current-year');if(yearEl)yearEl.textContent=new Date().getFullYear();
+
+/* Partner ticker — tax themed */
+(function(){
+  var SERVICES=[
+    {cat:'tax',name:'ITR Filing'},{cat:'tax',name:'Advance Tax'},{cat:'tax',name:'TDS Returns'},
+    {cat:'gst',name:'GST Returns'},{cat:'gst',name:'GST Registration'},{cat:'gst',name:'GST Reconciliation'},
+    {cat:'reg',name:'Pvt. Ltd. Registration'},{cat:'reg',name:'LLP Registration'},{cat:'reg',name:'Firm Registration'},
+    {cat:'tax',name:'Tax Audit'},{cat:'gst',name:'GSTR-9 Annual'},{cat:'reg',name:'Annual ROC Filings'},
+  ];
+  var CAT={tax:{label:'📄 Tax',cls:'ct-pill--tax'},gst:{label:'🧾 GST',cls:'ct-pill--gst'},reg:{label:'🏢 Registration',cls:'ct-pill--reg'}};
+  function makePill(cat){var d=document.createElement('div');d.className='ct-pill '+CAT[cat].cls;var s=document.createElement('span');s.textContent=CAT[cat].label;d.appendChild(s);return d;}
+  function makeItem(p){var d=document.createElement('div');d.className='ct-item';var n=document.createElement('span');n.className='ct-item-name';n.textContent=p.name;d.appendChild(n);return d;}
+  function buildSet(){var f=document.createDocumentFragment(),last=null;SERVICES.forEach(function(p){if(p.cat!==last){f.appendChild(makePill(p.cat));last=p.cat;}f.appendChild(makeItem(p));});return f;}
+  var track=document.getElementById('ct-track');
+  if(track){track.appendChild(buildSet());track.appendChild(buildSet());}
+})();
+
+/* Analytics */
+(function(){
+  var PAGE_NAME='tax-services';
+  var BACKEND=(window.location.hostname==='localhost'||window.location.hostname==='127.0.0.1')?'http://localhost:5000/api':'https://api.covercredit.in/api';
+  var ua=navigator.userAgent.toLowerCase();
+  if(/bot|crawler|spider|headless/.test(ua))return;
+  var params=new URLSearchParams(window.location.search);
+  var utmSrc=params.get('utm_source')||'',utmMed=params.get('utm_medium')||'',utmCamp=params.get('utm_campaign')||'';
+  if(utmSrc){sessionStorage.setItem('cc_utm_source',utmSrc);sessionStorage.setItem('cc_utm_medium',utmMed);sessionStorage.setItem('cc_utm_campaign',utmCamp);}
+  else{utmSrc=sessionStorage.getItem('cc_utm_source')||'';utmMed=sessionStorage.getItem('cc_utm_medium')||'';utmCamp=sessionStorage.getItem('cc_utm_campaign')||'';}
+  function detectSource(ref){if(!ref)return'direct';var r=ref.toLowerCase();if(/google\./.test(r))return'google';if(/whatsapp|wa\.me/.test(r))return'whatsapp';if(/facebook\.|fb\.com/.test(r))return'facebook';if(/instagram\./.test(r))return'instagram';return'other';}
+  var source=utmSrc?utmSrc.toLowerCase().trim():detectSource(document.referrer);
+  var key='cc_tracked_'+PAGE_NAME+'_'+source;
+  if(sessionStorage.getItem(key))return;
+  sessionStorage.setItem(key,'1');
+  var isMobile=/iphone|ipod|android.*mobile/.test(ua);
+  var device=isMobile?'mobile':'desktop';
+  try{fetch(BACKEND+'/track',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({page:PAGE_NAME,path:window.location.pathname,source,device,utmMedium:utmMed,utmCampaign:utmCamp,referrer:document.referrer||''}),keepalive:true}).catch(function(){});}catch(e){}
+})();
+</script>
+</body>
+</html>
