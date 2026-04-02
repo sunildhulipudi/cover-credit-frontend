@@ -1446,8 +1446,11 @@ function buildSingleCardHTML(snap) {
 
     <div class="nc-fine">General guidance only · Refer to your policy document for exact claim conditions · Generated ${today} · covercredit.in/sos-card</div>`;
 }
-
+  
+/* ═══════════════════════════════════════════
+   BUILD BUNDLE CARD HTML
 ═══════════════════════════════════════════ */
+function buildBundleCardHTML(snap) {
 function buildBundleCardHTML(snap) {
   const meta = TYPE_META[snap.type];
   let mainDetail = '';
