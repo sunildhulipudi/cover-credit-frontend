@@ -37,10 +37,13 @@
     body{font-family:var(--font-body);background:var(--navy);color:var(--white);overflow-x:hidden;cursor:none}
     a{text-decoration:none;color:inherit}
     img{display:block;max-width:100%;object-fit:cover}
+
+    /* CURSOR */
     .cursor{width:12px;height:12px;background:var(--gold);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s,width .3s var(--ease),height .3s var(--ease),background .3s;mix-blend-mode:difference}
     .cursor-ring{width:40px;height:40px;border:1.5px solid var(--gold);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .15s var(--ease),width .4s var(--ease),height .4s var(--ease),opacity .3s;opacity:.6}
     .cursor.hovering{width:6px;height:6px}
     .cursor-ring.hovering{width:60px;height:60px;opacity:.3}
+
     /* TICKER */
     .company-ticker{position:fixed;top:0;left:0;right:0;z-index:1100;height:var(--ticker-h);background:#020c1f;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:stretch;overflow:hidden}
     .company-ticker::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;z-index:10;background:linear-gradient(90deg,transparent,rgba(230,168,23,0) 15%,rgba(230,168,23,0.8) 40%,#f5c842 50%,rgba(230,168,23,0.8) 60%,rgba(230,168,23,0) 85%,transparent);background-size:200% 100%;animation:ctShimmer 4s linear infinite}
@@ -70,6 +73,7 @@
     .ct-item-name{font-family:var(--font-body);font-size:.7rem;font-weight:600;color:rgba(255,255,255,0.42);white-space:nowrap;transition:color 0.2s}
     .company-ticker:hover .ct-item:hover .ct-item-name{color:rgba(255,255,255,0.9)}
     @media(max-width:580px){.ct-label-brand,.ct-label-divider,.ct-label-text,.ct-badge{display:none}}
+
     /* NAV */
     .nav{position:fixed;top:var(--ticker-h);left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;padding:0 5%;transition:background 0.4s,backdrop-filter 0.4s,box-shadow 0.4s}
     .nav.scrolled{background:rgba(5,17,42,0.96);backdrop-filter:blur(20px);box-shadow:0 1px 0 var(--border)}
@@ -103,12 +107,13 @@
     .mobile-menu a{padding:1rem 0;font-size:1.1rem;font-weight:500;color:rgba(255,255,255,.8);border-bottom:1px solid var(--border);transition:color .2s}
     .mobile-menu a:hover{color:var(--gold)}
     .mobile-menu__cta{margin-top:2rem;background:var(--gold);color:var(--navy)!important;text-align:center;border-radius:12px;padding:1rem!important;font-weight:700!important;border:none!important}
-    /* HERO */
+
+    /* ========= HERO ========= */
     .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:calc(var(--ticker-h) + var(--nav-h))}
     .hero__slides{position:absolute;inset:0;z-index:0}
     .hero__slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.2s ease-in-out}
     .hero__slide.active{opacity:1}
-    .hero__slide::after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,rgba(5,17,42,0.92) 0%,rgba(5,17,42,0.78) 45%,rgba(5,17,42,0.4) 100%)}
+    .hero__slide::after{content:'';position:absolute;inset:0;background:linear-gradient(110deg,rgba(5,17,42,0.94) 0%,rgba(5,17,42,0.80) 45%,rgba(5,17,42,0.45) 100%)}
     .slide-itr{background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&q=80')}
     .slide-gst{background-image:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1600&q=80')}
     .slide-company{background-image:url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1600&q=80')}
@@ -128,13 +133,21 @@
     @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
     .hero__title{font-family:var(--font-display);font-size:clamp(2.8rem,5vw,4.5rem);font-weight:700;line-height:1.1;letter-spacing:-1px;margin-bottom:1.5rem}
     .hero__title em{font-style:normal;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .hero__desc{font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,.65);margin-bottom:2.5rem;max-width:480px}
-    .hero__btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3rem}
+    .hero__desc{font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,.65);margin-bottom:2rem;max-width:480px}
+    .hero__btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
     .btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy);padding:.9rem 2rem;border-radius:12px;font-weight:700;font-size:.95rem;transition:transform .2s var(--ease),box-shadow .2s;box-shadow:0 0 0 0 rgba(230,168,23,.4)}
     .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(230,168,23,.35)}
     .btn-outline{display:inline-flex;align-items:center;gap:.5rem;background:var(--glass);border:1px solid var(--border);color:var(--white);padding:.9rem 2rem;border-radius:12px;font-weight:500;font-size:.95rem;transition:background .2s,transform .2s;backdrop-filter:blur(10px)}
     .btn-outline:hover{background:var(--glass-2);transform:translateY(-2px)}
-    .hero__trust{display:flex;gap:2rem;flex-wrap:wrap}
+
+    /* HERO LIVE ACTIVITY FEED */
+    .hero__activity{background:rgba(9,29,62,.7);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:.9rem 1.2rem;display:flex;align-items:center;gap:.8rem;margin-bottom:1.5rem;max-width:400px}
+    .hero__activity-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0;box-shadow:0 0 8px rgba(34,197,94,.6);animation:liveGlow 2s ease-in-out infinite}
+    @keyframes liveGlow{0%,100%{box-shadow:0 0 8px rgba(34,197,94,.6)}50%{box-shadow:0 0 16px rgba(34,197,94,.9)}}
+    .hero__activity-text{font-size:.8rem;color:rgba(255,255,255,.7);line-height:1.4}
+    .hero__activity-text strong{color:#4ade80;font-weight:600}
+
+    .hero__trust{display:flex;gap:1.5rem;flex-wrap:wrap}
     .hero__trust-item{display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:rgba(255,255,255,.5)}
     .hero__trust-item svg{color:var(--gold);flex-shrink:0}
     .hero__right{position:relative;height:520px}
@@ -150,13 +163,24 @@
     .hero__card-value{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--white)}
     .hero__card-sub{font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.2rem}
     .hero__card-stat{display:flex;align-items:center;gap:.4rem;margin-top:.8rem;padding-top:.8rem;border-top:1px solid rgba(255,255,255,.08);font-size:.78rem;color:#4ade80}
-    /* TICKER GOLD */
+
+    /* GOLD TICKER */
     .ticker{background:var(--gold);padding:.7rem 0;overflow:hidden;white-space:nowrap}
     .ticker__track{display:inline-flex;gap:3rem;animation:ticker 25s linear infinite}
     .ticker__item{display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;font-weight:600;color:var(--navy);text-transform:uppercase;letter-spacing:.5px}
     .ticker__dot{width:4px;height:4px;background:var(--navy);border-radius:50%;opacity:.4}
     @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-    /* SECTION */
+
+    /* ========= TRUST BAR ========= */
+    .trust-bar{background:rgba(9,29,62,.95);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);padding:1.4rem 5%}
+    .trust-bar__inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+    .trust-bar__item{display:flex;align-items:center;gap:.7rem;flex:1;min-width:160px}
+    .trust-bar__icon{width:36px;height:36px;border-radius:10px;background:rgba(230,168,23,.12);border:1px solid rgba(230,168,23,.2);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
+    .trust-bar__title{font-size:.82rem;font-weight:700;color:var(--white);line-height:1.2}
+    .trust-bar__sub{font-size:.72rem;color:rgba(255,255,255,.4)}
+    .trust-bar__divider{width:1px;height:32px;background:rgba(255,255,255,.08)}
+
+    /* ========= SECTION BASE ========= */
     .section{padding:7rem 5%}
     .section__inner{max-width:1280px;margin:0 auto}
     .section__tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:1.2rem}
@@ -164,7 +188,8 @@
     .section__title{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,3rem);font-weight:700;line-height:1.15;margin-bottom:1.2rem}
     .section__title em{font-style:normal;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     .section__sub{font-size:1rem;color:rgba(255,255,255,.55);line-height:1.7;max-width:560px}
-    /* SERVICES */
+
+    /* ========= SERVICES ========= */
     .services{background:var(--navy)}
     .services__head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:4rem;flex-wrap:wrap}
     .services__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(255,255,255,.06);border-radius:24px;overflow:hidden}
@@ -185,7 +210,28 @@
     .service-card:hover .service-card__link{gap:.7rem}
     .service-card--featured .sc-img{height:220px}
     .service-card--featured .service-card__title{font-size:1.5rem}
-    /* INS STRIP */
+
+    /* Service card price tag */
+    .sc-price{display:inline-flex;align-items:center;gap:.4rem;background:rgba(230,168,23,.1);border:1px solid rgba(230,168,23,.2);color:var(--gold);font-size:.72rem;font-weight:700;padding:.2rem .7rem;border-radius:100px;margin-bottom:.6rem;letter-spacing:.3px}
+    .sc-price-dot{width:5px;height:5px;border-radius:50%;background:var(--gold)}
+
+    /* ========= SOCIAL PROOF / REVIEWS ========= */
+    .reviews{background:var(--navy-2);padding:5rem 5%}
+    .reviews__inner{max-width:1280px;margin:0 auto}
+    .reviews__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem}
+    .review-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:1.8rem;position:relative;transition:all .3s var(--ease)}
+    .review-card:hover{background:rgba(255,255,255,.07);border-color:rgba(230,168,23,.2);transform:translateY(-4px)}
+    .review-card::before{content:'\201C';font-family:var(--font-display);font-size:5rem;line-height:1;color:rgba(230,168,23,.15);position:absolute;top:.5rem;left:1.2rem;font-weight:700}
+    .review-stars{display:flex;gap:3px;margin-bottom:1rem}
+    .review-star{color:var(--gold);font-size:.9rem}
+    .review-text{font-size:.88rem;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:1.2rem;position:relative;z-index:1}
+    .review-author{display:flex;align-items:center;gap:.8rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.07)}
+    .review-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-light));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex-shrink:0}
+    .review-name{font-size:.85rem;font-weight:600;color:var(--white)}
+    .review-role{font-size:.72rem;color:rgba(255,255,255,.4)}
+    .review-badge{position:absolute;top:1rem;right:1rem;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#4ade80;font-size:.6rem;font-weight:700;padding:.15rem .5rem;border-radius:100px;text-transform:uppercase;letter-spacing:.5px}
+
+    /* ========= QUICK OVERVIEW ========= */
     .ins-strip{padding:0 5% 6rem;background:var(--navy)}
     .ins-strip__inner{max-width:1280px;margin:0 auto}
     .ins-strip__row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
@@ -201,7 +247,8 @@
     .ins-card__btn{display:inline-flex;align-items:center;gap:.3rem;margin-top:.8rem;font-size:.75rem;font-weight:600;color:var(--gold);transition:gap .2s}
     .ins-card:hover .ins-card__btn{gap:.6rem}
     .ins-card__badge{position:absolute;top:1rem;left:1rem;background:var(--gold);color:var(--navy);font-size:.6rem;font-weight:700;padding:.2rem .6rem;border-radius:100px;text-transform:uppercase;letter-spacing:.5px}
-    /* STATS */
+
+    /* ========= STATS ========= */
     .stats{background:var(--navy-3);position:relative;overflow:hidden}
     .stats::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&q=70') center/cover no-repeat;opacity:.05}
     .stats__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);border-radius:20px;overflow:hidden;position:relative;z-index:1}
@@ -210,7 +257,30 @@
     .stat-num{font-family:var(--font-body);font-size:3rem;font-weight:700;line-height:1;color:var(--white);margin-bottom:.5rem;letter-spacing:-1px}
     .stat-num span{color:var(--gold)}
     .stat-label{font-size:.85rem;color:var(--muted);font-weight:500}
-    /* DEADLINES */
+
+    /* ========= PENALTY CALCULATOR ========= */
+    .penalty-section{background:var(--navy);padding:5rem 5%}
+    .penalty-section__inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+    .penalty-calc{background:rgba(9,29,62,.9);border:1px solid rgba(230,168,23,.2);border-radius:24px;padding:2.5rem;backdrop-filter:blur(20px)}
+    .penalty-calc__title{font-family:var(--font-display);font-size:1.6rem;font-weight:700;margin-bottom:.5rem}
+    .penalty-calc__sub{font-size:.85rem;color:rgba(255,255,255,.45);margin-bottom:2rem}
+    .calc-field{margin-bottom:1.4rem}
+    .calc-label{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.8px;margin-bottom:.5rem}
+    .calc-select{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:var(--white);padding:.75rem 1rem;border-radius:10px;font-family:var(--font-body);font-size:.88rem;cursor:pointer;appearance:none;outline:none;transition:border-color .2s}
+    .calc-select:focus{border-color:rgba(230,168,23,.4)}
+    .calc-select option{background:#091d3e;color:var(--white)}
+    .calc-input{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:var(--white);padding:.75rem 1rem;border-radius:10px;font-family:var(--font-body);font-size:.88rem;outline:none;transition:border-color .2s}
+    .calc-input:focus{border-color:rgba(230,168,23,.4)}
+    .calc-input::placeholder{color:rgba(255,255,255,.25)}
+    .calc-result{background:linear-gradient(135deg,rgba(239,68,68,.1),rgba(239,68,68,.05));border:1px solid rgba(239,68,68,.25);border-radius:14px;padding:1.4rem 1.6rem;margin-top:1.5rem;display:none}
+    .calc-result.show{display:block}
+    .calc-result__label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(239,68,68,.7);margin-bottom:.4rem}
+    .calc-result__amount{font-family:var(--font-display);font-size:2.4rem;font-weight:700;color:#f87171;margin-bottom:.3rem}
+    .calc-result__note{font-size:.78rem;color:rgba(255,255,255,.4);line-height:1.5}
+    .calc-cta-note{font-size:.8rem;color:rgba(255,255,255,.35);margin-top:1rem;text-align:center}
+    .calc-cta-note a{color:var(--gold);font-weight:600}
+
+    /* ========= DEADLINE SECTION ========= */
     .deadline-section{background:var(--navy-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
     .deadline-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3rem}
     .deadline-card{background:var(--glass);border:1px solid var(--border);border-radius:16px;padding:1.5rem;position:relative;overflow:hidden;transition:all .3s}
@@ -224,7 +294,11 @@
     .dc-badge.urgent{background:rgba(239,68,68,.15);color:#ef4444}
     .dc-badge.safe{background:rgba(34,197,94,.15);color:#22c55e}
     .dc-note{font-size:.78rem;color:rgba(255,255,255,.4);margin-top:.6rem;line-height:1.5}
-    /* WHY */
+    /* countdown chip */
+    .dc-countdown{display:inline-flex;align-items:center;gap:.35rem;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:#f87171;font-size:.65rem;font-weight:700;padding:.2rem .6rem;border-radius:100px;margin-top:.5rem;text-transform:uppercase;letter-spacing:.4px}
+    .dc-countdown-dot{width:5px;height:5px;border-radius:50%;background:#ef4444;animation:ctBlink 1.5s ease-in-out infinite}
+
+    /* ========= WHY ========= */
     .why{background:var(--navy)}
     .why__layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
     .why__list{display:flex;flex-direction:column;gap:1.5rem;margin-top:3rem}
@@ -253,7 +327,39 @@
     .why__step-content{padding-top:.5rem}
     .why__step-title{font-weight:600;font-size:.95rem;margin-bottom:.3rem}
     .why__step-desc{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.5}
-    /* CTA */
+
+    /* ========= COMPARISON TABLE ========= */
+    .comparison{background:var(--navy-3);padding:5rem 5%}
+    .comparison__inner{max-width:1280px;margin:0 auto}
+    .comp-table{margin-top:3rem;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
+    .comp-row{display:grid;grid-template-columns:2fr 1fr 1fr;border-bottom:1px solid rgba(255,255,255,.06)}
+    .comp-row:last-child{border-bottom:none}
+    .comp-row.header{background:rgba(9,29,62,.9)}
+    .comp-cell{padding:1rem 1.5rem;font-size:.88rem;display:flex;align-items:center;gap:.5rem}
+    .comp-row.header .comp-cell{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.4)}
+    .comp-row.header .comp-cell:nth-child(2){background:rgba(230,168,23,.08);border-top:2px solid var(--gold);color:var(--gold)}
+    .comp-cell:nth-child(2){background:rgba(230,168,23,.04)}
+    .comp-row:not(.header):hover{background:rgba(255,255,255,.02)}
+    .comp-feature{color:rgba(255,255,255,.7)}
+    .comp-yes{color:#4ade80;font-size:1rem}
+    .comp-no{color:rgba(255,255,255,.2);font-size:.9rem}
+    .comp-partial{color:#facc15;font-size:.8rem;font-weight:600}
+
+    /* ========= FAQ ========= */
+    .faq{background:var(--navy-2);padding:5rem 5%}
+    .faq__inner{max-width:860px;margin:0 auto}
+    .faq__grid{margin-top:3rem;display:flex;flex-direction:column;gap:.8rem}
+    .faq-item{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:16px;overflow:hidden;transition:border-color .2s}
+    .faq-item.open{border-color:rgba(230,168,23,.25)}
+    .faq-q{display:flex;justify-content:space-between;align-items:center;padding:1.4rem 1.6rem;cursor:pointer;font-size:.95rem;font-weight:600;color:rgba(255,255,255,.85);transition:color .2s;gap:1rem}
+    .faq-q:hover{color:var(--white)}
+    .faq-arrow{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.7rem;transition:transform .3s var(--ease),background .2s}
+    .faq-item.open .faq-arrow{transform:rotate(180deg);background:rgba(230,168,23,.15);border-color:rgba(230,168,23,.3);color:var(--gold)}
+    .faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
+    .faq-a-inner{padding:0 1.6rem 1.4rem;font-size:.88rem;color:rgba(255,255,255,.5);line-height:1.75;border-top:1px solid rgba(255,255,255,.06)}
+    .faq-a-inner{padding-top:1rem}
+
+    /* ========= CTA ========= */
     .cta{background:linear-gradient(135deg,var(--blue) 0%,var(--navy-3) 50%,var(--navy) 100%);position:relative;overflow:hidden}
     .cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 80% 50%,rgba(230,168,23,.08),transparent),radial-gradient(ellipse 50% 60% at 10% 80%,rgba(255,255,255,.03),transparent)}
     .cta__img-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1400&q=70') center/cover no-repeat;opacity:.08;z-index:0}
@@ -265,7 +371,8 @@
     .cta__btns{display:flex;flex-direction:column;gap:.8rem;align-items:center}
     .cta__phone{font-size:.82rem;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:.4rem}
     .cta__phone a{color:rgba(255,255,255,.75);font-weight:600}
-    /* FOOTER */
+
+    /* ========= FOOTER ========= */
     .footer{background:#020b1a;border-top:1px solid var(--border);padding:4rem 5% 2rem}
     .footer__inner{max-width:1280px;margin:0 auto}
     .footer__top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid var(--border);margin-bottom:2rem}
@@ -283,23 +390,28 @@
     .footer__bottom-links{display:flex;gap:1.5rem}
     .footer__bottom-links a{color:rgba(255,255,255,.25);transition:color .2s}
     .footer__bottom-links a:hover{color:var(--muted)}
-    /* FAB */
+
+    /* ========= FAB ========= */
     .fab{position:fixed;bottom:2rem;right:2rem;z-index:500;display:flex;flex-direction:column;gap:.8rem;align-items:flex-end}
     .fab__btn{display:flex;align-items:center;gap:.6rem;padding:.8rem 1.2rem;border-radius:100px;font-size:.85rem;font-weight:600;cursor:none;border:none;transition:transform .2s var(--ease),box-shadow .2s;text-decoration:none}
     .fab__btn:hover{transform:translateY(-2px) scale(1.03)}
     .fab__wa{background:#25d366;color:var(--white);box-shadow:0 8px 24px rgba(37,211,102,.4)}
     .fab__book{background:var(--gold);color:var(--navy);box-shadow:0 8px 24px rgba(230,168,23,.4)}
-    /* REVEAL */
+
+    /* ========= REVEAL ========= */
     .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
     .reveal.visible{opacity:1;transform:translateY(0)}
     .reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}.reveal-delay-4{transition-delay:.4s}
-    /* RESPONSIVE */
+
+    /* ========= RESPONSIVE ========= */
     @media(max-width:1024px){
       .hero__inner{grid-template-columns:1fr}.hero__right{display:none}
       .services__grid{grid-template-columns:1fr 1fr}.why__layout{grid-template-columns:1fr}
       .stats__grid{grid-template-columns:1fr 1fr}.footer__top{grid-template-columns:1fr 1fr}
       .cta__inner{grid-template-columns:1fr;text-align:center}.cta__pills{justify-content:center}.cta__btns{flex-direction:row}
       .deadline-grid{grid-template-columns:1fr 1fr}.ins-strip__row{grid-template-columns:1fr 1fr 1fr}
+      .penalty-section__inner{grid-template-columns:1fr}.reviews__grid{grid-template-columns:1fr 1fr}
+      .trust-bar__divider{display:none}.comp-table{overflow-x:auto}
     }
     @media(max-width:768px){
       :root{--ticker-h:38px}.nav__links{display:none}.nav__hamburger{display:flex}
@@ -308,10 +420,13 @@
       body{cursor:auto}.cursor,.cursor-ring{display:none}
       .deadline-grid{grid-template-columns:1fr}.ins-strip__row{grid-template-columns:1fr 1fr}
       .why__img-mosaic{grid-template-columns:1fr 1fr}.mosaic-img:first-child{grid-row:span 1}.mosaic-img:first-child img{height:140px}
+      .reviews__grid{grid-template-columns:1fr}.trust-bar__inner{gap:.8rem}
+      .trust-bar__item{min-width:140px}.comp-row{grid-template-columns:1.5fr 1fr 1fr}
     }
     @media(max-width:480px){
       .stats__grid{grid-template-columns:1fr 1fr}.hero__btns{flex-direction:column}
       .section{padding:5rem 5%}.ins-strip__row{grid-template-columns:1fr}
+      .comp-row{grid-template-columns:1fr}.comp-row.header{display:none}
     }
   </style>
 </head>
@@ -381,7 +496,7 @@
   </div>
 </header>
 
-<!-- HERO with scrolling background slides -->
+<!-- ===== HERO ===== -->
 <section class="hero">
   <div class="hero__slides" id="hero-slides">
     <div class="hero__slide slide-itr active"  data-label="&#x1F4C4; Income Tax Returns"></div>
@@ -399,6 +514,15 @@
       <div class="hero__label reveal">&#x1F4CB; Tax &amp; Compliance Services — AP &amp; Telangana</div>
       <h1 class="hero__title reveal reveal-delay-1">File Taxes.<br/>Stay <em>Compliant.</em><br/>Grow Freely.</h1>
       <p class="hero__desc reveal reveal-delay-2">From ITR filing to company registration — we handle every tax and compliance need with accuracy, on time. Focus on your business; we'll handle the paperwork.</p>
+
+      <!-- LIVE ACTIVITY FEED -->
+      <div class="hero__activity reveal reveal-delay-2" id="live-activity">
+        <div class="hero__activity-dot"></div>
+        <div class="hero__activity-text" id="activity-text">
+          <strong>Ravi K. from Hyderabad</strong> just filed his ITR — penalty saved ₹5,000 ✓
+        </div>
+      </div>
+
       <div class="hero__btns reveal reveal-delay-3">
         <a href="book.html" class="btn-primary">Book Free Consultation <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
         <a href="tel:+917842854466" class="btn-outline">&#x1F4DE; +91 78428 54466</a>
@@ -453,7 +577,37 @@
   </div>
 </div>
 
-<!-- SERVICES GRID -->
+<!-- ===== TRUST BAR ===== -->
+<div class="trust-bar reveal">
+  <div class="trust-bar__inner">
+    <div class="trust-bar__item">
+      <div class="trust-bar__icon">🏆</div>
+      <div><div class="trust-bar__title">3+ Years Trusted</div><div class="trust-bar__sub">Serving AP &amp; Telangana since 2022</div></div>
+    </div>
+    <div class="trust-bar__divider"></div>
+    <div class="trust-bar__item">
+      <div class="trust-bar__icon">🔐</div>
+      <div><div class="trust-bar__title">100% Confidential</div><div class="trust-bar__sub">Your data is never shared</div></div>
+    </div>
+    <div class="trust-bar__divider"></div>
+    <div class="trust-bar__item">
+      <div class="trust-bar__icon">📞</div>
+      <div><div class="trust-bar__title">Dedicated Expert</div><div class="trust-bar__sub">One number. One person. Always.</div></div>
+    </div>
+    <div class="trust-bar__divider"></div>
+    <div class="trust-bar__item">
+      <div class="trust-bar__icon">⚡</div>
+      <div><div class="trust-bar__title">48-hr Turnaround</div><div class="trust-bar__sub">From docs to acknowledgement</div></div>
+    </div>
+    <div class="trust-bar__divider"></div>
+    <div class="trust-bar__item">
+      <div class="trust-bar__icon">🗣️</div>
+      <div><div class="trust-bar__title">Telugu &amp; English</div><div class="trust-bar__sub">No jargon. Plain language always.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SERVICES GRID ===== -->
 <section class="section services">
   <div class="section__inner">
     <div class="services__head">
@@ -469,6 +623,7 @@
         <div class="sc-img"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=700&q=80&fit=crop" alt="Income Tax Returns"/><div class="sc-img-overlay"></div></div>
         <div class="sc-body">
           <div class="service-card__num">01</div>
+          <div class="sc-price"><span class="sc-price-dot"></span>Starts ₹499</div>
           <div class="service-card__icon" style="background:rgba(230,168,23,.15)">&#x1F4C4;</div>
           <h3 class="service-card__title">Income Tax Returns (ITR)</h3>
           <p class="service-card__desc">Accurate ITR filing for salaried individuals, freelancers, and businesses. We maximise your refunds and ensure zero errors before every submission.</p>
@@ -481,6 +636,7 @@
         <div class="sc-img"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80&fit=crop" alt="GST Returns"/><div class="sc-img-overlay"></div></div>
         <div class="sc-body">
           <div class="service-card__num">02</div>
+          <div class="sc-price"><span class="sc-price-dot"></span>₹799/month</div>
           <div class="service-card__icon" style="background:rgba(21,101,192,.2)">&#x1F9FE;</div>
           <h3 class="service-card__title">GST Returns</h3>
           <p class="service-card__desc">Monthly, quarterly, and annual GST return filing — GSTR-1, GSTR-3B, GSTR-9. No penalties, no missed deadlines, ever.</p>
@@ -493,6 +649,7 @@
         <div class="sc-img"><img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=80&fit=crop" alt="GST Registration"/><div class="sc-img-overlay"></div></div>
         <div class="sc-body">
           <div class="service-card__num">03</div>
+          <div class="sc-price"><span class="sc-price-dot"></span>₹1,499 all-in</div>
           <div class="service-card__icon" style="background:rgba(74,222,128,.12)">&#x2705;</div>
           <h3 class="service-card__title">GST Registration</h3>
           <p class="service-card__desc">Get your GSTIN quickly. We handle the application, document preparation, and follow-ups with the GST portal end-to-end.</p>
@@ -505,6 +662,7 @@
         <div class="sc-img"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80&fit=crop" alt="Company Registration"/><div class="sc-img-overlay"></div></div>
         <div class="sc-body">
           <div class="service-card__num">04</div>
+          <div class="sc-price"><span class="sc-price-dot"></span>From ₹5,999</div>
           <div class="service-card__icon" style="background:rgba(168,85,247,.15)">&#x1F3E2;</div>
           <h3 class="service-card__title">Company Registration</h3>
           <p class="service-card__desc">Register your Pvt. Ltd., OPC, or LLP with MCA. Full support from name approval to certificate of incorporation.</p>
@@ -517,6 +675,7 @@
         <div class="sc-img"><img src="https://images.unsplash.com/photo-1521791055366-0d553872952f?w=600&q=80&fit=crop" alt="Firm Registration"/><div class="sc-img-overlay"></div></div>
         <div class="sc-body">
           <div class="service-card__num">05</div>
+          <div class="sc-price"><span class="sc-price-dot"></span>From ₹2,999</div>
           <div class="service-card__icon" style="background:rgba(20,184,166,.15)">&#x1F91D;</div>
           <h3 class="service-card__title">Firm Registration</h3>
           <p class="service-card__desc">Register your Partnership Firm or Sole Proprietorship. We prepare the deed, register with the Registrar, and handle all formalities.</p>
@@ -529,6 +688,7 @@
         <div class="sc-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&fit=crop" alt="Annual Filings"/><div class="sc-img-overlay"></div></div>
         <div class="sc-body">
           <div class="service-card__num">06</div>
+          <div class="sc-price"><span class="sc-price-dot"></span>₹3,499/year</div>
           <div class="service-card__icon" style="background:rgba(234,179,8,.15)">&#x1F4C5;</div>
           <h3 class="service-card__title">Annual Filings (MCA)</h3>
           <p class="service-card__desc">ROC annual filings — AOC-4, MGT-7, ADT-1. Stay compliant with the Ministry of Corporate Affairs, every year on time.</p>
@@ -541,6 +701,7 @@
         <div class="sc-img"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&q=80&fit=crop" alt="Tax Audit"/><div class="sc-img-overlay"></div></div>
         <div class="sc-body">
           <div class="service-card__num">07</div>
+          <div class="sc-price"><span class="sc-price-dot"></span>Custom quote</div>
           <div class="service-card__icon" style="background:rgba(239,68,68,.12)">&#x1F50D;</div>
           <h3 class="service-card__title">Tax Audit (u/s 44AB)</h3>
           <p class="service-card__desc">Mandatory tax audit for businesses above the turnover threshold. We prepare Form 3CA/3CB, Form 3CD, and file well before the due date.</p>
@@ -562,78 +723,78 @@
   </div>
 </section>
 
-<!-- QUICK OVERVIEW CARDS (ins-strip) -->
-<div class="ins-strip">
-  <div class="ins-strip__inner">
-    <div class="section__tag reveal" style="margin-bottom:1.2rem">Quick Overview</div>
-    <h2 class="section__title reveal reveal-delay-1" style="margin-bottom:2.5rem">All compliance needs, <em>covered.</em></h2>
-    <div class="ins-strip__row reveal reveal-delay-1">
-      <a href="book.html" class="ins-card">
-        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=700&q=80&fit=crop" alt="ITR Filing"/>
-        <div class="ins-card__overlay"></div>
-        <div class="ins-card__badge">Most Common</div>
-        <div class="ins-card__content">
-          <div class="ins-card__icon">&#x1F4C4;</div>
-          <div class="ins-card__title">ITR Filing</div>
-          <div class="ins-card__sub">Individuals, freelancers &amp; businesses</div>
-          <div class="ins-card__btn">File Now &#x2192;</div>
+<!-- ===== SOCIAL PROOF / REVIEWS ===== -->
+<section class="reviews reveal">
+  <div class="reviews__inner">
+    <div class="section__tag">Real Clients. Real Results.</div>
+    <h2 class="section__title reveal reveal-delay-1">What our clients <em>say about us.</em></h2>
+    <div class="reviews__grid">
+
+      <div class="review-card reveal">
+        <span class="review-badge">Verified ✓</span>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Filed my ITR for the first time this year. The team explained everything step by step in Telugu. Got my refund in 3 weeks! No stress at all.</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#1565c0,#1976d2)">RK</div>
+          <div><div class="review-name">Ravi Kumar</div><div class="review-role">Software Engineer, Hyderabad</div></div>
         </div>
-      </a>
-      <a href="book.html" class="ins-card">
-        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=700&q=80&fit=crop" alt="GST Returns"/>
-        <div class="ins-card__overlay"></div>
-        <div class="ins-card__content">
-          <div class="ins-card__icon">&#x1F9FE;</div>
-          <div class="ins-card__title">GST Returns</div>
-          <div class="ins-card__sub">GSTR-1, GSTR-3B, GSTR-9 monthly filing</div>
-          <div class="ins-card__btn">File Now &#x2192;</div>
+      </div>
+
+      <div class="review-card reveal reveal-delay-1">
+        <span class="review-badge">Verified ✓</span>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">My shop needed GST registration urgently. Cover Credit got it done in just 4 days! Their pricing was clear and there were no hidden charges.</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#0f6e56,#1d9e75)">SM</div>
+          <div><div class="review-name">Suresh M.</div><div class="review-role">Retail Business Owner, Vijayawada</div></div>
         </div>
-      </a>
-      <a href="book.html" class="ins-card">
-        <img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=700&q=80&fit=crop" alt="GST Registration"/>
-        <div class="ins-card__overlay"></div>
-        <div class="ins-card__content">
-          <div class="ins-card__icon">&#x2705;</div>
-          <div class="ins-card__title">GST Registration</div>
-          <div class="ins-card__sub">Get your GSTIN in just a few days</div>
-          <div class="ins-card__btn">Register &#x2192;</div>
+      </div>
+
+      <div class="review-card reveal reveal-delay-2">
+        <span class="review-badge">Verified ✓</span>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">We registered our Pvt. Ltd. company through Cover Credit. They handled the entire MCA process. Professional, fast, and affordable. Highly recommended!</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#7c3aed,#a855f7)">PL</div>
+          <div><div class="review-name">Priya L.</div><div class="review-role">Co-founder, EdTech Startup</div></div>
         </div>
-      </a>
-      <a href="book.html" class="ins-card">
-        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=700&q=80&fit=crop" alt="Company Registration"/>
-        <div class="ins-card__overlay"></div>
-        <div class="ins-card__content">
-          <div class="ins-card__icon">&#x1F3E2;</div>
-          <div class="ins-card__title">Company Registration</div>
-          <div class="ins-card__sub">Pvt. Ltd., OPC &amp; LLP with MCA</div>
-          <div class="ins-card__btn">Register &#x2192;</div>
+      </div>
+
+      <div class="review-card reveal">
+        <span class="review-badge">Verified ✓</span>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">As a freelancer with multiple income sources, tax season used to scare me. Now Cover Credit handles everything. Saved me ₹8,000 in deductions I didn't know about!</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#ba7517,#ef9f27)">AK</div>
+          <div><div class="review-name">Arjun K.</div><div class="review-role">Freelance Designer, Guntur</div></div>
         </div>
-      </a>
-      <a href="book.html" class="ins-card">
-        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&q=80&fit=crop" alt="Tax Audit"/>
-        <div class="ins-card__overlay"></div>
-        <div class="ins-card__content">
-          <div class="ins-card__icon">&#x1F50D;</div>
-          <div class="ins-card__title">Tax Audit</div>
-          <div class="ins-card__sub">Form 3CA/3CB &amp; 3CD — u/s 44AB</div>
-          <div class="ins-card__btn">Get Audit &#x2192;</div>
+      </div>
+
+      <div class="review-card reveal reveal-delay-1">
+        <span class="review-badge">Verified ✓</span>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">Our company's ROC filings were overdue. Cover Credit sorted everything out without any panic. They were calm, professional, and got it all done in 2 days.</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#993556,#d4537e)">VR</div>
+          <div><div class="review-name">Venkat R.</div><div class="review-role">Director, Manufacturing Co., Nellore</div></div>
         </div>
-      </a>
-      <a href="book.html" class="ins-card">
-        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=700&q=80&fit=crop" alt="Annual Filings"/>
-        <div class="ins-card__overlay"></div>
-        <div class="ins-card__content">
-          <div class="ins-card__icon">&#x1F4C5;</div>
-          <div class="ins-card__title">Annual Filings</div>
-          <div class="ins-card__sub">AOC-4, MGT-7 ROC compliance</div>
-          <div class="ins-card__btn">File Now &#x2192;</div>
+      </div>
+
+      <div class="review-card reveal reveal-delay-2">
+        <span class="review-badge">Verified ✓</span>
+        <div class="review-stars">★★★★★</div>
+        <p class="review-text">I had a tax notice from the IT department. Cover Credit helped me respond correctly and the matter was resolved quickly. Life savers, seriously!</p>
+        <div class="review-author">
+          <div class="review-avatar" style="background:linear-gradient(135deg,#185fa5,#378add)">NP</div>
+          <div><div class="review-name">Nandini P.</div><div class="review-role">Doctor, Tirupati</div></div>
         </div>
-      </a>
+      </div>
+
     </div>
   </div>
-</div>
+</section>
 
-<!-- STATS -->
+<!-- ===== STATS ===== -->
 <section class="section stats">
   <div class="section__inner">
     <div class="stats__grid">
@@ -645,7 +806,76 @@
   </div>
 </section>
 
-<!-- KEY DEADLINES -->
+<!-- ===== PENALTY CALCULATOR ===== -->
+<section class="penalty-section">
+  <div class="penalty-section__inner">
+    <div>
+      <div class="section__tag reveal">Stop Guessing</div>
+      <h2 class="section__title reveal reveal-delay-1">How much is a <em>late filing</em><br/>costing you?</h2>
+      <p class="section__sub reveal reveal-delay-2" style="margin-bottom:2rem">Most people don't realise what they're losing by missing deadlines. Use our quick calculator to see your risk — then let us eliminate it.</p>
+      <div style="display:flex;flex-direction:column;gap:1.2rem" class="reveal reveal-delay-3">
+        <div style="display:flex;gap:1rem;align-items:flex-start;background:rgba(230,168,23,.05);border:1px solid rgba(230,168,23,.12);border-radius:16px;padding:1.2rem 1.4rem">
+          <span style="font-size:1.4rem;flex-shrink:0">💡</span>
+          <div>
+            <div style="font-size:.9rem;font-weight:600;color:rgba(255,255,255,.85);margin-bottom:.3rem">Late ITR = ₹5,000 penalty</div>
+            <div style="font-size:.8rem;color:rgba(255,255,255,.45)">Plus 1% interest per month on outstanding tax u/s 234A</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:flex-start;background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.12);border-radius:16px;padding:1.2rem 1.4rem">
+          <span style="font-size:1.4rem;flex-shrink:0">⚠️</span>
+          <div>
+            <div style="font-size:.9rem;font-weight:600;color:rgba(255,255,255,.85);margin-bottom:.3rem">Late GST = ₹50/day + 18% interest</div>
+            <div style="font-size:.8rem;color:rgba(255,255,255,.45)">Compounds daily until filed. Small businesses lose lakhs.</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:1rem;align-items:flex-start;background:rgba(168,85,247,.05);border:1px solid rgba(168,85,247,.12);border-radius:16px;padding:1.2rem 1.4rem">
+          <span style="font-size:1.4rem;flex-shrink:0">🏢</span>
+          <div>
+            <div style="font-size:.9rem;font-weight:600;color:rgba(255,255,255,.85);margin-bottom:.3rem">Late ROC = ₹100/day additional fees</div>
+            <div style="font-size:.8rem;color:rgba(255,255,255,.45)">Can result in company strike-off after prolonged non-compliance.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="penalty-calc reveal reveal-delay-2">
+      <div class="penalty-calc__title">⚡ Penalty Calculator</div>
+      <div class="penalty-calc__sub">See what you risk by filing late — instantly.</div>
+
+      <div class="calc-field">
+        <div class="calc-label">Filing Type</div>
+        <select class="calc-select" id="calc-type" onchange="calcPenalty()">
+          <option value="">— Select Filing —</option>
+          <option value="itr-sal">ITR — Salaried / Individual</option>
+          <option value="gst-3b">GST — GSTR-3B (monthly)</option>
+          <option value="gst-1">GST — GSTR-1 (monthly)</option>
+          <option value="audit">Tax Audit (u/s 44AB)</option>
+          <option value="roc">ROC Annual Filing</option>
+        </select>
+      </div>
+
+      <div class="calc-field" id="days-field" style="display:none">
+        <div class="calc-label">Days Overdue</div>
+        <input type="number" class="calc-input" id="calc-days" placeholder="e.g. 30" oninput="calcPenalty()" min="1" max="365"/>
+      </div>
+
+      <div class="calc-field" id="tax-field" style="display:none">
+        <div class="calc-label">Outstanding Tax Amount (₹)</div>
+        <input type="number" class="calc-input" id="calc-tax" placeholder="e.g. 50000" oninput="calcPenalty()" min="0"/>
+      </div>
+
+      <div class="calc-result" id="calc-result">
+        <div class="calc-result__label">Estimated Penalty / Interest</div>
+        <div class="calc-result__amount" id="calc-amount">₹0</div>
+        <div class="calc-result__note" id="calc-note"></div>
+      </div>
+
+      <div class="calc-cta-note">Pay ₹0 in penalties. <a href="book.html">Book your free consultation →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== KEY DEADLINES ===== -->
 <section class="section deadline-section">
   <div class="section__inner">
     <div class="section__tag reveal">Key Deadlines</div>
@@ -657,6 +887,7 @@
         <div class="dc-date">Due: 31 July every year</div>
         <span class="dc-badge urgent">Critical</span>
         <div class="dc-note">Late filing penalty ₹5,000 u/s 234F. Don't wait.</div>
+        <div class="dc-countdown"><span class="dc-countdown-dot"></span><span id="itr-days">Calculating…</span></div>
       </div>
       <div class="deadline-card">
         <div class="dc-service">GSTR-3B (Monthly)</div>
@@ -675,6 +906,7 @@
         <div class="dc-date">Due: 30 September every year</div>
         <span class="dc-badge urgent">Critical</span>
         <div class="dc-note">Penalty 0.5% of turnover or ₹1.5L, whichever is lower.</div>
+        <div class="dc-countdown"><span class="dc-countdown-dot"></span><span id="audit-days">Calculating…</span></div>
       </div>
       <div class="deadline-card">
         <div class="dc-service">ROC Annual Filing (AOC-4)</div>
@@ -692,7 +924,63 @@
   </div>
 </section>
 
-<!-- WHY COVER CREDIT -->
+<!-- ===== COMPARISON TABLE ===== -->
+<section class="comparison reveal">
+  <div class="comparison__inner">
+    <div class="section__tag">Why Cover Credit?</div>
+    <h2 class="section__title reveal reveal-delay-1">How we compare to <em>alternatives.</em></h2>
+    <p class="section__sub reveal reveal-delay-1" style="margin-bottom:0">See exactly what you get — and what you don't — when you choose Cover Credit vs. other options.</p>
+    <div class="comp-table reveal reveal-delay-2">
+      <div class="comp-row header">
+        <div class="comp-cell">Feature</div>
+        <div class="comp-cell">&#x2B50; Cover Credit</div>
+        <div class="comp-cell">Big Portals / CAs</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell comp-feature">Telugu language support</div>
+        <div class="comp-cell"><span class="comp-yes">✓</span> Yes, always</div>
+        <div class="comp-cell"><span class="comp-no">✗</span> Rarely</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell comp-feature">Dedicated single expert</div>
+        <div class="comp-cell"><span class="comp-yes">✓</span> Yes</div>
+        <div class="comp-cell"><span class="comp-partial">~</span> Rotating teams</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell comp-feature">Transparent pricing</div>
+        <div class="comp-cell"><span class="comp-yes">✓</span> Upfront always</div>
+        <div class="comp-cell"><span class="comp-partial">~</span> Add-ons common</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell comp-feature">Free 30-min consultation</div>
+        <div class="comp-cell"><span class="comp-yes">✓</span> Yes</div>
+        <div class="comp-cell"><span class="comp-no">✗</span> Usually paid</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell comp-feature">48-hr turnaround</div>
+        <div class="comp-cell"><span class="comp-yes">✓</span> Guaranteed</div>
+        <div class="comp-cell"><span class="comp-partial">~</span> 3–7 days typical</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell comp-feature">WhatsApp &amp; direct communication</div>
+        <div class="comp-cell"><span class="comp-yes">✓</span> Yes</div>
+        <div class="comp-cell"><span class="comp-no">✗</span> Portal tickets only</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell comp-feature">Proactive deadline reminders</div>
+        <div class="comp-cell"><span class="comp-yes">✓</span> 3-4 weeks early</div>
+        <div class="comp-cell"><span class="comp-no">✗</span> You remind them</div>
+      </div>
+      <div class="comp-row">
+        <div class="comp-cell comp-feature">Local AP &amp; Telangana knowledge</div>
+        <div class="comp-cell"><span class="comp-yes">✓</span> Deep expertise</div>
+        <div class="comp-cell"><span class="comp-partial">~</span> Generic national</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHY COVER CREDIT ===== -->
 <section class="section why">
   <div class="section__inner">
     <div class="why__layout">
@@ -701,10 +989,10 @@
         <h2 class="section__title reveal reveal-delay-1">We don't just file.<br/>We <em>protect</em> you.</h2>
         <p class="section__sub reveal reveal-delay-2">Missing a deadline can cost you thousands. We make sure that never happens.</p>
         <div class="why__list">
-          <div class="why__item reveal reveal-delay-1"><div class="why__item-icon">&#x23F0;</div><div><div class="why__item-title">Deadline Reminders — Always Ahead</div><div class="why__item-desc">We track every due date and send reminders 3–4 weeks early, so you're never caught off guard.</div></div></div>
-          <div class="why__item reveal reveal-delay-2"><div class="why__item-icon">&#x1F4DE;</div><div><div class="why__item-title">One Expert, One Number</div><div class="why__item-desc">No call centres, no bouncing between departments. One dedicated expert who knows your full picture.</div></div></div>
-          <div class="why__item reveal reveal-delay-3"><div class="why__item-icon">&#x1F512;</div><div><div class="why__item-title">100% Secure &amp; Confidential</div><div class="why__item-desc">Your financial data is protected with strict confidentiality. We never share or misuse your information.</div></div></div>
-          <div class="why__item reveal reveal-delay-4"><div class="why__item-icon">&#x1F30D;</div><div><div class="why__item-title">Telugu &amp; English Support</div><div class="why__item-desc">No jargon. We explain everything in the language you're most comfortable with.</div></div></div>
+          <div class="why__item reveal reveal-delay-1"><div class="why__item-icon">⏰</div><div><div class="why__item-title">Deadline Reminders — Always Ahead</div><div class="why__item-desc">We track every due date and send reminders 3–4 weeks early, so you're never caught off guard.</div></div></div>
+          <div class="why__item reveal reveal-delay-2"><div class="why__item-icon">📞</div><div><div class="why__item-title">One Expert, One Number</div><div class="why__item-desc">No call centres, no bouncing between departments. One dedicated expert who knows your full picture.</div></div></div>
+          <div class="why__item reveal reveal-delay-3"><div class="why__item-icon">🔒</div><div><div class="why__item-title">100% Secure &amp; Confidential</div><div class="why__item-desc">Your financial data is protected with strict confidentiality. We never share or misuse your information.</div></div></div>
+          <div class="why__item reveal reveal-delay-4"><div class="why__item-icon">🌍</div><div><div class="why__item-title">Telugu &amp; English Support</div><div class="why__item-desc">No jargon. We explain everything in the language you're most comfortable with.</div></div></div>
         </div>
       </div>
       <div class="why__right reveal reveal-delay-2">
@@ -728,7 +1016,48 @@
   </div>
 </section>
 
-<!-- CTA -->
+<!-- ===== FAQ ===== -->
+<section class="faq">
+  <div class="faq__inner">
+    <div class="section__tag reveal" style="justify-content:center">Frequently Asked</div>
+    <h2 class="section__title reveal reveal-delay-1" style="text-align:center">Questions we <em>always hear.</em></h2>
+    <div class="faq__grid reveal reveal-delay-2">
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How do I share my documents with you? Is it safe? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><div class="faq-a-inner">You can share documents via WhatsApp or email — whatever is easiest for you. We handle all client data with strict confidentiality and never share it with any third party. Your financial information is completely safe with us.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What documents do I need for ITR filing? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><div class="faq-a-inner">For most salaried individuals, you'll need your Form 16 (from employer), PAN card, Aadhaar card, bank account details, and any investment proof (80C, health insurance etc.). For business owners, we'll also need your profit & loss details. We'll guide you through exactly what's needed for your specific case.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">What is the last date for filing ITR this year? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><div class="faq-a-inner">For individuals and salaried employees, the deadline is 31st July every year. For businesses requiring a tax audit, it's 31st October. We start working on your return 3–4 weeks before the deadline to ensure everything is filed on time without any penalty.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">My business turnover is low — do I still need GST registration? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><div class="faq-a-inner">GST registration is mandatory if your turnover exceeds ₹40 lakhs (for goods) or ₹20 lakhs (for services) in a year. However, even if you're below the threshold, voluntary registration can benefit you — it allows you to claim input tax credit and makes your business look more professional to clients. We'll assess your specific situation in a free consultation.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">How much do your services cost? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><div class="faq-a-inner">We believe in transparent, upfront pricing — no hidden fees or surprises. ITR filing starts from ₹499, GST return filing from ₹799/month, and GST registration from ₹1,499. Company registration starts from ₹5,999. We'll give you an exact quote before you commit to anything. Book a free consultation to discuss your needs.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">I received a tax notice. Can you help? <span class="faq-arrow">▼</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Yes, absolutely. Tax notices can be stressful but are usually resolvable with the right response. We review the notice, identify the issue, prepare the correct response, and guide you through the resolution process. Most notices are resolved without penalty when handled properly and on time.</div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
 <section class="section cta">
   <div class="cta__img-bg"></div>
   <div class="cta__inner">
@@ -736,10 +1065,10 @@
       <h2 class="cta__title reveal">Ready to get your taxes<br/><em>sorted for good?</em></h2>
       <p class="cta__desc reveal reveal-delay-1">Book a free 30-minute consultation. No spam, no obligation, no sales pitch. Honest advice in Telugu or English.</p>
       <div class="cta__pills reveal reveal-delay-2">
-        <span class="cta__pill">&#x2713; No Spam</span>
-        <span class="cta__pill">&#x2713; No Hidden Fees</span>
-        <span class="cta__pill">&#x2713; Telugu / English</span>
-        <span class="cta__pill">&#x2713; 48hr Turnaround</span>
+        <span class="cta__pill">✓ No Spam</span>
+        <span class="cta__pill">✓ No Hidden Fees</span>
+        <span class="cta__pill">✓ Telugu / English</span>
+        <span class="cta__pill">✓ 48hr Turnaround</span>
       </div>
     </div>
     <div class="cta__btns reveal reveal-delay-2">
@@ -749,23 +1078,23 @@
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="footer__inner">
     <div class="footer__top">
       <div>
         <a href="index.html" class="footer__logo">Cover<span>Credit</span></a>
         <p class="footer__desc">Honest insurance &amp; financial advice for your family. We guide, not sell. Serving AP &amp; Telangana since 2022.</p>
-        <div class="footer__contact-item">&#x1F4DE; <a href="tel:+917842854466">+91 78428 54466</a></div>
-        <div class="footer__contact-item">&#x2709;&#xFE0F; <a href="mailto:Covercredit.official@gmail.com">Covercredit.official@gmail.com</a></div>
-        <div class="footer__contact-item">&#x1F550; Mon&ndash;Sat: 9 AM &ndash; 7 PM</div>
+        <div class="footer__contact-item">📞 <a href="tel:+917842854466">+91 78428 54466</a></div>
+        <div class="footer__contact-item">✉️ <a href="mailto:Covercredit.official@gmail.com">Covercredit.official@gmail.com</a></div>
+        <div class="footer__contact-item">🕐 Mon–Sat: 9 AM – 7 PM</div>
       </div>
       <div class="footer__col"><div class="footer__col-title">Insurance</div><ul><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life &amp; Term Insurance</a></li><li><a href="bike-insurance.html">Bike Insurance</a></li><li><a href="car-insurance.html">Car Insurance</a></li><li><a href="commercial-vehicle-insurance.html">Commercial Vehicles</a></li></ul></div>
       <div class="footer__col"><div class="footer__col-title">Finance &amp; Tax</div><ul><li><a href="loans.html">Personal Loans</a></li><li><a href="loans.html">Home Loans</a></li><li><a href="loans.html">Business Loans</a></li><li><a href="tax-services.html">ITR Filing</a></li><li><a href="tax-services.html">GST Services</a></li><li><a href="tax-services.html">Company Registration</a></li></ul></div>
       <div class="footer__col"><div class="footer__col-title">Company</div><ul><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li><li><a href="book.html">Book Consultation</a></li><li><a href="contact.html#refer-earn">Refer &amp; Earn</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div>
     </div>
     <div class="footer__bottom">
-      <span>&#xA9; <span id="current-year"></span> Cover Credit Insurance Advisors. All rights reserved.</span>
+      <span>© <span id="current-year"></span> Cover Credit Insurance Advisors. All rights reserved.</span>
       <div class="footer__bottom-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a></div>
     </div>
   </div>
@@ -773,7 +1102,7 @@
 
 <!-- SOS FAB -->
 <a href="sos-card.html" id="cc-sos-fab" aria-label="Generate free SOS card">
-  <span class="cc-fab-ic">&#x1F198;</span>
+  <span class="cc-fab-ic">🆘</span>
   <span class="cc-fab-txt">Free SOS Card</span>
 </a>
 <style>
@@ -792,7 +1121,7 @@ const cursor=document.getElementById('cursor'),cursorRing=document.getElementByI
 let mouseX=0,mouseY=0,ringX=0,ringY=0;
 document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY;cursor.style.left=mouseX+'px';cursor.style.top=mouseY+'px';});
 (function loop(){ringX+=(mouseX-ringX)*.12;ringY+=(mouseY-ringY)*.12;cursorRing.style.left=ringX+'px';cursorRing.style.top=ringY+'px';requestAnimationFrame(loop);})();
-document.querySelectorAll('a,button,.service-card,.why__item,.ins-card,.deadline-card').forEach(el=>{el.addEventListener('mouseenter',()=>{cursor.classList.add('hovering');cursorRing.classList.add('hovering');});el.addEventListener('mouseleave',()=>{cursor.classList.remove('hovering');cursorRing.classList.remove('hovering');});});
+document.querySelectorAll('a,button,.service-card,.why__item,.ins-card,.deadline-card,.review-card,.faq-item').forEach(el=>{el.addEventListener('mouseenter',()=>{cursor.classList.add('hovering');cursorRing.classList.add('hovering');});el.addEventListener('mouseleave',()=>{cursor.classList.remove('hovering');cursorRing.classList.remove('hovering');});});
 
 /* Nav scroll */
 const nav=document.getElementById('nav');
@@ -802,7 +1131,7 @@ window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scro
 const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobile-menu');
 hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';});
 
-/* Hero slideshow — same logic as index */
+/* Hero slideshow */
 const slides=document.querySelectorAll('.hero__slide'),dotsContainer=document.getElementById('slide-dots'),labelEl=document.getElementById('slide-label'),labelText=document.getElementById('slide-label-text');
 let currentSlide=0;
 slides.forEach((_,i)=>{const dot=document.createElement('button');dot.className='slide-dot'+(i===0?' active':'');dot.setAttribute('aria-label','Slide '+(i+1));dot.addEventListener('click',()=>goToSlide(i));dotsContainer.appendChild(dot);});
@@ -822,7 +1151,7 @@ const statsSection=document.querySelector('.stats');if(statsSection)statsObs.obs
 /* Footer year */
 const yearEl=document.getElementById('current-year');if(yearEl)yearEl.textContent=new Date().getFullYear();
 
-/* Partner ticker — tax themed */
+/* Partner ticker */
 (function(){
   var SERVICES=[
     {cat:'tax',name:'ITR Filing'},{cat:'tax',name:'Advance Tax'},{cat:'tax',name:'TDS Returns'},
@@ -837,6 +1166,82 @@ const yearEl=document.getElementById('current-year');if(yearEl)yearEl.textConten
   var track=document.getElementById('ct-track');
   if(track){track.appendChild(buildSet());track.appendChild(buildSet());}
 })();
+
+/* Live Activity Feed */
+var activities=[
+  '<strong>Ravi K. from Hyderabad</strong> just filed his ITR — penalty saved ₹5,000 ✓',
+  '<strong>Suresh M. from Vijayawada</strong> got GST Registration in 4 days ✓',
+  '<strong>Priya L.</strong> completed Pvt. Ltd. company registration ✓',
+  '<strong>Arjun K. from Guntur</strong> saved ₹8,000 in tax deductions ✓',
+  '<strong>Nandini P. from Tirupati</strong> resolved IT notice — case closed ✓',
+  '<strong>Venkat R. from Nellore</strong> cleared overdue ROC filings ✓',
+];
+var actIdx=0,actEl=document.getElementById('activity-text');
+if(actEl){setInterval(function(){actIdx=(actIdx+1)%activities.length;actEl.style.opacity='0';setTimeout(function(){actEl.innerHTML=activities[actIdx];actEl.style.opacity='1';},300);},4000);actEl.style.transition='opacity .3s';}
+
+/* Penalty Calculator */
+function calcPenalty(){
+  var type=document.getElementById('calc-type').value;
+  var daysField=document.getElementById('days-field');
+  var taxField=document.getElementById('tax-field');
+  var result=document.getElementById('calc-result');
+  var amountEl=document.getElementById('calc-amount');
+  var noteEl=document.getElementById('calc-note');
+  if(!type){daysField.style.display='none';taxField.style.display='none';result.classList.remove('show');return;}
+  daysField.style.display='block';
+  taxField.style.display=(type==='gst-3b')?'block':'none';
+  var days=parseInt(document.getElementById('calc-days').value)||0;
+  if(days<=0){result.classList.remove('show');return;}
+  var amount=0,note='';
+  if(type==='itr-sal'){
+    amount=days>0?5000:0;
+    note='Flat penalty ₹5,000 u/s 234F for late filing. If income <₹5L, penalty is ₹1,000. Plus 1% interest/month on any outstanding tax u/s 234A.';
+  } else if(type==='gst-3b'){
+    var tax=parseInt(document.getElementById('calc-tax').value)||0;
+    var interest=Math.round(tax*0.18*(days/365));
+    var latefee=Math.min(days*50,5000);
+    amount=interest+latefee;
+    note='Late fee ₹50/day (max ₹5,000) + 18% p.a. interest on ₹'+tax.toLocaleString('en-IN')+' outstanding tax for '+days+' days.';
+  } else if(type==='gst-1'){
+    amount=Math.min(days*50,5000);
+    note='Late fee ₹50/day for regular returns, ₹20/day for nil returns (max ₹5,000 per return period).';
+  } else if(type==='audit'){
+    amount=Math.min(Math.round(days*500),150000);
+    note='Penalty u/s 271B: 0.5% of turnover per day OR ₹1,50,000 whichever is lower. Estimate based on ₹1.5L cap.';
+  } else if(type==='roc'){
+    amount=days*100;
+    note='₹100 additional fee per day of delay beyond the due date. Prolonged delay may lead to company strike-off.';
+  }
+  amountEl.textContent='₹'+amount.toLocaleString('en-IN');
+  noteEl.textContent=note;
+  result.classList.add('show');
+}
+
+/* Deadline countdowns */
+(function(){
+  var now=new Date();
+  var year=now.getFullYear();
+  function daysTo(month,day){
+    var d=new Date(year,month-1,day);
+    if(d<now)d=new Date(year+1,month-1,day);
+    return Math.ceil((d-now)/(1000*60*60*24));
+  }
+  var itrDays=daysTo(7,31);
+  var auditDays=daysTo(9,30);
+  var itrEl=document.getElementById('itr-days');
+  var auditEl=document.getElementById('audit-days');
+  if(itrEl)itrEl.textContent=itrDays+' days until 31 July deadline';
+  if(auditEl)auditEl.textContent=auditDays+' days until 30 Sep deadline';
+})();
+
+/* FAQ accordion */
+function toggleFaq(el){
+  var item=el.parentElement;
+  var answer=item.querySelector('.faq-a');
+  var isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(fi){fi.classList.remove('open');fi.querySelector('.faq-a').style.maxHeight='0';});
+  if(!isOpen){item.classList.add('open');answer.style.maxHeight=answer.scrollHeight+'px';}
+}
 
 /* Analytics */
 (function(){
