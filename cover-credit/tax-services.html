@@ -38,13 +38,11 @@
     a{text-decoration:none;color:inherit}
     img{display:block;max-width:100%;object-fit:cover}
 
-    /* CURSOR */
     .cursor{width:12px;height:12px;background:var(--gold);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s,width .3s var(--ease),height .3s var(--ease),background .3s;mix-blend-mode:difference}
     .cursor-ring{width:40px;height:40px;border:1.5px solid var(--gold);border-radius:50%;position:fixed;top:0;left:0;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .15s var(--ease),width .4s var(--ease),height .4s var(--ease),opacity .3s;opacity:.6}
     .cursor.hovering{width:6px;height:6px}
     .cursor-ring.hovering{width:60px;height:60px;opacity:.3}
 
-    /* TICKER */
     .company-ticker{position:fixed;top:0;left:0;right:0;z-index:1100;height:var(--ticker-h);background:#020c1f;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:stretch;overflow:hidden}
     .company-ticker::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;z-index:10;background:linear-gradient(90deg,transparent,rgba(230,168,23,0) 15%,rgba(230,168,23,0.8) 40%,#f5c842 50%,rgba(230,168,23,0.8) 60%,rgba(230,168,23,0) 85%,transparent);background-size:200% 100%;animation:ctShimmer 4s linear infinite}
     @keyframes ctShimmer{from{background-position:-100% 0}to{background-position:200% 0}}
@@ -74,7 +72,6 @@
     .company-ticker:hover .ct-item:hover .ct-item-name{color:rgba(255,255,255,0.9)}
     @media(max-width:580px){.ct-label-brand,.ct-label-divider,.ct-label-text,.ct-badge{display:none}}
 
-    /* NAV */
     .nav{position:fixed;top:var(--ticker-h);left:0;right:0;z-index:1000;height:var(--nav-h);display:flex;align-items:center;padding:0 5%;transition:background 0.4s,backdrop-filter 0.4s,box-shadow 0.4s}
     .nav.scrolled{background:rgba(5,17,42,0.96);backdrop-filter:blur(20px);box-shadow:0 1px 0 var(--border)}
     .nav__inner{width:100%;max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
@@ -108,7 +105,6 @@
     .mobile-menu a:hover{color:var(--gold)}
     .mobile-menu__cta{margin-top:2rem;background:var(--gold);color:var(--navy)!important;text-align:center;border-radius:12px;padding:1rem!important;font-weight:700!important;border:none!important}
 
-    /* ========= HERO ========= */
     .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:calc(var(--ticker-h) + var(--nav-h))}
     .hero__slides{position:absolute;inset:0;z-index:0}
     .hero__slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.2s ease-in-out}
@@ -135,18 +131,15 @@
     .hero__title em{font-style:normal;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     .hero__desc{font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,.65);margin-bottom:2rem;max-width:480px}
     .hero__btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:2rem}
-    .btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy);padding:.9rem 2rem;border-radius:12px;font-weight:700;font-size:.95rem;transition:transform .2s var(--ease),box-shadow .2s;box-shadow:0 0 0 0 rgba(230,168,23,.4)}
+    .btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy);padding:.9rem 2rem;border-radius:12px;font-weight:700;font-size:.95rem;transition:transform .2s var(--ease),box-shadow .2s;box-shadow:0 0 0 0 rgba(230,168,23,.4);border:none;cursor:pointer;font-family:var(--font-body)}
     .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(230,168,23,.35)}
-    .btn-outline{display:inline-flex;align-items:center;gap:.5rem;background:var(--glass);border:1px solid var(--border);color:var(--white);padding:.9rem 2rem;border-radius:12px;font-weight:500;font-size:.95rem;transition:background .2s,transform .2s;backdrop-filter:blur(10px)}
+    .btn-outline{display:inline-flex;align-items:center;gap:.5rem;background:var(--glass);border:1px solid var(--border);color:var(--white);padding:.9rem 2rem;border-radius:12px;font-weight:500;font-size:.95rem;transition:background .2s,transform .2s;backdrop-filter:blur(10px);text-decoration:none}
     .btn-outline:hover{background:var(--glass-2);transform:translateY(-2px)}
-
-    /* HERO LIVE ACTIVITY FEED */
     .hero__activity{background:rgba(9,29,62,.7);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:.9rem 1.2rem;display:flex;align-items:center;gap:.8rem;margin-bottom:1.5rem;max-width:400px}
     .hero__activity-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0;box-shadow:0 0 8px rgba(34,197,94,.6);animation:liveGlow 2s ease-in-out infinite}
     @keyframes liveGlow{0%,100%{box-shadow:0 0 8px rgba(34,197,94,.6)}50%{box-shadow:0 0 16px rgba(34,197,94,.9)}}
     .hero__activity-text{font-size:.8rem;color:rgba(255,255,255,.7);line-height:1.4}
     .hero__activity-text strong{color:#4ade80;font-weight:600}
-
     .hero__trust{display:flex;gap:1.5rem;flex-wrap:wrap}
     .hero__trust-item{display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:rgba(255,255,255,.5)}
     .hero__trust-item svg{color:var(--gold);flex-shrink:0}
@@ -163,15 +156,11 @@
     .hero__card-value{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--white)}
     .hero__card-sub{font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.2rem}
     .hero__card-stat{display:flex;align-items:center;gap:.4rem;margin-top:.8rem;padding-top:.8rem;border-top:1px solid rgba(255,255,255,.08);font-size:.78rem;color:#4ade80}
-
-    /* GOLD TICKER */
     .ticker{background:var(--gold);padding:.7rem 0;overflow:hidden;white-space:nowrap}
     .ticker__track{display:inline-flex;gap:3rem;animation:ticker 25s linear infinite}
     .ticker__item{display:inline-flex;align-items:center;gap:.5rem;font-size:.82rem;font-weight:600;color:var(--navy);text-transform:uppercase;letter-spacing:.5px}
     .ticker__dot{width:4px;height:4px;background:var(--navy);border-radius:50%;opacity:.4}
     @keyframes ticker{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-
-    /* ========= TRUST BAR ========= */
     .trust-bar{background:rgba(9,29,62,.95);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);padding:1.4rem 5%}
     .trust-bar__inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
     .trust-bar__item{display:flex;align-items:center;gap:.7rem;flex:1;min-width:160px}
@@ -179,8 +168,6 @@
     .trust-bar__title{font-size:.82rem;font-weight:700;color:var(--white);line-height:1.2}
     .trust-bar__sub{font-size:.72rem;color:rgba(255,255,255,.4)}
     .trust-bar__divider{width:1px;height:32px;background:rgba(255,255,255,.08)}
-
-    /* ========= SECTION BASE ========= */
     .section{padding:7rem 5%}
     .section__inner{max-width:1280px;margin:0 auto}
     .section__tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:1.2rem}
@@ -188,12 +175,10 @@
     .section__title{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,3rem);font-weight:700;line-height:1.15;margin-bottom:1.2rem}
     .section__title em{font-style:normal;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
     .section__sub{font-size:1rem;color:rgba(255,255,255,.55);line-height:1.7;max-width:560px}
-
-    /* ========= SERVICES ========= */
     .services{background:var(--navy)}
     .services__head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:4rem;flex-wrap:wrap}
     .services__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5px;background:rgba(255,255,255,.06);border-radius:24px;overflow:hidden}
-    .service-card{background:var(--navy-2);padding:0;position:relative;overflow:hidden;transition:transform .3s;cursor:none;text-decoration:none;color:var(--white);display:flex;flex-direction:column}
+    .service-card{background:var(--navy-2);padding:0;position:relative;overflow:hidden;transition:transform .3s;cursor:pointer;text-decoration:none;color:var(--white);display:flex;flex-direction:column;border:none;font-family:var(--font-body);text-align:left}
     .sc-img{width:100%;height:180px;overflow:hidden;flex-shrink:0;position:relative}
     .sc-img img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s var(--ease);filter:brightness(0.75)}
     .service-card:hover .sc-img img{transform:scale(1.07)}
@@ -210,12 +195,8 @@
     .service-card:hover .service-card__link{gap:.7rem}
     .service-card--featured .sc-img{height:220px}
     .service-card--featured .service-card__title{font-size:1.5rem}
-
-    /* Service card price tag */
     .sc-price{display:inline-flex;align-items:center;gap:.4rem;background:rgba(230,168,23,.1);border:1px solid rgba(230,168,23,.2);color:var(--gold);font-size:.72rem;font-weight:700;padding:.2rem .7rem;border-radius:100px;margin-bottom:.6rem;letter-spacing:.3px}
     .sc-price-dot{width:5px;height:5px;border-radius:50%;background:var(--gold)}
-
-    /* ========= SOCIAL PROOF / REVIEWS ========= */
     .reviews{background:var(--navy-2);padding:5rem 5%}
     .reviews__inner{max-width:1280px;margin:0 auto}
     .reviews__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:3rem}
@@ -223,32 +204,12 @@
     .review-card:hover{background:rgba(255,255,255,.07);border-color:rgba(230,168,23,.2);transform:translateY(-4px)}
     .review-card::before{content:'\201C';font-family:var(--font-display);font-size:5rem;line-height:1;color:rgba(230,168,23,.15);position:absolute;top:.5rem;left:1.2rem;font-weight:700}
     .review-stars{display:flex;gap:3px;margin-bottom:1rem}
-    .review-star{color:var(--gold);font-size:.9rem}
     .review-text{font-size:.88rem;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:1.2rem;position:relative;z-index:1}
     .review-author{display:flex;align-items:center;gap:.8rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.07)}
     .review-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-light));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.85rem;flex-shrink:0}
     .review-name{font-size:.85rem;font-weight:600;color:var(--white)}
     .review-role{font-size:.72rem;color:rgba(255,255,255,.4)}
     .review-badge{position:absolute;top:1rem;right:1rem;background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.25);color:#4ade80;font-size:.6rem;font-weight:700;padding:.15rem .5rem;border-radius:100px;text-transform:uppercase;letter-spacing:.5px}
-
-    /* ========= QUICK OVERVIEW ========= */
-    .ins-strip{padding:0 5% 6rem;background:var(--navy)}
-    .ins-strip__inner{max-width:1280px;margin:0 auto}
-    .ins-strip__row{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-    .ins-card{border-radius:20px;overflow:hidden;position:relative;height:240px;cursor:none;transition:transform .35s var(--ease);text-decoration:none;display:block}
-    .ins-card:hover{transform:translateY(-6px)}
-    .ins-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease),filter .4s;filter:brightness(.65) saturate(1.1)}
-    .ins-card:hover img{transform:scale(1.06);filter:brightness(.75) saturate(1.2)}
-    .ins-card__overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,17,42,.92) 0%,rgba(5,17,42,.3) 60%,transparent 100%)}
-    .ins-card__content{position:absolute;bottom:0;left:0;right:0;padding:1.5rem 1.4rem}
-    .ins-card__icon{font-size:1.6rem;margin-bottom:.5rem}
-    .ins-card__title{font-family:var(--font-display);font-size:1.2rem;font-weight:700;margin-bottom:.3rem}
-    .ins-card__sub{font-size:.75rem;color:rgba(255,255,255,.55);line-height:1.5}
-    .ins-card__btn{display:inline-flex;align-items:center;gap:.3rem;margin-top:.8rem;font-size:.75rem;font-weight:600;color:var(--gold);transition:gap .2s}
-    .ins-card:hover .ins-card__btn{gap:.6rem}
-    .ins-card__badge{position:absolute;top:1rem;left:1rem;background:var(--gold);color:var(--navy);font-size:.6rem;font-weight:700;padding:.2rem .6rem;border-radius:100px;text-transform:uppercase;letter-spacing:.5px}
-
-    /* ========= STATS ========= */
     .stats{background:var(--navy-3);position:relative;overflow:hidden}
     .stats::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&q=70') center/cover no-repeat;opacity:.05}
     .stats__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:var(--border);border-radius:20px;overflow:hidden;position:relative;z-index:1}
@@ -257,8 +218,6 @@
     .stat-num{font-family:var(--font-body);font-size:3rem;font-weight:700;line-height:1;color:var(--white);margin-bottom:.5rem;letter-spacing:-1px}
     .stat-num span{color:var(--gold)}
     .stat-label{font-size:.85rem;color:var(--muted);font-weight:500}
-
-    /* ========= PENALTY CALCULATOR ========= */
     .penalty-section{background:var(--navy);padding:5rem 5%}
     .penalty-section__inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
     .penalty-calc{background:rgba(9,29,62,.9);border:1px solid rgba(230,168,23,.2);border-radius:24px;padding:2.5rem;backdrop-filter:blur(20px)}
@@ -266,11 +225,10 @@
     .penalty-calc__sub{font-size:.85rem;color:rgba(255,255,255,.45);margin-bottom:2rem}
     .calc-field{margin-bottom:1.4rem}
     .calc-label{font-size:.78rem;font-weight:600;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.8px;margin-bottom:.5rem}
-    .calc-select{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:var(--white);padding:.75rem 1rem;border-radius:10px;font-family:var(--font-body);font-size:.88rem;cursor:pointer;appearance:none;outline:none;transition:border-color .2s}
-    .calc-select:focus{border-color:rgba(230,168,23,.4)}
+    .calc-select,.calc-input{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:var(--white);padding:.75rem 1rem;border-radius:10px;font-family:var(--font-body);font-size:.88rem;outline:none;transition:border-color .2s}
+    .calc-select{cursor:pointer;appearance:none}
+    .calc-select:focus,.calc-input:focus{border-color:rgba(230,168,23,.4)}
     .calc-select option{background:#091d3e;color:var(--white)}
-    .calc-input{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:var(--white);padding:.75rem 1rem;border-radius:10px;font-family:var(--font-body);font-size:.88rem;outline:none;transition:border-color .2s}
-    .calc-input:focus{border-color:rgba(230,168,23,.4)}
     .calc-input::placeholder{color:rgba(255,255,255,.25)}
     .calc-result{background:linear-gradient(135deg,rgba(239,68,68,.1),rgba(239,68,68,.05));border:1px solid rgba(239,68,68,.25);border-radius:14px;padding:1.4rem 1.6rem;margin-top:1.5rem;display:none}
     .calc-result.show{display:block}
@@ -278,9 +236,7 @@
     .calc-result__amount{font-family:var(--font-display);font-size:2.4rem;font-weight:700;color:#f87171;margin-bottom:.3rem}
     .calc-result__note{font-size:.78rem;color:rgba(255,255,255,.4);line-height:1.5}
     .calc-cta-note{font-size:.8rem;color:rgba(255,255,255,.35);margin-top:1rem;text-align:center}
-    .calc-cta-note a{color:var(--gold);font-weight:600}
-
-    /* ========= DEADLINE SECTION ========= */
+    .calc-cta-note a{color:var(--gold);font-weight:600;cursor:pointer}
     .deadline-section{background:var(--navy-2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
     .deadline-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:3rem}
     .deadline-card{background:var(--glass);border:1px solid var(--border);border-radius:16px;padding:1.5rem;position:relative;overflow:hidden;transition:all .3s}
@@ -294,11 +250,8 @@
     .dc-badge.urgent{background:rgba(239,68,68,.15);color:#ef4444}
     .dc-badge.safe{background:rgba(34,197,94,.15);color:#22c55e}
     .dc-note{font-size:.78rem;color:rgba(255,255,255,.4);margin-top:.6rem;line-height:1.5}
-    /* countdown chip */
     .dc-countdown{display:inline-flex;align-items:center;gap:.35rem;background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,.2);color:#f87171;font-size:.65rem;font-weight:700;padding:.2rem .6rem;border-radius:100px;margin-top:.5rem;text-transform:uppercase;letter-spacing:.4px}
     .dc-countdown-dot{width:5px;height:5px;border-radius:50%;background:#ef4444;animation:ctBlink 1.5s ease-in-out infinite}
-
-    /* ========= WHY ========= */
     .why{background:var(--navy)}
     .why__layout{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
     .why__list{display:flex;flex-direction:column;gap:1.5rem;margin-top:3rem}
@@ -327,8 +280,6 @@
     .why__step-content{padding-top:.5rem}
     .why__step-title{font-weight:600;font-size:.95rem;margin-bottom:.3rem}
     .why__step-desc{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.5}
-
-    /* ========= COMPARISON TABLE ========= */
     .comparison{background:var(--navy-3);padding:5rem 5%}
     .comparison__inner{max-width:1280px;margin:0 auto}
     .comp-table{margin-top:3rem;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.08)}
@@ -344,8 +295,6 @@
     .comp-yes{color:#4ade80;font-size:1rem}
     .comp-no{color:rgba(255,255,255,.2);font-size:.9rem}
     .comp-partial{color:#facc15;font-size:.8rem;font-weight:600}
-
-    /* ========= FAQ ========= */
     .faq{background:var(--navy-2);padding:5rem 5%}
     .faq__inner{max-width:860px;margin:0 auto}
     .faq__grid{margin-top:3rem;display:flex;flex-direction:column;gap:.8rem}
@@ -356,10 +305,7 @@
     .faq-arrow{width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:.7rem;transition:transform .3s var(--ease),background .2s}
     .faq-item.open .faq-arrow{transform:rotate(180deg);background:rgba(230,168,23,.15);border-color:rgba(230,168,23,.3);color:var(--gold)}
     .faq-a{max-height:0;overflow:hidden;transition:max-height .4s var(--ease)}
-    .faq-a-inner{padding:0 1.6rem 1.4rem;font-size:.88rem;color:rgba(255,255,255,.5);line-height:1.75;border-top:1px solid rgba(255,255,255,.06)}
-    .faq-a-inner{padding-top:1rem}
-
-    /* ========= CTA ========= */
+    .faq-a-inner{padding:1rem 1.6rem 1.4rem;font-size:.88rem;color:rgba(255,255,255,.5);line-height:1.75;border-top:1px solid rgba(255,255,255,.06)}
     .cta{background:linear-gradient(135deg,var(--blue) 0%,var(--navy-3) 50%,var(--navy) 100%);position:relative;overflow:hidden}
     .cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 80% 50%,rgba(230,168,23,.08),transparent),radial-gradient(ellipse 50% 60% at 10% 80%,rgba(255,255,255,.03),transparent)}
     .cta__img-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1400&q=70') center/cover no-repeat;opacity:.08;z-index:0}
@@ -371,8 +317,6 @@
     .cta__btns{display:flex;flex-direction:column;gap:.8rem;align-items:center}
     .cta__phone{font-size:.82rem;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:.4rem}
     .cta__phone a{color:rgba(255,255,255,.75);font-weight:600}
-
-    /* ========= FOOTER ========= */
     .footer{background:#020b1a;border-top:1px solid var(--border);padding:4rem 5% 2rem}
     .footer__inner{max-width:1280px;margin:0 auto}
     .footer__top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid var(--border);margin-bottom:2rem}
@@ -390,26 +334,174 @@
     .footer__bottom-links{display:flex;gap:1.5rem}
     .footer__bottom-links a{color:rgba(255,255,255,.25);transition:color .2s}
     .footer__bottom-links a:hover{color:var(--muted)}
-
-    /* ========= FAB ========= */
     .fab{position:fixed;bottom:2rem;right:2rem;z-index:500;display:flex;flex-direction:column;gap:.8rem;align-items:flex-end}
-    .fab__btn{display:flex;align-items:center;gap:.6rem;padding:.8rem 1.2rem;border-radius:100px;font-size:.85rem;font-weight:600;cursor:none;border:none;transition:transform .2s var(--ease),box-shadow .2s;text-decoration:none}
+    .fab__btn{display:flex;align-items:center;gap:.6rem;padding:.8rem 1.2rem;border-radius:100px;font-size:.85rem;font-weight:600;cursor:pointer;border:none;transition:transform .2s var(--ease),box-shadow .2s;font-family:var(--font-body)}
     .fab__btn:hover{transform:translateY(-2px) scale(1.03)}
-    .fab__wa{background:#25d366;color:var(--white);box-shadow:0 8px 24px rgba(37,211,102,.4)}
+    .fab__wa{background:#25d366;color:var(--white);box-shadow:0 8px 24px rgba(37,211,102,.4);text-decoration:none;display:flex;align-items:center;gap:.6rem}
     .fab__book{background:var(--gold);color:var(--navy);box-shadow:0 8px 24px rgba(230,168,23,.4)}
-
-    /* ========= REVEAL ========= */
     .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
     .reveal.visible{opacity:1;transform:translateY(0)}
     .reveal-delay-1{transition-delay:.1s}.reveal-delay-2{transition-delay:.2s}.reveal-delay-3{transition-delay:.3s}.reveal-delay-4{transition-delay:.4s}
 
-    /* ========= RESPONSIVE ========= */
+    /* ═══════════════════════════════════════════
+       BOOKING POPUP — PREMIUM DARK THEME
+    ═══════════════════════════════════════════ */
+    .bk-overlay{
+      display:none;position:fixed;inset:0;z-index:9000;
+      background:rgba(2,8,20,.92);
+      backdrop-filter:blur(20px) saturate(160%);
+      -webkit-backdrop-filter:blur(20px) saturate(160%);
+      align-items:center;justify-content:center;
+      padding:1.5rem;
+    }
+    .bk-overlay.show{display:flex;}
+    .bk-modal{
+      background:var(--navy-2);
+      border:1px solid rgba(230,168,23,.18);
+      border-radius:24px;
+      width:100%;max-width:500px;
+      overflow:hidden;
+      box-shadow:0 2px 4px rgba(0,0,0,.3),0 16px 40px rgba(0,0,0,.6),0 48px 100px rgba(0,0,0,.5);
+      animation:bkIn .45s cubic-bezier(.16,1,.3,1) both;
+      position:relative;
+    }
+    @keyframes bkIn{from{opacity:0;transform:scale(.94) translateY(30px)}to{opacity:1;transform:scale(1) translateY(0)}}
+
+    /* gold shimmer top bar */
+    .bk-topbar{
+      height:3px;
+      background:linear-gradient(90deg,transparent 0%,var(--gold) 30%,var(--gold-light) 50%,var(--gold) 70%,transparent 100%);
+      background-size:200% 100%;
+      animation:bkShimmer 3s linear infinite;
+    }
+    @keyframes bkShimmer{from{background-position:-100% 0}to{background-position:200% 0}}
+
+    /* close */
+    .bk-close{
+      position:absolute;top:1.1rem;right:1.1rem;
+      width:32px;height:32px;border-radius:50%;
+      background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);
+      color:rgba(255,255,255,.45);font-size:.9rem;
+      display:flex;align-items:center;justify-content:center;
+      cursor:pointer;transition:all .18s;font-family:var(--font-body);
+    }
+    .bk-close:hover{background:rgba(239,68,68,.15);border-color:rgba(239,68,68,.3);color:#f87171;}
+
+    /* header */
+    .bk-header{
+      padding:1.6rem 2rem 0;
+    }
+    .bk-header-tag{
+      display:inline-flex;align-items:center;gap:.4rem;
+      font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;
+      color:var(--gold);margin-bottom:.7rem;
+    }
+    .bk-header-tag::before{content:'';width:16px;height:1.5px;background:var(--gold);}
+    .bk-header h2{
+      font-family:var(--font-display);font-size:1.6rem;font-weight:700;
+      color:var(--white);line-height:1.15;margin-bottom:.3rem;
+    }
+    .bk-header p{font-size:.8rem;color:rgba(255,255,255,.38);line-height:1.55;margin-bottom:1.4rem;}
+
+    /* divider */
+    .bk-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08) 20%,rgba(255,255,255,.08) 80%,transparent);margin:0 2rem;}
+
+    /* form body */
+    .bk-body{padding:1.4rem 2rem 1.8rem;}
+
+    /* error banner */
+    .bk-err{
+      background:rgba(239,68,68,.08);border:1px solid rgba(239,68,68,.2);
+      border-radius:10px;padding:.65rem .9rem;
+      font-size:.78rem;color:#f87171;
+      margin-bottom:1rem;display:none;
+      align-items:center;gap:.5rem;
+    }
+    .bk-err.show{display:flex;}
+
+    /* field group */
+    .bk-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:.85rem;}
+    .bk-row.full{grid-template-columns:1fr;}
+    .bk-fg label{
+      display:flex;align-items:center;gap:.3rem;
+      font-size:.68rem;font-weight:700;color:rgba(255,255,255,.38);
+      text-transform:uppercase;letter-spacing:.8px;margin-bottom:.42rem;
+    }
+    .bk-req{color:var(--gold);font-size:.75rem;line-height:1;}
+
+    /* inputs */
+    .bk-fi{
+      width:100%;padding:.78rem 1rem;
+      background:rgba(255,255,255,.05);
+      border:1.5px solid rgba(255,255,255,.1);
+      border-radius:10px;
+      color:var(--white);font-family:var(--font-body);font-size:.9rem;
+      outline:none;transition:border-color .2s,background .2s;
+      appearance:none;
+    }
+    .bk-fi::placeholder{color:rgba(255,255,255,.2);}
+    .bk-fi:focus{border-color:var(--gold);background:rgba(230,168,23,.04);}
+    .bk-fi.err{border-color:#ef5350;background:rgba(239,83,80,.05);}
+    .bk-fi option{background:#091d3e;color:var(--white);}
+
+    /* notes textarea */
+    textarea.bk-fi{resize:vertical;min-height:76px;line-height:1.55;}
+
+    /* submit */
+    .bk-submit{
+      width:100%;padding:1rem;margin-top:1.1rem;
+      background:linear-gradient(135deg,var(--gold),var(--gold-light));
+      border:none;border-radius:12px;
+      color:var(--navy);font-family:var(--font-display);font-size:1.05rem;font-weight:700;
+      cursor:pointer;transition:opacity .2s,transform .15s,box-shadow .2s;
+      display:flex;align-items:center;justify-content:center;gap:.55rem;
+      letter-spacing:.3px;
+    }
+    .bk-submit:hover{opacity:.93;transform:translateY(-1px);box-shadow:0 8px 28px rgba(230,168,23,.4);}
+    .bk-submit:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none;}
+    .bk-spinner{width:18px;height:18px;border:2.5px solid rgba(5,17,42,.3);border-top-color:var(--navy);border-radius:50%;animation:bkSpin .7s linear infinite;}
+    @keyframes bkSpin{to{transform:rotate(360deg)}}
+
+    /* trust row */
+    .bk-trust{display:flex;flex-wrap:wrap;gap:.3rem .8rem;margin-top:.9rem;}
+    .bk-trust-item{font-size:.68rem;color:rgba(255,255,255,.28);display:flex;align-items:center;gap:.28rem;}
+    .bk-trust-item::before{content:'✓';color:var(--gold);font-weight:700;font-size:.72rem;}
+
+    /* success */
+    .bk-success{padding:2.8rem 2rem;text-align:center;display:none;}
+    .bk-success.show{display:block;}
+    .bk-success-icon{
+      width:64px;height:64px;border-radius:50%;
+      background:linear-gradient(135deg,rgba(230,168,23,.15),rgba(230,168,23,.05));
+      border:1.5px solid rgba(230,168,23,.3);
+      display:flex;align-items:center;justify-content:center;
+      font-size:1.8rem;margin:0 auto 1.2rem;
+    }
+    .bk-success h3{font-family:var(--font-display);font-size:1.7rem;font-weight:700;color:var(--white);margin-bottom:.5rem;}
+    .bk-success p{font-size:.84rem;color:rgba(255,255,255,.45);line-height:1.7;margin-bottom:1.4rem;}
+    .bk-success-wa{
+      display:inline-flex;align-items:center;gap:.5rem;
+      background:#25d366;color:#fff;
+      padding:.75rem 1.5rem;border-radius:100px;
+      font-family:var(--font-body);font-weight:700;font-size:.88rem;
+      text-decoration:none;transition:transform .18s,box-shadow .18s;
+      box-shadow:0 6px 20px rgba(37,211,102,.3);
+    }
+    .bk-success-wa:hover{transform:translateY(-1px);box-shadow:0 10px 28px rgba(37,211,102,.4);}
+
+    /* SOS FAB */
+    #cc-sos-fab{position:fixed;bottom:10.5rem;right:1.5rem;z-index:888;display:inline-flex;align-items:center;gap:.45rem;background:linear-gradient(135deg,#b71c1c,#e53935,#ef6c00);color:#fff;text-decoration:none;padding:.58rem 1.1rem .58rem .85rem;border-radius:100px;font-family:var(--font-body);font-size:.74rem;font-weight:700;white-space:nowrap;box-shadow:0 6px 22px rgba(229,57,53,.4);opacity:0;transform:translateY(10px) scale(.92);animation:cc-fab-entry .5s cubic-bezier(.16,1,.3,1) .6s forwards;transition:transform .2s,box-shadow .2s}
+    @keyframes cc-fab-entry{to{opacity:1;transform:none}}
+    #cc-sos-fab:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(229,57,53,.55)}
+    #cc-sos-fab::after{content:'';position:absolute;inset:-4px;border-radius:100px;border:2px solid rgba(229,57,53,.45);animation:cc-ring 2.6s ease-out infinite}
+    @keyframes cc-ring{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.18);opacity:0}}
+
     @media(max-width:1024px){
       .hero__inner{grid-template-columns:1fr}.hero__right{display:none}
       .services__grid{grid-template-columns:1fr 1fr}.why__layout{grid-template-columns:1fr}
       .stats__grid{grid-template-columns:1fr 1fr}.footer__top{grid-template-columns:1fr 1fr}
       .cta__inner{grid-template-columns:1fr;text-align:center}.cta__pills{justify-content:center}.cta__btns{flex-direction:row}
-      .deadline-grid{grid-template-columns:1fr 1fr}.ins-strip__row{grid-template-columns:1fr 1fr 1fr}
+      .deadline-grid{grid-template-columns:1fr 1fr}
       .penalty-section__inner{grid-template-columns:1fr}.reviews__grid{grid-template-columns:1fr 1fr}
       .trust-bar__divider{display:none}.comp-table{overflow-x:auto}
     }
@@ -418,14 +510,18 @@
       .services__grid{grid-template-columns:1fr}.stats__grid{grid-template-columns:1fr 1fr}
       .footer__top{grid-template-columns:1fr}.hero__title{font-size:2.4rem}
       body{cursor:auto}.cursor,.cursor-ring{display:none}
-      .deadline-grid{grid-template-columns:1fr}.ins-strip__row{grid-template-columns:1fr 1fr}
+      .deadline-grid{grid-template-columns:1fr}
       .why__img-mosaic{grid-template-columns:1fr 1fr}.mosaic-img:first-child{grid-row:span 1}.mosaic-img:first-child img{height:140px}
       .reviews__grid{grid-template-columns:1fr}.trust-bar__inner{gap:.8rem}
       .trust-bar__item{min-width:140px}.comp-row{grid-template-columns:1.5fr 1fr 1fr}
+      .bk-modal{border-radius:18px;}
+      .bk-row{grid-template-columns:1fr;}
+      .bk-header,.bk-body{padding-left:1.4rem;padding-right:1.4rem;}
+      .bk-divider{margin:0 1.4rem;}
     }
     @media(max-width:480px){
       .stats__grid{grid-template-columns:1fr 1fr}.hero__btns{flex-direction:column}
-      .section{padding:5rem 5%}.ins-strip__row{grid-template-columns:1fr}
+      .section{padding:5rem 5%}
       .comp-row{grid-template-columns:1fr}.comp-row.header{display:none}
     }
   </style>
@@ -434,6 +530,95 @@
 
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- ═══ BOOKING POPUP ═══ -->
+<div class="bk-overlay" id="bk-overlay">
+  <div class="bk-modal" id="bk-modal">
+    <div class="bk-topbar"></div>
+    <button class="bk-close" onclick="closeBk()">✕</button>
+
+    <!-- FORM -->
+    <div id="bk-form-wrap">
+      <div class="bk-header">
+        <div class="bk-header-tag">Free Consultation — Tax &amp; Compliance</div>
+        <h2>Book Your Free<br/>Expert Session</h2>
+        <p>Honest advice. Zero spam. Telugu &amp; English. We call you within 2 hours.</p>
+      </div>
+      <div class="bk-divider"></div>
+      <div class="bk-body">
+
+        <div class="bk-err" id="bk-err">
+          <span>⚠</span><span id="bk-err-msg">Please fill all required fields.</span>
+        </div>
+
+        <div class="bk-row">
+          <div class="bk-fg">
+            <label>Full Name <span class="bk-req">*</span></label>
+            <input class="bk-fi" id="bk-name" type="text" placeholder="e.g. Ramesh Reddy" autocomplete="name"/>
+          </div>
+          <div class="bk-fg">
+            <label>Phone Number <span class="bk-req">*</span></label>
+            <input class="bk-fi" id="bk-phone" type="tel" placeholder="+91 98765 43210" autocomplete="tel"/>
+          </div>
+        </div>
+
+        <div class="bk-row full">
+          <div class="bk-fg">
+            <label>City <span class="bk-req">*</span></label>
+            <select class="bk-fi" id="bk-city">
+              <option value="">— Select your city —</option>
+              <option>Hyderabad</option>
+              <option>Secunderabad</option>
+              <option>Warangal</option>
+              <option>Nizamabad</option>
+              <option>Karimnagar</option>
+              <option>Khammam</option>
+              <option>Vijayawada</option>
+              <option>Visakhapatnam</option>
+              <option>Guntur</option>
+              <option>Nellore</option>
+              <option>Kakinada</option>
+              <option>Tirupati</option>
+              <option>Rajahmundry</option>
+              <option>Kurnool</option>
+              <option>Anantapur</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="bk-row full">
+          <div class="bk-fg">
+            <label>Notes <span style="color:rgba(255,255,255,.25);font-size:.62rem;font-weight:400;">(optional)</span></label>
+            <textarea class="bk-fi" id="bk-notes" placeholder="e.g. Need help with ITR filing, also have a GST question…"></textarea>
+          </div>
+        </div>
+
+        <button class="bk-submit" id="bk-submit" onclick="submitBk()">
+          <span id="bk-btn-txt">Book Free Consultation →</span>
+        </button>
+
+        <div class="bk-trust">
+          <span class="bk-trust-item">No spam ever</span>
+          <span class="bk-trust-item">100% free</span>
+          <span class="bk-trust-item">Telugu &amp; English</span>
+          <span class="bk-trust-item">Call within 2 hours</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="bk-success" id="bk-success">
+      <div class="bk-success-icon">🎉</div>
+      <h3>You're all set!</h3>
+      <p>We've received your request and will call you within 2 hours (Mon–Sat, 9AM–7PM).<br/>For immediate help, WhatsApp us now.</p>
+      <a class="bk-success-wa" id="bk-success-wa" href="https://wa.me/917842854466" target="_blank">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp us now
+      </a>
+    </div>
+  </div>
+</div>
 
 <!-- PARTNER TICKER -->
 <div class="company-ticker" id="company-ticker" aria-hidden="true">
@@ -448,12 +633,18 @@
 
 <!-- FAB -->
 <div class="fab">
-  <a href="book.html" class="fab__btn fab__book">&#x1F4C5; Book Consultation</a>
-  <a href="https://wa.me/917842854466" target="_blank" class="fab__btn fab__wa">
+  <button onclick="openBk('Tax &amp; Compliance')" class="fab__btn fab__book">&#x1F4C5; Book Consultation</button>
+  <a href="https://wa.me/917842854466" target="_blank" class="fab__wa" style="padding:.8rem 1.2rem;border-radius:100px;font-size:.85rem;font-weight:600;display:flex;align-items:center;gap:.6rem;box-shadow:0 8px 24px rgba(37,211,102,.4);">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
     WhatsApp Us
   </a>
 </div>
+
+<!-- SOS FAB -->
+<a href="sos-card.html" id="cc-sos-fab" aria-label="Generate free SOS card">
+  <span style="font-size:.95rem">🆘</span>
+  <span style="font-size:.72rem">Free SOS Card</span>
+</a>
 
 <!-- NAV -->
 <header>
@@ -476,7 +667,7 @@
         <li><a href="blog.html">Blog</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
-        <li><a href="book.html" class="nav__cta">Book Free Consultation</a></li>
+        <li><a href="#" onclick="openBk('Tax &amp; Compliance');return false;" class="nav__cta">Book Free Consultation</a></li>
       </ul>
       <button class="nav__hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
     </div>
@@ -492,7 +683,7 @@
     <a href="blog.html">Blog</a>
     <a href="about.html">About Us</a>
     <a href="contact.html">Contact</a>
-    <a href="book.html" class="mobile-menu__cta">Book Free Consultation &#x2192;</a>
+    <a href="#" onclick="openBk('Tax &amp; Compliance');closeMobileMenu();return false;" class="mobile-menu__cta">Book Free Consultation &#x2192;</a>
   </div>
 </header>
 
@@ -514,17 +705,14 @@
       <div class="hero__label reveal">&#x1F4CB; Tax &amp; Compliance Services — AP &amp; Telangana</div>
       <h1 class="hero__title reveal reveal-delay-1">File Taxes.<br/>Stay <em>Compliant.</em><br/>Grow Freely.</h1>
       <p class="hero__desc reveal reveal-delay-2">From ITR filing to company registration — we handle every tax and compliance need with accuracy, on time. Focus on your business; we'll handle the paperwork.</p>
-
-      <!-- LIVE ACTIVITY FEED -->
       <div class="hero__activity reveal reveal-delay-2" id="live-activity">
         <div class="hero__activity-dot"></div>
         <div class="hero__activity-text" id="activity-text">
           <strong>Ravi K. from Hyderabad</strong> just filed his ITR — penalty saved ₹5,000 ✓
         </div>
       </div>
-
       <div class="hero__btns reveal reveal-delay-3">
-        <a href="book.html" class="btn-primary">Book Free Consultation <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <button onclick="openBk('Tax &amp; Compliance')" class="btn-primary">Book Free Consultation <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
         <a href="tel:+917842854466" class="btn-outline">&#x1F4DE; +91 78428 54466</a>
       </div>
       <div class="hero__trust reveal reveal-delay-4">
@@ -577,37 +765,22 @@
   </div>
 </div>
 
-<!-- ===== TRUST BAR ===== -->
+<!-- TRUST BAR -->
 <div class="trust-bar reveal">
   <div class="trust-bar__inner">
-    <div class="trust-bar__item">
-      <div class="trust-bar__icon">🏆</div>
-      <div><div class="trust-bar__title">3+ Years Trusted</div><div class="trust-bar__sub">Serving AP &amp; Telangana since 2022</div></div>
-    </div>
+    <div class="trust-bar__item"><div class="trust-bar__icon">🏆</div><div><div class="trust-bar__title">3+ Years Trusted</div><div class="trust-bar__sub">Serving AP &amp; Telangana since 2022</div></div></div>
     <div class="trust-bar__divider"></div>
-    <div class="trust-bar__item">
-      <div class="trust-bar__icon">🔐</div>
-      <div><div class="trust-bar__title">100% Confidential</div><div class="trust-bar__sub">Your data is never shared</div></div>
-    </div>
+    <div class="trust-bar__item"><div class="trust-bar__icon">🔐</div><div><div class="trust-bar__title">100% Confidential</div><div class="trust-bar__sub">Your data is never shared</div></div></div>
     <div class="trust-bar__divider"></div>
-    <div class="trust-bar__item">
-      <div class="trust-bar__icon">📞</div>
-      <div><div class="trust-bar__title">Dedicated Expert</div><div class="trust-bar__sub">One number. One person. Always.</div></div>
-    </div>
+    <div class="trust-bar__item"><div class="trust-bar__icon">📞</div><div><div class="trust-bar__title">Dedicated Expert</div><div class="trust-bar__sub">One number. One person. Always.</div></div></div>
     <div class="trust-bar__divider"></div>
-    <div class="trust-bar__item">
-      <div class="trust-bar__icon">⚡</div>
-      <div><div class="trust-bar__title">48-hr Turnaround</div><div class="trust-bar__sub">From docs to acknowledgement</div></div>
-    </div>
+    <div class="trust-bar__item"><div class="trust-bar__icon">⚡</div><div><div class="trust-bar__title">48-hr Turnaround</div><div class="trust-bar__sub">From docs to acknowledgement</div></div></div>
     <div class="trust-bar__divider"></div>
-    <div class="trust-bar__item">
-      <div class="trust-bar__icon">🗣️</div>
-      <div><div class="trust-bar__title">Telugu &amp; English</div><div class="trust-bar__sub">No jargon. Plain language always.</div></div>
-    </div>
+    <div class="trust-bar__item"><div class="trust-bar__icon">🗣️</div><div><div class="trust-bar__title">Telugu &amp; English</div><div class="trust-bar__sub">No jargon. Plain language always.</div></div></div>
   </div>
 </div>
 
-<!-- ===== SERVICES GRID ===== -->
+<!-- SERVICES GRID -->
 <section class="section services">
   <div class="section__inner">
     <div class="services__head">
@@ -618,8 +791,7 @@
       <p class="section__sub reveal reveal-delay-2">Expert guidance in Telugu &amp; English — ITR, GST, company registration and more, with zero missed deadlines.</p>
     </div>
     <div class="services__grid reveal">
-
-      <a href="book.html" class="service-card service-card--featured">
+      <button onclick="openBk('ITR Filing')" class="service-card service-card--featured">
         <div class="sc-img"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=700&q=80&fit=crop" alt="Income Tax Returns"/><div class="sc-img-overlay"></div></div>
         <div class="sc-body">
           <div class="service-card__num">01</div>
@@ -630,9 +802,8 @@
           <div class="sc-tags"><span class="sctag">Salaried</span><span class="sctag">Business</span><span class="sctag">Freelancer</span><span class="sctag">NRI</span></div>
           <span class="service-card__link">Get Started <span>&#x2192;</span></span>
         </div>
-      </a>
-
-      <a href="book.html" class="service-card">
+      </button>
+      <button onclick="openBk('GST Returns')" class="service-card">
         <div class="sc-img"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&q=80&fit=crop" alt="GST Returns"/><div class="sc-img-overlay"></div></div>
         <div class="sc-body">
           <div class="service-card__num">02</div>
@@ -643,9 +814,8 @@
           <div class="sc-tags"><span class="sctag">GSTR-1</span><span class="sctag">GSTR-3B</span><span class="sctag">GSTR-9</span><span class="sctag">Reconciliation</span></div>
           <span class="service-card__link">Get Started <span>&#x2192;</span></span>
         </div>
-      </a>
-
-      <a href="book.html" class="service-card">
+      </button>
+      <button onclick="openBk('GST Registration')" class="service-card">
         <div class="sc-img"><img src="https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=600&q=80&fit=crop" alt="GST Registration"/><div class="sc-img-overlay"></div></div>
         <div class="sc-body">
           <div class="service-card__num">03</div>
@@ -656,9 +826,8 @@
           <div class="sc-tags"><span class="sctag">New Business</span><span class="sctag">Voluntary Reg.</span><span class="sctag">Fast Process</span></div>
           <span class="service-card__link">Get Started <span>&#x2192;</span></span>
         </div>
-      </a>
-
-      <a href="book.html" class="service-card">
+      </button>
+      <button onclick="openBk('Company Registration')" class="service-card">
         <div class="sc-img"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=600&q=80&fit=crop" alt="Company Registration"/><div class="sc-img-overlay"></div></div>
         <div class="sc-body">
           <div class="service-card__num">04</div>
@@ -669,9 +838,8 @@
           <div class="sc-tags"><span class="sctag">Pvt. Ltd.</span><span class="sctag">OPC</span><span class="sctag">LLP</span><span class="sctag">Section 8</span></div>
           <span class="service-card__link">Get Started <span>&#x2192;</span></span>
         </div>
-      </a>
-
-      <a href="book.html" class="service-card">
+      </button>
+      <button onclick="openBk('Firm Registration')" class="service-card">
         <div class="sc-img"><img src="https://images.unsplash.com/photo-1521791055366-0d553872952f?w=600&q=80&fit=crop" alt="Firm Registration"/><div class="sc-img-overlay"></div></div>
         <div class="sc-body">
           <div class="service-card__num">05</div>
@@ -682,9 +850,8 @@
           <div class="sc-tags"><span class="sctag">Partnership</span><span class="sctag">Proprietorship</span><span class="sctag">Partnership Deed</span></div>
           <span class="service-card__link">Get Started <span>&#x2192;</span></span>
         </div>
-      </a>
-
-      <a href="book.html" class="service-card">
+      </button>
+      <button onclick="openBk('Annual Filings')" class="service-card">
         <div class="sc-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=80&fit=crop" alt="Annual Filings"/><div class="sc-img-overlay"></div></div>
         <div class="sc-body">
           <div class="service-card__num">06</div>
@@ -695,9 +862,8 @@
           <div class="sc-tags"><span class="sctag">AOC-4</span><span class="sctag">MGT-7</span><span class="sctag">ROC Compliance</span></div>
           <span class="service-card__link">Get Started <span>&#x2192;</span></span>
         </div>
-      </a>
-
-      <a href="book.html" class="service-card service-card--featured">
+      </button>
+      <button onclick="openBk('Tax Audit')" class="service-card service-card--featured">
         <div class="sc-img"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=700&q=80&fit=crop" alt="Tax Audit"/><div class="sc-img-overlay"></div></div>
         <div class="sc-body">
           <div class="service-card__num">07</div>
@@ -708,93 +874,36 @@
           <div class="sc-tags"><span class="sctag">Form 3CA/3CB</span><span class="sctag">Form 3CD</span><span class="sctag">Turnover &gt;₹1Cr</span></div>
           <span class="service-card__link">Get Started <span>&#x2192;</span></span>
         </div>
-      </a>
-
-      <a href="book.html" class="service-card" style="background:linear-gradient(135deg,rgba(230,168,23,.1),rgba(230,168,23,.03));border-bottom:1px solid rgba(230,168,23,.15)">
+      </button>
+      <button onclick="openBk('Tax &amp; Compliance')" class="service-card" style="background:linear-gradient(135deg,rgba(230,168,23,.1),rgba(230,168,23,.03));border-bottom:1px solid rgba(230,168,23,.15)">
         <div class="sc-body" style="justify-content:center;align-items:center;text-align:center;padding:3rem 2rem">
           <div style="font-size:2.5rem;margin-bottom:1.2rem">&#x1F4AC;</div>
           <h3 class="service-card__title">Not sure what you need?</h3>
           <p class="service-card__desc" style="text-align:center">Talk to our expert in Telugu or English. Free 10-min consultation — no obligation, no fees.</p>
           <span class="service-card__link" style="justify-content:center">Book Free Call <span>&#x2192;</span></span>
         </div>
-      </a>
-
+      </button>
     </div>
   </div>
 </section>
 
-<!-- ===== SOCIAL PROOF / REVIEWS ===== -->
+<!-- REVIEWS -->
 <section class="reviews reveal">
   <div class="reviews__inner">
     <div class="section__tag">Real Clients. Real Results.</div>
     <h2 class="section__title reveal reveal-delay-1">What our clients <em>say about us.</em></h2>
     <div class="reviews__grid">
-
-      <div class="review-card reveal">
-        <span class="review-badge">Verified ✓</span>
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">Filed my ITR for the first time this year. The team explained everything step by step in Telugu. Got my refund in 3 weeks! No stress at all.</p>
-        <div class="review-author">
-          <div class="review-avatar" style="background:linear-gradient(135deg,#1565c0,#1976d2)">RK</div>
-          <div><div class="review-name">Ravi Kumar</div><div class="review-role">Software Engineer, Hyderabad</div></div>
-        </div>
-      </div>
-
-      <div class="review-card reveal reveal-delay-1">
-        <span class="review-badge">Verified ✓</span>
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">My shop needed GST registration urgently. Cover Credit got it done in just 4 days! Their pricing was clear and there were no hidden charges.</p>
-        <div class="review-author">
-          <div class="review-avatar" style="background:linear-gradient(135deg,#0f6e56,#1d9e75)">SM</div>
-          <div><div class="review-name">Suresh M.</div><div class="review-role">Retail Business Owner, Vijayawada</div></div>
-        </div>
-      </div>
-
-      <div class="review-card reveal reveal-delay-2">
-        <span class="review-badge">Verified ✓</span>
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">We registered our Pvt. Ltd. company through Cover Credit. They handled the entire MCA process. Professional, fast, and affordable. Highly recommended!</p>
-        <div class="review-author">
-          <div class="review-avatar" style="background:linear-gradient(135deg,#7c3aed,#a855f7)">PL</div>
-          <div><div class="review-name">Priya L.</div><div class="review-role">Co-founder, EdTech Startup</div></div>
-        </div>
-      </div>
-
-      <div class="review-card reveal">
-        <span class="review-badge">Verified ✓</span>
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">As a freelancer with multiple income sources, tax season used to scare me. Now Cover Credit handles everything. Saved me ₹8,000 in deductions I didn't know about!</p>
-        <div class="review-author">
-          <div class="review-avatar" style="background:linear-gradient(135deg,#ba7517,#ef9f27)">AK</div>
-          <div><div class="review-name">Arjun K.</div><div class="review-role">Freelance Designer, Guntur</div></div>
-        </div>
-      </div>
-
-      <div class="review-card reveal reveal-delay-1">
-        <span class="review-badge">Verified ✓</span>
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">Our company's ROC filings were overdue. Cover Credit sorted everything out without any panic. They were calm, professional, and got it all done in 2 days.</p>
-        <div class="review-author">
-          <div class="review-avatar" style="background:linear-gradient(135deg,#993556,#d4537e)">VR</div>
-          <div><div class="review-name">Venkat R.</div><div class="review-role">Director, Manufacturing Co., Nellore</div></div>
-        </div>
-      </div>
-
-      <div class="review-card reveal reveal-delay-2">
-        <span class="review-badge">Verified ✓</span>
-        <div class="review-stars">★★★★★</div>
-        <p class="review-text">I had a tax notice from the IT department. Cover Credit helped me respond correctly and the matter was resolved quickly. Life savers, seriously!</p>
-        <div class="review-author">
-          <div class="review-avatar" style="background:linear-gradient(135deg,#185fa5,#378add)">NP</div>
-          <div><div class="review-name">Nandini P.</div><div class="review-role">Doctor, Tirupati</div></div>
-        </div>
-      </div>
-
+      <div class="review-card reveal"><span class="review-badge">Verified ✓</span><div class="review-stars">★★★★★</div><p class="review-text">Filed my ITR for the first time this year. The team explained everything step by step in Telugu. Got my refund in 3 weeks! No stress at all.</p><div class="review-author"><div class="review-avatar" style="background:linear-gradient(135deg,#1565c0,#1976d2)">RK</div><div><div class="review-name">Ravi Kumar</div><div class="review-role">Software Engineer, Hyderabad</div></div></div></div>
+      <div class="review-card reveal reveal-delay-1"><span class="review-badge">Verified ✓</span><div class="review-stars">★★★★★</div><p class="review-text">My shop needed GST registration urgently. Cover Credit got it done in just 4 days! Their pricing was clear and there were no hidden charges.</p><div class="review-author"><div class="review-avatar" style="background:linear-gradient(135deg,#0f6e56,#1d9e75)">SM</div><div><div class="review-name">Suresh M.</div><div class="review-role">Retail Business Owner, Vijayawada</div></div></div></div>
+      <div class="review-card reveal reveal-delay-2"><span class="review-badge">Verified ✓</span><div class="review-stars">★★★★★</div><p class="review-text">We registered our Pvt. Ltd. company through Cover Credit. They handled the entire MCA process. Professional, fast, and affordable. Highly recommended!</p><div class="review-author"><div class="review-avatar" style="background:linear-gradient(135deg,#7c3aed,#a855f7)">PL</div><div><div class="review-name">Priya L.</div><div class="review-role">Co-founder, EdTech Startup</div></div></div></div>
+      <div class="review-card reveal"><span class="review-badge">Verified ✓</span><div class="review-stars">★★★★★</div><p class="review-text">As a freelancer with multiple income sources, tax season used to scare me. Now Cover Credit handles everything. Saved me ₹8,000 in deductions I didn't know about!</p><div class="review-author"><div class="review-avatar" style="background:linear-gradient(135deg,#ba7517,#ef9f27)">AK</div><div><div class="review-name">Arjun K.</div><div class="review-role">Freelance Designer, Guntur</div></div></div></div>
+      <div class="review-card reveal reveal-delay-1"><span class="review-badge">Verified ✓</span><div class="review-stars">★★★★★</div><p class="review-text">Our company's ROC filings were overdue. Cover Credit sorted everything out without any panic. They were calm, professional, and got it all done in 2 days.</p><div class="review-author"><div class="review-avatar" style="background:linear-gradient(135deg,#993556,#d4537e)">VR</div><div><div class="review-name">Venkat R.</div><div class="review-role">Director, Manufacturing Co., Nellore</div></div></div></div>
+      <div class="review-card reveal reveal-delay-2"><span class="review-badge">Verified ✓</span><div class="review-stars">★★★★★</div><p class="review-text">I had a tax notice from the IT department. Cover Credit helped me respond correctly and the matter was resolved quickly. Life savers, seriously!</p><div class="review-author"><div class="review-avatar" style="background:linear-gradient(135deg,#185fa5,#378add)">NP</div><div><div class="review-name">Nandini P.</div><div class="review-role">Doctor, Tirupati</div></div></div></div>
     </div>
   </div>
 </section>
 
-<!-- ===== STATS ===== -->
+<!-- STATS -->
 <section class="section stats">
   <div class="section__inner">
     <div class="stats__grid">
@@ -806,7 +915,7 @@
   </div>
 </section>
 
-<!-- ===== PENALTY CALCULATOR ===== -->
+<!-- PENALTY CALCULATOR -->
 <section class="penalty-section">
   <div class="penalty-section__inner">
     <div>
@@ -814,34 +923,14 @@
       <h2 class="section__title reveal reveal-delay-1">How much is a <em>late filing</em><br/>costing you?</h2>
       <p class="section__sub reveal reveal-delay-2" style="margin-bottom:2rem">Most people don't realise what they're losing by missing deadlines. Use our quick calculator to see your risk — then let us eliminate it.</p>
       <div style="display:flex;flex-direction:column;gap:1.2rem" class="reveal reveal-delay-3">
-        <div style="display:flex;gap:1rem;align-items:flex-start;background:rgba(230,168,23,.05);border:1px solid rgba(230,168,23,.12);border-radius:16px;padding:1.2rem 1.4rem">
-          <span style="font-size:1.4rem;flex-shrink:0">💡</span>
-          <div>
-            <div style="font-size:.9rem;font-weight:600;color:rgba(255,255,255,.85);margin-bottom:.3rem">Late ITR = ₹5,000 penalty</div>
-            <div style="font-size:.8rem;color:rgba(255,255,255,.45)">Plus 1% interest per month on outstanding tax u/s 234A</div>
-          </div>
-        </div>
-        <div style="display:flex;gap:1rem;align-items:flex-start;background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.12);border-radius:16px;padding:1.2rem 1.4rem">
-          <span style="font-size:1.4rem;flex-shrink:0">⚠️</span>
-          <div>
-            <div style="font-size:.9rem;font-weight:600;color:rgba(255,255,255,.85);margin-bottom:.3rem">Late GST = ₹50/day + 18% interest</div>
-            <div style="font-size:.8rem;color:rgba(255,255,255,.45)">Compounds daily until filed. Small businesses lose lakhs.</div>
-          </div>
-        </div>
-        <div style="display:flex;gap:1rem;align-items:flex-start;background:rgba(168,85,247,.05);border:1px solid rgba(168,85,247,.12);border-radius:16px;padding:1.2rem 1.4rem">
-          <span style="font-size:1.4rem;flex-shrink:0">🏢</span>
-          <div>
-            <div style="font-size:.9rem;font-weight:600;color:rgba(255,255,255,.85);margin-bottom:.3rem">Late ROC = ₹100/day additional fees</div>
-            <div style="font-size:.8rem;color:rgba(255,255,255,.45)">Can result in company strike-off after prolonged non-compliance.</div>
-          </div>
-        </div>
+        <div style="display:flex;gap:1rem;align-items:flex-start;background:rgba(230,168,23,.05);border:1px solid rgba(230,168,23,.12);border-radius:16px;padding:1.2rem 1.4rem"><span style="font-size:1.4rem;flex-shrink:0">💡</span><div><div style="font-size:.9rem;font-weight:600;color:rgba(255,255,255,.85);margin-bottom:.3rem">Late ITR = ₹5,000 penalty</div><div style="font-size:.8rem;color:rgba(255,255,255,.45)">Plus 1% interest per month on outstanding tax u/s 234A</div></div></div>
+        <div style="display:flex;gap:1rem;align-items:flex-start;background:rgba(239,68,68,.05);border:1px solid rgba(239,68,68,.12);border-radius:16px;padding:1.2rem 1.4rem"><span style="font-size:1.4rem;flex-shrink:0">⚠️</span><div><div style="font-size:.9rem;font-weight:600;color:rgba(255,255,255,.85);margin-bottom:.3rem">Late GST = ₹50/day + 18% interest</div><div style="font-size:.8rem;color:rgba(255,255,255,.45)">Compounds daily until filed. Small businesses lose lakhs.</div></div></div>
+        <div style="display:flex;gap:1rem;align-items:flex-start;background:rgba(168,85,247,.05);border:1px solid rgba(168,85,247,.12);border-radius:16px;padding:1.2rem 1.4rem"><span style="font-size:1.4rem;flex-shrink:0">🏢</span><div><div style="font-size:.9rem;font-weight:600;color:rgba(255,255,255,.85);margin-bottom:.3rem">Late ROC = ₹100/day additional fees</div><div style="font-size:.8rem;color:rgba(255,255,255,.45)">Can result in company strike-off after prolonged non-compliance.</div></div></div>
       </div>
     </div>
-
     <div class="penalty-calc reveal reveal-delay-2">
       <div class="penalty-calc__title">⚡ Penalty Calculator</div>
       <div class="penalty-calc__sub">See what you risk by filing late — instantly.</div>
-
       <div class="calc-field">
         <div class="calc-label">Filing Type</div>
         <select class="calc-select" id="calc-type" onchange="calcPenalty()">
@@ -853,134 +942,62 @@
           <option value="roc">ROC Annual Filing</option>
         </select>
       </div>
-
       <div class="calc-field" id="days-field" style="display:none">
         <div class="calc-label">Days Overdue</div>
         <input type="number" class="calc-input" id="calc-days" placeholder="e.g. 30" oninput="calcPenalty()" min="1" max="365"/>
       </div>
-
       <div class="calc-field" id="tax-field" style="display:none">
         <div class="calc-label">Outstanding Tax Amount (₹)</div>
         <input type="number" class="calc-input" id="calc-tax" placeholder="e.g. 50000" oninput="calcPenalty()" min="0"/>
       </div>
-
       <div class="calc-result" id="calc-result">
         <div class="calc-result__label">Estimated Penalty / Interest</div>
         <div class="calc-result__amount" id="calc-amount">₹0</div>
         <div class="calc-result__note" id="calc-note"></div>
       </div>
-
-      <div class="calc-cta-note">Pay ₹0 in penalties. <a href="book.html">Book your free consultation →</a></div>
+      <div class="calc-cta-note">Pay ₹0 in penalties. <a onclick="openBk('Tax &amp; Compliance')">Book your free consultation →</a></div>
     </div>
   </div>
 </section>
 
-<!-- ===== KEY DEADLINES ===== -->
+<!-- DEADLINES -->
 <section class="section deadline-section">
   <div class="section__inner">
     <div class="section__tag reveal">Key Deadlines</div>
     <h2 class="section__title reveal reveal-delay-1">Never miss a deadline <em>again.</em></h2>
     <p class="section__sub reveal reveal-delay-2">We start 3–4 weeks early on every filing — so you're never rushed or penalised at the last minute.</p>
     <div class="deadline-grid reveal reveal-delay-2">
-      <div class="deadline-card urgent">
-        <div class="dc-service">ITR Filing (Individuals)</div>
-        <div class="dc-date">Due: 31 July every year</div>
-        <span class="dc-badge urgent">Critical</span>
-        <div class="dc-note">Late filing penalty ₹5,000 u/s 234F. Don't wait.</div>
-        <div class="dc-countdown"><span class="dc-countdown-dot"></span><span id="itr-days">Calculating…</span></div>
-      </div>
-      <div class="deadline-card">
-        <div class="dc-service">GSTR-3B (Monthly)</div>
-        <div class="dc-date">Due: 20th of every month</div>
-        <span class="dc-badge">Monthly</span>
-        <div class="dc-note">Interest at 18% p.a. on late payment of tax liability.</div>
-      </div>
-      <div class="deadline-card">
-        <div class="dc-service">GSTR-1 (Monthly)</div>
-        <div class="dc-date">Due: 11th of every month</div>
-        <span class="dc-badge">Monthly</span>
-        <div class="dc-note">Late fee ₹50/day (₹20/day for nil returns).</div>
-      </div>
-      <div class="deadline-card urgent">
-        <div class="dc-service">Tax Audit (u/s 44AB)</div>
-        <div class="dc-date">Due: 30 September every year</div>
-        <span class="dc-badge urgent">Critical</span>
-        <div class="dc-note">Penalty 0.5% of turnover or ₹1.5L, whichever is lower.</div>
-        <div class="dc-countdown"><span class="dc-countdown-dot"></span><span id="audit-days">Calculating…</span></div>
-      </div>
-      <div class="deadline-card">
-        <div class="dc-service">ROC Annual Filing (AOC-4)</div>
-        <div class="dc-date">Due: 30 October every year</div>
-        <span class="dc-badge">Annual</span>
-        <div class="dc-note">₹100 additional fee per day after the due date.</div>
-      </div>
-      <div class="deadline-card safe">
-        <div class="dc-service">ITR — Business / Audit Cases</div>
-        <div class="dc-date">Due: 31 October every year</div>
-        <span class="dc-badge safe">Extended</span>
-        <div class="dc-note">Applicable where tax audit is mandatory under the Act.</div>
-      </div>
+      <div class="deadline-card urgent"><div class="dc-service">ITR Filing (Individuals)</div><div class="dc-date">Due: 31 July every year</div><span class="dc-badge urgent">Critical</span><div class="dc-note">Late filing penalty ₹5,000 u/s 234F. Don't wait.</div><div class="dc-countdown"><span class="dc-countdown-dot"></span><span id="itr-days">Calculating…</span></div></div>
+      <div class="deadline-card"><div class="dc-service">GSTR-3B (Monthly)</div><div class="dc-date">Due: 20th of every month</div><span class="dc-badge">Monthly</span><div class="dc-note">Interest at 18% p.a. on late payment of tax liability.</div></div>
+      <div class="deadline-card"><div class="dc-service">GSTR-1 (Monthly)</div><div class="dc-date">Due: 11th of every month</div><span class="dc-badge">Monthly</span><div class="dc-note">Late fee ₹50/day (₹20/day for nil returns).</div></div>
+      <div class="deadline-card urgent"><div class="dc-service">Tax Audit (u/s 44AB)</div><div class="dc-date">Due: 30 September every year</div><span class="dc-badge urgent">Critical</span><div class="dc-note">Penalty 0.5% of turnover or ₹1.5L, whichever is lower.</div><div class="dc-countdown"><span class="dc-countdown-dot"></span><span id="audit-days">Calculating…</span></div></div>
+      <div class="deadline-card"><div class="dc-service">ROC Annual Filing (AOC-4)</div><div class="dc-date">Due: 30 October every year</div><span class="dc-badge">Annual</span><div class="dc-note">₹100 additional fee per day after the due date.</div></div>
+      <div class="deadline-card safe"><div class="dc-service">ITR — Business / Audit Cases</div><div class="dc-date">Due: 31 October every year</div><span class="dc-badge safe">Extended</span><div class="dc-note">Applicable where tax audit is mandatory under the Act.</div></div>
     </div>
   </div>
 </section>
 
-<!-- ===== COMPARISON TABLE ===== -->
+<!-- COMPARISON -->
 <section class="comparison reveal">
   <div class="comparison__inner">
     <div class="section__tag">Why Cover Credit?</div>
     <h2 class="section__title reveal reveal-delay-1">How we compare to <em>alternatives.</em></h2>
     <p class="section__sub reveal reveal-delay-1" style="margin-bottom:0">See exactly what you get — and what you don't — when you choose Cover Credit vs. other options.</p>
     <div class="comp-table reveal reveal-delay-2">
-      <div class="comp-row header">
-        <div class="comp-cell">Feature</div>
-        <div class="comp-cell">&#x2B50; Cover Credit</div>
-        <div class="comp-cell">Big Portals / CAs</div>
-      </div>
-      <div class="comp-row">
-        <div class="comp-cell comp-feature">Telugu language support</div>
-        <div class="comp-cell"><span class="comp-yes">✓</span> Yes, always</div>
-        <div class="comp-cell"><span class="comp-no">✗</span> Rarely</div>
-      </div>
-      <div class="comp-row">
-        <div class="comp-cell comp-feature">Dedicated single expert</div>
-        <div class="comp-cell"><span class="comp-yes">✓</span> Yes</div>
-        <div class="comp-cell"><span class="comp-partial">~</span> Rotating teams</div>
-      </div>
-      <div class="comp-row">
-        <div class="comp-cell comp-feature">Transparent pricing</div>
-        <div class="comp-cell"><span class="comp-yes">✓</span> Upfront always</div>
-        <div class="comp-cell"><span class="comp-partial">~</span> Add-ons common</div>
-      </div>
-      <div class="comp-row">
-        <div class="comp-cell comp-feature">Free 10-min consultation</div>
-        <div class="comp-cell"><span class="comp-yes">✓</span> Yes</div>
-        <div class="comp-cell"><span class="comp-no">✗</span> Usually paid</div>
-      </div>
-      <div class="comp-row">
-        <div class="comp-cell comp-feature">48-hr turnaround</div>
-        <div class="comp-cell"><span class="comp-yes">✓</span> Guaranteed</div>
-        <div class="comp-cell"><span class="comp-partial">~</span> 3–7 days typical</div>
-      </div>
-      <div class="comp-row">
-        <div class="comp-cell comp-feature">WhatsApp &amp; direct communication</div>
-        <div class="comp-cell"><span class="comp-yes">✓</span> Yes</div>
-        <div class="comp-cell"><span class="comp-no">✗</span> Portal tickets only</div>
-      </div>
-      <div class="comp-row">
-        <div class="comp-cell comp-feature">Proactive deadline reminders</div>
-        <div class="comp-cell"><span class="comp-yes">✓</span> 3-4 weeks early</div>
-        <div class="comp-cell"><span class="comp-no">✗</span> You remind them</div>
-      </div>
-      <div class="comp-row">
-        <div class="comp-cell comp-feature">Local AP &amp; Telangana knowledge</div>
-        <div class="comp-cell"><span class="comp-yes">✓</span> Deep expertise</div>
-        <div class="comp-cell"><span class="comp-partial">~</span> Generic national</div>
-      </div>
+      <div class="comp-row header"><div class="comp-cell">Feature</div><div class="comp-cell">&#x2B50; Cover Credit</div><div class="comp-cell">Big Portals / CAs</div></div>
+      <div class="comp-row"><div class="comp-cell comp-feature">Telugu language support</div><div class="comp-cell"><span class="comp-yes">✓</span> Yes, always</div><div class="comp-cell"><span class="comp-no">✗</span> Rarely</div></div>
+      <div class="comp-row"><div class="comp-cell comp-feature">Dedicated single expert</div><div class="comp-cell"><span class="comp-yes">✓</span> Yes</div><div class="comp-cell"><span class="comp-partial">~</span> Rotating teams</div></div>
+      <div class="comp-row"><div class="comp-cell comp-feature">Transparent pricing</div><div class="comp-cell"><span class="comp-yes">✓</span> Upfront always</div><div class="comp-cell"><span class="comp-partial">~</span> Add-ons common</div></div>
+      <div class="comp-row"><div class="comp-cell comp-feature">Free 10-min consultation</div><div class="comp-cell"><span class="comp-yes">✓</span> Yes</div><div class="comp-cell"><span class="comp-no">✗</span> Usually paid</div></div>
+      <div class="comp-row"><div class="comp-cell comp-feature">48-hr turnaround</div><div class="comp-cell"><span class="comp-yes">✓</span> Guaranteed</div><div class="comp-cell"><span class="comp-partial">~</span> 3–7 days typical</div></div>
+      <div class="comp-row"><div class="comp-cell comp-feature">WhatsApp &amp; direct communication</div><div class="comp-cell"><span class="comp-yes">✓</span> Yes</div><div class="comp-cell"><span class="comp-no">✗</span> Portal tickets only</div></div>
+      <div class="comp-row"><div class="comp-cell comp-feature">Proactive deadline reminders</div><div class="comp-cell"><span class="comp-yes">✓</span> 3-4 weeks early</div><div class="comp-cell"><span class="comp-no">✗</span> You remind them</div></div>
+      <div class="comp-row"><div class="comp-cell comp-feature">Local AP &amp; Telangana knowledge</div><div class="comp-cell"><span class="comp-yes">✓</span> Deep expertise</div><div class="comp-cell"><span class="comp-partial">~</span> Generic national</div></div>
     </div>
   </div>
 </section>
 
-<!-- ===== WHY COVER CREDIT ===== -->
+<!-- WHY -->
 <section class="section why">
   <div class="section__inner">
     <div class="why__layout">
@@ -1016,48 +1033,23 @@
   </div>
 </section>
 
-<!-- ===== FAQ ===== -->
+<!-- FAQ -->
 <section class="faq">
   <div class="faq__inner">
     <div class="section__tag reveal" style="justify-content:center">Frequently Asked</div>
     <h2 class="section__title reveal reveal-delay-1" style="text-align:center">Questions we <em>always hear.</em></h2>
     <div class="faq__grid reveal reveal-delay-2">
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">How do I share my documents with you? Is it safe? <span class="faq-arrow">▼</span></div>
-        <div class="faq-a"><div class="faq-a-inner">You can share documents via WhatsApp or email — whatever is easiest for you. We handle all client data with strict confidentiality and never share it with any third party. Your financial information is completely safe with us.</div></div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">What documents do I need for ITR filing? <span class="faq-arrow">▼</span></div>
-        <div class="faq-a"><div class="faq-a-inner">For most salaried individuals, you'll need your Form 16 (from employer), PAN card, Aadhaar card, bank account details, and any investment proof (80C, health insurance etc.). For business owners, we'll also need your profit & loss details. We'll guide you through exactly what's needed for your specific case.</div></div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">What is the last date for filing ITR this year? <span class="faq-arrow">▼</span></div>
-        <div class="faq-a"><div class="faq-a-inner">For individuals and salaried employees, the deadline is 31st July every year. For businesses requiring a tax audit, it's 31st October. We start working on your return 3–4 weeks before the deadline to ensure everything is filed on time without any penalty.</div></div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">My business turnover is low — do I still need GST registration? <span class="faq-arrow">▼</span></div>
-        <div class="faq-a"><div class="faq-a-inner">GST registration is mandatory if your turnover exceeds ₹40 lakhs (for goods) or ₹20 lakhs (for services) in a year. However, even if you're below the threshold, voluntary registration can benefit you — it allows you to claim input tax credit and makes your business look more professional to clients. We'll assess your specific situation in a free consultation.</div></div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">How much do your services cost? <span class="faq-arrow">▼</span></div>
-        <div class="faq-a"><div class="faq-a-inner">We believe in transparent, upfront pricing — no hidden fees or surprises. ITR filing starts from ₹499, GST return filing from ₹799/month, and GST registration from ₹1,499. Company registration starts from ₹5,999. We'll give you an exact quote before you commit to anything. Book a free consultation to discuss your needs.</div></div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">I received a tax notice. Can you help? <span class="faq-arrow">▼</span></div>
-        <div class="faq-a"><div class="faq-a-inner">Yes, absolutely. Tax notices can be stressful but are usually resolvable with the right response. We review the notice, identify the issue, prepare the correct response, and guide you through the resolution process. Most notices are resolved without penalty when handled properly and on time.</div></div>
-      </div>
-
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do I share my documents with you? Is it safe? <span class="faq-arrow">▼</span></div><div class="faq-a"><div class="faq-a-inner">You can share documents via WhatsApp or email — whatever is easiest for you. We handle all client data with strict confidentiality and never share it with any third party. Your financial information is completely safe with us.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What documents do I need for ITR filing? <span class="faq-arrow">▼</span></div><div class="faq-a"><div class="faq-a-inner">For most salaried individuals, you'll need your Form 16 (from employer), PAN card, Aadhaar card, bank account details, and any investment proof (80C, health insurance etc.). For business owners, we'll also need your profit & loss details. We'll guide you through exactly what's needed for your specific case.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is the last date for filing ITR this year? <span class="faq-arrow">▼</span></div><div class="faq-a"><div class="faq-a-inner">For individuals and salaried employees, the deadline is 31st July every year. For businesses requiring a tax audit, it's 31st October. We start working on your return 3–4 weeks before the deadline to ensure everything is filed on time without any penalty.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">My business turnover is low — do I still need GST registration? <span class="faq-arrow">▼</span></div><div class="faq-a"><div class="faq-a-inner">GST registration is mandatory if your turnover exceeds ₹40 lakhs (for goods) or ₹20 lakhs (for services) in a year. However, even if you're below the threshold, voluntary registration can benefit you — it allows you to claim input tax credit and makes your business look more professional to clients. We'll assess your specific situation in a free consultation.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How much do your services cost? <span class="faq-arrow">▼</span></div><div class="faq-a"><div class="faq-a-inner">We believe in transparent, upfront pricing — no hidden fees or surprises. ITR filing starts from ₹499, GST return filing from ₹799/month, and GST registration from ₹1,499. Company registration starts from ₹5,999. We'll give you an exact quote before you commit to anything. Book a free consultation to discuss your needs.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">I received a tax notice. Can you help? <span class="faq-arrow">▼</span></div><div class="faq-a"><div class="faq-a-inner">Yes, absolutely. Tax notices can be stressful but are usually resolvable with the right response. We review the notice, identify the issue, prepare the correct response, and guide you through the resolution process. Most notices are resolved without penalty when handled properly and on time.</div></div></div>
     </div>
   </div>
 </section>
 
-<!-- ===== CTA ===== -->
+<!-- CTA -->
 <section class="section cta">
   <div class="cta__img-bg"></div>
   <div class="cta__inner">
@@ -1072,13 +1064,13 @@
       </div>
     </div>
     <div class="cta__btns reveal reveal-delay-2">
-      <a href="book.html" class="btn-primary" style="white-space:nowrap">Book Free Consultation &#x2192;</a>
+      <button onclick="openBk('Tax &amp; Compliance')" class="btn-primary" style="white-space:nowrap">Book Free Consultation &#x2192;</button>
       <div class="cta__phone">or call: <a href="tel:+917842854466">+91 78428 54466</a></div>
     </div>
   </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 <footer class="footer">
   <div class="footer__inner">
     <div class="footer__top">
@@ -1091,7 +1083,7 @@
       </div>
       <div class="footer__col"><div class="footer__col-title">Insurance</div><ul><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life &amp; Term Insurance</a></li><li><a href="bike-insurance.html">Bike Insurance</a></li><li><a href="car-insurance.html">Car Insurance</a></li><li><a href="commercial-vehicle-insurance.html">Commercial Vehicles</a></li></ul></div>
       <div class="footer__col"><div class="footer__col-title">Finance &amp; Tax</div><ul><li><a href="loans.html">Personal Loans</a></li><li><a href="loans.html">Home Loans</a></li><li><a href="loans.html">Business Loans</a></li><li><a href="tax-services.html">ITR Filing</a></li><li><a href="tax-services.html">GST Services</a></li><li><a href="tax-services.html">Company Registration</a></li></ul></div>
-      <div class="footer__col"><div class="footer__col-title">Company</div><ul><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li><li><a href="book.html">Book Consultation</a></li><li><a href="contact.html#refer-earn">Refer &amp; Earn</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div>
+      <div class="footer__col"><div class="footer__col-title">Company</div><ul><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li><li><a href="#" onclick="openBk('Tax &amp; Compliance');return false;">Book Consultation</a></li><li><a href="contact.html#refer-earn">Refer &amp; Earn</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div>
     </div>
     <div class="footer__bottom">
       <span>© <span id="current-year"></span> Cover Credit Insurance Advisors. All rights reserved.</span>
@@ -1100,65 +1092,151 @@
   </div>
 </footer>
 
-<!-- SOS FAB -->
-<a href="sos-card.html" id="cc-sos-fab" aria-label="Generate free SOS card">
-  <span class="cc-fab-ic">🆘</span>
-  <span class="cc-fab-txt">Free SOS Card</span>
-</a>
-<style>
-#cc-sos-fab{position:fixed;bottom:10.5rem;right:1.5rem;z-index:888;display:inline-flex;align-items:center;gap:.45rem;background:linear-gradient(135deg,#b71c1c,#e53935,#ef6c00);color:#fff;text-decoration:none;padding:.58rem 1.1rem .58rem .85rem;border-radius:100px;font-family:'Outfit',system-ui,sans-serif;font-size:.74rem;font-weight:700;white-space:nowrap;box-shadow:0 6px 22px rgba(229,57,53,.4);opacity:0;transform:translateY(10px) scale(.92);animation:cc-fab-entry .5s cubic-bezier(.16,1,.3,1) .6s forwards;transition:transform .2s,box-shadow .2s}
-@keyframes cc-fab-entry{to{opacity:1;transform:none}}
-#cc-sos-fab:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(229,57,53,.55)}
-#cc-sos-fab::after{content:'';position:absolute;inset:-4px;border-radius:100px;border:2px solid rgba(229,57,53,.45);animation:cc-ring 2.6s ease-out infinite}
-@keyframes cc-ring{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.18);opacity:0}}
-.cc-fab-ic{font-size:.95rem;flex-shrink:0}.cc-fab-txt{font-size:.72rem}
-@media(max-width:600px){#cc-sos-fab{bottom:9rem;right:1rem}}
-</style>
-
 <script>
-/* Cursor */
-const cursor=document.getElementById('cursor'),cursorRing=document.getElementById('cursor-ring');
-let mouseX=0,mouseY=0,ringX=0,ringY=0;
-document.addEventListener('mousemove',e=>{mouseX=e.clientX;mouseY=e.clientY;cursor.style.left=mouseX+'px';cursor.style.top=mouseY+'px';});
+/* ── BOOKING POPUP ─────────────────────────────────────── */
+const API = window.location.hostname==='localhost'||window.location.hostname==='127.0.0.1'
+  ? 'http://localhost:5000/api' : 'https://api.covercredit.in/api';
+
+function openBk(service) {
+  document.getElementById('bk-overlay').classList.add('show');
+  document.body.style.overflow = 'hidden';
+  // Update header tag with specific service
+  if (service) {
+    document.querySelector('.bk-header-tag').textContent = 'Free Consultation — ' + service.replace(/&amp;/g,'&');
+  }
+  // Reset form
+  document.getElementById('bk-form-wrap').style.display = 'block';
+  document.getElementById('bk-success').classList.remove('show');
+  document.getElementById('bk-err').classList.remove('show');
+  document.querySelectorAll('.bk-fi').forEach(function(f){f.classList.remove('err');});
+  // Store service for submission
+  document.getElementById('bk-overlay').dataset.service = service || 'Tax & Compliance';
+  // Focus name field
+  setTimeout(function(){ document.getElementById('bk-name').focus(); }, 150);
+}
+
+function closeBk() {
+  document.getElementById('bk-overlay').classList.remove('show');
+  document.body.style.overflow = '';
+}
+
+document.getElementById('bk-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeBk();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeBk();
+});
+
+/* Enter key submits */
+document.querySelectorAll('.bk-fi').forEach(function(f) {
+  f.addEventListener('keydown', function(e) {
+    if (e.key === 'Enter' && f.tagName !== 'TEXTAREA' && f.tagName !== 'SELECT') submitBk();
+  });
+});
+
+async function submitBk() {
+  var name  = document.getElementById('bk-name').value.trim();
+  var phone = document.getElementById('bk-phone').value.trim();
+  var city  = document.getElementById('bk-city').value;
+  var notes = document.getElementById('bk-notes').value.trim();
+  var errEl = document.getElementById('bk-err');
+  var btn   = document.getElementById('bk-submit');
+  var txt   = document.getElementById('bk-btn-txt');
+  var svc   = document.getElementById('bk-overlay').dataset.service || 'Tax & Compliance';
+
+  /* clear errors */
+  errEl.classList.remove('show');
+  document.querySelectorAll('.bk-fi').forEach(function(f){f.classList.remove('err');});
+
+  /* validate */
+  var err = '';
+  if (!name)                                { document.getElementById('bk-name').classList.add('err');  err = 'Please enter your full name.'; }
+  else if (!phone || phone.replace(/\D/g,'').length < 10) { document.getElementById('bk-phone').classList.add('err'); err = 'Please enter a valid 10-digit phone number.'; }
+  else if (!city)                           { document.getElementById('bk-city').classList.add('err');  err = 'Please select your city.'; }
+
+  if (err) {
+    document.getElementById('bk-err-msg').textContent = err;
+    errEl.classList.add('show');
+    return;
+  }
+
+  btn.disabled = true;
+  txt.innerHTML = '<div class="bk-spinner"></div> Booking…';
+
+  try {
+    var res  = await fetch(API + '/book', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: name,
+        phone: phone,
+        email: '',
+        city: city,
+        department: svc,
+        message: notes,
+        source: 'tax-services-popup',
+        page: window.location.pathname,
+      }),
+    });
+    var data = await res.json();
+    if (data.success || res.ok) {
+      document.getElementById('bk-form-wrap').style.display = 'none';
+      document.getElementById('bk-success').classList.add('show');
+      var waMsg = encodeURIComponent('Hi Cover Credit, I just booked a free consultation on your website.\n\nName: ' + name + '\nPhone: ' + phone + '\nCity: ' + city + '\nService: ' + svc + (notes ? '\nNotes: ' + notes : ''));
+      document.getElementById('bk-success-wa').href = 'https://wa.me/917842854466?text=' + waMsg;
+      if (typeof gtag !== 'undefined') gtag('event', 'booking_submit', {event_category:'lead', event_label: svc});
+    } else {
+      document.getElementById('bk-err-msg').textContent = data.message || 'Something went wrong. Please try WhatsApp instead.';
+      errEl.classList.add('show');
+    }
+  } catch(e) {
+    document.getElementById('bk-err-msg').textContent = 'Could not connect. Please WhatsApp us at +91 78428 54466.';
+    errEl.classList.add('show');
+  } finally {
+    btn.disabled = false;
+    txt.textContent = 'Book Free Consultation →';
+  }
+}
+
+/* ── CURSOR ─────────────────────────────────────────────── */
+var cursor=document.getElementById('cursor'),cursorRing=document.getElementById('cursor-ring');
+var mouseX=0,mouseY=0,ringX=0,ringY=0;
+document.addEventListener('mousemove',function(e){mouseX=e.clientX;mouseY=e.clientY;cursor.style.left=mouseX+'px';cursor.style.top=mouseY+'px';});
 (function loop(){ringX+=(mouseX-ringX)*.12;ringY+=(mouseY-ringY)*.12;cursorRing.style.left=ringX+'px';cursorRing.style.top=ringY+'px';requestAnimationFrame(loop);})();
-document.querySelectorAll('a,button,.service-card,.why__item,.ins-card,.deadline-card,.review-card,.faq-item').forEach(el=>{el.addEventListener('mouseenter',()=>{cursor.classList.add('hovering');cursorRing.classList.add('hovering');});el.addEventListener('mouseleave',()=>{cursor.classList.remove('hovering');cursorRing.classList.remove('hovering');});});
+document.querySelectorAll('a,button,.service-card,.why__item,.deadline-card,.review-card,.faq-item').forEach(function(el){el.addEventListener('mouseenter',function(){cursor.classList.add('hovering');cursorRing.classList.add('hovering');});el.addEventListener('mouseleave',function(){cursor.classList.remove('hovering');cursorRing.classList.remove('hovering');});});
 
-/* Nav scroll */
-const nav=document.getElementById('nav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',window.scrollY>40),{passive:true});
+/* ── NAV SCROLL ─────────────────────────────────────────── */
+var nav=document.getElementById('nav');
+window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>40);},{passive:true});
 
-/* Hamburger */
-const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobile-menu');
-hamburger.addEventListener('click',()=>{hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';});
+/* ── HAMBURGER ──────────────────────────────────────────── */
+var hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobile-menu');
+hamburger.addEventListener('click',function(){hamburger.classList.toggle('open');mobileMenu.classList.toggle('open');document.body.style.overflow=mobileMenu.classList.contains('open')?'hidden':'';});
+function closeMobileMenu(){hamburger.classList.remove('open');mobileMenu.classList.remove('open');document.body.style.overflow='';}
 
-/* Hero slideshow */
-const slides=document.querySelectorAll('.hero__slide'),dotsContainer=document.getElementById('slide-dots'),labelEl=document.getElementById('slide-label'),labelText=document.getElementById('slide-label-text');
-let currentSlide=0;
-slides.forEach((_,i)=>{const dot=document.createElement('button');dot.className='slide-dot'+(i===0?' active':'');dot.setAttribute('aria-label','Slide '+(i+1));dot.addEventListener('click',()=>goToSlide(i));dotsContainer.appendChild(dot);});
+/* ── HERO SLIDESHOW ─────────────────────────────────────── */
+var slides=document.querySelectorAll('.hero__slide'),dotsContainer=document.getElementById('slide-dots'),labelEl=document.getElementById('slide-label'),labelText=document.getElementById('slide-label-text');
+var currentSlide=0;
+slides.forEach(function(_,i){var dot=document.createElement('button');dot.className='slide-dot'+(i===0?' active':'');dot.setAttribute('aria-label','Slide '+(i+1));dot.addEventListener('click',function(){goToSlide(i);});dotsContainer.appendChild(dot);});
 function goToSlide(idx){slides[currentSlide].classList.remove('active');dotsContainer.querySelectorAll('.slide-dot')[currentSlide].classList.remove('active');currentSlide=idx;slides[currentSlide].classList.add('active');dotsContainer.querySelectorAll('.slide-dot')[currentSlide].classList.add('active');labelText.textContent=slides[currentSlide].dataset.label||'';}
-setInterval(()=>goToSlide((currentSlide+1)%slides.length),3000);
-setTimeout(()=>labelEl.classList.add('show'),800);
+setInterval(function(){goToSlide((currentSlide+1)%slides.length);},3000);
+setTimeout(function(){labelEl.classList.add('show');},800);
 
-/* Reveal on scroll */
-const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target);}});},{threshold:0.1});
-document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+/* ── SCROLL REVEAL ──────────────────────────────────────── */
+var revealObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target);}});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(function(el){revealObs.observe(el);});
 
-/* Counters */
-function animateCounter(el,target,decimals){decimals=decimals||0;var start=0;(function step(ts){if(!start)start=ts;var p=Math.min((ts-start)/1800,1),eased=1-Math.pow(1-p,3),val=eased*target;el.textContent=decimals?val.toFixed(decimals):Math.floor(val);if(p<1)requestAnimationFrame(step);else el.textContent=decimals?target.toFixed(decimals):target;})(0);}
-const statsObs=new IntersectionObserver(entries=>{if(entries[0].isIntersecting){animateCounter(document.getElementById('stat1'),500);animateCounter(document.getElementById('stat2'),100);animateCounter(document.getElementById('stat3'),0);animateCounter(document.getElementById('stat4'),48);statsObs.disconnect();}},{threshold:0.3});
-const statsSection=document.querySelector('.stats');if(statsSection)statsObs.observe(statsSection);
+/* ── COUNTERS ───────────────────────────────────────────── */
+function animateCounter(el,target){var start=0;(function step(ts){if(!start)start=ts;var p=Math.min((ts-start)/1800,1),eased=1-Math.pow(1-p,3);el.textContent=Math.floor(eased*target);if(p<1)requestAnimationFrame(step);else el.textContent=target;})(0);}
+var statsObs=new IntersectionObserver(function(entries){if(entries[0].isIntersecting){animateCounter(document.getElementById('stat1'),500);animateCounter(document.getElementById('stat2'),100);animateCounter(document.getElementById('stat3'),0);animateCounter(document.getElementById('stat4'),48);statsObs.disconnect();}},{threshold:0.3});
+var statsSection=document.querySelector('.stats');if(statsSection)statsObs.observe(statsSection);
 
-/* Footer year */
-const yearEl=document.getElementById('current-year');if(yearEl)yearEl.textContent=new Date().getFullYear();
+/* ── FOOTER YEAR ────────────────────────────────────────── */
+document.getElementById('current-year').textContent=new Date().getFullYear();
 
-/* Partner ticker */
+/* ── PARTNER TICKER ─────────────────────────────────────── */
 (function(){
-  var SERVICES=[
-    {cat:'tax',name:'ITR Filing'},{cat:'tax',name:'Advance Tax'},{cat:'tax',name:'TDS Returns'},
-    {cat:'gst',name:'GST Returns'},{cat:'gst',name:'GST Registration'},{cat:'gst',name:'GST Reconciliation'},
-    {cat:'reg',name:'Pvt. Ltd. Registration'},{cat:'reg',name:'LLP Registration'},{cat:'reg',name:'Firm Registration'},
-    {cat:'tax',name:'Tax Audit'},{cat:'gst',name:'GSTR-9 Annual'},{cat:'reg',name:'Annual ROC Filings'},
-  ];
+  var SERVICES=[{cat:'tax',name:'ITR Filing'},{cat:'tax',name:'Advance Tax'},{cat:'tax',name:'TDS Returns'},{cat:'gst',name:'GST Returns'},{cat:'gst',name:'GST Registration'},{cat:'gst',name:'GST Reconciliation'},{cat:'reg',name:'Pvt. Ltd. Registration'},{cat:'reg',name:'LLP Registration'},{cat:'reg',name:'Firm Registration'},{cat:'tax',name:'Tax Audit'},{cat:'gst',name:'GSTR-9 Annual'},{cat:'reg',name:'Annual ROC Filings'}];
   var CAT={tax:{label:'📄 Tax',cls:'ct-pill--tax'},gst:{label:'🧾 GST',cls:'ct-pill--gst'},reg:{label:'🏢 Registration',cls:'ct-pill--reg'}};
   function makePill(cat){var d=document.createElement('div');d.className='ct-pill '+CAT[cat].cls;var s=document.createElement('span');s.textContent=CAT[cat].label;d.appendChild(s);return d;}
   function makeItem(p){var d=document.createElement('div');d.className='ct-item';var n=document.createElement('span');n.className='ct-item-name';n.textContent=p.name;d.appendChild(n);return d;}
@@ -1167,83 +1245,47 @@ const yearEl=document.getElementById('current-year');if(yearEl)yearEl.textConten
   if(track){track.appendChild(buildSet());track.appendChild(buildSet());}
 })();
 
-/* Live Activity Feed */
-var activities=[
-  '<strong>Ravi K. from Hyderabad</strong> just filed his ITR — penalty saved ₹5,000 ✓',
-  '<strong>Suresh M. from Vijayawada</strong> got GST Registration in 4 days ✓',
-  '<strong>Priya L.</strong> completed Pvt. Ltd. company registration ✓',
-  '<strong>Arjun K. from Guntur</strong> saved ₹8,000 in tax deductions ✓',
-  '<strong>Nandini P. from Tirupati</strong> resolved IT notice — case closed ✓',
-  '<strong>Venkat R. from Nellore</strong> cleared overdue ROC filings ✓',
-];
+/* ── LIVE ACTIVITY ──────────────────────────────────────── */
+var activities=['<strong>Ravi K. from Hyderabad</strong> just filed his ITR — penalty saved ₹5,000 ✓','<strong>Suresh M. from Vijayawada</strong> got GST Registration in 4 days ✓','<strong>Priya L.</strong> completed Pvt. Ltd. company registration ✓','<strong>Arjun K. from Guntur</strong> saved ₹8,000 in tax deductions ✓','<strong>Nandini P. from Tirupati</strong> resolved IT notice — case closed ✓','<strong>Venkat R. from Nellore</strong> cleared overdue ROC filings ✓'];
 var actIdx=0,actEl=document.getElementById('activity-text');
-if(actEl){setInterval(function(){actIdx=(actIdx+1)%activities.length;actEl.style.opacity='0';setTimeout(function(){actEl.innerHTML=activities[actIdx];actEl.style.opacity='1';},300);},4000);actEl.style.transition='opacity .3s';}
+if(actEl){actEl.style.transition='opacity .3s';setInterval(function(){actIdx=(actIdx+1)%activities.length;actEl.style.opacity='0';setTimeout(function(){actEl.innerHTML=activities[actIdx];actEl.style.opacity='1';},300);},4000);}
 
-/* Penalty Calculator */
+/* ── PENALTY CALCULATOR ─────────────────────────────────── */
 function calcPenalty(){
   var type=document.getElementById('calc-type').value;
-  var daysField=document.getElementById('days-field');
-  var taxField=document.getElementById('tax-field');
-  var result=document.getElementById('calc-result');
-  var amountEl=document.getElementById('calc-amount');
-  var noteEl=document.getElementById('calc-note');
+  var daysField=document.getElementById('days-field'),taxField=document.getElementById('tax-field'),result=document.getElementById('calc-result');
   if(!type){daysField.style.display='none';taxField.style.display='none';result.classList.remove('show');return;}
-  daysField.style.display='block';
-  taxField.style.display=(type==='gst-3b')?'block':'none';
+  daysField.style.display='block';taxField.style.display=(type==='gst-3b')?'block':'none';
   var days=parseInt(document.getElementById('calc-days').value)||0;
   if(days<=0){result.classList.remove('show');return;}
   var amount=0,note='';
-  if(type==='itr-sal'){
-    amount=days>0?5000:0;
-    note='Flat penalty ₹5,000 u/s 234F for late filing. If income <₹5L, penalty is ₹1,000. Plus 1% interest/month on any outstanding tax u/s 234A.';
-  } else if(type==='gst-3b'){
-    var tax=parseInt(document.getElementById('calc-tax').value)||0;
-    var interest=Math.round(tax*0.18*(days/365));
-    var latefee=Math.min(days*50,5000);
-    amount=interest+latefee;
-    note='Late fee ₹50/day (max ₹5,000) + 18% p.a. interest on ₹'+tax.toLocaleString('en-IN')+' outstanding tax for '+days+' days.';
-  } else if(type==='gst-1'){
-    amount=Math.min(days*50,5000);
-    note='Late fee ₹50/day for regular returns, ₹20/day for nil returns (max ₹5,000 per return period).';
-  } else if(type==='audit'){
-    amount=Math.min(Math.round(days*500),150000);
-    note='Penalty u/s 271B: 0.5% of turnover per day OR ₹1,50,000 whichever is lower. Estimate based on ₹1.5L cap.';
-  } else if(type==='roc'){
-    amount=days*100;
-    note='₹100 additional fee per day of delay beyond the due date. Prolonged delay may lead to company strike-off.';
-  }
-  amountEl.textContent='₹'+amount.toLocaleString('en-IN');
-  noteEl.textContent=note;
+  if(type==='itr-sal'){amount=5000;note='Flat penalty ₹5,000 u/s 234F. If income <₹5L, penalty is ₹1,000. Plus 1%/month interest on outstanding tax u/s 234A.';}
+  else if(type==='gst-3b'){var tax=parseInt(document.getElementById('calc-tax').value)||0;var interest=Math.round(tax*0.18*(days/365));var latefee=Math.min(days*50,5000);amount=interest+latefee;note='Late fee ₹50/day (max ₹5,000) + 18% p.a. interest on ₹'+tax.toLocaleString('en-IN')+' outstanding tax for '+days+' days.';}
+  else if(type==='gst-1'){amount=Math.min(days*50,5000);note='₹50/day late fee (₹20/day nil returns), max ₹5,000 per return.';}
+  else if(type==='audit'){amount=Math.min(Math.round(days*500),150000);note='Penalty u/s 271B: 0.5% turnover/day OR ₹1.5L — whichever is lower.';}
+  else if(type==='roc'){amount=days*100;note='₹100/day additional fee. Prolonged delay may lead to company strike-off.';}
+  document.getElementById('calc-amount').textContent='₹'+amount.toLocaleString('en-IN');
+  document.getElementById('calc-note').textContent=note;
   result.classList.add('show');
 }
 
-/* Deadline countdowns */
+/* ── DEADLINE COUNTDOWNS ────────────────────────────────── */
 (function(){
-  var now=new Date();
-  var year=now.getFullYear();
-  function daysTo(month,day){
-    var d=new Date(year,month-1,day);
-    if(d<now)d=new Date(year+1,month-1,day);
-    return Math.ceil((d-now)/(1000*60*60*24));
-  }
-  var itrDays=daysTo(7,31);
-  var auditDays=daysTo(9,30);
-  var itrEl=document.getElementById('itr-days');
-  var auditEl=document.getElementById('audit-days');
-  if(itrEl)itrEl.textContent=itrDays+' days until 31 July deadline';
-  if(auditEl)auditEl.textContent=auditDays+' days until 30 Sep deadline';
+  var now=new Date(),year=now.getFullYear();
+  function daysTo(m,d){var dt=new Date(year,m-1,d);if(dt<now)dt=new Date(year+1,m-1,d);return Math.ceil((dt-now)/86400000);}
+  var itrEl=document.getElementById('itr-days'),auditEl=document.getElementById('audit-days');
+  if(itrEl)itrEl.textContent=daysTo(7,31)+' days until 31 July deadline';
+  if(auditEl)auditEl.textContent=daysTo(9,30)+' days until 30 Sep deadline';
 })();
 
-/* FAQ accordion */
+/* ── FAQ ─────────────────────────────────────────────────── */
 function toggleFaq(el){
-  var item=el.parentElement;
-  var answer=item.querySelector('.faq-a');
-  var isOpen=item.classList.contains('open');
+  var item=el.parentElement,answer=item.querySelector('.faq-a'),isOpen=item.classList.contains('open');
   document.querySelectorAll('.faq-item.open').forEach(function(fi){fi.classList.remove('open');fi.querySelector('.faq-a').style.maxHeight='0';});
   if(!isOpen){item.classList.add('open');answer.style.maxHeight=answer.scrollHeight+'px';}
 }
 
-/* Analytics */
+/* ── ANALYTICS ──────────────────────────────────────────── */
 (function(){
   var PAGE_NAME='tax-services';
   var BACKEND=(window.location.hostname==='localhost'||window.location.hostname==='127.0.0.1')?'http://localhost:5000/api':'https://api.covercredit.in/api';
@@ -1259,8 +1301,7 @@ function toggleFaq(el){
   if(sessionStorage.getItem(key))return;
   sessionStorage.setItem(key,'1');
   var isMobile=/iphone|ipod|android.*mobile/.test(ua);
-  var device=isMobile?'mobile':'desktop';
-  try{fetch(BACKEND+'/track',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({page:PAGE_NAME,path:window.location.pathname,source,device,utmMedium:utmMed,utmCampaign:utmCamp,referrer:document.referrer||''}),keepalive:true}).catch(function(){});}catch(e){}
+  try{fetch(BACKEND+'/track',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({page:PAGE_NAME,path:window.location.pathname,source:source,device:isMobile?'mobile':'desktop',utmMedium:utmMed,utmCampaign:utmCamp,referrer:document.referrer||''}),keepalive:true}).catch(function(){});}catch(e){}
 })();
 </script>
 </body>
