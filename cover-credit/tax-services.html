@@ -1164,7 +1164,7 @@ async function submitBk() {
   txt.innerHTML = '<div class="bk-spinner"></div> Booking…';
 
   try {
-    var res  = await fetch(API + '/book', {
+    var res  = await fetch(API + '/tax-enquiry', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
