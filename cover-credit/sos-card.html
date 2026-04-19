@@ -16,60 +16,25 @@
 <meta name="twitter:description" content="60 seconds. Any insurer. Know exactly what to do when it happens."/>
 <link rel="icon" type="image/x-icon" href="/favicon.ico"/>
 
-<!-- FAQ + HowTo Schema -->
 <script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@graph":[
-    {
-      "@type":"FAQPage",
-      "mainEntity":[
-        {"@type":"Question","name":"What should I do immediately after a vehicle accident in India?","acceptedAnswer":{"@type":"Answer","text":"Call your insurer's claims helpline within 24 hours, photograph all damage before moving the vehicle, file an FIR if third party is involved or damage exceeds ₹1 lakh, and do not admit fault at the scene."}},
-        {"@type":"Question","name":"Why do vehicle insurance claims get rejected in India?","acceptedAnswer":{"@type":"Answer","text":"Most rejections happen due to procedural errors: moving the vehicle before surveyor inspection, not filing FIR within 24 hours, using non-network garages, or missing the 24-hour claim registration window."}},
-        {"@type":"Question","name":"What is an Insurance SOS Card?","acceptedAnswer":{"@type":"Answer","text":"An Insurance SOS Card is a printable reference card containing your policy number, insurer helpline, active covers, and step-by-step emergency instructions. It tells you or your driver exactly what to do in the first 60 minutes after an accident."}},
-        {"@type":"Question","name":"How do I make a cashless health insurance claim?","acceptedAnswer":{"@type":"Answer","text":"Go to a network hospital, show your insurance card and Aadhaar at admission, request cashless claim processing. The hospital sends a pre-authorisation request to your insurer which is usually approved in 2–4 hours. You pay nothing upfront at network hospitals."}}
-      ]
-    },
-    {
-      "@type":"HowTo",
-      "name":"What to do after a vehicle accident in India",
-      "step":[
-        {"@type":"HowToStep","name":"Call insurer helpline immediately","text":"Call your insurer's 24x7 claims helpline within the first hour. Give your policy number and location."},
-        {"@type":"HowToStep","name":"Do not move the vehicle","text":"Take 20+ photos of all damage, road position, and surroundings before anything is moved. The surveyor must see the scene as-is."},
-        {"@type":"HowToStep","name":"File FIR at nearest police station","text":"Mandatory for claims above ₹1 lakh, third-party damage, or theft. File within 24 hours."},
-        {"@type":"HowToStep","name":"Note witnesses","text":"Get name and phone number of anyone who saw the accident. Vital for disputed claims."},
-        {"@type":"HowToStep","name":"Keep every bill","text":"Towing, medical, lodging — submit all receipts. Use cashless garage network; do not pay garages directly."}
-      ]
-    }
-  ]
-}
+{"@context":"https://schema.org","@graph":[{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What should I do immediately after a vehicle accident in India?","acceptedAnswer":{"@type":"Answer","text":"Call your insurer's claims helpline within 24 hours, photograph all damage before moving the vehicle, file an FIR if third party is involved or damage exceeds ₹1 lakh, and do not admit fault at the scene."}},{"@type":"Question","name":"Why do vehicle insurance claims get rejected in India?","acceptedAnswer":{"@type":"Answer","text":"Most rejections happen due to procedural errors: moving the vehicle before surveyor inspection, not filing FIR within 24 hours, using non-network garages, or missing the 24-hour claim registration window."}},{"@type":"Question","name":"What is an Insurance SOS Card?","acceptedAnswer":{"@type":"Answer","text":"An Insurance SOS Card is a printable reference card containing your policy number, insurer helpline, active covers, and step-by-step emergency instructions. It tells you or your driver exactly what to do in the first 60 minutes after an accident."}},{"@type":"Question","name":"How do I make a cashless health insurance claim?","acceptedAnswer":{"@type":"Answer","text":"Go to a network hospital, show your insurance card and Aadhaar at admission, request cashless claim processing. The hospital sends a pre-authorisation request to your insurer which is usually approved in 2–4 hours. You pay nothing upfront at network hospitals."}}]},{"@type":"HowTo","name":"What to do after a vehicle accident in India","step":[{"@type":"HowToStep","name":"Call insurer helpline immediately","text":"Call your insurer's 24x7 claims helpline within the first hour. Give your policy number and location."},{"@type":"HowToStep","name":"Do not move the vehicle","text":"Take 20+ photos of all damage, road position, and surroundings before anything is moved."},{"@type":"HowToStep","name":"File FIR at nearest police station","text":"Mandatory for claims above ₹1 lakh, third-party damage, or theft. File within 24 hours."},{"@type":"HowToStep","name":"Note witnesses","text":"Get name and phone number of anyone who saw the accident."},{"@type":"HowToStep","name":"Keep every bill","text":"Towing, medical, lodging — submit all receipts. Use cashless garage network only."}]}]}
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-377PNCFQLN"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-377PNCFQLN');</script>
-
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet"/>
 
 <style>
-/* ═══════════════════════════════════════════
-   RESET & ROOT
-═══════════════════════════════════════════ */
+/* ═══ RESET ═══ */
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-:root{
-  --ac:#e65100;--ac2:#ff8f00;--ink:#06101f;--i2:#0b1a30;
-  --line:rgba(255,255,255,.08);--fog:rgba(255,255,255,.06);
-  --E:cubic-bezier(.16,1,.3,1);--nh:72px;
-}
+:root{--ac:#e65100;--ac2:#ff8f00;--ink:#06101f;--i2:#0b1a30;--line:rgba(255,255,255,.08);--fog:rgba(255,255,255,.06);--E:cubic-bezier(.16,1,.3,1);--nh:72px;}
 html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',system-ui,sans-serif;background:var(--ink);color:#fff;overflow-x:hidden;cursor:none;}
 a{text-decoration:none;color:inherit;}
 
-/* ═══════════════════════════════════════════
-   CUSTOM CURSOR
-═══════════════════════════════════════════ */
+/* ═══ CURSOR ═══ */
 #cur,#cr{position:fixed;top:0;left:0;pointer-events:none;border-radius:50%;z-index:9999;transform:translate(-50%,-50%);}
 #cur{width:10px;height:10px;background:var(--ac);}
 #cr{width:38px;height:38px;border:1.5px solid rgba(230,81,0,.5);z-index:9998;transition:width .2s,height .2s,opacity .2s;}
@@ -77,9 +42,7 @@ body.hov #cur{width:4px;height:4px;}
 body.hov #cr{width:54px;height:54px;opacity:.18;}
 @media(max-width:768px){body{cursor:auto;}#cur,#cr{display:none;}}
 
-/* ═══════════════════════════════════════════
-   TICKER
-═══════════════════════════════════════════ */
+/* ═══ TICKER ═══ */
 #ticker{position:fixed;top:0;left:0;right:0;z-index:1100;height:44px;background:#020c1f;display:flex;align-items:center;justify-content:center;gap:2rem;overflow:hidden;}
 #ticker::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:linear-gradient(90deg,transparent,#f5a623,#f5c842,#f5a623,transparent);background-size:200% 100%;animation:shimmer 4s linear infinite;}
 @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
@@ -87,10 +50,9 @@ body.hov #cr{width:54px;height:54px;opacity:.18;}
 .tk-dot{width:5px;height:5px;border-radius:50%;background:#4ade80;box-shadow:0 0 6px #4ade80;animation:blink 2s infinite;}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
 #cards-counter{display:inline-flex;align-items:center;gap:.4rem;padding:.22rem .9rem;border-radius:100px;font-size:.58rem;font-weight:700;color:#4ade80;border:1px solid rgba(74,222,128,.22);background:rgba(74,222,128,.07);}
+@media(max-width:768px){.tk-pill:not(:first-child){display:none;}}
 
-/* ═══════════════════════════════════════════
-   NAV
-═══════════════════════════════════════════ */
+/* ═══ NAV ═══ */
 .nav{position:fixed;top:44px;left:0;right:0;z-index:900;height:var(--nh);padding:0 5%;transition:background .4s;}
 .nav.sc{background:rgba(6,16,31,.97);backdrop-filter:blur(24px);box-shadow:0 1px 0 var(--line);}
 .ni{max-width:1300px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;}
@@ -111,20 +73,16 @@ body.hov #cr{width:54px;height:54px;opacity:.18;}
 .mob.op{transform:translateX(0);}
 .mob a{padding:.9rem 0;font-size:1rem;font-weight:500;color:rgba(255,255,255,.72);border-bottom:1px solid var(--line);}
 .mc{margin-top:1.8rem;background:#f5a623;color:#06101f!important;text-align:center;border-radius:12px;padding:.9rem!important;font-weight:700!important;border:none!important;}
-@media(max-width:768px){.nl{display:none;}.burger{display:flex;}.tk-pill:not(:first-child){display:none;}}
+@media(max-width:768px){.nl{display:none;}.burger{display:flex;}}
 
-/* ═══════════════════════════════════════════
-   FAB
-═══════════════════════════════════════════ */
+/* ═══ FAB ═══ */
 .fab{position:fixed;bottom:1.8rem;right:1.8rem;z-index:400;display:flex;flex-direction:column;gap:.65rem;align-items:flex-end;}
 .fab a{display:flex;align-items:center;gap:.48rem;padding:.65rem 1rem;border-radius:100px;font-size:.76rem;font-weight:600;cursor:pointer;transition:transform .18s;}
 .fab a:hover{transform:translateY(-2px);}
 .fwa{background:#25d366;color:#fff;box-shadow:0 6px 20px rgba(37,211,102,.35);}
 .fbk{background:var(--ac);color:#fff;box-shadow:0 6px 20px rgba(230,81,0,.35);}
 
-/* ═══════════════════════════════════════════
-   HERO
-═══════════════════════════════════════════ */
+/* ═══ HERO ═══ */
 .hero{position:relative;padding:calc(44px + var(--nh) + 4rem) 5% 3.5rem;overflow:hidden;}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 70% at 50% 30%,#000,transparent);}
 .hero-glow{position:absolute;top:0;left:50%;transform:translateX(-50%);width:900px;height:500px;background:radial-gradient(ellipse at 50% 0%,rgba(230,81,0,.18) 0%,transparent 70%);pointer-events:none;}
@@ -153,9 +111,7 @@ body.hov #cr{width:54px;height:54px;opacity:.18;}
 .hero-note{font-size:.65rem;color:rgba(255,255,255,.22);letter-spacing:.5px;}
 @media(max-width:768px){.scenario-strip{grid-template-columns:1fr;}.hero-stats{flex-direction:column;gap:.5rem;}.hstat-div{display:none;}}
 
-/* ═══════════════════════════════════════════
-   TEASER STRIP
-═══════════════════════════════════════════ */
+/* ═══ TEASER STRIP ═══ */
 .teaser-strip{background:linear-gradient(135deg,rgba(11,26,48,.98),rgba(16,31,56,.98));border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07);padding:1.4rem 5%;}
 .teaser-in{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;}
 .ts-left{flex:1;min-width:240px;}
@@ -166,11 +122,66 @@ body.hov #cr{width:54px;height:54px;opacity:.18;}
 .ts-stat{text-align:center;}
 .ts-stat strong{display:block;font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;background:linear-gradient(120deg,var(--ac),var(--ac2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .ts-stat span{display:block;font-size:.55rem;color:rgba(255,255,255,.28);text-transform:uppercase;letter-spacing:.8px;line-height:1.5;margin-top:.1rem;}
+@media(max-width:768px){.teaser-in{flex-direction:column;}.ts-stats{gap:1rem;}}
 
-/* ═══════════════════════════════════════════
-   TESTIMONIALS
-═══════════════════════════════════════════ */
-.testi-band{background:var(--i2);border-top:1px solid var(--line);padding:3.5rem 5%;}
+/* ═══ TRUTH SECTION ═══ */
+.truth-sec{padding:5rem 5%;background:var(--i2);border-top:1px solid var(--line);}
+.truth-in{max-width:1160px;margin:0 auto;}
+.sec-eyebrow{font-size:.6rem;font-weight:700;color:var(--ac2);text-transform:uppercase;letter-spacing:2.5px;display:flex;align-items:center;gap:.5rem;margin-bottom:.7rem;}
+.sec-eyebrow::before{content:'';width:18px;height:1.5px;background:var(--ac2);}
+.sec-head{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.6rem);font-weight:700;line-height:1.12;margin-bottom:.85rem;}
+.sec-head em{font-style:italic;color:var(--ac2);}
+.truth-lead{font-size:.9rem;color:rgba(255,255,255,.38);line-height:1.85;max-width:620px;margin-bottom:2.8rem;}
+.truth-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border-radius:18px;overflow:hidden;}
+.tc{background:var(--i2);padding:2rem 1.8rem;position:relative;}
+.tc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.tc.red::before{background:linear-gradient(90deg,#c62828,#ff5252);}
+.tc.amber::before{background:linear-gradient(90deg,#e65100,#ffb300);}
+.tc.green::before{background:linear-gradient(90deg,#1b5e20,#00e676);}
+.tc-num{font-family:'Bebas Neue',sans-serif;font-size:3.2rem;letter-spacing:1px;line-height:1;margin-bottom:.4rem;}
+.tc.red .tc-num{color:#ff5252;}
+.tc.amber .tc-num{color:#ffb300;}
+.tc.green .tc-num{color:#00e676;}
+.tc-title{font-size:.85rem;font-weight:700;color:#fff;margin-bottom:.5rem;}
+.tc-body{font-size:.75rem;color:rgba(255,255,255,.36);line-height:1.78;}
+.tc-body strong{color:rgba(255,255,255,.68);}
+@media(max-width:860px){.truth-cards{grid-template-columns:1fr;}}
+
+/* ═══ STORY / MISTAKE SECTION ═══ */
+.story-sec{padding:5rem 5%;background:var(--ink);}
+.story-in{max-width:1160px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+.story-text p{font-size:.88rem;color:rgba(255,255,255,.4);line-height:1.9;margin-bottom:1.1rem;}
+.story-text p strong{color:rgba(255,255,255,.78);}
+.pull-quote{border-left:3px solid var(--ac2);padding-left:1.2rem;margin:1.8rem 0;}
+.pull-quote p{font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;color:rgba(255,255,255,.6);line-height:1.6;margin:0;}
+.mistake-cards{display:flex;flex-direction:column;gap:1rem;}
+.mc-card{background:var(--i2);border:1px solid var(--line);border-radius:14px;padding:1.3rem 1.4rem;position:relative;overflow:hidden;}
+.mc-card::after{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;}
+.mc-card.m1::after{background:#ff5252;}.mc-card.m2::after{background:#ffb300;}
+.mc-card.m3::after{background:#ff7043;}.mc-card.m4::after{background:#e040fb;}
+.mc-num{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:rgba(255,255,255,.05);line-height:1;position:absolute;top:.6rem;right:1rem;}
+.mc-title{font-size:.82rem;font-weight:700;color:#fff;margin-bottom:.3rem;}
+.mc-body{font-size:.72rem;color:rgba(255,255,255,.34);line-height:1.68;}
+.mc-fix{display:inline-flex;align-items:center;gap:.28rem;font-size:.6rem;font-weight:700;color:#00e676;margin-top:.5rem;}
+.mc-fix::before{content:'✓';}
+@media(max-width:860px){.story-in{grid-template-columns:1fr;gap:2.5rem;}}
+
+/* ═══ SCENARIOS ═══ */
+.scen-sec{padding:5rem 5%;background:var(--i2);border-top:1px solid var(--line);}
+.scen-in{max-width:1160px;margin:0 auto;}
+.scen-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:2.5rem;}
+.scen-card{background:var(--ink);border:1px solid var(--line);border-radius:16px;padding:1.6rem 1.4rem;transition:border-color .2s,transform .2s;}
+.scen-card:hover{border-color:rgba(230,81,0,.25);transform:translateY(-3px);}
+.scen-ic{font-size:2rem;margin-bottom:.85rem;}
+.scen-time{font-size:.52rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ac2);margin-bottom:.4rem;}
+.scen-sit{font-size:.9rem;font-weight:700;color:#fff;line-height:1.35;margin-bottom:.65rem;}
+.scen-q{font-size:.72rem;color:rgba(255,255,255,.3);line-height:1.68;}
+.scen-q strong{color:rgba(255,255,255,.58);}
+.scen-ans{display:inline-flex;align-items:center;gap:.28rem;font-size:.58rem;font-weight:700;margin-top:.85rem;padding:.22rem .65rem;border-radius:100px;background:rgba(230,81,0,.08);border:1px solid rgba(230,81,0,.2);color:var(--ac2);}
+@media(max-width:860px){.scen-grid{grid-template-columns:1fr;}}
+
+/* ═══ TESTIMONIALS ═══ */
+.testi-band{background:var(--i2);border-top:1px solid var(--line);padding:4rem 5%;}
 .testi-band-in{max-width:1200px;margin:0 auto;}
 .testi-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
 .tcard2{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:1.3rem;}
@@ -181,30 +192,25 @@ body.hov #cr{width:54px;height:54px;opacity:.18;}
 .tcard2-av{width:34px;height:34px;border-radius:50%;background:rgba(230,81,0,.1);border:2px solid rgba(230,81,0,.2);display:flex;align-items:center;justify-content:center;font-size:.95rem;}
 .tcard2-name{font-size:.74rem;font-weight:700;}
 .tcard2-role{font-size:.6rem;color:rgba(255,255,255,.28);}
-@media(max-width:768px){.testi-grid-3{grid-template-columns:1fr;}.teaser-in{flex-direction:column;}.ts-stats{gap:1rem;}}
+@media(max-width:768px){.testi-grid-3{grid-template-columns:1fr;}}
 
-/* ═══════════════════════════════════════════
-   MAIN LAYOUT
-═══════════════════════════════════════════ */
+/* ═══ MAIN LAYOUT ═══ */
 .main{max-width:1200px;margin:0 auto;padding:2rem 5% 6rem;display:grid;grid-template-columns:500px 1fr;gap:2.5rem;align-items:start;}
 @media(max-width:1024px){.main{grid-template-columns:1fr;gap:2rem;}}
 
-/* ═══════════════════════════════════════════
-   FORM PANEL
-═══════════════════════════════════════════ */
+/* ═══ FORM PANEL ═══ */
 .form-panel{position:sticky;top:calc(44px + var(--nh) + 1.5rem);}
 @media(max-width:1024px){.form-panel{position:static;}}
 .fp-card{background:var(--i2);border:1px solid var(--line);border-radius:22px;overflow:hidden;}
 .fp-top{padding:1.6rem 1.8rem 0;}
 .fp-title{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;margin-bottom:.25rem;}
 .fp-sub{font-size:.74rem;color:rgba(255,255,255,.32);margin-bottom:1.2rem;}
-
-/* MODE RADIO TOGGLE */
+/* mode toggle */
 .mode-toggle{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1.4rem;}
 .mode-opt{display:flex;align-items:center;gap:.6rem;padding:.65rem .9rem;border-radius:12px;border:1.5px solid var(--line);cursor:pointer;transition:all .2s var(--E);background:var(--fog);}
 .mode-opt:hover{border-color:rgba(230,81,0,.3);}
 .mode-opt.on{border-color:var(--ac);background:rgba(230,81,0,.1);}
-.mode-radio{width:16px;height:16px;border-radius:50%;border:1.5px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .2s;}
+.mode-radio{width:16px;height:16px;border-radius:50%;border:1.5px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
 .mode-opt.on .mode-radio{border-color:var(--ac2);}
 .mode-radio-dot{width:8px;height:8px;border-radius:50%;background:var(--ac2);display:none;}
 .mode-opt.on .mode-radio-dot{display:block;}
@@ -212,13 +218,11 @@ body.hov #cr{width:54px;height:54px;opacity:.18;}
 .mode-sub-txt{font-size:.58rem;color:rgba(255,255,255,.3);margin-top:1px;}
 .mode-opt.on .mode-label-txt{color:#ffcc80;}
 .mode-opt.on .mode-sub-txt{color:rgba(255,200,100,.5);}
-
-/* GLOBAL FIELDS (name/phone - shared in multi mode) */
+/* global fields */
 .global-fields{margin-bottom:1rem;}
 .mode-hint-box{background:rgba(37,211,102,.07);border:1px solid rgba(37,211,102,.18);border-radius:10px;padding:.55rem .85rem;font-size:.7rem;color:rgba(74,222,128,.85);line-height:1.6;margin-bottom:1rem;display:none;}
 .mode-hint-box.show{display:block;}
-
-/* Policy type tabs */
+/* type tabs */
 .pt-label{font-size:.6rem;font-weight:700;color:rgba(255,255,255,.25);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.65rem;}
 .pt-tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:.38rem;margin-bottom:1.4rem;}
 .pt{display:flex;flex-direction:column;align-items:center;gap:.28rem;padding:.6rem .3rem;border-radius:12px;border:1.5px solid var(--line);cursor:pointer;transition:all .22s var(--E);background:var(--fog);}
@@ -227,8 +231,7 @@ body.hov #cr{width:54px;height:54px;opacity:.18;}
 .pt-ic{font-size:1.3rem;line-height:1;}
 .pt-lbl{font-size:.55rem;font-weight:700;color:rgba(255,255,255,.38);text-transform:uppercase;letter-spacing:.5px;text-align:center;line-height:1.3;}
 .pt.on .pt-lbl{color:var(--ac2);}
-
-/* Form fields */
+/* fields */
 .fp-body{padding:0 1.8rem 1.8rem;}
 .field-row{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-bottom:1rem;}
 .fl{font-size:.6rem;font-weight:700;color:rgba(255,255,255,.28);text-transform:uppercase;letter-spacing:1px;display:block;margin-bottom:.38rem;}
@@ -241,16 +244,14 @@ body.hov #cr{width:54px;height:54px;opacity:.18;}
 .fi-sel option{background:#0b1a30;color:#fff;}
 .hl-note{font-size:.58rem;color:rgba(255,200,80,.6);margin-top:.3rem;display:none;}
 .hl-note.show{display:block;}
-
-/* Covers */
+/* covers */
 .covers-label{font-size:.6rem;font-weight:700;color:rgba(255,255,255,.28);text-transform:uppercase;letter-spacing:1px;margin-bottom:.55rem;display:block;}
 .covers-pills{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem;}
 .cp-tog{display:inline-flex;align-items:center;gap:.3rem;padding:.3rem .78rem;border-radius:100px;border:1.5px solid var(--line);font-size:.68rem;font-weight:600;color:rgba(255,255,255,.35);cursor:pointer;transition:all .2s;user-select:none;}
 .cp-tog.yes{background:rgba(74,222,128,.1);border-color:rgba(74,222,128,.35);color:#4ade80;}
 .cp-tog.no{background:rgba(248,113,113,.08);border-color:rgba(248,113,113,.28);color:#f87171;}
 .f-div{height:1px;background:var(--line);margin:1.2rem 0;}
-
-/* POLICY TRAY (multi mode) */
+/* tray */
 .policy-tray{display:none;background:rgba(37,211,102,.05);border:1px solid rgba(37,211,102,.15);border-radius:14px;padding:1rem 1.1rem;margin-bottom:1rem;}
 .policy-tray.show{display:block;}
 .tray-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:.65rem;}
@@ -266,13 +267,10 @@ body.hov #cr{width:54px;height:54px;opacity:.18;}
 .tray-empty{font-size:.68rem;color:rgba(255,255,255,.2);font-style:italic;}
 .pill-x{cursor:pointer;opacity:.6;font-size:.6rem;transition:opacity .15s;}
 .pill-x:hover{opacity:1;}
-
-/* ADD TO BUNDLE BUTTON */
+/* buttons */
 .add-bundle-btn{width:100%;padding:.75rem;background:rgba(74,222,128,.1);border:1.5px solid rgba(74,222,128,.25);border-radius:12px;font-size:.85rem;font-weight:700;color:#4ade80;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;display:none;margin-bottom:.75rem;}
 .add-bundle-btn:hover{background:rgba(74,222,128,.18);transform:translateY(-1px);}
 .add-bundle-btn.show{display:block;}
-
-/* GENERATE BUTTON */
 .gen-btn{width:100%;padding:1.05rem;background:linear-gradient(135deg,#e65100,#ff8f00);border:none;border-radius:13px;font-size:.95rem;font-weight:700;color:#fff;cursor:pointer;font-family:'DM Sans',sans-serif;transition:transform .18s,box-shadow .22s;display:flex;align-items:center;justify-content:center;gap:.55rem;margin-top:.5rem;position:relative;overflow:hidden;}
 .gen-btn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);opacity:0;transition:opacity .2s;}
 .gen-btn:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(230,81,0,.45);}
@@ -281,27 +279,19 @@ body.hov #cr{width:54px;height:54px;opacity:.18;}
 .gen-btn.multi-mode{background:linear-gradient(135deg,#1565c0,#1976d2);}
 .gen-btn.multi-mode:hover{box-shadow:0 12px 36px rgba(21,101,192,.45);}
 
-/* ═══════════════════════════════════════════
-   PREVIEW PANEL
-═══════════════════════════════════════════ */
-.pp-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:520px;border:1.5px dashed rgba(255,255,255,.1);border-radius:22px;text-align:center;padding:3rem;}
-.pp-empty-ic{font-size:3.5rem;margin-bottom:1rem;opacity:.3;}
-.pp-empty-tt{font-family:'Playfair Display',serif;font-size:1.1rem;color:rgba(255,255,255,.22);margin-bottom:.4rem;}
-.pp-empty-ds{font-size:.74rem;color:rgba(255,255,255,.14);line-height:1.6;}
+/* ═══ PREVIEW PANEL ═══ */
+.pp-empty{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;border-radius:22px;padding:1.2rem 0;}
 .pp-live{display:none;animation:fadeUp .5s var(--E) both;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-
-/* Action bar */
+/* action bar */
 .action-bar{display:flex;gap:.65rem;margin-bottom:1.4rem;flex-wrap:wrap;}
 .ab-btn{display:inline-flex;align-items:center;gap:.4rem;padding:.65rem 1.2rem;border-radius:10px;font-size:.78rem;font-weight:700;cursor:pointer;border:none;font-family:'DM Sans',sans-serif;transition:transform .18s,box-shadow .18s;}
 .ab-btn:hover{transform:translateY(-2px);}
 .ab-btn:disabled{opacity:.6;cursor:not-allowed;transform:none!important;}
-.ab-print{background:#e65100;color:#fff;box-shadow:0 4px 16px rgba(230,81,0,.3);}
-.ab-wallet{background:#1565c0;color:#fff;box-shadow:0 4px 16px rgba(21,101,192,.25);}
+.ab-dl{background:#e65100;color:#fff;box-shadow:0 4px 16px rgba(230,81,0,.3);}
 .ab-wa{background:#25d366;color:#fff;box-shadow:0 4px 16px rgba(37,211,102,.25);}
 .ab-reset{background:var(--fog);color:rgba(255,255,255,.5);border:1px solid var(--line);}
-
-/* Nudge */
+/* nudge */
 .nudge{background:rgba(230,81,0,.06);border:1px solid rgba(230,81,0,.16);border-radius:14px;padding:1rem 1.2rem;display:flex;align-items:flex-start;gap:.85rem;margin-bottom:1.4rem;}
 .nudge-ic{font-size:1.5rem;flex-shrink:0;margin-top:.1rem;}
 .nudge-body{font-size:.75rem;color:rgba(255,255,255,.48);line-height:1.65;}
@@ -309,74 +299,78 @@ body.hov #cr{width:54px;height:54px;opacity:.18;}
 .nudge-wa{display:inline-flex;align-items:center;gap:.3rem;background:#25d366;color:#fff;padding:.32rem .85rem;border-radius:100px;font-size:.68rem;font-weight:700;margin-top:.5rem;transition:transform .15s;cursor:pointer;}
 .nudge-wa:hover{transform:translateY(-1px);}
 
-/* ═══════════════════════════════════════════
-   SOS CARD — compact, professional, integrated branding
-═══════════════════════════════════════════ */
-#sosCard{
-  background:#111318;
-  color:#fff;
-  border-radius:16px;
-  overflow:hidden;
-  box-shadow:0 24px 64px rgba(0,0,0,.7);
-  font-family:'DM Sans',sans-serif;
-  width:100%;
-  max-width:480px;
-}
+/* ═══ PREVIEW DEMO CARD ═══ */
+.pv-label{font-size:.55rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.18);text-align:center;margin-bottom:.85rem;}
+.pv-card{background:#111318;border-radius:12px;overflow:hidden;opacity:.62;border:1px solid rgba(255,255,255,.07);margin-bottom:.85rem;}
+.pv-bar{height:3px;background:linear-gradient(90deg,#e65100,#ffb300);}
+.pv-hd{padding:.65rem .9rem .5rem;display:flex;justify-content:space-between;align-items:flex-start;border-bottom:1px solid rgba(255,255,255,.05);}
+.pv-type{font-size:.38rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#ffb300;margin-bottom:.15rem;}
+.pv-name{font-size:.82rem;font-weight:700;color:#fff;margin-bottom:.08rem;}
+.pv-brand{font-family:'Playfair Display',serif;font-size:.42rem;color:rgba(255,255,255,.18);}
+.pv-brand em{font-style:normal;color:#ff8f00;}
+.pv-sos{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:5px;color:rgba(255,255,255,.06);}
+.pv-hl{margin:.5rem .9rem;padding:.5rem .7rem;border-radius:7px;background:rgba(230,81,0,.1);border:1px solid rgba(255,179,0,.14);display:flex;align-items:center;justify-content:space-between;}
+.pv-hl-tag{font-size:.34rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:.1rem;}
+.pv-hl-num{font-family:'Bebas Neue',sans-serif;font-size:1.35rem;letter-spacing:2px;color:#ffb300;line-height:1;}
+.pv-hl-ins{font-size:.42rem;color:rgba(255,255,255,.22);margin-top:.1rem;}
+.pv-badge{font-size:.34rem;font-weight:700;padding:.1rem .38rem;border-radius:100px;background:rgba(255,255,255,.05);color:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.08);text-transform:uppercase;letter-spacing:.5px;}
+.pv-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.05);margin:0 .9rem .5rem;border-radius:6px;overflow:hidden;}
+.pv-cell{background:#12151b;padding:.3rem .42rem;}
+.pv-cl{font-size:.3rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.18);margin-bottom:.06rem;}
+.pv-cv{font-size:.52rem;font-weight:700;color:rgba(255,255,255,.7);}
+.pv-cv.hi{color:#ffb300;}
+.pv-covers{display:flex;gap:.18rem;flex-wrap:wrap;padding:0 .9rem .5rem;}
+.pv-ctag{font-size:.36rem;font-weight:700;padding:.08rem .32rem;border-radius:100px;}
+.pv-ctag.y{background:rgba(0,230,118,.08);border:1px solid rgba(0,230,118,.18);color:#00e676;}
+.pv-ctag.n{border:1px solid rgba(255,255,255,.07);color:rgba(255,255,255,.18);}
+.pv-shd{font-size:.34rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.16);padding:0 .9rem .35rem;display:flex;align-items:center;gap:.32rem;}
+.pv-shd::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.05);}
+.pv-step{display:flex;align-items:flex-start;gap:.38rem;padding:0 .9rem .38rem;}
+.pv-sn{width:14px;height:14px;border-radius:50%;background:#ffb300;color:#12151b;font-size:.38rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.05rem;}
+.pv-sr{flex:1;}
+.pv-st{font-size:.52rem;font-weight:700;color:rgba(255,255,255,.78);margin-bottom:.05rem;}
+.pv-sd{font-size:.44rem;color:rgba(255,255,255,.28);line-height:1.45;}
+.pv-foot{display:flex;align-items:center;justify-content:space-between;padding:.35rem .9rem;border-top:1px solid rgba(255,255,255,.05);background:rgba(255,255,255,.02);}
+.pv-fl{display:flex;align-items:center;gap:.28rem;}
+.pv-flogo{font-family:'Playfair Display',serif;font-size:.55rem;font-weight:700;color:rgba(255,255,255,.3);}
+.pv-flogo em{font-style:normal;color:#ff8f00;}
+.pv-fdiv{width:1px;height:8px;background:rgba(255,255,255,.1);}
+.pv-furl{font-size:.34rem;color:rgba(255,255,255,.15);}
+.pv-fph{font-size:.4rem;font-weight:700;color:rgba(255,255,255,.22);}
+.pv-sub{font-size:.62rem;color:rgba(255,255,255,.16);text-align:center;}
 
-/* ── top accent bar ── */
+/* ═══ REAL SOS CARD ═══ */
+#sosCard{background:#111318;color:#fff;border-radius:16px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.7);font-family:'DM Sans',sans-serif;width:100%;}
+#bundleSheet{display:none;}
+
+/* accent bar */
 .nc-bar{height:3px;}
 .nc-bar.t-cv    {background:linear-gradient(90deg,#e65100,#ffb300);}
 .nc-bar.t-health{background:linear-gradient(90deg,#1565c0,#29b6f6);}
 .nc-bar.t-life  {background:linear-gradient(90deg,#2e7d32,#69f0ae);}
 .nc-bar.t-car   {background:linear-gradient(90deg,#6a1b9a,#ce93d8);}
 .nc-bar.t-bike  {background:linear-gradient(90deg,#b71c1c,#ff7043);}
-
-/* ── header: type + name + brand woven in ── */
-.nc-hd{
-  padding:.9rem 1.2rem .75rem;
-  display:grid;
-  grid-template-columns:1fr auto;
-  align-items:start;
-  gap:.5rem;
-}
-.nc-type-pill{
-  display:inline-flex;align-items:center;gap:.35rem;
-  font-size:.5rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-  margin-bottom:.3rem;
-}
+/* card header */
+.nc-hd{padding:.9rem 1.2rem .75rem;display:grid;grid-template-columns:1fr auto;align-items:start;gap:.5rem;}
+.nc-type-pill{display:inline-flex;align-items:center;gap:.35rem;font-size:.5rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:.3rem;}
 .nc-type-pill .dot{width:5px;height:5px;border-radius:50%;}
-.nc-type-pill.t-cv    {color:#ffb300;} .nc-type-pill.t-cv     .dot{background:#ffb300;}
-.nc-type-pill.t-health{color:#29b6f6;} .nc-type-pill.t-health .dot{background:#29b6f6;}
-.nc-type-pill.t-life  {color:#69f0ae;} .nc-type-pill.t-life   .dot{background:#69f0ae;}
-.nc-type-pill.t-car   {color:#ce93d8;} .nc-type-pill.t-car    .dot{background:#ce93d8;}
-.nc-type-pill.t-bike  {color:#ff7043;} .nc-type-pill.t-bike   .dot{background:#ff7043;}
+.nc-type-pill.t-cv{color:#ffb300;}.nc-type-pill.t-cv .dot{background:#ffb300;}
+.nc-type-pill.t-health{color:#29b6f6;}.nc-type-pill.t-health .dot{background:#29b6f6;}
+.nc-type-pill.t-life{color:#69f0ae;}.nc-type-pill.t-life .dot{background:#69f0ae;}
+.nc-type-pill.t-car{color:#ce93d8;}.nc-type-pill.t-car .dot{background:#ce93d8;}
+.nc-type-pill.t-bike{color:#ff7043;}.nc-type-pill.t-bike .dot{background:#ff7043;}
 .nc-name{font-size:1rem;font-weight:700;color:#fff;line-height:1.15;margin-bottom:.08rem;}
-/* brand woven into header — subtle, not a footer island */
-.nc-brand-inline{
-  display:inline-flex;align-items:center;gap:.25rem;
-  font-family:'Playfair Display',serif;
-  font-size:.6rem;font-weight:700;
-  color:rgba(255,255,255,.28);
-  letter-spacing:.2px;
-}
+.nc-brand-inline{display:inline-flex;align-items:center;gap:.25rem;font-family:'Playfair Display',serif;font-size:.6rem;font-weight:700;color:rgba(255,255,255,.28);letter-spacing:.2px;}
 .nc-brand-inline em{font-style:normal;color:#ff8f00;}
 .nc-hd-right{text-align:right;padding-top:.1rem;}
 .nc-sos{font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:5px;line-height:1;color:rgba(255,255,255,.08);}
-
-/* ── helpline — the one number that matters ── */
-.nc-hl{
-  margin:.0 1.2rem;
-  padding:.75rem 1rem;
-  border-radius:10px;
-  display:flex;align-items:center;justify-content:space-between;
-  margin:0 1rem .85rem;
-}
+/* helpline block */
+.nc-hl{padding:.75rem 1rem;border-radius:10px;display:flex;align-items:center;justify-content:space-between;margin:0 1rem .85rem;}
 .nc-hl.t-cv    {background:rgba(230,81,0,.12);border:1px solid rgba(255,179,0,.2);}
 .nc-hl.t-health{background:rgba(21,101,192,.12);border:1px solid rgba(41,182,246,.2);}
 .nc-hl.t-life  {background:rgba(46,125,50,.12);border:1px solid rgba(105,240,174,.2);}
 .nc-hl.t-car   {background:rgba(106,27,154,.12);border:1px solid rgba(206,147,216,.2);}
 .nc-hl.t-bike  {background:rgba(183,28,28,.12);border:1px solid rgba(255,112,67,.2);}
-.nc-hl-left{}
 .nc-hl-tag{font-size:.45rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:.2rem;}
 .nc-hl-num{font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:3px;line-height:1;}
 .nc-hl-num.t-cv    {color:#ffb300;}
@@ -386,72 +380,41 @@ body.hov #cr{width:54px;height:54px;opacity:.18;}
 .nc-hl-num.t-bike  {color:#ff7043;}
 .nc-hl-insurer{font-size:.58rem;color:rgba(255,255,255,.3);margin-top:.18rem;}
 .nc-hl-badge{font-size:.48rem;font-weight:700;padding:.22rem .6rem;border-radius:100px;background:rgba(255,255,255,.06);color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.1);letter-spacing:.5px;}
-
-/* ── info grid ── */
-.nc-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1px;background:rgba(255,255,255,.06);
-  margin:0 1rem .85rem;
-  border-radius:10px;overflow:hidden;
-}
-.nc-grid.cols2{grid-template-columns:repeat(2,1fr);}
+/* info grid */
+.nc-grid{display:grid;gap:1px;background:rgba(255,255,255,.06);margin:0 1rem .85rem;border-radius:10px;overflow:hidden;}
 .nc-grid.cols4{grid-template-columns:repeat(4,1fr);}
 .nc-cell{background:#111318;padding:.55rem .7rem;}
 .nc-cell-lbl{font-size:.42rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.22);margin-bottom:.18rem;}
 .nc-cell-val{font-size:.72rem;font-weight:700;color:rgba(255,255,255,.82);line-height:1.2;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-.nc-cell-val.hi{color:#ffb300;}
-.nc-cell-val.hi-h{color:#29b6f6;}
-.nc-cell-val.hi-l{color:#69f0ae;}
-.nc-cell-val.hi-c{color:#ce93d8;}
-.nc-cell-val.hi-b{color:#ff7043;}
-
-/* ── covers ── */
-.nc-covers{
-  display:flex;gap:.25rem;flex-wrap:wrap;
-  padding:0 1rem .8rem;
-}
+.nc-cell-val.hi{color:#ffb300;}.nc-cell-val.hi-h{color:#29b6f6;}.nc-cell-val.hi-l{color:#69f0ae;}.nc-cell-val.hi-c{color:#ce93d8;}.nc-cell-val.hi-b{color:#ff7043;}
+/* covers */
+.nc-covers{display:flex;gap:.25rem;flex-wrap:wrap;padding:0 1rem .8rem;}
 .nct{font-size:.5rem;font-weight:700;padding:.15rem .5rem;border-radius:100px;letter-spacing:.2px;}
 .nct.y{background:rgba(105,240,174,.08);border:1px solid rgba(105,240,174,.2);color:#69f0ae;}
 .nct.n{background:transparent;border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.2);}
-
-/* ── emergency steps ── */
+/* steps */
 .nc-steps{padding:0 1rem .8rem;}
-.nc-steps-hd{
-  font-size:.44rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;
-  color:rgba(255,255,255,.2);margin-bottom:.5rem;
-  display:flex;align-items:center;gap:.5rem;
-}
+.nc-steps-hd{font-size:.44rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;}
 .nc-steps-hd::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.07);}
-.nc-step{display:flex;align-items:baseline;gap:.5rem;margin-bottom:.3rem;}
-.nc-step:last-child{margin-bottom:0;}
-.nc-snum{
-  font-family:'Bebas Neue',sans-serif;font-size:.75rem;
-  letter-spacing:1px;flex-shrink:0;line-height:1.3;
-}
-.nc-snum.t-cv    {color:#ffb300;}
-.nc-snum.t-health{color:#29b6f6;}
-.nc-snum.t-life  {color:#69f0ae;}
-.nc-snum.t-car   {color:#ce93d8;}
-.nc-snum.t-bike  {color:#ff7043;}
+.nc-step{display:flex;align-items:flex-start;gap:.5rem;margin-bottom:.42rem;padding-bottom:.42rem;border-bottom:1px solid rgba(255,255,255,.04);}
+.nc-step:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none;}
+.nc-snum{font-family:'Bebas Neue',sans-serif;font-size:.75rem;letter-spacing:1px;flex-shrink:0;line-height:1.3;margin-top:.08rem;}
+.nc-snum.t-cv    {color:#ffb300;}.nc-snum.t-health{color:#29b6f6;}.nc-snum.t-life{color:#69f0ae;}.nc-snum.t-car{color:#ce93d8;}.nc-snum.t-bike{color:#ff7043;}
 .nc-stxt{font-size:.6rem;color:rgba(255,255,255,.45);line-height:1.5;}
 .nc-stxt strong{color:rgba(255,255,255,.82);font-weight:700;}
-
-/* ── bottom bar — branding integrated ── */
-.nc-bottom{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:.55rem 1rem;
-  border-top:1px solid rgba(255,255,255,.06);
-  background:rgba(255,255,255,.02);
-}
-.nc-bottom-brand{display:flex;align-items:center;gap:.5rem;}
-.nc-bottom-logo{font-family:'Playfair Display',serif;font-size:.75rem;font-weight:700;color:rgba(255,255,255,.55);}
+.nc-stxt-title{font-size:.62rem;font-weight:700;color:rgba(255,255,255,.85);line-height:1.3;margin-bottom:.12rem;}
+.nc-stxt-desc{font-size:.56rem;color:rgba(255,255,255,.36);line-height:1.5;}
+/* bottom branding strip */
+.nc-bottom{display:flex;align-items:center;justify-content:space-between;padding:.5rem 1rem;border-top:1px solid rgba(255,255,255,.06);background:rgba(255,255,255,.02);}
+.nc-bottom-brand{display:flex;align-items:center;gap:.45rem;}
+.nc-bottom-logo{font-family:'Playfair Display',serif;font-size:.72rem;font-weight:700;color:rgba(255,255,255,.45);}
 .nc-bottom-logo em{font-style:normal;color:#ff8f00;}
-.nc-bottom-divider{width:1px;height:12px;background:rgba(255,255,255,.12);}
-.nc-bottom-url{font-size:.48rem;color:rgba(255,255,255,.2);font-weight:500;}
-.nc-bottom-right{font-size:.5rem;font-weight:700;color:rgba(255,255,255,.3);}
-.nc-fine{font-size:.38rem;color:rgba(255,255,255,.1);text-align:center;padding:.3rem 1rem;background:#0d1014;line-height:1.6;}
+.nc-bottom-divider{width:1px;height:10px;background:rgba(255,255,255,.12);}
+.nc-bottom-url{font-size:.44rem;color:rgba(255,255,255,.18);}
+.nc-bottom-right{font-size:.46rem;font-weight:700;color:rgba(255,255,255,.28);}
+.nc-fine{font-size:.38rem;color:rgba(255,255,255,.1);text-align:center;padding:.28rem 1rem;background:#0d1014;line-height:1.6;}
 
-/* BUNDLE SHEET */
+/* ═══ BUNDLE SHEET ═══ */
 .bundle-sheet-wrap{background:#fff;color:#111;border-radius:18px;overflow:hidden;box-shadow:0 28px 72px rgba(0,0,0,.55);}
 .bundle-header{background:linear-gradient(135deg,#06101f,#0b1a30);padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;}
 .bundle-header-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#fff;}
@@ -491,9 +454,7 @@ body.hov #cr{width:54px;height:54px;opacity:.18;}
 .bc-ft-url{font-size:.44rem;color:#bbb;}
 .bundle-disclaimer{font-size:.5rem;color:#bbb;text-align:center;padding:.5rem 1.5rem;background:#fafafa;border-top:1px solid #eee;line-height:1.5;}
 
-/* ═══════════════════════════════════════════
-   HOW IT WORKS
-═══════════════════════════════════════════ */
+/* ═══ HOW IT WORKS ═══ */
 .how-sec{padding:5rem 5% 4rem;background:var(--i2);border-top:1px solid var(--line);}
 .how-in{max-width:1100px;margin:0 auto;}
 .sec-tag{display:inline-flex;align-items:center;gap:.38rem;font-size:.65rem;font-weight:700;color:var(--ac2);text-transform:uppercase;letter-spacing:2px;margin-bottom:.8rem;}
@@ -501,7 +462,7 @@ body.hov #cr{width:54px;height:54px;opacity:.18;}
 .sec-tit{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.5vw,2.2rem);font-weight:700;line-height:1.15;margin-bottom:2.5rem;}
 .sec-tit em{font-style:italic;color:var(--ac2);}
 .how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
-.hg-item{background:var(--ink);border:1px solid var(--line);border-radius:16px;padding:1.5rem 1.2rem;text-align:center;position:relative;}
+.hg-item{background:var(--ink);border:1px solid var(--line);border-radius:16px;padding:1.5rem 1.2rem;text-align:center;}
 .hg-num{font-family:'Bebas Neue',sans-serif;font-size:2.4rem;color:rgba(230,81,0,.18);line-height:1;margin-bottom:.5rem;}
 .hg-ic{font-size:1.8rem;margin-bottom:.6rem;}
 .hg-tt{font-size:.85rem;font-weight:700;margin-bottom:.35rem;}
@@ -509,9 +470,7 @@ body.hov #cr{width:54px;height:54px;opacity:.18;}
 @media(max-width:1024px){.how-grid{grid-template-columns:1fr 1fr;}}
 @media(max-width:520px){.how-grid{grid-template-columns:1fr;}}
 
-/* ═══════════════════════════════════════════
-   FAQ SECTION (SEO)
-═══════════════════════════════════════════ */
+/* ═══ FAQ ═══ */
 .faq-sec{padding:4rem 5%;background:var(--ink);border-top:1px solid var(--line);}
 .faq-in{max-width:800px;margin:0 auto;}
 .faq-item{border-bottom:1px solid var(--line);padding:1.2rem 0;}
@@ -522,9 +481,7 @@ body.hov #cr{width:54px;height:54px;opacity:.18;}
 .faq-a{font-size:.82rem;color:rgba(255,255,255,.4);line-height:1.8;max-height:0;overflow:hidden;transition:max-height .35s var(--E),padding .35s;}
 .faq-item.open .faq-a{max-height:300px;padding-top:.75rem;}
 
-/* ═══════════════════════════════════════════
-   CTA STRIP
-═══════════════════════════════════════════ */
+/* ═══ CTA STRIP ═══ */
 .cta-strip{background:linear-gradient(135deg,#1a0600,#2d1000,#06101f);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:3.5rem 5%;text-align:center;}
 .cta-strip-in{max-width:700px;margin:0 auto;}
 .cs-tt{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:700;margin-bottom:.6rem;}
@@ -536,9 +493,7 @@ body.hov #cr{width:54px;height:54px;opacity:.18;}
 .btn-ghost{display:inline-flex;align-items:center;gap:.42rem;background:var(--fog);border:1px solid var(--line);color:#fff;padding:.82rem 1.8rem;border-radius:11px;font-weight:500;font-size:.88rem;transition:background .18s;}
 .btn-ghost:hover{background:rgba(255,255,255,.09);}
 
-/* ═══════════════════════════════════════════
-   FOOTER
-═══════════════════════════════════════════ */
+/* ═══ FOOTER ═══ */
 .ft{background:#020b1a;border-top:1px solid var(--line);padding:2.5rem 5% 1.5rem;}
 .ft-in{max-width:1300px;margin:0 auto;}
 .ft-top{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--line);margin-bottom:1.2rem;}
@@ -549,113 +504,22 @@ body.hov #cr{width:54px;height:54px;opacity:.18;}
 .ft-links a:hover{color:#f5a623;}
 .ft-copy{font-size:.68rem;color:rgba(255,255,255,.14);}
 
-/* ═══════════════════════════════════════════
-   REVEAL
-═══════════════════════════════════════════ */
+/* ═══ REVEAL ═══ */
 .rv{opacity:0;transform:translateY(22px);transition:opacity .65s var(--E),transform .65s var(--E);}
 .rv.on{opacity:1;transform:none;}
 .d1{transition-delay:.08s;}.d2{transition-delay:.16s;}.d3{transition-delay:.24s;}
 
-/* ═══════════════════════════════════════════
-   PRINT
-═══════════════════════════════════════════ */
-/* ── BASE PRINT: hide everything except the card ── */
-@media print {
+/* ═══ PRINT ═══ */
+@media print{
   *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important;}
   body{background:#fff!important;cursor:auto!important;}
-  #cur,#cr,#ticker,.nav,.mob,.fab,
-  .hero,.teaser-strip,.testi-band,
-  .form-panel,.action-bar,.nudge,
-  .how-sec,.faq-sec,.cta-strip,.ft,
-  .pp-empty{display:none!important;}
+  #cur,#cr,#ticker,.nav,.mob,.fab,.hero,.teaser-strip,.truth-sec,.story-sec,.scen-sec,.testi-band,.form-panel,.action-bar,.nudge,.how-sec,.faq-sec,.cta-strip,.ft,.pp-empty{display:none!important;}
   .main{display:block!important;padding:0!important;max-width:100%!important;}
   .preview-panel{display:block!important;}
   .pp-live{display:block!important;animation:none!important;}
-  #sosCard,#bundleSheet,.bundle-sheet-wrap{
-    box-shadow:none!important;
-    border-radius:0!important;
-    width:100%!important;
-    max-width:100%!important;
-  }
+  #sosCard,#bundleSheet,.bundle-sheet-wrap{box-shadow:none!important;border-radius:0!important;width:100%!important;max-width:100%!important;}
+  @page{size:A4 portrait;margin:1cm;}
 }
-
-/* ── A4 PRINT ── */
-@media print {
-  body:not(.print-wallet) {
-    @page { size: A4 portrait; margin: 1cm; }
-  }
-  body:not(.print-wallet) #sosCard {
-    width: 100% !important;
-    font-size: 11px !important;
-  }
-  body:not(.print-wallet) .bundle-grid {
-    grid-template-columns: 1fr 1fr !important;
-    gap: 8mm !important;
-  }
-}
-
-/* ── WALLET PRINT ── */
-/* Wallet = CR80 card size 85.6 × 54mm, 2-up per A4 row */
-body.print-wallet #ppLive .action-bar,
-body.print-wallet #ppLive .nudge { display:none !important; }
-
-@media print {
-  body.print-wallet {
-    background: white !important;
-  }
-  body.print-wallet #sosCard {
-    /* scale the card to fit 85mm wide on the page */
-    width: 85.6mm !important;
-    max-width: 85.6mm !important;
-    min-height: 54mm !important;
-    font-size: 7px !important;
-    border-radius: 4mm !important;
-    border: 0.3mm solid #ccc !important;
-    page-break-inside: avoid !important;
-    overflow: hidden !important;
-  }
-  body.print-wallet #sosCard .chd-icon { width:28px!important;height:28px!important;font-size:.85rem!important; }
-  body.print-wallet #sosCard .chd-name { font-size:.62rem!important; }
-  body.print-wallet #sosCard .chd-sos  { font-size:1.6rem!important; }
-  body.print-wallet #sosCard .card-hd  { padding:.5rem .75rem!important; }
-  body.print-wallet #sosCard .card-bd  { padding:.5rem .75rem 0!important; }
-  body.print-wallet #sosCard .det-grid { grid-template-columns:1fr 1fr!important;gap:.2rem!important; }
-  body.print-wallet #sosCard .det      { padding:.2rem .4rem!important; }
-  body.print-wallet #sosCard .det-lbl  { font-size:.38rem!important; }
-  body.print-wallet #sosCard .det-val  { font-size:.52rem!important; }
-  body.print-wallet #sosCard .det-val.emph{ font-size:.6rem!important; }
-  body.print-wallet #sosCard .covers-row{ padding:0 .75rem!important;margin-bottom:.4rem!important; }
-  body.print-wallet #sosCard .ctag     { font-size:.38rem!important;padding:.08rem .35rem!important; }
-  body.print-wallet #sosCard .steps-div{ margin:0 .75rem .3rem!important; }
-  body.print-wallet #sosCard .sdiv-lbl { font-size:.36rem!important; }
-  body.print-wallet #sosCard .card-steps{ padding:0 .75rem!important;gap:.18rem!important;margin-bottom:.4rem!important; }
-  body.print-wallet #sosCard .cs-n     { width:13px!important;height:13px!important;font-size:.38rem!important; }
-  body.print-wallet #sosCard .cs-t     { font-size:.44rem!important; }
-  body.print-wallet #sosCard .card-ft  { padding:.35rem .75rem!important; }
-  body.print-wallet #sosCard .cft-logo { font-size:.55rem!important; }
-  body.print-wallet #sosCard .cft-phone{ font-size:.5rem!important; }
-  body.print-wallet #sosCard .cft-url  { font-size:.36rem!important; }
-  body.print-wallet #sosCard .card-disclaimer{ font-size:.32rem!important;padding:.2rem .5rem!important; }
-  body.print-wallet #sosCard .card-gen { font-size:.32rem!important; }
-  body.print-wallet #sosCard .members-sec{ padding:0 .75rem!important; }
-  body.print-wallet #sosCard .mtag    { font-size:.4rem!important; }
-
-  /* Wallet bundle — 2 cards per row, 4 per A4 */
-  body.print-wallet .bundle-grid {
-    grid-template-columns: 85.6mm 85.6mm !important;
-    gap: 5mm !important;
-    padding: 5mm !important;
-  }
-  body.print-wallet .bundle-card {
-    width: 85.6mm !important;
-    min-height: 54mm !important;
-    font-size: 7px !important;
-    page-break-inside: avoid !important;
-  }
-}
-
-/* Wallet page size — separate @page needed at top level */
-@page wallet { size: A4 portrait; margin: 8mm; }
 </style>
 </head>
 <body>
@@ -665,7 +529,7 @@ body.print-wallet #ppLive .nudge { display:none !important; }
 <div id="ticker">
   <span class="tk-pill"><span class="tk-dot"></span> Free · No Login · Any Insurer</span>
   <span id="cards-counter">🆘 <span id="counter-num">—</span> cards generated</span>
-  <span class="tk-pill">🖨️ Print · Wallet · WhatsApp</span>
+  <span class="tk-pill">📲 Download · Print · WhatsApp</span>
 </div>
 
 <!-- NAV -->
@@ -706,23 +570,23 @@ body.print-wallet #ppLive .nudge { display:none !important; }
   <div class="hero-grid"></div>
   <div class="hero-glow"></div>
   <div class="hero-content">
-    <div class="hkick"><span class="hkick-dot"></span> 100% Free · No Login · Any Insurer in India</div>
-    <h1 class="htit">When the accident happens,<br/><em>will you know what to do?</em></h1>
-    <p class="hdesc">Most claims get rejected not because of the policy — but because nobody knew what to do in the first hour. This free SOS card fixes that in 60 seconds.</p>
-    <div class="scenario-strip">
+    <div class="hkick rv"><span class="hkick-dot"></span> 100% Free · No Login · Any Insurer in India</div>
+    <h1 class="htit rv d1">When the accident happens,<br/><em>will you know what to do?</em></h1>
+    <p class="hdesc rv d1">Most claims get rejected not because of the policy — but because nobody knew what to do in the first hour. This free SOS card fixes that in 60 seconds.</p>
+    <div class="scenario-strip rv d2">
       <div class="sc-card"><div class="sc-ic">🚛</div><div class="sc-sit">2 AM on NH-65. Your lorry just got hit.</div><div class="sc-q">Does your driver know the helpline? Is load covered under GIT?</div></div>
       <div class="sc-card"><div class="sc-ic">🏥</div><div class="sc-sit">Father collapses. Nearest hospital is 10 mins away.</div><div class="sc-q">Is it a cashless hospital? Which documents does your policy need?</div></div>
       <div class="sc-card"><div class="sc-ic">🚗</div><div class="sc-sit">Someone hits your car and drives away.</div><div class="sc-q">Do you call the insurer first — or file FIR first?</div></div>
     </div>
-    <div class="hero-stats">
+    <div class="hero-stats rv d2">
       <div class="hstat"><span class="hstat-n">61%</span><span class="hstat-l">don't know their helpline by heart</span></div>
       <div class="hstat-div"></div>
       <div class="hstat"><span class="hstat-n">38%</span><span class="hstat-l">claim rejections from procedural errors</span></div>
       <div class="hstat-div"></div>
       <div class="hstat"><span class="hstat-n">24 hrs</span><span class="hstat-l">window to register most vehicle claims</span></div>
     </div>
-    <button class="hero-cta" onclick="scrollToTool()">🆘 Generate My Free SOS Card <span class="hero-cta-arr">↓</span></button>
-    <div class="hero-note">Takes 60 seconds · No account needed · Works for any insurer</div>
+    <button class="hero-cta rv d3" onclick="scrollToTool()">🆘 Generate My Free SOS Card <span class="hero-cta-arr">↓</span></button>
+    <div class="hero-note rv d3">Takes 60 seconds · No account needed · Works for any insurer</div>
   </div>
 </section>
 
@@ -742,6 +606,85 @@ body.print-wallet #ppLive .nudge { display:none !important; }
   </div>
 </div>
 
+<!-- TRUTH SECTION -->
+<section class="truth-sec">
+  <div class="truth-in">
+    <div class="sec-eyebrow rv">The real problem</div>
+    <h2 class="sec-head rv d1">Your policy is fine.<br/><em>Your procedure is the problem.</em></h2>
+    <p class="truth-lead rv d1">Most claim disputes don't arise from exclusions in your policy. They arise from procedural mistakes made in the first 24 hours after the incident — mistakes that are entirely preventable with one printed card.</p>
+    <div class="truth-cards rv d2">
+      <div class="tc red">
+        <div class="tc-num">₹4.2L</div>
+        <div class="tc-title">Lost — because the vehicle was moved</div>
+        <div class="tc-body">A Hyderabad transport owner's lorry met with an accident on NH-65. The driver moved it off the road before photos were taken. The insurer's surveyor found <strong>no evidence of the scene</strong>. Claim rejected. The policy was valid. The procedure wasn't followed.</div>
+      </div>
+      <div class="tc amber">
+        <div class="tc-num">24 hrs</div>
+        <div class="tc-title">The window most people miss</div>
+        <div class="tc-body">Most commercial vehicle and car insurers require claim registration <strong>within 24 hours of the incident</strong>. Waiting until morning, or until you're back in the city, or until you find the policy document — these delays alone have caused thousands of valid claims to be denied.</div>
+      </div>
+      <div class="tc green">
+        <div class="tc-num">60 sec</div>
+        <div class="tc-title">That's all the SOS card takes</div>
+        <div class="tc-body">One card in your dashboard or wallet tells your driver — or your family — <strong>exactly what to do in the first hour</strong>. The helpline number. The policy number. The five steps. No searching, no panic, no procedure errors.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STORY / MISTAKE SECTION -->
+<section class="story-sec">
+  <div class="story-in">
+    <div class="story-text rv">
+      <div class="sec-eyebrow" style="margin-bottom:.7rem;">Why procedure beats policy</div>
+      <h2 class="sec-head" style="margin-bottom:1.2rem;">The mistakes happen<br/><em>before the claim form</em></h2>
+      <p>When an accident happens — whether it's a lorry on a national highway at 2 AM, a car in a parking lot at noon, or a health emergency far from home — the policyholder enters a state of shock. In that state, they make procedural mistakes that their insurer will later use as grounds for rejection.</p>
+      <p><strong>The vehicle is moved</strong> before photographs are taken. <strong>The FIR is delayed</strong> because the driver wasn't sure if it was needed. <strong>The non-network hospital</strong> is chosen because it was closest. <strong>The helpline is called</strong> only the next morning because nobody had the number saved.</p>
+      <div class="pull-quote">
+        <p>"The driver had insurance. He just didn't know what to do in the first hour. And that hour cost him everything."</p>
+      </div>
+      <p>None of these are coverage gaps. All of them are procedure failures — and all of them are preventable with one printed card kept in the dashboard or wallet.</p>
+    </div>
+    <div class="mistake-cards rv d1">
+      <div class="mc-card m1"><div class="mc-num">01</div><div class="mc-title">Moving the vehicle before photos</div><div class="mc-body">The surveyor must see the scene. If the vehicle has been moved before inspection, the insurer cannot verify the circumstances. Claim denied.</div><div class="mc-fix">SOS card step 2 prevents this</div></div>
+      <div class="mc-card m2"><div class="mc-num">02</div><div class="mc-title">Not filing FIR within 24 hours</div><div class="mc-body">For third-party claims, theft, or damages above ₹1 lakh, FIR is mandatory. Delayed FIR is routinely used to deny claims on procedural grounds.</div><div class="mc-fix">SOS card step 3 prevents this</div></div>
+      <div class="mc-card m3"><div class="mc-num">03</div><div class="mc-title">Going to a non-network hospital</div><div class="mc-body">Cashless benefit only applies at network hospitals. Choosing the closest non-network hospital means full reimbursement paperwork — which most families miss.</div><div class="mc-fix">SOS card step 1 prevents this</div></div>
+      <div class="mc-card m4"><div class="mc-num">04</div><div class="mc-title">Missing the claim registration window</div><div class="mc-body">Most vehicle insurers require claim registration within 24 hours. Waiting until the next business day, or until you return to the city, can void your claim entirely.</div><div class="mc-fix">SOS card step 1 prevents this</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCENARIOS -->
+<section class="scen-sec">
+  <div class="scen-in">
+    <div class="sec-eyebrow rv">Real situations</div>
+    <h2 class="sec-head rv d1">When the card saves you —<br/><em>exactly when you need it</em></h2>
+    <div class="scen-grid rv d2">
+      <div class="scen-card">
+        <div class="scen-ic">🚛</div>
+        <div class="scen-time">2:14 AM · NH-65</div>
+        <div class="scen-sit">Your lorry just got rear-ended. The driver calls you in a panic.</div>
+        <div class="scen-q">Does he know the helpline? Is the load covered under <strong>Goods-in-Transit</strong>? Should he move the vehicle before photos? Does he need to file FIR tonight?</div>
+        <span class="scen-ans">The card answers all four in 10 seconds</span>
+      </div>
+      <div class="scen-card">
+        <div class="scen-ic">🏥</div>
+        <div class="scen-time">Afternoon · Unknown city</div>
+        <div class="scen-sit">Your father collapses while travelling. The nearest hospital is 8 minutes away.</div>
+        <div class="scen-q">Is it a <strong>cashless network hospital</strong>? What documents should your mother carry? What's the helpline for pre-authorisation? Will they need to pay upfront?</div>
+        <span class="scen-ans">The card has all of this in your wallet</span>
+      </div>
+      <div class="scen-card">
+        <div class="scen-ic">🚗</div>
+        <div class="scen-time">Evening · City traffic</div>
+        <div class="scen-sit">Someone hits your car and drives away. You're shaken.</div>
+        <div class="scen-q">Do you call the insurer first — or file FIR first? <strong>Do you move the car?</strong> Do you need a witness? Is your zero-dep active or not?</div>
+        <span class="scen-ans">Procedure in your hand, not in your head</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- TESTIMONIALS -->
 <div class="testi-band">
   <div class="testi-band-in">
@@ -759,41 +702,24 @@ body.print-wallet #ppLive .nudge { display:none !important; }
 
 <!-- MAIN TOOL -->
 <div class="main" id="toolSection">
-
   <!-- FORM PANEL -->
   <div class="form-panel rv">
     <div class="fp-card">
       <div class="fp-top">
         <div class="fp-title">Generate Your SOS Card</div>
         <div class="fp-sub">Single policy or bundle multiple — all on one printable sheet.</div>
-
-        <!-- MODE TOGGLE -->
         <div class="pt-label">Card mode</div>
         <div class="mode-toggle">
-          <div class="mode-opt on" id="mode-single" onclick="setMode('single')">
-            <div class="mode-radio"><div class="mode-radio-dot"></div></div>
-            <div><div class="mode-label-txt">Single policy</div><div class="mode-sub-txt">One card, one policy</div></div>
-          </div>
-          <div class="mode-opt" id="mode-multi" onclick="setMode('multi')">
-            <div class="mode-radio"><div class="mode-radio-dot"></div></div>
-            <div><div class="mode-label-txt">Multiple policies</div><div class="mode-sub-txt" id="multi-sub-txt">Bundle all on one sheet</div></div>
-          </div>
+          <div class="mode-opt on" id="mode-single" onclick="setMode('single')"><div class="mode-radio"><div class="mode-radio-dot"></div></div><div><div class="mode-label-txt">Single policy</div><div class="mode-sub-txt">One card, one policy</div></div></div>
+          <div class="mode-opt" id="mode-multi" onclick="setMode('multi')"><div class="mode-radio"><div class="mode-radio-dot"></div></div><div><div class="mode-label-txt">Multiple policies</div><div class="mode-sub-txt" id="multi-sub-txt">Bundle all on one sheet</div></div></div>
         </div>
-
-        <!-- GLOBAL FIELDS -->
         <div class="global-fields">
           <div class="field-row" style="margin-bottom:0;">
             <div><label class="fl">Your full name *</label><input class="fi" id="f-name" placeholder="Raju Kumar Reddy"/></div>
             <div><label class="fl">Phone number</label><input class="fi" id="f-phone" placeholder="+91 98765 43210"/></div>
           </div>
         </div>
-
-        <!-- MULTI MODE HINT -->
-        <div class="mode-hint-box" id="mode-hint">
-          Fill each policy below and click <strong>+ Add to bundle</strong>. Generate when all are added. Your name and phone apply to all cards.
-        </div>
-
-        <!-- POLICY TYPE TABS -->
+        <div class="mode-hint-box" id="mode-hint">Fill each policy below and click <strong>+ Add to bundle</strong>. Generate when all are added. Your name and phone apply to all cards.</div>
         <div class="pt-label" style="margin-top:1rem;">Policy type</div>
         <div class="pt-tabs">
           <div class="pt on" data-type="cv" onclick="setType('cv',this)"><span class="pt-ic">🚛</span><span class="pt-lbl">Commercial</span></div>
@@ -803,79 +729,46 @@ body.print-wallet #ppLive .nudge { display:none !important; }
           <div class="pt" data-type="bike" onclick="setType('bike',this)"><span class="pt-ic">🏍️</span><span class="pt-lbl">Bike</span></div>
         </div>
       </div>
-
       <div class="fp-body">
-        <!-- COMMON POLICY FIELDS -->
         <div class="field-row">
-          <div>
-            <label class="fl">Insurance company *</label>
+          <div><label class="fl">Insurance company *</label>
             <select class="fi fi-sel" id="f-insurer" onchange="onInsurerChange()">
               <option value="">Select insurer</option>
               <optgroup label="General / Vehicle / Health">
-                <option>HDFC ERGO General</option>
-                <option>ICICI Lombard</option>
-                <option>Tata AIG General</option>
-                <option>New India Assurance</option>
-                <option>Bajaj Allianz General</option>
-                <option>Royal Sundaram</option>
-                <option>Liberty General</option>
-                <option>Reliance General</option>
-                <option>United India Insurance</option>
-                <option>National Insurance</option>
-                <option>Oriental Insurance</option>
-                <option>Chola MS General</option>
+                <option>HDFC ERGO General</option><option>ICICI Lombard</option><option>Tata AIG General</option>
+                <option>New India Assurance</option><option>Bajaj Allianz General</option><option>Royal Sundaram</option>
+                <option>Liberty General</option><option>Reliance General</option><option>United India Insurance</option>
+                <option>National Insurance</option><option>Oriental Insurance</option><option>Chola MS General</option>
                 <option>Cholamandalam MS General</option>
               </optgroup>
               <optgroup label="Health specialists">
-                <option>Star Health Insurance</option>
-                <option>Niva Bupa</option>
-                <option>Care Health Insurance</option>
-                <option>Aditya Birla Health</option>
-                <option>ManipalCigna Health</option>
+                <option>Star Health Insurance</option><option>Niva Bupa</option><option>Care Health Insurance</option>
+                <option>Aditya Birla Health</option><option>ManipalCigna Health</option>
               </optgroup>
               <optgroup label="Life / Term">
-                <option>LIC of India</option>
-                <option>HDFC Life Insurance</option>
-                <option>ICICI Prudential Life</option>
-                <option>Tata AIA Life</option>
-                <option>Max Life Insurance</option>
-                <option>Bajaj Allianz Life</option>
-                <option>India First Life</option>
-                <option>Aditya Birla Life</option>
+                <option>LIC of India</option><option>HDFC Life Insurance</option><option>ICICI Prudential Life</option>
+                <option>Tata AIA Life</option><option>Max Life Insurance</option><option>Bajaj Allianz Life</option>
+                <option>India First Life</option><option>Aditya Birla Life</option>
               </optgroup>
               <option value="other">Other (type below)</option>
             </select>
           </div>
-          <div>
-            <label class="fl">Policy number *</label>
-            <input class="fi" id="f-policy" placeholder="Policy / Certificate No."/>
-          </div>
+          <div><label class="fl">Policy number *</label><input class="fi" id="f-policy" placeholder="Policy / Certificate No."/></div>
         </div>
-
         <div class="field-row">
-          <div>
-            <label class="fl">Claims helpline *</label>
-            <input class="fi" id="f-helpline" placeholder="1800-xxx-xxxx"/>
-            <div class="hl-note" id="hl-note">Auto-filled — verify on your policy document before printing</div>
-          </div>
-          <div>
-            <label class="fl">Policy expiry date</label>
-            <input class="fi" type="date" id="f-expiry"/>
-          </div>
+          <div><label class="fl">Claims helpline *</label><input class="fi" id="f-helpline" placeholder="1800-xxx-xxxx"/><div class="hl-note" id="hl-note">Auto-filled — verify on your policy document before printing</div></div>
+          <div><label class="fl">Policy expiry date</label><input class="fi" type="date" id="f-expiry"/></div>
         </div>
-
         <div class="f-div"></div>
-
-        <!-- CV FIELDS -->
+        <!-- CV -->
         <div id="fields-cv">
           <div class="field-row">
             <div><label class="fl">Vehicle number *</label><input class="fi" id="f-vnum" placeholder="TS 09 AB 1234"/></div>
             <div><label class="fl">Vehicle type</label>
               <select class="fi fi-sel" id="f-vtype">
                 <option value="">Select type</option>
-                <option>Lorry / Truck (LCV)</option><option>Lorry / Truck (HCV)</option>
-                <option>Bus / Maxi-cab</option><option>Auto Rickshaw</option>
-                <option>Tipper / Dumper</option><option>Tempo / Van</option>
+                <option>Lorry / Truck (LCV)</option><option>Lorry / Truck (HCV)</option><option>Bus / Maxi-cab</option>
+                <option>Auto Rickshaw</option><option>Tipper / Dumper</option><option>Tempo / Van</option>
                 <option>Tanker</option><option>Tractor</option><option>Special Vehicle</option>
               </select>
             </div>
@@ -890,28 +783,17 @@ body.print-wallet #ppLive .nudge { display:none !important; }
             <span class="cp-tog no" onclick="toggleCover(this)">✗ Engine Protect</span>
           </div>
         </div>
-
-        <!-- HEALTH FIELDS -->
+        <!-- Health -->
         <div id="fields-health" style="display:none">
           <div class="field-row">
             <div><label class="fl">Sum insured</label><input class="fi" id="f-si" placeholder="e.g. ₹10,00,000"/></div>
             <div><label class="fl">Network type</label>
-              <select class="fi fi-sel" id="f-network">
-                <option>Cashless + Reimbursement</option>
-                <option>Cashless Only</option>
-                <option>Reimbursement Only</option>
-              </select>
+              <select class="fi fi-sel" id="f-network"><option>Cashless + Reimbursement</option><option>Cashless Only</option><option>Reimbursement Only</option></select>
             </div>
           </div>
           <label class="covers-label">Covered members</label>
-          <div class="field-row">
-            <div><input class="fi" id="f-m1" placeholder="Member 1 (e.g. Self)"/></div>
-            <div><input class="fi" id="f-m2" placeholder="Member 2 (e.g. Spouse)"/></div>
-          </div>
-          <div class="field-row">
-            <div><input class="fi" id="f-m3" placeholder="Member 3 (optional)"/></div>
-            <div><input class="fi" id="f-m4" placeholder="Member 4 (optional)"/></div>
-          </div>
+          <div class="field-row"><div><input class="fi" id="f-m1" placeholder="Member 1 (e.g. Self)"/></div><div><input class="fi" id="f-m2" placeholder="Member 2 (e.g. Spouse)"/></div></div>
+          <div class="field-row"><div><input class="fi" id="f-m3" placeholder="Member 3 (optional)"/></div><div><input class="fi" id="f-m4" placeholder="Member 4 (optional)"/></div></div>
           <label class="covers-label">Active covers</label>
           <div class="covers-pills" id="health-covers">
             <span class="cp-tog yes" onclick="toggleCover(this)">✓ Cashless</span>
@@ -921,8 +803,7 @@ body.print-wallet #ppLive .nudge { display:none !important; }
             <span class="cp-tog no" onclick="toggleCover(this)">✗ Dental</span>
           </div>
         </div>
-
-        <!-- LIFE FIELDS -->
+        <!-- Life -->
         <div id="fields-life" style="display:none">
           <div class="field-row">
             <div><label class="fl">Sum assured</label><input class="fi" id="f-sa" placeholder="e.g. ₹1,00,00,000"/></div>
@@ -940,8 +821,7 @@ body.print-wallet #ppLive .nudge { display:none !important; }
             <span class="cp-tog no" onclick="toggleCover(this)">✗ Return of Premium</span>
           </div>
         </div>
-
-        <!-- CAR FIELDS -->
+        <!-- Car -->
         <div id="fields-car" style="display:none">
           <div class="field-row">
             <div><label class="fl">Vehicle number *</label><input class="fi" id="f-cnum" placeholder="AP 28 CK 5678"/></div>
@@ -957,8 +837,7 @@ body.print-wallet #ppLive .nudge { display:none !important; }
             <span class="cp-tog no" onclick="toggleCover(this)">✗ Consumables</span>
           </div>
         </div>
-
-        <!-- BIKE FIELDS -->
+        <!-- Bike -->
         <div id="fields-bike" style="display:none">
           <div class="field-row">
             <div><label class="fl">Vehicle number *</label><input class="fi" id="f-bnum" placeholder="TS 11 EF 9012"/></div>
@@ -973,40 +852,50 @@ body.print-wallet #ppLive .nudge { display:none !important; }
             <span class="cp-tog no" onclick="toggleCover(this)">✗ Pillion PA</span>
           </div>
         </div>
-
-        <!-- POLICY TRAY (multi mode) -->
+        <!-- Tray -->
         <div class="policy-tray" id="policyTray">
-          <div class="tray-header">
-            <span class="tray-title">Bundle</span>
-            <span class="tray-count" id="trayCount">0 policies</span>
-          </div>
-          <div class="tray-pills" id="trayPills">
-            <span class="tray-empty">No policies added yet — fill the form above and click Add to bundle</span>
-          </div>
+          <div class="tray-header"><span class="tray-title">Bundle</span><span class="tray-count" id="trayCount">0 policies</span></div>
+          <div class="tray-pills" id="trayPills"><span class="tray-empty">No policies added yet — fill the form above and click Add to bundle</span></div>
         </div>
-
-        <!-- ADD TO BUNDLE BUTTON -->
         <button class="add-bundle-btn" id="addBundleBtn" onclick="addToBundle()">+ Add to bundle</button>
-
-        <!-- GENERATE BUTTON -->
-        <button class="gen-btn" id="genBtn" onclick="generateCard()">
-          <span>🆘</span> <span id="genBtnTxt">Generate My SOS Card</span>
-        </button>
+        <button class="gen-btn" id="genBtn" onclick="generateCard()"><span>🆘</span> <span id="genBtnTxt">Generate My SOS Card</span></button>
       </div>
     </div>
   </div>
 
   <!-- PREVIEW PANEL -->
   <div class="preview-panel">
+    <!-- DEMO CARD - empty state -->
     <div class="pp-empty" id="ppEmpty">
-      <div class="pp-empty-ic">🆘</div>
-      <div class="pp-empty-tt">Your card will appear here</div>
-      <div class="pp-empty-ds">Fill your policy details and click Generate.<br/>Single or bundle multiple policies — your choice.</div>
+      <div class="pv-label">Your card will look like this</div>
+      <div class="pv-card">
+        <div class="pv-bar"></div>
+        <div class="pv-hd"><div><div class="pv-type">🚛 Commercial Vehicle Insurance</div><div class="pv-name">Your Name</div><div class="pv-brand">Cover<em>Credit</em> · covercredit.in · +91 78428 54466</div></div><div class="pv-sos">SOS</div></div>
+        <div class="pv-hl"><div><div class="pv-hl-tag">Claims helpline — 24×7</div><div class="pv-hl-num">1800-XXX-XXXX</div><div class="pv-hl-ins">Your Insurer</div></div><div class="pv-badge">Keep in dashboard</div></div>
+        <div class="pv-grid">
+          <div class="pv-cell"><div class="pv-cl">Vehicle</div><div class="pv-cv hi">TS 09 AB 1234</div></div>
+          <div class="pv-cell"><div class="pv-cl">Type</div><div class="pv-cv">Lorry HCV</div></div>
+          <div class="pv-cell"><div class="pv-cl">Policy no.</div><div class="pv-cv">POL-12345</div></div>
+          <div class="pv-cell"><div class="pv-cl">Expires</div><div class="pv-cv">31 Mar 2027</div></div>
+        </div>
+        <div class="pv-covers">
+          <span class="pv-ctag y">✓ Own Damage</span><span class="pv-ctag y">✓ Third Party</span>
+          <span class="pv-ctag y">✓ GIT</span><span class="pv-ctag y">✓ IMT-23</span>
+          <span class="pv-ctag n">Engine Protect</span>
+        </div>
+        <div class="pv-shd">In an emergency — do this immediately</div>
+        <div class="pv-step"><div class="pv-sn">1</div><div class="pv-sr"><div class="pv-st">Call helpline immediately</div><div class="pv-sd">Call 1800-XXX-XXXX — give policy no. POL-12345</div></div></div>
+        <div class="pv-step"><div class="pv-sn">2</div><div class="pv-sr"><div class="pv-st">Do not move the vehicle</div><div class="pv-sd">Take 20+ photos of all damage before anything is moved. Surveyor must see the scene.</div></div></div>
+        <div class="pv-step"><div class="pv-sn">3</div><div class="pv-sr"><div class="pv-st">File FIR at nearest police station</div><div class="pv-sd">Mandatory for claims above ₹1 lakh or third-party damage. File within 24 hours.</div></div></div>
+        <div class="pv-step"><div class="pv-sn">4</div><div class="pv-sr"><div class="pv-st">Note witnesses</div><div class="pv-sd">Get name &amp; phone of anyone who saw the accident. Vital for disputed claims.</div></div></div>
+        <div class="pv-foot"><div class="pv-fl"><span class="pv-flogo">Cover<em>Credit</em></span><span class="pv-fdiv"></span><span class="pv-furl">covercredit.in/sos-card</span></div><div class="pv-fph">+91 78428 54466</div></div>
+      </div>
+      <div class="pv-sub">Fill your details on the left and click Generate — your real card replaces this preview</div>
     </div>
+    <!-- LIVE CARD -->
     <div class="pp-live" id="ppLive">
       <div class="action-bar">
-        <button class="ab-btn ab-print" onclick="downloadImage('full')" id="dlFullBtn">⬇️ Download Image</button>
-        <button class="ab-btn ab-wallet" onclick="downloadImage('wallet')" id="dlWalletBtn">💳 Wallet PNG</button>
+        <button class="ab-btn ab-dl" onclick="downloadImage()" id="dlBtn">⬇️ Download Image</button>
         <button class="ab-btn ab-wa" id="waShareBtn">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Send to WhatsApp
@@ -1015,7 +904,7 @@ body.print-wallet #ppLive .nudge { display:none !important; }
       </div>
       <div class="nudge" id="nudgeBox"></div>
       <div id="sosCard"></div>
-      <div id="bundleSheet" style="display:none;"></div>
+      <div id="bundleSheet"></div>
     </div>
   </div>
 </div>
@@ -1026,39 +915,24 @@ body.print-wallet #ppLive .nudge { display:none !important; }
     <div class="sec-tag rv">How it works</div>
     <h2 class="sec-tit rv d1">Ready in <em>60 seconds.</em><br/>Useful for a lifetime.</h2>
     <div class="how-grid rv d1">
-      <div class="hg-item"><div class="hg-num">01</div><div class="hg-ic">📋</div><div class="hg-tt">Choose single or bundle</div><div class="hg-ds">One policy or multiple — lorry, health, life, car all on one sheet</div></div>
+      <div class="hg-item"><div class="hg-num">01</div><div class="hg-ic">🎯</div><div class="hg-tt">Choose single or bundle</div><div class="hg-ds">One policy or multiple — lorry, health, life, car all on one sheet</div></div>
       <div class="hg-item"><div class="hg-num">02</div><div class="hg-ic">✍️</div><div class="hg-tt">Fill your details</div><div class="hg-ds">Name, insurer, policy number, helpline, covers — takes under a minute</div></div>
       <div class="hg-item"><div class="hg-num">03</div><div class="hg-ic">🆘</div><div class="hg-tt">Card generates live</div><div class="hg-ds">Your personalised card with emergency steps appears instantly</div></div>
-      <div class="hg-item"><div class="hg-num">04</div><div class="hg-ic">🖨️</div><div class="hg-tt">Print wallet or A4</div><div class="hg-ds">Print wallet-size for dashboard, A4 for your files. Share on WhatsApp too</div></div>
+      <div class="hg-item"><div class="hg-num">04</div><div class="hg-ic">📲</div><div class="hg-tt">Download or WhatsApp</div><div class="hg-ds">Download as PNG image or send directly to your driver on WhatsApp</div></div>
     </div>
   </div>
 </section>
 
-<!-- FAQ SECTION (SEO) -->
+<!-- FAQ -->
 <section class="faq-sec">
   <div class="faq-in">
     <div class="sec-tag rv">Common questions</div>
     <h2 class="sec-tit rv d1" style="margin-bottom:1.8rem;">Everything you need to <em>know</em></h2>
-    <div class="faq-item rv">
-      <div class="faq-q" onclick="toggleFaq(this)">What should I do immediately after a vehicle accident in India? <span class="faq-arrow">▾</span></div>
-      <div class="faq-a">Call your insurer's claims helpline within the first hour — most insurers require registration within 24 hours. Before anything else, photograph all damage and road positions. Do not move the vehicle until the surveyor arrives or your insurer gives explicit permission. File an FIR at the nearest police station if third-party damage is involved or if damages exceed ₹1 lakh. Never admit fault at the scene.</div>
-    </div>
-    <div class="faq-item rv d1">
-      <div class="faq-q" onclick="toggleFaq(this)">Why do vehicle insurance claims get rejected in India? <span class="faq-arrow">▾</span></div>
-      <div class="faq-a">Most rejections are procedural, not policy-related. The most common reasons are: moving the vehicle before the surveyor inspects it, failing to file FIR within the required window, getting repairs done at a non-network garage, not registering the claim within 24 hours of the incident, and not having the right documents at the time of claim. The SOS card prevents all five.</div>
-    </div>
-    <div class="faq-item rv d2">
-      <div class="faq-q" onclick="toggleFaq(this)">How does cashless health insurance hospitalisation work? <span class="faq-arrow">▾</span></div>
-      <div class="faq-a">Go directly to a network hospital — call your insurer's helpline to confirm the nearest one before you leave. At the admission desk, identify yourself as a cashless policyholder and show your insurance card plus Aadhaar. The hospital sends a pre-authorisation request to your insurer, which is typically approved in 2–4 hours. You pay nothing upfront for covered expenses. At discharge, only non-covered items (if any) need to be paid by you.</div>
-    </div>
-    <div class="faq-item rv d3">
-      <div class="faq-q" onclick="toggleFaq(this)">What is IMT-23 and do I need it for my lorry? <span class="faq-arrow">▾</span></div>
-      <div class="faq-a">IMT-23 is an endorsement that extends commercial vehicle insurance to cover goods carried in the vehicle itself — the body, tarpaulin, ropes, accessories. Without IMT-23, if the lorry body or its equipment is damaged in an accident, the claim for those items will be rejected. Most fleet owners who discover they're missing IMT-23 do so only after a rejection. If you're unsure whether your policy includes it, check your policy schedule or call your advisor.</div>
-    </div>
-    <div class="faq-item rv">
-      <div class="faq-q" onclick="toggleFaq(this)">Can I generate cards for multiple policies? <span class="faq-arrow">▾</span></div>
-      <div class="faq-a">Yes — select "Multiple policies" mode at the top of the form. Fill each policy individually and click "Add to bundle." You can add up to 5 policies across different types — a lorry, a car, and a health policy can all go on one sheet. The bundle prints as a 2-column wallet-card grid on a single A4 sheet, so you can cut and laminate each card separately.</div>
-    </div>
+    <div class="faq-item rv"><div class="faq-q" onclick="toggleFaq(this)">What should I do immediately after a vehicle accident in India? <span class="faq-arrow">▾</span></div><div class="faq-a">Call your insurer's claims helpline within the first hour — most insurers require registration within 24 hours. Photograph all damage before moving the vehicle. Do not move the vehicle until the surveyor arrives. File an FIR if third-party damage is involved or if damages exceed ₹1 lakh. Never admit fault at the scene.</div></div>
+    <div class="faq-item rv d1"><div class="faq-q" onclick="toggleFaq(this)">Why do vehicle insurance claims get rejected in India? <span class="faq-arrow">▾</span></div><div class="faq-a">Most rejections are procedural, not policy-related. Moving the vehicle before the surveyor, failing to file FIR within the required window, getting repairs done at a non-network garage, not registering the claim within 24 hours, or not having the right documents. The SOS card prevents all five.</div></div>
+    <div class="faq-item rv d2"><div class="faq-q" onclick="toggleFaq(this)">How does cashless health insurance hospitalisation work? <span class="faq-arrow">▾</span></div><div class="faq-a">Go directly to a network hospital — call your insurer's helpline to confirm the nearest one before you leave. At the admission desk, identify yourself as a cashless policyholder and show your insurance card plus Aadhaar. Pre-authorisation is typically approved in 2–4 hours. You pay nothing upfront for covered expenses.</div></div>
+    <div class="faq-item rv d3"><div class="faq-q" onclick="toggleFaq(this)">What is IMT-23 and do I need it for my lorry? <span class="faq-arrow">▾</span></div><div class="faq-a">IMT-23 is an endorsement that extends commercial vehicle insurance to cover goods carried in the vehicle itself — the body, tarpaulin, ropes, accessories. Without IMT-23, if the lorry body or its equipment is damaged in an accident, the claim for those items will be rejected. Most fleet owners who discover they're missing IMT-23 do so only after a rejection.</div></div>
+    <div class="faq-item rv"><div class="faq-q" onclick="toggleFaq(this)">Can I generate cards for multiple policies? <span class="faq-arrow">▾</span></div><div class="faq-a">Yes — select "Multiple policies" mode at the top of the form. Fill each policy individually and click "Add to bundle." You can add up to 5 policies across different types — a lorry, a car, and a health policy can all go on one sheet. The bundle downloads as a PNG image you can print or WhatsApp.</div></div>
   </div>
 </section>
 
@@ -1066,11 +940,8 @@ body.print-wallet #ppLive .nudge { display:none !important; }
 <div class="cta-strip">
   <div class="cta-strip-in rv">
     <h2 class="cs-tt">Not sure if your covers are <em>actually right?</em></h2>
-    <p class="cs-ds">Many policyholders discover missing covers — IMT-23, GIT, zero dep — only when a claim is rejected. Our advisors check your policy for free.</p>
-    <div class="cs-btns">
-      <a href="book.html" class="btn-main">📅 Free Policy Review</a>
-      <a href="tel:+917842854466" class="btn-ghost">📞 +91 78428 54466</a>
-    </div>
+    <p class="cs-ds">Many policyholders discover missing covers — IMT-23, GIT, zero dep — only when a claim is rejected. Our advisors check your policy for free. No obligation, 15 minutes.</p>
+    <div class="cs-btns"><a href="book.html" class="btn-main">📅 Free Policy Review</a><a href="tel:+917842854466" class="btn-ghost">📞 +91 78428 54466</a></div>
   </div>
 </div>
 
@@ -1080,14 +951,10 @@ body.print-wallet #ppLive .nudge { display:none !important; }
     <div class="ft-top">
       <a href="index.html" class="ft-logo">Cover<em>Credit</em></a>
       <div class="ft-links">
-        <a href="health-insurance.html">Health</a>
-        <a href="life-insurance.html">Life Insurance</a>
-        <a href="commercial-vehicle-insurance.html">Commercial Vehicle</a>
-        <a href="loans.html">Loans</a>
-        <a href="about.html">About</a>
-        <a href="book.html">Book Consultation</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
+        <a href="health-insurance.html">Health</a><a href="life-insurance.html">Life Insurance</a>
+        <a href="commercial-vehicle-insurance.html">Commercial Vehicle</a><a href="loans.html">Loans</a>
+        <a href="about.html">About</a><a href="book.html">Book Consultation</a>
+        <a href="privacy.html">Privacy</a><a href="terms.html">Terms</a>
       </div>
     </div>
     <div class="ft-copy">© <span id="yr"></span> Cover Credit Insurance Advisors. All rights reserved. · Free tool — works for any insurer in India.</div>
@@ -1095,386 +962,163 @@ body.print-wallet #ppLive .nudge { display:none !important; }
 </footer>
 
 <script>
-/* ═══════════════════════════════════════════
-   STATE
-═══════════════════════════════════════════ */
-let currentType = 'cv';
-let mode = 'single';
-let bundle = [];        // array of captured policy snapshots
-let cardGenerated = false;
-
-/* ═══════════════════════════════════════════
-   DATA
-═══════════════════════════════════════════ */
-const HELPLINES = {
-  'HDFC ERGO General':'1800-266-0700','ICICI Lombard':'1800-2666',
-  'Tata AIG General':'1800-266-7780','New India Assurance':'1800-209-1415',
-  'Bajaj Allianz General':'1800-209-5858','Royal Sundaram':'1800-568-9999',
-  'Liberty General':'1800-266-5844','Reliance General':'1800-3009',
-  'United India Insurance':'1800-425-333','National Insurance':'1800-345-0330',
-  'Oriental Insurance':'1800-118-485','Chola MS General':'1800-208-5544',
-  'Cholamandalam MS General':'1800-208-5544',
-  'Star Health Insurance':'1800-425-2255','Niva Bupa':'1860-500-8888',
-  'Care Health Insurance':'1800-102-4499','Aditya Birla Health':'1800-270-7000',
-  'LIC of India':'1800-227-717','HDFC Life Insurance':'1860-267-9999',
-  'ICICI Prudential Life':'1860-266-7766','Tata AIA Life':'1860-266-9966',
-  'Max Life Insurance':'1860-120-5577','Bajaj Allianz Life':'1800-209-7272',
+/* ═══ DATA ═══ */
+const HELPLINES={'HDFC ERGO General':'1800-266-0700','ICICI Lombard':'1800-2666','Tata AIG General':'1800-266-7780','New India Assurance':'1800-209-1415','Bajaj Allianz General':'1800-209-5858','Royal Sundaram':'1800-568-9999','Liberty General':'1800-266-5844','Reliance General':'1800-3009','United India Insurance':'1800-425-333','National Insurance':'1800-345-0330','Oriental Insurance':'1800-118-485','Chola MS General':'1800-208-5544','Cholamandalam MS General':'1800-208-5544','Star Health Insurance':'1800-425-2255','Niva Bupa':'1860-500-8888','Care Health Insurance':'1800-102-4499','Aditya Birla Health':'1800-270-7000','LIC of India':'1800-227-717','HDFC Life Insurance':'1860-267-9999','ICICI Prudential Life':'1860-266-7766','Tata AIA Life':'1860-266-9966','Max Life Insurance':'1860-120-5577','Bajaj Allianz Life':'1800-209-7272'};
+const TYPE_META={cv:{icon:'🚛',label:'Commercial Vehicle Insurance',keep:'Keep in dashboard',color:'t-cv',hlCol:''},health:{icon:'🏥',label:'Health Insurance',keep:'Keep in wallet',color:'t-health',hlCol:'h'},life:{icon:'🛡️',label:'Life / Term Insurance',keep:'Keep with documents',color:'t-life',hlCol:'l'},car:{icon:'🚗',label:'Car Insurance',keep:'Keep in dashboard',color:'t-car',hlCol:'c'},bike:{icon:'🏍️',label:'Bike Insurance',keep:'Keep in vehicle',color:'t-bike',hlCol:'b'}};
+const STEPS={
+  cv:[{t:'Call helpline immediately',d:'Tell them your policy number and location. Available 24×7.'},{t:'Do not move the vehicle',d:'Take 20+ photos of all damage before anything is moved. Surveyor must see the scene.'},{t:'File FIR at nearest police station',d:'Mandatory for claims above ₹1 lakh, third-party damage, or theft.'},{t:'Note witnesses',d:'Get name &amp; phone of anyone who saw the accident. Vital for disputed claims.'},{t:'Keep every bill',d:'Towing, medical, lodging — submit all. Use cashless garage network only.'}],
+  health:[{t:'Go to a network hospital',d:'Call helpline for nearest cashless hospital before going.'},{t:'Show this card + Aadhaar',d:'Tell admission desk "cashless claim". Pre-authorisation takes 2–4 hours.'},{t:'Do not pay upfront at network hospitals',d:'Insurer settles directly. Keep copies of all reports, prescriptions, bills.'},{t:'Emergency at non-network hospital?',d:'Pay and collect all original bills + discharge summary. Apply reimbursement within 15 days.'}],
+  life:[{t:'Nominee must call helpline first',d:'Reference number from this call is required for all further steps.'},{t:'Documents needed',d:'Death certificate, original policy bond, Aadhaar + PAN of nominee, FIR copy if accidental.'},{t:'File claim within 90 days',d:'A claim officer is assigned within 72 hours of registration.'},{t:'Call Cover Credit for free help',d:'We assist nominee families through the full process at no charge.'}],
+  car:[{t:'Call helpline — register the claim',d:'Surveyor dispatched within hours. Do not delay.'},{t:'Do not repair before surveyor visit',d:'Take 20+ photos of damage. Do not admit fault to third parties.'},{t:'Use cashless network garages only',d:'Call helpline for nearest approved garage. Repairs outside network may void claim.'},{t:'Third party involved?',d:'File FIR, exchange names, phones &amp; insurer details. Never settle cash on the spot.'}],
+  bike:[{t:'Move to safety, then call helpline',d:'Register claim immediately, even if damage seems minor.'},{t:'Photograph everything first',d:'Bike damage, road, other vehicles. Do not move bike before photos.'},{t:'Injuries?',d:'Hospital first — your Owner PA cover applies. Keep all medical bills &amp; discharge summary.'},{t:'FIR needed if:',d:'Third party involved, bike stolen, or damage above ₹25,000. File within 24 hours.'}]
 };
+const NUDGES={cv:'<strong>Is your lorry missing IMT-23 or Goods-in-Transit?</strong> Most lorry owners discover the gap only after a claim rejection. We\'ll check your policy for free.',health:'<strong>Not sure if your health policy covers your city\'s hospitals cashlessly?</strong> We\'ll verify your network and sum insured — free of charge.',life:'<strong>Is your nominee aware of the claim process?</strong> Many life insurance claims are delayed because nominees don\'t know what to do. We guide families for free.',car:'<strong>Missing Zero Depreciation or Engine Protection?</strong> These are the most commonly missed covers in car insurance. Free check takes 5 minutes.',bike:'<strong>Pillion rider cover missing?</strong> If you carry a pillion and they\'re injured, standard bike insurance won\'t cover them. We can add it at renewal.'};
 
-const TYPE_META = {
-  cv:{icon:'🚛',label:'Commercial Vehicle Insurance',keep:'Keep in dashboard',color:'t-cv',acc:'acc-cv',numClass:'cs-n cv',hot:'hot',hlCol:''},
-  health:{icon:'🏥',label:'Health Insurance',keep:'Keep in wallet',color:'t-health',acc:'acc-health',numClass:'cs-n health',hot:'hot-h',hlCol:'h'},
-  life:{icon:'🛡️',label:'Life / Term Insurance',keep:'Keep with documents',color:'t-life',acc:'acc-life',numClass:'cs-n life',hot:'hot-l',hlCol:'l'},
-  car:{icon:'🚗',label:'Car Insurance',keep:'Keep in dashboard',color:'t-car',acc:'acc-car',numClass:'cs-n car',hot:'hot-c',hlCol:'c'},
-  bike:{icon:'🏍️',label:'Bike Insurance',keep:'Keep in vehicle',color:'t-bike',acc:'acc-bike',numClass:'cs-n bike',hot:'hot-b',hlCol:'b'},
-};
+/* ═══ STATE ═══ */
+let currentType='cv',mode='single',bundle=[],cardGenerated=false;
 
-const STEPS = {
-  cv:[
-    {t:'Call helpline immediately',d:'Tell them your policy number and location. Available 24×7.'},
-    {t:'Do not move the vehicle',d:'Take 20+ photos of all damage before anything is moved. Surveyor must see the scene.'},
-    {t:'File FIR at nearest police station',d:'Mandatory for claims above ₹1 lakh, third-party damage, or theft.'},
-    {t:'Note witnesses',d:'Get name &amp; phone of anyone who saw the accident. Vital for disputed claims.'},
-    {t:'Keep every bill',d:'Towing, medical, lodging — submit all. Use cashless garage network only.'},
-  ],
-  health:[
-    {t:'Go to a network hospital',d:'Call helpline for nearest cashless hospital before going.'},
-    {t:'Show this card + Aadhaar',d:'Tell admission desk "cashless claim". Pre-authorisation takes 2–4 hours.'},
-    {t:'Do not pay upfront at network hospitals',d:'Insurer settles directly. Keep copies of all reports, prescriptions, bills.'},
-    {t:'Emergency at non-network hospital?',d:'Pay and collect all original bills + discharge summary. Apply reimbursement within 15 days.'},
-  ],
-  life:[
-    {t:'Nominee must call helpline first',d:'Reference number from this call is required for all further steps.'},
-    {t:'Documents needed',d:'Death certificate, original policy bond, Aadhaar + PAN of nominee, FIR copy if accidental.'},
-    {t:'File claim within 90 days',d:'A claim officer is assigned within 72 hours of registration.'},
-    {t:'Call Cover Credit for free help',d:'We assist nominee families through the full process at no charge.'},
-  ],
-  car:[
-    {t:'Call helpline — register the claim',d:'Surveyor dispatched within hours. Do not delay.'},
-    {t:'Do not repair before surveyor visit',d:'Take 20+ photos of damage. Do not admit fault to third parties.'},
-    {t:'Use cashless network garages only',d:'Call helpline for nearest approved garage. Repairs outside network may void claim.'},
-    {t:'Third party involved?',d:'File FIR, exchange names, phones &amp; insurer details. Never settle cash on the spot.'},
-  ],
-  bike:[
-    {t:'Move to safety, then call helpline',d:'Register claim immediately, even if damage seems minor.'},
-    {t:'Photograph everything first',d:'Bike damage, road, other vehicles. Do not move bike before photos.'},
-    {t:'Injuries?',d:'Hospital first — your Owner PA cover applies. Keep all medical bills &amp; discharge summary.'},
-    {t:'FIR needed if:',d:'Third party involved, bike stolen, or damage above ₹25,000. File within 24 hours.'},
-  ],
-};
+/* ═══ HELPERS ═══ */
+function fmtDate(val){if(!val)return'—';return new Date(val).toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});}
+function highlightField(id){const el=document.getElementById(id);el.classList.add('error');el.focus();setTimeout(()=>el.classList.remove('error'),2000);}
+function validatePolicy(){const name=document.getElementById('f-name').value.trim();const hl=document.getElementById('f-helpline').value.trim();const ins=document.getElementById('f-insurer').value;if(!name){highlightField('f-name');return false;}if(!hl&&!ins){highlightField('f-helpline');return false;}return true;}
+function scrollToTool(){document.getElementById('toolSection').scrollIntoView({behavior:'smooth',block:'start'});}
+function toggleFaq(el){el.parentElement.classList.toggle('open');}
 
-const NUDGES = {
-  cv:'<strong>Is your lorry missing IMT-23 or Goods-in-Transit?</strong> Most lorry owners discover the gap only after a claim rejection. We\'ll check your policy for free.',
-  health:'<strong>Not sure if your health policy covers your city\'s hospitals cashlessly?</strong> We\'ll verify your network and sum insured — free of charge.',
-  life:'<strong>Is your nominee aware of the claim process?</strong> Many life insurance claims are delayed because nominees don\'t know what to do. We guide families for free.',
-  car:'<strong>Missing Zero Depreciation or Engine Protection?</strong> These are the most commonly missed covers in car insurance. Free check takes 5 minutes.',
-  bike:'<strong>Pillion rider cover missing?</strong> If you carry a pillion and they\'re injured, standard bike insurance won\'t cover them. We can add it at renewal.',
-};
-
-/* ═══════════════════════════════════════════
-   MODE TOGGLE
-═══════════════════════════════════════════ */
-function setMode(m) {
-  mode = m;
-  document.getElementById('mode-single').classList.toggle('on', m === 'single');
-  document.getElementById('mode-multi').classList.toggle('on', m === 'multi');
-  document.getElementById('mode-hint').classList.toggle('show', m === 'multi');
-  document.getElementById('policyTray').classList.toggle('show', m === 'multi');
-  document.getElementById('addBundleBtn').classList.toggle('show', m === 'multi');
-  const btn = document.getElementById('genBtn');
-  const btnTxt = document.getElementById('genBtnTxt');
-  btn.className = 'gen-btn' + (m === 'multi' ? ' multi-mode' : '');
+/* ═══ MODE / TYPE ═══ */
+function setMode(m){
+  mode=m;
+  document.getElementById('mode-single').classList.toggle('on',m==='single');
+  document.getElementById('mode-multi').classList.toggle('on',m==='multi');
+  document.getElementById('mode-hint').classList.toggle('show',m==='multi');
+  document.getElementById('policyTray').classList.toggle('show',m==='multi');
+  document.getElementById('addBundleBtn').classList.toggle('show',m==='multi');
+  document.getElementById('genBtn').className='gen-btn'+(m==='multi'?' multi-mode':'');
   updateBundleUI();
 }
-
-function updateBundleUI() {
-  const btnTxt = document.getElementById('genBtnTxt');
-  if (mode === 'multi') {
-    const n = bundle.length;
-    document.getElementById('trayCount').textContent = n + ' polic' + (n === 1 ? 'y' : 'ies');
-    document.getElementById('multi-sub-txt').textContent = n ? n + ' added' : 'Bundle all on one sheet';
-    btnTxt.textContent = n ? 'Generate Bundle (' + n + ' polic' + (n === 1 ? 'y' : 'ies') + ')' : 'Generate Bundle';
-    renderTray();
-  } else {
-    btnTxt.textContent = 'Generate My SOS Card';
-  }
-}
-
-/* ═══════════════════════════════════════════
-   TYPE SWITCH
-═══════════════════════════════════════════ */
-function setType(type, el) {
-  currentType = type;
-  document.querySelectorAll('.pt').forEach(p => p.classList.remove('on'));
+function setType(type,el){
+  currentType=type;
+  document.querySelectorAll('.pt').forEach(p=>p.classList.remove('on'));
   el.classList.add('on');
-  ['cv','health','life','car','bike'].forEach(t => {
-    document.getElementById('fields-' + t).style.display = t === type ? 'block' : 'none';
-  });
+  ['cv','health','life','car','bike'].forEach(t=>document.getElementById('fields-'+t).style.display=t===type?'block':'none');
 }
+function toggleCover(pill){const label=pill.textContent.replace(/^[✓✗]\s*/,'');if(pill.classList.contains('yes')){pill.classList.replace('yes','no');pill.textContent='✗ '+label;}else{pill.classList.replace('no','yes');pill.textContent='✓ '+label;}}
+function onInsurerChange(){const ins=document.getElementById('f-insurer').value;const hl=HELPLINES[ins];const note=document.getElementById('hl-note');if(hl){document.getElementById('f-helpline').value=hl;note.classList.add('show');}else note.classList.remove('show');}
 
-/* ═══════════════════════════════════════════
-   COVER TOGGLE
-═══════════════════════════════════════════ */
-function toggleCover(pill) {
-  const label = pill.textContent.replace(/^[✓✗]\s*/,'');
-  if (pill.classList.contains('yes')) {
-    pill.classList.replace('yes','no');
-    pill.textContent = '✗ ' + label;
-  } else {
-    pill.classList.replace('no','yes');
-    pill.textContent = '✓ ' + label;
-  }
-}
-
-/* ═══════════════════════════════════════════
-   INSURER AUTOFILL
-═══════════════════════════════════════════ */
-function onInsurerChange() {
-  const ins = document.getElementById('f-insurer').value;
-  const hl = HELPLINES[ins];
-  const note = document.getElementById('hl-note');
-  if (hl) {
-    document.getElementById('f-helpline').value = hl;
-    note.classList.add('show');
-  } else {
-    note.classList.remove('show');
-  }
-}
-
-/* ═══════════════════════════════════════════
-   CAPTURE FORM STATE
-═══════════════════════════════════════════ */
-function captureFormState() {
-  const type = currentType;
-  const name = document.getElementById('f-name').value.trim();
-  const phone = document.getElementById('f-phone').value.trim();
-  const insurer = document.getElementById('f-insurer').value || '—';
-  const policyNo = document.getElementById('f-policy').value.trim() || '—';
-  const helpline = document.getElementById('f-helpline').value.trim() || '—';
-  const expiry = document.getElementById('f-expiry').value;
-  const coversKey = type === 'cv' ? 'cv' : type === 'health' ? 'health' : type === 'life' ? 'life' : type === 'car' ? 'car' : 'bike';
-  const covers = Array.from(document.querySelectorAll('#' + coversKey + '-covers .cp-tog')).map(p => ({
-    label: p.textContent.replace(/^[✓✗]\s*/,''),
-    active: p.classList.contains('yes')
-  }));
-
-  const snap = { type, name, phone, insurer, policyNo, helpline, expiry, covers };
-
-  if (type === 'cv') {
-    snap.vnum = document.getElementById('f-vnum').value.trim() || '—';
-    snap.vtype = document.getElementById('f-vtype').value || '—';
-  } else if (type === 'health') {
-    snap.si = document.getElementById('f-si').value.trim() || '—';
-    snap.network = document.getElementById('f-network').value;
-    snap.members = ['f-m1','f-m2','f-m3','f-m4'].map(id => document.getElementById(id).value.trim()).filter(Boolean);
-  } else if (type === 'life') {
-    snap.sa = document.getElementById('f-sa').value.trim() || '—';
-    snap.nom = document.getElementById('f-nom').value.trim() || '—';
-    snap.nomph = document.getElementById('f-nomph').value.trim() || '—';
-    snap.nomrel = document.getElementById('f-nomrel').value.trim() || '—';
-  } else if (type === 'car') {
-    snap.cnum = document.getElementById('f-cnum').value.trim() || '—';
-    snap.cmodel = document.getElementById('f-cmodel').value.trim() || '—';
-  } else {
-    snap.bnum = document.getElementById('f-bnum').value.trim() || '—';
-    snap.bmodel = document.getElementById('f-bmodel').value.trim() || '—';
-  }
+/* ═══ CAPTURE FORM ═══ */
+function captureFormState(){
+  const type=currentType;
+  const snap={type,name:document.getElementById('f-name').value.trim(),phone:document.getElementById('f-phone').value.trim(),insurer:document.getElementById('f-insurer').value||'—',policyNo:document.getElementById('f-policy').value.trim()||'—',helpline:document.getElementById('f-helpline').value.trim()||'—',expiry:document.getElementById('f-expiry').value,covers:Array.from(document.querySelectorAll('#'+type+'-covers .cp-tog')).map(p=>({label:p.textContent.replace(/^[✓✗]\s*/,''),active:p.classList.contains('yes')}))};
+  if(type==='cv'){snap.vnum=document.getElementById('f-vnum').value.trim()||'—';snap.vtype=document.getElementById('f-vtype').value||'—';}
+  else if(type==='health'){snap.si=document.getElementById('f-si').value.trim()||'—';snap.network=document.getElementById('f-network').value;snap.members=['f-m1','f-m2','f-m3','f-m4'].map(id=>document.getElementById(id).value.trim()).filter(Boolean);}
+  else if(type==='life'){snap.sa=document.getElementById('f-sa').value.trim()||'—';snap.nom=document.getElementById('f-nom').value.trim()||'—';snap.nomph=document.getElementById('f-nomph').value.trim()||'—';snap.nomrel=document.getElementById('f-nomrel').value.trim()||'—';}
+  else if(type==='car'){snap.cnum=document.getElementById('f-cnum').value.trim()||'—';snap.cmodel=document.getElementById('f-cmodel').value.trim()||'—';}
+  else{snap.bnum=document.getElementById('f-bnum').value.trim()||'—';snap.bmodel=document.getElementById('f-bmodel').value.trim()||'—';}
   return snap;
 }
 
-/* ═══════════════════════════════════════════
-   FORMAT DATE
-═══════════════════════════════════════════ */
-function fmtDate(val) {
-  if (!val) return '—';
-  return new Date(val).toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+/* ═══ BUNDLE ═══ */
+const TRAY_CLASS={cv:'t-cv',health:'t-health',life:'t-life',car:'t-car',bike:'t-bike'};
+const TYPE_ICONS={cv:'🚛',health:'🏥',life:'🛡️',car:'🚗',bike:'🏍️'};
+function updateBundleUI(){
+  const btnTxt=document.getElementById('genBtnTxt');
+  if(mode==='multi'){
+    const n=bundle.length;
+    document.getElementById('trayCount').textContent=n+' polic'+(n===1?'y':'ies');
+    document.getElementById('multi-sub-txt').textContent=n?n+' added':'Bundle all on one sheet';
+    btnTxt.textContent=n?'Generate Bundle ('+n+' polic'+(n===1?'y':'ies')+')':'Generate Bundle';
+    renderTray();
+  }else{btnTxt.textContent='Generate My SOS Card';}
 }
-
-/* ═══════════════════════════════════════════
-   VALIDATION
-═══════════════════════════════════════════ */
-function highlightField(id) {
-  const el = document.getElementById(id);
-  el.classList.add('error');
-  el.focus();
-  setTimeout(() => el.classList.remove('error'), 2000);
+function renderTray(){
+  const container=document.getElementById('trayPills');
+  if(!bundle.length){container.innerHTML='<span class="tray-empty">No policies added yet — fill the form above and click Add to bundle</span>';return;}
+  container.innerHTML=bundle.map((p,i)=>`<span class="tray-pill ${TRAY_CLASS[p.type]}">${TYPE_ICONS[p.type]} ${p.insurer.split(' ')[0]} <span class="pill-x" onclick="removeFromBundle(${i})">✕</span></span>`).join('');
 }
+function addToBundle(){if(!validatePolicy())return;bundle.push(captureFormState());updateBundleUI();document.getElementById('f-insurer').value='';document.getElementById('f-helpline').value='';document.getElementById('f-policy').value='';document.getElementById('f-expiry').value='';document.getElementById('hl-note').classList.remove('show');}
+function removeFromBundle(i){bundle.splice(i,1);updateBundleUI();}
 
-function validatePolicy() {
-  const name = document.getElementById('f-name').value.trim();
-  const hl = document.getElementById('f-helpline').value.trim();
-  const ins = document.getElementById('f-insurer').value;
-  if (!name) { highlightField('f-name'); return false; }
-  if (!hl && !ins) { highlightField('f-helpline'); return false; }
-  return true;
-}
+/* ═══ BUILD SINGLE CARD ═══ */
+function buildSingleCardHTML(snap){
+  const t=snap.type,meta=TYPE_META[t],today=new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
+  const hi={cv:'hi',health:'hi-h',life:'hi-l',car:'hi-c',bike:'hi-b'}[t];
+  const ac='t-'+t;
 
-/* ═══════════════════════════════════════════
-   BUNDLE TRAY
-═══════════════════════════════════════════ */
-const TRAY_CLASS = {cv:'t-cv',health:'t-health',life:'t-life',car:'t-car',bike:'t-bike'};
-const TYPE_ICONS = {cv:'🚛',health:'🏥',life:'🛡️',car:'🚗',bike:'🏍️'};
+  let cells='';
+  if(t==='cv')cells=`<div class="nc-cell"><div class="nc-cell-lbl">Vehicle</div><div class="nc-cell-val ${hi}">${snap.vnum}</div></div><div class="nc-cell"><div class="nc-cell-lbl">Type</div><div class="nc-cell-val">${snap.vtype||'—'}</div></div><div class="nc-cell"><div class="nc-cell-lbl">Policy no.</div><div class="nc-cell-val">${snap.policyNo}</div></div><div class="nc-cell"><div class="nc-cell-lbl">Expires</div><div class="nc-cell-val">${fmtDate(snap.expiry)}</div></div>`;
+  else if(t==='health')cells=`<div class="nc-cell"><div class="nc-cell-lbl">Policy no.</div><div class="nc-cell-val">${snap.policyNo}</div></div><div class="nc-cell"><div class="nc-cell-lbl">Sum insured</div><div class="nc-cell-val ${hi}">${snap.si||'—'}</div></div><div class="nc-cell"><div class="nc-cell-lbl">Network</div><div class="nc-cell-val">${(snap.network||'').replace(' Only','').replace('+ Reimbursement','+ Reimb.')}</div></div><div class="nc-cell"><div class="nc-cell-lbl">Members</div><div class="nc-cell-val">${snap.members.length||1}</div></div>`;
+  else if(t==='life')cells=`<div class="nc-cell"><div class="nc-cell-lbl">Policy no.</div><div class="nc-cell-val">${snap.policyNo}</div></div><div class="nc-cell"><div class="nc-cell-lbl">Sum assured</div><div class="nc-cell-val ${hi}">${snap.sa||'—'}</div></div><div class="nc-cell"><div class="nc-cell-lbl">Nominee</div><div class="nc-cell-val">${snap.nom}</div></div><div class="nc-cell"><div class="nc-cell-lbl">Nominee phone</div><div class="nc-cell-val ${hi}">${snap.nomph}</div></div>`;
+  else if(t==='car')cells=`<div class="nc-cell"><div class="nc-cell-lbl">Vehicle</div><div class="nc-cell-val ${hi}">${snap.cnum}</div></div><div class="nc-cell"><div class="nc-cell-lbl">Model</div><div class="nc-cell-val">${snap.cmodel||'—'}</div></div><div class="nc-cell"><div class="nc-cell-lbl">Policy no.</div><div class="nc-cell-val">${snap.policyNo}</div></div><div class="nc-cell"><div class="nc-cell-lbl">Expires</div><div class="nc-cell-val">${fmtDate(snap.expiry)}</div></div>`;
+  else cells=`<div class="nc-cell"><div class="nc-cell-lbl">Vehicle</div><div class="nc-cell-val ${hi}">${snap.bnum}</div></div><div class="nc-cell"><div class="nc-cell-lbl">Bike</div><div class="nc-cell-val">${snap.bmodel||'—'}</div></div><div class="nc-cell"><div class="nc-cell-lbl">Policy no.</div><div class="nc-cell-val">${snap.policyNo}</div></div><div class="nc-cell"><div class="nc-cell-lbl">Expires</div><div class="nc-cell-val">${fmtDate(snap.expiry)}</div></div>`;
 
-function renderTray() {
-  const container = document.getElementById('trayPills');
-  if (!bundle.length) {
-    container.innerHTML = '<span class="tray-empty">No policies added yet — fill the form above and click Add to bundle</span>';
-    return;
-  }
-  container.innerHTML = bundle.map((p,i) =>
-    `<span class="tray-pill ${TRAY_CLASS[p.type]}">${TYPE_ICONS[p.type]} ${p.insurer.split(' ')[0]} <span class="pill-x" onclick="removeFromBundle(${i})">✕</span></span>`
-  ).join('');
-}
+  const covers=snap.covers.map(c=>`<span class="nct ${c.active?'y':'n'}">${c.active?'✓ ':''}${c.label}</span>`).join('');
 
-function addToBundle() {
-  if (!validatePolicy()) return;
-  const snap = captureFormState();
-  bundle.push(snap);
-  updateBundleUI();
-  // Clear policy-specific fields for next entry, keep name/phone
-  document.getElementById('f-insurer').value = '';
-  document.getElementById('f-helpline').value = '';
-  document.getElementById('f-policy').value = '';
-  document.getElementById('f-expiry').value = '';
-  document.getElementById('hl-note').classList.remove('show');
-}
-
-function removeFromBundle(i) {
-  bundle.splice(i,1);
-  updateBundleUI();
-}
-
-/* ═══════════════════════════════════════════
-   BUILD SINGLE CARD HTML
-═══════════════════════════════════════════ */
-function buildSingleCardHTML(snap) {
-  const t = snap.type;
-  const today = new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
-  const meta = TYPE_META[t];
-
-  /* accent helpers */
-  const hi = {cv:'hi',health:'hi-h',life:'hi-l',car:'hi-c',bike:'hi-b'}[t];
-  const ac = 't-' + t;
-  const sn = 't-' + t;
-
-  /* info grid cells — always exactly 4, laid out in cols4 grid */
-  let cells = '';
-  if (t === 'cv') {
-    cells = `
-      <div class="nc-cell"><div class="nc-cell-lbl">Vehicle</div><div class="nc-cell-val ${hi}">${snap.vnum}</div></div>
-      <div class="nc-cell"><div class="nc-cell-lbl">Type</div><div class="nc-cell-val">${snap.vtype||'—'}</div></div>
-      <div class="nc-cell"><div class="nc-cell-lbl">Policy no.</div><div class="nc-cell-val">${snap.policyNo}</div></div>
-      <div class="nc-cell"><div class="nc-cell-lbl">Expires</div><div class="nc-cell-val">${fmtDate(snap.expiry)}</div></div>`;
-  } else if (t === 'health') {
-    cells = `
-      <div class="nc-cell"><div class="nc-cell-lbl">Policy no.</div><div class="nc-cell-val">${snap.policyNo}</div></div>
-      <div class="nc-cell"><div class="nc-cell-lbl">Sum insured</div><div class="nc-cell-val ${hi}">${snap.si||'—'}</div></div>
-      <div class="nc-cell"><div class="nc-cell-lbl">Network</div><div class="nc-cell-val">${(snap.network||'').replace(' Only','').replace('+ Reimbursement','+ Reimb.')}</div></div>
-      <div class="nc-cell"><div class="nc-cell-lbl">Members</div><div class="nc-cell-val">${snap.members.length||1}</div></div>`;
-  } else if (t === 'life') {
-    cells = `
-      <div class="nc-cell"><div class="nc-cell-lbl">Policy no.</div><div class="nc-cell-val">${snap.policyNo}</div></div>
-      <div class="nc-cell"><div class="nc-cell-lbl">Sum assured</div><div class="nc-cell-val ${hi}">${snap.sa||'—'}</div></div>
-      <div class="nc-cell"><div class="nc-cell-lbl">Nominee</div><div class="nc-cell-val">${snap.nom}</div></div>
-      <div class="nc-cell"><div class="nc-cell-lbl">Nominee phone</div><div class="nc-cell-val ${hi}">${snap.nomph}</div></div>`;
-  } else if (t === 'car') {
-    cells = `
-      <div class="nc-cell"><div class="nc-cell-lbl">Vehicle</div><div class="nc-cell-val ${hi}">${snap.cnum}</div></div>
-      <div class="nc-cell"><div class="nc-cell-lbl">Model</div><div class="nc-cell-val">${snap.cmodel||'—'}</div></div>
-      <div class="nc-cell"><div class="nc-cell-lbl">Policy no.</div><div class="nc-cell-val">${snap.policyNo}</div></div>
-      <div class="nc-cell"><div class="nc-cell-lbl">Expires</div><div class="nc-cell-val">${fmtDate(snap.expiry)}</div></div>`;
-  } else {
-    cells = `
-      <div class="nc-cell"><div class="nc-cell-lbl">Vehicle</div><div class="nc-cell-val ${hi}">${snap.bnum}</div></div>
-      <div class="nc-cell"><div class="nc-cell-lbl">Bike</div><div class="nc-cell-val">${snap.bmodel||'—'}</div></div>
-      <div class="nc-cell"><div class="nc-cell-lbl">Policy no.</div><div class="nc-cell-val">${snap.policyNo}</div></div>
-      <div class="nc-cell"><div class="nc-cell-lbl">Expires</div><div class="nc-cell-val">${fmtDate(snap.expiry)}</div></div>`;
-  }
-
-  /* covers — active only shown boldly, inactive faded */
-  const covers = snap.covers.map(c =>
-    `<span class="nct ${c.active?'y':'n'}">${c.active?'✓ ':''}${c.label}</span>`
-  ).join('');
-
-  /* steps — numbered with Bebas, only first 3 for compactness */
-  const steps = STEPS[t].slice(0,4).map((s,i) => {
-    const desc = i===0
-      ? `Call <strong>${snap.helpline}</strong> · Policy <strong>${snap.policyNo}</strong>`
-      : `<strong>${s.t}</strong> — ${s.d}`;
-    return `<div class="nc-step"><div class="nc-snum ${sn}">${i+1}.</div><div class="nc-stxt">${desc}</div></div>`;
+  /* STEPS — each with bold title + grey description on next line */
+  const steps=STEPS[t].map((s,i)=>{
+    const desc=i===0?`Call <strong>${snap.helpline}</strong> — give policy no. <strong>${snap.policyNo}</strong>`:s.d;
+    return `<div class="nc-step"><div class="nc-snum ${ac}">${i+1}.</div><div><div class="nc-stxt-title">${s.t}</div><div class="nc-stxt-desc">${desc}</div></div></div>`;
   }).join('');
 
-  /* members for health */
-  const members = (t==='health' && snap.members.length)
-    ? `<div style="display:flex;gap:.25rem;flex-wrap:wrap;padding:0 1rem .7rem;">${
-        snap.members.map(m=>`<span style="font-size:.5rem;padding:.15rem .55rem;border-radius:100px;background:rgba(41,182,246,.08);border:1px solid rgba(41,182,246,.18);color:#29b6f6;font-weight:700;">👤 ${m}</span>`).join('')
-      }</div>` : '';
+  const members=(t==='health'&&snap.members.length)?`<div style="display:flex;gap:.25rem;flex-wrap:wrap;padding:0 1rem .7rem;">${snap.members.map(m=>`<span style="font-size:.5rem;padding:.15rem .55rem;border-radius:100px;background:rgba(41,182,246,.08);border:1px solid rgba(41,182,246,.18);color:#29b6f6;font-weight:700;">👤 ${m}</span>`).join('')}</div>`:'';
 
   return `
     <div class="nc-bar ${ac}"></div>
-
     <div class="nc-hd">
       <div>
         <div class="nc-type-pill ${ac}"><span class="dot"></span>${meta.icon} ${meta.label}</div>
         <div class="nc-name">${snap.name}</div>
         <div class="nc-brand-inline">Cover<em>Credit</em> · covercredit.in · +91 78428 54466</div>
       </div>
-      <div class="nc-hd-right">
-        <div class="nc-sos">SOS</div>
-      </div>
+      <div class="nc-hd-right"><div class="nc-sos">SOS</div></div>
     </div>
-
     <div class="nc-hl ${ac}">
-      <div class="nc-hl-left">
+      <div>
         <div class="nc-hl-tag">Claims helpline · 24×7</div>
         <div class="nc-hl-num ${ac}">${snap.helpline}</div>
         <div class="nc-hl-insurer">${snap.insurer}</div>
       </div>
       <div class="nc-hl-badge">${meta.keep}</div>
     </div>
-
     <div class="nc-grid cols4">${cells}</div>
-
     ${members}
-
     <div class="nc-covers">${covers}</div>
-
     <div class="nc-steps">
-      <div class="nc-steps-hd">In an emergency</div>
+      <div class="nc-steps-hd">In an emergency — do this immediately</div>
       ${steps}
     </div>
-
-    <div class="nc-fine">General guidance only · Refer to your policy document for exact claim conditions · Generated ${today} · covercredit.in/sos-card</div>`;
+    <div class="nc-bottom">
+      <div class="nc-bottom-brand">
+        <div class="nc-bottom-logo">Cover<em>Credit</em></div>
+        <div class="nc-bottom-divider"></div>
+        <div class="nc-bottom-url">covercredit.in/sos-card</div>
+      </div>
+      <div class="nc-bottom-right">+91 78428 54466</div>
+    </div>
+    <div class="nc-fine">General guidance only · Refer to your policy document for exact claim conditions · Generated ${today}</div>`;
 }
-  
-/* ═══════════════════════════════════════════
-   BUILD BUNDLE CARD HTML
-═══════════════════════════════════════════ */
-function buildBundleCardHTML(snap) {
-function buildBundleCardHTML(snap) {
-  const meta = TYPE_META[snap.type];
-  let mainDetail = '';
-  if (snap.type === 'cv') mainDetail = snap.vnum;
-  else if (snap.type === 'car') mainDetail = snap.cnum;
-  else if (snap.type === 'bike') mainDetail = snap.bnum;
-  else if (snap.type === 'health') mainDetail = snap.si ? 'SI: ' + snap.si : '';
-  else if (snap.type === 'life') mainDetail = snap.sa ? snap.sa : '';
 
-  const topSteps = STEPS[snap.type].slice(0,2);
-  const stepsHtml = topSteps.map((s,i) => {
-    const desc = i === 0 ? `Call <strong>${snap.helpline}</strong>` : s.t;
+/* ═══ BUILD BUNDLE CARD ═══ */
+function buildBundleCardHTML(snap){
+  const meta=TYPE_META[snap.type];
+  let mainDetail='';
+  if(snap.type==='cv')mainDetail=snap.vnum;
+  else if(snap.type==='car')mainDetail=snap.cnum;
+  else if(snap.type==='bike')mainDetail=snap.bnum;
+  else if(snap.type==='health')mainDetail=snap.si?'SI: '+snap.si:'';
+  else if(snap.type==='life')mainDetail=snap.sa?snap.sa:'';
+
+  const topSteps=STEPS[snap.type].slice(0,2);
+  const stepsHtml=topSteps.map((s,i)=>{
+    const desc=i===0?`Call <strong>${snap.helpline}</strong>`:s.t;
     return `<div class="bc-step"><div class="bc-step-n ${snap.type}">${i+1}</div><div class="bc-step-t">${desc}</div></div>`;
   }).join('');
 
-  const coversHtml = snap.covers.map(c =>
-    `<span class="bc-ctag ${c.active ? 'y' : 'n'}">${c.active ? '✓' : '✗'} ${c.label}</span>`
-  ).join('');
+  const coversHtml=snap.covers.map(c=>`<span class="bc-ctag ${c.active?'y':'n'}">${c.active?'✓':'✗'} ${c.label}</span>`).join('');
 
   return `
     <div class="bundle-card">
       <div class="bc-hd ${meta.color}">
         <div class="bc-icon">${meta.icon}</div>
-        <div><div class="bc-type">${meta.label}</div><div class="bc-name">${snap.name}${mainDetail ? ' · ' + mainDetail : ''}</div></div>
+        <div><div class="bc-type">${meta.label}</div><div class="bc-name">${snap.name}${mainDetail?' · '+mainDetail:''}</div></div>
       </div>
       <div class="bc-body">
         <div class="bc-hl-label">Claims helpline</div>
@@ -1491,521 +1135,135 @@ function buildBundleCardHTML(snap) {
     </div>`;
 }
 
-/* ═══════════════════════════════════════════
-   GENERATE
-═══════════════════════════════════════════ */
-function generateCard() {
-  if (mode === 'single') {
-    if (!validatePolicy()) return;
-    const snap = captureFormState();
-    document.getElementById('sosCard').innerHTML = buildSingleCardHTML(snap);
-    document.getElementById('sosCard').style.display = 'block';
-    document.getElementById('bundleSheet').style.display = 'none';
-    showPreview(snap.type, [snap]);
+/* ═══ GENERATE ═══ */
+function generateCard(){
+  if(mode==='single'){
+    if(!validatePolicy())return;
+    const snap=captureFormState();
+    document.getElementById('sosCard').innerHTML=buildSingleCardHTML(snap);
+    document.getElementById('sosCard').style.display='block';
+    document.getElementById('bundleSheet').style.display='none';
+    showPreview(snap.type,[snap]);
     setupWAShare([snap]);
-  } else {
-    if (!bundle.length) {
-      if (validatePolicy()) {
-        alert('Click "+ Add to bundle" to add this policy first, then click Generate Bundle.');
-      }
-      return;
-    }
-    // Build 2-col bundle sheet
-    const name = bundle[0].name;
-    const today = new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
-    const bundleCardsHtml = bundle.map(snap => buildBundleCardHTML(snap)).join('');
-    document.getElementById('bundleSheet').innerHTML = `
-      <div class="bundle-header">
-        <div><div class="bundle-header-title">Insurance Bundle — ${name}</div><div class="bundle-header-sub">${bundle.length} polic${bundle.length===1?'y':'ies'} · Generated ${today} · covercredit.in/sos-card</div></div>
-        <div class="bundle-header-sos">SOS</div>
-      </div>
-      <div class="bundle-grid">${bundleCardsHtml}</div>
-      <div class="bundle-disclaimer">Steps are general guidance — refer to your policy document for exact claim conditions. Cover Credit is not liable for claim outcomes. · covercredit.in · +91 78428 54466</div>`;
-    document.getElementById('sosCard').style.display = 'none';
-    document.getElementById('bundleSheet').style.display = 'block';
-    showPreview(bundle[0].type, bundle);
+  }else{
+    if(!bundle.length){if(validatePolicy())alert('Click "+ Add to bundle" to add this policy first, then click Generate Bundle.');return;}
+    const name=bundle[0].name;
+    const today=new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
+    const bundleCardsHtml=bundle.map(snap=>buildBundleCardHTML(snap)).join('');
+    document.getElementById('bundleSheet').innerHTML=`
+      <div class="bundle-sheet-wrap">
+        <div class="bundle-header"><div><div class="bundle-header-title">Insurance Bundle — ${name}</div><div class="bundle-header-sub">${bundle.length} polic${bundle.length===1?'y':'ies'} · Generated ${today} · covercredit.in/sos-card</div></div><div class="bundle-header-sos">SOS</div></div>
+        <div class="bundle-grid">${bundleCardsHtml}</div>
+        <div class="bundle-disclaimer">Steps are general guidance — refer to your policy document for exact claim conditions. Cover Credit is not liable for claim outcomes. · covercredit.in · +91 78428 54466</div>
+      </div>`;
+    document.getElementById('sosCard').style.display='none';
+    document.getElementById('bundleSheet').style.display='block';
+    showPreview(bundle[0].type,bundle);
     setupWAShare(bundle);
   }
-
-  cardGenerated = true;
+  cardGenerated=true;
   incrementCounter();
 }
 
-function showPreview(primaryType, snaps) {
-  const nudge = document.getElementById('nudgeBox');
-  const snap = snaps[0];
-  const waMsg = `Hi Cover Credit, I generated a SOS card. Can you review my covers for free? — ${snap.name}`;
-  nudge.innerHTML = `<div class="nudge-ic">💡</div><div class="nudge-body">${NUDGES[primaryType]}<br/><a class="nudge-wa" href="https://wa.me/917842854466?text=${encodeURIComponent(waMsg)}" target="_blank">✅ Check My Covers Free →</a></div>`;
-  document.getElementById('ppEmpty').style.display = 'none';
-  document.getElementById('ppLive').style.display = 'block';
-  setTimeout(() => document.getElementById('ppLive').scrollIntoView({behavior:'smooth',block:'start'}), 100);
+function showPreview(primaryType,snaps){
+  const snap=snaps[0];
+  const waMsg=`Hi Cover Credit, I generated a SOS card. Can you review my covers for free? — ${snap.name}`;
+  document.getElementById('nudgeBox').innerHTML=`<div class="nudge-ic">💡</div><div class="nudge-body">${NUDGES[primaryType]}<br/><a class="nudge-wa" href="https://wa.me/917842854466?text=${encodeURIComponent(waMsg)}" target="_blank">✅ Check My Covers Free →</a></div>`;
+  document.getElementById('ppEmpty').style.display='none';
+  document.getElementById('ppLive').style.display='block';
+  setTimeout(()=>document.getElementById('ppLive').scrollIntoView({behavior:'smooth',block:'start'}),100);
 }
 
-/* ═══════════════════════════════════════════
-   WA SHARE — forward-worthy format
-═══════════════════════════════════════════ */
-function setupWAShare(snaps) {
-  document.getElementById('waShareBtn').onclick = () => {
+/* ═══ WA SHARE ═══ */
+function setupWAShare(snaps){
+  document.getElementById('waShareBtn').onclick=()=>{
     let msg;
-    if (snaps.length === 1) {
-      const snap = snaps[0];
-      const covers = snap.covers.map(c => `${c.active ? '✅' : '❌'} ${c.label}`).join('\n');
-      const steps = STEPS[snap.type].map((s,i) => `${i+1}. *${s.t}*`).join('\n');
-      const typeLabel = TYPE_META[snap.type].icon + ' ' + TYPE_META[snap.type].label;
-      msg = `Sharing this because my advisor told me most claims get rejected not because of the policy — but because nobody knew what to do in the first hour.
-
-🆘 *MY INSURANCE SOS CARD*
-
-*${typeLabel}*
-👤 ${snap.name}
-🏦 ${snap.insurer}
-📄 Policy: ${snap.policyNo}
-📞 *Helpline: ${snap.helpline}*
-📅 Expiry: ${fmtDate(snap.expiry)}
-
-*COVERS:*
-${covers}
-
-*IN AN EMERGENCY:*
-${steps}
-
-———
-Free card: covercredit.in/sos-card
-Cover Credit: +91 78428 54466 (Mon–Sat 9AM–7PM)`;
-    } else {
-      const policyLines = snaps.map((s,i) => {
-        const icon = TYPE_META[s.type].icon;
-        const id = s.type === 'cv' ? s.vnum : s.type === 'car' ? s.cnum : s.type === 'bike' ? s.bnum : s.insurer.split(' ')[0];
-        return `${i+1}️⃣ ${icon} ${id}\n   ${s.insurer} · 📞 *${s.helpline}*`;
-      }).join('\n\n');
-
-      msg = `Sharing this because most claims get rejected not because of the policy — but because nobody knew what to do in the first hour.
-
-🆘 *MY INSURANCE BUNDLE — ${snaps.length} POLICIES*
-
-${policyLines}
-
-Full cards: covercredit.in/sos-card
-Cover Credit: +91 78428 54466 (Mon–Sat 9AM–7PM)
-
-Generate your own free card 👆`;
+    if(snaps.length===1){
+      const s=snaps[0];
+      const covers=s.covers.map(c=>`${c.active?'✅':'❌'} ${c.label}`).join('\n');
+      const steps=STEPS[s.type].map((x,i)=>`${i+1}. *${x.t}*`).join('\n');
+      msg=`Sharing this because my advisor told me most claims get rejected not because of the policy — but because nobody knew what to do in the first hour.\n\n🆘 *MY INSURANCE SOS CARD*\n\n*${TYPE_META[s.type].icon} ${TYPE_META[s.type].label}*\n👤 ${s.name}\n🏦 ${s.insurer}\n📄 Policy: ${s.policyNo}\n📞 *Helpline: ${s.helpline}*\n📅 Expiry: ${fmtDate(s.expiry)}\n\n*COVERS:*\n${covers}\n\n*IN AN EMERGENCY:*\n${steps}\n\n———\nFree card: covercredit.in/sos-card\nCover Credit: +91 78428 54466 (Mon–Sat 9AM–7PM)`;
+    }else{
+      const lines=snaps.map((s,i)=>`${i+1}️⃣ ${TYPE_META[s.type].icon} ${s.insurer.split(' ')[0]} · 📞 *${s.helpline}*`).join('\n');
+      msg=`Sharing this because most claims get rejected not because of the policy — but because nobody knew what to do in the first hour.\n\n🆘 *MY INSURANCE BUNDLE — ${snaps.length} POLICIES*\n\n${lines}\n\nFull cards: covercredit.in/sos-card\nCover Credit: +91 78428 54466 (Mon–Sat 9AM–7PM)\n\nGenerate your own free card 👆`;
     }
-
-    let phone = document.getElementById('f-phone').value.trim().replace(/\D/g,'');
-    if (phone.length === 10) phone = '91' + phone;
-    else if (phone.startsWith('0')) phone = '91' + phone.slice(1);
-    if (phone.length >= 12) {
-      window.open('https://wa.me/' + phone + '?text=' + encodeURIComponent(msg), '_blank');
-    } else {
-      const ph = prompt('Enter your WhatsApp number (10 digits):');
-      if (ph) { let p = ph.replace(/\D/g,''); if(p.length===10) p='91'+p; window.open('https://wa.me/'+p+'?text='+encodeURIComponent(msg),'_blank'); }
-    }
+    let phone=document.getElementById('f-phone').value.trim().replace(/\D/g,'');
+    if(phone.length===10)phone='91'+phone;
+    else if(phone.startsWith('0'))phone='91'+phone.slice(1);
+    if(phone.length>=12)window.open('https://wa.me/'+phone+'?text='+encodeURIComponent(msg),'_blank');
+    else{const ph=prompt('Enter your WhatsApp number (10 digits):');if(ph){let p=ph.replace(/\D/g,'');if(p.length===10)p='91'+p;window.open('https://wa.me/'+p+'?text='+encodeURIComponent(msg),'_blank');}}
   };
 }
 
-/* ═══════════════════════════════════════════
-   PRINT
-═══════════════════════════════════════════ */
-/* ═══════════════════════════════════════════
-   IMAGE DOWNLOAD
-═══════════════════════════════════════════ */
-async function downloadImage(size) {
-  // Determine which card element to capture
-  const isBundle = document.getElementById('bundleSheet').style.display !== 'none';
-  const sourceEl = isBundle
-    ? document.getElementById('bundleSheet')
-    : document.getElementById('sosCard');
-
-  if (!sourceEl || !sourceEl.innerHTML.trim()) {
-    alert('Generate a card first before downloading.');
-    return;
-  }
-
-  // Button feedback
-  const btnId = size === 'wallet' ? 'dlWalletBtn' : 'dlFullBtn';
-  const btn = document.getElementById(btnId);
-  const originalText = btn.innerHTML;
-  btn.innerHTML = '⏳ Generating...';
-  btn.disabled = true;
-
-  try {
-    // Wallet size: render at 2x then downscale for sharpness
-    // Full size: render at standard 2x scale for retina quality
-    const scale = 3; // 3x for crisp text on all screens
-
-    const canvas = await html2canvas(sourceEl, {
-      scale: scale,
-      useCORS: true,
-      allowTaint: false,
-      backgroundColor: '#ffffff',
-      logging: false,
-      imageTimeout: 0,
-      onclone: (clonedDoc) => {
-        // Ensure fonts are applied in the clone
-        const clonedEl = clonedDoc.getElementById(isBundle ? 'bundleSheet' : 'sosCard');
-        if (clonedEl) {
-          clonedEl.style.borderRadius = '18px';
-          clonedEl.style.overflow = 'hidden';
-          clonedEl.style.boxShadow = 'none';
-        }
-      }
+/* ═══ DOWNLOAD IMAGE ═══ */
+async function downloadImage(){
+  const isBundle=document.getElementById('bundleSheet').style.display!=='none';
+  const sourceEl=isBundle?document.getElementById('bundleSheet'):document.getElementById('sosCard');
+  if(!sourceEl||!sourceEl.innerHTML.trim()){alert('Generate a card first before downloading.');return;}
+  const btn=document.getElementById('dlBtn');
+  const orig=btn.innerHTML;
+  btn.innerHTML='⏳ Generating...';
+  btn.disabled=true;
+  try{
+    const canvas=await html2canvas(sourceEl,{
+      scale:3,useCORS:true,allowTaint:false,backgroundColor:null,logging:false,imageTimeout:0,
+      onclone:(doc)=>{const el=doc.getElementById(isBundle?'bundleSheet':'sosCard');if(el){el.style.borderRadius='16px';el.style.overflow='hidden';el.style.boxShadow='none';}}
     });
-
-    if (size === 'wallet') {
-      // Crop to wallet card dimensions: 85.6mm × 54mm at 300dpi ≈ 1011 × 638px
-      // We resize the canvas to wallet proportions
-      const walletCanvas = document.createElement('canvas');
-      // Standard CR80 card ratio: 85.6 / 54 = 1.585
-      const ratio = 85.6 / 54;
-      const walletW = 1012; // px at ~300dpi equivalent
-      const walletH = Math.round(walletW / ratio);
-      walletCanvas.width = walletW;
-      walletCanvas.height = walletH;
-      const ctx = walletCanvas.getContext('2d');
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(0, 0, walletW, walletH);
-      // Draw the captured card scaled to fit wallet dimensions
-      ctx.drawImage(canvas, 0, 0, walletW, walletH);
-      triggerDownload(walletCanvas, 'sos-card-wallet.png');
-    } else {
-      triggerDownload(canvas, 'sos-card.png');
-    }
-  } catch (err) {
-    console.error('Image generation failed:', err);
-    alert('Could not generate image. Please try the Print option instead.');
-  } finally {
-    btn.innerHTML = originalText;
-    btn.disabled = false;
-  }
+    canvas.toBlob(blob=>{const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='covercredit-sos-card.png';document.body.appendChild(a);a.click();document.body.removeChild(a);setTimeout(()=>URL.revokeObjectURL(url),1000);},'image/png',1.0);
+  }catch(err){console.error(err);alert('Could not generate image. Try again.');}
+  finally{btn.innerHTML=orig;btn.disabled=false;}
 }
 
-function triggerDownload(canvas, filename) {
-  canvas.toBlob((blob) => {
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-  }, 'image/png', 1.0);
-}
-
-/* ── Keep print as fallback (triggered from browser menu) ── */
-function printA4() {
-  document.body.classList.remove('print-wallet');
-  requestAnimationFrame(() => requestAnimationFrame(() => window.print()));
-}
-
-function printWallet() {
-  // Grab whichever card is currently visible
-  const isBundle = document.getElementById('bundleSheet').style.display !== 'none';
-  const sourceEl = isBundle
-    ? document.getElementById('bundleSheet')
-    : document.getElementById('sosCard');
-
-  if (!sourceEl || !sourceEl.innerHTML.trim()) {
-    alert('Generate a card first before printing.');
-    return;
-  }
-
-  // Build standalone wallet print page in an iframe
-  const iframe = document.createElement('iframe');
-  iframe.style.cssText = 'position:fixed;top:-9999px;left:-9999px;width:0;height:0;border:none;';
-  document.body.appendChild(iframe);
-
-  const cardHtml = sourceEl.outerHTML;
-
-  // Collect all fonts and the card's CSS from the main page
-  const styleContent = `
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&display=swap');
-
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-    body { font-family:'DM Sans',system-ui,sans-serif; background:#fff; color:#111; }
-
-    @page { size: A4 portrait; margin: 8mm; }
-
-    /* Card wrapper — 2 columns of wallet cards on A4 */
-    .wallet-page {
-      display: grid;
-      grid-template-columns: 85.6mm 85.6mm;
-      grid-auto-rows: 54mm;
-      gap: 5mm;
-      width: 100%;
-    }
-    .wallet-card-wrap {
-      width: 85.6mm;
-      height: 54mm;
-      overflow: hidden;
-      border-radius: 4mm;
-      border: 0.3mm solid #ccc;
-      page-break-inside: avoid;
-      /* Scale full card to fit 85.6 × 54 mm */
-      position: relative;
-    }
-    .wallet-card-wrap > * {
-      /* The card is ~480px wide normally; scale to 85.6mm ≈ 323px at 96dpi */
-      transform: scale(0.44);
-      transform-origin: top left;
-      width: 227%;   /* 100/0.44 = 227% to counteract the scale */
-      min-height: 228%;
-    }
-
-    /* preserve all card colours for print */
-    * { -webkit-print-color-adjust:exact!important; print-color-adjust:exact!important; color-adjust:exact!important; }
-
-    /* card styles — copy essentials */
-    .card-hd{padding:1.2rem 1.5rem;display:flex;align-items:center;justify-content:space-between;}
-    .card-hd.t-cv{background:linear-gradient(135deg,#bf360c 0%,#e65100 50%,#ff8f00 100%);}
-    .card-hd.t-health{background:linear-gradient(135deg,#0d2b6b 0%,#1565c0 50%,#1976d2 100%);}
-    .card-hd.t-life{background:linear-gradient(135deg,#1a3d1f 0%,#2e7d32 50%,#43a047 100%);}
-    .card-hd.t-car{background:linear-gradient(135deg,#380d5c 0%,#6a1b9a 50%,#8e24aa 100%);}
-    .card-hd.t-bike{background:linear-gradient(135deg,#b71c1c 0%,#e53935 50%,#f4511e 100%);}
-    .chd-left{display:flex;align-items:center;gap:.85rem;}
-    .chd-icon{width:48px;height:48px;background:rgba(255,255,255,.18);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0;}
-    .chd-type{font-size:.54rem;font-weight:700;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:2px;margin-bottom:.18rem;}
-    .chd-name{font-family:'Playfair Display',serif;font-size:1.08rem;font-weight:900;color:#fff;line-height:1.1;}
-    .chd-right{text-align:right;flex-shrink:0;}
-    .chd-sos{font-family:'Bebas Neue',sans-serif;font-size:2.8rem;color:rgba(255,255,255,.2);line-height:1;letter-spacing:5px;}
-    .chd-keep{font-size:.5rem;color:rgba(255,255,255,.48);text-transform:uppercase;letter-spacing:2px;}
-    .card-bd{background:#fff;padding:1.2rem 1.5rem 0;}
-    .det-grid{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-bottom:1rem;}
-    .det{background:#f8f9fa;border-radius:8px;padding:.6rem .85rem;}
-    .det.acc-cv{border-left:3px solid #e65100;}
-    .det.acc-health{border-left:3px solid #1565c0;}
-    .det.acc-life{border-left:3px solid #2e7d32;}
-    .det.acc-car{border-left:3px solid #6a1b9a;}
-    .det.acc-bike{border-left:3px solid #e53935;}
-    .det-lbl{font-size:.52rem;font-weight:700;color:#bbb;text-transform:uppercase;letter-spacing:1px;margin-bottom:.2rem;}
-    .det-val{font-size:.82rem;font-weight:700;color:#111;line-height:1.3;word-break:break-all;}
-    .det-val.emph{font-size:.94rem;}
-    .det-val.hot{color:#e65100;}.det-val.hot-h{color:#1565c0;}.det-val.hot-l{color:#2e7d32;}.det-val.hot-c{color:#6a1b9a;}.det-val.hot-b{color:#e53935;}
-    .covers-row{display:flex;gap:.35rem;flex-wrap:wrap;margin-bottom:.95rem;padding:0 1.5rem;}
-    .ctag{display:inline-flex;align-items:center;gap:.22rem;padding:.2rem .65rem;border-radius:100px;font-size:.6rem;font-weight:700;}
-    .ctag.y{background:#e8f5e9;border:1px solid #a5d6a7;color:#2e7d32;}
-    .ctag.n{background:#fce4ec;border:1px solid #f48fb1;color:#c2185b;}
-    .steps-div{display:flex;align-items:center;gap:.6rem;margin:0 1.5rem .7rem;}
-    .sdiv-lbl{font-size:.54rem;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:1.5px;white-space:nowrap;}
-    .sdiv-line{flex:1;height:1px;background:#e8e8e8;}
-    .card-steps{display:flex;flex-direction:column;gap:.38rem;padding:0 1.5rem;margin-bottom:1rem;}
-    .cs{display:flex;align-items:flex-start;gap:.55rem;}
-    .cs-n{width:21px;height:21px;border-radius:50%;color:#fff;font-size:.6rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.04rem;}
-    .cs-n.cv{background:#e65100;}.cs-n.health{background:#1565c0;}.cs-n.life{background:#2e7d32;}.cs-n.car{background:#6a1b9a;}.cs-n.bike{background:#e53935;}
-    .cs-t{font-size:.72rem;color:#333;line-height:1.48;}
-    .cs-t strong{color:#111;font-weight:700;}
-    .members-sec{padding:0 1.5rem;margin-bottom:.85rem;}
-    .members-lbl{font-size:.54rem;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:.5rem;}
-    .members-tags{display:flex;gap:.35rem;flex-wrap:wrap;}
-    .mtag{background:#e3f2fd;border:1px solid #90caf9;border-radius:6px;padding:.2rem .65rem;font-size:.65rem;font-weight:700;color:#1565c0;}
-    .card-ft{background:#f5f5f5;padding:.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between;border-top:1px solid #ebebeb;margin-top:.2rem;}
-    .cft-brand{display:flex;flex-direction:column;justify-content:center;}
-    .cft-logo{font-family:'Playfair Display',serif;font-size:.92rem;font-weight:700;color:#111 !important;line-height:1.2;}
-    .cft-logo span{color:#e65100 !important;font-style:normal;}
-    .cft-tag{font-size:.52rem;color:#aaa;margin-top:.05rem;}
-    .cft-right{text-align:right;display:flex;flex-direction:column;justify-content:center;}
-    .cft-phone{font-size:.8rem;font-weight:700;color:#e65100 !important;}
-    .cft-url{font-size:.52rem;color:#bbb;}
-    .card-disclaimer{font-size:.48rem;color:#bbb;text-align:center;padding:.4rem 1.5rem;background:#fafafa;border-top:1px solid #f0f0f0;line-height:1.5;}
-    .card-gen{font-size:.5rem;color:#ccc;text-align:center;padding:.35rem;background:#fafafa;}
-    /* Bundle compact cards */
-    .bundle-sheet-wrap{background:#fff;}
-    .bundle-header{background:linear-gradient(135deg,#06101f,#0b1a30);padding:1rem 1.5rem;display:flex;align-items:center;justify-content:space-between;}
-    .bundle-header-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#fff;}
-    .bundle-header-sub{font-size:.58rem;color:rgba(255,255,255,.45);margin-top:.15rem;}
-    .bundle-header-sos{font-family:'Bebas Neue',sans-serif;font-size:2rem;color:rgba(255,255,255,.15);letter-spacing:4px;}
-    .bundle-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px;background:#f5f5f5;}
-    .bundle-card{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #e0e0e0;}
-    .bc-hd{padding:.6rem .85rem;display:flex;align-items:center;gap:.5rem;}
-    .bc-hd.t-cv{background:linear-gradient(135deg,#e65100,#ff8f00);}
-    .bc-hd.t-health{background:linear-gradient(135deg,#1565c0,#1976d2);}
-    .bc-hd.t-life{background:linear-gradient(135deg,#2e7d32,#43a047);}
-    .bc-hd.t-car{background:linear-gradient(135deg,#6a1b9a,#8e24aa);}
-    .bc-hd.t-bike{background:linear-gradient(135deg,#e53935,#f4511e);}
-    .bc-icon{font-size:.9rem;background:rgba(255,255,255,.2);border-radius:6px;width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-    .bc-type{font-size:.48rem;color:rgba(255,255,255,.65);text-transform:uppercase;letter-spacing:1.5px;}
-    .bc-name{font-size:.75rem;font-weight:700;color:#fff;line-height:1.1;}
-    .bc-body{padding:.6rem .85rem;}
-    .bc-hl-label{font-size:.44rem;font-weight:700;color:#bbb;text-transform:uppercase;letter-spacing:1px;margin-bottom:.1rem;}
-    .bc-hl{font-size:.88rem;font-weight:700;color:#e65100;margin-bottom:.45rem;}
-    .bc-hl.h{color:#1565c0;}.bc-hl.l{color:#2e7d32;}.bc-hl.c{color:#6a1b9a;}.bc-hl.b{color:#e53935;}
-    .bc-row{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:.45rem;}
-    .bc-det{background:#f8f9fa;border-radius:5px;padding:.3rem .5rem;}
-    .bc-det-lbl{font-size:.44rem;color:#bbb;font-weight:700;text-transform:uppercase;letter-spacing:.8px;}
-    .bc-det-val{font-size:.65rem;font-weight:700;color:#111;}
-    .bc-steps-lbl{font-size:.44rem;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:1px;margin-bottom:.3rem;}
-    .bc-step{display:flex;gap:.35rem;align-items:flex-start;margin-bottom:.2rem;}
-    .bc-step-n{width:14px;height:14px;border-radius:50%;color:#fff;font-size:.44rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-    .bc-step-n.cv{background:#e65100;}.bc-step-n.health{background:#1565c0;}.bc-step-n.life{background:#2e7d32;}.bc-step-n.car{background:#6a1b9a;}.bc-step-n.bike{background:#e53935;}
-    .bc-step-t{font-size:.58rem;color:#333;line-height:1.4;}
-    .bc-covers{display:flex;gap:.2rem;flex-wrap:wrap;margin-bottom:.4rem;}
-    .bc-ctag{font-size:.48rem;font-weight:700;padding:.1rem .4rem;border-radius:100px;}
-    .bc-ctag.y{background:#e8f5e9;color:#2e7d32;border:1px solid #a5d6a7;}
-    .bc-ctag.n{background:#fce4ec;color:#c2185b;border:1px solid #f48fb1;}
-    .bc-ft{background:#f8f9fa;border-top:1px solid #eee;padding:.3rem .85rem;display:flex;justify-content:space-between;align-items:center;}
-    .bc-ft-logo{font-family:'Playfair Display',serif;font-size:.58rem;font-weight:700;color:#111;}
-    .bc-ft-logo span{color:#e65100;}
-    .bc-ft-url{font-size:.44rem;color:#bbb;}
-    .bundle-disclaimer{font-size:.5rem;color:#bbb;text-align:center;padding:.5rem 1.5rem;background:#fafafa;border-top:1px solid #eee;line-height:1.5;}
-
-    /* single card centred at wallet size */
-    .wallet-wrap {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 8mm 0 4mm;
-    }
-    .wallet-wrap > * {
-      width: 85.6mm;
-      min-height: 54mm;
-      border-radius: 4mm;
-      border: 0.4mm solid #ccc;
-      overflow: hidden;
-      page-break-inside: avoid;
-    }
-    /* cut lines hint */
-    .cut-hint{font-size:8px;color:#999;text-align:center;padding:3mm 0 0;letter-spacing:.5px;}
-  `;
-
-  const iDoc = iframe.contentDocument || iframe.contentWindow.document;
-  iDoc.open();
-
-  // For a single card: show it twice (front/back if needed) or just once centered
-  // For bundle: show the bundle grid
-  const bodyContent = isBundle
-    ? cardHtml
-    : `<div class="wallet-wrap">${cardHtml}</div><p class="cut-hint">✂ Cut along card edges and laminate · covercredit.in · +91 78428 54466</p>`;
-
-  iDoc.write(`<!DOCTYPE html><html><head><meta charset="UTF-8"/><style>${styleContent}</style></head><body>${bodyContent}</body></html>`);
-  iDoc.close();
-
-  // Wait for fonts to load then print
-  setTimeout(() => {
-    iframe.contentWindow.focus();
-    iframe.contentWindow.print();
-    setTimeout(() => document.body.removeChild(iframe), 2500);
-  }, 1500);
-}
-
-/* ═══════════════════════════════════════════
-   RESET
-═══════════════════════════════════════════ */
-function resetAll() {
-  cardGenerated = false;
-  bundle = [];
-  document.getElementById('ppEmpty').style.display = 'flex';
-  document.getElementById('ppLive').style.display = 'none';
-  document.getElementById('f-name').value = '';
-  document.getElementById('f-phone').value = '';
-  document.getElementById('f-insurer').value = '';
-  document.getElementById('f-helpline').value = '';
-  document.getElementById('f-policy').value = '';
-  document.getElementById('f-expiry').value = '';
+/* ═══ RESET ═══ */
+function resetAll(){
+  cardGenerated=false;bundle=[];
+  document.getElementById('ppEmpty').style.display='flex';
+  document.getElementById('ppLive').style.display='none';
+  document.getElementById('sosCard').innerHTML='';
+  document.getElementById('bundleSheet').innerHTML='';
+  document.getElementById('bundleSheet').style.display='none';
+  ['f-name','f-phone','f-policy','f-expiry'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('f-insurer').value='';
+  document.getElementById('f-helpline').value='';
   document.getElementById('hl-note').classList.remove('show');
   updateBundleUI();
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
-/* ═══════════════════════════════════════════
-   COUNTER (localStorage — simple persistence)
-═══════════════════════════════════════════ */
-function incrementCounter() {
-  try {
-    let count = parseInt(localStorage.getItem('cc_sos_count') || '1247', 10);
-    count++;
-    localStorage.setItem('cc_sos_count', count);
-    updateCounterDisplay(count);
-  } catch(e) {}
-}
+/* ═══ COUNTER ═══ */
+function incrementCounter(){try{let c=parseInt(localStorage.getItem('cc_sos_count')||'1247',10);c++;localStorage.setItem('cc_sos_count',c);document.getElementById('counter-num').textContent=c.toLocaleString('en-IN');}catch(e){}}
+function initCounter(){try{document.getElementById('counter-num').textContent=parseInt(localStorage.getItem('cc_sos_count')||'1247',10).toLocaleString('en-IN');}catch(e){document.getElementById('counter-num').textContent='1,247';}}
 
-function updateCounterDisplay(count) {
-  const el = document.getElementById('counter-num');
-  if (el) el.textContent = count.toLocaleString('en-IN');
-}
-
-function initCounter() {
-  try {
-    const count = parseInt(localStorage.getItem('cc_sos_count') || '1247', 10);
-    updateCounterDisplay(count);
-  } catch(e) {
-    updateCounterDisplay(1247);
-  }
-}
-
-/* ═══════════════════════════════════════════
-   FAQ ACCORDION
-═══════════════════════════════════════════ */
-function toggleFaq(el) {
-  const item = el.parentElement;
-  item.classList.toggle('open');
-}
-
-/* ═══════════════════════════════════════════
-   SCROLL TO TOOL
-═══════════════════════════════════════════ */
-function scrollToTool() {
-  document.getElementById('toolSection').scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-/* ═══════════════════════════════════════════
-   CURSOR
-═══════════════════════════════════════════ */
-const cur = document.getElementById('cur'), cr = document.getElementById('cr');
+/* ═══ CURSOR ═══ */
+const cur=document.getElementById('cur'),cr=document.getElementById('cr');
 let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; cur.style.left=mx+'px'; cur.style.top=my+'px'; });
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
 (function tick(){rx+=(mx-rx)*.1;ry+=(my-ry)*.1;cr.style.left=rx+'px';cr.style.top=ry+'px';requestAnimationFrame(tick);})();
-document.querySelectorAll('a,button,.pt,.cp-tog,.mode-opt,.faq-q').forEach(el => {
-  el.addEventListener('mouseenter', () => document.body.classList.add('hov'));
-  el.addEventListener('mouseleave', () => document.body.classList.remove('hov'));
-});
+document.querySelectorAll('a,button,.pt,.cp-tog,.mode-opt,.faq-q').forEach(el=>{el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));});
 
-/* ═══════════════════════════════════════════
-   NAV SCROLL
-═══════════════════════════════════════════ */
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => nav.classList.toggle('sc', scrollY > 40), {passive:true});
+/* ═══ NAV + BURGER ═══ */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>40),{passive:true});
+const burger=document.getElementById('burger'),mob=document.getElementById('mob');
+burger.addEventListener('click',()=>{burger.classList.toggle('op');mob.classList.toggle('op');document.body.style.overflow=mob.classList.contains('op')?'hidden':'';});
 
-/* ═══════════════════════════════════════════
-   BURGER
-═══════════════════════════════════════════ */
-const burger = document.getElementById('burger'), mob = document.getElementById('mob');
-burger.addEventListener('click', () => {
-  burger.classList.toggle('op');
-  mob.classList.toggle('op');
-  document.body.style.overflow = mob.classList.contains('op') ? 'hidden' : '';
-});
+/* ═══ SCROLL REVEAL ═══ */
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}}),{threshold:.06});
+document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
 
-/* ═══════════════════════════════════════════
-   SCROLL REVEAL
-═══════════════════════════════════════════ */
-const ro = new IntersectionObserver(es => es.forEach(e => { if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);} }), {threshold:.08});
-document.querySelectorAll('.rv').forEach(el => ro.observe(el));
-
-/* ═══════════════════════════════════════════
-   ANALYTICS
-═══════════════════════════════════════════ */
+/* ═══ ANALYTICS ═══ */
 (function(){
-  var PAGE_NAME='sos-card';
-  var BACKEND=(window.location.hostname==='localhost'||window.location.hostname==='127.0.0.1')?'http://localhost:5000/api':'https://api.covercredit.in/api';
-  var ua=navigator.userAgent.toLowerCase();
-  if(/bot|crawler|spider|headless/.test(ua))return;
-  var params=new URLSearchParams(window.location.search);
-  var utmSrc=params.get('utm_source')||sessionStorage.getItem('cc_utm_source')||'';
-  var utmMed=params.get('utm_medium')||sessionStorage.getItem('cc_utm_medium')||'';
-  var utmCamp=params.get('utm_campaign')||sessionStorage.getItem('cc_utm_campaign')||'';
-  function detectRef(ref){if(!ref)return'direct';var r=ref.toLowerCase();if(/google\.|bing\./.test(r))return'google';if(/whatsapp|wa\.me/.test(r))return'whatsapp';if(/facebook\.|fb\.com/.test(r))return'facebook';return'other';}
-  var source=utmSrc?utmSrc.toLowerCase().trim():detectRef(document.referrer);
-  var key='cc_tracked_'+PAGE_NAME+'_'+source;
-  if(sessionStorage.getItem(key))return;
-  sessionStorage.setItem(key,'1');
-  var isMobile=/iphone|ipod|android.*mobile/.test(ua);
-  try{fetch(BACKEND+'/track',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({page:PAGE_NAME,path:window.location.pathname,source:source,device:isMobile?'mobile':'desktop',utmMedium:utmMed,utmCampaign:utmCamp,referrer:document.referrer||''}),keepalive:true}).catch(function(){});}catch(e){}
+  var P='sos-card',B=(location.hostname==='localhost'?'http://localhost:5000':'https://api.covercredit.in')+'/api';
+  var ua=navigator.userAgent.toLowerCase();if(/bot|crawler|spider|headless/.test(ua))return;
+  var p=new URLSearchParams(location.search);
+  function ref(r){if(!r)return'direct';r=r.toLowerCase();if(/google\.|bing\./.test(r))return'google';if(/whatsapp|wa\.me/.test(r))return'whatsapp';if(/facebook\.|fb\.com/.test(r))return'facebook';return'other';}
+  var src=p.get('utm_source')||sessionStorage.getItem('cc_utm_source')||ref(document.referrer);
+  var k='cc_t_'+P+'_'+src;if(sessionStorage.getItem(k))return;sessionStorage.setItem(k,'1');
+  try{fetch(B+'/track',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({page:P,path:location.pathname,source:src,device:/iphone|android.*mobile/.test(ua)?'mobile':'desktop',referrer:document.referrer||''}),keepalive:true}).catch(()=>{});}catch(e){}
 })();
 
-/* ═══════════════════════════════════════════
-   INIT
-═══════════════════════════════════════════ */
-document.getElementById('yr').textContent = new Date().getFullYear();
+/* ═══ INIT ═══ */
+document.getElementById('yr').textContent=new Date().getFullYear();
 initCounter();
 </script>
 </body>
