@@ -1,23 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8"/> 
-
-  <!-- ================================================
-  FAVICON & SITE ICONS — Cover Credit
-  Files required in root directory:
-    - favicon.ico
-    - favicon-192x192.png
-    - favicon-512x512.png
-    - apple-touch-icon.png
-  Last updated: 2026
-================================================ -->
+<meta charset="UTF-8"/>
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<!-- ================================================ -->
-  
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>Book a Free Consultation | Cover Credit</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -28,7 +16,9 @@
   --ac:#ff6b00;--ac2:#ff9500;--acr:255,107,0;
   --ink:#06101f;--i2:#0b1a30;
   --line:rgba(255,255,255,.08);--fog:rgba(255,255,255,.06);
-  --E:cubic-bezier(.16,1,.3,1);--nh:72px;
+  --E:cubic-bezier(.16,1,.3,1);
+  --ticker-h:44px;
+  --nh:72px;
   --gold:#e6a817;--green:#4ade80;--red:#f87171;
 }
 html{scroll-behavior:smooth;}
@@ -41,17 +31,50 @@ a{text-decoration:none;color:inherit;}
 #cr{width:38px;height:38px;border:1.5px solid rgba(255,107,0,.45);z-index:9998;transition:width .2s,height .2s,opacity .2s;}
 body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:.18;}
 
-/* ── NAV (identical to other pages) ── */
-.nav{position:fixed;top:0;left:0;right:0;z-index:900;height:var(--nh);padding:0 5%;transition:background .4s;}
+/* ══ TICKER — canonical matching tax-services.html / index.html ══ */
+.company-ticker{position:fixed;top:0;left:0;right:0;z-index:1100;height:var(--ticker-h);background:#020c1f;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:stretch;overflow:hidden;}
+.company-ticker::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;z-index:10;background:linear-gradient(90deg,transparent,rgba(230,168,23,0) 15%,rgba(230,168,23,0.8) 40%,#f5c842 50%,rgba(230,168,23,0.8) 60%,rgba(230,168,23,0) 85%,transparent);background-size:200% 100%;animation:ctShimmer 4s linear infinite;}
+@keyframes ctShimmer{from{background-position:-100% 0}to{background-position:200% 0}}
+.company-ticker::after{content:'';position:absolute;top:0;bottom:0;right:0;width:80px;z-index:5;pointer-events:none;background:linear-gradient(to left,#020c1f 30%,transparent);}
+.ct-label{flex-shrink:0;display:flex;align-items:center;gap:8px;padding:0 18px 0 20px;position:relative;z-index:6;background:linear-gradient(90deg,#020c1f 80%,transparent);border-right:1px solid rgba(255,255,255,0.07);}
+.ct-label-brand{font-family:'Playfair Display',serif;font-size:.78rem;font-weight:700;color:#fff;white-space:nowrap;}
+.ct-label-brand em{font-style:normal;color:var(--gold);}
+.ct-label-divider{width:1px;height:13px;background:rgba(255,255,255,0.12);}
+.ct-label-text{font-size:.58rem;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:rgba(255,255,255,0.28);white-space:nowrap;}
+.ct-badge{flex-shrink:0;display:flex;align-items:center;gap:6px;padding:0 16px;position:relative;z-index:6;background:linear-gradient(270deg,#020c1f 70%,transparent);border-left:1px solid rgba(255,255,255,0.07);}
+.ct-badge-dot{width:5px;height:5px;border-radius:50%;background:#22c55e;box-shadow:0 0 6px #22c55e;animation:ctBlink 2s ease-in-out infinite;}
+@keyframes ctBlink{0%,100%{opacity:1}50%{opacity:.35}}
+.ct-badge-text{font-size:.52rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.28);white-space:nowrap;}
+.ct-track-wrap{flex:1;overflow:hidden;position:relative;}
+.ct-track-wrap::before{content:'';position:absolute;top:0;bottom:0;left:0;width:40px;z-index:2;background:linear-gradient(to right,#020c1f 20%,transparent);}
+.ct-track-wrap::after{content:'';position:absolute;top:0;bottom:0;right:0;width:40px;z-index:2;pointer-events:none;background:linear-gradient(to left,#020c1f 20%,transparent);}
+/* ── canonical speed: 55s ── */
+.ct-track{display:inline-flex;align-items:center;height:var(--ticker-h);white-space:nowrap;animation:ctScroll 55s linear infinite;will-change:transform;}
+.company-ticker:hover .ct-track{animation-play-state:paused;}
+@keyframes ctScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ct-pill{display:inline-flex;align-items:center;padding:0 16px;flex-shrink:0;}
+.ct-pill span{font-size:.52rem;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;padding:2px 9px;border-radius:100px;white-space:nowrap;}
+.ct-pill--life span{background:rgba(21,101,192,.15);color:#93c5fd;border:1px solid rgba(96,165,250,.25);}
+.ct-pill--health span{background:rgba(239,68,68,.13);color:#fca5a5;border:1px solid rgba(248,113,113,.25);}
+.ct-pill--motor span{background:rgba(230,168,23,.13);color:#fcd34d;border:1px solid rgba(245,200,66,.25);}
+.ct-item{display:inline-flex;align-items:center;padding:0 22px;flex-shrink:0;position:relative;cursor:default;}
+.ct-item::after{content:'';position:absolute;right:0;top:25%;bottom:25%;width:1px;background:rgba(255,255,255,0.06);}
+.ct-item-name{font-family:'DM Sans',system-ui,sans-serif;font-size:.7rem;font-weight:600;color:rgba(255,255,255,0.42);white-space:nowrap;transition:color 0.2s;}
+.company-ticker:hover .ct-item:hover .ct-item-name{color:rgba(255,255,255,0.9);}
+@media(max-width:580px){.ct-label,.ct-badge{display:none;}}
+
+/* ── NAV — sits below ticker ── */
+.nav{position:fixed;top:var(--ticker-h);left:0;right:0;z-index:900;height:var(--nh);padding:0 5%;transition:background .4s;}
 .nav.sc{background:rgba(6,16,31,.97);backdrop-filter:blur(24px);box-shadow:0 1px 0 var(--line);}
 .ni{max-width:1300px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;}
 .logo{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;}.logo em{font-style:normal;color:#f5a623;}
-.nl{display:flex;align-items:center;gap:1.8rem;list-style:none;}
-.nl a{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.65);transition:color .2s;position:relative;}
+.nl{display:flex;align-items:center;gap:1.6rem;list-style:none;}
+.nl a{font-size:.84rem;font-weight:500;color:rgba(255,255,255,.65);transition:color .2s;position:relative;}
 .nl a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:#f5a623;transition:width .28s;}
 .nl a:hover,.nl a.act{color:#fff;}.nl a:hover::after,.nl a.act::after{width:100%;}
 .dd{position:relative;}
-.ddt{font-size:.85rem;font-weight:500;color:#fff;cursor:none;display:flex;align-items:center;gap:.26rem;}
+.ddt{font-size:.84rem;font-weight:500;color:rgba(255,255,255,.65);cursor:none;display:flex;align-items:center;gap:.26rem;transition:color .2s;}
+.dd:hover .ddt{color:#fff;}
 .dda{font-size:.54rem;transition:transform .3s;}.dd:hover .dda{transform:rotate(180deg);}
 .ddm{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(6px);background:var(--i2);border:1px solid var(--line);border-radius:12px;padding:.4rem;min-width:190px;opacity:0;visibility:hidden;transition:opacity .2s,transform .28s var(--E),visibility .2s;box-shadow:0 24px 60px rgba(0,0,0,.5);}
 .dd:hover .ddm{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
@@ -64,18 +87,22 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .burger.op span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
 .burger.op span:nth-child(2){opacity:0;}
 .burger.op span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
-.mob{position:fixed;inset:0;z-index:899;background:var(--ink);display:flex;flex-direction:column;padding:calc(var(--nh)+1.8rem) 5% 3rem;transform:translateX(100%);transition:transform .38s var(--E);}
+
+/* ══ MOBILE MENU — full canonical list ══ */
+.mob{position:fixed;inset:0;z-index:899;background:var(--ink);display:flex;flex-direction:column;padding:calc(var(--ticker-h) + var(--nh) + 1.5rem) 5% 3rem;transform:translateX(100%);transition:transform .38s var(--E);overflow-y:auto;}
 .mob.op{transform:translateX(0);}
-.mob a{padding:.9rem 0;font-size:1rem;font-weight:500;color:rgba(255,255,255,.72);border-bottom:1px solid var(--line);}
-.mc{margin-top:1.8rem;background:#f5a623;color:#06101f!important;text-align:center;border-radius:12px;padding:.9rem!important;font-weight:700!important;border:none!important;}
+.mob a{padding:.85rem 0;font-size:1rem;font-weight:500;color:rgba(255,255,255,.72);border-bottom:1px solid var(--line);display:block;}
+.mob a:hover{color:#f5a623;}
+.mc{margin-top:1.6rem;background:#f5a623;color:#06101f!important;text-align:center;border-radius:12px;padding:.9rem!important;font-weight:700!important;border:none!important;}
+
 .fab{position:fixed;bottom:1.8rem;right:1.8rem;z-index:400;display:flex;flex-direction:column;gap:.65rem;align-items:flex-end;}
 .fab a{display:flex;align-items:center;gap:.48rem;padding:.65rem 1rem;border-radius:100px;font-size:.76rem;font-weight:600;cursor:none;transition:transform .18s;}
 .fab a:hover{transform:translateY(-2px);}
 .fwa{background:#25d366;color:#fff;box-shadow:0 6px 20px rgba(37,211,102,.35);}
 .fbk{background:var(--ac);color:#fff;box-shadow:0 6px 20px rgba(255,107,0,.35);}
 
-/* ── PAGE HERO ── */
-.book-hero{padding:calc(var(--nh) + 3.5rem) 5% 3rem;background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(255,107,0,.12),transparent);}
+/* ── PAGE HERO — offset for ticker ── */
+.book-hero{padding:calc(var(--ticker-h) + var(--nh) + 3.5rem) 5% 3rem;background:radial-gradient(ellipse 80% 60% at 50% -10%,rgba(255,107,0,.12),transparent);}
 .book-hero-inner{max-width:680px;margin:0 auto;text-align:center;}
 .book-eyebrow{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,107,0,.1);border:1px solid rgba(255,107,0,.18);border-radius:100px;padding:.32rem .9rem;margin-bottom:1rem;font-size:.65rem;font-weight:700;color:var(--ac);text-transform:uppercase;letter-spacing:2.5px;}
 .book-eyebrow-dot{width:6px;height:6px;border-radius:50%;background:var(--ac);animation:edot 2s infinite;}
@@ -83,13 +110,12 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .book-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.06;margin-bottom:.65rem;}
 .book-title em{font-style:italic;color:var(--ac);}
 .book-sub{font-size:.87rem;color:rgba(255,255,255,.38);line-height:1.78;max-width:500px;margin:0 auto 1.5rem;}
-/* Trust badges */
 .book-trust{display:flex;justify-content:center;gap:1.2rem;flex-wrap:wrap;}
 .bt{display:flex;align-items:center;gap:.4rem;font-size:.7rem;color:rgba(255,255,255,.32);}
 .bt-dot{width:6px;height:6px;border-radius:50%;background:var(--green);}
 
-/* ── AUTO-ROUTE BANNER (shown when ?dept= is present) ── */
-.route-banner{display:none;background:rgba(255,107,0,.07);border:1px solid rgba(255,107,0,.18);border-radius:14px;padding:.85rem 1.2rem;margin-bottom:2rem;display:flex;align-items:center;gap:.8rem;}
+/* ── AUTO-ROUTE BANNER ── */
+.route-banner{display:none;background:rgba(255,107,0,.07);border:1px solid rgba(255,107,0,.18);border-radius:14px;padding:.85rem 1.2rem;margin-bottom:2rem;align-items:center;gap:.8rem;}
 .route-banner.show{display:flex;}
 .rb-ico{font-size:1.3rem;flex-shrink:0;}
 .rb-body{flex:1;}
@@ -98,10 +124,8 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .rb-change{font-size:.7rem;color:rgba(255,255,255,.28);background:none;border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:.25rem .7rem;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s;flex-shrink:0;}
 .rb-change:hover{border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.6);}
 
-/* ── MAIN WIZARD ── */
+/* ── WIZARD ── */
 .book-main{max-width:680px;margin:0 auto;padding:0 5% 6rem;}
-
-/* Progress stepper */
 .wiz-prog{display:flex;align-items:center;margin-bottom:2.5rem;}
 .ws{display:flex;flex-direction:column;align-items:center;gap:.3rem;flex:1;position:relative;z-index:1;}
 .ws-circle{width:38px;height:38px;border-radius:50%;border:2px solid rgba(255,255,255,.1);background:rgba(255,255,255,.04);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:.95rem;color:rgba(255,255,255,.22);transition:all .4s var(--E);}
@@ -114,20 +138,14 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .ws.done .ws-label{color:var(--green);}
 .wl{flex:1;height:1px;background:rgba(255,255,255,.08);margin:0 -2px;margin-top:-1.5rem;z-index:0;transition:background .5s;}
 .wl.done{background:rgba(34,197,94,.35);}
-
-/* Step panels */
 .wp{display:none;animation:wpin .45s var(--E) both;}
 .wp.act{display:block;}
 @keyframes wpin{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:translateX(0)}}
-
-/* Section card */
 .wcard{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:2rem;}
 .wcard-title{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.2);margin-bottom:.3rem;display:flex;align-items:center;gap:.5rem;}
 .wcard-title::before{content:'';width:16px;height:1.5px;background:var(--ac);}
 .wcard-h{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;line-height:1.15;margin-bottom:1.5rem;}
 .wcard-h em{font-style:italic;color:var(--ac);}
-
-/* Department grid */
 .dept-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;}
 .dc{border:1.5px solid rgba(255,255,255,.07);border-radius:14px;padding:1.15rem .9rem;cursor:pointer;transition:all .22s var(--E);background:rgba(255,255,255,.03);text-align:center;position:relative;overflow:hidden;}
 .dc:hover{transform:translateY(-3px);border-color:rgba(255,107,0,.3);background:rgba(255,107,0,.04);}
@@ -139,8 +157,6 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .dc-name{font-size:.78rem;font-weight:700;}
 .dc-sub{font-size:.58rem;color:rgba(255,255,255,.3);margin-top:.15rem;}
 .dc.sel .dc-sub{color:rgba(255,107,0,.6);}
-
-/* Form fields */
 .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
 .fg{display:flex;flex-direction:column;gap:.4rem;}
 .fg.span2{grid-column:1/-1;}
@@ -151,19 +167,13 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .fi:focus{border-color:var(--ac);box-shadow:0 0 0 3px rgba(255,107,0,.1);}
 select.fi option{background:#0b1a30;color:#fff;}
 textarea.fi{resize:none;min-height:85px;}
-
-/* Pill groups */
 .pill-group{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.1rem;}
 .po{border:1.5px solid rgba(255,255,255,.08);border-radius:100px;padding:.32rem .8rem;cursor:pointer;font-size:.7rem;font-weight:600;color:rgba(255,255,255,.35);transition:all .18s;background:none;font-family:'DM Sans',sans-serif;}
 .po:hover{border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7);}
 .po.sel{border-color:var(--ac);background:rgba(255,107,0,.08);color:var(--ac);}
-
-/* Smart section header */
 .smart-hd{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:1.8px;color:var(--ac);margin:1.6rem 0 1rem;display:flex;align-items:center;gap:.5rem;}
 .smart-hd::before{content:'';flex:1;height:1px;background:rgba(255,107,0,.15);}
 .smart-hd::after{content:'';flex:1;height:1px;background:rgba(255,107,0,.15);}
-
-/* Contact method + slots */
 .cm-row{display:flex;gap:.55rem;}
 .cm{flex:1;border:1.5px solid rgba(255,255,255,.08);border-radius:12px;padding:.75rem .5rem;cursor:pointer;background:rgba(255,255,255,.03);text-align:center;transition:all .2s;}
 .cm:hover{border-color:rgba(255,107,0,.3);}
@@ -171,7 +181,6 @@ textarea.fi{resize:none;min-height:85px;}
 .cm-ico{font-size:1.15rem;display:block;margin-bottom:.25rem;}
 .cm-lbl{font-size:.6rem;font-weight:700;color:rgba(255,255,255,.3);display:block;transition:color .2s;}
 .cm.sel .cm-lbl{color:var(--ac);}
-
 .slot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;}
 .slot{border:1.5px solid rgba(255,255,255,.08);border-radius:12px;padding:.65rem .4rem;cursor:pointer;background:rgba(255,255,255,.03);text-align:center;transition:all .2s;}
 .slot:hover{border-color:rgba(255,107,0,.3);}
@@ -179,8 +188,6 @@ textarea.fi{resize:none;min-height:85px;}
 .slot-t{font-size:.72rem;font-weight:700;display:block;transition:color .2s;}
 .slot.sel .slot-t{color:var(--ac);}
 .slot-l{font-size:.58rem;color:rgba(255,255,255,.25);display:block;margin-top:.12rem;}
-
-/* Wizard nav */
 .wnav{display:flex;justify-content:space-between;align-items:center;margin-top:1.8rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.06);}
 .wback{background:none;border:1.5px solid rgba(255,255,255,.1);border-radius:100px;padding:.58rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:600;color:rgba(255,255,255,.35);cursor:pointer;transition:all .2s;}
 .wback:hover{border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.7);}
@@ -207,9 +214,9 @@ textarea.fi{resize:none;min-height:85px;}
 .sa-wa{background:#25d366;color:#fff;border:none;}
 .sa-wa:hover{background:#1ea952;}
 
-/* ── RIGHT PANEL — trust sidebar (desktop) ── */
+/* ── SIDEBAR ── */
 .book-layout{display:grid;grid-template-columns:1fr 300px;gap:2.5rem;max-width:1020px;margin:0 auto;padding:0 5% 6rem;align-items:start;}
-.book-sidebar{position:sticky;top:calc(var(--nh) + 1.5rem);}
+.book-sidebar{position:sticky;top:calc(var(--ticker-h) + var(--nh) + 1.5rem);}
 .sidebar-card{background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.07);border-radius:20px;padding:1.5rem;margin-bottom:1rem;}
 .sc-title{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:1.8px;color:rgba(255,255,255,.2);margin-bottom:1rem;}
 .trust-item{display:flex;align-items:flex-start;gap:.7rem;margin-bottom:.85rem;}
@@ -228,7 +235,7 @@ textarea.fi{resize:none;min-height:85px;}
 .wa-link{display:inline-flex;align-items:center;gap:.4rem;background:#25d366;color:#fff;border-radius:100px;padding:.5rem 1.1rem;font-size:.75rem;font-weight:700;transition:background .2s;}
 .wa-link:hover{background:#1ea952;}
 
-/* ── FOOTER (matching other pages) ── */
+/* ── FOOTER ── */
 .ft{background:#020a18;border-top:1px solid var(--line);padding:3rem 5% 2rem;}
 .ft-in{max-width:1300px;margin:0 auto;}
 .ft-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.8rem;padding-bottom:2.5rem;border-bottom:1px solid var(--line);margin-bottom:1.6rem;}
@@ -254,6 +261,7 @@ textarea.fi{resize:none;min-height:85px;}
   .book-sidebar{display:none;}
 }
 @media(max-width:768px){
+  :root{--ticker-h:38px;}
   .nl{display:none;}.burger{display:flex;}
   .dept-grid{grid-template-columns:repeat(2,1fr);}
   body{cursor:auto;}#cur,#cr{display:none;}
@@ -270,39 +278,60 @@ textarea.fi{resize:none;min-height:85px;}
 <body>
 <div id="cur"></div><div id="cr"></div>
 
-<!-- NAV -->
+<!-- ══ TICKER — canonical structure with all index.html partners ══ -->
+<div class="company-ticker" id="company-ticker" aria-hidden="true">
+  <div class="ct-label">
+    <span class="ct-label-brand">Cover<em>Credit</em></span>
+    <span class="ct-label-divider"></span>
+    <span class="ct-label-text">Our Partners</span>
+  </div>
+  <div class="ct-track-wrap">
+    <div class="ct-track" id="ct-track"></div>
+  </div>
+  <div class="ct-badge">
+    <span class="ct-badge-dot"></span>
+    <span class="ct-badge-text">IRDAI Verified</span>
+  </div>
+</div>
+
+<!-- ══ NAV — canonical full nav ══ -->
 <nav class="nav" id="nav">
   <div class="ni">
     <a href="index.html" class="logo">Cover<em>Credit</em></a>
     <ul class="nl">
+      <li><a href="health-insurance.html">Health Insurance</a></li>
+      <li><a href="life-insurance.html">Life Insurance</a></li>
       <li class="dd">
-        <span class="ddt">Insurance <span class="dda">▾</span></span>
+        <span class="ddt">Vehicle <span class="dda">▾</span></span>
         <div class="ddm">
           <a href="bike-insurance.html">🏍️ Bike Insurance</a>
           <a href="car-insurance.html">🚗 Car Insurance</a>
-          <a href="health-insurance.html">🏥 Health Insurance</a>
-          <a href="life-insurance.html">❤️ Life Insurance</a>
-          <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicle</a>
+          <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicles</a>
         </div>
       </li>
       <li><a href="loans.html">Loans</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="tax-services.html">Tax &amp; Compliance</a></li>
       <li><a href="blog.html">Blog</a></li>
-      <li><a href="book.html" class="ncta act">Book Free Call</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="book.html" class="ncta act">Book Free Consultation</a></li>
     </ul>
-    <button class="burger" id="burger" onclick="toggleMob()">
-      <span></span><span></span><span></span>
-    </button>
+    <button class="burger" id="burger"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
+<!-- ══ MOBILE MENU — canonical full list ══ -->
 <div class="mob" id="mob">
-  <a href="bike-insurance.html">🏍️ Bike Insurance</a>
-  <a href="car-insurance.html">🚗 Car Insurance</a>
-  <a href="health-insurance.html">🏥 Health Insurance</a>
-  <a href="life-insurance.html">❤️ Life Insurance</a>
-  <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicle</a>
-  <a href="loans.html">Loans</a>
-  <a href="about.html">About</a>
+  <a href="health-insurance.html">Health Insurance</a>
+  <a href="life-insurance.html">Life Insurance</a>
+  <a href="bike-insurance.html">Bike Insurance</a>
+  <a href="car-insurance.html">Car Insurance</a>
+  <a href="commercial-vehicle-insurance.html">Commercial Vehicles</a>
+  <a href="loans.html">Loans &amp; Finance</a>
+  <a href="tax-services.html">Tax &amp; Compliance</a>
+  <a href="blog.html">Blog</a>
+  <a href="about.html">About Us</a>
+  <a href="contact.html">Contact Us</a>
   <a href="book.html" class="mc">Book Free Consultation →</a>
 </div>
 
@@ -332,7 +361,7 @@ textarea.fi{resize:none;min-height:85px;}
   <!-- WIZARD COLUMN -->
   <div>
 
-    <!-- AUTO-ROUTE BANNER — shown when dept param is in URL -->
+    <!-- AUTO-ROUTE BANNER -->
     <div class="route-banner" id="routeBanner">
       <div class="rb-ico" id="rbIco">🏍️</div>
       <div class="rb-body">
@@ -760,7 +789,6 @@ textarea.fi{resize:none;min-height:85px;}
     <div class="wcard wp rv d2" id="wp3">
       <div class="wcard-title">Step 4 of 4</div>
       <h2 class="wcard-h">When should we <em>call you?</em></h2>
-
       <div class="fgrid">
         <div class="fg span2">
           <label>Preferred Contact Method</label>
@@ -783,7 +811,6 @@ textarea.fi{resize:none;min-height:85px;}
           <textarea class="fi" placeholder="e.g. Existing policy expires next month, looking for zero dep add-on, have 5-year NCB..."></textarea>
         </div>
       </div>
-
       <div class="wnav">
         <button class="wback" onclick="goTo(2)">← Back</button>
         <span class="wstep">Last step!</span>
@@ -838,7 +865,6 @@ textarea.fi{resize:none;min-height:85px;}
         <div class="ti-body"><strong>Zero fees to you</strong> — ever. Our fee comes from the insurer or lender. You pay exactly what you'd pay direct — often less.</div>
       </div>
     </div>
-
     <div class="sidebar-card">
       <div class="sc-title">Prefer WhatsApp?</div>
       <div class="wa-block">
@@ -846,31 +872,18 @@ textarea.fi{resize:none;min-height:85px;}
         <a href="https://wa.me/917842854466?text=Hi%20Cover%20Credit%2C%20I%27d%20like%20a%20free%20consultation" class="wa-link">💬 Chat on WhatsApp</a>
       </div>
     </div>
-
     <div class="sidebar-card">
       <div class="sc-title">What happens next</div>
-      <div class="trust-item">
-        <div class="ti-ico">1️⃣</div>
-        <div class="ti-body">You submit this form (takes 2 minutes)</div>
-      </div>
-      <div class="trust-item">
-        <div class="ti-ico">2️⃣</div>
-        <div class="ti-body">Specialist calls you within 2 hours</div>
-      </div>
-      <div class="trust-item">
-        <div class="ti-ico">3️⃣</div>
-        <div class="ti-body">We compare options, explain everything clearly</div>
-      </div>
-      <div class="trust-item">
-        <div class="ti-ico">4️⃣</div>
-        <div class="ti-body">You decide — zero pressure, zero follow-up spam</div>
-      </div>
+      <div class="trust-item"><div class="ti-ico">1️⃣</div><div class="ti-body">You submit this form (takes 2 minutes)</div></div>
+      <div class="trust-item"><div class="ti-ico">2️⃣</div><div class="ti-body">Specialist calls you within 2 hours</div></div>
+      <div class="trust-item"><div class="ti-ico">3️⃣</div><div class="ti-body">We compare options, explain everything clearly</div></div>
+      <div class="trust-item"><div class="ti-ico">4️⃣</div><div class="ti-body">You decide — zero pressure, zero follow-up spam</div></div>
     </div>
   </aside>
 
 </div><!-- /book-layout -->
 
-<!-- FOOTER -->
+<!-- ══ FOOTER ══ -->
 <footer class="ft">
   <div class="ft-in">
     <div class="ft-top">
@@ -882,19 +895,20 @@ textarea.fi{resize:none;min-height:85px;}
         <div class="ft-con">🕐 Mon–Sat: 9 AM – 7 PM</div>
       </div>
       <div class="ft-col"><div class="ft-clbl">Vehicle Insurance</div><ul>
-        <li><a href="vehicle-insurance.html">Vehicle Overview</a></li>
         <li><a href="bike-insurance.html">Bike Insurance</a></li>
         <li><a href="car-insurance.html">Car Insurance</a></li>
         <li><a href="commercial-vehicle-insurance.html">Commercial Vehicle</a></li>
       </ul></div>
-      <div class="ft-col"><div class="ft-clbl">Insurance & Finance</div><ul>
+      <div class="ft-col"><div class="ft-clbl">Insurance &amp; Finance</div><ul>
         <li><a href="health-insurance.html">Health Insurance</a></li>
-        <li><a href="life-insurance.html">Life & Term Insurance</a></li>
-        <li><a href="loans.html">Loans & Finance</a></li>
+        <li><a href="life-insurance.html">Life &amp; Term Insurance</a></li>
+        <li><a href="loans.html">Loans &amp; Finance</a></li>
+        <li><a href="tax-services.html">Tax &amp; Compliance</a></li>
       </ul></div>
       <div class="ft-col"><div class="ft-clbl">Company</div><ul>
         <li><a href="about.html">About Us</a></li>
         <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
         <li><a href="book.html">Book Consultation</a></li>
         <li><a href="privacy.html">Privacy Policy</a></li>
         <li><a href="terms.html">Terms of Service</a></li>
@@ -902,18 +916,14 @@ textarea.fi{resize:none;min-height:85px;}
     </div>
     <div class="ft-bot">
       <span>© <span id="yr"></span> Cover Credit Insurance Advisors. All rights reserved. IRDAI Reg. No. [pending]</span>
-      <div class="ft-links">
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-      </div>
+      <div class="ft-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
     </div>
   </div>
 </footer>
 
 <script>
-const API_URL = 'https://api.covercredit.in'; // ← your Render URL
+const API_URL = 'https://api.covercredit.in';
 
-// ── DEPT CONFIG ──────────────────────────────────────────────
 const deptConfig = {
   loan:       { label:'Home / Personal Loan',  ico:'🏠', step3h:'Loan <em>specifics</em>' },
   health:     { label:'Health Insurance',      ico:'🏥', step3h:'Health <em>coverage needs</em>' },
@@ -926,35 +936,41 @@ const deptConfig = {
 let currentDept = null;
 let currentStep = 0;
 
-// ── READ URL PARAM ON LOAD ────────────────────────────────────
+/* ── TICKER — same partners as index.html ── */
+(function(){
+  var PARTNERS=[
+    {cat:'life',name:'LIC of India'},{cat:'life',name:'HDFC Life'},{cat:'life',name:'ICICI Prudential'},
+    {cat:'life',name:'Tata AIA'},{cat:'life',name:'Max Life'},{cat:'life',name:'SBI Life'},
+    {cat:'life',name:'Bajaj Allianz'},{cat:'life',name:'Aditya Birla'},{cat:'life',name:'India First'},
+    {cat:'health',name:'Star Health'},{cat:'health',name:'Niva Bupa'},{cat:'health',name:'HDFC ERGO'},
+    {cat:'health',name:'ICICI Lombard'},{cat:'health',name:'Care Health'},{cat:'health',name:'Tata AIG'},{cat:'health',name:'Chola MS'},
+    {cat:'motor',name:'ICICI Lombard'},{cat:'motor',name:'HDFC ERGO'},{cat:'motor',name:'Bajaj Allianz'},
+    {cat:'motor',name:'Tata AIG'},{cat:'motor',name:'Reliance General'},{cat:'motor',name:'Royal Sundaram'},{cat:'motor',name:'New India Assurance'},
+  ];
+  var CAT={life:{label:'🛡 Life',cls:'ct-pill--life'},health:{label:'🏥 Health',cls:'ct-pill--health'},motor:{label:'🚗 Motor',cls:'ct-pill--motor'}};
+  function makePill(cat){var d=document.createElement('div');d.className='ct-pill '+CAT[cat].cls;var s=document.createElement('span');s.textContent=CAT[cat].label;d.appendChild(s);return d;}
+  function makeItem(p){var d=document.createElement('div');d.className='ct-item';var n=document.createElement('span');n.className='ct-item-name';n.textContent=p.name;d.appendChild(n);return d;}
+  function buildSet(){var f=document.createDocumentFragment(),last=null;PARTNERS.forEach(function(p){if(p.cat!==last){f.appendChild(makePill(p.cat));last=p.cat;}f.appendChild(makeItem(p));});return f;}
+  var track=document.getElementById('ct-track');
+  if(track){track.appendChild(buildSet());track.appendChild(buildSet());}
+})();
+
+/* ── READ URL PARAM ON LOAD ── */
 window.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
   const dept   = params.get('dept');
-
   if (dept && deptConfig[dept]) {
-    // Auto-select this department
     currentDept = dept;
-
-    // Highlight the matching card visually
-    document.querySelectorAll('.dc').forEach(c => {
-      c.classList.toggle('sel', c.dataset.dept === dept);
-    });
-
-    // Show the route banner
+    document.querySelectorAll('.dc').forEach(c => c.classList.toggle('sel', c.dataset.dept === dept));
     const cfg = deptConfig[dept];
     document.getElementById('rbIco').textContent   = cfg.ico;
     document.getElementById('rbTitle').textContent = `Booking for ${cfg.label}`;
     document.getElementById('routeBanner').classList.add('show');
-
-    // Skip Step 1 — go straight to Step 2
     goTo(1);
   }
-
-  // Year in footer
   document.getElementById('yr').textContent = new Date().getFullYear();
 });
 
-// ── DEPT CARD SELECTION (manual) ─────────────────────────────
 function selectDept(card) {
   document.querySelectorAll('.dc').forEach(c => c.classList.remove('sel'));
   card.classList.add('sel');
@@ -962,17 +978,13 @@ function selectDept(card) {
   document.getElementById('btnNext0').disabled = false;
 }
 
-// ── RESET to step 1 (from banner "Change" button) ─────────────
 function resetToStep1() {
   document.getElementById('routeBanner').classList.remove('show');
-  // Remove ?dept from URL cleanly
   history.replaceState(null, '', window.location.pathname);
   goTo(0);
 }
 
-// ── STEP NAVIGATION ──────────────────────────────────────────
 function goTo(step) {
-  // If going to step 3, wire up the right smart fields
   if (step === 2 && currentDept) {
     document.querySelectorAll('.sf').forEach(el => el.style.display = 'none');
     const sf = document.getElementById('sf-' + currentDept);
@@ -980,267 +992,140 @@ function goTo(step) {
     const cfg = deptConfig[currentDept];
     document.getElementById('step3h').innerHTML = cfg ? cfg.step3h : 'A few <em>quick specifics</em>';
   }
-
-  // Show/hide panels
-  document.querySelectorAll('.wp').forEach((p, i) => {
-    p.classList.toggle('act', i === step);
-  });
-
-  // Update step circles
+  document.querySelectorAll('.wp').forEach((p, i) => p.classList.toggle('act', i === step));
   for (let i = 0; i < 4; i++) {
     const ws = document.getElementById('ws' + i);
     const wl = document.getElementById('wl' + i);
     if (i < step)       { ws.classList.add('done'); ws.classList.remove('act'); if (wl) wl.classList.add('done'); }
     else if (i === step){ ws.classList.add('act');  ws.classList.remove('done'); }
-    else                { ws.classList.remove('act', 'done'); if (wl) wl.classList.remove('done'); }
+    else                { ws.classList.remove('act','done'); if (wl) wl.classList.remove('done'); }
   }
-
   currentStep = step;
-  // Scroll to top of wizard
   const hero = document.querySelector('.book-hero');
   if (hero) window.scrollTo({ top: hero.offsetHeight + 72, behavior: 'smooth' });
 }
 
-// ── SUBMIT ────────────────────────────────────────────────────
 async function submitForm() {
-  // Disable button to prevent double-submit
   const btn = document.querySelector('#wp3 .wnext');
   if (btn) { btn.disabled = true; btn.textContent = 'Submitting…'; }
-
-  // ── Collect Step 2: common details ──
   const name  = document.getElementById('fname')?.value?.trim()  || '';
   const phone = document.getElementById('fphone')?.value?.trim() || '';
   const email = document.getElementById('femail')?.value?.trim() || '';
   const city  = document.getElementById('fcity')?.value          || '';
-
-  // ── Collect Step 3: dept-specific fields ──
   const details = {};
   const sf = document.getElementById('sf-' + currentDept);
   if (sf) {
-    // All select dropdowns in the smart section
     sf.querySelectorAll('select').forEach(sel => {
-      const label = sel.closest('.fg')?.querySelector('label')?.textContent?.trim()
-                       .replace(/\s*\*\s*$/, '');
+      const label = sel.closest('.fg')?.querySelector('label')?.textContent?.trim().replace(/\s*\*\s*$/, '');
       if (label && sel.value) details[camelKey(label)] = sel.value;
     });
-    // All text/tel inputs
     sf.querySelectorAll('input[type="text"], input[type="tel"]').forEach(inp => {
-      const label = inp.closest('.fg')?.querySelector('label')?.textContent?.trim()
-                       .replace(/\s*\*\s*$/, '');
+      const label = inp.closest('.fg')?.querySelector('label')?.textContent?.trim().replace(/\s*\*\s*$/, '');
       if (label && inp.value.trim()) details[camelKey(label)] = inp.value.trim();
     });
-    // Selected pills (one per group)
     sf.querySelectorAll('.pill-group').forEach(group => {
       const selPill = group.querySelector('.po.sel');
-      const label   = group.closest('.fg')?.querySelector('label')?.textContent?.trim()
-                         .replace(/\s*\*\s*$/, '');
+      const label   = group.closest('.fg')?.querySelector('label')?.textContent?.trim().replace(/\s*\*\s*$/, '');
       if (label && selPill) details[camelKey(label)] = selPill.textContent.trim();
     });
   }
-
-  // ── Collect Step 4: contact preferences ──
   const contactMethod = document.querySelector('#wp3 .cm.sel .cm-lbl')?.textContent?.trim()  || 'Phone Call';
-  const timeSlotRaw   = document.querySelector('#wp3 .slot.sel .slot-t')?.textContent?.trim() || '';
   const slotLabel     = document.querySelector('#wp3 .slot.sel .slot-l')?.textContent?.trim() || '';
-  // Map to the enum values the backend expects
-  const slotMap = {
-    'Morning':   'Morning (9 AM – 12 PM)',
-    'Afternoon': 'Afternoon (12 PM – 4 PM)',
-    'Evening':   'Evening (4 PM – 7 PM)',
-  };
+  const slotMap = {'Morning':'Morning (9 AM – 12 PM)','Afternoon':'Afternoon (12 PM – 4 PM)','Evening':'Evening (4 PM – 7 PM)'};
   const timeSlot = slotMap[slotLabel] || 'Morning (9 AM – 12 PM)';
   const notes    = document.querySelector('#wp3 textarea')?.value?.trim() || '';
-
-  // ── Build payload ──
-  const payload = {
-    department:    currentDept,
-    name,
-    phone,
-    email,
-    city,
-    details,
-    contactMethod,
-    timeSlot,
-    notes,
-    referredFrom:  new URLSearchParams(window.location.search).get('dept') ? document.referrer || window.location.href : '',
-  };
-
+  const payload  = { department:currentDept, name, phone, email, city, details, contactMethod, timeSlot, notes,
+    referredFrom: new URLSearchParams(window.location.search).get('dept') ? document.referrer || window.location.href : '' };
   try {
-    const res  = await fetch(API_URL + '/api/book', {
-      method:  'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify(payload),
-    });
+    const res  = await fetch(API_URL + '/api/book', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
     const data = await res.json();
-
     if (data.success) {
-      // Show success screen with real reference from server
       document.getElementById('refCode').textContent = data.reference || ('CC-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000));
       document.querySelectorAll('.wp').forEach(p => p.classList.remove('act'));
       document.getElementById('wp4').classList.add('act');
       document.querySelector('.wiz-prog').style.opacity = '0';
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      // Show inline error
       if (btn) { btn.disabled = false; btn.textContent = 'Book Free Consultation ✓'; }
       showFormError(data.message || 'Something went wrong. Please try again.');
     }
   } catch (err) {
-    console.error('Submit error:', err);
     if (btn) { btn.disabled = false; btn.textContent = 'Book Free Consultation ✓'; }
     showFormError('Network error. Please try again or call us at +91 78428 54466.');
   }
 }
 
-// Convert "Make & Model" → "makeModel" for details object keys
 function camelKey(label) {
-  return label
-    .replace(/[^a-zA-Z0-9\s]/g, '')
-    .trim()
-    .split(/\s+/)
-    .map((w, i) => i === 0 ? w.toLowerCase() : w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
-    .join('');
+  return label.replace(/[^a-zA-Z0-9\s]/g,'').trim().split(/\s+/)
+    .map((w,i)=>i===0?w.toLowerCase():w.charAt(0).toUpperCase()+w.slice(1).toLowerCase()).join('');
 }
 
 function showFormError(msg) {
   let err = document.getElementById('form-error');
   if (!err) {
-    err = document.createElement('div');
-    err.id = 'form-error';
-    err.style.cssText = 'background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.25);border-radius:10px;padding:.75rem 1rem;font-size:.8rem;color:#fca5a5;margin-bottom:1rem;';
-    const nav = document.querySelector('#wp3 .wnav');
-    nav.parentNode.insertBefore(err, nav);
+    err = document.createElement('div');err.id='form-error';
+    err.style.cssText='background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.25);border-radius:10px;padding:.75rem 1rem;font-size:.8rem;color:#fca5a5;margin-bottom:1rem;';
+    const nav = document.querySelector('#wp3 .wnav');nav.parentNode.insertBefore(err,nav);
   }
-  err.textContent = '⚠️ ' + msg;
-  err.style.display = 'block';
-  setTimeout(() => { err.style.display = 'none'; }, 6000);
+  err.textContent='⚠️ '+msg;err.style.display='block';
+  setTimeout(()=>{err.style.display='none';},6000);
 }
 
-// ── PILL TOGGLES ──────────────────────────────────────────────
 function togP(btn) {
-  btn.closest('.pill-group').querySelectorAll('.po').forEach(b => b.classList.remove('sel'));
+  btn.closest('.pill-group').querySelectorAll('.po').forEach(b=>b.classList.remove('sel'));
   btn.classList.add('sel');
 }
-
-// ── CONTACT METHOD & SLOTS ────────────────────────────────────
 function selCM(el) {
-  el.closest('.cm-row').querySelectorAll('.cm').forEach(b => b.classList.remove('sel'));
+  el.closest('.cm-row').querySelectorAll('.cm').forEach(b=>b.classList.remove('sel'));
   el.classList.add('sel');
 }
 function selSlot(el) {
-  el.closest('.slot-grid').querySelectorAll('.slot').forEach(b => b.classList.remove('sel'));
+  el.closest('.slot-grid').querySelectorAll('.slot').forEach(b=>b.classList.remove('sel'));
   el.classList.add('sel');
 }
 
-// ── CURSOR ────────────────────────────────────────────────────
-const cur = document.getElementById('cur');
-const cr  = document.getElementById('cr');
-let mx = 0, my = 0, cx = 0, cy = 0;
-document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; cur.style.left = mx + 'px'; cur.style.top = my + 'px'; });
-(function animCR() {
-  cx += (mx - cx) * 0.12; cy += (my - cy) * 0.12;
-  cr.style.left = cx + 'px'; cr.style.top = cy + 'px';
-  requestAnimationFrame(animCR);
-})();
-document.querySelectorAll('a,button,.dc,.cm,.slot,.po').forEach(el => {
-  el.addEventListener('mouseenter', () => document.body.classList.add('hov'));
-  el.addEventListener('mouseleave', () => document.body.classList.remove('hov'));
+/* ── CURSOR ── */
+const cur=document.getElementById('cur'),cr=document.getElementById('cr');
+let mx=0,my=0,cx=0,cy=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+(function animCR(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;cr.style.left=cx+'px';cr.style.top=cy+'px';requestAnimationFrame(animCR);})();
+document.querySelectorAll('a,button,.dc,.cm,.slot,.po').forEach(el=>{
+  el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
+  el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
 });
 
-// ── NAV SCROLL ────────────────────────────────────────────────
-window.addEventListener('scroll', () => {
-  document.getElementById('nav').classList.toggle('sc', window.scrollY > 20);
-}, { passive: true });
+/* ── NAV SCROLL ── */
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('sc',window.scrollY>20);},{passive:true});
 
-// ── MOBILE MENU ───────────────────────────────────────────────
-function toggleMob() {
-  document.getElementById('burger').classList.toggle('op');
-  document.getElementById('mob').classList.toggle('op');
-}
+/* ── MOBILE MENU ── */
+const burger=document.getElementById('burger'),mob=document.getElementById('mob');
+burger.addEventListener('click',()=>{burger.classList.toggle('op');mob.classList.toggle('op');document.body.style.overflow=mob.classList.contains('op')?'hidden':'';});
+mob.querySelectorAll('a').forEach(link=>{link.addEventListener('click',()=>{burger.classList.remove('op');mob.classList.remove('op');document.body.style.overflow='';});});
+document.addEventListener('click',e=>{if(mob.classList.contains('op')&&!mob.contains(e.target)&&!burger.contains(e.target)){burger.classList.remove('op');mob.classList.remove('op');document.body.style.overflow='';}});
 
-// ── SCROLL REVEAL ─────────────────────────────────────────────
-const io = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
-}, { threshold: 0.1 });
-document.querySelectorAll('.rv').forEach(el => io.observe(el));
+/* ── SCROLL REVEAL ── */
+const io=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target);}});},{threshold:0.1});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 
-  (function() {
-  // ── Change this for each page ──────────────────────────
-  var PAGE_NAME = 'book'; // ← CHANGE THIS PER PAGE
-  // ──────────────────────────────────────────────────────
-
- var BACKEND = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-    ? 'http://localhost:5000/api'
-    : 'https://api.covercredit.in/api';
-
-  // Skip bots
-  var ua = navigator.userAgent.toLowerCase();
-  if (/bot|crawler|spider|headless/.test(ua)) return;
-
-  // ── Step 1: Read UTM from URL (most accurate) ──────────
-  var params   = new URLSearchParams(window.location.search);
-  var utmSrc   = params.get('utm_source')   || '';
-  var utmMed   = params.get('utm_medium')   || '';
-  var utmCamp  = params.get('utm_campaign') || '';
-
-  // Persist UTM in sessionStorage so it survives page navigations
-  if (utmSrc) {
-    sessionStorage.setItem('cc_utm_source',   utmSrc);
-    sessionStorage.setItem('cc_utm_medium',   utmMed);
-    sessionStorage.setItem('cc_utm_campaign', utmCamp);
-  } else {
-    utmSrc  = sessionStorage.getItem('cc_utm_source')   || '';
-    utmMed  = sessionStorage.getItem('cc_utm_medium')   || '';
-    utmCamp = sessionStorage.getItem('cc_utm_campaign') || '';
-  }
-
-  // ── Step 2: Fallback — detect from document.referrer ──
-  function detectFromReferrer(ref) {
-    if (!ref) return 'direct';
-    var r = ref.toLowerCase();
-    if (/google\.|bing\.|yahoo\.|duckduckgo\./.test(r)) return 'google';
-    if (/whatsapp|wa\.me|wa\.link/.test(r))             return 'whatsapp';
-    if (/facebook\.|fb\.com|fb\.me|l\.facebook/.test(r))return 'facebook';
-    if (/instagram\./.test(r))                          return 'instagram';
-    if (/linkedin\./.test(r))                           return 'linkedin';
-    if (/t\.me|telegram\./.test(r))                     return 'telegram';
-    if (/twitter\.|t\.co|x\.com/.test(r))               return 'twitter';
-    if (/youtube\.|youtu\.be/.test(r))                  return 'youtube';
-    return 'other';
-  }
-
-  // UTM wins over referrer detection
-  var source = utmSrc
-    ? utmSrc.toLowerCase().trim()
-    : detectFromReferrer(document.referrer);
-
-  // ── Step 3: One ping per page per session ──────────────
-  var key = 'cc_tracked_' + PAGE_NAME + '_' + source;
-  if (sessionStorage.getItem(key)) return;
-  sessionStorage.setItem(key, '1');
-
-  // ── Step 4: Detect device on frontend (more accurate) ──
-  var isMobile = /iphone|ipod|android.*mobile|blackberry|windows phone/.test(ua);
-  var isTablet = /ipad|android(?!.*mobile)|tablet/.test(ua);
-  var device   = isTablet ? 'tablet' : isMobile ? 'mobile' : 'desktop';
-
-  // ── Step 5: Fire ping ──────────────────────────────────
-  try {
-    fetch(BACKEND + '/track', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        page:        PAGE_NAME,
-        path:        window.location.pathname,
-        source:      source,
-        device:      device,
-        utmMedium:   utmMed,
-        utmCampaign: utmCamp,
-        referrer:    document.referrer || '',
-      }),
-      keepalive: true,
-    }).catch(function () {});
-  } catch (e) {}
+/* ── ANALYTICS ── */
+(function(){
+  var PAGE_NAME='book';
+  var BACKEND=(window.location.hostname==='localhost'||window.location.hostname==='127.0.0.1')?'http://localhost:5000/api':'https://api.covercredit.in/api';
+  var ua=navigator.userAgent.toLowerCase();
+  if(/bot|crawler|spider|headless/.test(ua))return;
+  var params=new URLSearchParams(window.location.search);
+  var utmSrc=params.get('utm_source')||'',utmMed=params.get('utm_medium')||'',utmCamp=params.get('utm_campaign')||'';
+  if(utmSrc){sessionStorage.setItem('cc_utm_source',utmSrc);sessionStorage.setItem('cc_utm_medium',utmMed);sessionStorage.setItem('cc_utm_campaign',utmCamp);}
+  else{utmSrc=sessionStorage.getItem('cc_utm_source')||'';utmMed=sessionStorage.getItem('cc_utm_medium')||'';utmCamp=sessionStorage.getItem('cc_utm_campaign')||'';}
+  function detectFromReferrer(ref){if(!ref)return'direct';var r=ref.toLowerCase();if(/google\./.test(r))return'google';if(/whatsapp|wa\.me/.test(r))return'whatsapp';if(/facebook\.|fb\.com/.test(r))return'facebook';if(/instagram\./.test(r))return'instagram';if(/linkedin\./.test(r))return'linkedin';if(/t\.me|telegram\./.test(r))return'telegram';return'other';}
+  var source=utmSrc?utmSrc.toLowerCase().trim():detectFromReferrer(document.referrer);
+  var key='cc_tracked_'+PAGE_NAME+'_'+source;
+  if(sessionStorage.getItem(key))return;
+  sessionStorage.setItem(key,'1');
+  var isMobile=/iphone|ipod|android.*mobile/.test(ua);
+  var isTablet=/ipad|android(?!.*mobile)/.test(ua);
+  var device=isTablet?'tablet':isMobile?'mobile':'desktop';
+  try{fetch(BACKEND+'/track',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({page:PAGE_NAME,path:window.location.pathname,source,device,utmMedium:utmMed,utmCampaign:utmCamp,referrer:document.referrer||''}),keepalive:true}).catch(function(){});}catch(e){}
 })();
 </script>
 </body>
