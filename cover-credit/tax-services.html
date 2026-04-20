@@ -524,6 +524,10 @@
       .section{padding:5rem 5%}
       .comp-row{grid-template-columns:1fr}.comp-row.header{display:none}
     }
+
+    /* ── Inline validation tip per field ── */
+    .bk-err-tip{display:none;font-size:.68rem;color:#f87171;margin-top:.32rem;font-weight:500;padding-left:.1rem;letter-spacing:.1px;}
+    .bk-fi.err{border-color:#ef5350!important;background:rgba(239,83,80,.05)!important;box-shadow:0 0 0 3px rgba(239,83,80,.1)!important;}
   </style>
 </head>
 <body>
@@ -559,12 +563,6 @@
           <div class="bk-fg">
             <label>Phone Number <span class="bk-req">*</span></label>
             <input class="bk-fi" id="bk-phone" type="tel" placeholder="+91 98765 43210" autocomplete="tel"/>
-          </div>
-        </div>
-        <div class="bk-row full">
-          <div class="bk-fg">
-            <label>Email Address <span style="color:rgba(255,255,255,.25);font-size:.62rem;font-weight:400;">(optional — for confirmation)</span></label>
-            <input class="bk-fi" id="bk-email" type="email" placeholder="e.g. ramesh@gmail.com" autocomplete="email"/>
           </div>
         </div>
 
@@ -1099,7 +1097,64 @@
 </footer>
 
 <script>
-/* ── BOOKING POPUP ─────────────────────────────────────── */
+/* ─────────────────────────────────────────────────────────
+     CC SMART VALIDATION — blocks dummy / gibberish entries
+  ───────────────────────────────────────────────────────── */
+  function ccValidateName(val) {
+    if (!val || val.length < 3)
+      return 'Please enter your full name (min 3 characters).';
+    if (!/^[a-zA-Z\s\.\-\']+$/.test(val))
+      return 'Name should contain only letters and spaces.';
+    if (!/[aeiouAEIOU]/.test(val))
+      return 'Please enter your real full name.';
+    // Keyboard mash & repeated char detection (catches Jgfh, Rhhh, asdf, qwer etc.)
+    var lower = val.toLowerCase().replace(/[\s\.\-\']/g,'');
+    if (/^(.)\1{2,}$/.test(lower)) return 'Please enter your real full name.';
+    var JUNK=['asdf','qwer','zxcv','qwerty','asdfgh','zxcvbn','abcde','abcdef',
+      'dummy','fake','test','none','null','xyz','abcd','junk','temp','check',
+      'aaa','bbb','ccc','ddd','eee','fff','ggg','hhh','iii','jjj','kkk',
+      'lll','mmm','nnn','ooo','ppp','qqq','rrr','sss','ttt','uuu','vvv',
+      'www','xxx','yyy','zzz'];
+    if (JUNK.indexOf(lower) !== -1) return 'Please enter your real full name.';
+    var KBD=['qwertyuiop','asdfghjkl','zxcvbnm','poiuytrewq','lkjhgfdsa','mnbvcxz'];
+    for (var ki=0;ki<KBD.length;ki++) {
+      if (lower.length>=4 && KBD[ki].indexOf(lower)!==-1) return 'Please enter your real full name.';
+    }
+    var words=val.trim().split(/\s+/).filter(function(w){return w.length>0;});
+    if (words.length < 2) return 'Please enter both first and last name.';
+    if (words.some(function(w){return w.length<2;}))
+      return 'Each name part must be at least 2 characters.';
+    for (var wi=0;wi<words.length;wi++) {
+      var w=words[wi].toLowerCase();
+      if (w.length>1 && /^(.)\1+$/.test(w)) return 'Please enter your real full name.';
+      if (w.length>2 && !/[aeiou]/.test(w)) return 'Please enter a valid name.';
+    }
+    return null;
+  }
+
+  function ccValidatePhone(val) {
+    var digits = val.replace(/[\s\-\(\)]/g, '');
+    if (digits.startsWith('+91')) digits = digits.slice(3);
+    else if (digits.startsWith('91') && digits.length === 12) digits = digits.slice(2);
+    if (!/^\d{10}$/.test(digits))
+      return 'Please enter a valid 10-digit mobile number.';
+    if (!/^[6-9]/.test(digits))
+      return 'Please enter a valid Indian mobile number (must start with 6, 7, 8 or 9).';
+    if (/^(\d)\1{9}$/.test(digits))
+      return 'Please enter a real mobile number.';
+    if (['1234567890','0123456789','9876543210','0987654321'].indexOf(digits) !== -1)
+      return 'Please enter a real mobile number.';
+    return null;
+  }
+
+  function ccValidateEmail(val) {
+    if (!val) return null;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(val))
+      return 'Please enter a valid email address (e.g. name@gmail.com).';
+    return null;
+  }
+
+  /* ── BOOKING POPUP ─────────────────────────────────────── */
 const API = window.location.hostname==='localhost'||window.location.hostname==='127.0.0.1'
   ? 'http://localhost:5000/api' : 'https://api.covercredit.in/api';
 
@@ -1143,7 +1198,6 @@ document.querySelectorAll('.bk-fi').forEach(function(f) {
 async function submitBk() {
   var name  = document.getElementById('bk-name').value.trim();
   var phone = document.getElementById('bk-phone').value.trim();
-  var email = (document.getElementById('bk-email') ? document.getElementById('bk-email').value.trim() : '');
   var city  = document.getElementById('bk-city').value;
   var notes = document.getElementById('bk-notes').value.trim();
   var errEl = document.getElementById('bk-err');
@@ -1153,16 +1207,24 @@ async function submitBk() {
 
   /* clear errors */
   errEl.classList.remove('show');
-  document.querySelectorAll('.bk-fi').forEach(function(f){f.classList.remove('err');});
+  document.querySelectorAll('.bk-fi').forEach(function(f){ f.classList.remove('err'); });
 
-  /* validate */
-  var err = '';
-  if (!name)                                { document.getElementById('bk-name').classList.add('err');  err = 'Please enter your full name.'; }
-  else if (!phone || phone.replace(/\D/g,'').length < 10) { document.getElementById('bk-phone').classList.add('err'); err = 'Please enter a valid 10-digit phone number.'; }
-  else if (!city)                           { document.getElementById('bk-city').classList.add('err');  err = 'Please select your city.'; }
-
-  if (err) {
-    document.getElementById('bk-err-msg').textContent = err;
+  /* ── Smart validation with inline tips ── */
+  function _bkTip(id, msg) {
+    var el=document.getElementById(id);if(!el)return;
+    var tip=el.parentElement?el.parentElement.querySelector('.bk-err-tip'):null;
+    if(msg){el.classList.add('err');if(!tip){tip=document.createElement('span');tip.className='bk-err-tip';el.parentElement.appendChild(tip);}tip.textContent=msg;tip.style.display='block';}
+    else{el.classList.remove('err');if(tip)tip.style.display='none';}
+  }
+  var hasErr=false;
+  var nameErr=ccValidateName(name); _bkTip('bk-name',nameErr); if(nameErr)hasErr=true;
+  var phoneErr=ccValidatePhone(phone); _bkTip('bk-phone',phoneErr); if(phoneErr)hasErr=true;
+  var emailVal=document.getElementById('bk-email')?document.getElementById('bk-email').value.trim():'';
+  var emailErr=ccValidateEmail(emailVal); _bkTip('bk-email',emailErr); if(emailErr)hasErr=true;
+  var cityErr=!city?'Please select your city.':null; _bkTip('bk-city',cityErr); if(cityErr)hasErr=true;
+  if(hasErr){
+    var firstMsg=nameErr||phoneErr||emailErr||cityErr;
+    document.getElementById('bk-err-msg').textContent=firstMsg;
     errEl.classList.add('show');
     return;
   }
@@ -1171,16 +1233,16 @@ async function submitBk() {
   txt.innerHTML = '<div class="bk-spinner"></div> Booking…';
 
   try {
-    var res  = await fetch(API + '/tax-enquiry', {
+    var res  = await fetch(API + '/book', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         name: name,
         phone: phone,
-        email: email,
+        email: '',
         city: city,
-        service: svc,
-        notes: notes,
+        department: svc,
+        message: notes,
         source: 'tax-services-popup',
         page: window.location.pathname,
       }),
@@ -1310,6 +1372,24 @@ function toggleFaq(el){
   var isMobile=/iphone|ipod|android.*mobile/.test(ua);
   try{fetch(BACKEND+'/track',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({page:PAGE_NAME,path:window.location.pathname,source:source,device:isMobile?'mobile':'desktop',utmMedium:utmMed,utmCampaign:utmCamp,referrer:document.referrer||''}),keepalive:true}).catch(function(){});}catch(e){}
 })();
+
+/* ── Clear inline tips on user input ── */
+(function(){
+  var fields=['bk-name','bk-phone','bk-email','bk-city'];
+  document.addEventListener('DOMContentLoaded',function(){
+    fields.forEach(function(id){
+      var el=document.getElementById(id);
+      if(!el)return;
+      el.addEventListener('input',function(){
+        el.classList.remove('err');
+        var tip=el.parentElement?el.parentElement.querySelector('.bk-err-tip'):null;
+        if(tip)tip.style.display='none';
+        document.getElementById('bk-err').classList.remove('show');
+      });
+    });
+  });
+})();
+
 </script>
 </body>
 </html>
