@@ -48,7 +48,6 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .ct-track-wrap{flex:1;overflow:hidden;position:relative;}
 .ct-track-wrap::before{content:'';position:absolute;top:0;bottom:0;left:0;width:40px;z-index:2;background:linear-gradient(to right,#020c1f 20%,transparent);}
 .ct-track-wrap::after{content:'';position:absolute;top:0;bottom:0;right:0;width:40px;z-index:2;pointer-events:none;background:linear-gradient(to left,#020c1f 20%,transparent);}
-/* ── canonical speed: 55s ── */
 .ct-track{display:inline-flex;align-items:center;height:var(--ticker-h);white-space:nowrap;animation:ctScroll 55s linear infinite;will-change:transform;}
 .company-ticker:hover .ct-track{animation-play-state:paused;}
 @keyframes ctScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
@@ -88,7 +87,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .burger.op span:nth-child(2){opacity:0;}
 .burger.op span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
 
-/* ══ MOBILE MENU — full canonical list ══ */
+/* ══ MOBILE MENU — canonical full list ══ */
 .mob{position:fixed;inset:0;z-index:899;background:var(--ink);display:flex;flex-direction:column;padding:calc(var(--ticker-h) + var(--nh) + 1.5rem) 5% 3rem;transform:translateX(100%);transition:transform .38s var(--E);overflow-y:auto;}
 .mob.op{transform:translateX(0);}
 .mob a{padding:.85rem 0;font-size:1rem;font-weight:500;color:rgba(255,255,255,.72);border-bottom:1px solid var(--line);display:block;}
@@ -195,6 +194,10 @@ textarea.fi{resize:none;min-height:85px;}
 .wnext{background:var(--ac);border:none;border-radius:100px;padding:.65rem 2rem;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:700;color:#fff;cursor:pointer;transition:all .22s;display:flex;align-items:center;gap:.45rem;}
 .wnext:hover{background:var(--ac2);transform:translateY(-1px);box-shadow:0 8px 28px rgba(255,107,0,.35);}
 .wnext:disabled{opacity:.3;cursor:not-allowed;transform:none;box-shadow:none;}
+
+/* ── Inline validation error styles ── */
+.v-err{border-color:#ef5350!important;background:rgba(239,83,80,.06)!important;box-shadow:0 0 0 3px rgba(239,83,80,.1)!important;}
+.v-tip{display:none;font-size:.68rem;color:#f87171;margin-top:.35rem;padding-left:.1rem;font-weight:500;}
 
 /* ── SUCCESS SCREEN ── */
 .success-wrap{text-align:center;padding:2.5rem 1rem 3rem;}
@@ -388,40 +391,28 @@ textarea.fi{resize:none;min-height:85px;}
       <h2 class="wcard-h">What can we <em>help you with?</em></h2>
       <div class="dept-grid">
         <div class="dc" data-dept="loan" data-label="Home / Personal Loan" data-ico="🏠" onclick="selectDept(this)">
-          <div class="dc-check">✓</div>
-          <span class="dc-ico">🏠</span>
-          <div class="dc-name">Loans</div>
-          <div class="dc-sub">Home, personal, car, LAP</div>
+          <div class="dc-check">✓</div><span class="dc-ico">🏠</span>
+          <div class="dc-name">Loans</div><div class="dc-sub">Home, personal, car, LAP</div>
         </div>
         <div class="dc" data-dept="health" data-label="Health Insurance" data-ico="🏥" onclick="selectDept(this)">
-          <div class="dc-check">✓</div>
-          <span class="dc-ico">🏥</span>
-          <div class="dc-name">Health Insurance</div>
-          <div class="dc-sub">Individual & family plans</div>
+          <div class="dc-check">✓</div><span class="dc-ico">🏥</span>
+          <div class="dc-name">Health Insurance</div><div class="dc-sub">Individual & family plans</div>
         </div>
         <div class="dc" data-dept="life" data-label="Life Insurance" data-ico="❤️" onclick="selectDept(this)">
-          <div class="dc-check">✓</div>
-          <span class="dc-ico">❤️</span>
-          <div class="dc-name">Life Insurance</div>
-          <div class="dc-sub">Term & ULIP plans</div>
+          <div class="dc-check">✓</div><span class="dc-ico">❤️</span>
+          <div class="dc-name">Life Insurance</div><div class="dc-sub">Term & ULIP plans</div>
         </div>
         <div class="dc" data-dept="bike" data-label="Bike Insurance" data-ico="🏍️" onclick="selectDept(this)">
-          <div class="dc-check">✓</div>
-          <span class="dc-ico">🏍️</span>
-          <div class="dc-name">Bike Insurance</div>
-          <div class="dc-sub">New & renewal</div>
+          <div class="dc-check">✓</div><span class="dc-ico">🏍️</span>
+          <div class="dc-name">Bike Insurance</div><div class="dc-sub">New & renewal</div>
         </div>
         <div class="dc" data-dept="car" data-label="Car Insurance" data-ico="🚗" onclick="selectDept(this)">
-          <div class="dc-check">✓</div>
-          <span class="dc-ico">🚗</span>
-          <div class="dc-name">Car Insurance</div>
-          <div class="dc-sub">Comprehensive & TP</div>
+          <div class="dc-check">✓</div><span class="dc-ico">🚗</span>
+          <div class="dc-name">Car Insurance</div><div class="dc-sub">Comprehensive & TP</div>
         </div>
         <div class="dc" data-dept="commercial" data-label="Commercial Vehicle" data-ico="🚛" onclick="selectDept(this)">
-          <div class="dc-check">✓</div>
-          <span class="dc-ico">🚛</span>
-          <div class="dc-name">Commercial Vehicle</div>
-          <div class="dc-sub">Truck, taxi, bus & fleet</div>
+          <div class="dc-check">✓</div><span class="dc-ico">🚛</span>
+          <div class="dc-name">Commercial Vehicle</div><div class="dc-sub">Truck, taxi, bus & fleet</div>
         </div>
       </div>
       <div class="wnav">
@@ -435,6 +426,8 @@ textarea.fi{resize:none;min-height:85px;}
       <div class="wcard-title">Step 2 of 4</div>
       <h2 class="wcard-h">Your contact <em>details</em></h2>
       <div class="fgrid">
+        <!-- Honeypot anti-bot field -->
+        <input type="text" name="website" tabindex="-1" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;" autocomplete="off"/>
         <div class="fg">
           <label>Full Name <span class="req">*</span></label>
           <input class="fi" type="text" id="fname" placeholder="e.g. Ramesh Reddy" required/>
@@ -468,7 +461,7 @@ textarea.fi{resize:none;min-height:85px;}
       <div class="wnav">
         <button class="wback" onclick="goTo(0)">← Back</button>
         <span class="wstep">Step 2 of 4</span>
-        <button class="wnext" onclick="goTo(2)">Continue →</button>
+        <button class="wnext" onclick="validateAndGoTo2()">Continue →</button>
       </div>
     </div>
 
@@ -480,301 +473,66 @@ textarea.fi{resize:none;min-height:85px;}
       <!-- LOAN fields -->
       <div id="sf-loan" class="sf" style="display:none;">
         <div class="fgrid">
-          <div class="fg">
-            <label>Loan Type</label>
-            <div class="pill-group">
-              <button class="po sel" onclick="togP(this)">Home Loan</button>
-              <button class="po" onclick="togP(this)">Personal Loan</button>
-              <button class="po" onclick="togP(this)">Car Loan</button>
-              <button class="po" onclick="togP(this)">Loan Against Property</button>
-              <button class="po" onclick="togP(this)">Business / MSME</button>
-              <button class="po" onclick="togP(this)">Education Loan</button>
-            </div>
-          </div>
-          <div class="fg">
-            <label>Loan Amount Needed</label>
-            <select class="fi">
-              <option>Under ₹5 Lakhs</option>
-              <option>₹5–25 Lakhs</option>
-              <option selected>₹25–50 Lakhs</option>
-              <option>₹50L–1 Crore</option>
-              <option>₹1 Crore+</option>
-            </select>
-          </div>
-          <div class="fg">
-            <label>Employment Type</label>
-            <div class="pill-group">
-              <button class="po sel" onclick="togP(this)">Salaried</button>
-              <button class="po" onclick="togP(this)">Self-Employed</button>
-              <button class="po" onclick="togP(this)">Govt. Employee</button>
-              <button class="po" onclick="togP(this)">NRI</button>
-            </div>
-          </div>
-          <div class="fg">
-            <label>Monthly Income (approx)</label>
-            <select class="fi">
-              <option>Below ₹25,000</option>
-              <option>₹25,000–₹50,000</option>
-              <option selected>₹50,000–₹1 Lakh</option>
-              <option>₹1L–₹2L</option>
-              <option>₹2L+</option>
-            </select>
-          </div>
-          <div class="fg span2">
-            <label>Existing loans? (if any)</label>
-            <select class="fi">
-              <option>No existing loans</option>
-              <option>1 existing loan (car/personal)</option>
-              <option>2+ existing loans</option>
-              <option>Currently have a home loan (refinance/top-up)</option>
-            </select>
-          </div>
+          <div class="fg"><label>Loan Type</label><div class="pill-group"><button class="po sel" onclick="togP(this)">Home Loan</button><button class="po" onclick="togP(this)">Personal Loan</button><button class="po" onclick="togP(this)">Car Loan</button><button class="po" onclick="togP(this)">Loan Against Property</button><button class="po" onclick="togP(this)">Business / MSME</button><button class="po" onclick="togP(this)">Education Loan</button></div></div>
+          <div class="fg"><label>Loan Amount Needed</label><select class="fi"><option>Under ₹5 Lakhs</option><option>₹5–25 Lakhs</option><option selected>₹25–50 Lakhs</option><option>₹50L–1 Crore</option><option>₹1 Crore+</option></select></div>
+          <div class="fg"><label>Employment Type</label><div class="pill-group"><button class="po sel" onclick="togP(this)">Salaried</button><button class="po" onclick="togP(this)">Self-Employed</button><button class="po" onclick="togP(this)">Govt. Employee</button><button class="po" onclick="togP(this)">NRI</button></div></div>
+          <div class="fg"><label>Monthly Income (approx)</label><select class="fi"><option>Below ₹25,000</option><option>₹25,000–₹50,000</option><option selected>₹50,000–₹1 Lakh</option><option>₹1L–₹2L</option><option>₹2L+</option></select></div>
+          <div class="fg span2"><label>Existing loans? (if any)</label><select class="fi"><option>No existing loans</option><option>1 existing loan (car/personal)</option><option>2+ existing loans</option><option>Currently have a home loan (refinance/top-up)</option></select></div>
         </div>
       </div>
 
       <!-- HEALTH fields -->
       <div id="sf-health" class="sf" style="display:none;">
         <div class="fgrid">
-          <div class="fg">
-            <label>Who needs coverage?</label>
-            <div class="pill-group">
-              <button class="po" onclick="togP(this)">Just Me</button>
-              <button class="po sel" onclick="togP(this)">Me + Spouse</button>
-              <button class="po" onclick="togP(this)">Family (2+2)</button>
-              <button class="po" onclick="togP(this)">Family (2+4)</button>
-              <button class="po" onclick="togP(this)">Parents Only</button>
-            </div>
-          </div>
-          <div class="fg">
-            <label>Sum Insured Looking For</label>
-            <div class="pill-group">
-              <button class="po" onclick="togP(this)">₹3–5L</button>
-              <button class="po sel" onclick="togP(this)">₹5–10L</button>
-              <button class="po" onclick="togP(this)">₹10–25L</button>
-              <button class="po" onclick="togP(this)">₹25L+</button>
-            </div>
-          </div>
-          <div class="fg">
-            <label>Do you have existing health insurance?</label>
-            <div class="pill-group">
-              <button class="po sel" onclick="togP(this)">No — first time</button>
-              <button class="po" onclick="togP(this)">Yes — want to switch</button>
-              <button class="po" onclick="togP(this)">Yes — want top-up</button>
-            </div>
-          </div>
-          <div class="fg">
-            <label>Any pre-existing conditions?</label>
-            <div class="pill-group">
-              <button class="po sel" onclick="togP(this)">None</button>
-              <button class="po" onclick="togP(this)">Diabetes</button>
-              <button class="po" onclick="togP(this)">Hypertension</button>
-              <button class="po" onclick="togP(this)">Heart condition</button>
-              <button class="po" onclick="togP(this)">Thyroid</button>
-              <button class="po" onclick="togP(this)">Multiple</button>
-            </div>
-          </div>
+          <div class="fg"><label>Who needs coverage?</label><div class="pill-group"><button class="po" onclick="togP(this)">Just Me</button><button class="po sel" onclick="togP(this)">Me + Spouse</button><button class="po" onclick="togP(this)">Family (2+2)</button><button class="po" onclick="togP(this)">Family (2+4)</button><button class="po" onclick="togP(this)">Parents Only</button></div></div>
+          <div class="fg"><label>Sum Insured Looking For</label><div class="pill-group"><button class="po" onclick="togP(this)">₹3–5L</button><button class="po sel" onclick="togP(this)">₹5–10L</button><button class="po" onclick="togP(this)">₹10–25L</button><button class="po" onclick="togP(this)">₹25L+</button></div></div>
+          <div class="fg"><label>Do you have existing health insurance?</label><div class="pill-group"><button class="po sel" onclick="togP(this)">No — first time</button><button class="po" onclick="togP(this)">Yes — want to switch</button><button class="po" onclick="togP(this)">Yes — want top-up</button></div></div>
+          <div class="fg"><label>Any pre-existing conditions?</label><div class="pill-group"><button class="po sel" onclick="togP(this)">None</button><button class="po" onclick="togP(this)">Diabetes</button><button class="po" onclick="togP(this)">Hypertension</button><button class="po" onclick="togP(this)">Heart condition</button><button class="po" onclick="togP(this)">Thyroid</button><button class="po" onclick="togP(this)">Multiple</button></div></div>
         </div>
       </div>
 
       <!-- LIFE fields -->
       <div id="sf-life" class="sf" style="display:none;">
         <div class="fgrid">
-          <div class="fg">
-            <label>Your Age Group</label>
-            <div class="pill-group">
-              <button class="po" onclick="togP(this)">18–25</button>
-              <button class="po sel" onclick="togP(this)">26–35</button>
-              <button class="po" onclick="togP(this)">36–45</button>
-              <button class="po" onclick="togP(this)">45+</button>
-            </div>
-          </div>
-          <div class="fg">
-            <label>Smoker?</label>
-            <div class="pill-group">
-              <button class="po sel" onclick="togP(this)">Non-smoker</button>
-              <button class="po" onclick="togP(this)">Smoker</button>
-            </div>
-          </div>
-          <div class="fg">
-            <label>What are you looking for?</label>
-            <div class="pill-group">
-              <button class="po sel" onclick="togP(this)">Pure Term Plan</button>
-              <button class="po" onclick="togP(this)">ULIP / Investment</button>
-              <button class="po" onclick="togP(this)">Endowment</button>
-              <button class="po" onclick="togP(this)">Not sure — advise me</button>
-            </div>
-          </div>
-          <div class="fg">
-            <label>Coverage Amount Needed</label>
-            <div class="pill-group">
-              <button class="po" onclick="togP(this)">₹25–50L</button>
-              <button class="po sel" onclick="togP(this)">₹50L–1Cr</button>
-              <button class="po" onclick="togP(this)">₹1–2Cr</button>
-              <button class="po" onclick="togP(this)">₹2Cr+</button>
-            </div>
-          </div>
-          <div class="fg span2">
-            <label>Number of dependants</label>
-            <div class="pill-group">
-              <button class="po" onclick="togP(this)">None</button>
-              <button class="po" onclick="togP(this)">1</button>
-              <button class="po sel" onclick="togP(this)">2</button>
-              <button class="po" onclick="togP(this)">3+</button>
-            </div>
-          </div>
+          <div class="fg"><label>Your Age Group</label><div class="pill-group"><button class="po" onclick="togP(this)">18–25</button><button class="po sel" onclick="togP(this)">26–35</button><button class="po" onclick="togP(this)">36–45</button><button class="po" onclick="togP(this)">45+</button></div></div>
+          <div class="fg"><label>Smoker?</label><div class="pill-group"><button class="po sel" onclick="togP(this)">Non-smoker</button><button class="po" onclick="togP(this)">Smoker</button></div></div>
+          <div class="fg"><label>What are you looking for?</label><div class="pill-group"><button class="po sel" onclick="togP(this)">Pure Term Plan</button><button class="po" onclick="togP(this)">ULIP / Investment</button><button class="po" onclick="togP(this)">Endowment</button><button class="po" onclick="togP(this)">Not sure — advise me</button></div></div>
+          <div class="fg"><label>Coverage Amount Needed</label><div class="pill-group"><button class="po" onclick="togP(this)">₹25–50L</button><button class="po sel" onclick="togP(this)">₹50L–1Cr</button><button class="po" onclick="togP(this)">₹1–2Cr</button><button class="po" onclick="togP(this)">₹2Cr+</button></div></div>
+          <div class="fg span2"><label>Number of dependants</label><div class="pill-group"><button class="po" onclick="togP(this)">None</button><button class="po" onclick="togP(this)">1</button><button class="po sel" onclick="togP(this)">2</button><button class="po" onclick="togP(this)">3+</button></div></div>
         </div>
       </div>
 
       <!-- BIKE fields -->
       <div id="sf-bike" class="sf" style="display:none;">
         <div class="fgrid">
-          <div class="fg">
-            <label>Registration Number</label>
-            <input class="fi" type="text" placeholder="e.g. TS 09 EX 1234"/>
-          </div>
-          <div class="fg">
-            <label>Make & Model</label>
-            <input class="fi" type="text" placeholder="e.g. Honda Activa 6G"/>
-          </div>
-          <div class="fg">
-            <label>Year of Manufacture</label>
-            <div class="pill-group">
-              <button class="po" onclick="togP(this)">2024</button>
-              <button class="po sel" onclick="togP(this)">2023</button>
-              <button class="po" onclick="togP(this)">2022</button>
-              <button class="po" onclick="togP(this)">2021</button>
-              <button class="po" onclick="togP(this)">2020 or earlier</button>
-            </div>
-          </div>
-          <div class="fg">
-            <label>Current / Expiring Insurer</label>
-            <select class="fi">
-              <option>No existing policy (new bike)</option>
-              <option>Bajaj Allianz</option>
-              <option>HDFC ERGO</option>
-              <option>New India Assurance</option>
-              <option>United India</option>
-              <option>Royal Sundaram</option>
-              <option>IFFCO Tokio</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="fg span2">
-            <label>Coverage needed</label>
-            <div class="pill-group">
-              <button class="po sel" onclick="togP(this)">Comprehensive (full cover)</button>
-              <button class="po" onclick="togP(this)">Third Party Only (mandatory)</button>
-              <button class="po" onclick="togP(this)">Not sure — advise me</button>
-            </div>
-          </div>
+          <div class="fg"><label>Registration Number</label><input class="fi" type="text" placeholder="e.g. TS 09 EX 1234"/></div>
+          <div class="fg"><label>Make &amp; Model</label><input class="fi" type="text" placeholder="e.g. Honda Activa 6G"/></div>
+          <div class="fg"><label>Year of Manufacture</label><div class="pill-group"><button class="po" onclick="togP(this)">2024</button><button class="po sel" onclick="togP(this)">2023</button><button class="po" onclick="togP(this)">2022</button><button class="po" onclick="togP(this)">2021</button><button class="po" onclick="togP(this)">2020 or earlier</button></div></div>
+          <div class="fg"><label>Current / Expiring Insurer</label><select class="fi"><option>No existing policy (new bike)</option><option>Bajaj Allianz</option><option>HDFC ERGO</option><option>New India Assurance</option><option>United India</option><option>Royal Sundaram</option><option>IFFCO Tokio</option><option>Other</option></select></div>
+          <div class="fg span2"><label>Coverage needed</label><div class="pill-group"><button class="po sel" onclick="togP(this)">Comprehensive (full cover)</button><button class="po" onclick="togP(this)">Third Party Only (mandatory)</button><button class="po" onclick="togP(this)">Not sure — advise me</button></div></div>
         </div>
       </div>
 
       <!-- CAR fields -->
       <div id="sf-car" class="sf" style="display:none;">
         <div class="fgrid">
-          <div class="fg">
-            <label>Registration Number</label>
-            <input class="fi" type="text" placeholder="e.g. TS 09 BX 5678"/>
-          </div>
-          <div class="fg">
-            <label>Make & Model</label>
-            <input class="fi" type="text" placeholder="e.g. Maruti Swift VXi"/>
-          </div>
-          <div class="fg">
-            <label>Year of Manufacture</label>
-            <select class="fi">
-              <option>2024</option><option>2023</option><option>2022</option>
-              <option>2021</option><option>2020</option><option>2019 or earlier</option>
-            </select>
-          </div>
-          <div class="fg">
-            <label>Current / Expiring Insurer</label>
-            <select class="fi">
-              <option>No policy yet (new car)</option>
-              <option>Bajaj Allianz</option>
-              <option>HDFC ERGO</option>
-              <option>Tata AIG</option>
-              <option>ICICI Lombard</option>
-              <option>New India Assurance</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="fg">
-            <label>Coverage type needed</label>
-            <div class="pill-group">
-              <button class="po sel" onclick="togP(this)">Comprehensive</button>
-              <button class="po" onclick="togP(this)">Third Party Only</button>
-              <button class="po" onclick="togP(this)">Not sure</button>
-            </div>
-          </div>
-          <div class="fg">
-            <label>Add-ons interested in?</label>
-            <div class="pill-group">
-              <button class="po" onclick="togP(this)">Zero Depreciation</button>
-              <button class="po" onclick="togP(this)">Engine Protection</button>
-              <button class="po" onclick="togP(this)">Roadside Assist</button>
-              <button class="po" onclick="togP(this)">Not sure</button>
-            </div>
-          </div>
+          <div class="fg"><label>Registration Number</label><input class="fi" type="text" placeholder="e.g. TS 09 BX 5678"/></div>
+          <div class="fg"><label>Make &amp; Model</label><input class="fi" type="text" placeholder="e.g. Maruti Swift VXi"/></div>
+          <div class="fg"><label>Year of Manufacture</label><select class="fi"><option>2024</option><option>2023</option><option>2022</option><option>2021</option><option>2020</option><option>2019 or earlier</option></select></div>
+          <div class="fg"><label>Current / Expiring Insurer</label><select class="fi"><option>No policy yet (new car)</option><option>Bajaj Allianz</option><option>HDFC ERGO</option><option>Tata AIG</option><option>ICICI Lombard</option><option>New India Assurance</option><option>Other</option></select></div>
+          <div class="fg"><label>Coverage type needed</label><div class="pill-group"><button class="po sel" onclick="togP(this)">Comprehensive</button><button class="po" onclick="togP(this)">Third Party Only</button><button class="po" onclick="togP(this)">Not sure</button></div></div>
+          <div class="fg"><label>Add-ons interested in?</label><div class="pill-group"><button class="po" onclick="togP(this)">Zero Depreciation</button><button class="po" onclick="togP(this)">Engine Protection</button><button class="po" onclick="togP(this)">Roadside Assist</button><button class="po" onclick="togP(this)">Not sure</button></div></div>
         </div>
       </div>
 
       <!-- COMMERCIAL fields -->
       <div id="sf-commercial" class="sf" style="display:none;">
         <div class="fgrid">
-          <div class="fg">
-            <label>Vehicle Type</label>
-            <div class="pill-group">
-              <button class="po sel" onclick="togP(this)">Goods Carrier (Truck/Lorry)</button>
-              <button class="po" onclick="togP(this)">Passenger Bus / Minibus</button>
-              <button class="po" onclick="togP(this)">Taxi / Auto Rickshaw</button>
-              <button class="po" onclick="togP(this)">School Bus</button>
-              <button class="po" onclick="togP(this)">Crane / JCB / Excavator</button>
-              <button class="po" onclick="togP(this)">Other commercial</button>
-            </div>
-          </div>
-          <div class="fg">
-            <label>Number of Vehicles</label>
-            <div class="pill-group">
-              <button class="po sel" onclick="togP(this)">1</button>
-              <button class="po" onclick="togP(this)">2–5</button>
-              <button class="po" onclick="togP(this)">6–10</button>
-              <button class="po" onclick="togP(this)">10+ (fleet)</button>
-            </div>
-          </div>
-          <div class="fg">
-            <label>Goods Carrier Type</label>
-            <select class="fi">
-              <option>Long-haul freight</option>
-              <option>Local delivery / last mile</option>
-              <option>Tanker (fuel/chemical/water)</option>
-              <option>Refrigerated goods</option>
-              <option>N/A (not goods carrier)</option>
-            </select>
-          </div>
-          <div class="fg">
-            <label>Current / Expiring Insurer</label>
-            <select class="fi">
-              <option>No current policy</option>
-              <option>New India Assurance</option>
-              <option>United India</option>
-              <option>National Insurance</option>
-              <option>Oriental Insurance</option>
-              <option>Bajaj Allianz</option>
-              <option>IFFCO Tokio</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="fg span2">
-            <label>Coverage needed</label>
-            <div class="pill-group">
-              <button class="po sel" onclick="togP(this)">Act Only (mandatory minimum)</button>
-              <button class="po" onclick="togP(this)">Comprehensive with goods</button>
-              <button class="po" onclick="togP(this)">Fleet policy (multiple vehicles)</button>
-              <button class="po" onclick="togP(this)">Not sure — advise me</button>
-            </div>
-          </div>
+          <div class="fg"><label>Vehicle Type</label><div class="pill-group"><button class="po sel" onclick="togP(this)">Goods Carrier (Truck/Lorry)</button><button class="po" onclick="togP(this)">Passenger Bus / Minibus</button><button class="po" onclick="togP(this)">Taxi / Auto Rickshaw</button><button class="po" onclick="togP(this)">School Bus</button><button class="po" onclick="togP(this)">Crane / JCB / Excavator</button><button class="po" onclick="togP(this)">Other commercial</button></div></div>
+          <div class="fg"><label>Number of Vehicles</label><div class="pill-group"><button class="po sel" onclick="togP(this)">1</button><button class="po" onclick="togP(this)">2–5</button><button class="po" onclick="togP(this)">6–10</button><button class="po" onclick="togP(this)">10+ (fleet)</button></div></div>
+          <div class="fg"><label>Goods Carrier Type</label><select class="fi"><option>Long-haul freight</option><option>Local delivery / last mile</option><option>Tanker (fuel/chemical/water)</option><option>Refrigerated goods</option><option>N/A (not goods carrier)</option></select></div>
+          <div class="fg"><label>Current / Expiring Insurer</label><select class="fi"><option>No current policy</option><option>New India Assurance</option><option>United India</option><option>National Insurance</option><option>Oriental Insurance</option><option>Bajaj Allianz</option><option>IFFCO Tokio</option><option>Other</option></select></div>
+          <div class="fg span2"><label>Coverage needed</label><div class="pill-group"><button class="po sel" onclick="togP(this)">Act Only (mandatory minimum)</button><button class="po" onclick="togP(this)">Comprehensive with goods</button><button class="po" onclick="togP(this)">Fleet policy (multiple vehicles)</button><button class="po" onclick="togP(this)">Not sure — advise me</button></div></div>
         </div>
       </div>
 
@@ -790,24 +548,21 @@ textarea.fi{resize:none;min-height:85px;}
       <div class="wcard-title">Step 4 of 4</div>
       <h2 class="wcard-h">When should we <em>call you?</em></h2>
       <div class="fgrid">
-        <div class="fg span2">
-          <label>Preferred Contact Method</label>
+        <div class="fg span2"><label>Preferred Contact Method</label>
           <div class="cm-row">
             <div class="cm sel" onclick="selCM(this)"><span class="cm-ico">📞</span><span class="cm-lbl">Phone Call</span></div>
             <div class="cm" onclick="selCM(this)"><span class="cm-ico">💬</span><span class="cm-lbl">WhatsApp</span></div>
             <div class="cm" onclick="selCM(this)"><span class="cm-ico">📧</span><span class="cm-lbl">Email</span></div>
           </div>
         </div>
-        <div class="fg span2">
-          <label>Best Time to Reach You</label>
+        <div class="fg span2"><label>Best Time to Reach You</label>
           <div class="slot-grid">
             <div class="slot sel" onclick="selSlot(this)"><span class="slot-t">9 AM – 12 PM</span><span class="slot-l">Morning</span></div>
             <div class="slot" onclick="selSlot(this)"><span class="slot-t">12 PM – 4 PM</span><span class="slot-l">Afternoon</span></div>
             <div class="slot" onclick="selSlot(this)"><span class="slot-t">4 PM – 7 PM</span><span class="slot-l">Evening</span></div>
           </div>
         </div>
-        <div class="fg span2">
-          <label>Anything else you'd like us to know? (optional)</label>
+        <div class="fg span2"><label>Anything else you'd like us to know? (optional)</label>
           <textarea class="fi" placeholder="e.g. Existing policy expires next month, looking for zero dep add-on, have 5-year NCB..."></textarea>
         </div>
       </div>
@@ -829,7 +584,8 @@ textarea.fi{resize:none;min-height:85px;}
           <div class="success-ref-code" id="refCode">CC-2024-0000</div>
         </div>
         <div class="success-actions">
-          <a href="https://wa.me/917842854466" class="sa-btn sa-wa">💬 Also WhatsApp Us</a>
+          <!-- id="waConfirmBtn" — href updated dynamically with pre-filled message after booking -->
+          <a href="https://wa.me/917842854466" id="waConfirmBtn" class="sa-btn sa-wa">💬 WhatsApp Confirmation</a>
           <a href="index.html" class="sa-btn sa-secondary">← Back to Home</a>
         </div>
       </div>
@@ -848,22 +604,10 @@ textarea.fi{resize:none;min-height:85px;}
           <div class="am-avail">Available now</div>
         </div>
       </div>
-      <div class="trust-item">
-        <div class="ti-ico">🎯</div>
-        <div class="ti-body"><strong>We find the best rate</strong> — not the most profitable one for us. Our advice is the same whether you're buying a ₹5,000 bike policy or a ₹50L loan.</div>
-      </div>
-      <div class="trust-item">
-        <div class="ti-ico">🔒</div>
-        <div class="ti-body"><strong>Your data stays with us</strong> — never sold, never shared with third parties or junk mailers.</div>
-      </div>
-      <div class="trust-item">
-        <div class="ti-ico">⏱️</div>
-        <div class="ti-body"><strong>2-hour response guarantee</strong> during working hours (Mon–Sat, 9 AM–7 PM).</div>
-      </div>
-      <div class="trust-item">
-        <div class="ti-ico">💰</div>
-        <div class="ti-body"><strong>Zero fees to you</strong> — ever. Our fee comes from the insurer or lender. You pay exactly what you'd pay direct — often less.</div>
-      </div>
+      <div class="trust-item"><div class="ti-ico">🎯</div><div class="ti-body"><strong>We find the best rate</strong> — not the most profitable one for us. Our advice is the same whether you're buying a ₹5,000 bike policy or a ₹50L loan.</div></div>
+      <div class="trust-item"><div class="ti-ico">🔒</div><div class="ti-body"><strong>Your data stays with us</strong> — never sold, never shared with third parties or junk mailers.</div></div>
+      <div class="trust-item"><div class="ti-ico">⏱️</div><div class="ti-body"><strong>2-hour response guarantee</strong> during working hours (Mon–Sat, 9 AM–7 PM).</div></div>
+      <div class="trust-item"><div class="ti-ico">💰</div><div class="ti-body"><strong>Zero fees to you</strong> — ever. Our fee comes from the insurer or lender. You pay exactly what you'd pay direct — often less.</div></div>
     </div>
     <div class="sidebar-card">
       <div class="sc-title">Prefer WhatsApp?</div>
@@ -922,8 +666,12 @@ textarea.fi{resize:none;min-height:85px;}
 </footer>
 
 <script>
-const API_URL = 'https://api.covercredit.in';
+// ── API URL ──
+const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://localhost:5000'
+  : 'https://api.covercredit.in';
 
+// ── DEPT CONFIG ──
 const deptConfig = {
   loan:       { label:'Home / Personal Loan',  ico:'🏠', step3h:'Loan <em>specifics</em>' },
   health:     { label:'Health Insurance',      ico:'🏥', step3h:'Health <em>coverage needs</em>' },
@@ -936,7 +684,7 @@ const deptConfig = {
 let currentDept = null;
 let currentStep = 0;
 
-/* ── TICKER — same partners as index.html ── */
+/* ══ TICKER — all index.html partners ══ */
 (function(){
   var PARTNERS=[
     {cat:'life',name:'LIC of India'},{cat:'life',name:'HDFC Life'},{cat:'life',name:'ICICI Prudential'},
@@ -955,7 +703,99 @@ let currentStep = 0;
   if(track){track.appendChild(buildSet());track.appendChild(buildSet());}
 })();
 
-/* ── READ URL PARAM ON LOAD ── */
+/* ══ SMART VALIDATION ══ */
+const _KBD_ROWS = ['qwertyuiop','asdfghjkl','zxcvbnm','poiuytrewq','lkjhgfdsa','mnbvcxz'];
+const _JUNK_WORDS = ['asdf','qwer','zxcv','qwerty','asdfgh','zxcvbn','abcde','abcdef',
+  'dummy','fake','test','none','null','xyz','abcd','junk','temp','check','aaa','bbb',
+  'ccc','ddd','eee','fff','ggg','hhh','iii','jjj','kkk','lll','mmm','nnn','ooo',
+  'ppp','qqq','rrr','sss','ttt','uuu','vvv','www','xxx','yyy','zzz'];
+
+function validateName(raw) {
+  if (!raw || !raw.trim()) return 'Please enter your full name.';
+  const v = raw.trim();
+  if (v.length < 3) return 'Name must be at least 3 characters.';
+  if (/\d/.test(v)) return 'Name should not contain numbers.';
+  if (!/[aeiouAEIOU]/.test(v)) return 'Please enter your real full name.';
+  const lower = v.toLowerCase().replace(/[\s\.\-\']/g,'');
+  if (/^(.)\1{2,}$/.test(lower)) return 'Please enter your real full name.';
+  if (_JUNK_WORDS.indexOf(lower) !== -1) return 'Please enter your real full name.';
+  for (let i = 0; i < _KBD_ROWS.length; i++) {
+    if (lower.length >= 4 && _KBD_ROWS[i].indexOf(lower) !== -1) return 'Please enter your real full name.';
+  }
+  const words = v.trim().split(/\s+/).filter(w => w.length > 0);
+  if (words.length < 2) return 'Please enter both first and last name.';
+  for (const w of words) {
+    const wl = w.toLowerCase();
+    if (wl.length < 2) return 'Each name part must be at least 2 characters.';
+    if (wl.length > 1 && /^(.)\1+$/.test(wl)) return 'Please enter your real full name.';
+    if (wl.length > 2 && !/[aeiou]/.test(wl)) return 'Please enter a valid name.';
+  }
+  return null;
+}
+
+function validatePhone(raw) {
+  if (!raw || !raw.trim()) return 'Please enter your phone number.';
+  let digits = raw.replace(/\D/g, '');
+  if (digits.startsWith('91') && digits.length === 12) digits = digits.slice(2);
+  if (digits.length !== 10) return 'Phone must be exactly 10 digits.';
+  if (!/^[6-9]/.test(digits)) return 'Enter a valid Indian mobile number (must start with 6, 7, 8 or 9).';
+  if (/^(\d)\1{9}$/.test(digits)) return 'Please enter a real phone number.';
+  if (/^(\d)\1{6,}/.test(digits)) return 'Please enter a real phone number.';
+  if (['1234567890','9876543210','0123456789'].indexOf(digits) !== -1) return 'Please enter a real phone number.';
+  return null;
+}
+
+function validateEmail(raw) {
+  if (!raw || !raw.trim()) return null;
+  const e = raw.trim();
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e)) return 'Please enter a valid email address.';
+  return null;
+}
+
+/* ── Inline error display ── */
+function _setBookErr(el, msg) {
+  if (!el) return;
+  let tip = el.parentElement ? el.parentElement.querySelector('.v-tip') : null;
+  if (msg) {
+    el.classList.add('v-err');
+    if (!tip) { tip = document.createElement('span'); tip.className = 'v-tip'; el.parentElement.appendChild(tip); }
+    tip.textContent = msg; tip.style.display = 'block';
+  } else {
+    el.classList.remove('v-err');
+    if (tip) tip.style.display = 'none';
+  }
+}
+
+/* ── Step-2 Continue gate ── */
+function validateAndGoTo2() {
+  let ok = true;
+  const nameEl  = document.getElementById('fname');
+  const phoneEl = document.getElementById('fphone');
+  const emailEl = document.getElementById('femail');
+  const cityEl  = document.getElementById('fcity');
+
+  const nErr = validateName(nameEl ? nameEl.value : '');
+  _setBookErr(nameEl, nErr); if (nErr) ok = false;
+
+  const pErr = validatePhone(phoneEl ? phoneEl.value : '');
+  _setBookErr(phoneEl, pErr); if (pErr) ok = false;
+
+  if (emailEl && emailEl.value.trim()) {
+    const eErr = validateEmail(emailEl.value);
+    _setBookErr(emailEl, eErr); if (eErr) ok = false;
+  }
+
+  const cErr = (!cityEl || !cityEl.value) ? 'Please select your city.' : null;
+  _setBookErr(cityEl, cErr); if (cErr) ok = false;
+
+  if (ok) goTo(2);
+  else {
+    const firstErr = document.querySelector('.v-err');
+    if (firstErr) firstErr.scrollIntoView({ behavior:'smooth', block:'center' });
+  }
+}
+
+/* ── URL param on load ── */
 window.addEventListener('DOMContentLoaded', () => {
   const params = new URLSearchParams(window.location.search);
   const dept   = params.get('dept');
@@ -969,6 +809,12 @@ window.addEventListener('DOMContentLoaded', () => {
     goTo(1);
   }
   document.getElementById('yr').textContent = new Date().getFullYear();
+
+  /* ── Clear errors on input ── */
+  ['fname','fphone','femail','fcity'].forEach(function(id){
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', function(){ _setBookErr(el, null); });
+  });
 });
 
 function selectDept(card) {
@@ -1006,12 +852,29 @@ function goTo(step) {
 }
 
 async function submitForm() {
+  /* Re-validate step-2 before final submit */
+  const _nErr = validateName(document.getElementById('fname')?.value || '');
+  const _pErr = validatePhone(document.getElementById('fphone')?.value || '');
+  if (_nErr || _pErr) {
+    goTo(1);
+    setTimeout(() => {
+      if (_nErr) _setBookErr(document.getElementById('fname'), _nErr);
+      if (_pErr) _setBookErr(document.getElementById('fphone'), _pErr);
+    }, 100);
+    return;
+  }
+
   const btn = document.querySelector('#wp3 .wnext');
+  /* Honeypot check */
+  const hp = document.querySelector('input[name="website"]');
+  if (hp && hp.value) { if(btn){btn.disabled=false;btn.textContent='Book Free Consultation ✓';} return; }
   if (btn) { btn.disabled = true; btn.textContent = 'Submitting…'; }
+
   const name  = document.getElementById('fname')?.value?.trim()  || '';
   const phone = document.getElementById('fphone')?.value?.trim() || '';
   const email = document.getElementById('femail')?.value?.trim() || '';
   const city  = document.getElementById('fcity')?.value          || '';
+
   const details = {};
   const sf = document.getElementById('sf-' + currentDept);
   if (sf) {
@@ -1029,18 +892,48 @@ async function submitForm() {
       if (label && selPill) details[camelKey(label)] = selPill.textContent.trim();
     });
   }
+
   const contactMethod = document.querySelector('#wp3 .cm.sel .cm-lbl')?.textContent?.trim()  || 'Phone Call';
   const slotLabel     = document.querySelector('#wp3 .slot.sel .slot-l')?.textContent?.trim() || '';
   const slotMap = {'Morning':'Morning (9 AM – 12 PM)','Afternoon':'Afternoon (12 PM – 4 PM)','Evening':'Evening (4 PM – 7 PM)'};
   const timeSlot = slotMap[slotLabel] || 'Morning (9 AM – 12 PM)';
   const notes    = document.querySelector('#wp3 textarea')?.value?.trim() || '';
-  const payload  = { department:currentDept, name, phone, email, city, details, contactMethod, timeSlot, notes,
-    referredFrom: new URLSearchParams(window.location.search).get('dept') ? document.referrer || window.location.href : '' };
+
+  /* Smart validation before API call */
+  const _nameErr  = validateName(name);
+  const _phoneErr = validatePhone(phone);
+  const _emailErr = validateEmail(email);
+  const _cityErr  = !city ? 'Please select your city.' : null;
+  const _fErr     = _nameErr || _phoneErr || _emailErr || _cityErr;
+  if (_fErr) {
+    if (btn) { btn.disabled = false; btn.textContent = 'Book Free Consultation ✓'; }
+    showFormError(_fErr);
+    const _hl = (id) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.style.borderColor = '#ef5350';
+      el.style.boxShadow = '0 0 0 3px rgba(239,83,80,.15)';
+      setTimeout(() => { el.style.borderColor = ''; el.style.boxShadow = ''; }, 3500);
+    };
+    if (_nameErr)  _hl('fname');
+    if (_phoneErr) _hl('fphone');
+    if (_emailErr) _hl('femail');
+    if (_cityErr)  _hl('fcity');
+    return;
+  }
+
+  const payload = {
+    department: currentDept, name, phone, email, city, details, contactMethod, timeSlot, notes,
+    referredFrom: new URLSearchParams(window.location.search).get('dept') ? document.referrer || window.location.href : '',
+  };
+
   try {
     const res  = await fetch(API_URL + '/api/book', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(payload) });
     const data = await res.json();
     if (data.success) {
       document.getElementById('refCode').textContent = data.reference || ('CC-' + new Date().getFullYear() + '-' + Math.floor(1000 + Math.random() * 9000));
+      /* Update WhatsApp button with personalised pre-filled message from server */
+      if (data.waUrl) { document.getElementById('waConfirmBtn').href = data.waUrl; }
       document.querySelectorAll('.wp').forEach(p => p.classList.remove('act'));
       document.getElementById('wp4').classList.add('act');
       document.querySelector('.wiz-prog').style.opacity = '0';
@@ -1063,11 +956,11 @@ function camelKey(label) {
 function showFormError(msg) {
   let err = document.getElementById('form-error');
   if (!err) {
-    err = document.createElement('div');err.id='form-error';
+    err = document.createElement('div'); err.id='form-error';
     err.style.cssText='background:rgba(248,113,113,.1);border:1px solid rgba(248,113,113,.25);border-radius:10px;padding:.75rem 1rem;font-size:.8rem;color:#fca5a5;margin-bottom:1rem;';
-    const nav = document.querySelector('#wp3 .wnav');nav.parentNode.insertBefore(err,nav);
+    const nav = document.querySelector('#wp3 .wnav'); nav.parentNode.insertBefore(err,nav);
   }
-  err.textContent='⚠️ '+msg;err.style.display='block';
+  err.textContent='⚠️ '+msg; err.style.display='block';
   setTimeout(()=>{err.style.display='none';},6000);
 }
 
