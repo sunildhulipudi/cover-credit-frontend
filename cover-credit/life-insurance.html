@@ -4,19 +4,11 @@
 <meta charset="UTF-8"/>
 <!-- ================================================
   FAVICON & SITE ICONS — Cover Credit
-  Files required in root directory:
-    - favicon.ico
-    - favicon-192x192.png
-    - favicon-512x512.png
-    - apple-touch-icon.png
-  Last updated: 2026
 ================================================ -->
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<!-- ================================================ -->
-  
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-377PNCFQLN"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-377PNCFQLN');</script>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
@@ -51,50 +43,49 @@ img{display:block;max-width:100%;object-fit:cover;}
 #cr{width:38px;height:38px;border:1.5px solid rgba(245,166,35,.5);z-index:9998;}
 body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:.2;}
 
-/* ══ TICKER ══ */
-#partnerTicker{
-  position:fixed;top:0;left:0;right:0;z-index:1100;
-  height:var(--ticker-h);background:#020c1f;
-  display:flex;align-items:center;overflow:hidden;
-}
-#partnerTicker::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1.5px;
-  background:linear-gradient(90deg,transparent,var(--gold),#f5c842,var(--gold),transparent);
-  background-size:200% 100%;animation:tkshimmer 4s linear infinite;
-}
-@keyframes tkshimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
-.tk-brand{flex-shrink:0;padding:0 1rem 0 1.2rem;display:flex;align-items:center;gap:.6rem;border-right:1px solid rgba(255,255,255,.08);background:linear-gradient(90deg,#020c1f 80%,transparent);position:relative;z-index:2;white-space:nowrap;}
-.tk-logo{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;letter-spacing:-.3px;}
-.tk-logo em{font-style:normal;color:var(--gold);}
-.tk-cat-label{flex-shrink:0;padding:0 1rem;display:flex;align-items:center;border-right:1px solid rgba(255,255,255,.08);white-space:nowrap;}
-.tk-cat-pill{display:inline-flex;align-items:center;gap:.28rem;padding:.22rem .62rem;border-radius:100px;font-size:.56rem;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#bfdbfe;border:1px solid rgba(191,219,254,.28);background:rgba(21,101,192,.1);}
-.tk-track-wrap{flex:1;overflow:hidden;position:relative;}
-.tk-track-wrap::before,.tk-track-wrap::after{content:'';position:absolute;top:0;bottom:0;width:60px;z-index:2;pointer-events:none;}
-.tk-track-wrap::before{left:0;background:linear-gradient(90deg,#020c1f,transparent);}
-.tk-track-wrap::after{right:0;background:linear-gradient(270deg,#020c1f,transparent);}
-.tk-track{display:flex;align-items:center;white-space:nowrap;animation:ticker-scroll 38s linear infinite;}
-.tk-track:hover{animation-play-state:paused;}
-@keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.tk-item{display:inline-flex;align-items:center;padding:0 1.1rem;height:var(--ticker-h);position:relative;}
-.tk-item::after{content:'';position:absolute;right:0;top:28%;bottom:28%;width:1px;background:rgba(255,255,255,.08);}
-.tk-name{font-size:.72rem;font-weight:600;color:rgba(255,255,255,.78);}
-.tk-irdai{flex-shrink:0;padding:0 1.2rem;display:flex;align-items:center;gap:.5rem;border-left:1px solid rgba(255,255,255,.08);background:linear-gradient(270deg,#020c1f 80%,transparent);white-space:nowrap;position:relative;z-index:2;}
-.tk-irdai-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px #22c55e;animation:irdaipulse 2s ease-in-out infinite;}
-@keyframes irdaipulse{0%,100%{box-shadow:0 0 4px #22c55e}50%{box-shadow:0 0 14px #22c55e,0 0 22px rgba(34,197,94,.3)}}
-.tk-irdai-txt{font-size:.56rem;font-weight:700;color:rgba(255,255,255,.32);text-transform:uppercase;letter-spacing:1.5px;}
+/* ══ TICKER — canonical ══ */
+.company-ticker{position:fixed;top:0;left:0;right:0;z-index:1100;height:var(--ticker-h);background:#020c1f;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:stretch;overflow:hidden;}
+.company-ticker::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;z-index:10;background:linear-gradient(90deg,transparent,rgba(230,168,23,0) 15%,rgba(230,168,23,0.8) 40%,#f5c842 50%,rgba(230,168,23,0.8) 60%,rgba(230,168,23,0) 85%,transparent);background-size:200% 100%;animation:ctShimmer 4s linear infinite;}
+@keyframes ctShimmer{from{background-position:-100% 0}to{background-position:200% 0}}
+.company-ticker::after{content:'';position:absolute;top:0;bottom:0;right:0;width:80px;z-index:5;pointer-events:none;background:linear-gradient(to left,#020c1f 30%,transparent);}
+.ct-label{flex-shrink:0;display:flex;align-items:center;gap:8px;padding:0 18px 0 20px;position:relative;z-index:6;background:linear-gradient(90deg,#020c1f 80%,transparent);border-right:1px solid rgba(255,255,255,0.07);}
+.ct-label-brand{font-family:'Playfair Display',serif;font-size:.78rem;font-weight:700;color:#fff;white-space:nowrap;}
+.ct-label-brand em{font-style:normal;color:var(--gold);}
+.ct-label-divider{width:1px;height:13px;background:rgba(255,255,255,0.12);}
+.ct-label-text{font-size:.58rem;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:rgba(255,255,255,0.28);white-space:nowrap;}
+.ct-badge{flex-shrink:0;display:flex;align-items:center;gap:6px;padding:0 16px;position:relative;z-index:6;background:linear-gradient(270deg,#020c1f 70%,transparent);border-left:1px solid rgba(255,255,255,0.07);}
+.ct-badge-dot{width:5px;height:5px;border-radius:50%;background:#22c55e;box-shadow:0 0 6px #22c55e;animation:ctBlink 2s ease-in-out infinite;}
+@keyframes ctBlink{0%,100%{opacity:1}50%{opacity:.35}}
+.ct-badge-text{font-size:.52rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.28);white-space:nowrap;}
+.ct-track-wrap{flex:1;overflow:hidden;position:relative;}
+.ct-track-wrap::before{content:'';position:absolute;top:0;bottom:0;left:0;width:40px;z-index:2;background:linear-gradient(to right,#020c1f 20%,transparent);}
+.ct-track-wrap::after{content:'';position:absolute;top:0;bottom:0;right:0;width:40px;z-index:2;pointer-events:none;background:linear-gradient(to left,#020c1f 20%,transparent);}
+.ct-track{display:inline-flex;align-items:center;height:var(--ticker-h);white-space:nowrap;animation:ctScroll 55s linear infinite;will-change:transform;}
+.company-ticker:hover .ct-track{animation-play-state:paused;}
+@keyframes ctScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ct-pill{display:inline-flex;align-items:center;padding:0 16px;flex-shrink:0;}
+.ct-pill span{font-size:.52rem;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;padding:2px 9px;border-radius:100px;white-space:nowrap;}
+.ct-pill--life span{background:rgba(21,101,192,.15);color:#93c5fd;border:1px solid rgba(96,165,250,.25);}
+.ct-pill--health span{background:rgba(239,68,68,.13);color:#fca5a5;border:1px solid rgba(248,113,113,.25);}
+.ct-pill--motor span{background:rgba(230,168,23,.13);color:#fcd34d;border:1px solid rgba(245,200,66,.25);}
+.ct-item{display:inline-flex;align-items:center;padding:0 22px;flex-shrink:0;position:relative;cursor:default;}
+.ct-item::after{content:'';position:absolute;right:0;top:25%;bottom:25%;width:1px;background:rgba(255,255,255,0.06);}
+.ct-item-name{font-family:'DM Sans',system-ui,sans-serif;font-size:.7rem;font-weight:600;color:rgba(255,255,255,0.42);white-space:nowrap;transition:color 0.2s;}
+.company-ticker:hover .ct-item:hover .ct-item-name{color:rgba(255,255,255,0.9);}
+@media(max-width:580px){.ct-label,.ct-badge{display:none;}}
 
-/* ══ NAV ══ */
+/* ══ NAV — below ticker ══ */
 .nav{position:fixed;top:var(--ticker-h);left:0;right:0;z-index:900;height:var(--nh);padding:0 5%;transition:background .4s;}
 .nav.sc{background:rgba(6,16,31,.97);backdrop-filter:blur(24px);box-shadow:0 1px 0 var(--line);}
 .ni{max-width:1300px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;}
 .logo{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;}
 .logo em{font-style:normal;color:var(--gold);}
-.nl{display:flex;align-items:center;gap:1.8rem;list-style:none;}
-.nl a{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.65);transition:color .2s;position:relative;}
+.nl{display:flex;align-items:center;gap:1.6rem;list-style:none;}
+.nl a{font-size:.84rem;font-weight:500;color:rgba(255,255,255,.65);transition:color .2s;position:relative;}
 .nl a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--gold);transition:width .28s;}
 .nl a:hover,.nl a.act{color:#fff;}.nl a:hover::after,.nl a.act::after{width:100%;}
 .dd{position:relative;}
-.ddt{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.65);cursor:none;display:flex;align-items:center;gap:.26rem;transition:color .2s;}
+.ddt{font-size:.84rem;font-weight:500;color:rgba(255,255,255,.65);cursor:none;display:flex;align-items:center;gap:.26rem;transition:color .2s;}
 .dd:hover .ddt{color:#fff;}
 .dda{font-size:.54rem;transition:transform .3s;}.dd:hover .dda{transform:rotate(180deg);}
 .ddm{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(6px);background:var(--i2);border:1px solid var(--line);border-radius:12px;padding:.4rem;min-width:190px;opacity:0;visibility:hidden;transition:opacity .2s,transform .28s var(--E),visibility .2s;box-shadow:0 24px 60px rgba(0,0,0,.5);}
@@ -108,10 +99,14 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .burger.op span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
 .burger.op span:nth-child(2){opacity:0;}
 .burger.op span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
-.mob{position:fixed;inset:0;z-index:899;background:var(--ink);display:flex;flex-direction:column;padding:calc(var(--ticker-h) + var(--nh) + 1.8rem) 5% 3rem;transform:translateX(100%);transition:transform .38s var(--E);}
+
+/* ══ MOBILE MENU — canonical ══ */
+.mob{position:fixed;inset:0;z-index:899;background:var(--ink);display:flex;flex-direction:column;padding:calc(var(--ticker-h) + var(--nh) + 1.5rem) 5% 3rem;transform:translateX(100%);transition:transform .38s var(--E);overflow-y:auto;}
 .mob.op{transform:translateX(0);}
-.mob a{padding:.9rem 0;font-size:1rem;font-weight:500;color:rgba(255,255,255,.72);border-bottom:1px solid var(--line);}
-.mc{margin-top:1.8rem;background:var(--gold);color:var(--ink)!important;text-align:center;border-radius:12px;padding:.9rem!important;font-weight:700!important;border:none!important;}
+.mob a{padding:.85rem 0;font-size:1rem;font-weight:500;color:rgba(255,255,255,.72);border-bottom:1px solid var(--line);display:block;}
+.mob a:hover{color:var(--gold);}
+.mc{margin-top:1.6rem;background:var(--gold);color:var(--ink)!important;text-align:center;border-radius:12px;padding:.9rem!important;font-weight:700!important;border:none!important;}
+
 .fab{position:fixed;bottom:1.8rem;right:1.8rem;z-index:400;display:flex;flex-direction:column;gap:.65rem;align-items:flex-end;}
 .fab a{display:flex;align-items:center;gap:.48rem;padding:.65rem 1rem;border-radius:100px;font-size:.76rem;font-weight:600;cursor:none;transition:transform .18s;}
 .fab a:hover{transform:translateY(-2px);}
@@ -134,96 +129,43 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .bq{display:flex;align-items:center;justify-content:center;gap:.32rem;border:1.5px solid var(--gold);color:var(--gold);background:transparent;padding:.58rem .9rem;border-radius:9px;font-weight:700;font-size:.76rem;cursor:none;width:100%;transition:background .2s,color .2s,transform .15s;margin-top:1rem;}
 .bq:hover{background:var(--gold);color:var(--ink);transform:translateY(-1px);}
 
-/* ══ HERO — CINEMATIC SLIDESHOW ══ */
+/* ══ HERO ══ */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;padding-top:calc(var(--ticker-h) + var(--nh));}
-
-/* Background slides */
 .hbg{position:absolute;inset:0;z-index:0;}
 .hbg-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.4s ease-in-out;}
 .hbg-slide.active{opacity:1;}
 .hbg-slide img{width:100%;height:100%;object-fit:cover;object-position:center 20%;}
-
-/* Gradient overlay: deep on left for text, fades out toward right so image shows */
-.hbg-overlay{position:absolute;inset:0;z-index:1;
-  background:linear-gradient(100deg,
-    rgba(4,9,18,.96) 0%,
-    rgba(4,9,18,.88) 30%,
-    rgba(4,9,18,.55) 58%,
-    rgba(4,9,18,.15) 78%,
-    rgba(4,9,18,.05) 100%);}
-
-/* Subtle grid texture */
-.hgrid{position:absolute;inset:0;z-index:2;
-  background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);
-  background-size:54px 54px;
-  mask-image:linear-gradient(90deg,rgba(0,0,0,.6) 0%,transparent 55%);}
-
-/* Progress bar at bottom */
-.hprog-bar{position:absolute;bottom:0;left:0;height:3px;z-index:20;
-  background:linear-gradient(90deg,var(--gold),var(--glow));width:0;}
-@keyframes hprog{from{width:0}to{width:100%}}
-
-/* Slide counter top-right */
-.hcounter{position:absolute;top:calc(var(--ticker-h) + var(--nh) + 1.4rem);right:5%;z-index:15;
-  font-family:'Playfair Display',serif;display:flex;align-items:baseline;gap:.3rem;}
+.hbg-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(4,9,18,.96) 0%,rgba(4,9,18,.88) 30%,rgba(4,9,18,.55) 58%,rgba(4,9,18,.15) 78%,rgba(4,9,18,.05) 100%);}
+.hgrid{position:absolute;inset:0;z-index:2;background-image:linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);background-size:54px 54px;mask-image:linear-gradient(90deg,rgba(0,0,0,.6) 0%,transparent 55%);}
+.hprog-bar{position:absolute;bottom:0;left:0;height:3px;z-index:20;background:linear-gradient(90deg,var(--gold),var(--glow));width:0;}
+.hcounter{position:absolute;top:calc(var(--ticker-h) + var(--nh) + 1.4rem);right:5%;z-index:15;font-family:'Playfair Display',serif;display:flex;align-items:baseline;gap:.3rem;}
 .hcounter-cur{font-size:1.5rem;font-weight:700;color:var(--gold);line-height:1;}
 .hcounter-tot{font-size:.8rem;color:rgba(255,255,255,.28);}
-
-/* Dot indicators */
-.hdots{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);z-index:20;
-  display:flex;gap:.55rem;align-items:center;}
-.hdot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.28);
-  border:none;padding:0;cursor:pointer;transition:all .35s;}
+.hdots{position:absolute;bottom:1.6rem;left:50%;transform:translateX(-50%);z-index:20;display:flex;gap:.55rem;align-items:center;}
+.hdot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.28);border:none;padding:0;cursor:pointer;transition:all .35s;}
 .hdot.on{width:24px;border-radius:3px;background:var(--gold);}
-
-/* Inner layout */
-.hin{position:relative;z-index:10;max-width:1300px;margin:0 auto;padding:2rem 5% 5rem;
-  width:100%;display:grid;grid-template-columns:1fr 390px;align-items:center;gap:3.5rem;}
-
-/* Left text */
+.hin{position:relative;z-index:10;max-width:1300px;margin:0 auto;padding:2rem 5% 5rem;width:100%;display:grid;grid-template-columns:1fr 390px;align-items:center;gap:3.5rem;}
 .hbc{display:flex;align-items:center;gap:.38rem;font-size:.72rem;color:rgba(255,255,255,.3);margin-bottom:1.4rem;}
 .hbc a{color:rgba(255,255,255,.3);transition:color .2s;}.hbc a:hover{color:var(--gold);}
-.hkick{display:inline-flex;align-items:center;gap:.42rem;background:rgba(230,92,0,.15);
-  border:1px solid rgba(230,92,0,.3);color:#fda07a;font-size:.68rem;font-weight:700;
-  padding:.3rem .88rem;border-radius:100px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.1rem;}
+.hkick{display:inline-flex;align-items:center;gap:.42rem;background:rgba(230,92,0,.15);border:1px solid rgba(230,92,0,.3);color:#fda07a;font-size:.68rem;font-weight:700;padding:.3rem .88rem;border-radius:100px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:1.1rem;}
 .hkick::before{content:'';width:5px;height:5px;background:#f87171;border-radius:50%;animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.2}}
-.htit{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.8vw,3.6rem);font-weight:900;
-  line-height:1.06;letter-spacing:-2px;margin-bottom:1.2rem;max-width:580px;}
-.htit em{font-style:italic;background:linear-gradient(135deg,var(--gold),var(--glow));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-
-/* Dynamic subtitle that changes with each slide */
-.hsubtit{font-size:.82rem;font-weight:600;color:var(--gold);letter-spacing:.3px;
-  margin-bottom:.6rem;min-height:1.2em;transition:opacity .4s;}
-
+.htit{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.8vw,3.6rem);font-weight:900;line-height:1.06;letter-spacing:-2px;margin-bottom:1.2rem;max-width:580px;}
+.htit em{font-style:italic;background:linear-gradient(135deg,var(--gold),var(--glow));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.hsubtit{font-size:.82rem;font-weight:600;color:var(--gold);letter-spacing:.3px;margin-bottom:.6rem;min-height:1.2em;transition:opacity .4s;}
 .hdesc{font-size:.92rem;line-height:1.82;color:rgba(255,255,255,.6);margin-bottom:2rem;max-width:460px;}
 .hbtns{display:flex;gap:.85rem;flex-wrap:wrap;margin-bottom:2rem;}
 .hstats{display:flex;gap:.85rem;flex-wrap:wrap;}
-.hsc{background:rgba(255,255,255,.06);backdrop-filter:blur(16px);
-  border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:.85rem 1.1rem;min-width:112px;}
+.hsc{background:rgba(255,255,255,.06);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:.85rem 1.1rem;min-width:112px;}
 .hsc-n{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;color:var(--gold);line-height:1;}
 .hsc-l{font-size:.6rem;color:rgba(255,255,255,.38);margin-top:.2rem;}
-
-/* Right: foreground photo strip */
 .hstrip{position:relative;display:flex;flex-direction:column;gap:10px;height:520px;}
-.hstrip-img{flex:1;border-radius:14px;overflow:hidden;position:relative;
-  border:1px solid rgba(255,255,255,.1);min-height:0;}
-.hstrip-img img{width:100%;height:100%;object-fit:cover;object-position:center 25%;
-  display:block;transition:transform .6s ease;}
+.hstrip-img{flex:1;border-radius:14px;overflow:hidden;position:relative;border:1px solid rgba(255,255,255,.1);min-height:0;}
+.hstrip-img img{width:100%;height:100%;object-fit:cover;object-position:center 25%;display:block;transition:transform .6s ease;}
 .hstrip-img:hover img{transform:scale(1.04);}
-.hstrip-img::after{content:'';position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(4,9,18,.7) 0%,transparent 50%);}
-.hstrip-label{position:absolute;bottom:.65rem;left:.75rem;right:.75rem;z-index:2;
-  font-size:.62rem;font-weight:600;color:rgba(255,255,255,.8);
-  background:rgba(4,9,18,.6);backdrop-filter:blur(10px);
-  border-radius:7px;padding:.28rem .6rem;}
-
-/* Floating badges */
-.hfbadge{position:absolute;z-index:20;background:rgba(6,14,30,.93);
-  backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,.14);
-  border-radius:14px;padding:.7rem 1rem;box-shadow:0 14px 44px rgba(0,0,0,.45);}
+.hstrip-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(4,9,18,.7) 0%,transparent 50%);}
+.hstrip-label{position:absolute;bottom:.65rem;left:.75rem;right:.75rem;z-index:2;font-size:.62rem;font-weight:600;color:rgba(255,255,255,.8);background:rgba(4,9,18,.6);backdrop-filter:blur(10px);border-radius:7px;padding:.28rem .6rem;}
+.hfbadge{position:absolute;z-index:20;background:rgba(6,14,30,.93);backdrop-filter:blur(22px);border:1px solid rgba(255,255,255,.14);border-radius:14px;padding:.7rem 1rem;box-shadow:0 14px 44px rgba(0,0,0,.45);}
 .hfb1{top:-14px;right:-18px;animation:hflt1 5s ease-in-out infinite;}
 .hfb2{top:50%;left:-24px;transform:translateY(-50%);animation:hflt2 6.5s ease-in-out infinite;}
 .hfb3{bottom:-14px;right:20px;animation:hflt3 7s ease-in-out infinite;}
@@ -231,26 +173,17 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 @keyframes hflt2{0%,100%{transform:translateY(-50%)}50%{transform:translateY(calc(-50% - 8px))}}
 @keyframes hflt3{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 .hfb-ic{font-size:1rem;margin-bottom:.15rem;}
-.hfb-v{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;
-  color:var(--gold);line-height:1.15;}
-.hfb-l{font-size:.54rem;color:rgba(255,255,255,.34);text-transform:uppercase;
-  letter-spacing:.8px;margin-top:.08rem;}
+.hfb-v{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:var(--gold);line-height:1.15;}
+.hfb-l{font-size:.54rem;color:rgba(255,255,255,.34);text-transform:uppercase;letter-spacing:.8px;margin-top:.08rem;}
 .hfb-pulse{display:flex;align-items:center;gap:.5rem;}
-.hfb-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0;
-  box-shadow:0 0 8px #22c55e;animation:gpulse 2s ease-in-out infinite;}
+.hfb-dot{width:8px;height:8px;border-radius:50%;background:#22c55e;flex-shrink:0;box-shadow:0 0 8px #22c55e;animation:gpulse 2s ease-in-out infinite;}
 @keyframes gpulse{0%,100%{box-shadow:0 0 4px #22c55e}50%{box-shadow:0 0 16px #22c55e,0 0 28px rgba(34,197,94,.3)}}
-
-/* Scroll indicator */
-.sh{position:absolute;bottom:2.2rem;left:5%;display:flex;flex-direction:column;
-  align-items:center;gap:.5rem;z-index:10;}
-.sh-m{width:22px;height:34px;border:2px solid rgba(255,255,255,.22);border-radius:100px;
-  display:flex;justify-content:center;padding-top:5px;}
-.sh-d{width:3px;height:7px;background:rgba(255,255,255,.45);border-radius:100px;
-  animation:sd 2s ease-in-out infinite;}
+.sh{position:absolute;bottom:2.2rem;left:5%;display:flex;flex-direction:column;align-items:center;gap:.5rem;z-index:10;}
+.sh-m{width:22px;height:34px;border:2px solid rgba(255,255,255,.22);border-radius:100px;display:flex;justify-content:center;padding-top:5px;}
+.sh-d{width:3px;height:7px;background:rgba(255,255,255,.45);border-radius:100px;animation:sd 2s ease-in-out infinite;}
 @keyframes sd{0%{opacity:1;transform:translateY(0)}80%{opacity:0;transform:translateY(10px)}100%{opacity:0}}
 .sh-t{font-size:.6rem;color:rgba(255,255,255,.25);letter-spacing:1.5px;text-transform:uppercase;}
 
-/* ══ PHOTO ROW ══ */
 /* ══ PHOTO ROW ══ */
 .photo-row{padding:0 5% 4rem;background:var(--ink);}
 .photo-row-inner{max-width:1300px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
@@ -505,7 +438,6 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
   .strow{grid-template-columns:repeat(2,1fr);}
   .pg-g{grid-template-columns:1fr 1fr;}
   .photo-row-inner{grid-template-columns:1fr;}
-  .tk-brand,.tk-irdai{display:none;}
   body{cursor:auto;}#cur,#cr{display:none;}
 }
 @media(max-width:520px){
@@ -519,20 +451,19 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 </head>
 <body>
 
-<!-- ══ TICKER ══ -->
-<div id="partnerTicker">
-  <div class="tk-brand">
-    <span class="tk-logo">Cover<em>Credit</em></span>
+<!-- ══ TICKER — canonical ══ -->
+<div class="company-ticker" id="company-ticker" aria-hidden="true">
+  <div class="ct-label">
+    <span class="ct-label-brand">Cover<em>Credit</em></span>
+    <span class="ct-label-divider"></span>
+    <span class="ct-label-text">Our Partners</span>
   </div>
-  <div class="tk-cat-label">
-    <span class="tk-cat-pill">🛡️ Life Insurance Partners</span>
+  <div class="ct-track-wrap">
+    <div class="ct-track" id="ct-track"></div>
   </div>
-  <div class="tk-track-wrap">
-    <div class="tk-track" id="tkTrack"></div>
-  </div>
-  <div class="tk-irdai">
-    <div class="tk-irdai-dot"></div>
-    <span class="tk-irdai-txt">IRDAI Verified</span>
+  <div class="ct-badge">
+    <span class="ct-badge-dot"></span>
+    <span class="ct-badge-text">IRDAI Verified</span>
   </div>
 </div>
 
@@ -547,123 +478,109 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
   </a>
 </div>
 
-<!-- NAV -->
+<!-- ══ NAV — canonical full nav ══ -->
 <nav class="nav" id="nav">
   <div class="ni">
     <a href="index.html" class="logo">Cover<em>Credit</em></a>
     <ul class="nl">
-      <li><a href="health-insurance.html">Health</a></li>
+      <li><a href="health-insurance.html">Health Insurance</a></li>
       <li><a href="life-insurance.html" class="act">Life Insurance</a></li>
-      <li class="dd"><span class="ddt">Vehicle <span class="dda">&#9660;</span></span><div class="ddm"><a href="bike-insurance.html">&#127949; Bike Insurance</a><a href="car-insurance.html">&#128663; Car Insurance</a><a href="commercial-vehicle-insurance.html">&#128667; Commercial</a></div></li>
+      <li class="dd">
+        <span class="ddt">Vehicle <span class="dda">▾</span></span>
+        <div class="ddm">
+          <a href="bike-insurance.html">🏍️ Bike Insurance</a>
+          <a href="car-insurance.html">🚗 Car Insurance</a>
+          <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicles</a>
+        </div>
+      </li>
       <li><a href="loans.html">Loans</a></li>
+      <li><a href="tax-services.html">Tax &amp; Compliance</a></li>
       <li><a href="blog.html">Blog</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="book.html?dept=life" class="ncta">Free Consultation</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="book.html?dept=life" class="ncta">Book Free Consultation</a></li>
     </ul>
     <button class="burger" id="burger"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
+<!-- ══ MOBILE MENU — canonical full list ══ -->
 <div class="mob" id="mob">
   <a href="health-insurance.html">Health Insurance</a>
   <a href="life-insurance.html">Life Insurance</a>
   <a href="bike-insurance.html">Bike Insurance</a>
   <a href="car-insurance.html">Car Insurance</a>
-  <a href="loans.html">Loans</a>
-  <a href="about.html">About</a>
-  <a href="book.html?dept=life" class="mc">Book Free Consultation &#8594;</a>
+  <a href="commercial-vehicle-insurance.html">Commercial Vehicles</a>
+  <a href="loans.html">Loans &amp; Finance</a>
+  <a href="tax-services.html">Tax &amp; Compliance</a>
+  <a href="blog.html">Blog</a>
+  <a href="about.html">About Us</a>
+  <a href="contact.html">Contact Us</a>
+  <a href="book.html?dept=life" class="mc">Book Free Consultation →</a>
 </div>
 
-<!-- ══ HERO — CINEMATIC SLIDESHOW ══ -->
+<!-- ══ HERO ══ -->
 <section class="hero">
-
-  <!-- BACKGROUND: 5 full-bleed slides scrolling every 3s -->
   <div class="hbg">
     <div class="hbg-slide active">
-      <!-- Slide 1: Indian father holding young child — pure emotion -->
       <img src="https://images.unsplash.com/photo-1504439268584-b72c5019471e?q=80&w=1800&auto=format&fit=crop" alt="Indian father with child" loading="eager"/>
     </div>
     <div class="hbg-slide">
-      <!-- Slide 2: Indian woman sitting alone, bills on table — the 'what if' fear -->
       <img src="https://images.unsplash.com/photo-1713947506242-8fcae733d158?q=80&w=1800&auto=format&fit=crop" alt="Indian woman alone managing finances" loading="lazy"/>
     </div>
     <div class="hbg-slide">
-      <!-- Slide 3: Elderly Indian couple — dependency angle -->
       <img src="https://images.unsplash.com/photo-1592381499682-33cee994fedd?q=80&w=1800&auto=format&fit=crop" alt="Elderly Indian couple" loading="lazy"/>
     </div>
     <div class="hbg-slide">
-      <!-- Slide 4: Indian family together at home — what you're protecting -->
       <img src="https://images.unsplash.com/photo-1533777419517-3e4017e2e15a?q=80&w=1800&auto=format&fit=crop" alt="Indian family at home" loading="lazy"/>
     </div>
     <div class="hbg-slide">
-      <!-- Slide 5: Indian man signing documents — taking action -->
       <img src="https://images.unsplash.com/photo-1763729805496-b5dbf7f00c79?q=80&w=1800&auto=format&fit=crop" alt="Man signing insurance documents" loading="lazy"/>
     </div>
   </div>
-
-  <!-- Left-heavy gradient so text is readable, right side image shines through -->
   <div class="hbg-overlay"></div>
   <div class="hgrid"></div>
-
-  <!-- Slide counter top-right -->
   <div class="hcounter">
     <span class="hcounter-cur" id="hcur">01</span>
     <span class="hcounter-tot">/ 05</span>
   </div>
-
-  <!-- Progress bar bottom -->
   <div class="hprog-bar" id="hprogbar"></div>
-
-  <!-- Main content grid -->
   <div class="hin">
-
-    <!-- LEFT: Text -->
     <div>
-      <div class="hbc"><a href="index.html">Home</a> &#8250; Life Insurance</div>
-      <div class="hkick">&#128737; Life &amp; Term Insurance</div>
+      <div class="hbc"><a href="index.html">Home</a> › Life Insurance</div>
+      <div class="hkick">🛡 Life &amp; Term Insurance</div>
       <h1 class="htit">Your family's security<br/>starts with <em>one decision.</em></h1>
       <div class="hsubtit" id="hsubtit">Who will take care of them if you're not here?</div>
       <p class="hdesc">If something happens to you tomorrow — can your family pay the EMIs, fund the children's education, and continue living with dignity? We make sure they can. Always.</p>
       <div class="hbtns">
-        <a href="book.html?dept=life" class="bg">Get Free Plan Comparison &#8594;</a>
-        <a href="tel:+917842854466" class="bgh">&#128222; +91 78428 54466</a>
+        <a href="book.html?dept=life" class="bg">Get Free Plan Comparison →</a>
+        <a href="tel:+917842854466" class="bgh">📞 +91 78428 54466</a>
       </div>
       <div class="hstats">
-        <div class="hsc"><div class="hsc-n">&#8377;1Cr</div><div class="hsc-l">Cover from &#8377;490/mo</div></div>
+        <div class="hsc"><div class="hsc-n">₹1Cr</div><div class="hsc-l">Cover from ₹490/mo</div></div>
         <div class="hsc"><div class="hsc-n">15+</div><div class="hsc-l">Insurers compared</div></div>
         <div class="hsc"><div class="hsc-n">500+</div><div class="hsc-l">Families in AP &amp; TG</div></div>
         <div class="hsc"><div class="hsc-n">98%</div><div class="hsc-l">Claim settlement</div></div>
       </div>
     </div>
-
-    <!-- RIGHT: Foreground photo strip (3 stacked images, always visible) -->
     <div class="hstrip">
-
-      <!-- Strip image 1: Indian father with child -->
       <div class="hstrip-img">
         <img src="https://images.unsplash.com/photo-1504439268584-b72c5019471e?q=80&w=600&auto=format&fit=crop" alt="Indian father with child"/>
         <div class="hstrip-label">Who depends on you?</div>
       </div>
-
-      <!-- Strip image 2: Indian couple reviewing documents -->
       <div class="hstrip-img">
         <img src="https://images.unsplash.com/photo-1763729805496-b5dbf7f00c79?q=80&w=600&auto=format&fit=crop" alt="Couple reviewing insurance documents"/>
         <div class="hstrip-label">One plan. Full protection.</div>
       </div>
-
-      <!-- Strip image 3: Indian mother with children -->
       <div class="hstrip-img">
         <img src="https://images.unsplash.com/photo-1533777419517-3e4017e2e15a?q=80&w=600&auto=format&fit=crop" alt="Indian mother with children"/>
         <div class="hstrip-label">Their future. Secured.</div>
       </div>
-
-      <!-- Floating badge 1: Cover amount — top right -->
       <div class="hfbadge hfb1">
-        <div class="hfb-ic">&#128176;</div>
-        <div class="hfb-v">&#8377;1 Crore</div>
-        <div class="hfb-l">From &#8377;490/month</div>
+        <div class="hfb-ic">💰</div>
+        <div class="hfb-v">₹1 Crore</div>
+        <div class="hfb-l">From ₹490/month</div>
       </div>
-
-      <!-- Floating badge 2: Claim payout — left middle -->
       <div class="hfbadge hfb2">
         <div class="hfb-pulse">
           <div class="hfb-dot"></div>
@@ -673,18 +590,13 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
           </div>
         </div>
       </div>
-
-      <!-- Floating badge 3: Same day policy — bottom right -->
       <div class="hfbadge hfb3">
-        <div class="hfb-ic">&#9889;</div>
+        <div class="hfb-ic">⚡</div>
         <div class="hfb-v" style="font-size:.88rem;">Same Day</div>
         <div class="hfb-l">Policy issued</div>
       </div>
-
     </div>
   </div>
-
-  <!-- Slide dot indicators -->
   <div class="hdots">
     <button class="hdot on" data-s="0"></button>
     <button class="hdot" data-s="1"></button>
@@ -692,12 +604,10 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
     <button class="hdot" data-s="3"></button>
     <button class="hdot" data-s="4"></button>
   </div>
-
   <div class="sh"><div class="sh-m"><div class="sh-d"></div></div><div class="sh-t">Scroll</div></div>
 </section>
 
 <!-- ══ PHOTO ROW ══ -->
-
 <div class="photo-row" style="padding-top:3.5rem;">
   <div class="photo-row-inner">
     <div class="photo-card rv d1">
@@ -757,12 +667,12 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
         <div class="ibadge">❌ Without Life Insurance</div>
         <h2 class="ititl">Your family faces this alone — overnight.</h2>
         <ul class="ilist">
-          <li><span class="iic">&#128184;</span>EMIs keep coming — but income stops. Loan defaults begin within 3 months.</li>
-          <li><span class="iic">&#127968;</span>Home loan? The bank does not care. Property can be seized.</li>
-          <li><span class="iic">&#128103;</span>Children's education is disrupted or stopped mid-way.</li>
-          <li><span class="iic">&#128542;</span>Spouse forced to work immediately, children left without care.</li>
-          <li><span class="iic">&#128116;</span>Elderly parents lose their only support — no income, no care.</li>
-          <li><span class="iic">&#128200;</span>20 years of savings wiped out in 2 to 3 years just to survive.</li>
+          <li><span class="iic">💸</span>EMIs keep coming — but income stops. Loan defaults begin within 3 months.</li>
+          <li><span class="iic">🏠</span>Home loan? The bank does not care. Property can be seized.</li>
+          <li><span class="iic">👨‍👩‍👧</span>Children's education is disrupted or stopped mid-way.</li>
+          <li><span class="iic">😢</span>Spouse forced to work immediately, children left without care.</li>
+          <li><span class="iic">🧾</span>Elderly parents lose their only support — no income, no care.</li>
+          <li><span class="iic">📉</span>20 years of savings wiped out in 2 to 3 years just to survive.</li>
         </ul>
       </div>
     </div>
@@ -791,21 +701,21 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
         <circle cx="124" cy="210" r="13" fill="#d4956a"/>
         <path d="M116 218 Q124 226 132 218" stroke="#333" stroke-width="2.5" fill="none"/>
         <rect x="114" y="223" width="20" height="22" rx="4" fill="#f59e0b"/>
-        <text x="50" y="80" font-size="16" fill="#ffd166" opacity="0.8"><animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite"/>&#10026;</text>
-        <text x="195" y="75" font-size="14" fill="#ffd166" opacity="0.6"><animate attributeName="opacity" values="0.6;1;0.6" dur="1.8s" repeatCount="indefinite"/>&#10027;</text>
-        <text x="130" y="55" font-size="12" fill="#ffd166" opacity="0.7"><animate attributeName="opacity" values="0.7;0.1;0.7" dur="1.5s" repeatCount="indefinite"/>&#9733;</text>
+        <text x="50" y="80" font-size="16" fill="#ffd166" opacity="0.8"><animate attributeName="opacity" values="0.8;0.2;0.8" dur="2s" repeatCount="indefinite"/>✦</text>
+        <text x="195" y="75" font-size="14" fill="#ffd166" opacity="0.6"><animate attributeName="opacity" values="0.6;1;0.6" dur="1.8s" repeatCount="indefinite"/>✧</text>
+        <text x="130" y="55" font-size="12" fill="#ffd166" opacity="0.7"><animate attributeName="opacity" values="0.7;0.1;0.7" dur="1.5s" repeatCount="indefinite"/>★</text>
         <rect x="50" y="268" width="180" height="6" rx="3" fill="#0a2d1a" opacity="0.4"/>
       </svg>
       <div class="ii">
         <div class="ibadge">✅ With Life Insurance from Cover Credit</div>
         <h2 class="ititl">Your family is completely protected — financially secure.</h2>
         <ul class="ilist">
-          <li><span class="iic">&#9989;</span>₹1 Crore+ paid directly to nominee — tax-free — within 30 days.</li>
-          <li><span class="iic">&#127968;</span>Home loan rider clears the entire outstanding balance automatically.</li>
-          <li><span class="iic">&#127891;</span>Children's education funded for 15 to 20 years from the settlement.</li>
-          <li><span class="iic">&#128188;</span>Spouse has the time and financial security to rebuild life on their terms.</li>
-          <li><span class="iic">&#128116;</span>Monthly income plan options ensure parents receive regular support.</li>
-          <li><span class="iic">&#128176;</span>From just ₹490 per month — less than a daily cup of chai for complete protection.</li>
+          <li><span class="iic">✅</span>₹1 Crore+ paid directly to nominee — tax-free — within 30 days.</li>
+          <li><span class="iic">🏠</span>Home loan rider clears the entire outstanding balance automatically.</li>
+          <li><span class="iic">🎓</span>Children's education funded for 15 to 20 years from the settlement.</li>
+          <li><span class="iic">💼</span>Spouse has the time and financial security to rebuild life on their terms.</li>
+          <li><span class="iic">🧾</span>Monthly income plan options ensure parents receive regular support.</li>
+          <li><span class="iic">💰</span>From just ₹490 per month — less than a daily cup of chai for complete protection.</li>
         </ul>
         <div class="icta"><a href="book.html?dept=life" class="bg">Protect my family now →</a></div>
       </div>
@@ -848,7 +758,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
       <h2 class="tit" style="text-align:center;">Simple truths, <em>visually told</em></h2>
     </div>
     <div class="cstrip-grid rv d1">
-        <div class="ccard">
+      <div class="ccard">
         <div class="ccard-art" style="background:#0d2137;">
           <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=400&auto=format&fit=crop" alt="Indian advisor with family" style="width:100%;height:100%;object-fit:cover;object-position:center top;opacity:.88;"/>
         </div>
@@ -918,10 +828,10 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 <!-- ══ STATS BAR ══ -->
 <div class="stbar">
   <div class="strow">
-    <div class="rv"><div class="sti">&#127942;</div><div class="stn" id="c1">&#8377;1Cr</div><div class="stl">Starting cover (Term Plan)</div></div>
-    <div class="rv d1"><div class="sti">&#128202;</div><div class="stn" id="c2">97%</div><div class="stl">Avg claim settlement ratio</div></div>
-    <div class="rv d2"><div class="sti">&#128176;</div><div class="stn" id="c3">&#8377;490</div><div class="stl">Monthly premium for &#8377;1Cr cover</div></div>
-    <div class="rv d3"><div class="sti">&#128274;</div><div class="stn" id="c4">100%</div><div class="stl">Premium tax benefit u/s 80C</div></div>
+    <div class="rv"><div class="sti">🏆</div><div class="stn">₹1Cr</div><div class="stl">Starting cover (Term Plan)</div></div>
+    <div class="rv d1"><div class="sti">📊</div><div class="stn">97%</div><div class="stl">Avg claim settlement ratio</div></div>
+    <div class="rv d2"><div class="sti">💰</div><div class="stn">₹490</div><div class="stl">Monthly premium for ₹1Cr cover</div></div>
+    <div class="rv d3"><div class="sti">🔒</div><div class="stn">100%</div><div class="stl">Premium tax benefit u/s 80C</div></div>
   </div>
 </div>
 
@@ -943,13 +853,13 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
     <div class="rv d2">
       <div class="phone-mock">
         <div class="wa-head">
-          <div class="wa-back">&#8592;</div>
-          <div class="wa-avt">&#128104;&#8205;&#128188;</div>
-          <div><div class="wa-nm">Sunil — Cover Credit</div><div class="wa-st">&#9679; Online</div></div>
-          <div class="wa-ic"><span>&#128222;</span><span>&#8942;</span></div>
+          <div class="wa-back">←</div>
+          <div class="wa-avt">👨‍💼</div>
+          <div><div class="wa-nm">Sunil — Cover Credit</div><div class="wa-st">● Online</div></div>
+          <div class="wa-ic"><span>📞</span><span>⋮</span></div>
         </div>
         <div class="wa-bg" id="waChat"><div class="wa-date">Today</div></div>
-        <div class="wa-inp"><div class="wa-inp-box">Type a message…</div><div class="wa-send">&#10148;</div></div>
+        <div class="wa-inp"><div class="wa-inp-box">Type a message…</div><div class="wa-send">➤</div></div>
       </div>
     </div>
   </div>
@@ -967,9 +877,9 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
           <div class="pc-badge">Best Value</div>
           <svg width="200" height="170" viewBox="0 0 200 170" fill="none">
             <path d="M100 15 L155 38 L155 95 Q155 140 100 160 Q45 140 45 95 L45 38 Z" fill="rgba(21,101,192,0.2)" stroke="#3b82f6" stroke-width="2"/>
-            <text x="62" y="72" font-size="11" fill="rgba(255,255,255,0.6)" font-family="serif">&#8377;1 CRORE</text>
+            <text x="62" y="72" font-size="11" fill="rgba(255,255,255,0.6)" font-family="serif">₹1 CRORE</text>
             <circle cx="100" cy="95" r="28" fill="#1565c0" stroke="#3b82f6" stroke-width="2"><animate attributeName="r" values="28;31;28" dur="2.5s" repeatCount="indefinite"/></circle>
-            <text x="88" y="104" font-size="24" fill="#ffd166" font-weight="bold">&#8377;</text>
+            <text x="88" y="104" font-size="24" fill="#ffd166" font-weight="bold">₹</text>
             <circle cx="78" cy="135" r="8" fill="#93c5fd"/>
             <rect x="72" y="143" width="12" height="16" rx="3" fill="#1d4ed8"/>
             <circle cx="122" cy="135" r="8" fill="#fca5a5"/>
@@ -982,15 +892,15 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
           </svg>
         </div>
         <div class="pc-body">
-          <div class="pc-tt">&#128737; Pure Term Insurance</div>
+          <div class="pc-tt">🛡️ Pure Term Insurance</div>
           <div class="pc-ds">Maximum cover at minimum cost. Family ko full amount milta hai if you pass away during the policy term. The most honest form of life protection.</div>
-          <div class="pc-from">From <strong>&#8377;490/mo</strong> for &#8377;1 Crore cover</div>
+          <div class="pc-from">From <strong>₹490/mo</strong> for ₹1 Crore cover</div>
           <div class="pc-rows">
-            <div class="pc-row"><span>&#10003;</span>Highest cover, lowest premium</div>
-            <div class="pc-row"><span>&#10003;</span>Riders: accident, critical illness</div>
-            <div class="pc-row"><span>&#10003;</span>10 to 40 year term options</div>
+            <div class="pc-row"><span>✓</span>Highest cover, lowest premium</div>
+            <div class="pc-row"><span>✓</span>Riders: accident, critical illness</div>
+            <div class="pc-row"><span>✓</span>10 to 40 year term options</div>
           </div>
-          <a href="book.html?dept=life" class="bq">Get Quote for Term Plan &#8594;</a>
+          <a href="book.html?dept=life" class="bq">Get Quote for Term Plan →</a>
         </div>
       </div>
       <div class="pc rv d2">
@@ -1003,24 +913,20 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
             <polyline points="41,120 73,100 105,75 137,50" stroke="#ffd166" stroke-width="2.5" stroke-linecap="round" fill="none"/>
             <polygon points="137,38 130,55 144,55" fill="#ffd166"/>
             <line x1="20" y1="155" x2="180" y2="155" stroke="rgba(255,255,255,0.2)" stroke-width="1.5"/>
-            <text x="23" y="168" font-size="9" fill="rgba(255,255,255,0.4)">Yr 1</text>
-            <text x="55" y="168" font-size="9" fill="rgba(255,255,255,0.4)">Yr 5</text>
-            <text x="87" y="168" font-size="9" fill="rgba(255,255,255,0.4)">Yr 10</text>
-            <text x="119" y="168" font-size="9" fill="rgba(255,255,255,0.4)">Yr 20</text>
             <path d="M158 25 L175 32 L175 58 Q175 72 158 78 Q141 72 141 58 L141 32 Z" fill="rgba(21,101,192,0.3)" stroke="#3b82f6" stroke-width="1.5"/>
-            <text x="150" y="52" font-size="14" fill="#93c5fd">&#128737;</text>
+            <text x="150" y="52" font-size="14" fill="#93c5fd">🛡</text>
           </svg>
         </div>
         <div class="pc-body">
-          <div class="pc-tt">&#128200; ULIP — Insurance + Investment</div>
+          <div class="pc-tt">📈 ULIP — Insurance + Investment</div>
           <div class="pc-ds">Premium is invested in equity or debt funds. Life cover + potential market-linked returns. 5-year lock-in.</div>
-          <div class="pc-from">From <strong>&#8377;2,500/mo</strong> for &#8377;25L cover</div>
+          <div class="pc-from">From <strong>₹2,500/mo</strong> for ₹25L cover</div>
           <div class="pc-rows">
-            <div class="pc-row"><span>&#10003;</span>Dual benefit: cover + investment</div>
-            <div class="pc-row"><span>&#10003;</span>Switch fund types anytime</div>
-            <div class="pc-row"><span>&#10003;</span>Tax-free maturity under 10(10D)</div>
+            <div class="pc-row"><span>✓</span>Dual benefit: cover + investment</div>
+            <div class="pc-row"><span>✓</span>Switch fund types anytime</div>
+            <div class="pc-row"><span>✓</span>Tax-free maturity under 10(10D)</div>
           </div>
-          <a href="book.html?dept=life" class="bq">Get Quote for ULIP &#8594;</a>
+          <a href="book.html?dept=life" class="bq">Get Quote for ULIP →</a>
         </div>
       </div>
       <div class="pc rv d3">
@@ -1031,24 +937,23 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
             <rect x="82" y="62" width="36" height="18" rx="5" fill="#b45309" stroke="#92400e" stroke-width="1.5"/>
             <ellipse cx="100" cy="62" rx="22" ry="7" fill="#d97706" stroke="#92400e" stroke-width="1.5"/>
             <rect x="94" y="56" width="12" height="5" rx="2" fill="#7c2d12"/>
-            <text x="86" y="116" font-size="22" fill="#ffd166" font-weight="bold" opacity="0.7">&#8377;</text>
+            <text x="86" y="116" font-size="22" fill="#ffd166" font-weight="bold" opacity="0.7">₹</text>
             <circle cx="90" cy="45" r="9" fill="#f5a623" stroke="#d97706" stroke-width="1.5"><animate attributeName="cy" values="45;25;45" dur="1.8s" repeatCount="indefinite" begin="0s"/><animate attributeName="opacity" values="1;0;1" dur="1.8s" repeatCount="indefinite" begin="0s"/></circle>
             <circle cx="110" cy="40" r="8" fill="#f5a623" stroke="#d97706" stroke-width="1.5"><animate attributeName="cy" values="40;18;40" dur="2.2s" repeatCount="indefinite" begin="0.4s"/><animate attributeName="opacity" values="1;0;1" dur="2.2s" repeatCount="indefinite" begin="0.4s"/></circle>
             <circle cx="148" cy="80" r="16" fill="#15803d" stroke="#22c55e" stroke-width="2"/>
             <path d="M141 80 L146 86 L156 73" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-            <text x="134" y="105" font-size="8" fill="#4ade80" font-weight="bold">Guaranteed</text>
           </svg>
         </div>
         <div class="pc-body">
-          <div class="pc-tt">&#128188; Endowment / Money Back</div>
+          <div class="pc-tt">💼 Endowment / Money Back</div>
           <div class="pc-ds">Guaranteed returns whether you survive or not. Lower cover but assured payout. Best for risk-averse families who want guaranteed savings.</div>
-          <div class="pc-from">From <strong>&#8377;3,000/mo</strong> for &#8377;10L cover</div>
+          <div class="pc-from">From <strong>₹3,000/mo</strong> for ₹10L cover</div>
           <div class="pc-rows">
-            <div class="pc-row"><span>&#10003;</span>Guaranteed maturity amount</div>
-            <div class="pc-row"><span>&#10003;</span>Periodic payouts (money back)</div>
-            <div class="pc-row"><span>&#10003;</span>Loan facility against policy</div>
+            <div class="pc-row"><span>✓</span>Guaranteed maturity amount</div>
+            <div class="pc-row"><span>✓</span>Periodic payouts (money back)</div>
+            <div class="pc-row"><span>✓</span>Loan facility against policy</div>
           </div>
-          <a href="book.html?dept=life" class="bq">Get Quote for Endowment &#8594;</a>
+          <a href="book.html?dept=life" class="bq">Get Quote for Endowment →</a>
         </div>
       </div>
     </div>
@@ -1067,9 +972,9 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
           <svg width="300" height="190" viewBox="0 0 300 190" fill="none">
             <path d="M150 20 L220 48 L220 110 Q220 160 150 180 Q80 160 80 110 L80 48 Z" fill="rgba(29,78,216,0.2)" stroke="#3b82f6" stroke-width="2.5"/>
             <rect x="105" y="52" width="90" height="28" rx="8" fill="rgba(29,78,216,0.4)" stroke="#3b82f6" stroke-width="1"/>
-            <text x="115" y="71" font-size="14" fill="#93c5fd" font-weight="bold">&#8377;1,00,00,000</text>
+            <text x="115" y="71" font-size="14" fill="#93c5fd" font-weight="bold">₹1,00,00,000</text>
             <rect x="110" y="88" width="80" height="24" rx="6" fill="rgba(245,166,35,0.15)" stroke="#f5a623" stroke-width="1"/>
-            <text x="118" y="104" font-size="12" fill="#ffd166" font-weight="bold">&#8377;720 / month</text>
+            <text x="118" y="104" font-size="12" fill="#ffd166" font-weight="bold">₹720 / month</text>
             <circle cx="130" cy="148" r="10" fill="#93c5fd"/>
             <rect x="122" y="158" width="16" height="20" rx="3" fill="#1d4ed8"/>
             <circle cx="170" cy="148" r="10" fill="#fca5a5"/>
@@ -1077,20 +982,18 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
             <rect x="162" y="158" width="16" height="20" rx="3" fill="#dc2626"/>
             <circle cx="150" cy="151" r="8" fill="#fbbf24"/>
             <rect x="143" y="159" width="14" height="18" rx="3" fill="#a78bfa"/>
-            <circle cx="90" cy="60" r="3" fill="#ffd166"><animate attributeName="opacity" values="1;0;1" dur="1.3s" repeatCount="indefinite"/></circle>
-            <circle cx="210" cy="55" r="2.5" fill="#ffd166"><animate attributeName="opacity" values="0;1;0" dur="1.7s" repeatCount="indefinite"/></circle>
           </svg>
         </div>
         <div class="cpc-body">
-          <div class="cpc-tag">&#128153; Pure Term Plan</div>
-          <div class="cpc-tt">&#8377;1 Crore Term · Age 30, 30 saal</div>
+          <div class="cpc-tag">💙 Pure Term Plan</div>
+          <div class="cpc-tt">₹1 Crore Term · Age 30, 30 saal</div>
           <div class="cpc-ds">Simple. Honest. Maximum protection at minimum cost.</div>
           <div class="cpc-rows">
-            <div class="cpc-row"><span class="k">Monthly premium</span><span class="v">&#8377;720</span></div>
-            <div class="cpc-row"><span class="k">Cover amount</span><span class="v">&#8377;1,00,00,000</span></div>
-            <div class="cpc-row"><span class="k">30-year total paid</span><span class="v">&#8377;2,59,200</span></div>
+            <div class="cpc-row"><span class="k">Monthly premium</span><span class="v">₹720</span></div>
+            <div class="cpc-row"><span class="k">Cover amount</span><span class="v">₹1,00,00,000</span></div>
+            <div class="cpc-row"><span class="k">30-year total paid</span><span class="v">₹2,59,200</span></div>
             <div class="cpc-row"><span class="k">Cover : Premium ratio</span><span class="v">385x</span></div>
-            <div class="cpc-row"><span class="k">If you survive</span><span class="v">&#8377;0 (pure protection)</span></div>
+            <div class="cpc-row"><span class="k">If you survive</span><span class="v">₹0 (pure protection)</span></div>
           </div>
         </div>
       </div>
@@ -1102,29 +1005,29 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
             <ellipse cx="150" cy="125" rx="50" ry="15" fill="#d97706"/>
             <ellipse cx="150" cy="110" rx="50" ry="15" fill="#f59e0b"/>
             <ellipse cx="150" cy="95" rx="50" ry="15" fill="#fbbf24"/>
-            <text x="136" y="100" font-size="18" fill="#78350f" font-weight="bold">&#8377;</text>
+            <text x="136" y="100" font-size="18" fill="#78350f" font-weight="bold">₹</text>
             <path d="M150 20 L185 34 L185 65 Q185 88 150 98 Q115 88 115 65 L115 34 Z" fill="rgba(234,88,12,0.2)" stroke="#f97316" stroke-width="2"/>
-            <text x="128" y="56" font-size="11" fill="#fdba74" font-weight="bold">&#8377;10L only</text>
+            <text x="128" y="56" font-size="11" fill="#fdba74" font-weight="bold">₹10L only</text>
             <rect x="88" y="68" width="125" height="22" rx="6" fill="rgba(234,88,12,0.15)" stroke="#f97316" stroke-width="1"/>
-            <text x="96" y="83" font-size="11" fill="#fdba74" font-weight="bold">&#8377;3,200 / month</text>
+            <text x="96" y="83" font-size="11" fill="#fdba74" font-weight="bold">₹3,200 / month</text>
           </svg>
         </div>
         <div class="cpc-body">
-          <div class="cpc-tag">&#128992; Endowment Plan</div>
-          <div class="cpc-tt">&#8377;10L Endowment · Age 30, 30 saal</div>
+          <div class="cpc-tag">🟠 Endowment Plan</div>
+          <div class="cpc-tt">₹10L Endowment · Age 30, 30 saal</div>
           <div class="cpc-ds">Lower cover. Higher premium. Guaranteed return — but is it truly a good deal?</div>
           <div class="cpc-rows">
-            <div class="cpc-row"><span class="k">Monthly premium</span><span class="v">&#8377;3,200</span></div>
-            <div class="cpc-row"><span class="k">Cover amount</span><span class="v">&#8377;10,00,000</span></div>
-            <div class="cpc-row"><span class="k">30-year total paid</span><span class="v">&#8377;11,52,000</span></div>
+            <div class="cpc-row"><span class="k">Monthly premium</span><span class="v">₹3,200</span></div>
+            <div class="cpc-row"><span class="k">Cover amount</span><span class="v">₹10,00,000</span></div>
+            <div class="cpc-row"><span class="k">30-year total paid</span><span class="v">₹11,52,000</span></div>
             <div class="cpc-row"><span class="k">Cover : Premium ratio</span><span class="v">sirf 3x</span></div>
-            <div class="cpc-row"><span class="k">If you survive</span><span class="v">~&#8377;14–16L (4–5% CAGR)</span></div>
+            <div class="cpc-row"><span class="k">If you survive</span><span class="v">~₹14–16L (4–5% CAGR)</span></div>
           </div>
         </div>
       </div>
     </div>
     <div class="cverd rv d2">
-      <div class="cvic">&#128161;</div>
+      <div class="cvic">💡</div>
       <div>
         <div class="cvtt">Humara honest verdict: Term insurance is almost always better for protection</div>
         <div class="cvds">For the same ₹3,200/month for endowment — use it to get ₹1 Crore term cover AND ₹2,480 in a mutual fund SIP. Result: Maximum life cover + 4–6x more wealth at maturity. We show you this comparison before you decide.</div>
@@ -1141,12 +1044,12 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
         <img src="https://images.unsplash.com/photo-1559526324-593bc073d938?q=80&w=700&auto=format&fit=crop" alt="Indian financial advisor"/>
         <div class="calc-ov">
           <div class="cc">
-            <div class="cct">&#128203; Sample Plan — Age 30</div>
+            <div class="cct">📋 Sample Plan — Age 30</div>
             <div class="ccr"><span class="ccl">Plan</span><span class="ccv">HDFC Click2Protect</span></div>
-            <div class="ccr"><span class="ccl">Cover</span><span class="ccv">&#8377;1 Crore</span></div>
+            <div class="ccr"><span class="ccl">Cover</span><span class="ccv">₹1 Crore</span></div>
             <div class="ccr"><span class="ccl">Term</span><span class="ccv">30 years</span></div>
             <div class="ccr"><span class="ccl">Claim ratio</span><span class="ccv">98.6%</span></div>
-            <div class="ccbig" id="calcd">&#8377;720/mo</div>
+            <div class="ccbig" id="calcd">₹720/mo</div>
           </div>
         </div>
       </div>
@@ -1160,10 +1063,10 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
         <div class="cf-row">
           <div class="cf-lbl">Cover Amount</div>
           <div class="cf-pills">
-            <div class="cf-pill on" data-cover="50">&#8377;50L</div>
-            <div class="cf-pill" data-cover="100">&#8377;1 Cr</div>
-            <div class="cf-pill" data-cover="200">&#8377;2 Cr</div>
-            <div class="cf-pill" data-cover="500">&#8377;5 Cr</div>
+            <div class="cf-pill on" data-cover="50">₹50L</div>
+            <div class="cf-pill" data-cover="100">₹1 Cr</div>
+            <div class="cf-pill" data-cover="200">₹2 Cr</div>
+            <div class="cf-pill" data-cover="500">₹5 Cr</div>
           </div>
         </div>
         <div class="cf-row">
@@ -1184,10 +1087,10 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
         </div>
         <div class="cf-res">
           <div class="cfrl">Estimated Monthly Premium</div>
-          <div class="cfrp" id="cfResult">&#8377;720</div>
+          <div class="cfrp" id="cfResult">₹720</div>
           <div class="cfrn">Indicative only. Exact premium depends on health history. Book a session for accurate comparison.</div>
         </div>
-        <a href="book.html?dept=life" class="bg" style="width:100%;justify-content:center;margin-top:1rem;">Get Exact Quotes from 15+ Insurers &#8594;</a>
+        <a href="book.html?dept=life" class="bg" style="width:100%;justify-content:center;margin-top:1rem;">Get Exact Quotes from 15+ Insurers →</a>
       </div>
     </div>
   </div>
@@ -1211,19 +1114,19 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
     <p class="sub rv d2" style="margin-bottom:1.8rem;">The real test of insurance is at the time of the claim. We sell policies we are confident will pay — and these families are proof.</p>
     <div class="st-g">
       <div class="stc rv d1">
-        <div class="stc-top"><div><div class="stc-amt">&#8377;1 Crore</div><div class="stc-type">Term Insurance · Claim settled in 18 days</div></div><div class="stc-sr">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+        <div class="stc-top"><div><div class="stc-amt">₹1 Crore</div><div class="stc-type">Term Insurance · Claim settled in 18 days</div></div><div class="stc-sr">★★★★★</div></div>
         <p class="stc-tx">Rajesh Varma, 38, passed away in a road accident. His family received ₹1 Crore — tax-free — within 18 days of filing the claim. His wife used it to fully clear the home loan and fund both children's education.</p>
         <div class="stc-q">"Cover Credit ne claim itna simple bana diya. Documents received on time and life could move forward."</div>
         <div><div class="stc-nm">Priya Varma</div><div class="stc-rl">Hyderabad, Telangana</div></div>
       </div>
       <div class="stc rv d2">
-        <div class="stc-top"><div><div class="stc-amt">&#8377;15 Lakhs</div><div class="stc-type">Critical Illness Rider · Heart attack, 44 saal</div></div><div class="stc-sr">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+        <div class="stc-top"><div><div class="stc-amt">₹15 Lakhs</div><div class="stc-type">Critical Illness Rider · Heart attack, 44 saal</div></div><div class="stc-sr">★★★★★</div></div>
         <p class="stc-tx">Suresh Naidu had a CI rider on his term plan. After his heart attack, ₹15L was paid immediately — covering 100% of his treatment costs without touching a single rupee of savings.</p>
         <div class="stc-q">"Cover Credit ke advisor specifically recommended the CI rider. Without it I would have been financially devastated."</div>
         <div><div class="stc-nm">Suresh Naidu</div><div class="stc-rl">Vijayawada, AP</div></div>
       </div>
       <div class="stc rv d3">
-        <div class="stc-top"><div><div class="stc-amt">&#8377;75 Lakhs</div><div class="stc-type">Term Plan · Claim settled in 22 days</div></div><div class="stc-sr">&#9733;&#9733;&#9733;&#9733;&#9733;</div></div>
+        <div class="stc-top"><div><div class="stc-amt">₹75 Lakhs</div><div class="stc-type">Term Plan · Claim settled in 22 days</div></div><div class="stc-sr">★★★★★</div></div>
         <p class="stc-tx">Kavitha's husband purchased a ₹75L plan through Cover Credit — just 8 months before his sudden passing. Claim processed in 22 days. All three children's education is now fully funded until graduation.</p>
         <div class="stc-q">"Mere husband said — Cover Credit explained it better than anyone else. He bought the policy the very same day. That one decision changed everything."</div>
         <div><div class="stc-nm">Kavitha Reddy</div><div class="stc-rl">Visakhapatnam, AP</div></div>
@@ -1238,10 +1141,10 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
     <div class="tag rv">Humara Process</div>
     <h2 class="tit rv d1">Pehli call se<br/><em>policy haath mein</em></h2>
     <div class="pg-g">
-      <div class="pg rv d1"><div class="pg-num">01</div><div class="pg-ic">&#128222;</div><div class="pg-tt">Free Session Book Karo</div><div class="pg-ds">Call, WhatsApp, or book online. Free, zero obligation, 30 minutes.</div></div>
-      <div class="pg rv d2"><div class="pg-num">02</div><div class="pg-ic">&#128269;</div><div class="pg-tt">Hum 15+ Plans Compare Karte Hain</div><div class="pg-ds">Income, loans, and family — then compare 15+ plans live in front of you.</div></div>
-      <div class="pg rv d3"><div class="pg-num">03</div><div class="pg-ic">&#128172;</div><div class="pg-tt">Poori Explanation</div><div class="pg-ds">Har exclusion, har clause — clearly explained in Telugu ya English.</div></div>
-      <div class="pg rv d4"><div class="pg-num">04</div><div class="pg-ic">&#128196;</div><div class="pg-tt">Aaj Hi Policy</div><div class="pg-ds">You choose, we fill the form — policy documents on WhatsApp within hours.</div></div>
+      <div class="pg rv d1"><div class="pg-num">01</div><div class="pg-ic">📞</div><div class="pg-tt">Free Session Book Karo</div><div class="pg-ds">Call, WhatsApp, or book online. Free, zero obligation, 30 minutes.</div></div>
+      <div class="pg rv d2"><div class="pg-num">02</div><div class="pg-ic">🔍</div><div class="pg-tt">Hum 15+ Plans Compare Karte Hain</div><div class="pg-ds">Income, loans, and family — then compare 15+ plans live in front of you.</div></div>
+      <div class="pg rv d3"><div class="pg-num">03</div><div class="pg-ic">💬</div><div class="pg-tt">Poori Explanation</div><div class="pg-ds">Har exclusion, har clause — clearly explained in Telugu ya English.</div></div>
+      <div class="pg rv d4"><div class="pg-num">04</div><div class="pg-ic">📄</div><div class="pg-tt">Aaj Hi Policy</div><div class="pg-ds">You choose, we fill the form — policy documents on WhatsApp within hours.</div></div>
     </div>
   </div>
 </section>
@@ -1289,16 +1192,16 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
         </div>
         <div class="sb2-tt">Talk to an advisor today</div>
         <div class="sb2-ds">Free 30-minute session. Telugu ya English. Hum 15+ plans compare karke find your perfect fit.</div>
-        <a href="book.html?dept=life" class="sb2-btn">&#128197; Book Free Session</a>
+        <a href="book.html?dept=life" class="sb2-btn">📅 Book Free Session</a>
         <div class="sb2-div">or call directly</div>
-        <a href="tel:+917842854466" class="sb2-ph">&#128222; +91 78428 54466</a>
+        <a href="tel:+917842854466" class="sb2-ph">📞 +91 78428 54466</a>
       </div>
       <div class="sb2-plans rv d1">
         <div class="lbl">Top Plans We Recommend</div>
-        <div class="sp"><span class="sp-star">&#9733;</span><span class="sp-nm">HDFC Life Click2Protect</span></div>
-        <div class="sp"><span class="sp-star">&#9733;</span><span class="sp-nm">Max Life Smart Secure+</span></div>
-        <div class="sp"><span class="sp-star">&#9733;</span><span class="sp-nm">ICICI Pru iProtect Smart</span></div>
-        <div class="sp"><span class="sp-star">&#9733;</span><span class="sp-nm">Tata AIA SRS Vitality</span></div>
+        <div class="sp"><span class="sp-star">★</span><span class="sp-nm">HDFC Life Click2Protect</span></div>
+        <div class="sp"><span class="sp-star">★</span><span class="sp-nm">Max Life Smart Secure+</span></div>
+        <div class="sp"><span class="sp-star">★</span><span class="sp-nm">ICICI Pru iProtect Smart</span></div>
+        <div class="sp"><span class="sp-star">★</span><span class="sp-nm">Tata AIA SRS Vitality</span></div>
       </div>
     </aside>
   </div>
@@ -1313,10 +1216,10 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
     <div>
       <h2 class="cta-tt rv">Your family's security costs<br/>less than you think.</h2>
       <p class="cta-ds rv d1">₹720 per month. Less than a single restaurant dinner. Gives your family ₹1 Crore of protection for 30 years. Book free — we compare 15+ plans and issue your policy same day.</p>
-      <div class="cta-pills rv d2"><span class="cpill">&#10003; Free comparison</span><span class="cpill">&#10003; Telugu &amp; English</span><span class="cpill">&#10003; Same-day policy</span><span class="cpill">&#10003; No pressure</span></div>
+      <div class="cta-pills rv d2"><span class="cpill">✓ Free comparison</span><span class="cpill">✓ Telugu &amp; English</span><span class="cpill">✓ Same-day policy</span><span class="cpill">✓ No pressure</span></div>
     </div>
     <div class="cta-btns rv d2">
-      <a href="book.html?dept=life" class="bg" style="white-space:nowrap;font-size:.95rem;padding:1rem 2rem;">Book Free Consultation &#8594;</a>
+      <a href="book.html?dept=life" class="bg" style="white-space:nowrap;font-size:.95rem;padding:1rem 2rem;">Book Free Consultation →</a>
       <div class="cta-ph">ya call karein: <a href="tel:+917842854466">+91 78428 54466</a></div>
     </div>
   </div>
@@ -1329,22 +1232,40 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
       <div>
         <a href="index.html" class="ft-logo">Cover<em>Credit</em></a>
         <p class="ft-ds">Honest insurance and financial advice for families across AP and Telangana. We sell the right policy — no pressure, no jargon.</p>
-        <div class="ft-con">&#128222; <a href="tel:+917842854466">+91 78428 54466</a></div>
-        <div class="ft-con">&#9993; <a href="/cdn-cgi/l/email-protection#8ccfe3fae9feeffee9e8e5f8a2e3eaeae5efe5ede0ccebe1ede5e0a2efe3e1"><span class="__cf_email__" data-cfemail="93d0fce5f6e1f0e1f6f7fae7bdfcf5f5faf0faf2ffd3f4fef2faffbdf0fcfe">[email&#160;protected]</span></a></div>
-        <div class="ft-con">&#128336; Mon–Sat: 9 AM – 7 PM</div>
+        <div class="ft-con">📞 <a href="tel:+917842854466">+91 78428 54466</a></div>
+        <div class="ft-con">✉️ <a href="mailto:Covercredit.official@gmail.com">Covercredit.official@gmail.com</a></div>
+        <div class="ft-con">🕐 Mon–Sat: 9 AM – 7 PM</div>
       </div>
-      <div class="ft-col"><div class="ft-clbl">Insurance</div><ul><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life &amp; Term Insurance</a></li><li><a href="bike-insurance.html">Bike Insurance</a></li><li><a href="car-insurance.html">Car Insurance</a></li></ul></div>
-      <div class="ft-col"><div class="ft-clbl">Finance</div><ul><li><a href="loans.html">Personal Loans</a></li><li><a href="loans.html">Home Loans</a></li><li><a href="loans.html">Mutual Funds &amp; SIP</a></li></ul></div>
-      <div class="ft-col"><div class="ft-clbl">Company</div><ul><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li><li><a href="book.html?dept=life">Book Consultation</a></li></ul></div>
+      <div class="ft-col"><div class="ft-clbl">Insurance</div><ul>
+        <li><a href="health-insurance.html">Health Insurance</a></li>
+        <li><a href="life-insurance.html">Life &amp; Term Insurance</a></li>
+        <li><a href="bike-insurance.html">Bike Insurance</a></li>
+        <li><a href="car-insurance.html">Car Insurance</a></li>
+        <li><a href="commercial-vehicle-insurance.html">Commercial Vehicle</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-clbl">Finance &amp; Tax</div><ul>
+        <li><a href="loans.html">Loans &amp; Finance</a></li>
+        <li><a href="tax-services.html">Tax &amp; Compliance</a></li>
+        <li><a href="tax-services.html#itr">ITR Filing</a></li>
+        <li><a href="tax-services.html#gst">GST Services</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-clbl">Company</div><ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="book.html?dept=life">Book Consultation</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+      </ul></div>
     </div>
     <div class="ft-bot">
-      <span>&#169; <span id="yr"></span> Cover Credit Insurance Advisors. All rights reserved.</span>
+      <span>© <span id="yr"></span> Cover Credit Insurance Advisors. All rights reserved.</span>
       <div class="ft-links"><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></div>
     </div>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 /* ── CURSOR ── */
 const cur=document.getElementById('cur'),cr=document.getElementById('cr');
 let mx=0,my=0,rx=0,ry=0;
@@ -1355,47 +1276,53 @@ document.querySelectorAll('a,button,.pc,.stc,.pg,.fi,.sp,.tl,.ccard,.photo-card'
   el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
 });
 
-/* ── NAV ── */
+/* ── NAV SCROLL ── */
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>40),{passive:true});
+
+/* ── MOBILE MENU ── */
 const burger=document.getElementById('burger'),mob=document.getElementById('mob');
 burger.addEventListener('click',()=>{burger.classList.toggle('op');mob.classList.toggle('op');document.body.style.overflow=mob.classList.contains('op')?'hidden':'';});
+mob.querySelectorAll('a').forEach(link=>{link.addEventListener('click',()=>{burger.classList.remove('op');mob.classList.remove('op');document.body.style.overflow='';});});
+document.addEventListener('click',e=>{if(mob.classList.contains('op')&&!mob.contains(e.target)&&!burger.contains(e.target)){burger.classList.remove('op');mob.classList.remove('op');document.body.style.overflow='';}});
 
 /* ── REVEAL ── */
 const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});},{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
 
-/* ── TICKER ── */
-const LIFE_PARTNERS=['Tata AIA','HDFC Life','ICICI Prudential','Bajaj Allianz','Max Life','India First','Aditya Birla','Digit','LIC'];
-function buildTicker(){
-  const track=document.getElementById('tkTrack');
-  if(!track)return;
-  let html='';
-  for(let pass=0;pass<2;pass++){
-    LIFE_PARTNERS.forEach(name=>{
-      html+=`<div class="tk-item"><span class="tk-name">${name}</span></div>`;
-    });
-  }
-  track.innerHTML=html;
-}
-buildTicker();
+/* ══ TICKER — canonical all partners ══ */
+(function(){
+  var PARTNERS=[
+    {cat:'life',name:'LIC of India'},{cat:'life',name:'HDFC Life'},{cat:'life',name:'ICICI Prudential'},
+    {cat:'life',name:'Tata AIA'},{cat:'life',name:'Max Life'},{cat:'life',name:'SBI Life'},
+    {cat:'life',name:'Bajaj Allianz'},{cat:'life',name:'Aditya Birla'},{cat:'life',name:'India First'},
+    {cat:'health',name:'Star Health'},{cat:'health',name:'Niva Bupa'},{cat:'health',name:'HDFC ERGO'},
+    {cat:'health',name:'ICICI Lombard'},{cat:'health',name:'Care Health'},{cat:'health',name:'Tata AIG'},{cat:'health',name:'Chola MS'},
+    {cat:'motor',name:'ICICI Lombard'},{cat:'motor',name:'HDFC ERGO'},{cat:'motor',name:'Bajaj Allianz'},
+    {cat:'motor',name:'Tata AIG'},{cat:'motor',name:'Reliance General'},{cat:'motor',name:'Royal Sundaram'},{cat:'motor',name:'New India Assurance'},
+  ];
+  var CAT={life:{label:'🛡 Life',cls:'ct-pill--life'},health:{label:'🏥 Health',cls:'ct-pill--health'},motor:{label:'🚗 Motor',cls:'ct-pill--motor'}};
+  function makePill(cat){var d=document.createElement('div');d.className='ct-pill '+CAT[cat].cls;var s=document.createElement('span');s.textContent=CAT[cat].label;d.appendChild(s);return d;}
+  function makeItem(p){var d=document.createElement('div');d.className='ct-item';var n=document.createElement('span');n.className='ct-item-name';n.textContent=p.name;d.appendChild(n);return d;}
+  function buildSet(){var f=document.createDocumentFragment(),last=null;PARTNERS.forEach(function(p){if(p.cat!==last){f.appendChild(makePill(p.cat));last=p.cat;}f.appendChild(makeItem(p));});return f;}
+  var track=document.getElementById('ct-track');
+  if(track){track.appendChild(buildSet());track.appendChild(buildSet());}
+})();
 
-/* ── HERO SLIDESHOW (5 images, 3s each) ── */
+/* ── HERO SLIDESHOW ── */
 (function(){
   const CAPTIONS=['Who will take care of them if you\'re not here?','Don\'t leave her to figure it out alone.','Your parents depend on you too.','Protect what matters most — your family.','One decision today. Lifelong peace of mind.'];
   const slides=document.querySelectorAll('.hbg-slide');
   const dots=document.querySelectorAll('.hdot');
-  const cur=document.getElementById('hcur');
+  const hcur=document.getElementById('hcur');
   const prog=document.getElementById('hprogbar');
   const subt=document.getElementById('hsubtit');
   let current=0,timer=null;
   function goTo(n){
-    slides[current].classList.remove('active');
-    dots[current].classList.remove('on');
+    slides[current].classList.remove('active');dots[current].classList.remove('on');
     current=(n+slides.length)%slides.length;
-    slides[current].classList.add('active');
-    dots[current].classList.add('on');
-    if(cur)cur.textContent=String(current+1).padStart(2,'0');
+    slides[current].classList.add('active');dots[current].classList.add('on');
+    if(hcur)hcur.textContent=String(current+1).padStart(2,'0');
     if(subt){subt.style.opacity='0';setTimeout(()=>{subt.textContent=CAPTIONS[current];subt.style.opacity='1';},300);}
     if(prog){prog.style.transition='none';prog.style.width='0%';void prog.offsetWidth;prog.style.transition='width 3s linear';prog.style.width='100%';}
   }
@@ -1404,12 +1331,6 @@ buildTicker();
   if(prog){prog.style.transition='width 3s linear';prog.style.width='100%';}
   start();
 })();
-
-/* ── STATS COUNTER ── */
-const so=new IntersectionObserver(es=>{
-  if(es[0].isIntersecting){so.disconnect();}
-},{threshold:.5});
-const stbar=document.querySelector('.stbar');if(stbar)so.observe(stbar);
 
 /* ── FAQ ── */
 document.querySelectorAll('.fh').forEach(h=>{
@@ -1432,8 +1353,8 @@ function calcPrem(){
   const sf=selSmoke?1.35:1;
   const mo=Math.round(rate*selCover*tf*sf/10)*10;
   const res=document.getElementById('cfResult');const cd=document.getElementById('calcd');
-  if(res)res.textContent='\u20b9'+mo.toLocaleString('en-IN');
-  if(cd)cd.textContent='\u20b9'+mo.toLocaleString('en-IN')+'/mo';
+  if(res)res.textContent='₹'+mo.toLocaleString('en-IN');
+  if(cd)cd.textContent='₹'+mo.toLocaleString('en-IN')+'/mo';
 }
 const ar=document.getElementById('ageRange');
 if(ar){ar.addEventListener('input',()=>{const av=document.getElementById('ageVal');if(av)av.textContent=ar.value+' saal';calcPrem();});}
