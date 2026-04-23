@@ -30,7 +30,9 @@
   --ac:#e6a817;--ac2:#f5c842;--acr:230,168,23;
   --ink:#05112a;--i2:#091d3e;--i3:#0e2d5c;
   --line:rgba(255,255,255,.08);--fog:rgba(255,255,255,.05);
-  --E:cubic-bezier(.16,1,.3,1);--nh:72px;
+  --E:cubic-bezier(.16,1,.3,1);
+  --ticker-h:44px;
+  --nh:72px;
 }
 html{scroll-behavior:smooth;}
 body{font-family:'DM Sans',system-ui,sans-serif;background:var(--ink);color:#fff;overflow-x:hidden;cursor:none;}
@@ -46,45 +48,51 @@ img{display:block;max-width:100%;}
 body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:.18;}
 
 /* ═══════════════════════════════════════════════════
-   PARTNER TICKER
+   TICKER — canonical
 ═══════════════════════════════════════════════════ */
-#partnerTicker{position:fixed;top:0;left:0;right:0;z-index:1100;height:44px;background:#020c1f;display:flex;align-items:center;overflow:hidden;}
-#partnerTicker::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;background:linear-gradient(90deg,transparent,#e6a817,#f5c842,#e6a817,transparent);background-size:200% 100%;animation:tkshimmer 4s linear infinite;}
-@keyframes tkshimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
-.tk-brand{flex-shrink:0;padding:0 1rem 0 1.2rem;display:flex;align-items:center;gap:.6rem;border-right:1px solid rgba(255,255,255,.08);background:linear-gradient(90deg,#020c1f 80%,transparent);position:relative;z-index:2;white-space:nowrap;}
-.tk-logo{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;letter-spacing:-.3px;}
-.tk-logo em{font-style:normal;color:#e6a817;}
-.tk-cat-label{flex-shrink:0;padding:0 1rem;display:flex;align-items:center;border-right:1px solid rgba(255,255,255,.08);white-space:nowrap;}
-.tk-cat-pill{display:inline-flex;align-items:center;gap:.28rem;padding:.22rem .62rem;border-radius:100px;font-size:.56rem;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:#fbbf24;border:1px solid rgba(251,191,36,.28);background:rgba(234,179,8,.1);}
-.tk-track-wrap{flex:1;overflow:hidden;position:relative;}
-.tk-track-wrap::before,.tk-track-wrap::after{content:'';position:absolute;top:0;bottom:0;width:60px;z-index:2;pointer-events:none;}
-.tk-track-wrap::before{left:0;background:linear-gradient(90deg,#020c1f,transparent);}
-.tk-track-wrap::after{right:0;background:linear-gradient(270deg,#020c1f,transparent);}
-.tk-track{display:flex;align-items:center;white-space:nowrap;animation:ticker-scroll 38s linear infinite;}
-.tk-track:hover{animation-play-state:paused;}
-@keyframes ticker-scroll{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
-.tk-item{display:inline-flex;align-items:center;padding:0 1.1rem;height:44px;position:relative;}
-.tk-item::after{content:'';position:absolute;right:0;top:28%;bottom:28%;width:1px;background:rgba(255,255,255,.08);}
-.tk-name{font-size:.72rem;font-weight:600;color:rgba(255,255,255,.78);}
-.tk-irdai{flex-shrink:0;padding:0 1.2rem;display:flex;align-items:center;gap:.5rem;border-left:1px solid rgba(255,255,255,.08);background:linear-gradient(270deg,#020c1f 80%,transparent);white-space:nowrap;position:relative;z-index:2;}
-.tk-irdai-dot{width:6px;height:6px;border-radius:50%;background:#22c55e;box-shadow:0 0 8px #22c55e;animation:irdaipulse 2s ease-in-out infinite;}
-@keyframes irdaipulse{0%,100%{box-shadow:0 0 4px #22c55e}50%{box-shadow:0 0 14px #22c55e,0 0 22px rgba(34,197,94,.3)}}
-.tk-irdai-txt{font-size:.56rem;font-weight:700;color:rgba(255,255,255,.32);text-transform:uppercase;letter-spacing:1.5px;}
-@media(max-width:768px){.tk-brand,.tk-irdai{display:none;}}
+.company-ticker{position:fixed;top:0;left:0;right:0;z-index:1100;height:var(--ticker-h);background:#020c1f;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:stretch;overflow:hidden;}
+.company-ticker::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;z-index:10;background:linear-gradient(90deg,transparent,rgba(230,168,23,0) 15%,rgba(230,168,23,0.8) 40%,#f5c842 50%,rgba(230,168,23,0.8) 60%,rgba(230,168,23,0) 85%,transparent);background-size:200% 100%;animation:ctShimmer 4s linear infinite;}
+@keyframes ctShimmer{from{background-position:-100% 0}to{background-position:200% 0}}
+.company-ticker::after{content:'';position:absolute;top:0;bottom:0;right:0;width:80px;z-index:5;pointer-events:none;background:linear-gradient(to left,#020c1f 30%,transparent);}
+.ct-label{flex-shrink:0;display:flex;align-items:center;gap:8px;padding:0 18px 0 20px;position:relative;z-index:6;background:linear-gradient(90deg,#020c1f 80%,transparent);border-right:1px solid rgba(255,255,255,0.07);}
+.ct-label-brand{font-family:'Playfair Display',serif;font-size:.78rem;font-weight:700;color:#fff;white-space:nowrap;}
+.ct-label-brand em{font-style:normal;color:var(--ac);}
+.ct-label-divider{width:1px;height:13px;background:rgba(255,255,255,0.12);}
+.ct-label-text{font-size:.58rem;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:rgba(255,255,255,0.28);white-space:nowrap;}
+.ct-badge{flex-shrink:0;display:flex;align-items:center;gap:6px;padding:0 16px;position:relative;z-index:6;background:linear-gradient(270deg,#020c1f 70%,transparent);border-left:1px solid rgba(255,255,255,0.07);}
+.ct-badge-dot{width:5px;height:5px;border-radius:50%;background:#22c55e;box-shadow:0 0 6px #22c55e;animation:ctBlink 2s ease-in-out infinite;}
+@keyframes ctBlink{0%,100%{opacity:1}50%{opacity:.35}}
+.ct-badge-text{font-size:.52rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.28);white-space:nowrap;}
+.ct-track-wrap{flex:1;overflow:hidden;position:relative;}
+.ct-track-wrap::before{content:'';position:absolute;top:0;bottom:0;left:0;width:40px;z-index:2;background:linear-gradient(to right,#020c1f 20%,transparent);}
+.ct-track-wrap::after{content:'';position:absolute;top:0;bottom:0;right:0;width:40px;z-index:2;pointer-events:none;background:linear-gradient(to left,#020c1f 20%,transparent);}
+.ct-track{display:inline-flex;align-items:center;height:var(--ticker-h);white-space:nowrap;animation:ctScroll 55s linear infinite;will-change:transform;}
+.company-ticker:hover .ct-track{animation-play-state:paused;}
+@keyframes ctScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ct-pill{display:inline-flex;align-items:center;padding:0 16px;flex-shrink:0;}
+.ct-pill span{font-size:.52rem;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;padding:2px 9px;border-radius:100px;white-space:nowrap;}
+.ct-pill--life span{background:rgba(21,101,192,.15);color:#93c5fd;border:1px solid rgba(96,165,250,.25);}
+.ct-pill--health span{background:rgba(239,68,68,.13);color:#fca5a5;border:1px solid rgba(248,113,113,.25);}
+.ct-pill--motor span{background:rgba(230,168,23,.13);color:#fcd34d;border:1px solid rgba(245,200,66,.25);}
+.ct-item{display:inline-flex;align-items:center;padding:0 22px;flex-shrink:0;position:relative;cursor:default;}
+.ct-item::after{content:'';position:absolute;right:0;top:25%;bottom:25%;width:1px;background:rgba(255,255,255,0.06);}
+.ct-item-name{font-family:'DM Sans',system-ui,sans-serif;font-size:.7rem;font-weight:600;color:rgba(255,255,255,0.42);white-space:nowrap;transition:color 0.2s;}
+.company-ticker:hover .ct-item:hover .ct-item-name{color:rgba(255,255,255,0.9);}
+@media(max-width:580px){.ct-label,.ct-badge{display:none;}}
 
 /* ═══════════════════════════════════════════════════
-   NAV
+   NAV — below ticker
 ═══════════════════════════════════════════════════ */
-.nav{position:fixed;top:44px;left:0;right:0;z-index:900;height:var(--nh);padding:0 5%;transition:background .4s;}
+.nav{position:fixed;top:var(--ticker-h);left:0;right:0;z-index:900;height:var(--nh);padding:0 5%;transition:background .4s;}
 .nav.sc{background:rgba(5,17,42,.97);backdrop-filter:blur(24px);box-shadow:0 1px 0 var(--line);}
 .ni{max-width:1300px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;}
 .logo{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;}.logo em{font-style:normal;color:var(--ac);}
-.nl{display:flex;align-items:center;gap:1.8rem;list-style:none;}
-.nl a{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.65);transition:color .2s;position:relative;}
+.nl{display:flex;align-items:center;gap:1.6rem;list-style:none;}
+.nl a{font-size:.84rem;font-weight:500;color:rgba(255,255,255,.65);transition:color .2s;position:relative;}
 .nl a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--ac);transition:width .28s;}
 .nl a:hover,.nl a.act{color:#fff;}.nl a:hover::after,.nl a.act::after{width:100%;}
 .dd{position:relative;}
-.ddt{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.65);cursor:none;display:flex;align-items:center;gap:.26rem;transition:color .2s;}
+.ddt{font-size:.84rem;font-weight:500;color:rgba(255,255,255,.65);cursor:none;display:flex;align-items:center;gap:.26rem;transition:color .2s;}
 .dd:hover .ddt{color:#fff;}
 .dda{font-size:.54rem;transition:transform .3s;}.dd:hover .dda{transform:rotate(180deg);}
 .ddm{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(6px);background:var(--i2);border:1px solid var(--line);border-radius:12px;padding:.4rem;min-width:190px;opacity:0;visibility:hidden;transition:opacity .2s,transform .28s var(--E),visibility .2s;box-shadow:0 24px 60px rgba(0,0,0,.5);}
@@ -98,10 +106,15 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .burger.op span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
 .burger.op span:nth-child(2){opacity:0;}
 .burger.op span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
-.mob{position:fixed;inset:0;z-index:899;background:var(--ink);display:flex;flex-direction:column;padding:calc(44px + var(--nh) + 1.8rem) 5% 3rem;transform:translateX(100%);transition:transform .38s var(--E);}
+
+/* ═══════════════════════════════════════════════════
+   MOBILE MENU — canonical
+═══════════════════════════════════════════════════ */
+.mob{position:fixed;inset:0;z-index:899;background:var(--ink);display:flex;flex-direction:column;padding:calc(var(--ticker-h) + var(--nh) + 1.5rem) 5% 3rem;transform:translateX(100%);transition:transform .38s var(--E);overflow-y:auto;}
 .mob.op{transform:translateX(0);}
-.mob a{padding:.9rem 0;font-size:1rem;font-weight:500;color:rgba(255,255,255,.72);border-bottom:1px solid var(--line);}
-.mc{margin-top:1.8rem;background:var(--ac);color:var(--ink)!important;text-align:center;border-radius:12px;padding:.9rem!important;font-weight:700!important;border:none!important;}
+.mob a{padding:.85rem 0;font-size:1rem;font-weight:500;color:rgba(255,255,255,.72);border-bottom:1px solid var(--line);display:block;}
+.mob a:hover{color:var(--ac);}
+.mc{margin-top:1.6rem;background:var(--ac);color:var(--ink)!important;text-align:center;border-radius:12px;padding:.9rem!important;font-weight:700!important;border:none!important;}
 
 /* ═══════════════════════════════════════════════════
    FAB
@@ -115,7 +128,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 /* ═══════════════════════════════════════════════════
    HERO
 ═══════════════════════════════════════════════════ */
-.hero{min-height:100vh;display:flex;align-items:center;padding:calc(44px + var(--nh) + 3rem) 5% 5rem;position:relative;overflow:hidden;}
+.hero{min-height:100vh;display:flex;align-items:center;padding:calc(var(--ticker-h) + var(--nh) + 3rem) 5% 5rem;position:relative;overflow:hidden;}
 .hero-bg{position:absolute;inset:0;z-index:0;}
 .hero-slideshow{position:absolute;inset:0;overflow:hidden;}
 .hslide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease-in-out;}
@@ -153,8 +166,6 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .hero-particles{position:absolute;inset:0;pointer-events:none;z-index:1;}
 .hpar{position:absolute;border-radius:50%;animation:parFloat linear infinite;}
 @keyframes parFloat{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(-100vh) rotate(360deg)}}
-
-/* Hero floating metric cards */
 .hero-metrics{position:relative;width:100%;height:100%;}
 .hm-card{position:absolute;backdrop-filter:blur(20px);border-radius:18px;padding:1.2rem 1.5rem;border:1px solid;animation-timing-function:ease-in-out;animation-iteration-count:infinite;}
 .hm-card::after{content:'';position:absolute;inset:0;border-radius:18px;background:linear-gradient(135deg,rgba(255,255,255,.06),transparent);pointer-events:none;}
@@ -187,20 +198,16 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .stat-l{font-size:.73rem;color:rgba(255,255,255,.38);margin-top:.3rem;}
 
 /* ═══════════════════════════════════════════════════
-   LOAN TABS — THE MAIN FEATURE
+   LOAN TABS
 ═══════════════════════════════════════════════════ */
 .loans-tabs-section{padding:0 5% 6rem;background:#050e1a;}
 .loans-tabs-inner{max-width:1400px;margin:0 auto;}
-
-/* Section header */
 .lt-sec-hd{text-align:center;padding:5rem 0 3.5rem;}
 .tag{display:inline-flex;align-items:center;gap:.4rem;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:.9rem;color:var(--ac);}
 .tag::before{content:'';width:16px;height:2px;background:var(--ac);}
 .tit{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.06;}
 .tit em{font-style:italic;color:var(--ac);}
-
-/* Tab rail */
-.loan-tab-rail{display:flex;align-items:stretch;gap:0;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:5px;overflow-x:auto;scrollbar-width:none;margin-bottom:2.5rem;position:sticky;top:calc(44px + var(--nh));z-index:50;backdrop-filter:blur(20px);}
+.loan-tab-rail{display:flex;align-items:stretch;gap:0;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:18px;padding:5px;overflow-x:auto;scrollbar-width:none;margin-bottom:2.5rem;position:sticky;top:calc(var(--ticker-h) + var(--nh));z-index:50;backdrop-filter:blur(20px);}
 .loan-tab-rail::-webkit-scrollbar{display:none;}
 .loan-tab{flex:1;min-width:100px;display:flex;flex-direction:column;align-items:center;gap:.25rem;padding:.7rem .5rem;border-radius:13px;border:none;background:none;cursor:pointer;transition:background .25s,transform .2s;position:relative;font-family:'DM Sans',sans-serif;}
 .loan-tab:hover{background:rgba(255,255,255,.04);}
@@ -214,14 +221,10 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .loan-tab.active .lt-rate-mini{color:var(--act-accent,var(--ac));}
 .lt-active-dot{width:4px;height:4px;border-radius:50%;background:var(--act-accent,var(--ac));margin-top:.1rem;opacity:0;transition:opacity .25s;}
 .loan-tab.active .lt-active-dot{opacity:1;}
-
-/* Tab panels */
 .loan-panels{position:relative;min-height:600px;}
 .loan-panel{display:none;animation:panelIn .45s var(--E) both;}
 .loan-panel.active{display:grid;}
 @keyframes panelIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
-
-/* Panel layout */
 .lp-grid{grid-template-columns:1fr 1fr;gap:2px;background:rgba(255,255,255,.05);border-radius:24px;overflow:hidden;box-shadow:0 40px 120px rgba(0,0,0,.5);}
 .lp-hero{position:relative;overflow:hidden;min-height:560px;}
 .lp-hero-img{position:absolute;inset:0;}
@@ -237,20 +240,14 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .lp-hero-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.8vw,2.4rem);font-weight:900;line-height:1.08;margin-bottom:.6rem;}
 .lp-hero-title em{font-style:italic;color:var(--ac);}
 .lp-hero-sub{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.65;max-width:400px;}
-
-/* Hero stat pills */
 .lp-stat-row{display:flex;gap:.8rem;margin-top:1.4rem;flex-wrap:wrap;}
 .lp-stat{background:rgba(5,17,42,.7);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:.65rem .9rem;text-align:center;flex:1;min-width:80px;}
 .lp-stat-n{font-family:'Bebas Neue',sans-serif;font-size:1.2rem;letter-spacing:1px;line-height:1;}
 .lp-stat-l{font-size:.58rem;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.8px;margin-top:.15rem;}
-
-/* Right panel details */
 .lp-details{background:linear-gradient(145deg,#070e1f,#040c18);display:flex;flex-direction:column;padding:2.5rem;}
 .lp-section{margin-bottom:1.8rem;}
 .lp-section-title{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.2);margin-bottom:.85rem;display:flex;align-items:center;gap:.5rem;}
 .lp-section-title::after{content:'';flex:1;height:1px;background:rgba(255,255,255,.05);}
-
-/* Rate comparison */
 .lp-rate-box{background:rgba(230,168,23,.06);border:1px solid rgba(230,168,23,.12);border-radius:14px;padding:1.2rem 1.4rem;margin-bottom:1.5rem;}
 .lp-rate-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.55rem;}
 .lp-rate-row:last-child{margin-bottom:0;}
@@ -259,24 +256,16 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .lp-rate-bar-wrap{flex:1;margin:0 .8rem;background:rgba(255,255,255,.06);border-radius:3px;height:5px;overflow:hidden;}
 .lp-rate-bar-fill{height:100%;border-radius:3px;transition:width 1s var(--E);}
 .lp-best{background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);border-radius:10px;padding:.65rem 1rem;font-size:.74rem;color:#4ade80;font-weight:600;display:flex;align-items:center;gap:.5rem;}
-
-/* Feature grid */
 .lp-features{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;}
 .lp-feature{display:flex;align-items:flex-start;gap:.55rem;background:rgba(255,255,255,.025);border:1px solid rgba(255,255,255,.05);border-radius:10px;padding:.7rem .8rem;}
 .lp-feature-ico{font-size:1rem;flex-shrink:0;margin-top:.05rem;}
 .lp-feature-text{font-size:.72rem;color:rgba(255,255,255,.5);line-height:1.5;}
 .lp-feature-text strong{color:rgba(255,255,255,.82);display:block;font-size:.74rem;margin-bottom:.1rem;}
-
-/* Documents / Eligibility */
 .lp-checklist{display:flex;flex-direction:column;gap:.45rem;}
 .lp-check-item{display:flex;align-items:flex-start;gap:.5rem;font-size:.74rem;color:rgba(255,255,255,.48);line-height:1.5;}
 .lp-check-item::before{content:'✓';color:var(--ac);font-weight:700;flex-shrink:0;font-size:.7rem;margin-top:.1rem;}
-
-/* Warning callout */
 .lp-warn{background:rgba(251,146,60,.06);border-left:2px solid rgba(251,146,60,.4);border-radius:0 10px 10px 0;padding:.75rem 1rem;font-size:.73rem;color:rgba(251,146,60,.8);line-height:1.6;margin-top:auto;}
 .lp-warn strong{color:rgba(251,197,130,.9);}
-
-/* CTA row inside panel */
 .lp-cta-row{display:flex;gap:.7rem;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.05);}
 .lp-cta-primary{flex:1;background:var(--ac);color:var(--ink);border:none;border-radius:100px;padding:.7rem 1rem;font-weight:700;font-size:.8rem;cursor:pointer;transition:background .2s,transform .2s;font-family:'DM Sans',sans-serif;text-align:center;}
 .lp-cta-primary:hover{background:var(--ac2);transform:translateY(-2px);}
@@ -284,7 +273,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .lp-cta-secondary:hover{border-color:rgba(255,255,255,.3);color:#fff;}
 
 /* ═══════════════════════════════════════════════════
-   SECRETS SECTION
+   SECRETS
 ═══════════════════════════════════════════════════ */
 .secrets{padding:5rem 5%;background:linear-gradient(180deg,#06101f 0%,#02080f 100%);}
 .secrets-inner{max-width:1300px;margin:0 auto;}
@@ -320,7 +309,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .calc-label span{color:var(--ac);font-family:'Bebas Neue',sans-serif;font-size:.95rem;letter-spacing:1px;}
 .calc-range{width:100%;-webkit-appearance:none;appearance:none;height:4px;border-radius:2px;background:rgba(255,255,255,.1);outline:none;cursor:pointer;}
 .calc-range::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--ac);cursor:pointer;box-shadow:0 0 0 4px rgba(230,168,23,.15);}
-.calc-results{background:linear-gradient(145deg,#091d3e,#040e20);border:1px solid rgba(230,168,23,.12);border-radius:20px;padding:2rem;position:sticky;top:calc(44px + var(--nh) + 1rem);}
+.calc-results{background:linear-gradient(145deg,#091d3e,#040e20);border:1px solid rgba(230,168,23,.12);border-radius:20px;padding:2rem;position:sticky;top:calc(var(--ticker-h) + var(--nh) + 1rem);}
 .calc-res-emi{text-align:center;padding:1.5rem;border-bottom:1px solid rgba(255,255,255,.06);margin-bottom:1.5rem;}
 .cre-label{font-size:.7rem;text-transform:uppercase;letter-spacing:1.5px;color:rgba(255,255,255,.35);margin-bottom:.4rem;}
 .cre-value{font-family:'Bebas Neue',sans-serif;font-size:3.5rem;color:var(--ac);letter-spacing:2px;line-height:1;}
@@ -363,7 +352,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .fi.op .fab2{max-height:300px;padding-bottom:1.2rem;}
 .fat{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.75;}
 .fat strong{color:rgba(255,255,255,.75);}
-.faq-cta{background:linear-gradient(145deg,rgba(230,168,23,.08),rgba(230,168,23,.03));border:1px solid rgba(230,168,23,.15);border-radius:20px;padding:2.5rem;position:sticky;top:calc(44px + var(--nh) + 1rem);}
+.faq-cta{background:linear-gradient(145deg,rgba(230,168,23,.08),rgba(230,168,23,.03));border:1px solid rgba(230,168,23,.15);border-radius:20px;padding:2.5rem;position:sticky;top:calc(var(--ticker-h) + var(--nh) + 1rem);}
 .faq-cta-h{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;line-height:1.15;margin-bottom:.75rem;}
 .faq-cta-h em{font-style:italic;color:var(--ac);}
 .faq-cta-sub{font-size:.8rem;color:rgba(255,255,255,.4);line-height:1.7;margin-bottom:1.5rem;}
@@ -420,6 +409,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
   .calc-layout,.faq-inner{grid-template-columns:1fr;}
 }
 @media(max-width:900px){
+  :root{--ticker-h:38px;}
   .secrets-grid{grid-template-columns:1fr 1fr;}
   .process-steps{grid-template-columns:repeat(3,1fr);gap:2rem;}
   .process-steps::before{display:none;}
@@ -428,6 +418,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
   .stats-strip-inner{grid-template-columns:repeat(2,1fr);}
   .loan-tab-rail{gap:2px;}
   .lt-label{font-size:.58rem;}
+  body{cursor:auto;}#cur,#cr{display:none;}
 }
 @media(max-width:640px){
   .secrets-grid{grid-template-columns:1fr;}
@@ -447,12 +438,20 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 <!-- CURSOR -->
 <div id="cur"></div><div id="cr"></div>
 
-<!-- TICKER -->
-<div id="partnerTicker">
-  <div class="tk-brand"><span class="tk-logo">Cover<em>Credit</em></span></div>
-  <div class="tk-cat-label"><span class="tk-cat-pill">🏦 Loan Partners</span></div>
-  <div class="tk-track-wrap"><div class="tk-track" id="tkTrack"></div></div>
-  <div class="tk-irdai"><div class="tk-irdai-dot"></div><span class="tk-irdai-txt">RBI Registered</span></div>
+<!-- ══ TICKER — canonical ══ -->
+<div class="company-ticker" id="company-ticker" aria-hidden="true">
+  <div class="ct-label">
+    <span class="ct-label-brand">Cover<em>Credit</em></span>
+    <span class="ct-label-divider"></span>
+    <span class="ct-label-text">Our Partners</span>
+  </div>
+  <div class="ct-track-wrap">
+    <div class="ct-track" id="ct-track"></div>
+  </div>
+  <div class="ct-badge">
+    <span class="ct-badge-dot"></span>
+    <span class="ct-badge-text">IRDAI Verified</span>
+  </div>
 </div>
 
 <!-- FAB -->
@@ -464,37 +463,45 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
   </a>
 </div>
 
-<!-- NAV -->
+<!-- ══ NAV — canonical full nav ══ -->
 <nav class="nav" id="nav">
   <div class="ni">
     <a href="index.html" class="logo">Cover<em>Credit</em></a>
     <ul class="nl">
-      <li><a href="health-insurance.html">Health</a></li>
+      <li><a href="health-insurance.html">Health Insurance</a></li>
       <li><a href="life-insurance.html">Life Insurance</a></li>
       <li class="dd">
-        <span class="ddt">Vehicle <span class="dda">▼</span></span>
+        <span class="ddt">Vehicle <span class="dda">▾</span></span>
         <div class="ddm">
           <a href="bike-insurance.html">🏍️ Bike Insurance</a>
           <a href="car-insurance.html">🚗 Car Insurance</a>
-          <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicle</a>
+          <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicles</a>
         </div>
       </li>
       <li><a href="loans.html" class="act">Loans</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="book.html?dept=loan" class="ncta">Free Consultation</a></li>
+      <li><a href="tax-services.html">Tax &amp; Compliance</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="book.html?dept=loan" class="ncta">Book Free Consultation</a></li>
     </ul>
     <button class="burger" id="burger"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
+<!-- ══ MOBILE MENU — canonical full list ══ -->
 <div class="mob" id="mob">
   <a href="health-insurance.html">Health Insurance</a>
   <a href="life-insurance.html">Life Insurance</a>
-  <a href="bike-insurance.html">🏍️ Bike Insurance</a>
-  <a href="car-insurance.html">🚗 Car Insurance</a>
-  <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicle</a>
-  <a href="loans.html">Loans</a>
-  <a href="about.html">About</a>
-  <a href="book.html?dept=loan" class="mc">Free Consultation</a>
+  <a href="bike-insurance.html">Bike Insurance</a>
+  <a href="car-insurance.html">Car Insurance</a>
+  <a href="commercial-vehicle-insurance.html">Commercial Vehicles</a>
+  <a href="loans.html">Loans &amp; Finance</a>
+  <a href="tax-services.html">Tax &amp; Compliance</a>
+  <a href="blog.html">Blog</a>
+  <a href="about.html">About Us</a>
+  <a href="contact.html">Contact Us</a>
+  <a href="book.html?dept=loan" class="mc">Book Free Consultation →</a>
 </div>
 
 <!-- ═══════════════════════════════════════════════════
@@ -559,7 +566,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 </div>
 
 <!-- ═══════════════════════════════════════════════════
-     LOAN TABS — MAIN SECTION
+     LOAN TABS
 ═══════════════════════════════════════════════════ -->
 <section class="loans-tabs-section" id="loan-tabs">
   <div class="loans-tabs-inner">
@@ -569,72 +576,42 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
       <p style="font-size:.85rem;color:rgba(255,255,255,.38);margin-top:.75rem;line-height:1.7;max-width:540px;margin-inline:auto;" class="rv d2">Select any loan type below. We show you real rates, eligibility, documents needed — and exactly what banks won't tell you.</p>
     </div>
 
-    <!-- TAB RAIL -->
     <nav class="loan-tab-rail rv" id="loanTabRail" aria-label="Loan types">
       <button class="loan-tab active" data-tab="home" style="--act-c1:rgba(14,45,92,.95);--act-c2:rgba(9,29,62,.95);--act-border:rgba(96,165,250,.35);--act-accent:#60a5fa">
-        <span class="lt-emoji">🏠</span>
-        <span class="lt-label">Home</span>
-        <span class="lt-rate-mini">8.40%</span>
-        <span class="lt-active-dot"></span>
+        <span class="lt-emoji">🏠</span><span class="lt-label">Home</span><span class="lt-rate-mini">8.40%</span><span class="lt-active-dot"></span>
       </button>
       <button class="loan-tab" data-tab="personal" style="--act-c1:rgba(79,70,229,.25);--act-c2:rgba(9,29,62,.95);--act-border:rgba(167,139,250,.35);--act-accent:#a78bfa">
-        <span class="lt-emoji">👤</span>
-        <span class="lt-label">Personal</span>
-        <span class="lt-rate-mini">10.50%</span>
-        <span class="lt-active-dot"></span>
+        <span class="lt-emoji">👤</span><span class="lt-label">Personal</span><span class="lt-rate-mini">10.50%</span><span class="lt-active-dot"></span>
       </button>
       <button class="loan-tab" data-tab="car" style="--act-c1:rgba(5,150,105,.2);--act-c2:rgba(9,29,62,.95);--act-border:rgba(52,211,153,.35);--act-accent:#34d399">
-        <span class="lt-emoji">🚗</span>
-        <span class="lt-label">Car</span>
-        <span class="lt-rate-mini">7.90%</span>
-        <span class="lt-active-dot"></span>
+        <span class="lt-emoji">🚗</span><span class="lt-label">Car</span><span class="lt-rate-mini">7.90%</span><span class="lt-active-dot"></span>
       </button>
       <button class="loan-tab" data-tab="business" style="--act-c1:rgba(220,38,38,.18);--act-c2:rgba(9,29,62,.95);--act-border:rgba(248,113,113,.35);--act-accent:#f87171">
-        <span class="lt-emoji">💼</span>
-        <span class="lt-label">Business</span>
-        <span class="lt-rate-mini">12.00%</span>
-        <span class="lt-active-dot"></span>
+        <span class="lt-emoji">💼</span><span class="lt-label">Business</span><span class="lt-rate-mini">12.00%</span><span class="lt-active-dot"></span>
       </button>
       <button class="loan-tab" data-tab="education" style="--act-c1:rgba(234,179,8,.18);--act-c2:rgba(9,29,62,.95);--act-border:rgba(253,224,71,.35);--act-accent:#fde047">
-        <span class="lt-emoji">🎓</span>
-        <span class="lt-label">Education</span>
-        <span class="lt-rate-mini">8.15%</span>
-        <span class="lt-active-dot"></span>
+        <span class="lt-emoji">🎓</span><span class="lt-label">Education</span><span class="lt-rate-mini">8.15%</span><span class="lt-active-dot"></span>
       </button>
       <button class="loan-tab" data-tab="gold" style="--act-c1:rgba(230,168,23,.2);--act-c2:rgba(9,29,62,.95);--act-border:rgba(230,168,23,.4);--act-accent:#e6a817">
-        <span class="lt-emoji">🪙</span>
-        <span class="lt-label">Gold</span>
-        <span class="lt-rate-mini">7.00%</span>
-        <span class="lt-active-dot"></span>
+        <span class="lt-emoji">🪙</span><span class="lt-label">Gold</span><span class="lt-rate-mini">7.00%</span><span class="lt-active-dot"></span>
       </button>
       <button class="loan-tab" data-tab="lap" style="--act-c1:rgba(14,116,144,.22);--act-c2:rgba(9,29,62,.95);--act-border:rgba(34,211,238,.35);--act-accent:#22d3ee">
-        <span class="lt-emoji">🏗️</span>
-        <span class="lt-label">Loan vs Property</span>
-        <span class="lt-rate-mini">9.00%</span>
-        <span class="lt-active-dot"></span>
+        <span class="lt-emoji">🏗️</span><span class="lt-label">Loan vs Property</span><span class="lt-rate-mini">9.00%</span><span class="lt-active-dot"></span>
       </button>
       <button class="loan-tab" data-tab="bike" style="--act-c1:rgba(168,85,247,.2);--act-c2:rgba(9,29,62,.95);--act-border:rgba(192,132,252,.35);--act-accent:#c084fc">
-        <span class="lt-emoji">🏍️</span>
-        <span class="lt-label">Two-Wheeler</span>
-        <span class="lt-rate-mini">9.70%</span>
-        <span class="lt-active-dot"></span>
+        <span class="lt-emoji">🏍️</span><span class="lt-label">Two-Wheeler</span><span class="lt-rate-mini">9.70%</span><span class="lt-active-dot"></span>
       </button>
     </nav>
 
-    <!-- PANELS CONTAINER -->
     <div class="loan-panels" id="loanPanels">
 
-      <!-- ── HOME LOAN ── -->
+      <!-- HOME LOAN -->
       <div class="loan-panel active lp-grid" id="tab-home">
         <div class="lp-hero">
           <div class="lp-hero-img"><img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=900&q=80" alt="Home Loan" loading="lazy"/></div>
           <div class="lp-hero-overlay"></div>
           <div class="lp-hero-content">
-            <div class="lp-badge-row">
-              <span class="lp-badge lp-badge-rate">⭐ from 8.40% p.a.</span>
-              <span class="lp-badge lp-badge-green">✓ Up to ₹5 Crore</span>
-              <span class="lp-badge lp-badge-blue">30 yr tenure</span>
-            </div>
+            <div class="lp-badge-row"><span class="lp-badge lp-badge-rate">⭐ from 8.40% p.a.</span><span class="lp-badge lp-badge-green">✓ Up to ₹5 Crore</span><span class="lp-badge lp-badge-blue">30 yr tenure</span></div>
             <h3 class="lp-hero-title">Home Loan —<br/><em>Own it, don't rent it.</em></h3>
             <p class="lp-hero-sub">SBI, HDFC, ICICI, Axis, PNB Housing, LIC HFL, Bajaj Housing. Under-construction, resale, self-construction — all covered. We compare all 30+ lenders to find your lowest rate.</p>
             <div class="lp-stat-row">
@@ -676,24 +653,17 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
             </div>
           </div>
           <div class="lp-warn">⚠ <strong>What banks don't tell you:</strong> 0.5% rate difference on ₹50L over 20 years = ₹3.6 lakh saved. Never walk into your salary account bank first.</div>
-          <div class="lp-cta-row">
-            <a href="book.html?dept=loan&type=home" class="lp-cta-primary">Get My Home Loan Rate →</a>
-            <a href="#calculator" class="lp-cta-secondary">📊 Calculate EMI</a>
-          </div>
+          <div class="lp-cta-row"><a href="book.html?dept=loan&type=home" class="lp-cta-primary">Get My Home Loan Rate →</a><a href="#calculator" class="lp-cta-secondary">📊 Calculate EMI</a></div>
         </div>
       </div>
 
-      <!-- ── PERSONAL LOAN ── -->
+      <!-- PERSONAL LOAN -->
       <div class="loan-panel lp-grid" id="tab-personal">
         <div class="lp-hero">
           <div class="lp-hero-img"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=900&q=80" alt="Personal Loan" loading="lazy"/></div>
           <div class="lp-hero-overlay"></div>
           <div class="lp-hero-content">
-            <div class="lp-badge-row">
-              <span class="lp-badge lp-badge-rate">⭐ from 10.50% p.a.</span>
-              <span class="lp-badge lp-badge-green">✓ Up to ₹25 Lakh</span>
-              <span class="lp-badge lp-badge-blue">No collateral</span>
-            </div>
+            <div class="lp-badge-row"><span class="lp-badge lp-badge-rate">⭐ from 10.50% p.a.</span><span class="lp-badge lp-badge-green">✓ Up to ₹25 Lakh</span><span class="lp-badge lp-badge-blue">No collateral</span></div>
             <h3 class="lp-hero-title">Personal Loan —<br/><em>Life's urgent moments.</em></h3>
             <p class="lp-hero-sub">Medical emergency, wedding, home renovation, debt consolidation. Salaried and self-employed. Disbursal in 24–72 hours with the right lender. Rates vary by 6–8% — never take the first offer.</p>
             <div class="lp-stat-row">
@@ -735,24 +705,17 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
             </div>
           </div>
           <div class="lp-warn">⚠ <strong>Critical:</strong> "Flat 12%" is actually ~21% effective rate. Always ask: "Is this flat or reducing balance?" We verify every lender's true rate for you.</div>
-          <div class="lp-cta-row">
-            <a href="book.html?dept=loan&type=personal" class="lp-cta-primary">Get My Personal Loan Rate →</a>
-            <a href="#calculator" class="lp-cta-secondary">📊 Calculate EMI</a>
-          </div>
+          <div class="lp-cta-row"><a href="book.html?dept=loan&type=personal" class="lp-cta-primary">Get My Personal Loan Rate →</a><a href="#calculator" class="lp-cta-secondary">📊 Calculate EMI</a></div>
         </div>
       </div>
 
-      <!-- ── CAR LOAN ── -->
+      <!-- CAR LOAN -->
       <div class="loan-panel lp-grid" id="tab-car">
         <div class="lp-hero">
           <div class="lp-hero-img"><img src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=900&q=80" alt="Car Loan" loading="lazy"/></div>
           <div class="lp-hero-overlay"></div>
           <div class="lp-hero-content">
-            <div class="lp-badge-row">
-              <span class="lp-badge lp-badge-rate">⭐ from 7.90% p.a.</span>
-              <span class="lp-badge lp-badge-green">✓ Up to ₹1 Crore</span>
-              <span class="lp-badge lp-badge-blue">100% LTV</span>
-            </div>
+            <div class="lp-badge-row"><span class="lp-badge lp-badge-rate">⭐ from 7.90% p.a.</span><span class="lp-badge lp-badge-green">✓ Up to ₹1 Crore</span><span class="lp-badge lp-badge-blue">100% LTV</span></div>
             <h3 class="lp-hero-title">Car Loan —<br/><em>Drive on your terms.</em></h3>
             <p class="lp-hero-sub">New cars from all manufacturers. Pre-owned cars up to 10 years old. SBI Car Loan, HDFC, Kotak, IndusInd, ICICI — we compare all. Don't sign at the showroom finance desk before calling us.</p>
             <div class="lp-stat-row">
@@ -793,24 +756,17 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
             </div>
           </div>
           <div class="lp-warn">⚠ <strong>Showroom finance trap:</strong> The finance executive at the showroom works on commission. 10 minutes with us before signing can save ₹40,000–₹80,000 over the tenure.</div>
-          <div class="lp-cta-row">
-            <a href="book.html?dept=loan&type=car" class="lp-cta-primary">Get My Car Loan Rate →</a>
-            <a href="#calculator" class="lp-cta-secondary">📊 Calculate EMI</a>
-          </div>
+          <div class="lp-cta-row"><a href="book.html?dept=loan&type=car" class="lp-cta-primary">Get My Car Loan Rate →</a><a href="#calculator" class="lp-cta-secondary">📊 Calculate EMI</a></div>
         </div>
       </div>
 
-      <!-- ── BUSINESS LOAN ── -->
+      <!-- BUSINESS LOAN -->
       <div class="loan-panel lp-grid" id="tab-business">
         <div class="lp-hero">
           <div class="lp-hero-img"><img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=900&q=80" alt="Business Loan" loading="lazy"/></div>
           <div class="lp-hero-overlay"></div>
           <div class="lp-hero-content">
-            <div class="lp-badge-row">
-              <span class="lp-badge lp-badge-rate">⭐ from 12.00% p.a.</span>
-              <span class="lp-badge lp-badge-green">✓ Up to ₹2 Crore</span>
-              <span class="lp-badge lp-badge-blue">Collateral optional</span>
-            </div>
+            <div class="lp-badge-row"><span class="lp-badge lp-badge-rate">⭐ from 12.00% p.a.</span><span class="lp-badge lp-badge-green">✓ Up to ₹2 Crore</span><span class="lp-badge lp-badge-blue">Collateral optional</span></div>
             <h3 class="lp-hero-title">Business Loan —<br/><em>Fuel your enterprise.</em></h3>
             <p class="lp-hero-sub">Working capital, equipment purchase, expansion. Udyam registered MSMEs get preferential rates. CGTMSE-backed loans available — collateral-free up to ₹2 crore. SIDBI tie-ups most businesses never know about.</p>
             <div class="lp-stat-row">
@@ -851,24 +807,17 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
             </div>
           </div>
           <div class="lp-warn">⚠ <strong>MSME trap:</strong> Many owners approach their bank branch — where staff don't know CGTMSE eligibility. We've unlocked collateral-free loans for businesses that were told "not possible".</div>
-          <div class="lp-cta-row">
-            <a href="book.html?dept=loan&type=business" class="lp-cta-primary">Get My Business Loan Rate →</a>
-            <a href="#calculator" class="lp-cta-secondary">📊 Calculate EMI</a>
-          </div>
+          <div class="lp-cta-row"><a href="book.html?dept=loan&type=business" class="lp-cta-primary">Get My Business Loan Rate →</a><a href="#calculator" class="lp-cta-secondary">📊 Calculate EMI</a></div>
         </div>
       </div>
 
-      <!-- ── EDUCATION LOAN ── -->
+      <!-- EDUCATION LOAN -->
       <div class="loan-panel lp-grid" id="tab-education">
         <div class="lp-hero">
           <div class="lp-hero-img"><img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=900&q=80" alt="Education Loan" loading="lazy"/></div>
           <div class="lp-hero-overlay"></div>
           <div class="lp-hero-content">
-            <div class="lp-badge-row">
-              <span class="lp-badge lp-badge-rate">⭐ from 8.15% p.a.</span>
-              <span class="lp-badge lp-badge-green">✓ Up to ₹75 Lakh</span>
-              <span class="lp-badge lp-badge-blue">Sec 80E tax free</span>
-            </div>
+            <div class="lp-badge-row"><span class="lp-badge lp-badge-rate">⭐ from 8.15% p.a.</span><span class="lp-badge lp-badge-green">✓ Up to ₹75 Lakh</span><span class="lp-badge lp-badge-blue">Sec 80E tax free</span></div>
             <h3 class="lp-hero-title">Education Loan —<br/><em>Invest in your future.</em></h3>
             <p class="lp-hero-sub">IITs, IIMs, NITs in India. UK, USA, Canada, Australia, Germany abroad. PSU banks offer 0.50% concession for girl students. Interest fully deductible under Section 80E — no upper limit.</p>
             <div class="lp-stat-row">
@@ -909,24 +858,17 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
             </div>
           </div>
           <div class="lp-warn">⚠ <strong>Don't know about yet:</strong> PM Vidyalakshmi — central govt scheme for interest subsidy on education loans for students from families below ₹8L income. We check eligibility for you.</div>
-          <div class="lp-cta-row">
-            <a href="book.html?dept=loan&type=education" class="lp-cta-primary">Get My Education Loan Rate →</a>
-            <a href="#calculator" class="lp-cta-secondary">📊 Calculate EMI</a>
-          </div>
+          <div class="lp-cta-row"><a href="book.html?dept=loan&type=education" class="lp-cta-primary">Get My Education Loan Rate →</a><a href="#calculator" class="lp-cta-secondary">📊 Calculate EMI</a></div>
         </div>
       </div>
 
-      <!-- ── GOLD LOAN ── -->
+      <!-- GOLD LOAN -->
       <div class="loan-panel lp-grid" id="tab-gold">
         <div class="lp-hero">
           <div class="lp-hero-img"><img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?auto=format&fit=crop&w=900&q=80" alt="Gold Loan" loading="lazy"/></div>
           <div class="lp-hero-overlay"></div>
           <div class="lp-hero-content">
-            <div class="lp-badge-row">
-              <span class="lp-badge lp-badge-rate">⭐ from 7.00% p.a.</span>
-              <span class="lp-badge lp-badge-green">✓ 30-min disbursal</span>
-              <span class="lp-badge lp-badge-blue">No CIBIL check</span>
-            </div>
+            <div class="lp-badge-row"><span class="lp-badge lp-badge-rate">⭐ from 7.00% p.a.</span><span class="lp-badge lp-badge-green">✓ 30-min disbursal</span><span class="lp-badge lp-badge-blue">No CIBIL check</span></div>
             <h3 class="lp-hero-title">Gold Loan —<br/><em>Fast cash, zero paperwork.</em></h3>
             <p class="lp-hero-sub">Lowest interest of all unsecured-equivalent options. No income proof needed. No CIBIL check. Perfect for immediate cash needs — medical, agriculture, emergency. Muthoot and Manappuram quote per-gram — we convert to annual % to compare.</p>
             <div class="lp-stat-row">
@@ -967,24 +909,17 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
             </div>
           </div>
           <div class="lp-warn">⚠ <strong>Trap:</strong> NBFCs advertise "₹3,500 per gram" which sounds simple, but this can translate to 9–13% annual rate. Always ask for the Annualised Percentage Rate (APR). We compute this comparison for you.</div>
-          <div class="lp-cta-row">
-            <a href="book.html?dept=loan&type=gold" class="lp-cta-primary">Get My Gold Loan Rate →</a>
-            <a href="#calculator" class="lp-cta-secondary">📊 Calculate EMI</a>
-          </div>
+          <div class="lp-cta-row"><a href="book.html?dept=loan&type=gold" class="lp-cta-primary">Get My Gold Loan Rate →</a><a href="#calculator" class="lp-cta-secondary">📊 Calculate EMI</a></div>
         </div>
       </div>
 
-      <!-- ── LOAN AGAINST PROPERTY ── -->
+      <!-- LOAN AGAINST PROPERTY -->
       <div class="loan-panel lp-grid" id="tab-lap">
         <div class="lp-hero">
           <div class="lp-hero-img"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=900&q=80" alt="Loan Against Property" loading="lazy"/></div>
           <div class="lp-hero-overlay"></div>
           <div class="lp-hero-content">
-            <div class="lp-badge-row">
-              <span class="lp-badge lp-badge-rate">⭐ from 9.00% p.a.</span>
-              <span class="lp-badge lp-badge-green">✓ Up to ₹5 Crore</span>
-              <span class="lp-badge lp-badge-blue">Keep using property</span>
-            </div>
+            <div class="lp-badge-row"><span class="lp-badge lp-badge-rate">⭐ from 9.00% p.a.</span><span class="lp-badge lp-badge-green">✓ Up to ₹5 Crore</span><span class="lp-badge lp-badge-blue">Keep using property</span></div>
             <h3 class="lp-hero-title">Loan Against Property —<br/><em>Unlock your asset's value.</em></h3>
             <p class="lp-hero-sub">Business expansion, debt consolidation, large medical expenses. Mortgage your owned property while continuing to use it. Much lower rate than personal loans for the same purpose.</p>
             <div class="lp-stat-row">
@@ -1024,24 +959,17 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
             </div>
           </div>
           <div class="lp-warn">⚠ <strong>Valuation variance:</strong> Two banks can value the same property at ₹45L and ₹62L. The higher valuation means larger loan eligibility. We identify which lenders value your specific property type favourably.</div>
-          <div class="lp-cta-row">
-            <a href="book.html?dept=loan&type=lap" class="lp-cta-primary">Get My LAP Rate →</a>
-            <a href="#calculator" class="lp-cta-secondary">📊 Calculate EMI</a>
-          </div>
+          <div class="lp-cta-row"><a href="book.html?dept=loan&type=lap" class="lp-cta-primary">Get My LAP Rate →</a><a href="#calculator" class="lp-cta-secondary">📊 Calculate EMI</a></div>
         </div>
       </div>
 
-      <!-- ── TWO-WHEELER LOAN ── -->
+      <!-- TWO-WHEELER LOAN -->
       <div class="loan-panel lp-grid" id="tab-bike">
         <div class="lp-hero">
           <div class="lp-hero-img"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=900&q=80" alt="Two Wheeler Loan" loading="lazy"/></div>
           <div class="lp-hero-overlay"></div>
           <div class="lp-hero-content">
-            <div class="lp-badge-row">
-              <span class="lp-badge lp-badge-rate">⭐ from 9.70% p.a.</span>
-              <span class="lp-badge lp-badge-green">✓ Same day disbursal</span>
-              <span class="lp-badge lp-badge-blue">New &amp; pre-owned</span>
-            </div>
+            <div class="lp-badge-row"><span class="lp-badge lp-badge-rate">⭐ from 9.70% p.a.</span><span class="lp-badge lp-badge-green">✓ Same day disbursal</span><span class="lp-badge lp-badge-blue">New &amp; pre-owned</span></div>
             <h3 class="lp-hero-title">Two-Wheeler Loan —<br/><em>Ride your own road.</em></h3>
             <p class="lp-hero-sub">Hero, Honda, TVS, Bajaj, Royal Enfield — any brand, any showroom in AP and Telangana. Electric two-wheelers also financed. Showroom finance is convenient but almost always 2–3% higher rate.</p>
             <div class="lp-stat-row">
@@ -1082,10 +1010,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
             </div>
           </div>
           <div class="lp-warn">⚠ <strong>The showroom rush:</strong> Excitement at the showroom is real — but the finance desk is working on commission and monthly targets. Even a 5-minute call to us before signing changes the deal entirely.</div>
-          <div class="lp-cta-row">
-            <a href="book.html?dept=loan&type=bike" class="lp-cta-primary">Get My Two-Wheeler Loan Rate →</a>
-            <a href="#calculator" class="lp-cta-secondary">📊 Calculate EMI</a>
-          </div>
+          <div class="lp-cta-row"><a href="book.html?dept=loan&type=bike" class="lp-cta-primary">Get My Two-Wheeler Loan Rate →</a><a href="#calculator" class="lp-cta-secondary">📊 Calculate EMI</a></div>
         </div>
       </div>
 
@@ -1106,43 +1031,19 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
     <div class="secrets-grid rv d2">
       <div class="secret-card">
         <div class="sc-img"><img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=600&q=75" alt="Hidden bank charges" loading="lazy"/></div>
-        <div class="sc-content">
-          <div class="sc-num">01</div>
-          <div class="sc-icon">🎭</div>
-          <div class="sc-title">"Flat Rate 12%" is actually ~22% in real terms</div>
-          <div class="sc-body">Banks advertise a <strong>flat interest rate</strong> — but you're paying back the principal every month. The actual <strong>effective annual rate is nearly double</strong> the flat rate quoted. A "12% flat" personal loan is really ~21–23% reducing balance. We calculate the true cost for every offer we show you.</div>
-          <div class="sc-callout">Ask: "Is this flat rate or reducing balance rate?" — most agents won't tell you unless you ask.</div>
-        </div>
+        <div class="sc-content"><div class="sc-num">01</div><div class="sc-icon">🎭</div><div class="sc-title">"Flat Rate 12%" is actually ~22% in real terms</div><div class="sc-body">Banks advertise a <strong>flat interest rate</strong> — but you're paying back the principal every month. The actual <strong>effective annual rate is nearly double</strong> the flat rate quoted. A "12% flat" personal loan is really ~21–23% reducing balance. We calculate the true cost for every offer we show you.</div><div class="sc-callout">Ask: "Is this flat rate or reducing balance rate?" — most agents won't tell you unless you ask.</div></div>
       </div>
       <div class="secret-card">
         <div class="sc-img"><img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=600&q=75" alt="Bank paperwork hidden fees" loading="lazy"/></div>
-        <div class="sc-content">
-          <div class="sc-num">02</div>
-          <div class="sc-icon">📦</div>
-          <div class="sc-title">"Zero Processing Fee" still has ₹30,000–₹80,000 in charges</div>
-          <div class="sc-body">Waived processing fee is the bait. Hidden costs: <strong>loan insurance premium</strong> added to principal, <strong>legal and technical charges</strong>, <strong>MODT stamp duty</strong>, CERSAI charges, franking, and GST on all fees. On a ₹50L home loan, the real upfront cost is often ₹75,000–₹1.2 lakh. We give you the full cost sheet before you decide.</div>
-          <div class="sc-callout">Always ask for a complete "schedule of charges" document — not just the sanction letter.</div>
-        </div>
+        <div class="sc-content"><div class="sc-num">02</div><div class="sc-icon">📦</div><div class="sc-title">"Zero Processing Fee" still has ₹30,000–₹80,000 in charges</div><div class="sc-body">Waived processing fee is the bait. Hidden costs: <strong>loan insurance premium</strong> added to principal, <strong>legal and technical charges</strong>, <strong>MODT stamp duty</strong>, CERSAI charges, franking, and GST on all fees. On a ₹50L home loan, the real upfront cost is often ₹75,000–₹1.2 lakh. We give you the full cost sheet before you decide.</div><div class="sc-callout">Always ask for a complete "schedule of charges" document — not just the sanction letter.</div></div>
       </div>
       <div class="secret-card">
         <div class="sc-img"><img src="https://images.unsplash.com/photo-1568667256549-094345857637?auto=format&fit=crop&w=600&q=75" alt="Loan contract fine print" loading="lazy"/></div>
-        <div class="sc-content">
-          <div class="sc-num">03</div>
-          <div class="sc-icon">🔒</div>
-          <div class="sc-title">Pre-payment penalties can cost ₹50,000+ — buried in Page 18</div>
-          <div class="sc-body">Planning to pre-pay your home loan early? <strong>Many PSU banks allow this free — private banks and NBFCs often charge 2–3% on the amount you prepay.</strong> If you prepay ₹10 lakh mid-tenure, that's ₹20,000–₹30,000 instantly gone. We check the prepayment clause for every lender we recommend.</div>
-          <div class="sc-callout">RBI mandates zero prepayment charges on floating rate home loans from scheduled banks.</div>
-        </div>
+        <div class="sc-content"><div class="sc-num">03</div><div class="sc-icon">🔒</div><div class="sc-title">Pre-payment penalties can cost ₹50,000+ — buried in Page 18</div><div class="sc-body">Planning to pre-pay your home loan early? <strong>Many PSU banks allow this free — private banks and NBFCs often charge 2–3% on the amount you prepay.</strong> If you prepay ₹10 lakh mid-tenure, that's ₹20,000–₹30,000 instantly gone. We check the prepayment clause for every lender we recommend.</div><div class="sc-callout">RBI mandates zero prepayment charges on floating rate home loans from scheduled banks.</div></div>
       </div>
       <div class="secret-card">
         <div class="sc-img"><img src="https://images.unsplash.com/photo-1541354329998-f4d9a9f9297f?auto=format&fit=crop&w=600&q=75" alt="Compare loan rates" loading="lazy"/></div>
-        <div class="sc-content">
-          <div class="sc-num">04</div>
-          <div class="sc-icon">🏛️</div>
-          <div class="sc-title">Your salary account bank almost never gives you the best rate</div>
-          <div class="sc-body">Every banker works on disbursement targets. <strong>The bank where your salary comes in has zero incentive to price-compete for your business — they already have you.</strong> We've seen the same profile get 9.8% from their own bank and 8.4% from a competing lender. That 1.4% on ₹50L over 20 years = <strong>₹7.8 lakh extra interest.</strong></div>
-          <div class="sc-callout">₹7,80,000 saved by one family last year — just by comparing instead of walking into their own bank.</div>
-        </div>
+        <div class="sc-content"><div class="sc-num">04</div><div class="sc-icon">🏛️</div><div class="sc-title">Your salary account bank almost never gives you the best rate</div><div class="sc-body">Every banker works on disbursement targets. <strong>The bank where your salary comes in has zero incentive to price-compete for your business — they already have you.</strong> We've seen the same profile get 9.8% from their own bank and 8.4% from a competing lender. That 1.4% on ₹50L over 20 years = <strong>₹7.8 lakh extra interest.</strong></div><div class="sc-callout">₹7,80,000 saved by one family last year — just by comparing instead of walking into their own bank.</div></div>
       </div>
     </div>
   </div>
@@ -1285,9 +1186,25 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
         <div class="ft-con">✉️ <a href="mailto:Covercredit.official@gmail.com">Covercredit.official@gmail.com</a></div>
         <div class="ft-con">🕐 Mon–Sat: 9 AM – 7 PM</div>
       </div>
-      <div class="ft-col"><div class="ft-clbl">Vehicle Insurance</div><ul><li><a href="bike-insurance.html">Bike Insurance</a></li><li><a href="car-insurance.html">Car Insurance</a></li><li><a href="commercial-vehicle-insurance.html">Commercial Vehicle</a></li></ul></div>
-      <div class="ft-col"><div class="ft-clbl">Products</div><ul><li><a href="health-insurance.html">Health Insurance</a></li><li><a href="life-insurance.html">Life &amp; Term Insurance</a></li><li><a href="loans.html">Loans &amp; Finance</a></li></ul></div>
-      <div class="ft-col"><div class="ft-clbl">Company</div><ul><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="book.html?dept=loan">Book Consultation</a></li></ul></div>
+      <div class="ft-col"><div class="ft-clbl">Vehicle Insurance</div><ul>
+        <li><a href="bike-insurance.html">Bike Insurance</a></li>
+        <li><a href="car-insurance.html">Car Insurance</a></li>
+        <li><a href="commercial-vehicle-insurance.html">Commercial Vehicle</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-clbl">Insurance &amp; Finance</div><ul>
+        <li><a href="health-insurance.html">Health Insurance</a></li>
+        <li><a href="life-insurance.html">Life &amp; Term Insurance</a></li>
+        <li><a href="loans.html">Loans &amp; Finance</a></li>
+        <li><a href="tax-services.html">Tax &amp; Compliance</a></li>
+      </ul></div>
+      <div class="ft-col"><div class="ft-clbl">Company</div><ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="book.html?dept=loan">Book Consultation</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+      </ul></div>
     </div>
     <div class="ft-bot">
       <span>© <span id="yr"></span> Cover Credit Insurance Advisors. All rights reserved.</span>
@@ -1300,14 +1217,23 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
      SCRIPTS
 ═══════════════════════════════════════════════════ -->
 <script>
-/* ── TICKER ── */
+/* ══ TICKER — canonical all partners ══ */
 (function(){
-  var partners=['SBI','HDFC Bank','ICICI Bank','Axis Bank','Kotak Mahindra','PNB Housing','LIC HFL','Bajaj Finserv','IDFC First','IndusInd Bank','Tata Capital','Muthoot Finance'];
-  var track=document.getElementById('tkTrack');
-  if(!track)return;
-  var html='';
-  for(var p=0;p<2;p++){partners.forEach(function(name){html+='<div class="tk-item"><span class="tk-name">'+name+'</span></div>';});}
-  track.innerHTML=html;
+  var PARTNERS=[
+    {cat:'life',name:'LIC of India'},{cat:'life',name:'HDFC Life'},{cat:'life',name:'ICICI Prudential'},
+    {cat:'life',name:'Tata AIA'},{cat:'life',name:'Max Life'},{cat:'life',name:'SBI Life'},
+    {cat:'life',name:'Bajaj Allianz'},{cat:'life',name:'Aditya Birla'},{cat:'life',name:'India First'},
+    {cat:'health',name:'Star Health'},{cat:'health',name:'Niva Bupa'},{cat:'health',name:'HDFC ERGO'},
+    {cat:'health',name:'ICICI Lombard'},{cat:'health',name:'Care Health'},{cat:'health',name:'Tata AIG'},{cat:'health',name:'Chola MS'},
+    {cat:'motor',name:'ICICI Lombard'},{cat:'motor',name:'HDFC ERGO'},{cat:'motor',name:'Bajaj Allianz'},
+    {cat:'motor',name:'Tata AIG'},{cat:'motor',name:'Reliance General'},{cat:'motor',name:'Royal Sundaram'},{cat:'motor',name:'New India Assurance'},
+  ];
+  var CAT={life:{label:'🛡 Life',cls:'ct-pill--life'},health:{label:'🏥 Health',cls:'ct-pill--health'},motor:{label:'🚗 Motor',cls:'ct-pill--motor'}};
+  function makePill(cat){var d=document.createElement('div');d.className='ct-pill '+CAT[cat].cls;var s=document.createElement('span');s.textContent=CAT[cat].label;d.appendChild(s);return d;}
+  function makeItem(p){var d=document.createElement('div');d.className='ct-item';var n=document.createElement('span');n.className='ct-item-name';n.textContent=p.name;d.appendChild(n);return d;}
+  function buildSet(){var f=document.createDocumentFragment(),last=null;PARTNERS.forEach(function(p){if(p.cat!==last){f.appendChild(makePill(p.cat));last=p.cat;}f.appendChild(makeItem(p));});return f;}
+  var track=document.getElementById('ct-track');
+  if(track){track.appendChild(buildSet());track.appendChild(buildSet());}
 })();
 
 /* ── CURSOR ── */
@@ -1320,11 +1246,15 @@ document.querySelectorAll('a,button,.loan-tab,.fi,.secret-card').forEach(functio
   el.addEventListener('mouseleave',function(){document.body.classList.remove('hov');});
 });
 
-/* ── NAV ── */
+/* ── NAV SCROLL ── */
 var nav=document.getElementById('nav');
 window.addEventListener('scroll',function(){nav.classList.toggle('sc',window.scrollY>40);},{passive:true});
+
+/* ── MOBILE MENU ── */
 var burger=document.getElementById('burger'),mob=document.getElementById('mob');
 burger.addEventListener('click',function(){burger.classList.toggle('op');mob.classList.toggle('op');document.body.style.overflow=mob.classList.contains('op')?'hidden':'';});
+mob.querySelectorAll('a').forEach(function(link){link.addEventListener('click',function(){burger.classList.remove('op');mob.classList.remove('op');document.body.style.overflow='';});});
+document.addEventListener('click',function(e){if(mob.classList.contains('op')&&!mob.contains(e.target)&&!burger.contains(e.target)){burger.classList.remove('op');mob.classList.remove('op');document.body.style.overflow='';}});
 
 /* ── YEAR ── */
 document.getElementById('yr').textContent=new Date().getFullYear();
@@ -1361,25 +1291,16 @@ var cel=document.getElementById('counterLoans');if(cel)counterObs.observe(cel);
   var tabs=document.querySelectorAll('.loan-tab');
   var panels=document.querySelectorAll('.loan-panel');
   if(!tabs.length)return;
-
   function activateTab(tabEl){
     var target=tabEl.dataset.tab;
-    // Deactivate all
     tabs.forEach(function(t){t.classList.remove('active');});
     panels.forEach(function(p){p.classList.remove('active');});
-    // Activate selected
     tabEl.classList.add('active');
     var panel=document.getElementById('tab-'+target);
     if(panel){panel.classList.add('active');}
-    // Scroll tab into view on mobile
     tabEl.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
   }
-
-  tabs.forEach(function(tab){
-    tab.addEventListener('click',function(){activateTab(tab);});
-  });
-
-  // Check URL hash for direct loan type linking
+  tabs.forEach(function(tab){tab.addEventListener('click',function(){activateTab(tab);});});
   var hash=window.location.hash;
   if(hash&&hash.startsWith('#loan-')){
     var loanType=hash.replace('#loan-','');
@@ -1412,7 +1333,6 @@ var intPctEl=document.getElementById('intPctDisplay');
 var rateDEl=document.getElementById('rateDisplay');
 var tenDEl=document.getElementById('tenureDisplay');
 var savingsEl=document.getElementById('savingsMsg');
-
 function fmtINR(n){return '₹'+Math.round(n).toLocaleString('en-IN');}
 function calcEMI(){
   var amt=parseFloat(amtR.value)*100000;
@@ -1424,13 +1344,11 @@ function calcEMI(){
   var totalPay=emi*n;
   var totalInt=totalPay-amt;
   var intPct=(totalInt/amt)*100;
-  // Savings estimate (0.8% rate saving)
   var savedRate=rateAnn+0.8;
   var savedR=savedRate/(12*100);
   var savedEMI=savedR===0?amt/n:(amt*savedR*Math.pow(1+savedR,n))/(Math.pow(1+savedR,n)-1);
   var savedTotal=savedEMI*n;
   var saving=Math.max(0,savedTotal-totalPay);
-
   emiEl.textContent=fmtINR(emi);
   prinEl.textContent=fmtINR(amt);
   intEl.textContent=fmtINR(totalInt);
@@ -1438,9 +1356,7 @@ function calcEMI(){
   intPctEl.textContent=intPct.toFixed(1)+'%';
   rateDEl.textContent=rateAnn.toFixed(2);
   tenDEl.textContent=yrs;
-  if(savingsEl&&saving>10000){
-    savingsEl.textContent='On this loan, we typically save you '+fmtINR(saving*0.5)+'–'+fmtINR(saving)+' vs walk-in rates.';
-  }
+  if(savingsEl&&saving>10000){savingsEl.textContent='On this loan, we typically save you '+fmtINR(saving*0.5)+'–'+fmtINR(saving)+' vs walk-in rates.';}
 }
 function updateLabels(){
   var amt=parseFloat(amtR.value);
