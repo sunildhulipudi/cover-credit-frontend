@@ -456,7 +456,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
   <div class="ct-label">
     <span class="ct-label-brand">Cover<em>Credit</em></span>
     <span class="ct-label-divider"></span>
-    <span class="ct-label-text">Our Partners</span>
+    <span class="ct-label-text">Life Insurance Partners</span>
   </div>
   <div class="ct-track-wrap">
     <div class="ct-track" id="ct-track"></div>
@@ -1290,23 +1290,22 @@ document.addEventListener('click',e=>{if(mob.classList.contains('op')&&!mob.cont
 const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}});},{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
 
-/* ══ TICKER — canonical all partners ══ */
+/* ══ TICKER — life insurance partners only ══ */
 (function(){
-  var PARTNERS=[
-    {cat:'life',name:'LIC of India'},{cat:'life',name:'HDFC Life'},{cat:'life',name:'ICICI Prudential'},
-    {cat:'life',name:'Tata AIA'},{cat:'life',name:'Max Life'},{cat:'life',name:'SBI Life'},
-    {cat:'life',name:'Bajaj Allianz'},{cat:'life',name:'Aditya Birla'},{cat:'life',name:'India First'},
-    {cat:'health',name:'Star Health'},{cat:'health',name:'Niva Bupa'},{cat:'health',name:'HDFC ERGO'},
-    {cat:'health',name:'ICICI Lombard'},{cat:'health',name:'Care Health'},{cat:'health',name:'Tata AIG'},{cat:'health',name:'Chola MS'},
-    {cat:'motor',name:'ICICI Lombard'},{cat:'motor',name:'HDFC ERGO'},{cat:'motor',name:'Bajaj Allianz'},
-    {cat:'motor',name:'Tata AIG'},{cat:'motor',name:'Reliance General'},{cat:'motor',name:'Royal Sundaram'},{cat:'motor',name:'New India Assurance'},
-  ];
-  var CAT={life:{label:'🛡 Life',cls:'ct-pill--life'},health:{label:'🏥 Health',cls:'ct-pill--health'},motor:{label:'🚗 Motor',cls:'ct-pill--motor'}};
-  function makePill(cat){var d=document.createElement('div');d.className='ct-pill '+CAT[cat].cls;var s=document.createElement('span');s.textContent=CAT[cat].label;d.appendChild(s);return d;}
-  function makeItem(p){var d=document.createElement('div');d.className='ct-item';var n=document.createElement('span');n.className='ct-item-name';n.textContent=p.name;d.appendChild(n);return d;}
-  function buildSet(){var f=document.createDocumentFragment(),last=null;PARTNERS.forEach(function(p){if(p.cat!==last){f.appendChild(makePill(p.cat));last=p.cat;}f.appendChild(makeItem(p));});return f;}
+  var PARTNERS=['LIC of India','HDFC Life','ICICI Prudential Life','Tata AIA Life','Max Life Insurance','SBI Life Insurance','Bajaj Allianz Life','Aditya Birla Sun Life','India First Life','Kotak Life Insurance','PNB MetLife','Canara HSBC Life','Edelweiss Life','Reliance Nippon Life'];
   var track=document.getElementById('ct-track');
-  if(track){track.appendChild(buildSet());track.appendChild(buildSet());}
+  if(!track)return;
+  function buildSet(){
+    var f=document.createDocumentFragment();
+    PARTNERS.forEach(function(name){
+      var d=document.createElement('div');d.className='ct-item';
+      var n=document.createElement('span');n.className='ct-item-name';n.textContent=name;
+      d.appendChild(n);f.appendChild(d);
+    });
+    return f;
+  }
+  track.appendChild(buildSet());
+  track.appendChild(buildSet());
 })();
 
 /* ── HERO SLIDESHOW ── */
