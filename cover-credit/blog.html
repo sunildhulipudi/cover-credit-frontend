@@ -46,11 +46,9 @@
    "description":"Honest insurance and financial advice for families across AP and Telangana.",
    "areaServed":["Hyderabad","Vijayawada","Visakhapatnam","Guntur","Warangal","Andhra Pradesh","Telangana"],
    "openingHours":"Mo-Sa 09:00-19:00","priceRange":"Free Consultation"}</script>
-  <!-- ═══ END DYNAMIC SEO ═══ -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <!-- Added Lora for premium reading body font -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;600&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet"/>
 
   <style>
@@ -61,9 +59,9 @@
       --ac:#1976d2;  --ac2:#42a5f5; --ac3:#90caf9;
       --gold:#f5a623; --gold2:#ffd54f;
       --line:rgba(255,255,255,.07); --fog:rgba(255,255,255,.04);
+      --ticker-h:44px;
       --nh:72px; --E:cubic-bezier(.16,1,.3,1);
       --card-r:14px;
-      /* Reading modal palette */
       --rd-bg:#fffef9; --rd-body:#2a2a2a; --rd-head:#0d0d0d;
       --rd-muted:#888; --rd-border:#eeebe4; --rd-blue:#1565c0;
       --rd-gold:#e8882a;
@@ -73,6 +71,37 @@
     body{font-family:'DM Sans',system-ui,sans-serif;background:var(--ink);color:#fff;overflow-x:hidden;cursor:none;}
     a{text-decoration:none;color:inherit;}
     button{font-family:inherit;cursor:none;}
+
+    /* ══ TICKER — canonical ══ */
+    .company-ticker{position:fixed;top:0;left:0;right:0;z-index:1100;height:var(--ticker-h);background:#020c1f;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:stretch;overflow:hidden;}
+    .company-ticker::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;z-index:10;background:linear-gradient(90deg,transparent,rgba(230,168,23,0) 15%,rgba(230,168,23,0.8) 40%,#f5c842 50%,rgba(230,168,23,0.8) 60%,rgba(230,168,23,0) 85%,transparent);background-size:200% 100%;animation:ctShimmer 4s linear infinite;}
+    @keyframes ctShimmer{from{background-position:-100% 0}to{background-position:200% 0}}
+    .company-ticker::after{content:'';position:absolute;top:0;bottom:0;right:0;width:80px;z-index:5;pointer-events:none;background:linear-gradient(to left,#020c1f 30%,transparent);}
+    .ct-label{flex-shrink:0;display:flex;align-items:center;gap:8px;padding:0 18px 0 20px;position:relative;z-index:6;background:linear-gradient(90deg,#020c1f 80%,transparent);border-right:1px solid rgba(255,255,255,0.07);}
+    .ct-label-brand{font-family:'Playfair Display',serif;font-size:.78rem;font-weight:700;color:#fff;white-space:nowrap;}
+    .ct-label-brand em{font-style:normal;color:var(--gold);}
+    .ct-label-divider{width:1px;height:13px;background:rgba(255,255,255,0.12);}
+    .ct-label-text{font-size:.58rem;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:rgba(255,255,255,0.28);white-space:nowrap;}
+    .ct-badge{flex-shrink:0;display:flex;align-items:center;gap:6px;padding:0 16px;position:relative;z-index:6;background:linear-gradient(270deg,#020c1f 70%,transparent);border-left:1px solid rgba(255,255,255,0.07);}
+    .ct-badge-dot{width:5px;height:5px;border-radius:50%;background:#22c55e;box-shadow:0 0 6px #22c55e;animation:ctBlink 2s ease-in-out infinite;}
+    @keyframes ctBlink{0%,100%{opacity:1}50%{opacity:.35}}
+    .ct-badge-text{font-size:.52rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.28);white-space:nowrap;}
+    .ct-track-wrap{flex:1;overflow:hidden;position:relative;}
+    .ct-track-wrap::before{content:'';position:absolute;top:0;bottom:0;left:0;width:40px;z-index:2;background:linear-gradient(to right,#020c1f 20%,transparent);}
+    .ct-track-wrap::after{content:'';position:absolute;top:0;bottom:0;right:0;width:40px;z-index:2;pointer-events:none;background:linear-gradient(to left,#020c1f 20%,transparent);}
+    .ct-track{display:inline-flex;align-items:center;height:var(--ticker-h);white-space:nowrap;animation:ctScroll 55s linear infinite;will-change:transform;}
+    .company-ticker:hover .ct-track{animation-play-state:paused;}
+    @keyframes ctScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .ct-pill{display:inline-flex;align-items:center;padding:0 16px;flex-shrink:0;}
+    .ct-pill span{font-size:.52rem;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;padding:2px 9px;border-radius:100px;white-space:nowrap;}
+    .ct-pill--life span{background:rgba(21,101,192,.15);color:#93c5fd;border:1px solid rgba(96,165,250,.25);}
+    .ct-pill--health span{background:rgba(239,68,68,.13);color:#fca5a5;border:1px solid rgba(248,113,113,.25);}
+    .ct-pill--motor span{background:rgba(230,168,23,.13);color:#fcd34d;border:1px solid rgba(245,200,66,.25);}
+    .ct-item{display:inline-flex;align-items:center;padding:0 22px;flex-shrink:0;position:relative;cursor:default;}
+    .ct-item::after{content:'';position:absolute;right:0;top:25%;bottom:25%;width:1px;background:rgba(255,255,255,0.06);}
+    .ct-item-name{font-size:.7rem;font-weight:600;color:rgba(255,255,255,0.42);white-space:nowrap;transition:color 0.2s;}
+    .company-ticker:hover .ct-item:hover .ct-item-name{color:rgba(255,255,255,0.9);}
+    @media(max-width:580px){.ct-label,.ct-badge{display:none;}}
 
     /* ── CURSOR ── */
     #cur,#cr{position:fixed;top:0;left:0;pointer-events:none;border-radius:50%;z-index:9999;transform:translate(-50%,-50%);}
@@ -91,17 +120,27 @@
       background-image:linear-gradient(rgba(255,255,255,.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.015) 1px,transparent 1px);
       background-size:55px 55px;mask-image:radial-gradient(ellipse 80% 80% at 50% 40%,#000,transparent);}
 
-    /* ── NAV ── */
-    .nav{position:fixed;top:0;left:0;right:0;z-index:900;height:var(--nh);padding:0 5%;transition:background .4s;}
+    /* ── NAV — below ticker ── */
+    .nav{position:fixed;top:var(--ticker-h);left:0;right:0;z-index:900;height:var(--nh);padding:0 5%;transition:background .4s;}
     .nav.sc{background:rgba(6,16,31,.97);backdrop-filter:blur(24px);box-shadow:0 1px 0 var(--line);}
     .nav__inner{max-width:1300px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;}
     .nav__logo{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:700;}
     .nav__logo span{color:var(--gold);}
-    .nav__links{display:flex;align-items:center;gap:1.8rem;list-style:none;}
-    .nav__links a{font-size:.85rem;font-weight:500;color:rgba(255,255,255,.65);transition:color .2s;position:relative;}
+    .nav__links{display:flex;align-items:center;gap:1.6rem;list-style:none;}
+    .nav__links a{font-size:.84rem;font-weight:500;color:rgba(255,255,255,.65);transition:color .2s;position:relative;}
     .nav__links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--gold);transition:width .28s;}
     .nav__links a:hover,.nav__links a.active{color:#fff;}
     .nav__links a:hover::after,.nav__links a.active::after{width:100%;}
+    /* Vehicle dropdown */
+    .nav__dd{position:relative;}
+    .nav__ddt{font-size:.84rem;font-weight:500;color:rgba(255,255,255,.65);cursor:none;display:flex;align-items:center;gap:.26rem;transition:color .2s;}
+    .nav__dd:hover .nav__ddt{color:#fff;}
+    .nav__dda{font-size:.54rem;transition:transform .3s;}
+    .nav__dd:hover .nav__dda{transform:rotate(180deg);}
+    .nav__ddm{position:absolute;top:calc(100% + 14px);left:50%;transform:translateX(-50%) translateY(6px);background:var(--i2);border:1px solid var(--line);border-radius:12px;padding:.4rem;min-width:190px;opacity:0;visibility:hidden;transition:opacity .2s,transform .28s var(--E),visibility .2s;box-shadow:0 24px 60px rgba(0,0,0,.5);}
+    .nav__dd:hover .nav__ddm{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
+    .nav__ddm a{display:block;padding:.5rem .82rem;font-size:.8rem;color:rgba(255,255,255,.62);border-radius:8px;transition:background .18s,color .18s;}
+    .nav__ddm a:hover{background:rgba(255,255,255,.07);color:#fff;}
     .nav__cta{background:var(--gold)!important;color:#06101f!important;padding:.46rem 1.12rem!important;border-radius:100px;font-weight:700!important;font-size:.8rem!important;}
     .nav__cta::after{display:none!important;}
     .nav__hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:4px;}
@@ -109,12 +148,15 @@
     .nav__hamburger.op span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
     .nav__hamburger.op span:nth-child(2){opacity:0;}
     .nav__hamburger.op span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
-    .mobile-nav{position:fixed;inset:0;z-index:899;background:var(--ink);display:flex;flex-direction:column;padding:calc(var(--nh) + 1.8rem) 5% 3rem;transform:translateX(100%);transition:transform .38s var(--E);}
-    .mobile-nav.op{transform:translateX(0);}
-    .mobile-nav a{padding:.9rem 0;font-size:1rem;font-weight:500;color:rgba(255,255,255,.72);border-bottom:1px solid var(--line);}
-    .mobile-nav__cta{margin-top:1.8rem;background:var(--gold);color:#06101f!important;text-align:center;border-radius:12px;padding:.9rem!important;font-weight:700!important;border:none!important;}
 
-    /* ── FAB — always on top including when modal open ── */
+    /* ── MOBILE MENU — canonical ── */
+    .mobile-nav{position:fixed;inset:0;z-index:899;background:var(--ink);display:flex;flex-direction:column;padding:calc(var(--ticker-h) + var(--nh) + 1.5rem) 5% 3rem;transform:translateX(100%);transition:transform .38s var(--E);overflow-y:auto;}
+    .mobile-nav.op{transform:translateX(0);}
+    .mobile-nav a{padding:.85rem 0;font-size:1rem;font-weight:500;color:rgba(255,255,255,.72);border-bottom:1px solid var(--line);display:block;}
+    .mobile-nav a:hover{color:var(--gold);}
+    .mobile-nav__cta{margin-top:1.6rem;background:var(--gold);color:#06101f!important;text-align:center;border-radius:12px;padding:.9rem!important;font-weight:700!important;border:none!important;}
+
+    /* ── FAB ── */
     .fab{position:fixed;bottom:1.8rem;right:1.8rem;z-index:1100;display:flex;flex-direction:column;gap:.65rem;align-items:flex-end;}
     .fab a{display:flex;align-items:center;gap:.48rem;padding:.65rem 1rem;border-radius:100px;font-size:.76rem;font-weight:600;cursor:pointer;transition:transform .18s;}
     .fab a:hover{transform:translateY(-2px);}
@@ -124,8 +166,8 @@
     /* ── PAGE WRAPPER ── */
     .page{position:relative;z-index:2;}
 
-    /* ── HERO ── */
-    .hero{padding:calc(var(--nh) + 5rem) 5% 3.5rem;max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:end;}
+    /* ── HERO — offset for ticker ── */
+    .hero{padding:calc(var(--ticker-h) + var(--nh) + 5rem) 5% 3.5rem;max-width:1300px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:end;}
     .hero-eyebrow{display:inline-flex;align-items:center;gap:.55rem;background:rgba(25,118,210,.1);border:1px solid rgba(25,118,210,.28);color:#90caf9;font-size:.65rem;font-weight:700;padding:.3rem .9rem;border-radius:100px;text-transform:uppercase;letter-spacing:1px;margin-bottom:1.1rem;animation:fadeUp .8s var(--E) .2s both;}
     .badge-dot{width:6px;height:6px;background:#42a5f5;border-radius:50%;animation:pulseDot 2s ease-in-out infinite;}
     .hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5vw,4.8rem);font-weight:900;line-height:1.0;letter-spacing:-2px;margin-bottom:1rem;animation:fadeUp .9s var(--E) .35s both;}
@@ -149,8 +191,8 @@
     .fc-read-btn{font-size:.72rem;font-weight:700;color:var(--ac2);display:flex;align-items:center;gap:.3rem;transition:gap .2s;}
     .fc-read-btn:hover{gap:.55rem;}
 
-    /* ── FILTER BAR ── */
-    .filter-bar{position:sticky;top:var(--nh);z-index:100;background:rgba(6,16,31,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--line);border-top:1px solid var(--line);}
+    /* ── FILTER BAR — sticky below ticker + nav ── */
+    .filter-bar{position:sticky;top:calc(var(--ticker-h) + var(--nh));z-index:100;background:rgba(6,16,31,.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--line);border-top:1px solid var(--line);}
     .filter-inner{max-width:1300px;margin:0 auto;padding:.85rem 5%;display:flex;align-items:center;gap:1rem;flex-wrap:nowrap;overflow-x:auto;}
     .filter-inner::-webkit-scrollbar{height:0;}
     .cat-tabs{display:flex;gap:.4rem;flex-shrink:0;}
@@ -237,173 +279,62 @@
     .cta-btn-outline{background:none;border:1.5px solid rgba(255,255,255,.15);color:rgba(255,255,255,.65);padding:.78rem 1.8rem;border-radius:100px;font-weight:600;font-size:.88rem;cursor:pointer;transition:all .2s;}
     .cta-btn-outline:hover{border-color:rgba(255,255,255,.3);color:#fff;}
 
-    /* ══════════════════════════════════════════════════════
-       ARTICLE POPUP — PREMIUM LIGHT READING MODAL
-    ══════════════════════════════════════════════════════ */
-    .post-overlay{
-      display:none;position:fixed;inset:0;z-index:1000;
-      background:rgba(4,10,20,.85);
-      backdrop-filter:blur(18px) saturate(180%);
-      -webkit-backdrop-filter:blur(18px) saturate(180%);
-      align-items:flex-start;justify-content:center;
-      padding:1.5rem 1rem 4rem;
-      overflow-y:auto;
-    }
+    /* ══ ARTICLE POPUP ══ */
+    .post-overlay{display:none;position:fixed;inset:0;z-index:1000;background:rgba(4,10,20,.85);backdrop-filter:blur(18px) saturate(180%);-webkit-backdrop-filter:blur(18px) saturate(180%);align-items:flex-start;justify-content:center;padding:1.5rem 1rem 4rem;overflow-y:auto;}
     .post-overlay.show{display:flex;}
-
-    .post-modal{
-      background:var(--rd-bg);
-      border-radius:20px;
-      width:100%;max-width:760px;
-      overflow:hidden;
-      box-shadow:0 2px 4px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.08),0 32px 64px rgba(0,0,0,.14),0 80px 140px rgba(0,0,0,.18);
-      animation:modalIn .45s var(--E) both;
-      margin:auto;
-      position:relative;
-    }
+    .post-modal{background:var(--rd-bg);border-radius:20px;width:100%;max-width:760px;overflow:hidden;box-shadow:0 2px 4px rgba(0,0,0,.04),0 8px 24px rgba(0,0,0,.08),0 32px 64px rgba(0,0,0,.14),0 80px 140px rgba(0,0,0,.18);animation:modalIn .45s var(--E) both;margin:auto;position:relative;}
     @keyframes modalIn{from{opacity:0;transform:scale(.96) translateY(28px);}to{opacity:1;transform:scale(1) translateY(0);}}
-
-    /* ── READING PROGRESS BAR ── */
-    .reading-progress{
-      position:sticky;top:0;left:0;right:0;z-index:50;
-      height:3px;background:rgba(0,0,0,.08);overflow:hidden;
-    }
-    .reading-progress-fill{
-      height:100%;width:0%;
-      background:linear-gradient(90deg,var(--rd-blue),var(--rd-gold));
-      border-radius:0 100px 100px 0;
-      transition:width .08s linear;
-    }
-
-    /* ── CLOSE ── */
-    .post-close-btn{
-      position:absolute;top:1rem;right:1rem;z-index:60;
-      width:34px;height:34px;border-radius:50%;
-      background:rgba(0,0,0,.12);border:none;cursor:pointer;
-      display:flex;align-items:center;justify-content:center;
-      color:#555;font-size:.95rem;transition:all .18s;
-    }
+    .reading-progress{position:sticky;top:0;left:0;right:0;z-index:50;height:3px;background:rgba(0,0,0,.08);overflow:hidden;}
+    .reading-progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--rd-blue),var(--rd-gold));border-radius:0 100px 100px 0;transition:width .08s linear;}
+    .post-close-btn{position:absolute;top:1rem;right:1rem;z-index:60;width:34px;height:34px;border-radius:50%;background:rgba(0,0,0,.12);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#555;font-size:.95rem;transition:all .18s;}
     .post-close-btn:hover{background:rgba(220,38,38,.12);color:#dc2626;}
-
-    /* ── COVER ── */
     .post-cover{height:320px;position:relative;overflow:hidden;background:linear-gradient(135deg,#0a1e38,#1565c0);}
     .post-cover img.post-cover-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.88) saturate(1.08);}
     .post-cover-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:5rem;opacity:.4;}
     .post-cover-overlay{position:absolute;inset:0;background:linear-gradient(0deg,rgba(4,10,20,.8) 0%,rgba(4,10,20,.1) 45%,transparent 100%);}
     .post-cover-bottom{position:absolute;bottom:0;left:0;right:0;padding:1.6rem 2.2rem 1.4rem;}
     .post-cover-cat{display:inline-flex;align-items:center;gap:.35rem;background:rgba(21,101,192,.92);color:#fff;padding:.25rem .85rem;border-radius:100px;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;backdrop-filter:blur(8px);}
-
-    /* ── POST BODY ── */
     .post-body{padding:2rem 2.6rem 2.8rem;background:var(--rd-bg);}
-
-    /* ── META ROW ── */
     .post-meta-row{display:flex;align-items:center;gap:1rem;margin-bottom:1.1rem;flex-wrap:wrap;}
     .post-meta-item{font-size:.72rem;color:var(--rd-muted);display:flex;align-items:center;gap:.3rem;font-family:'DM Sans',sans-serif;}
     .meta-sep{width:3px;height:3px;background:#ccc;border-radius:50%;flex-shrink:0;}
-
-    /* ── TITLE ── */
     .post-title{font-family:'Playfair Display',serif;font-size:clamp(1.55rem,3.2vw,2.1rem);font-weight:900;line-height:1.18;letter-spacing:-.5px;color:var(--rd-head);margin-bottom:1rem;}
-
-    /* ── EXCERPT ── */
     .post-excerpt-block{font-family:'Lora',serif;font-size:1.02rem;font-style:italic;color:#555;line-height:1.75;border-left:3px solid var(--rd-blue);padding-left:1.1rem;margin-bottom:1.6rem;}
-
-    /* ── TAGS ── */
     .post-tags{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.5rem;}
     .post-tag{padding:.22rem .75rem;border-radius:100px;background:#f0f0f0;color:#555;font-size:.68rem;font-weight:600;cursor:pointer;transition:all .18s;font-family:'DM Sans',sans-serif;border:1px solid transparent;}
     .post-tag:hover{background:#e0eaff;color:var(--rd-blue);border-color:#c5d8f8;}
-
-    /* ── EXPIRY BANNER ── */
     .post-expiry-banner{background:rgba(239,83,80,.08);border:1px solid rgba(239,83,80,.2);border-radius:8px;padding:.7rem 1rem;margin-bottom:1.4rem;font-size:.8rem;color:#c0392b;display:flex;align-items:center;gap:.5rem;font-family:'DM Sans',sans-serif;}
     .post-expiry-banner.warn{background:rgba(245,166,35,.08);border-color:rgba(245,166,35,.25);color:#b7791f;}
-
-    /* ── TOC ── */
     .post-toc{background:#f4f1ea;border:1px solid #e8dfc8;border-radius:12px;padding:1rem 1.2rem;margin-bottom:1.8rem;font-family:'DM Sans',sans-serif;}
     .post-toc-title{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#888;margin-bottom:.65rem;display:flex;align-items:center;justify-content:space-between;cursor:pointer;}
     .post-toc-list{list-style:none;display:flex;flex-direction:column;gap:.3rem;}
     .post-toc-list a{font-size:.82rem;color:var(--rd-blue);text-decoration:none;display:flex;align-items:center;gap:.5rem;transition:color .15s,gap .15s;}
     .post-toc-list a::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--rd-blue);flex-shrink:0;opacity:.5;}
     .post-toc-list a:hover{color:#0d47a1;gap:.65rem;}
-
-    /* ══════════════════════════════════════════════════════
-       POST CONTENT — THE HEART OF THE READING EXPERIENCE
-    ══════════════════════════════════════════════════════ */
-    .post-content{
-      font-family:'Lora',serif;
-      font-size:1.04rem;
-      color:var(--rd-body);
-      line-height:1.95;
-      max-width:660px;
-    }
-
-    /* Nuclear override — beats any pasted inline styles */
+    .post-content{font-family:'Lora',serif;font-size:1.04rem;color:var(--rd-body);line-height:1.95;max-width:660px;}
     .post-content *{color:inherit !important;background:transparent !important;font-family:inherit !important;}
-
-    /* Headings */
     .post-content h1{font-family:'Playfair Display',serif !important;font-size:clamp(1.4rem,2.5vw,1.8rem);color:var(--rd-head) !important;margin:2.2rem 0 .85rem;font-weight:900;line-height:1.25;letter-spacing:-.4px;}
     .post-content h2{font-family:'Playfair Display',serif !important;font-size:1.38rem;color:var(--rd-head) !important;margin:2.4rem 0 .8rem;font-weight:700;line-height:1.25;padding-bottom:.5rem;border-bottom:2px solid #f0ede6;}
     .post-content h3{font-family:'Playfair Display',serif !important;font-size:1.12rem;color:#1a1a1a !important;margin:1.8rem 0 .55rem;font-weight:700;}
     .post-content h4{font-family:'DM Sans',sans-serif !important;font-size:.9rem;color:#333 !important;margin:1.4rem 0 .4rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;}
-
-    /* Paragraphs */
     .post-content p{margin-bottom:1.25rem;color:var(--rd-body) !important;}
     .post-content > p:first-of-type{font-size:1.07rem;}
-
-    /* Bold & Italic */
     .post-content strong,.post-content b{color:var(--rd-head) !important;font-weight:600;}
     .post-content em,.post-content i{color:var(--rd-blue) !important;font-style:italic;}
-
-    /* Links */
     .post-content a{color:var(--rd-blue) !important;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(21,101,192,.3);transition:text-decoration-color .2s;}
     .post-content a:hover{color:#0d47a1 !important;text-decoration-color:var(--rd-blue);}
-
-    /* Lists */
     .post-content ul,.post-content ol{padding-left:1.6rem;margin-bottom:1.25rem;}
     .post-content li{margin-bottom:.6rem;color:var(--rd-body) !important;line-height:1.75;}
     .post-content ul li::marker{color:var(--rd-blue);}
     .post-content ol li::marker{color:var(--rd-blue);font-weight:600;}
-
-    /* Blockquote — premium editorial style */
-    .post-content blockquote{
-      position:relative;
-      margin:2rem 0;
-      padding:1.3rem 1.5rem 1.3rem 1.9rem;
-      background:#faf7f0;
-      border-radius:0 12px 12px 0;
-      color:#444 !important;
-      font-style:italic;
-    }
-    .post-content blockquote::before{
-      content:'"';
-      position:absolute;top:-.6rem;left:.65rem;
-      font-family:'Playfair Display',serif;font-size:5rem;line-height:1;
-      color:#e8dfc8;pointer-events:none;
-    }
-    .post-content blockquote::after{
-      content:'';position:absolute;left:0;top:10px;bottom:10px;
-      width:4px;background:linear-gradient(180deg,var(--rd-gold),#c8620a);
-      border-radius:0 4px 4px 0;
-    }
+    .post-content blockquote{position:relative;margin:2rem 0;padding:1.3rem 1.5rem 1.3rem 1.9rem;background:#faf7f0;border-radius:0 12px 12px 0;color:#444 !important;font-style:italic;}
+    .post-content blockquote::before{content:'"';position:absolute;top:-.6rem;left:.65rem;font-family:'Playfair Display',serif;font-size:5rem;line-height:1;color:#e8dfc8;pointer-events:none;}
+    .post-content blockquote::after{content:'';position:absolute;left:0;top:10px;bottom:10px;width:4px;background:linear-gradient(180deg,var(--rd-gold),#c8620a);border-radius:0 4px 4px 0;}
     .post-content blockquote *{color:#444 !important;}
     .post-content blockquote strong{color:#222 !important;}
-
-    /* Blockquote WhatsApp share button */
-    .bq-share-btn{
-      display:inline-flex;align-items:center;gap:.3rem;
-      margin-top:.75rem;padding:.3rem .75rem;border-radius:100px;
-      background:rgba(37,211,102,.1);color:#16a34a;border:1px solid rgba(37,211,102,.25);
-      font-size:.68rem;font-weight:600;cursor:pointer;transition:all .18s;
-      font-family:'DM Sans',sans-serif;font-style:normal;
-    }
+    .bq-share-btn{display:inline-flex;align-items:center;gap:.3rem;margin-top:.75rem;padding:.3rem .75rem;border-radius:100px;background:rgba(37,211,102,.1);color:#16a34a;border:1px solid rgba(37,211,102,.25);font-size:.68rem;font-weight:600;cursor:pointer;transition:all .18s;font-family:'DM Sans',sans-serif;font-style:normal;}
     .bq-share-btn:hover{background:rgba(37,211,102,.18);}
-
-    /* Tables */
-    .post-content table{
-      width:100%;border-collapse:separate;border-spacing:0;
-      margin:2rem 0;font-family:'DM Sans',sans-serif !important;font-size:.87rem;
-      border-radius:12px;overflow:hidden;
-      box-shadow:0 1px 4px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.06);
-      border:1px solid #e8e8e8;
-    }
+    .post-content table{width:100%;border-collapse:separate;border-spacing:0;margin:2rem 0;font-family:'DM Sans',sans-serif !important;font-size:.87rem;border-radius:12px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06),0 4px 16px rgba(0,0,0,.06);border:1px solid #e8e8e8;}
     .post-content table thead{background:linear-gradient(135deg,#1565c0,#1976d2);}
     .post-content table th{padding:.78rem 1.1rem;text-align:left;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#fff !important;white-space:nowrap;}
     .post-content table td{padding:.72rem 1.1rem;border-top:1px solid #f0f0f0;color:#333 !important;vertical-align:top;line-height:1.55;}
@@ -411,40 +342,22 @@
     .post-content table tr:nth-child(even) td{background:#fafbff !important;}
     .post-content table tr:hover td{background:#f0f5ff !important;}
     .post-content table td:first-child{font-weight:600;color:#1a1a1a !important;}
-
-    /* HR */
     .post-content hr{border:none;height:1px;background:linear-gradient(90deg,transparent,#ddd 20%,#ddd 80%,transparent);margin:2.5rem 0;}
-
-    /* Code */
     .post-content code{background:#f0f0f0 !important;color:#c7254e !important;padding:.1rem .4rem;border-radius:4px;font-family:monospace !important;font-size:.88em;}
-
-    /* ── MID-ARTICLE CTA ── */
-    .mid-article-cta{
-      display:flex;align-items:center;gap:1rem;
-      background:linear-gradient(135deg,#f0f5ff,#e8f0fe);
-      border:1px solid #c5d8f8;border-radius:14px;
-      padding:1.1rem 1.4rem;margin:2.2rem 0;
-      text-decoration:none;transition:transform .18s,box-shadow .18s;
-    }
+    .mid-article-cta{display:flex;align-items:center;gap:1rem;background:linear-gradient(135deg,#f0f5ff,#e8f0fe);border:1px solid #c5d8f8;border-radius:14px;padding:1.1rem 1.4rem;margin:2.2rem 0;text-decoration:none;transition:transform .18s,box-shadow .18s;}
     .mid-article-cta:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(21,101,192,.15);}
     .mid-cta-icon{font-size:1.7rem;flex-shrink:0;}
     .mid-cta-body strong{display:block;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;color:var(--rd-blue);margin-bottom:.15rem;}
     .mid-cta-body span{font-family:'DM Sans',sans-serif;font-size:.76rem;color:#666;font-style:normal;}
     .mid-cta-arrow{margin-left:auto;font-size:1rem;color:var(--rd-blue);flex-shrink:0;transition:transform .18s;}
     .mid-article-cta:hover .mid-cta-arrow{transform:translateX(4px);}
-
-    /* ── DIVIDER ── */
     .post-divider{height:1px;background:linear-gradient(90deg,transparent,var(--rd-border) 20%,var(--rd-border) 80%,transparent);margin:2.4rem 0 2rem;}
-
-    /* ── AUTHOR CARD ── */
     .post-author-card{display:flex;align-items:center;gap:1.2rem;padding:1.3rem;background:#f8f5ef;border-radius:14px;margin-bottom:1.6rem;flex-wrap:wrap;}
     .post-author-av{width:50px;height:50px;border-radius:50%;background:linear-gradient(135deg,var(--rd-blue),#42a5f5);display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;color:#fff;flex-shrink:0;border:2px solid #fff;box-shadow:0 2px 8px rgba(21,101,192,.2);}
     .post-author-info strong{display:block;font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:700;color:var(--rd-head);margin-bottom:.2rem;}
     .post-author-info p{font-family:'DM Sans',sans-serif;font-size:.76rem;color:#666;line-height:1.5;}
     .post-author-wa{margin-left:auto;background:#25d366;color:#fff;border:none;padding:.5rem 1rem;border-radius:100px;font-size:.74rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:.4rem;transition:transform .18s;font-family:'DM Sans',sans-serif;text-decoration:none;flex-shrink:0;}
     .post-author-wa:hover{transform:translateY(-1px);}
-
-    /* ── ACTION BUTTONS ── */
     .post-action-btns{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:2rem;align-items:center;}
     .post-share-btn{display:flex;align-items:center;gap:.4rem;padding:.52rem 1.1rem;border-radius:100px;background:#fff;border:1px solid #e0e0e0;color:#555;font-size:.76rem;font-weight:600;cursor:pointer;transition:all .18s;font-family:'DM Sans',sans-serif;}
     .post-share-btn:hover{background:#f5f5f5;border-color:#ccc;color:#222;}
@@ -453,8 +366,6 @@
     .post-wa-share:hover{background:#1db954;}
     .post-cta-btn{margin-left:auto;padding:.52rem 1.4rem;border-radius:100px;background:var(--gold);border:none;color:#06101f;font-size:.78rem;font-weight:700;cursor:pointer;transition:transform .18s,box-shadow .18s;font-family:'DM Sans',sans-serif;}
     .post-cta-btn:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(245,166,35,.4);}
-
-    /* ── RELATED ARTICLES ── */
     .post-related{padding-top:1.6rem;border-top:1px solid var(--rd-border);}
     .post-related-title{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#aaa;margin-bottom:1rem;font-family:'DM Sans',sans-serif;}
     .related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;}
@@ -465,8 +376,6 @@
     .related-body{padding:.75rem;}
     .related-cat{font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--rd-blue);margin-bottom:.3rem;font-family:'DM Sans',sans-serif;}
     .related-card-title{font-family:'Playfair Display',serif;font-size:.8rem;font-weight:700;color:#1a1a1a;line-height:1.35;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;}
-
-    /* ── FINAL CTA BANNER ── */
     .post-final-cta{background:linear-gradient(135deg,#0d2040,#1565c0);border-radius:14px;padding:1.8rem 2rem;text-align:center;margin-top:2rem;position:relative;overflow:hidden;}
     .post-final-cta::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;background:rgba(245,166,35,.1);border-radius:50%;}
     .post-final-cta-eyebrow{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:rgba(255,255,255,.45);margin-bottom:.5rem;font-family:'DM Sans',sans-serif;}
@@ -478,16 +387,7 @@
     .post-final-cta-primary:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(245,166,35,.5);}
     .post-final-cta-wa{background:rgba(37,211,102,.15);color:#4ade80;border:1px solid rgba(37,211,102,.3);padding:.68rem 1.4rem;border-radius:100px;font-size:.82rem;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .18s;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;}
     .post-final-cta-wa:hover{background:rgba(37,211,102,.25);}
-
-    /* ── MOBILE STICKY READ BAR ── */
-    .mobile-read-bar{
-      display:none;
-      position:fixed;bottom:0;left:0;right:0;z-index:1050;
-      background:var(--rd-bg);border-top:1px solid var(--rd-border);
-      padding:.75rem 1.2rem;
-      flex-direction:row;align-items:center;gap:.75rem;
-      box-shadow:0 -4px 20px rgba(0,0,0,.1);
-    }
+    .mobile-read-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:1050;background:var(--rd-bg);border-top:1px solid var(--rd-border);padding:.75rem 1.2rem;flex-direction:row;align-items:center;gap:.75rem;box-shadow:0 -4px 20px rgba(0,0,0,.1);}
     .mobile-read-bar.show{display:flex;}
     .mobile-read-bar-text{font-family:'DM Sans',sans-serif;font-size:.8rem;color:var(--rd-body);flex:1;line-height:1.3;}
     .mobile-read-bar-text strong{display:block;font-weight:700;color:var(--rd-head);font-size:.82rem;}
@@ -534,8 +434,10 @@
       .bcard.featured .card-img{width:100%;height:220px;}
       .hero{grid-template-columns:1fr;gap:1.5rem;}
       .hero-right{display:none;}
+      .footer__top{grid-template-columns:1fr 1fr;}
     }
     @media(max-width:640px){
+      :root{--ticker-h:38px;}
       .blog-grid,.skeleton-grid{grid-template-columns:1fr;}
       .bcard.featured{grid-column:span 1;}
       .nav__links{display:none;}
@@ -563,7 +465,23 @@
 <canvas id="bg"></canvas>
 <div class="grid-ov"></div>
 
-<!-- ── FAB — z-index 1100 so always visible ── -->
+<!-- ══ TICKER — canonical ══ -->
+<div class="company-ticker" id="company-ticker" aria-hidden="true">
+  <div class="ct-label">
+    <span class="ct-label-brand">Cover<em>Credit</em></span>
+    <span class="ct-label-divider"></span>
+    <span class="ct-label-text">Our Partners</span>
+  </div>
+  <div class="ct-track-wrap">
+    <div class="ct-track" id="ct-track"></div>
+  </div>
+  <div class="ct-badge">
+    <span class="ct-badge-dot"></span>
+    <span class="ct-badge-text">IRDAI Verified</span>
+  </div>
+</div>
+
+<!-- FAB -->
 <div class="fab">
   <a href="book.html" class="fab-bk">📅 Book Free Session</a>
   <a href="https://wa.me/917842854466" target="_blank" class="fab-wa">
@@ -572,30 +490,44 @@
   </a>
 </div>
 
-<!-- NAV -->
+<!-- ══ NAV — canonical full nav ══ -->
 <nav class="nav" id="nav">
   <div class="nav__inner">
     <a href="index.html" class="nav__logo">Cover<span>Credit</span></a>
     <ul class="nav__links">
-      <li><a href="health-insurance.html">Health</a></li>
+      <li><a href="health-insurance.html">Health Insurance</a></li>
       <li><a href="life-insurance.html">Life Insurance</a></li>
-      <li><a href="car-insurance.html">Vehicle</a></li>
+      <li class="nav__dd">
+        <span class="nav__ddt">Vehicle <span class="nav__dda">▾</span></span>
+        <div class="nav__ddm">
+          <a href="bike-insurance.html">🏍️ Bike Insurance</a>
+          <a href="car-insurance.html">🚗 Car Insurance</a>
+          <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicles</a>
+        </div>
+      </li>
       <li><a href="loans.html">Loans</a></li>
+      <li><a href="tax-services.html">Tax &amp; Compliance</a></li>
       <li><a href="blog.html" class="active">Blog</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="book.html" class="nav__cta">Free Consultation</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="book.html" class="nav__cta">Book Free Consultation</a></li>
     </ul>
     <button class="nav__hamburger" id="burger"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
+<!-- ══ MOBILE MENU — canonical full list ══ -->
 <nav class="mobile-nav" id="mob">
   <a href="health-insurance.html">Health Insurance</a>
   <a href="life-insurance.html">Life Insurance</a>
-  <a href="bike-insurance.html">🏍️ Bike Insurance</a>
-  <a href="car-insurance.html">🚗 Car Insurance</a>
-  <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicle</a>
-  <a href="loans.html">Loans</a>
-  <a href="about.html">About</a>
+  <a href="bike-insurance.html">Bike Insurance</a>
+  <a href="car-insurance.html">Car Insurance</a>
+  <a href="commercial-vehicle-insurance.html">Commercial Vehicles</a>
+  <a href="loans.html">Loans &amp; Finance</a>
+  <a href="tax-services.html">Tax &amp; Compliance</a>
+  <a href="blog.html">Blog</a>
+  <a href="about.html">About Us</a>
+  <a href="contact.html">Contact Us</a>
   <a href="book.html" class="mobile-nav__cta">Book Free Consultation →</a>
 </nav>
 
@@ -669,25 +601,13 @@
 <!-- ═══ ARTICLE POPUP ═══ -->
 <div class="post-overlay" id="post-overlay" onclick="handleOverlayClick(event)">
   <div class="post-modal" id="post-modal">
-
-    <!-- Reading progress bar -->
-    <div class="reading-progress">
-      <div class="reading-progress-fill" id="reading-progress-fill"></div>
-    </div>
-
-    <!-- Close -->
+    <div class="reading-progress"><div class="reading-progress-fill" id="reading-progress-fill"></div></div>
     <button class="post-close-btn" onclick="closePost()">✕</button>
-
-    <!-- Cover -->
     <div class="post-cover" id="post-cover">
       <div class="post-cover-fallback" id="post-cover-fallback">📰</div>
       <div class="post-cover-overlay"></div>
-      <div class="post-cover-bottom">
-        <div class="post-cover-cat" id="post-cover-cat"></div>
-      </div>
+      <div class="post-cover-bottom"><div class="post-cover-cat" id="post-cover-cat"></div></div>
     </div>
-
-    <!-- Body -->
     <div class="post-body" id="post-body-el">
       <div class="post-meta-row" id="post-meta-row"></div>
       <h1 class="post-title" id="post-title"></h1>
@@ -695,17 +615,11 @@
       <div class="post-tags" id="post-tags"></div>
       <div id="post-expiry-banner"></div>
       <div class="post-toc" id="post-toc" style="display:none;">
-        <div class="post-toc-title" onclick="toggleTOC()">
-          <span>📋 In this article</span>
-          <span id="toc-toggle">▾</span>
-        </div>
+        <div class="post-toc-title" onclick="toggleTOC()"><span>📋 In this article</span><span id="toc-toggle">▾</span></div>
         <ul class="post-toc-list" id="post-toc-list"></ul>
       </div>
       <div class="post-content" id="post-content"></div>
-
       <div class="post-divider"></div>
-
-      <!-- Author card -->
       <div class="post-author-card">
         <div class="post-author-av" id="post-author-av">CC</div>
         <div class="post-author-info">
@@ -717,8 +631,6 @@
           WhatsApp us
         </a>
       </div>
-
-      <!-- Action buttons -->
       <div class="post-action-btns">
         <button class="post-share-btn" id="post-share-btn" onclick="copyLink()">🔗 Copy link</button>
         <button class="post-share-btn post-wa-share" onclick="shareWhatsApp()">
@@ -727,14 +639,10 @@
         </button>
         <a href="book.html"><button class="post-cta-btn">Book Free Call →</button></a>
       </div>
-
-      <!-- Related articles -->
       <div class="post-related" id="post-related" style="display:none;">
         <div class="post-related-title">Continue reading</div>
         <div class="related-grid" id="related-grid"></div>
       </div>
-
-      <!-- Final CTA -->
       <div class="post-final-cta">
         <div style="position:relative;z-index:1;">
           <div class="post-final-cta-eyebrow">Free consultation</div>
@@ -749,51 +657,52 @@
           </div>
         </div>
       </div>
-
-    </div><!-- /post-body-el -->
-  </div><!-- /post-modal -->
-</div><!-- /post-overlay -->
-
-<!-- Mobile sticky read bar (shows when modal is open on mobile) -->
-<div class="mobile-read-bar" id="mobile-read-bar">
-  <div class="mobile-read-bar-text">
-    <strong>Have a question?</strong>
-    Free advice in Telugu & English
+    </div>
   </div>
+</div>
+
+<div class="mobile-read-bar" id="mobile-read-bar">
+  <div class="mobile-read-bar-text"><strong>Have a question?</strong>Free advice in Telugu & English</div>
   <a class="mobile-read-bar-btn" href="https://wa.me/917842854466?text=Hi%20Cover%20Credit%2C%20I%20read%20your%20blog%20and%20have%20a%20question." target="_blank">WhatsApp us →</a>
 </div>
 
-<!-- FOOTER -->
+<!-- ══ FOOTER ══ -->
 <footer class="footer">
   <div class="footer__top">
     <div>
       <a href="index.html" class="footer__logo">Cover<span>Credit</span></a>
       <p class="footer__tagline">Honest insurance advice for families across AP and Telangana. We guide, not sell.</p>
+      <div class="footer__contact-item" style="margin-top:.8rem;">📞 <a href="tel:+917842854466">+91 78428 54466</a></div>
+      <div class="footer__contact-item">✉️ <a href="mailto:Covercredit.official@gmail.com">Covercredit.official@gmail.com</a></div>
+      <div class="footer__contact-item">🕐 Mon–Sat: 9 AM – 7 PM</div>
     </div>
     <div class="footer__col">
-      <h4>Quick Links</h4>
+      <h4>Insurance</h4>
       <ul>
         <li><a href="health-insurance.html">Health Insurance</a></li>
         <li><a href="life-insurance.html">Life Insurance</a></li>
-        <li><a href="loans.html">Loans</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="book.html">Book Consultation</a></li>
-      </ul>
-    </div>
-    <div class="footer__col">
-      <h4>Vehicle Insurance</h4>
-      <ul>
         <li><a href="bike-insurance.html">Bike Insurance</a></li>
         <li><a href="car-insurance.html">Car Insurance</a></li>
         <li><a href="commercial-vehicle-insurance.html">Commercial Vehicle</a></li>
       </ul>
     </div>
     <div class="footer__col">
-      <h4>Contact</h4>
-      <div class="footer__contact-item">📞 <a href="tel:+917842854466">+91 78428 54466</a></div>
-      <div class="footer__contact-item">✉️ <a href="/cdn-cgi/l/email-protection#82c1edf4e7f0e1f0e7e6ebf6acede4e4ebe1ebe3eec2e5efe3ebeeace1edef"><span class="__cf_email__" data-cfemail="43002c352631203126272a376d2c25252a202a222f03242e222a2f6d202c2e">[email&#160;protected]</span></a></div>
-      <div class="footer__contact-item">🕐 Mon–Sat: 9 AM – 7 PM</div>
+      <h4>Finance &amp; Tax</h4>
+      <ul>
+        <li><a href="loans.html">Loans &amp; Finance</a></li>
+        <li><a href="tax-services.html">Tax &amp; Compliance</a></li>
+      </ul>
+    </div>
+    <div class="footer__col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="book.html">Book Consultation</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+      </ul>
     </div>
   </div>
   <div class="footer__bottom">
@@ -805,7 +714,7 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<script>
 // ── CONFIG ──────────────────────────────────────────────
 const API_BASE = window.location.hostname==='localhost'||window.location.hostname==='127.0.0.1'
   ? 'http://localhost:5000/api'
@@ -832,9 +741,27 @@ let visibleCount  = 6;
 let activePost    = null;
 let tocOpen       = true;
 
+/* ══ TICKER — canonical all partners ══ */
+(function(){
+  var PARTNERS=[
+    {cat:'life',name:'LIC of India'},{cat:'life',name:'HDFC Life'},{cat:'life',name:'ICICI Prudential'},
+    {cat:'life',name:'Tata AIA'},{cat:'life',name:'Max Life'},{cat:'life',name:'SBI Life'},
+    {cat:'life',name:'Bajaj Allianz'},{cat:'life',name:'Aditya Birla'},{cat:'life',name:'India First'},
+    {cat:'health',name:'Star Health'},{cat:'health',name:'Niva Bupa'},{cat:'health',name:'HDFC ERGO'},
+    {cat:'health',name:'ICICI Lombard'},{cat:'health',name:'Care Health'},{cat:'health',name:'Tata AIG'},{cat:'health',name:'Chola MS'},
+    {cat:'motor',name:'ICICI Lombard'},{cat:'motor',name:'HDFC ERGO'},{cat:'motor',name:'Bajaj Allianz'},
+    {cat:'motor',name:'Tata AIG'},{cat:'motor',name:'Reliance General'},{cat:'motor',name:'Royal Sundaram'},{cat:'motor',name:'New India Assurance'},
+  ];
+  var CAT_T={life:{label:'🛡 Life',cls:'ct-pill--life'},health:{label:'🏥 Health',cls:'ct-pill--health'},motor:{label:'🚗 Motor',cls:'ct-pill--motor'}};
+  function makePill(cat){var d=document.createElement('div');d.className='ct-pill '+CAT_T[cat].cls;var s=document.createElement('span');s.textContent=CAT_T[cat].label;d.appendChild(s);return d;}
+  function makeItem(p){var d=document.createElement('div');d.className='ct-item';var n=document.createElement('span');n.className='ct-item-name';n.textContent=p.name;d.appendChild(n);return d;}
+  function buildSet(){var f=document.createDocumentFragment(),last=null;PARTNERS.forEach(function(p){if(p.cat!==last){f.appendChild(makePill(p.cat));last=p.cat;}f.appendChild(makeItem(p));});return f;}
+  var track=document.getElementById('ct-track');
+  if(track){track.appendChild(buildSet());track.appendChild(buildSet());}
+})();
+
 // ── INIT ─────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
-  // Pre-warm Render immediately so it's ready when user clicks a post
   fetch(`${API_BASE}/health`, { method:'GET', keepalive:true }).catch(()=>{});
   document.getElementById('yr').textContent = new Date().getFullYear();
   initCursor();
@@ -864,21 +791,11 @@ async function fetchPosts() {
   }
 }
 
-// ── SKELETON LOADING ─────────────────────────────────────
 function showSkeletons() {
   const wrap = document.getElementById('blog-grid-wrap');
   const grid = document.createElement('div');
   grid.className = 'skeleton-grid';
-  grid.innerHTML = Array(6).fill(`
-    <div class="skeleton-card">
-      <div class="skeleton-img"></div>
-      <div class="skeleton-body">
-        <div class="skeleton-line wide"></div>
-        <div class="skeleton-line wide"></div>
-        <div class="skeleton-line med"></div>
-        <div class="skeleton-line short" style="margin-top:.5rem;"></div>
-      </div>
-    </div>`).join('');
+  grid.innerHTML = Array(6).fill(`<div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-body"><div class="skeleton-line wide"></div><div class="skeleton-line wide"></div><div class="skeleton-line med"></div><div class="skeleton-line short" style="margin-top:.5rem;"></div></div></div>`).join('');
   wrap.innerHTML = '';
   wrap.appendChild(grid);
 }
@@ -887,57 +804,30 @@ function updateHeroStats() {
   document.getElementById('hstat-articles').textContent = allPosts.length;
 }
 
-// ── FEATURED MINI CARD ───────────────────────────────────
 function renderFeaturedCard() {
   const el   = document.getElementById('hero-featured');
   const post = allPosts[0];
   if (!post) { el.style.display='none'; return; }
   const cat  = CAT[post.category] || {label:post.category,icon:'📄'};
-  el.innerHTML = `
-    <div class="featured-card-mini" onclick="openPost('${esc(post.slug)}')">
-      <div class="fc-img">
-        ${post.coverImage
-          ? `<img src="${safeUrl(post.coverImage)}" alt="${esc(post.title)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/>
-             <div class="fc-img-fallback" style="display:none;">${cat.icon}</div>`
-          : `<div class="fc-img-fallback">${cat.icon}</div>`}
-      </div>
-      <div class="fc-body">
-        <div class="fc-cat">${cat.icon} ${cat.label}</div>
-        <div class="fc-title">${esc(post.title)}</div>
-        <div class="fc-meta">
-          <span>📅 ${fmtDate(post.publishedAt)}</span>
-          <span>👁 ${(post.views||0).toLocaleString()}</span>
-        </div>
-        <div class="fc-read"><div class="fc-read-btn">Read Article →</div></div>
-      </div>
-    </div>`;
+  el.innerHTML = `<div class="featured-card-mini" onclick="openPost('${esc(post.slug)}')"><div class="fc-img">${post.coverImage?`<img src="${safeUrl(post.coverImage)}" alt="${esc(post.title)}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/><div class="fc-img-fallback" style="display:none;">${cat.icon}</div>`:`<div class="fc-img-fallback">${cat.icon}</div>`}</div><div class="fc-body"><div class="fc-cat">${cat.icon} ${cat.label}</div><div class="fc-title">${esc(post.title)}</div><div class="fc-meta"><span>📅 ${fmtDate(post.publishedAt)}</span><span>👁 ${(post.views||0).toLocaleString()}</span></div><div class="fc-read"><div class="fc-read-btn">Read Article →</div></div></div></div>`;
 }
 
-// ── RENDER GRID ──────────────────────────────────────────
 function renderGrid() {
   const wrap    = document.getElementById('blog-grid-wrap');
   const visible = filteredPosts.slice(0, visibleCount);
-
-  document.getElementById('result-count').textContent =
-    filteredPosts.length===allPosts.length
-      ? `${allPosts.length} article${allPosts.length!==1?'s':''}`
-      : `${filteredPosts.length} of ${allPosts.length} articles`;
-
+  document.getElementById('result-count').textContent = filteredPosts.length===allPosts.length ? `${allPosts.length} article${allPosts.length!==1?'s':''}` : `${filteredPosts.length} of ${allPosts.length} articles`;
   if (filteredPosts.length===0) { showState('empty'); document.getElementById('load-more-wrap').style.display='none'; return; }
-
   const grid = document.createElement('div');
   grid.className = 'blog-grid';
   grid.innerHTML = visible.map((p,i) => buildCard(p,i)).join('');
   wrap.innerHTML = '';
   wrap.appendChild(grid);
-
   const lmw = document.getElementById('load-more-wrap');
   if (filteredPosts.length > visibleCount) {
     lmw.style.display = 'block';
     document.getElementById('load-more-btn').disabled    = false;
     document.getElementById('load-more-btn').textContent = `Load More Articles (${filteredPosts.length - visibleCount} more)`;
   } else { lmw.style.display='none'; }
-
   document.querySelectorAll('.bcard').forEach(el => {
     el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
     el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
@@ -950,7 +840,6 @@ function showState(type) {
   else wrap.innerHTML=`<div class="state-error"><div class="state-icon">📡</div><p>Couldn't load articles. Check your connection and try again.</p></div>`;
 }
 
-// ── BUILD CARD ───────────────────────────────────────────
 function buildCard(p, i) {
   const cat     = CAT[p.category]||{label:p.category,icon:'📄',cls:''};
   const isFeat  = i===0;
@@ -963,48 +852,14 @@ function buildCard(p, i) {
   const initials= (p.author||'CC').split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
   const words   = ((p.excerpt||'')+(p.content||'')).split(' ').length;
   const readTime= Math.max(1,Math.round(words/200+1));
-
   let expiryRibbon='';
   if (expired)       expiryRibbon=`<div class="expiry-ribbon">⚠️ Expired</div>`;
   else if (warnSoon) expiryRibbon=`<div class="expiry-ribbon warn">⏰ ${daysLeft}d left</div>`;
-
-  return `
-    <article class="bcard${isFeat?' featured':''}" style="${anim}" onclick="openPost('${esc(p.slug)}')">
-      <div class="card-img">
-        ${p.coverImage
-          ? `<img src="${safeUrl(p.coverImage)}" alt="${esc(p.title)}" loading="lazy"
-               onload="this.style.opacity='1'"
-               onerror="this.style.display='none';this.parentElement.querySelector('.card-img-fallback').style.display='flex';"
-               style="opacity:0;transition:opacity .4s;"/>
-             <div class="card-img-fallback" style="display:none;">${cat.icon}</div>`
-          : `<div class="card-img-fallback">${cat.icon}</div>`}
-        <div class="card-img-gradient"></div>
-        <div class="card-cat-badge ${cat.cls}">${cat.icon} ${cat.label}</div>
-        ${expiryRibbon}
-      </div>
-      <div class="card-body">
-        <div class="card-title">${esc(p.title)}</div>
-        <div class="card-excerpt">${esc(p.excerpt)}</div>
-        <div class="card-footer">
-          <div class="card-meta">
-            <div class="card-avatar">${initials}</div>
-            <div>
-              <div class="card-author">${esc(p.author||'Cover Credit Team')}</div>
-              <div class="card-date">${fmtDate(p.publishedAt)} · ${readTime} min read</div>
-            </div>
-          </div>
-          <div style="display:flex;align-items:center;gap:.8rem;">
-            <span class="card-stat">👁 ${(p.views||0).toLocaleString()}</span>
-            <div class="card-arrow">→</div>
-          </div>
-        </div>
-      </div>
-    </article>`;
+  return `<article class="bcard${isFeat?' featured':''}" style="${anim}" onclick="openPost('${esc(p.slug)}')"><div class="card-img">${p.coverImage?`<img src="${safeUrl(p.coverImage)}" alt="${esc(p.title)}" loading="lazy" onload="this.style.opacity='1'" onerror="this.style.display='none';this.parentElement.querySelector('.card-img-fallback').style.display='flex';" style="opacity:0;transition:opacity .4s;"/><div class="card-img-fallback" style="display:none;">${cat.icon}</div>`:`<div class="card-img-fallback">${cat.icon}</div>`}<div class="card-img-gradient"></div><div class="card-cat-badge ${cat.cls}">${cat.icon} ${cat.label}</div>${expiryRibbon}</div><div class="card-body"><div class="card-title">${esc(p.title)}</div><div class="card-excerpt">${esc(p.excerpt)}</div><div class="card-footer"><div class="card-meta"><div class="card-avatar">${initials}</div><div><div class="card-author">${esc(p.author||'Cover Credit Team')}</div><div class="card-date">${fmtDate(p.publishedAt)} · ${readTime} min read</div></div></div><div style="display:flex;align-items:center;gap:.8rem;"><span class="card-stat">👁 ${(p.views||0).toLocaleString()}</span><div class="card-arrow">→</div></div></div></div></article>`;
 }
 
 function loadMore() { visibleCount+=6; renderGrid(); }
 
-// ── FILTERS & SEARCH ─────────────────────────────────────
 function initFilters() {
   document.querySelectorAll('.cat-tab').forEach(tab => {
     tab.addEventListener('click', () => {
@@ -1028,7 +883,6 @@ function applyFilters() {
   renderGrid();
 }
 
-// ── FILTER BY TAG (from post tags) ───────────────────────
 function filterByTag(tag) {
   closePost();
   const searchInput = document.getElementById('search-input');
@@ -1037,22 +891,14 @@ function filterByTag(tag) {
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
-// ── OPEN POST ────────────────────────────────────────────
 async function openPost(slug) {
   const url = new URL(window.location);
   url.searchParams.set('post', slug);
   window.history.pushState({}, '', url);
-
   const overlay = document.getElementById('post-overlay');
   overlay.classList.add('show');
   document.body.style.overflow = 'hidden';
-
-  // Show mobile sticky bar
-  if (window.innerWidth <= 640) {
-    document.getElementById('mobile-read-bar').classList.add('show');
-  }
-
-  // Reset
+  if (window.innerWidth <= 640) document.getElementById('mobile-read-bar').classList.add('show');
   document.getElementById('post-cover-fallback').textContent = '⏳';
   document.getElementById('post-title').textContent          = 'Loading…';
   document.getElementById('post-excerpt').innerHTML          = '';
@@ -1063,7 +909,6 @@ async function openPost(slug) {
   document.getElementById('post-related').style.display     = 'none';
   document.getElementById('reading-progress-fill').style.width = '0%';
   overlay.scrollTop = 0;
-
   try {
     const r    = await fetch(`${API_BASE}/blog/${slug}`);
     const data = await r.json();
@@ -1085,13 +930,10 @@ function populatePost(p) {
   const daysLeft= exp&&!expired ? Math.ceil((exp-now)/86400000) : null;
   const wordCount = (p.content||'').replace(/<[^>]+>/g,'').split(/\s+/).length;
   const readTime  = Math.max(1, Math.round(wordCount/200));
-
-  // Cover image
   const coverDiv = document.getElementById('post-cover');
   const fb       = document.getElementById('post-cover-fallback');
   const oldImg   = coverDiv.querySelector('img.post-cover-img');
   if (oldImg) oldImg.remove();
-
   if (p.coverImage) {
     const img     = document.createElement('img');
     img.className = 'post-cover-img';
@@ -1106,91 +948,43 @@ function populatePost(p) {
     fb.style.display = 'flex';
   }
   document.getElementById('post-cover-cat').textContent = `${cat.icon} ${cat.label}`;
-
-  // Meta row
-  const updatedDate = p.updatedAt && p.updatedAt!==p.publishedAt
-    ? ` · Updated ${fmtDate(p.updatedAt)}` : '';
-  document.getElementById('post-meta-row').innerHTML = `
-    <span class="post-meta-item">📅 ${fmtDate(p.publishedAt)}${updatedDate}</span>
-    <span class="meta-sep"></span>
-    <span class="post-meta-item">⏱ ${readTime} min read</span>
-    <span class="meta-sep"></span>
-    <span class="post-meta-item">👁 ${(p.views||0).toLocaleString()} views</span>`;
-
+  const updatedDate = p.updatedAt && p.updatedAt!==p.publishedAt ? ` · Updated ${fmtDate(p.updatedAt)}` : '';
+  document.getElementById('post-meta-row').innerHTML = `<span class="post-meta-item">📅 ${fmtDate(p.publishedAt)}${updatedDate}</span><span class="meta-sep"></span><span class="post-meta-item">⏱ ${readTime} min read</span><span class="meta-sep"></span><span class="post-meta-item">👁 ${(p.views||0).toLocaleString()} views</span>`;
   document.getElementById('post-title').textContent    = p.title;
   document.getElementById('post-excerpt').textContent  = p.excerpt;
-
-  // Tags — clickable
   const tagsEl = document.getElementById('post-tags');
-  if (p.tags && p.tags.length) {
-    tagsEl.innerHTML = p.tags.slice(0,5).map(t =>
-      `<button class="post-tag" onclick="filterByTag('${esc(t)}')">${esc(t)}</button>`
-    ).join('');
-  }
-
-  // Expiry
+  if (p.tags && p.tags.length) tagsEl.innerHTML = p.tags.slice(0,5).map(t=>`<button class="post-tag" onclick="filterByTag('${esc(t)}')">${esc(t)}</button>`).join('');
   let expBanner = '';
   if (expired)                         expBanner=`<div class="post-expiry-banner">⚠️ This article has expired and may contain outdated information.</div>`;
   else if (daysLeft!==null&&daysLeft<=14) expBanner=`<div class="post-expiry-banner warn">⏰ This article expires in ${daysLeft} day${daysLeft!==1?'s':''}.</div>`;
   document.getElementById('post-expiry-banner').innerHTML = expBanner;
-
-  // Process and inject content
   const cleanHTML = sanitiseContent(p.content||'');
   const enriched  = enrichContent(cleanHTML, p);
   document.getElementById('post-content').innerHTML = enriched;
-
-  // Build TOC from H2s
   buildTOC();
-
-  // Add share buttons to blockquotes
   addBlockquoteShare(p);
-
-  // Author
   const initials = (p.author||'CC').split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
   document.getElementById('post-author-av').textContent   = initials;
   document.getElementById('post-author-name').textContent = p.author||'Cover Credit Team';
-
-  // SEO
   updateSEO(p);
-
-  // Scroll to top
   document.getElementById('post-overlay').scrollTop = 0;
 }
 
-// ── ENRICH CONTENT ───────────────────────────────────────
-// Injects mid-article CTA after 2nd H2
 function enrichContent(html, p) {
   const waMsg = encodeURIComponent(`Hi Cover Credit, I read your blog "${p.title}" and have a question.`);
-  const ctaHTML = `
-    <a class="mid-article-cta" href="${WA_BASE}?text=${waMsg}" target="_blank">
-      <div class="mid-cta-icon">💬</div>
-      <div class="mid-cta-body">
-        <strong>Have a question about this topic?</strong>
-        <span>Chat with our advisor — free, no obligation, Telugu &amp; English</span>
-      </div>
-      <div class="mid-cta-arrow">→</div>
-    </a>`;
-
-  // Insert after 2nd h2
+  const ctaHTML = `<a class="mid-article-cta" href="${WA_BASE}?text=${waMsg}" target="_blank"><div class="mid-cta-icon">💬</div><div class="mid-cta-body"><strong>Have a question about this topic?</strong><span>Chat with our advisor — free, no obligation, Telugu &amp; English</span></div><div class="mid-cta-arrow">→</div></a>`;
   let count = 0;
-  return html.replace(/<h2[^>]*>/gi, match => {
-    count++;
-    if (count===2) return ctaHTML + match;
-    return match;
-  });
+  return html.replace(/<h2[^>]*>/gi, match => { count++; if (count===2) return ctaHTML + match; return match; });
 }
 
-// ── BUILD TABLE OF CONTENTS ──────────────────────────────
 function buildTOC() {
   const content = document.getElementById('post-content');
   const h2s     = content.querySelectorAll('h2');
-  if (h2s.length < 3) return; // Only show TOC for longer articles
-
+  if (h2s.length < 3) return;
   const tocList = document.getElementById('post-toc-list');
   tocList.innerHTML = '';
   h2s.forEach((h2, i) => {
-    const id = `section-${i}`;
-    h2.id    = id;
+    const id = `section-${i}`; h2.id = id;
     const li = document.createElement('li');
     li.innerHTML = `<a href="#${id}" onclick="scrollToSection('${id}');return false;">${h2.textContent}</a>`;
     tocList.appendChild(li);
@@ -1199,7 +993,7 @@ function buildTOC() {
 }
 
 function scrollToSection(id) {
-  const el      = document.getElementById(id);
+  const el = document.getElementById(id);
   const overlay = document.getElementById('post-overlay');
   if (el) overlay.scrollTo({top: el.offsetTop - 80, behavior:'smooth'});
 }
@@ -1210,7 +1004,6 @@ function toggleTOC() {
   document.getElementById('toc-toggle').textContent      = tocOpen ? '▾' : '▸';
 }
 
-// ── ADD SHARE BUTTONS TO BLOCKQUOTES ────────────────────
 function addBlockquoteShare(p) {
   const quotes = document.getElementById('post-content').querySelectorAll('blockquote');
   const postUrl = `${SITE}/blog?post=${p.slug}`;
@@ -1220,67 +1013,38 @@ function addBlockquoteShare(p) {
     const btn     = document.createElement('button');
     btn.className = 'bq-share-btn';
     btn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Share this story`;
-    btn.onclick = () => {
-      fetch(`${API_BASE}/health`, { method:'GET' }).catch(()=>{});
-      setTimeout(() => window.open(`https://wa.me/?text=${waText}`, '_blank'), 800);
-    };
+    btn.onclick = () => { fetch(`${API_BASE}/health`,{method:'GET'}).catch(()=>{}); setTimeout(()=>window.open(`https://wa.me/?text=${waText}`,'_blank'),800); };
     bq.appendChild(btn);
   });
 }
 
-// ── LOAD RELATED POSTS ───────────────────────────────────
 function loadRelatedPosts(category, currentId) {
-  const related = allPosts
-    .filter(p => p.category===category && p._id!==currentId)
-    .slice(0, 3);
-
+  const related = allPosts.filter(p => p.category===category && p._id!==currentId).slice(0, 3);
   if (related.length < 2) return;
-
-  const cat     = CAT[category]||{label:category,icon:'📄'};
-  const relEl   = document.getElementById('post-related');
-  const gridEl  = document.getElementById('related-grid');
-
-  gridEl.innerHTML = related.map(p => `
-    <div class="related-card" onclick="openPost('${esc(p.slug)}')">
-      <div class="related-img">
-        ${p.coverImage
-          ? `<img src="${safeUrl(p.coverImage)}" alt="${esc(p.title)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';"/>`
-          : ''}
-      </div>
-      <div class="related-body">
-        <div class="related-cat">${cat.icon} ${cat.label}</div>
-        <div class="related-card-title">${esc(p.title)}</div>
-      </div>
-    </div>`).join('');
-
+  const cat    = CAT[category]||{label:category,icon:'📄'};
+  const relEl  = document.getElementById('post-related');
+  const gridEl = document.getElementById('related-grid');
+  gridEl.innerHTML = related.map(p => `<div class="related-card" onclick="openPost('${esc(p.slug)}')"><div class="related-img">${p.coverImage?`<img src="${safeUrl(p.coverImage)}" alt="${esc(p.title)}" loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';"/>`:''}</div><div class="related-body"><div class="related-cat">${cat.icon} ${cat.label}</div><div class="related-card-title">${esc(p.title)}</div></div></div>`).join('');
   relEl.style.display = 'block';
 }
 
-// ── SANITISE CONTENT ─────────────────────────────────────
 function sanitiseContent(html) {
   html = html.replace(/<script[\s\S]*?<\/script>/gi, '');
   html = html.replace(/\s+on\w+="[^"]*"/gi, '');
   html = html.replace(/\s+on\w+='[^']*'/gi, '');
-  // Strip inline colour & background styles from pasted content
   html = html.replace(/\sstyle="([^"]*)"/gi, (match, styles) => {
-    const cleaned = styles
-      .replace(/color\s*:[^;]+;?/gi, '')
-      .replace(/background(-color)?\s*:[^;]+;?/gi, '')
-      .replace(/font-family\s*:[^;]+;?/gi, '')
-      .trim();
+    const cleaned = styles.replace(/color\s*:[^;]+;?/gi,'').replace(/background(-color)?\s*:[^;]+;?/gi,'').replace(/font-family\s*:[^;]+;?/gi,'').trim();
     return cleaned ? ` style="${cleaned}"` : '';
   });
   return html;
 }
 
-// ── READING PROGRESS ─────────────────────────────────────
 document.getElementById('post-overlay').addEventListener('scroll', function() {
   const fill = document.getElementById('reading-progress-fill');
   const max  = this.scrollHeight - this.clientHeight;
   if (max > 0) fill.style.width = Math.min(100,(this.scrollTop/max)*100)+'%';
 }, {passive:true});
 
-// ── CLOSE POST ───────────────────────────────────────────
 function closePost() {
   document.getElementById('post-overlay').classList.remove('show');
   document.getElementById('mobile-read-bar').classList.remove('show');
@@ -1296,42 +1060,31 @@ function handleOverlayClick(e) {
   if (e.target===document.getElementById('post-overlay')) closePost();
 }
 
-// ── SHARE FUNCTIONS ──────────────────────────────────────
 function copyLink() {
   if (!activePost) return;
   const url = `${SITE}/blog?post=${activePost.slug}`;
   navigator.clipboard.writeText(url).then(() => {
     const btn = document.getElementById('post-share-btn');
-    btn.textContent = '✓ Copied!';
-    btn.classList.add('copied');
+    btn.textContent = '✓ Copied!'; btn.classList.add('copied');
     setTimeout(()=>{ btn.innerHTML='🔗 Copy link'; btn.classList.remove('copied'); }, 2500);
   }).catch(()=>{ prompt('Copy this link:', url); });
 }
 
 function shareWhatsApp() {
   if (!activePost) return;
-  const slug = activePost.slug;
-  const title = activePost.title;
-  // Use /og/:slug as the shared URL — backend serves correct OG tags per post
-  // so WhatsApp shows the right cover image, title, and description
+  const slug = activePost.slug; const title = activePost.title;
   const shareUrl = `https://covercredit.in/og/${slug}`;
   const msg = encodeURIComponent(`I read this on CoverCredit and thought you'd find it useful:\n\n"${title}"\n\n${shareUrl}`);
-  // wa.me/?text= (NO phone number) = opens share PICKER so user picks who to send to
-  // Ping backend first so Render is awake when WhatsApp's crawler hits it
-  fetch(`${API_BASE}/health`, { method:'GET' }).catch(()=>{});
-  setTimeout(() => {
-    window.open(`https://wa.me/?text=${msg}`, '_blank');
-  }, 800);
+  fetch(`${API_BASE}/health`,{method:'GET'}).catch(()=>{});
+  setTimeout(()=>window.open(`https://wa.me/?text=${msg}`,'_blank'),800);
 }
 
-// ── SEO ──────────────────────────────────────────────────
 function updateSEO(p) {
   const postUrl  = `${SITE}/blog?post=${p.slug}`;
   const imgUrl   = p.coverImage || `${SITE}/og-banner.png`;
   const desc     = (p.excerpt||'').substring(0,155);
   const cat      = CAT[p.category]||{label:p.category};
   const readTime = Math.max(1,Math.round((p.content||'').split(' ').length/200));
-
   document.getElementById('page-title').textContent = `${p.title} — Cover Credit`;
   document.getElementById('seo-desc').setAttribute('content', desc);
   document.getElementById('seo-canonical').setAttribute('href', postUrl);
@@ -1343,33 +1096,13 @@ function updateSEO(p) {
   document.getElementById('tw-title').setAttribute('content', p.title+' — Cover Credit');
   document.getElementById('tw-desc').setAttribute('content', desc);
   document.getElementById('tw-image').setAttribute('content', imgUrl);
-
-  const schema = {
-    "@context":"https://schema.org","@type":"Article",
-    "headline":p.title,"description":desc,"image":imgUrl,"url":postUrl,
-    "datePublished":p.publishedAt||new Date().toISOString(),
-    "dateModified":p.updatedAt||p.publishedAt||new Date().toISOString(),
-    "author":{"@type":"Person","name":p.author||"Cover Credit Team","url":SITE},
-    "publisher":{"@type":"Organization","name":"Cover Credit Insurance Advisors","url":SITE,
-      "logo":{"@type":"ImageObject","url":`${SITE}/favicon-192x192.png`}},
-    "mainEntityOfPage":{"@type":"WebPage","@id":postUrl},
-    "keywords":(p.tags||[]).join(', '),
-    "articleSection":cat.label,"inLanguage":"en-IN",
-    "timeRequired":`PT${readTime}M`
-  };
+  const schema = {"@context":"https://schema.org","@type":"Article","headline":p.title,"description":desc,"image":imgUrl,"url":postUrl,"datePublished":p.publishedAt||new Date().toISOString(),"dateModified":p.updatedAt||p.publishedAt||new Date().toISOString(),"author":{"@type":"Person","name":p.author||"Cover Credit Team","url":SITE},"publisher":{"@type":"Organization","name":"Cover Credit Insurance Advisors","url":SITE,"logo":{"@type":"ImageObject","url":`${SITE}/favicon-192x192.png`}},"mainEntityOfPage":{"@type":"WebPage","@id":postUrl},"keywords":(p.tags||[]).join(', '),"articleSection":cat.label,"inLanguage":"en-IN","timeRequired":`PT${readTime}M`};
   document.getElementById('schema-article').textContent = JSON.stringify(schema);
-
   const faqPairs = extractFAQ(p.content||'');
   if (faqPairs.length > 0) {
     let schemaEl = document.getElementById('schema-faq');
     if (!schemaEl) { schemaEl=document.createElement('script'); schemaEl.id='schema-faq'; schemaEl.type='application/ld+json'; document.head.appendChild(schemaEl); }
-    schemaEl.textContent = JSON.stringify({
-      "@context":"https://schema.org","@type":"FAQPage",
-      "mainEntity":faqPairs.map(({q,a})=>({
-        "@type":"Question","name":q,
-        "acceptedAnswer":{"@type":"Answer","text":a}
-      }))
-    });
+    schemaEl.textContent = JSON.stringify({"@context":"https://schema.org","@type":"FAQPage","mainEntity":faqPairs.map(({q,a})=>({"@type":"Question","name":q,"acceptedAnswer":{"@type":"Answer","text":a}}))});
   }
 }
 
@@ -1386,20 +1119,17 @@ function resetSEO() {
   document.getElementById('tw-desc').setAttribute('content','Honest insurance guides for AP & Telangana families.');
   document.getElementById('tw-image').setAttribute('content',`${SITE}/og-banner.png`);
   document.getElementById('schema-article').textContent = '';
-  const faqEl = document.getElementById('schema-faq');
-  if (faqEl) faqEl.textContent='';
+  const faqEl = document.getElementById('schema-faq'); if (faqEl) faqEl.textContent='';
 }
 
 function extractFAQ(html) {
   const pairs = [];
   try {
-    const div = document.createElement('div');
-    div.innerHTML = html;
+    const div = document.createElement('div'); div.innerHTML = html;
     div.querySelectorAll('strong,b').forEach(el => {
       const q = el.textContent.trim();
       if (!q.endsWith('?')||q.length<10) return;
-      let a='';
-      let node = el.nextSibling;
+      let a=''; let node = el.nextSibling;
       if (node&&node.nodeType===3) a=node.textContent.trim();
       if (!a) { const p=el.closest('p'); if (p&&p.nextElementSibling) a=p.nextElementSibling.textContent.trim(); }
       if (a&&a.length>20) pairs.push({q,a:a.substring(0,500)});
@@ -1408,13 +1138,11 @@ function extractFAQ(html) {
   return pairs.slice(0,10);
 }
 
-// ── URL CHECK ────────────────────────────────────────────
 function checkURLForPost() {
   const slug = new URLSearchParams(window.location.search).get('post');
   if (slug) openPost(slug);
 }
 
-// ── CURSOR ───────────────────────────────────────────────
 function initCursor() {
   const cur=document.getElementById('cur'),cr=document.getElementById('cr');
   let mx=0,my=0,rx=0,ry=0;
@@ -1426,66 +1154,44 @@ function initCursor() {
   });
 }
 
-// ── NAV ──────────────────────────────────────────────────
 function initNav() {
   const nav=document.getElementById('nav');
   window.addEventListener('scroll',()=>nav.classList.toggle('sc',scrollY>40),{passive:true});
   const burger=document.getElementById('burger'),mob=document.getElementById('mob');
-  burger.addEventListener('click',()=>{
-    burger.classList.toggle('op');mob.classList.toggle('op');
-    document.body.style.overflow=mob.classList.contains('op')?'hidden':'';
-  });
+  burger.addEventListener('click',()=>{burger.classList.toggle('op');mob.classList.toggle('op');document.body.style.overflow=mob.classList.contains('op')?'hidden':'';});
+  mob.querySelectorAll('a').forEach(link=>{link.addEventListener('click',()=>{burger.classList.remove('op');mob.classList.remove('op');document.body.style.overflow='';});});
+  document.addEventListener('click',e=>{if(mob.classList.contains('op')&&!mob.contains(e.target)&&!burger.contains(e.target)){burger.classList.remove('op');mob.classList.remove('op');document.body.style.overflow='';}});
 }
 
-// ── PARTICLE CANVAS ──────────────────────────────────────
 function initCanvas() {
   const canvas=document.getElementById('bg');
   const ctx=canvas.getContext('2d');
   let W,H,particles=[];
   function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
   resize();window.addEventListener('resize',resize);
-  class Particle{
-    constructor(){this.reset();this.life=Math.random();}
-    reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.r=Math.random()*1.4+.3;this.vx=(Math.random()-.5)*.2;this.vy=(Math.random()-.5)*.2-.07;this.life=0;this.alpha=0;}
-    update(){this.x+=this.vx;this.y+=this.vy;this.life+=.004;if(this.life<.3)this.alpha=this.life/.3;else if(this.life>.7)this.alpha=1-(this.life-.7)/.3;else this.alpha=1;this.alpha*=.3;if(this.life>1||this.x<0||this.x>W||this.y<0)this.reset();}
-    draw(){ctx.globalAlpha=this.alpha;ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=`rgba(25,118,210,${this.alpha*4})`;ctx.fill();ctx.globalAlpha=1;}
-  }
+  class Particle{constructor(){this.reset();this.life=Math.random();}reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.r=Math.random()*1.4+.3;this.vx=(Math.random()-.5)*.2;this.vy=(Math.random()-.5)*.2-.07;this.life=0;this.alpha=0;}update(){this.x+=this.vx;this.y+=this.vy;this.life+=.004;if(this.life<.3)this.alpha=this.life/.3;else if(this.life>.7)this.alpha=1-(this.life-.7)/.3;else this.alpha=1;this.alpha*=.3;if(this.life>1||this.x<0||this.x>W||this.y<0)this.reset();}draw(){ctx.globalAlpha=this.alpha;ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fillStyle=`rgba(25,118,210,${this.alpha*4})`;ctx.fill();ctx.globalAlpha=1;}}
   for(let i=0;i<70;i++)particles.push(new Particle());
   (function animate(){ctx.clearRect(0,0,W,H);particles.forEach(p=>{p.update();p.draw();});requestAnimationFrame(animate);})();
 }
 
-// ── KEYBOARD ─────────────────────────────────────────────
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closePost();});
 
-// ── HELPERS ──────────────────────────────────────────────
 function fmtDate(iso){if(!iso)return'—';return new Date(iso).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});}
 function esc(str){return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
 function safeUrl(url){return String(url||'').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
 function debounce(fn,ms){let t;return(...args)=>{clearTimeout(t);t=setTimeout(()=>fn(...args),ms);};}
 
-// ── ANALYTICS TRACKER ────────────────────────────────────
+// ── ANALYTICS ──────────────────────────────────────────
 (function(){
   var PAGE_NAME='blog';
-  var BACKEND=(window.location.hostname==='localhost'||window.location.hostname==='127.0.0.1')
-    ?'http://localhost:5000/api':'https://api.covercredit.in/api';
+  var BACKEND=(window.location.hostname==='localhost'||window.location.hostname==='127.0.0.1')?'http://localhost:5000/api':'https://api.covercredit.in/api';
   var ua=navigator.userAgent.toLowerCase();
   if(/bot|crawler|spider|headless/.test(ua))return;
   var params=new URLSearchParams(window.location.search);
   var utmSrc=params.get('utm_source')||'';var utmMed=params.get('utm_medium')||'';var utmCamp=params.get('utm_campaign')||'';
   if(utmSrc){sessionStorage.setItem('cc_utm_source',utmSrc);sessionStorage.setItem('cc_utm_medium',utmMed);sessionStorage.setItem('cc_utm_campaign',utmCamp);}
   else{utmSrc=sessionStorage.getItem('cc_utm_source')||'';utmMed=sessionStorage.getItem('cc_utm_medium')||'';utmCamp=sessionStorage.getItem('cc_utm_campaign')||'';}
-  function detectFromReferrer(ref){
-    if(!ref)return'direct';
-    var r=ref.toLowerCase();
-    if(/google\.|bing\.|yahoo\.|duckduckgo\./.test(r))return'google';
-    if(/whatsapp|wa\.me|wa\.link/.test(r))return'whatsapp';
-    if(/facebook\.|fb\.com|fb\.me|l\.facebook/.test(r))return'facebook';
-    if(/instagram\./.test(r))return'instagram';
-    if(/linkedin\./.test(r))return'linkedin';
-    if(/t\.me|telegram\./.test(r))return'telegram';
-    if(/twitter\.|t\.co|x\.com/.test(r))return'twitter';
-    return'other';
-  }
+  function detectFromReferrer(ref){if(!ref)return'direct';var r=ref.toLowerCase();if(/google\.|bing\.|yahoo\.|duckduckgo\./.test(r))return'google';if(/whatsapp|wa\.me|wa\.link/.test(r))return'whatsapp';if(/facebook\.|fb\.com|fb\.me|l\.facebook/.test(r))return'facebook';if(/instagram\./.test(r))return'instagram';if(/linkedin\./.test(r))return'linkedin';if(/t\.me|telegram\./.test(r))return'telegram';if(/twitter\.|t\.co|x\.com/.test(r))return'twitter';return'other';}
   var source=utmSrc?utmSrc.toLowerCase().trim():detectFromReferrer(document.referrer);
   var key='cc_tracked_'+PAGE_NAME+'_'+source;
   if(sessionStorage.getItem(key))return;
@@ -1493,14 +1199,7 @@ function debounce(fn,ms){let t;return(...args)=>{clearTimeout(t);t=setTimeout(()
   var isMobile=/iphone|ipod|android.*mobile|blackberry|windows phone/.test(ua);
   var isTablet=/ipad|android(?!.*mobile)|tablet/.test(ua);
   var device=isTablet?'tablet':isMobile?'mobile':'desktop';
-  try{
-    fetch(BACKEND+'/track',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({page:PAGE_NAME,path:window.location.pathname,source:source,device:device,utmMedium:utmMed,utmCampaign:utmCamp,referrer:document.referrer||''}),
-      keepalive:true
-    }).catch(function(){});
-  }catch(e){}
+  try{fetch(BACKEND+'/track',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({page:PAGE_NAME,path:window.location.pathname,source:source,device:device,utmMedium:utmMed,utmCampaign:utmCamp,referrer:document.referrer||''}),keepalive:true}).catch(function(){});}catch(e){}
 })();
 </script>
 </body>
