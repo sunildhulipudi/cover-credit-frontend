@@ -2,6 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
+<!-- FAVICON -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <!-- Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-377PNCFQLN"></script>
 <script>
@@ -22,7 +27,7 @@
 <meta property="og:image:height" content="630"/>
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://covercredit.in/og-banner.png"/>
-  
+
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=Bebas+Neue&display=swap" rel="stylesheet"/>
@@ -35,6 +40,7 @@
   --green:#22c55e;
   --line:rgba(255,255,255,.07);
   --muted:rgba(255,255,255,.42);
+  --ticker-h:44px;
   --nh:70px; --ease:cubic-bezier(.16,1,.3,1);
   --max:1240px;
 }
@@ -52,8 +58,39 @@ body.h #c1{width:3px;height:3px;}
 body.h #c2{width:48px;height:48px;opacity:.15;}
 @media(max-width:768px){#c1,#c2{display:none;}}
 
-/* ─── NAV ─── */
-.nav{position:fixed;top:0;left:0;right:0;z-index:800;height:var(--nh);padding:0 5%;transition:background .35s;}
+/* ══ TICKER — canonical ══ */
+.company-ticker{position:fixed;top:0;left:0;right:0;z-index:1100;height:var(--ticker-h);background:#020c1f;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:stretch;overflow:hidden;}
+.company-ticker::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;z-index:10;background:linear-gradient(90deg,transparent,rgba(230,168,23,0) 15%,rgba(230,168,23,0.8) 40%,#f5c842 50%,rgba(230,168,23,0.8) 60%,rgba(230,168,23,0) 85%,transparent);background-size:200% 100%;animation:ctShimmer 4s linear infinite;}
+@keyframes ctShimmer{from{background-position:-100% 0}to{background-position:200% 0}}
+.company-ticker::after{content:'';position:absolute;top:0;bottom:0;right:0;width:80px;z-index:5;pointer-events:none;background:linear-gradient(to left,#020c1f 30%,transparent);}
+.ct-label{flex-shrink:0;display:flex;align-items:center;gap:8px;padding:0 18px 0 20px;position:relative;z-index:6;background:linear-gradient(90deg,#020c1f 80%,transparent);border-right:1px solid rgba(255,255,255,0.07);}
+.ct-label-brand{font-family:'Playfair Display',serif;font-size:.78rem;font-weight:700;color:#fff;white-space:nowrap;}
+.ct-label-brand em{font-style:normal;color:var(--gold);}
+.ct-label-divider{width:1px;height:13px;background:rgba(255,255,255,0.12);}
+.ct-label-text{font-size:.58rem;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:rgba(255,255,255,0.28);white-space:nowrap;}
+.ct-badge{flex-shrink:0;display:flex;align-items:center;gap:6px;padding:0 16px;position:relative;z-index:6;background:linear-gradient(270deg,#020c1f 70%,transparent);border-left:1px solid rgba(255,255,255,0.07);}
+.ct-badge-dot{width:5px;height:5px;border-radius:50%;background:#22c55e;box-shadow:0 0 6px #22c55e;animation:ctBlink 2s ease-in-out infinite;}
+@keyframes ctBlink{0%,100%{opacity:1}50%{opacity:.35}}
+.ct-badge-text{font-size:.52rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.28);white-space:nowrap;}
+.ct-track-wrap{flex:1;overflow:hidden;position:relative;}
+.ct-track-wrap::before{content:'';position:absolute;top:0;bottom:0;left:0;width:40px;z-index:2;background:linear-gradient(to right,#020c1f 20%,transparent);}
+.ct-track-wrap::after{content:'';position:absolute;top:0;bottom:0;right:0;width:40px;z-index:2;pointer-events:none;background:linear-gradient(to left,#020c1f 20%,transparent);}
+.ct-track{display:inline-flex;align-items:center;height:var(--ticker-h);white-space:nowrap;animation:ctScroll 55s linear infinite;will-change:transform;}
+.company-ticker:hover .ct-track{animation-play-state:paused;}
+@keyframes ctScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ct-pill{display:inline-flex;align-items:center;padding:0 16px;flex-shrink:0;}
+.ct-pill span{font-size:.52rem;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;padding:2px 9px;border-radius:100px;white-space:nowrap;}
+.ct-pill--life span{background:rgba(21,101,192,.15);color:#93c5fd;border:1px solid rgba(96,165,250,.25);}
+.ct-pill--health span{background:rgba(239,68,68,.13);color:#fca5a5;border:1px solid rgba(248,113,113,.25);}
+.ct-pill--motor span{background:rgba(230,168,23,.13);color:#fcd34d;border:1px solid rgba(245,200,66,.25);}
+.ct-item{display:inline-flex;align-items:center;padding:0 22px;flex-shrink:0;position:relative;cursor:default;}
+.ct-item::after{content:'';position:absolute;right:0;top:25%;bottom:25%;width:1px;background:rgba(255,255,255,0.06);}
+.ct-item-name{font-size:.7rem;font-weight:600;color:rgba(255,255,255,0.42);white-space:nowrap;transition:color 0.2s;}
+.company-ticker:hover .ct-item:hover .ct-item-name{color:rgba(255,255,255,0.9);}
+@media(max-width:580px){.ct-label,.ct-badge{display:none;}}
+
+/* ─── NAV — below ticker ─── */
+.nav{position:fixed;top:var(--ticker-h);left:0;right:0;z-index:800;height:var(--nh);padding:0 5%;transition:background .35s;}
 .nav.s{background:rgba(6,16,31,.96);backdrop-filter:blur(16px);box-shadow:0 1px 0 var(--line);}
 .ni{max-width:var(--max);margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;}
 .logo{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;}
@@ -63,7 +100,8 @@ body.h #c2{width:48px;height:48px;opacity:.15;}
 .nl a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1.5px;background:var(--gold);transition:width .22s;}
 .nl a:hover,.nl a.on{color:#fff;}.nl a:hover::after,.nl a.on::after{width:100%;}
 .nl .drop{position:relative;}
-.nl .dlab{font-size:.83rem;font-weight:500;color:rgba(255,255,255,.55);cursor:none;display:flex;align-items:center;gap:.28rem;}
+.nl .dlab{font-size:.83rem;font-weight:500;color:rgba(255,255,255,.55);cursor:none;display:flex;align-items:center;gap:.28rem;transition:color .2s;}
+.nl .drop:hover .dlab{color:#fff;}
 .nl .darr{font-size:.5rem;transition:transform .22s;}.nl .drop:hover .darr{transform:rotate(180deg);}
 .nl .dmenu{position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%) translateY(4px);background:var(--s1);border:1px solid var(--line);border-radius:10px;padding:.32rem;min-width:180px;opacity:0;visibility:hidden;transition:opacity .18s,transform .22s var(--ease),visibility .18s;box-shadow:0 18px 40px rgba(0,0,0,.5);}
 .nl .drop:hover .dmenu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);}
@@ -76,9 +114,12 @@ body.h #c2{width:48px;height:48px;opacity:.15;}
 .bur.o span:nth-child(1){transform:rotate(45deg) translate(5px,5px);}
 .bur.o span:nth-child(2){opacity:0;}
 .bur.o span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
-.mob{position:fixed;inset:0;z-index:799;background:var(--bg);display:flex;flex-direction:column;padding:calc(var(--nh)+1.6rem) 5% 2.5rem;transform:translateX(100%);transition:transform .35s var(--ease);}
+
+/* ── MOBILE MENU — canonical ── */
+.mob{position:fixed;inset:0;z-index:799;background:var(--bg);display:flex;flex-direction:column;padding:calc(var(--ticker-h) + var(--nh) + 1.5rem) 5% 2.5rem;transform:translateX(100%);transition:transform .35s var(--ease);overflow-y:auto;}
 .mob.o{transform:translateX(0);}
-.mob a{padding:.85rem 0;font-size:.95rem;font-weight:500;color:rgba(255,255,255,.65);border-bottom:1px solid var(--line);}
+.mob a{padding:.85rem 0;font-size:.95rem;font-weight:500;color:rgba(255,255,255,.65);border-bottom:1px solid var(--line);display:block;}
+.mob a:hover{color:var(--gold);}
 .mcta{margin-top:1.6rem;background:var(--gold);color:#06101f!important;text-align:center;border-radius:10px;padding:.85rem!important;font-weight:700!important;border:none!important;}
 @media(max-width:768px){.nl{display:none;}.bur{display:flex;}}
 
@@ -112,12 +153,11 @@ h2.ht i{font-style:italic;color:var(--blue2);}
 @media(max-width:1000px){.two{grid-template-columns:1fr;gap:2.5rem;}.three{grid-template-columns:1fr 1fr;}.four{grid-template-columns:1fr 1fr;}}
 @media(max-width:560px){.three{grid-template-columns:1fr;}}
 
-/* ─── HERO ─── */
+/* ─── HERO — offset for ticker ─── */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden;}
 .hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 65% 50% at 55% 0%,rgba(25,118,210,.09) 0%,transparent 65%),var(--bg);}
-/* faint dot grid */
 .hero-bg::after{content:'';position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);background-size:30px 30px;mask-image:radial-gradient(ellipse 70% 70% at 55% 40%,black,transparent);}
-.hero-in{position:relative;z-index:1;max-width:var(--max);margin:0 auto;padding:calc(var(--nh)+3.5rem) 5% 5rem;width:100%;display:grid;grid-template-columns:1.05fr 1fr;gap:5rem;align-items:center;}
+.hero-in{position:relative;z-index:1;max-width:var(--max);margin:0 auto;padding:calc(var(--ticker-h) + var(--nh) + 3.5rem) 5% 5rem;width:100%;display:grid;grid-template-columns:1.05fr 1fr;gap:5rem;align-items:center;}
 .bc{display:flex;align-items:center;gap:.38rem;font-size:.68rem;color:rgba(255,255,255,.25);margin-bottom:1.1rem;}
 .bc a{color:rgba(255,255,255,.25);transition:color .18s;}.bc a:hover{color:var(--blue2);}
 .tag{display:inline-flex;align-items:center;gap:.38rem;background:rgba(25,118,210,.1);border:1px solid rgba(25,118,210,.2);color:var(--blue3);font-size:.64rem;font-weight:700;padding:.26rem .82rem;border-radius:100px;text-transform:uppercase;letter-spacing:.4px;margin-bottom:.95rem;}
@@ -135,9 +175,6 @@ h1.ht1 i{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--g
 .bs:hover{background:rgba(255,255,255,.09);transform:translateY(-2px);}
 @media(max-width:768px){.bp,.bs{cursor:pointer;}}
 @media(max-width:900px){.hero-in{grid-template-columns:1fr;}.hero-r{display:none;}}
-
-/* ─── THE HERO SVG ANIMATION ─── */
-/* A clean 2D city street scene - car with insurance shield */
 
 /* ─── STATS ROW ─── */
 .stats{background:var(--s2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
@@ -204,7 +241,7 @@ h1.ht1 i{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--g
 .cities-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2rem;}
 .sb-title{font-size:.6rem;font-weight:700;color:rgba(255,255,255,.2);text-transform:uppercase;letter-spacing:2px;margin-bottom:.7rem;padding-bottom:.38rem;border-bottom:1px solid var(--line);}
 .cg{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;}
-.ct{display:flex;align-items:center;gap:.38rem;background:var(--bg);border:1px solid var(--line);border-radius:7px;padding:.44rem .65rem;font-size:.71rem;color:rgba(255,255,255,.48);transition:background .16s,color .16s,border-color .16s;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s,background .16s,color .16s,border-color .16s;}
+.ct{display:flex;align-items:center;gap:.38rem;background:var(--bg);border:1px solid var(--line);border-radius:7px;padding:.44rem .65rem;font-size:.71rem;color:rgba(255,255,255,.48);opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s,background .16s,color .16s,border-color .16s;}
 .ct.v{opacity:1;transform:none;}
 .ct:hover{background:rgba(25,118,210,.07);color:rgba(255,255,255,.8);border-color:rgba(25,118,210,.18);}
 .cdot{width:4.5px;height:4.5px;border-radius:50%;flex-shrink:0;}
@@ -255,7 +292,7 @@ h1.ht1 i{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--g
 @media(max-width:900px){.ft-top{grid-template-columns:1fr 1fr;}}
 @media(max-width:500px){.ft-top{grid-template-columns:1fr;}}
 
-/* ─── ANIMATED SVG SCENE KEYFRAMES ─── */
+/* ─── ANIMATED SVG KEYFRAMES ─── */
 @keyframes driveX{0%,100%{transform:translateX(0px)}50%{transform:translateX(4px)}}
 @keyframes spinW{to{transform:rotate(360deg)}}
 @keyframes roadMove{from{transform:translateX(0)}to{transform:translateX(-120px)}}
@@ -273,6 +310,22 @@ h1.ht1 i{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--g
 <body>
 <div id="c1"></div><div id="c2"></div>
 
+<!-- ══ TICKER — canonical ══ -->
+<div class="company-ticker" id="company-ticker" aria-hidden="true">
+  <div class="ct-label">
+    <span class="ct-label-brand">Cover<em>Credit</em></span>
+    <span class="ct-label-divider"></span>
+    <span class="ct-label-text">Our Partners</span>
+  </div>
+  <div class="ct-track-wrap">
+    <div class="ct-track" id="ct-track"></div>
+  </div>
+  <div class="ct-badge">
+    <span class="ct-badge-dot"></span>
+    <span class="ct-badge-text">IRDAI Verified</span>
+  </div>
+</div>
+
 <div class="fab">
   <a href="book.html" class="fbk">📅 Book Free Session</a>
   <a href="https://wa.me/917842854466" target="_blank" class="fwa">
@@ -281,37 +334,44 @@ h1.ht1 i{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--g
   </a>
 </div>
 
+<!-- ══ NAV — canonical full nav ══ -->
 <nav class="nav" id="nav">
   <div class="ni">
     <a href="index.html" class="logo">Cover<b>Credit</b></a>
     <ul class="nl">
-      <li><a href="health-insurance.html">Health</a></li>
+      <li><a href="health-insurance.html">Health Insurance</a></li>
       <li><a href="life-insurance.html">Life Insurance</a></li>
       <li class="drop">
-        <span class="dlab">Vehicle <span class="darr">▼</span></span>
+        <span class="dlab">Vehicle <span class="darr">▾</span></span>
         <div class="dmenu">
           <a href="bike-insurance.html">🏍️ Bike Insurance</a>
           <a href="car-insurance.html">🚗 Car Insurance</a>
-          <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicle</a>
+          <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicles</a>
         </div>
       </li>
       <li><a href="loans.html">Loans</a></li>
+      <li><a href="tax-services.html">Tax &amp; Compliance</a></li>
       <li><a href="blog.html">Blog</a></li>
-      <li><a href="about.html" class="on">About</a></li>
-      <li><a href="book.html" class="ncta">Free Consultation</a></li>
+      <li><a href="about.html" class="on">About Us</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="book.html" class="ncta">Book Free Consultation</a></li>
     </ul>
     <button class="bur" id="bur"><span></span><span></span><span></span></button>
   </div>
 </nav>
+
+<!-- ══ MOBILE MENU — canonical full list ══ -->
 <div class="mob" id="mob">
   <a href="health-insurance.html">Health Insurance</a>
   <a href="life-insurance.html">Life Insurance</a>
-  <a href="bike-insurance.html">🏍️ Bike Insurance</a>
-  <a href="car-insurance.html">🚗 Car Insurance</a>
-  <a href="commercial-vehicle-insurance.html">🚛 Commercial Vehicle</a>
-  <a href="loans.html">Loans</a>
+  <a href="bike-insurance.html">Bike Insurance</a>
+  <a href="car-insurance.html">Car Insurance</a>
+  <a href="commercial-vehicle-insurance.html">Commercial Vehicles</a>
+  <a href="loans.html">Loans &amp; Finance</a>
+  <a href="tax-services.html">Tax &amp; Compliance</a>
   <a href="blog.html">Blog</a>
-  <a href="about.html">About</a>
+  <a href="about.html">About Us</a>
+  <a href="contact.html">Contact Us</a>
   <a href="book.html" class="mcta">Book Free Consultation →</a>
 </div>
 
@@ -335,7 +395,6 @@ h1.ht1 i{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--g
       </div>
     </div>
 
-    <!-- Hero right: animated street scene SVG -->
     <div class="hero-r" style="animation:cardSlideIn .8s var(--ease) .4s both">
       <svg viewBox="0 0 430 350" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:460px;display:block;margin:0 auto;">
         <defs>
@@ -346,16 +405,13 @@ h1.ht1 i{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--g
           <clipPath id="hclip"><rect width="430" height="350" rx="16"/></clipPath>
         </defs>
         <g clip-path="url(#hclip)">
-          <!-- Sky + background -->
           <rect width="430" height="350" fill="url(#hsky)"/>
-          <!-- Stars -->
           <circle cx="35" cy="30" r="1.4" fill="white" opacity=".3" style="animation:twinkle 3s infinite"/>
           <circle cx="88" cy="18" r="1" fill="white" opacity=".22" style="animation:twinkle 3s .5s infinite"/>
           <circle cx="155" cy="28" r="1.3" fill="white" opacity=".26" style="animation:twinkle 3s 1s infinite"/>
           <circle cx="298" cy="16" r="1" fill="white" opacity=".2" style="animation:twinkle 3s 1.5s infinite"/>
           <circle cx="378" cy="34" r="1.4" fill="white" opacity=".28" style="animation:twinkle 3s .8s infinite"/>
           <circle cx="260" cy="24" r=".9" fill="white" opacity=".18" style="animation:twinkle 3s 2s infinite"/>
-          <!-- City buildings silhouette -->
           <rect x="0" y="100" width="40" height="122" fill="#0a1828" rx="2"/>
           <rect x="6" y="116" width="9" height="8" fill="#ffd54f" opacity=".15" rx="1"/>
           <rect x="21" y="116" width="9" height="8" fill="#ffd54f" opacity=".1" rx="1"/>
@@ -366,7 +422,6 @@ h1.ht1 i{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--g
           <rect x="62" y="128" width="8" height="7" fill="#42a5f5" opacity=".1" rx="1"/>
           <rect x="50" y="140" width="8" height="7" fill="#ffd54f" opacity=".09" rx="1"/>
           <rect x="62" y="152" width="8" height="7" fill="#ffd54f" opacity=".08" rx="1"/>
-          <!-- Right buildings -->
           <rect x="354" y="106" width="38" height="116" fill="#0a1828" rx="2"/>
           <rect x="360" y="120" width="9" height="8" fill="#ffd54f" opacity=".15" rx="1"/>
           <rect x="375" y="120" width="9" height="8" fill="#42a5f5" opacity=".1" rx="1"/>
@@ -374,10 +429,8 @@ h1.ht1 i{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--g
           <rect x="388" y="114" width="28" height="108" fill="#0d1e36" rx="2"/>
           <rect x="393" y="124" width="8" height="7" fill="#42a5f5" opacity=".12" rx="1"/>
           <rect x="405" y="136" width="8" height="7" fill="#ffd54f" opacity=".1" rx="1"/>
-          <!-- Road -->
           <rect x="0" y="222" width="430" height="72" fill="url(#hrd)"/>
           <rect x="0" y="222" width="430" height="3" fill="#1d2e42"/>
-          <!-- Animated road dashes -->
           <g style="animation:roadMove 1.3s linear infinite">
             <rect x="0" y="256" width="40" height="4" rx="2" fill="rgba(255,213,79,.28)"/>
             <rect x="58" y="256" width="40" height="4" rx="2" fill="rgba(255,213,79,.28)"/>
@@ -389,36 +442,24 @@ h1.ht1 i{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--g
             <rect x="406" y="256" width="40" height="4" rx="2" fill="rgba(255,213,79,.28)"/>
             <rect x="464" y="256" width="40" height="4" rx="2" fill="rgba(255,213,79,.28)"/>
           </g>
-          <!-- Kerb / pavement -->
           <rect x="0" y="293" width="430" height="57" fill="#08141f"/>
           <rect x="0" y="293" width="430" height="3" fill="#0f1e2e"/>
-          <!-- Trees -->
           <rect x="88" y="202" width="7" height="22" fill="#2e4020"/>
           <ellipse cx="91" cy="198" rx="15" ry="16" fill="#2e7d32" opacity=".65"/>
           <ellipse cx="91" cy="191" rx="10" ry="12" fill="#388e3c" opacity=".65"/>
           <rect x="330" y="202" width="7" height="22" fill="#2e4020"/>
           <ellipse cx="333" cy="198" rx="15" ry="16" fill="#2e7d32" opacity=".6"/>
           <ellipse cx="333" cy="191" rx="10" ry="12" fill="#388e3c" opacity=".6"/>
-
-          <!-- THE CAR — gently rocking as it drives -->
           <g style="animation:driveX 2.2s ease-in-out infinite">
-            <!-- Body -->
             <rect x="112" y="194" width="200" height="40" rx="9" fill="url(#hcar)"/>
-            <!-- Roof -->
             <rect x="132" y="170" width="144" height="30" rx="9" fill="#5bb8ff"/>
-            <!-- Windows -->
             <rect x="140" y="174" width="58" height="22" rx="5" fill="rgba(128,216,255,.35)"/>
             <rect x="204" y="174" width="58" height="22" rx="5" fill="rgba(128,216,255,.3)"/>
-            <!-- Window glare -->
             <rect x="143" y="176" width="15" height="5" rx="2" fill="white" opacity=".18"/>
             <rect x="207" y="176" width="15" height="5" rx="2" fill="white" opacity=".15"/>
-            <!-- Headlight -->
             <rect x="112" y="202" width="16" height="9" rx="3" fill="#fffde7" opacity=".75"/>
-            <!-- Taillight -->
             <rect x="296" y="202" width="16" height="9" rx="3" fill="#ef5350" opacity=".45"/>
-            <!-- Bumper stripe -->
             <rect x="112" y="222" width="200" height="5" rx="2" fill="#1565c0" opacity=".6"/>
-            <!-- Left wheel with spin -->
             <g style="transform-origin:150px 238px;animation:spinW .65s linear infinite">
               <circle cx="150" cy="238" r="19" fill="#0d1826" stroke="#1e3050" stroke-width="2.5"/>
               <circle cx="150" cy="238" r="11" fill="#182436"/>
@@ -426,7 +467,6 @@ h1.ht1 i{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--g
               <line x1="131" y1="238" x2="169" y2="238" stroke="#243852" stroke-width="2"/>
               <circle cx="150" cy="238" r="4" fill="#2a3e56"/>
             </g>
-            <!-- Right wheel with spin -->
             <g style="transform-origin:274px 238px;animation:spinW .65s linear infinite">
               <circle cx="274" cy="238" r="19" fill="#0d1826" stroke="#1e3050" stroke-width="2.5"/>
               <circle cx="274" cy="238" r="11" fill="#182436"/>
@@ -435,43 +475,31 @@ h1.ht1 i{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--g
               <circle cx="274" cy="238" r="4" fill="#2a3e56"/>
             </g>
           </g>
-
-          <!-- SHIELD — gentle float above car -->
           <g style="animation:shieldGlow 3s ease-in-out infinite;transform-origin:212px 122px">
             <path d="M212 82 Q238 92 238 112 Q238 135 212 145 Q186 135 186 112 Q186 92 212 82Z" fill="rgba(34,197,94,.11)" stroke="url(#hshield)" stroke-width="2"/>
-            <!-- Check mark animated draw -->
             <path d="M201 112 L210 121 L226 100" stroke="#22c55e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-dasharray="30" stroke-dashoffset="30">
               <animate attributeName="stroke-dashoffset" from="30" to="0" dur=".7s" fill="freeze" begin=".6s"/>
             </path>
-            <!-- Outer glow ring pulsing -->
             <circle cx="212" cy="113" r="32" fill="none" stroke="#22c55e" stroke-width="1" opacity=".1">
               <animate attributeName="r" values="28;38;28" dur="3s" repeatCount="indefinite"/>
               <animate attributeName="opacity" values=".12;0;.12" dur="3s" repeatCount="indefinite"/>
             </circle>
           </g>
-
-          <!-- Floating status cards -->
-          <!-- "Policy Active" card -->
           <g style="animation:floatUp 3.2s ease-in-out infinite .5s">
             <rect x="238" y="88" width="106" height="30" rx="8" fill="rgba(10,24,42,.9)" stroke="rgba(34,197,94,.28)" stroke-width="1"/>
-            <circle cx="252" cy="103" r="4" fill="#22c55e" opacity=".9">
-              <animate attributeName="opacity" values=".9;.3;.9" dur="1.6s" repeatCount="indefinite"/>
-            </circle>
+            <circle cx="252" cy="103" r="4" fill="#22c55e" opacity=".9"><animate attributeName="opacity" values=".9;.3;.9" dur="1.6s" repeatCount="indefinite"/></circle>
             <text x="261" y="99" font-size="7.5" fill="#22c55e" font-weight="700" font-family="DM Sans,sans-serif">Policy Active</text>
             <text x="261" y="110" font-size="6.5" fill="rgba(255,255,255,.3)" font-family="DM Sans,sans-serif">Claim: Covered ✓</text>
           </g>
-          <!-- "Avg Save" card -->
           <g style="animation:floatUp 3.8s ease-in-out infinite 1.2s">
             <rect x="300" y="128" width="118" height="26" rx="7" fill="rgba(10,24,42,.9)" stroke="rgba(245,166,35,.22)" stroke-width="1"/>
             <text x="359" y="145" text-anchor="middle" font-size="7" fill="#ffd54f" font-weight="700" font-family="DM Sans,sans-serif">⭐ Avg saving ₹1,200/yr</text>
           </g>
-          <!-- "AP & TG" card left -->
           <g style="animation:floatUp 4s ease-in-out infinite .2s">
             <rect x="8" y="80" width="98" height="28" rx="7" fill="rgba(10,24,42,.9)" stroke="rgba(66,165,245,.22)" stroke-width="1"/>
             <text x="57" y="91" text-anchor="middle" font-size="7" fill="var(--blue2)" font-weight="700" font-family="DM Sans,sans-serif">📍 AP & Telangana</text>
             <text x="57" y="101" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,.28)" font-family="DM Sans,sans-serif">500+ families</text>
           </g>
-          <!-- Floating ₹ coins -->
           <g style="animation:coinFloat 2.8s ease-in-out infinite">
             <circle cx="356" cy="68" r="14" fill="rgba(245,166,35,.12)" stroke="rgba(245,166,35,.45)" stroke-width="1.5"/>
             <text x="356" y="73" text-anchor="middle" font-size="11" fill="#ffd54f" font-family="Bebas Neue,sans-serif">₹</text>
@@ -536,7 +564,6 @@ h1.ht1 i{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--g
         </div>
       </div>
     </div>
-    <!-- Right: animated process diagram -->
     <div class="rv d2">
       <svg viewBox="0 0 380 420" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:420px;display:block;margin:0 auto;">
         <defs>
@@ -544,63 +571,35 @@ h1.ht1 i{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--g
           <linearGradient id="pcard" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1565c0"/><stop offset="1" stop-color="#0d47a1"/></linearGradient>
         </defs>
         <rect width="380" height="420" fill="url(#pbg)" rx="14"/>
-        <!-- Grid lines subtle -->
         <line x1="0" y1="105" x2="380" y2="105" stroke="rgba(255,255,255,.03)" stroke-width="1"/>
         <line x1="0" y1="210" x2="380" y2="210" stroke="rgba(255,255,255,.03)" stroke-width="1"/>
         <line x1="0" y1="315" x2="380" y2="315" stroke="rgba(255,255,255,.03)" stroke-width="1"/>
         <line x1="126" y1="0" x2="126" y2="420" stroke="rgba(255,255,255,.03)" stroke-width="1"/>
         <line x1="254" y1="0" x2="254" y2="420" stroke="rgba(255,255,255,.03)" stroke-width="1"/>
-
-        <!-- Step 1: Phone call -->
         <g style="animation:floatUp 4s ease-in-out infinite 0s">
           <rect x="22" y="18" width="86" height="72" rx="8" fill="rgba(21,101,192,.08)" stroke="rgba(25,118,210,.18)" stroke-width="1"/>
-          <!-- Phone icon -->
           <rect x="42" y="27" width="44" height="56" rx="6" fill="#0d1e32" stroke="rgba(255,255,255,.07)" stroke-width="1"/>
           <rect x="47" y="33" width="34" height="38" rx="3" fill="#08121e"/>
-          <!-- chat bubble on screen -->
           <rect x="50" y="37" width="22" height="9" rx="3.5" fill="rgba(25,118,210,.4)"/>
           <text x="61" y="44" text-anchor="middle" font-size="5" fill="rgba(255,255,255,.7)" font-family="DM Sans,sans-serif">Hi!</text>
           <rect x="50" y="50" width="16" height="6" rx="3" fill="rgba(255,255,255,.06)"/>
           <rect x="63" y="59" width="14" height="6" rx="3" fill="rgba(25,118,210,.25)"/>
-          <!-- home bar -->
           <rect x="57" y="75" width="14" height="3" rx="1.5" fill="rgba(255,255,255,.1)"/>
-          <!-- live dot -->
-          <circle cx="80" cy="30" r="5" fill="#22c55e">
-            <animate attributeName="opacity" values="1;.3;1" dur="1.5s" repeatCount="indefinite"/>
-          </circle>
+          <circle cx="80" cy="30" r="5" fill="#22c55e"><animate attributeName="opacity" values="1;.3;1" dur="1.5s" repeatCount="indefinite"/></circle>
         </g>
         <text x="65" y="100" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.52)" font-weight="600" font-family="DM Sans,sans-serif">1. Free Call</text>
-
-        <!-- Step 2: Compare bars -->
         <g style="animation:floatUp 4s ease-in-out infinite .55s">
           <rect x="147" y="18" width="86" height="72" rx="8" fill="rgba(21,101,192,.08)" stroke="rgba(25,118,210,.18)" stroke-width="1"/>
-          <!-- bar chart -->
-          <rect x="158" y="73" width="10" height="10" rx="2" fill="#42a5f5" opacity=".8">
-            <animate attributeName="height" values="4;10;4" dur="2.5s" repeatCount="indefinite"/>
-            <animate attributeName="y" values="79;73;79" dur="2.5s" repeatCount="indefinite"/>
-          </rect>
-          <rect x="172" y="62" width="10" height="21" rx="2" fill="#22c55e" opacity=".9">
-            <animate attributeName="height" values="6;21;6" dur="2.5s" repeatCount="indefinite" begin=".3s"/>
-            <animate attributeName="y" values="77;62;77" dur="2.5s" repeatCount="indefinite" begin=".3s"/>
-          </rect>
-          <rect x="186" y="67" width="10" height="16" rx="2" fill="#42a5f5" opacity=".7">
-            <animate attributeName="height" values="5;16;5" dur="2.5s" repeatCount="indefinite" begin=".6s"/>
-            <animate attributeName="y" values="78;67;78" dur="2.5s" repeatCount="indefinite" begin=".6s"/>
-          </rect>
-          <rect x="200" y="70" width="10" height="13" rx="2" fill="#ffd54f" opacity=".65">
-            <animate attributeName="height" values="4;13;4" dur="2.5s" repeatCount="indefinite" begin=".9s"/>
-            <animate attributeName="y" values="79;70;79" dur="2.5s" repeatCount="indefinite" begin=".9s"/>
-          </rect>
+          <rect x="158" y="73" width="10" height="10" rx="2" fill="#42a5f5" opacity=".8"><animate attributeName="height" values="4;10;4" dur="2.5s" repeatCount="indefinite"/><animate attributeName="y" values="79;73;79" dur="2.5s" repeatCount="indefinite"/></rect>
+          <rect x="172" y="62" width="10" height="21" rx="2" fill="#22c55e" opacity=".9"><animate attributeName="height" values="6;21;6" dur="2.5s" repeatCount="indefinite" begin=".3s"/><animate attributeName="y" values="77;62;77" dur="2.5s" repeatCount="indefinite" begin=".3s"/></rect>
+          <rect x="186" y="67" width="10" height="16" rx="2" fill="#42a5f5" opacity=".7"><animate attributeName="height" values="5;16;5" dur="2.5s" repeatCount="indefinite" begin=".6s"/><animate attributeName="y" values="78;67;78" dur="2.5s" repeatCount="indefinite" begin=".6s"/></rect>
+          <rect x="200" y="70" width="10" height="13" rx="2" fill="#ffd54f" opacity=".65"><animate attributeName="height" values="4;13;4" dur="2.5s" repeatCount="indefinite" begin=".9s"/><animate attributeName="y" values="79;70;79" dur="2.5s" repeatCount="indefinite" begin=".9s"/></rect>
           <line x1="156" y1="83" x2="212" y2="83" stroke="rgba(255,255,255,.08)" stroke-width="1"/>
-          <!-- Best label -->
           <rect x="167" y="36" width="22" height="12" rx="4" fill="rgba(34,197,94,.14)" stroke="rgba(34,197,94,.38)" stroke-width="1"/>
           <text x="178" y="45" text-anchor="middle" font-size="5.5" fill="#22c55e" font-weight="700" font-family="DM Sans,sans-serif">Best</text>
-          <!-- 15+ label -->
           <text x="190" y="30" text-anchor="middle" font-size="7" fill="rgba(255,255,255,.22)" font-family="DM Sans,sans-serif">15+ insurers</text>
         </g>
         <text x="190" y="100" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.52)" font-weight="600" font-family="DM Sans,sans-serif">2. We Compare</text>
-
-        <!-- Step 3: Policy card -->
         <g style="animation:floatUp 4s ease-in-out infinite 1.1s">
           <rect x="272" y="18" width="86" height="72" rx="8" fill="rgba(21,101,192,.08)" stroke="rgba(25,118,210,.18)" stroke-width="1"/>
           <rect x="284" y="27" width="62" height="54" rx="4" fill="#0d1e32" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
@@ -609,47 +608,31 @@ h1.ht1 i{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--g
           <rect x="289" y="49" width="44" height="2.5" rx="1.25" fill="rgba(255,255,255,.11)"/>
           <rect x="289" y="55" width="32" height="2.5" rx="1.25" fill="rgba(255,255,255,.11)"/>
           <rect x="289" y="61" width="40" height="2.5" rx="1.25" fill="rgba(255,255,255,.11)"/>
-          <!-- green check -->
           <circle cx="325" cy="71" r="10" fill="rgba(34,197,94,.12)" stroke="rgba(34,197,94,.4)" stroke-width="1.5"/>
           <path d="M320 71 L324 75 L332 64" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none" stroke-dasharray="22" stroke-dashoffset="22">
             <animate attributeName="stroke-dashoffset" from="22" to="0" dur=".5s" fill="freeze" begin="1s"/>
           </path>
         </g>
         <text x="315" y="100" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.52)" font-weight="600" font-family="DM Sans,sans-serif">3. Policy Issued</text>
-
-        <!-- Connector arrows row 1 -->
         <polygon points="135,52 143,56 135,60" fill="rgba(25,118,210,.32)"/>
         <polygon points="260,52 268,56 260,60" fill="rgba(25,118,210,.32)"/>
-
-        <!-- Separator -->
         <line x1="22" y1="120" x2="358" y2="120" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
-
-        <!-- Step 4: Accident / Claim happens -->
         <g style="animation:floatUp 4.5s ease-in-out infinite .3s">
           <rect x="22" y="132" width="155" height="85" rx="8" fill="rgba(239,83,80,.05)" stroke="rgba(239,83,80,.13)" stroke-width="1"/>
           <text x="99" y="152" text-anchor="middle" font-size="7.5" fill="rgba(255,255,255,.35)" font-family="DM Sans,sans-serif" font-weight="600">Claim happens</text>
-          <!-- Simple tilted car -->
           <rect x="45" y="165" width="90" height="24" rx="5" fill="#42a5f5" opacity=".4" transform="rotate(-4 90 177)"/>
           <rect x="58" y="155" width="65" height="18" rx="5" fill="#5bb8ff" opacity=".35" transform="rotate(-4 90 164)"/>
-          <!-- Left wheel tilted -->
           <circle cx="62" cy="193" r="10" fill="#1a2a3e" stroke="#263c52" stroke-width="1.5" transform="rotate(-4 62 193)"/>
           <circle cx="62" cy="193" r="5" fill="#182436" transform="rotate(-4 62 193)"/>
-          <!-- right wheel -->
           <circle cx="110" cy="196" r="10" fill="#1a2a3e" stroke="#263c52" stroke-width="1.5" transform="rotate(-4 110 196)"/>
           <circle cx="110" cy="196" r="5" fill="#182436" transform="rotate(-4 110 196)"/>
-          <!-- Alert badge -->
           <circle cx="135" cy="158" r="13" fill="rgba(239,83,80,.12)" stroke="rgba(239,83,80,.38)" stroke-width="1.5"/>
           <text x="135" y="163" text-anchor="middle" font-size="13" fill="#ef5350" font-weight="900" font-family="DM Sans,sans-serif">!</text>
         </g>
-
-        <!-- Arrow between claim and resolution -->
         <polygon points="182,175 192,179 182,183" fill="rgba(25,118,210,.35)"/>
-
-        <!-- Step 5: We handle it -->
         <g style="animation:floatUp 4.5s ease-in-out infinite 1s">
           <rect x="198" y="132" width="160" height="85" rx="8" fill="rgba(34,197,94,.05)" stroke="rgba(34,197,94,.14)" stroke-width="1"/>
           <text x="278" y="152" text-anchor="middle" font-size="7.5" fill="rgba(255,255,255,.35)" font-family="DM Sans,sans-serif" font-weight="600">We handle it</text>
-          <!-- Checklist items -->
           <rect x="212" y="158" width="134" height="13" rx="3" fill="rgba(34,197,94,.07)"/>
           <text x="222" y="168" font-size="7" fill="#22c55e" font-family="DM Sans,sans-serif">✓  Claim registered same day</text>
           <rect x="212" y="174" width="134" height="13" rx="3" fill="rgba(34,197,94,.07)"/>
@@ -657,11 +640,7 @@ h1.ht1 i{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--g
           <rect x="212" y="190" width="134" height="13" rx="3" fill="rgba(34,197,94,.07)"/>
           <text x="222" y="200" font-size="7" fill="#22c55e" font-family="DM Sans,sans-serif">✓  Settled — ₹0 from your pocket</text>
         </g>
-
-        <!-- Separator -->
         <line x1="22" y1="232" x2="358" y2="232" stroke="rgba(255,255,255,.05)" stroke-width="1"/>
-
-        <!-- Row 3: stats / trust signals -->
         <g style="animation:floatUp 5s ease-in-out infinite 0s">
           <rect x="22" y="245" width="100" height="60" rx="8" fill="rgba(245,166,35,.06)" stroke="rgba(245,166,35,.15)" stroke-width="1"/>
           <text x="72" y="268" text-anchor="middle" font-family="Bebas Neue,sans-serif" font-size="22" fill="#ffd54f">500+</text>
@@ -680,11 +659,7 @@ h1.ht1 i{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--g
           <text x="308" y="281" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,.3)" font-family="DM Sans,sans-serif">Claims Settled</text>
           <text x="308" y="291" text-anchor="middle" font-size="6.5" fill="rgba(255,255,255,.22)" font-family="DM Sans,sans-serif">₹0 out of pocket</text>
         </g>
-
-        <!-- Bottom caption -->
         <text x="190" y="330" text-anchor="middle" font-size="8" fill="rgba(255,255,255,.2)" font-family="DM Sans,sans-serif" font-style="italic">ఇదే మా వాగ్దానం — మీతో ఉంటాం, ప్రతి అడుగులో.</text>
-
-        <!-- Decorative corner stars -->
         <circle cx="18" cy="400" r="1.4" fill="white" opacity=".18" style="animation:twinkle 3s infinite"/>
         <circle cx="362" cy="406" r="1.2" fill="var(--gold)" opacity=".22" style="animation:twinkle 3s .7s infinite"/>
       </svg>
@@ -728,36 +703,12 @@ h1.ht1 i{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--g
     <div class="eye rv">Why Cover Credit</div>
     <h2 class="ht rv d1">What makes us<br/><i>actually different.</i></h2>
     <div class="three rv d1" style="margin-top:2rem;">
-      <div class="fc">
-        <div class="fc-ic">📵</div>
-        <div class="fc-tt">We don't vanish after the sale</div>
-        <div class="fc-ds">Most agents disappear once the premium is paid. <strong>Our relationship starts at the policy — and lasts through every claim, renewal, and question you ever have.</strong></div>
-      </div>
-      <div class="fc">
-        <div class="fc-ic">⚖️</div>
-        <div class="fc-tt">Right policy, not highest commission</div>
-        <div class="fc-ds">We recommend what genuinely fits your risk and budget — <strong>even when that earns us less.</strong> No upselling. No fine-print surprises.</div>
-      </div>
-      <div class="fc">
-        <div class="fc-ic">💬</div>
-        <div class="fc-tt">Telugu & English — your choice</div>
-        <div class="fc-ds"><strong>తెలుగులో సులభంగా అర్థమయ్యేలా వివరిస్తాం.</strong> Insurance in your language. No confusion, no complexity — just clear guidance.</div>
-      </div>
-      <div class="fc">
-        <div class="fc-ic">🏥</div>
-        <div class="fc-tt">98% claim settlement rate</div>
-        <div class="fc-ds">We guide every claim from registration to payment. <strong>₹2 crore+ settled across AP & Telangana.</strong> Clients rarely pay out of pocket.</div>
-      </div>
-      <div class="fc">
-        <div class="fc-ic">🔄</div>
-        <div class="fc-tt">Compare 15+ insurers instantly</div>
-        <div class="fc-ds">We're not tied to any single insurer. <strong>Live access to 15+ insurance companies and multiple lenders</strong> — so you always get the best available rate.</div>
-      </div>
-      <div class="fc">
-        <div class="fc-ic">💸</div>
-        <div class="fc-tt">Zero advisory fees — ever</div>
-        <div class="fc-ds">Our consultation costs you nothing. We are paid by insurers and lenders — <strong>no hidden charges, no side fees, no surprises on your end.</strong></div>
-      </div>
+      <div class="fc"><div class="fc-ic">📵</div><div class="fc-tt">We don't vanish after the sale</div><div class="fc-ds">Most agents disappear once the premium is paid. <strong>Our relationship starts at the policy — and lasts through every claim, renewal, and question you ever have.</strong></div></div>
+      <div class="fc"><div class="fc-ic">⚖️</div><div class="fc-tt">Right policy, not highest commission</div><div class="fc-ds">We recommend what genuinely fits your risk and budget — <strong>even when that earns us less.</strong> No upselling. No fine-print surprises.</div></div>
+      <div class="fc"><div class="fc-ic">💬</div><div class="fc-tt">Telugu & English — your choice</div><div class="fc-ds"><strong>తెలుగులో సులభంగా అర్థమయ్యేలా వివరిస్తాం.</strong> Insurance in your language. No confusion, no complexity — just clear guidance.</div></div>
+      <div class="fc"><div class="fc-ic">🏥</div><div class="fc-tt">98% claim settlement rate</div><div class="fc-ds">We guide every claim from registration to payment. <strong>₹2 crore+ settled across AP & Telangana.</strong> Clients rarely pay out of pocket.</div></div>
+      <div class="fc"><div class="fc-ic">🔄</div><div class="fc-tt">Compare 15+ insurers instantly</div><div class="fc-ds">We're not tied to any single insurer. <strong>Live access to 15+ insurance companies and multiple lenders</strong> — so you always get the best available rate.</div></div>
+      <div class="fc"><div class="fc-ic">💸</div><div class="fc-tt">Zero advisory fees — ever</div><div class="fc-ds">Our consultation costs you nothing. We are paid by insurers and lenders — <strong>no hidden charges, no side fees, no surprises on your end.</strong></div></div>
     </div>
   </div>
 </section>
@@ -770,44 +721,12 @@ h1.ht1 i{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--g
     <p class="sub rv d2" style="margin-bottom:.45rem;">Most rejections happen because of <strong>how the application was presented</strong> — not because you don't qualify. We prepare your case the right way.</p>
     <p class="tel rv d2">రుణం తిరస్కరించబడిందా? మేము సరైన దారి చూపిస్తాం.</p>
     <div class="three rv d2" style="margin-top:1.8rem;">
-      <div class="lc">
-        <div class="lc-ic">🏠</div>
-        <div class="lc-tt">Home Loans</div>
-        <div class="lc-ds">₹10L to ₹2Cr+. Salaried or self-employed. <strong>Best rates from leading banks and NBFCs.</strong> Complete documentation handled by us.</div>
-        <div class="lc-ok">✓ Avg rate secured: 8.4–9.2%</div>
-        <div class="lc-tel">ఇంటి కోసం రుణం — మేము మీకు సహాయం చేస్తాం.</div>
-      </div>
-      <div class="lc">
-        <div class="lc-ic">🏪</div>
-        <div class="lc-tt">Business Loans</div>
-        <div class="lc-ds">MSMEs, shops, traders, contractors. <strong>₹5L to ₹1Cr.</strong> We have helped clients get sanctioned after 2–3 prior bank rejections.</div>
-        <div class="lc-ok">✓ Avg approval: 7–12 working days</div>
-        <div class="lc-tel">వ్యాపార రుణం — తిరస్కరించిన తర్వాత కూడా.</div>
-      </div>
-      <div class="lc">
-        <div class="lc-ic">🎓</div>
-        <div class="lc-tt">Education Loans</div>
-        <div class="lc-ds">Degrees, professional courses, overseas studies. <strong>Moratorium periods, repayment planning, and tax benefits</strong> fully explained before you sign anything.</div>
-        <div class="lc-ok">✓ Covers tuition + living expenses</div>
-      </div>
-      <div class="lc">
-        <div class="lc-ic">🏗️</div>
-        <div class="lc-tt">Loan Against Property</div>
-        <div class="lc-ds">Use existing property for funds at <strong>lower interest than personal loans.</strong> Residential or commercial — we assess and arrange the right LAP.</div>
-        <div class="lc-ok">✓ Lower rates, higher amounts</div>
-      </div>
-      <div class="lc">
-        <div class="lc-ic">🚗</div>
-        <div class="lc-tt">Vehicle Loans</div>
-        <div class="lc-ds">New or used car, two-wheeler, commercial vehicle. <strong>Bundled with insurance for a single-window experience</strong> — EMI and policy sorted together.</div>
-        <div class="lc-ok">✓ Same-day approval possible</div>
-      </div>
-      <div class="lc">
-        <div class="lc-ic">🏥</div>
-        <div class="lc-tt">Medical Emergency Loans</div>
-        <div class="lc-ds">When a hospital bill can't wait. <strong>Fast-track personal loans</strong> for medical emergencies, with guidance on insurance coverage for the same expense.</div>
-        <div class="lc-ok">✓ 24–48 hr processing available</div>
-      </div>
+      <div class="lc"><div class="lc-ic">🏠</div><div class="lc-tt">Home Loans</div><div class="lc-ds">₹10L to ₹2Cr+. Salaried or self-employed. <strong>Best rates from leading banks and NBFCs.</strong> Complete documentation handled by us.</div><div class="lc-ok">✓ Avg rate secured: 8.4–9.2%</div><div class="lc-tel">ఇంటి కోసం రుణం — మేము మీకు సహాయం చేస్తాం.</div></div>
+      <div class="lc"><div class="lc-ic">🏪</div><div class="lc-tt">Business Loans</div><div class="lc-ds">MSMEs, shops, traders, contractors. <strong>₹5L to ₹1Cr.</strong> We have helped clients get sanctioned after 2–3 prior bank rejections.</div><div class="lc-ok">✓ Avg approval: 7–12 working days</div><div class="lc-tel">వ్యాపార రుణం — తిరస్కరించిన తర్వాత కూడా.</div></div>
+      <div class="lc"><div class="lc-ic">🎓</div><div class="lc-tt">Education Loans</div><div class="lc-ds">Degrees, professional courses, overseas studies. <strong>Moratorium periods, repayment planning, and tax benefits</strong> fully explained before you sign anything.</div><div class="lc-ok">✓ Covers tuition + living expenses</div></div>
+      <div class="lc"><div class="lc-ic">🏗️</div><div class="lc-tt">Loan Against Property</div><div class="lc-ds">Use existing property for funds at <strong>lower interest than personal loans.</strong> Residential or commercial — we assess and arrange the right LAP.</div><div class="lc-ok">✓ Lower rates, higher amounts</div></div>
+      <div class="lc"><div class="lc-ic">🚗</div><div class="lc-tt">Vehicle Loans</div><div class="lc-ds">New or used car, two-wheeler, commercial vehicle. <strong>Bundled with insurance for a single-window experience</strong> — EMI and policy sorted together.</div><div class="lc-ok">✓ Same-day approval possible</div></div>
+      <div class="lc"><div class="lc-ic">🏥</div><div class="lc-tt">Medical Emergency Loans</div><div class="lc-ds">When a hospital bill can't wait. <strong>Fast-track personal loans</strong> for medical emergencies, with guidance on insurance coverage for the same expense.</div><div class="lc-ok">✓ 24–48 hr processing available</div></div>
     </div>
     <div style="margin-top:1.8rem;" class="rv d3">
       <a href="loans.html" class="bp">Explore All Loan Options →</a>
@@ -821,47 +740,10 @@ h1.ht1 i{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--g
     <div class="eye rv">Our Team</div>
     <h2 class="ht rv d1">People who pick up<br/><i>every single call.</i></h2>
     <div class="four rv d1" style="margin-top:2rem;">
-      <div class="tc">
-        <div class="tc-top" style="background:linear-gradient(135deg,#0d2040,#1565c0);">
-          <div class="tc-av" style="background:rgba(25,118,210,.28);">A</div>
-          <div class="tc-badge">Founder</div>
-        </div>
-        <div class="tc-body">
-          <div class="tc-name">Arun K.</div>
-          <div class="tc-role">Founder & Lead Advisor</div>
-          <div class="tc-bio">8+ years in insurance advisory. Built Cover Credit after a personal experience with a rejected family claim. Personally overseen 300+ claim settlements. Telugu, Hindi, English.</div>
-        </div>
-      </div>
-      <div class="tc">
-        <div class="tc-top" style="background:linear-gradient(135deg,#1a2e18,#2e7d32);">
-          <div class="tc-av" style="background:rgba(46,125,50,.28);">S</div>
-        </div>
-        <div class="tc-body">
-          <div class="tc-name">Sravani</div>
-          <div class="tc-role">Claims Specialist</div>
-          <div class="tc-bio">200+ claims settled across AP & Telangana. Expert in documentation and insurer coordination. No client claim goes unattended — she takes calls till 9 PM.</div>
-        </div>
-      </div>
-      <div class="tc">
-        <div class="tc-top" style="background:linear-gradient(135deg,#1c1000,#bf360c);">
-          <div class="tc-av" style="background:rgba(230,81,0,.28);">R</div>
-        </div>
-        <div class="tc-body">
-          <div class="tc-name">Ravi</div>
-          <div class="tc-role">Vehicle & Commercial Insurance</div>
-          <div class="tc-bio">10+ years in motor insurance. Handles fleet policies, IMT-23, and commercial vehicle claims from Tirupati to Karimnagar. Lorry owners call him by name.</div>
-        </div>
-      </div>
-      <div class="tc">
-        <div class="tc-top" style="background:linear-gradient(135deg,#1a1428,#6a1fa0);">
-          <div class="tc-av" style="background:rgba(106,31,160,.28);">P</div>
-        </div>
-        <div class="tc-body">
-          <div class="tc-name">Preethi</div>
-          <div class="tc-role">Loans & Finance Advisor</div>
-          <div class="tc-bio">Former bank relationship manager. Specialises in home, business, and education loans. Has secured sanctions where two banks previously said no.</div>
-        </div>
-      </div>
+      <div class="tc"><div class="tc-top" style="background:linear-gradient(135deg,#0d2040,#1565c0);"><div class="tc-av" style="background:rgba(25,118,210,.28);">A</div><div class="tc-badge">Founder</div></div><div class="tc-body"><div class="tc-name">Arun K.</div><div class="tc-role">Founder & Lead Advisor</div><div class="tc-bio">8+ years in insurance advisory. Built Cover Credit after a personal experience with a rejected family claim. Personally overseen 300+ claim settlements. Telugu, Hindi, English.</div></div></div>
+      <div class="tc"><div class="tc-top" style="background:linear-gradient(135deg,#1a2e18,#2e7d32);"><div class="tc-av" style="background:rgba(46,125,50,.28);">S</div></div><div class="tc-body"><div class="tc-name">Sravani</div><div class="tc-role">Claims Specialist</div><div class="tc-bio">200+ claims settled across AP & Telangana. Expert in documentation and insurer coordination. No client claim goes unattended — she takes calls till 9 PM.</div></div></div>
+      <div class="tc"><div class="tc-top" style="background:linear-gradient(135deg,#1c1000,#bf360c);"><div class="tc-av" style="background:rgba(230,81,0,.28);">R</div></div><div class="tc-body"><div class="tc-name">Ravi</div><div class="tc-role">Vehicle & Commercial Insurance</div><div class="tc-bio">10+ years in motor insurance. Handles fleet policies, IMT-23, and commercial vehicle claims from Tirupati to Karimnagar. Lorry owners call him by name.</div></div></div>
+      <div class="tc"><div class="tc-top" style="background:linear-gradient(135deg,#1a1428,#6a1fa0);"><div class="tc-av" style="background:rgba(106,31,160,.28);">P</div></div><div class="tc-body"><div class="tc-name">Preethi</div><div class="tc-role">Loans & Finance Advisor</div><div class="tc-bio">Former bank relationship manager. Specialises in home, business, and education loans. Has secured sanctions where two banks previously said no.</div></div></div>
     </div>
   </div>
 </section>
@@ -968,20 +850,19 @@ h1.ht1 i{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--g
         <div class="fcl">Insurance</div>
         <ul>
           <li><a href="health-insurance.html">Health Insurance</a></li>
-          <li><a href="life-insurance.html">Life & Term Insurance</a></li>
+          <li><a href="life-insurance.html">Life &amp; Term Insurance</a></li>
           <li><a href="bike-insurance.html">Bike Insurance</a></li>
           <li><a href="car-insurance.html">Car Insurance</a></li>
           <li><a href="commercial-vehicle-insurance.html">Commercial Vehicle</a></li>
         </ul>
       </div>
       <div class="ft-col">
-        <div class="fcl">Loans</div>
+        <div class="fcl">Finance &amp; Tax</div>
         <ul>
-          <li><a href="loans.html">Home Loans</a></li>
-          <li><a href="loans.html">Business Loans</a></li>
-          <li><a href="loans.html">Education Loans</a></li>
-          <li><a href="loans.html">Loan Against Property</a></li>
-          <li><a href="loans.html">Vehicle Loans</a></li>
+          <li><a href="loans.html">Loans &amp; Finance</a></li>
+          <li><a href="tax-services.html">Tax &amp; Compliance</a></li>
+          <li><a href="tax-services.html#itr">ITR Filing</a></li>
+          <li><a href="tax-services.html#gst">GST Services</a></li>
         </ul>
       </div>
       <div class="ft-col">
@@ -989,6 +870,7 @@ h1.ht1 i{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--g
         <ul>
           <li><a href="about.html">About Us</a></li>
           <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
           <li><a href="book.html">Book Consultation</a></li>
           <li><a href="privacy.html">Privacy Policy</a></li>
           <li><a href="terms.html">Terms of Service</a></li>
@@ -1003,6 +885,25 @@ h1.ht1 i{font-style:italic;background:linear-gradient(110deg,var(--gold),var(--g
 </footer>
 
 <script>
+/* ══ TICKER — canonical all partners ══ */
+(function(){
+  var PARTNERS=[
+    {cat:'life',name:'LIC of India'},{cat:'life',name:'HDFC Life'},{cat:'life',name:'ICICI Prudential'},
+    {cat:'life',name:'Tata AIA'},{cat:'life',name:'Max Life'},{cat:'life',name:'SBI Life'},
+    {cat:'life',name:'Bajaj Allianz'},{cat:'life',name:'Aditya Birla'},{cat:'life',name:'India First'},
+    {cat:'health',name:'Star Health'},{cat:'health',name:'Niva Bupa'},{cat:'health',name:'HDFC ERGO'},
+    {cat:'health',name:'ICICI Lombard'},{cat:'health',name:'Care Health'},{cat:'health',name:'Tata AIG'},{cat:'health',name:'Chola MS'},
+    {cat:'motor',name:'ICICI Lombard'},{cat:'motor',name:'HDFC ERGO'},{cat:'motor',name:'Bajaj Allianz'},
+    {cat:'motor',name:'Tata AIG'},{cat:'motor',name:'Reliance General'},{cat:'motor',name:'Royal Sundaram'},{cat:'motor',name:'New India Assurance'},
+  ];
+  var CAT={life:{label:'🛡 Life',cls:'ct-pill--life'},health:{label:'🏥 Health',cls:'ct-pill--health'},motor:{label:'🚗 Motor',cls:'ct-pill--motor'}};
+  function makePill(cat){var d=document.createElement('div');d.className='ct-pill '+CAT[cat].cls;var s=document.createElement('span');s.textContent=CAT[cat].label;d.appendChild(s);return d;}
+  function makeItem(p){var d=document.createElement('div');d.className='ct-item';var n=document.createElement('span');n.className='ct-item-name';n.textContent=p.name;d.appendChild(n);return d;}
+  function buildSet(){var f=document.createDocumentFragment(),last=null;PARTNERS.forEach(function(p){if(p.cat!==last){f.appendChild(makePill(p.cat));last=p.cat;}f.appendChild(makeItem(p));});return f;}
+  var track=document.getElementById('ct-track');
+  if(track){track.appendChild(buildSet());track.appendChild(buildSet());}
+})();
+
 /* ── CURSOR ── */
 const c1=document.getElementById('c1'),c2=document.getElementById('c2');
 let mx=0,my=0,rx=0,ry=0;
@@ -1013,19 +914,18 @@ document.querySelectorAll('a,button,.fc,.lc,.tc,.step,.ct').forEach(el=>{
   el.addEventListener('mouseleave',()=>document.body.classList.remove('h'));
 });
 
-/* ── NAV ── */
+/* ── NAV SCROLL ── */
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>nav.classList.toggle('s',scrollY>40),{passive:true});
+
+/* ── MOBILE MENU ── */
 const bur=document.getElementById('bur'),mob=document.getElementById('mob');
-bur.addEventListener('click',()=>{
-  bur.classList.toggle('o');mob.classList.toggle('o');
-  document.body.style.overflow=mob.classList.contains('o')?'hidden':'';
-});
+bur.addEventListener('click',()=>{bur.classList.toggle('o');mob.classList.toggle('o');document.body.style.overflow=mob.classList.contains('o')?'hidden':'';});
+mob.querySelectorAll('a').forEach(link=>{link.addEventListener('click',()=>{bur.classList.remove('o');mob.classList.remove('o');document.body.style.overflow='';});});
+document.addEventListener('click',e=>{if(mob.classList.contains('o')&&!mob.contains(e.target)&&!bur.contains(e.target)){bur.classList.remove('o');mob.classList.remove('o');document.body.style.overflow='';}});
 
 /* ── SCROLL REVEAL ── */
-const ro=new IntersectionObserver(es=>{
-  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}});
-},{threshold:.07});
+const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');ro.unobserve(e.target);}});},{threshold:.07});
 document.querySelectorAll('.rv').forEach(el=>ro.observe(el));
 
 /* ── COUNTER ── */
@@ -1044,10 +944,7 @@ document.querySelectorAll('[data-count]').forEach(el=>co.observe(el));
 function stagger(id,offset=0){
   const els=[...document.querySelectorAll('#'+id+' .ct')];
   const ob=new IntersectionObserver(entries=>{
-    if(entries[0].isIntersecting){
-      els.forEach((el,i)=>setTimeout(()=>el.classList.add('v'),offset+i*38));
-      ob.disconnect();
-    }
+    if(entries[0].isIntersecting){els.forEach((el,i)=>setTimeout(()=>el.classList.add('v'),offset+i*38));ob.disconnect();}
   },{threshold:.1});
   if(els[0])ob.observe(els[0].closest('div'));
 }
