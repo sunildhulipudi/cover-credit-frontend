@@ -39,7 +39,7 @@ a{text-decoration:none;color:inherit;}
 #cr{width:38px;height:38px;border:1.5px solid rgba(255,107,0,.45);z-index:9998;transition:width .2s,height .2s,opacity .2s;}
 body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:.18;}
 
-/* ══ TICKER — canonical (service-based) ══ */
+/* ══ TICKER ══ */
 .company-ticker{position:fixed;top:0;left:0;right:0;z-index:1100;height:var(--ticker-h);background:#020c1f;border-bottom:1px solid rgba(255,255,255,0.07);display:flex;align-items:stretch;overflow:hidden;}
 .company-ticker::before{content:'';position:absolute;top:0;left:0;right:0;height:1.5px;z-index:10;background:linear-gradient(90deg,transparent,rgba(255,107,0,0) 15%,rgba(255,107,0,0.8) 40%,#ff9500 50%,rgba(255,107,0,0.8) 60%,rgba(255,107,0,0) 85%,transparent);background-size:200% 100%;animation:ctShimmer 4s linear infinite;}
 @keyframes ctShimmer{from{background-position:-100% 0}to{background-position:200% 0}}
@@ -48,11 +48,11 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .ct-label-brand{font-family:'Playfair Display',serif;font-size:.78rem;font-weight:700;color:#fff;white-space:nowrap;}
 .ct-label-brand em{font-style:normal;color:var(--gold);}
 .ct-label-divider{width:1px;height:13px;background:rgba(255,255,255,0.12);}
-.ct-label-text{font-size:.58rem;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:rgba(255,255,255,0.28);white-space:nowrap;}
+.ct-label-text{font-size:.58rem;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:rgba(255,255,255,.28);white-space:nowrap;}
 .ct-badge{flex-shrink:0;display:flex;align-items:center;gap:6px;padding:0 16px;position:relative;z-index:6;background:linear-gradient(270deg,#020c1f 70%,transparent);border-left:1px solid rgba(255,255,255,0.07);}
 .ct-badge-dot{width:5px;height:5px;border-radius:50%;background:#22c55e;box-shadow:0 0 6px #22c55e;animation:ctBlink 2s ease-in-out infinite;}
 @keyframes ctBlink{0%,100%{opacity:1}50%{opacity:.35}}
-.ct-badge-text{font-size:.52rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.28);white-space:nowrap;}
+.ct-badge-text{font-size:.52rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.28);white-space:nowrap;}
 .ct-track-wrap{flex:1;overflow:hidden;position:relative;}
 .ct-track-wrap::before{content:'';position:absolute;top:0;bottom:0;left:0;width:40px;z-index:2;background:linear-gradient(to right,#020c1f 20%,transparent);}
 .ct-track-wrap::after{content:'';position:absolute;top:0;bottom:0;right:0;width:40px;z-index:2;pointer-events:none;background:linear-gradient(to left,#020c1f 20%,transparent);}
@@ -66,12 +66,12 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .ct-pill--tax span{background:rgba(96,165,250,.13);color:#93c5fd;border:1px solid rgba(96,165,250,.25);}
 .ct-pill--support span{background:rgba(34,197,94,.13);color:#86efac;border:1px solid rgba(34,197,94,.25);}
 .ct-item{display:inline-flex;align-items:center;padding:0 22px;flex-shrink:0;position:relative;cursor:default;}
-.ct-item::after{content:'';position:absolute;right:0;top:25%;bottom:25%;width:1px;background:rgba(255,255,255,0.06);}
-.ct-item-name{font-size:.7rem;font-weight:600;color:rgba(255,255,255,0.42);white-space:nowrap;transition:color 0.2s;}
-.company-ticker:hover .ct-item:hover .ct-item-name{color:rgba(255,255,255,0.9);}
+.ct-item::after{content:'';position:absolute;right:0;top:25%;bottom:25%;width:1px;background:rgba(255,255,255,.06);}
+.ct-item-name{font-size:.7rem;font-weight:600;color:rgba(255,255,255,.42);white-space:nowrap;transition:color 0.2s;}
+.company-ticker:hover .ct-item:hover .ct-item-name{color:rgba(255,255,255,.9);}
 @media(max-width:580px){.ct-label,.ct-badge{display:none;}}
 
-/* ── NAV — below ticker ── */
+/* ── NAV ── */
 .nav{position:fixed;top:var(--ticker-h);left:0;right:0;z-index:900;height:var(--nh);padding:0 5%;transition:background .4s;}
 .nav.sc{background:rgba(6,16,31,.97);backdrop-filter:blur(24px);box-shadow:0 1px 0 var(--line);}
 .ni{max-width:1300px;margin:0 auto;height:100%;display:flex;align-items:center;justify-content:space-between;}
@@ -96,7 +96,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .burger.op span:nth-child(2){opacity:0;}
 .burger.op span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px);}
 
-/* ── MOBILE MENU — canonical ── */
+/* ── MOBILE MENU ── */
 .mob{position:fixed;inset:0;z-index:899;background:var(--ink);display:flex;flex-direction:column;padding:calc(var(--ticker-h) + var(--nh) + 1.5rem) 5% 3rem;transform:translateX(100%);transition:transform .38s var(--E);overflow-y:auto;}
 .mob.op{transform:translateX(0);}
 .mob a{padding:.85rem 0;font-size:1rem;font-weight:500;color:rgba(255,255,255,.72);border-bottom:1px solid var(--line);display:block;}
@@ -120,7 +120,7 @@ body.hov #cur{width:4px;height:4px;}body.hov #cr{width:54px;height:54px;opacity:
 .tit em{font-style:italic;color:var(--ac);}
 .sub{font-size:.87rem;color:rgba(255,255,255,.42);line-height:1.78;}
 
-/* ── HERO — offset for ticker ── */
+/* ── HERO ── */
 .hero{
   padding:calc(var(--ticker-h) + var(--nh) + 4rem) 5% 4rem;
   background:
@@ -224,61 +224,200 @@ textarea.fi{resize:none;min-height:110px;}
 .promise-ico{font-size:1.3rem;margin-bottom:.3rem;}
 .promise-txt{font-size:.68rem;color:rgba(255,255,255,.4);line-height:1.4;}
 
-/* AGENT SECTION */
-.refer-sec{padding:6rem 5%;background:var(--ink);position:relative;overflow:hidden;}
+/* ══ AGENT SECTION — premium redesign ══ */
+.refer-sec{padding:7rem 5% 6rem;background:var(--ink);position:relative;overflow:hidden;}
+
+/* Deep layered background */
 .refer-bg{position:absolute;inset:0;pointer-events:none;}
-.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.25;}
-.blob-1{width:500px;height:500px;background:radial-gradient(circle,#ff6b00,transparent);top:-100px;right:-100px;animation:blobmove 8s ease-in-out infinite alternate;}
-.blob-2{width:400px;height:400px;background:radial-gradient(circle,#f5a623,transparent);bottom:-80px;left:-80px;animation:blobmove 10s ease-in-out infinite alternate-reverse;}
-.blob-3{width:300px;height:300px;background:radial-gradient(circle,#25d366,transparent);top:50%;left:50%;animation:blobmove 12s ease-in-out infinite alternate;}
-@keyframes blobmove{from{transform:translate(0,0) scale(1)}to{transform:translate(30px,20px) scale(1.08)}}
+.refer-bg::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 80% 60% at 85% 20%, rgba(255,107,0,.07), transparent 60%),
+    radial-gradient(ellipse 60% 80% at 10% 80%, rgba(245,166,35,.05), transparent 60%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(255,107,0,.03), transparent);
+}
+.blob{position:absolute;border-radius:50%;filter:blur(90px);opacity:.18;}
+.blob-1{width:600px;height:600px;background:radial-gradient(circle,#ff6b00,transparent);top:-150px;right:-150px;animation:blobmove 9s ease-in-out infinite alternate;}
+.blob-2{width:500px;height:500px;background:radial-gradient(circle,#f5a623,transparent);bottom:-100px;left:-100px;animation:blobmove 11s ease-in-out infinite alternate-reverse;}
+.blob-3{width:350px;height:350px;background:radial-gradient(circle,#25d366,transparent);top:45%;left:45%;animation:blobmove 13s ease-in-out infinite alternate;}
+@keyframes blobmove{from{transform:translate(0,0) scale(1)}to{transform:translate(35px,25px) scale(1.1)}}
+
+/* Grid texture overlay */
+.refer-bg::after{
+  content:'';position:absolute;inset:0;
+  background-image:linear-gradient(rgba(255,255,255,.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.012) 1px,transparent 1px);
+  background-size:60px 60px;
+}
+
 .refer-in{max-width:1300px;margin:0 auto;position:relative;z-index:1;}
-.refer-head{text-align:center;margin-bottom:4rem;}
-.refer-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.25);border-radius:100px;padding:.4rem 1.1rem;margin-bottom:1.2rem;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:var(--gold);}
-.refer-badge-star{animation:spin 4s linear infinite;}
-@keyframes spin{to{transform:rotate(360deg);}display:inline-block;}
-.refer-h{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3.5rem);font-weight:900;line-height:1.05;margin-bottom:.8rem;}
+
+/* Header */
+.refer-head{text-align:center;margin-bottom:5rem;}
+.refer-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(245,166,35,.1);border:1px solid rgba(245,166,35,.25);border-radius:100px;padding:.4rem 1.1rem;margin-bottom:1.4rem;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;color:var(--gold);}
+.refer-h{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:900;line-height:1.04;margin-bottom:1rem;}
 .refer-h em{font-style:italic;color:var(--gold);}
-.refer-sub{font-size:.9rem;color:rgba(255,255,255,.4);max-width:500px;margin:0 auto;line-height:1.75;}
-.steps-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-bottom:4rem;position:relative;}
-.steps-row::before{content:'';position:absolute;top:60px;left:calc(12.5% + 30px);right:calc(12.5% + 30px);height:1px;background:linear-gradient(90deg,transparent,rgba(245,166,35,.3),rgba(245,166,35,.3),transparent);}
-.step-card{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:20px;padding:1.8rem 1.2rem;text-align:center;position:relative;transition:all .3s var(--E);}
-.step-card:hover{background:rgba(255,255,255,.06);transform:translateY(-6px);border-color:rgba(245,166,35,.2);}
-.step-cartoon{width:100px;height:100px;margin:0 auto 1.2rem;position:relative;}
-.step-num{position:absolute;top:-8px;right:-8px;width:24px;height:24px;border-radius:50%;background:var(--gold);color:#06101f;font-family:'Bebas Neue',sans-serif;font-size:.85rem;display:flex;align-items:center;justify-content:center;font-weight:700;}
-.step-title{font-size:.92rem;font-weight:700;margin-bottom:.4rem;}
-.step-desc{font-size:.72rem;color:rgba(255,255,255,.36);line-height:1.6;}
-.commission-block{background:rgba(245,166,35,.05);border:1px solid rgba(245,166,35,.15);border-radius:24px;padding:2.5rem;display:grid;grid-template-columns:1fr 1.2fr;gap:3rem;align-items:center;margin-bottom:4rem;}
+.refer-sub{font-size:.92rem;color:rgba(255,255,255,.38);max-width:520px;margin:0 auto;line-height:1.8;}
+
+/* ── HOW IT WORKS — 4-step pills ── */
+.steps-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:5rem;position:relative;}
+.steps-row::before{
+  content:'';position:absolute;top:52px;
+  left:calc(12.5% + 22px);right:calc(12.5% + 22px);
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(245,166,35,.25) 20%,rgba(245,166,35,.25) 80%,transparent);
+  z-index:0;
+}
+.step-card{
+  background:rgba(255,255,255,.025);
+  border:1px solid var(--line);
+  border-radius:20px;padding:2rem 1.4rem 1.6rem;
+  text-align:center;position:relative;
+  transition:all .35s var(--E);
+  z-index:1;
+}
+.step-card:hover{
+  background:rgba(255,255,255,.05);
+  transform:translateY(-8px);
+  border-color:rgba(245,166,35,.25);
+  box-shadow:0 30px 60px rgba(0,0,0,.3),0 0 0 1px rgba(245,166,35,.1);
+}
+.step-ico-wrap{
+  width:72px;height:72px;margin:0 auto 1.4rem;
+  border-radius:18px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.8rem;
+  position:relative;
+  background:rgba(245,166,35,.07);
+  border:1px solid rgba(245,166,35,.15);
+  transition:all .35s var(--E);
+}
+.step-card:hover .step-ico-wrap{
+  background:rgba(245,166,35,.12);
+  border-color:rgba(245,166,35,.3);
+  box-shadow:0 0 30px rgba(245,166,35,.15);
+}
+.step-num{
+  position:absolute;top:-10px;right:-10px;
+  width:26px;height:26px;border-radius:50%;
+  background:linear-gradient(135deg,var(--gold),#ff9500);
+  color:#06101f;
+  font-family:'Bebas Neue',sans-serif;font-size:.9rem;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;
+  box-shadow:0 4px 12px rgba(245,166,35,.4);
+}
+.step-title{font-size:.95rem;font-weight:700;margin-bottom:.5rem;color:#fff;}
+.step-desc{font-size:.74rem;color:rgba(255,255,255,.35);line-height:1.65;}
+
+/* ── CREDIT STRUCTURE BLOCK ── */
+.commission-block{
+  background:rgba(255,255,255,.02);
+  border:1px solid rgba(245,166,35,.12);
+  border-radius:28px;padding:3rem;
+  display:grid;grid-template-columns:1fr 1.2fr;gap:3.5rem;
+  align-items:center;margin-bottom:4rem;
+  position:relative;overflow:hidden;
+}
+.commission-block::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold) 30%,var(--ac) 70%,transparent);
+}
+.commission-block::after{
+  content:'';position:absolute;
+  width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(245,166,35,.06),transparent);
+  top:-50px;right:-50px;pointer-events:none;
+}
 .cb-left .tag{color:var(--gold);}
 .cb-left .tag::before{background:var(--gold);}
-.cb-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.5vw,2.1rem);font-weight:900;line-height:1.1;margin-bottom:.8rem;}
+.cb-title{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,2.5vw,2.2rem);font-weight:900;line-height:1.1;margin-bottom:.9rem;}
 .cb-title em{font-style:italic;color:var(--gold);}
-.cb-sub{font-size:.84rem;color:rgba(255,255,255,.38);line-height:1.7;margin-bottom:1.5rem;}
+.cb-sub{font-size:.86rem;color:rgba(255,255,255,.38);line-height:1.75;margin-bottom:1.6rem;}
 .cb-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(37,211,102,.08);border:1px solid rgba(37,211,102,.18);border-radius:100px;padding:.4rem 1rem;font-size:.75rem;font-weight:700;color:#4ade80;}
-.earn-table{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:16px;overflow:hidden;}
-.et-row{display:grid;grid-template-columns:1fr 1fr 1fr;padding:.85rem 1.2rem;border-bottom:1px solid var(--line);align-items:center;}
+
+/* Credit table — enhanced */
+.earn-table{background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:18px;overflow:hidden;}
+.et-row{display:grid;grid-template-columns:1.2fr .8fr 1fr;padding:.9rem 1.3rem;border-bottom:1px solid rgba(255,255,255,.05);align-items:center;transition:background .2s;}
+.et-row:hover:not(.head){background:rgba(255,255,255,.04);}
 .et-row:last-child{border-bottom:none;}
 .et-row.head{background:rgba(255,255,255,.04);}
-.et-head-lbl{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:rgba(255,255,255,.25);}
-.et-dept{display:flex;align-items:center;gap:.5rem;font-size:.82rem;font-weight:600;}
-.et-pct{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.5px;color:var(--gold);}
-.et-amt{font-size:.78rem;color:rgba(255,255,255,.4);}
-.partner-cta{background:linear-gradient(135deg,rgba(255,107,0,.12),rgba(245,166,35,.08));border:1px solid rgba(255,107,0,.2);border-radius:24px;padding:2.5rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;}
+.et-head-lbl{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:1.3px;color:rgba(255,255,255,.22);}
+.et-dept{display:flex;align-items:center;gap:.5rem;font-size:.84rem;font-weight:600;}
+.et-pct{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:.5px;color:var(--gold);}
+.et-amt{font-size:.76rem;color:rgba(255,255,255,.38);}
+
+/* ── PARTNER CTA ── */
+.partner-cta{
+  background:linear-gradient(140deg,rgba(255,107,0,.1) 0%,rgba(245,166,35,.06) 50%,rgba(255,107,0,.04) 100%);
+  border:1px solid rgba(255,107,0,.18);
+  border-radius:28px;padding:3rem;
+  display:grid;grid-template-columns:1fr auto;gap:3rem;
+  align-items:center;
+  position:relative;overflow:hidden;
+}
+.partner-cta::before{
+  content:'AGENT';
+  font-family:'Bebas Neue',sans-serif;
+  font-size:8rem;letter-spacing:-2px;
+  position:absolute;right:-1rem;bottom:-1.5rem;
+  color:rgba(255,107,0,.04);
+  line-height:1;pointer-events:none;
+}
 .pc-left{}
 .pc-tag{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--ac);margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem;}
 .pc-tag::before{content:'';width:14px;height:1.5px;background:var(--ac);}
-.pc-title{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;line-height:1.15;margin-bottom:.5rem;}
+.pc-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.8vw,2.2rem);font-weight:900;line-height:1.12;margin-bottom:.6rem;}
 .pc-title em{font-style:italic;color:var(--ac);}
-.pc-sub{font-size:.84rem;color:rgba(255,255,255,.38);line-height:1.65;margin-bottom:1.2rem;}
-.pc-perks{display:flex;gap:.6rem;flex-wrap:wrap;}
-.pc-perk{display:inline-flex;align-items:center;gap:.35rem;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:100px;padding:.28rem .75rem;font-size:.68rem;color:rgba(255,255,255,.5);}
-.pc-right{display:flex;flex-direction:column;align-items:center;gap:1rem;}
-.partner-character{width:160px;height:160px;position:relative;}
-.pc-actions{display:flex;flex-direction:column;gap:.6rem;width:100%;}
-.pc-btn-primary{background:var(--gold);color:#06101f;border:none;border-radius:10px;padding:.75rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;transition:all .2s;text-align:center;display:block;}
-.pc-btn-primary:hover{background:#ffc940;transform:translateY(-2px);}
-.pc-btn-sec{background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:10px;padding:.65rem 1.2rem;font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:600;color:rgba(255,255,255,.6);cursor:pointer;transition:all .2s;text-align:center;display:block;}
+.pc-sub{font-size:.86rem;color:rgba(255,255,255,.38);line-height:1.7;margin-bottom:1.5rem;}
+.pc-perks{display:flex;gap:.55rem;flex-wrap:wrap;}
+.pc-perk{display:inline-flex;align-items:center;gap:.35rem;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:100px;padding:.3rem .8rem;font-size:.68rem;color:rgba(255,255,255,.5);transition:all .2s;}
+.pc-perk:hover{background:rgba(255,107,0,.08);border-color:rgba(255,107,0,.2);color:rgba(255,255,255,.75);}
+.pc-right{display:flex;flex-direction:column;align-items:center;gap:1.2rem;}
+.partner-character{width:170px;height:170px;position:relative;filter:drop-shadow(0 20px 40px rgba(255,107,0,.2));}
+.pc-actions{display:flex;flex-direction:column;gap:.7rem;width:180px;}
+.pc-btn-primary{
+  background:linear-gradient(135deg,var(--gold),#ff9500);
+  color:#06101f;border:none;border-radius:12px;
+  padding:.85rem 1.5rem;
+  font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;
+  cursor:pointer;transition:all .25s;text-align:center;display:block;
+  box-shadow:0 8px 24px rgba(245,166,35,.3);
+}
+.pc-btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 36px rgba(245,166,35,.4);}
+.pc-btn-sec{
+  background:rgba(255,255,255,.06);
+  border:1px solid var(--line);border-radius:12px;
+  padding:.7rem 1.2rem;
+  font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:600;
+  color:rgba(255,255,255,.55);cursor:pointer;transition:all .2s;text-align:center;display:block;
+}
 .pc-btn-sec:hover{background:rgba(255,255,255,.1);color:#fff;}
+
+/* ── AGENT SPOTLIGHT CARDS (new) ── */
+.agent-spotlight{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-bottom:4.5rem;}
+.spotlight-card{
+  background:rgba(255,255,255,.025);
+  border:1px solid var(--line);
+  border-radius:20px;padding:1.8rem 1.5rem;
+  position:relative;overflow:hidden;
+  transition:all .3s var(--E);
+}
+.spotlight-card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(245,166,35,.2);
+  background:rgba(255,255,255,.04);
+}
+.spotlight-card::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--gold),transparent);
+  opacity:0;transition:opacity .3s;
+}
+.spotlight-card:hover::after{opacity:1;}
+.sc-icon{font-size:2rem;margin-bottom:.9rem;display:block;}
+.sc-title{font-size:1rem;font-weight:700;margin-bottom:.4rem;}
+.sc-desc{font-size:.76rem;color:rgba(255,255,255,.35);line-height:1.65;}
+.sc-stat{margin-top:1rem;font-family:'Bebas Neue',sans-serif;font-size:1.6rem;color:var(--gold);letter-spacing:.5px;}
+.sc-stat-label{font-size:.62rem;color:rgba(255,255,255,.25);text-transform:uppercase;letter-spacing:1px;}
 
 /* CONTACT MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(8px);z-index:800;align-items:center;justify-content:center;padding:1rem;}
@@ -328,8 +467,10 @@ textarea.fi{resize:none;min-height:110px;}
   .hero-right{display:none;}
   .steps-row{grid-template-columns:1fr 1fr;}
   .steps-row::before{display:none;}
+  .agent-spotlight{grid-template-columns:1fr 1fr;}
   .partner-cta{grid-template-columns:1fr;}
   .pc-right{flex-direction:row;align-items:center;}
+  .pc-actions{width:auto;flex-direction:row;}
   .ft-top{grid-template-columns:1fr 1fr;}
 }
 @media(max-width:768px){
@@ -337,6 +478,7 @@ textarea.fi{resize:none;min-height:110px;}
   .nl{display:none;}.burger{display:flex;}
   .hero-h{font-size:2.2rem;}
   .steps-row{grid-template-columns:1fr 1fr;}
+  .agent-spotlight{grid-template-columns:1fr;}
   .commission-block{grid-template-columns:1fr;}
   body{cursor:auto;}#cur,#cr{display:none;}
 }
@@ -344,13 +486,15 @@ textarea.fi{resize:none;min-height:110px;}
   .steps-row{grid-template-columns:1fr;}
   .promise-grid{grid-template-columns:1fr 1fr;}
   .ft-top{grid-template-columns:1fr;}
+  .agent-spotlight{grid-template-columns:1fr;}
+  .pc-actions{flex-direction:column;width:100%;}
 }
 </style>
 </head>
 <body>
 <div id="cur"></div><div id="cr"></div>
 
-<!-- ══ TICKER — service-based ══ -->
+<!-- ══ TICKER ══ -->
 <div class="company-ticker" id="company-ticker" aria-hidden="true">
   <div class="ct-label">
     <span class="ct-label-brand">Cover<em>Credit</em></span>
@@ -372,7 +516,7 @@ textarea.fi{resize:none;min-height:110px;}
   <a href="book.html" class="fbk">📅 Book Call</a>
 </div>
 
-<!-- ══ NAV — canonical full nav ══ -->
+<!-- ══ NAV ══ -->
 <nav class="nav" id="nav">
   <div class="ni">
     <a href="index.html" class="logo">Cover<em>Credit</em></a>
@@ -398,7 +542,7 @@ textarea.fi{resize:none;min-height:110px;}
   </div>
 </nav>
 
-<!-- ══ MOBILE MENU — canonical full list ══ -->
+<!-- ══ MOBILE MENU ══ -->
 <div class="mob" id="mob">
   <a href="health-insurance.html">Health Insurance</a>
   <a href="life-insurance.html">Life Insurance</a>
@@ -548,130 +692,112 @@ textarea.fi{resize:none;min-height:110px;}
   </div>
 </section>
 
-<!-- ══ AGENT SECTION ══ -->
+<!-- ══ AGENT SECTION — reframed ══ -->
 <section class="refer-sec" id="refer-earn">
-  <div class="refer-bg">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
-  </div>
+  <div class="refer-bg"></div>
   <div class="refer-in">
+
     <div class="refer-head rv">
-      <div class="refer-badge"><span class="refer-badge-star">🎯</span> Growing Opportunity</div>
-      <h2 class="refer-h">Become a <em>Direct Agent.</em><br/>Build your insurance business.</h2>
-      <p class="refer-sub">Join Cover Credit's network of authorized agents. Get professional support, competitive commissions, and grow your client base with our proven products and services.</p>
+      <div class="refer-badge">🎯 &nbsp;Earn What You Deserve</div>
+      <h2 class="refer-h">Become a <em>Cover Credit Agent.</em><br/>You bring business. We credit your work.</h2>
+      <p class="refer-sub">Join our agent network and work on your own terms. Every policy you close is credited directly to you — transparent, prompt, and performance-based.</p>
     </div>
-    <div class="steps-row">
-      <div class="step-card rv d1">
-        <div class="step-cartoon">
-          <div class="step-num">1</div>
-          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="46" fill="rgba(255,107,0,.08)" stroke="rgba(255,107,0,.15)" stroke-width="1"/>
-            <ellipse cx="50" cy="75" rx="18" ry="10" fill="#1a3a5c"/>
-            <circle cx="50" cy="42" r="16" fill="#fdb97d"/>
-            <ellipse cx="50" cy="30" rx="16" ry="8" fill="#2d1a0e"/>
-            <circle cx="44" cy="42" r="2.5" fill="#fff"/><circle cx="56" cy="42" r="2.5" fill="#fff"/>
-            <circle cx="44.8" cy="42.8" r="1.2" fill="#1a1a1a"/><circle cx="56.8" cy="42.8" r="1.2" fill="#1a1a1a"/>
-            <path d="M44 50 Q50 56 56 50" stroke="#c97a3a" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-            <rect x="28" y="62" width="24" height="16" rx="3" fill="#ff6b00"/>
-            <text x="40" y="73" font-size="6" fill="#fff" font-family="sans-serif" font-weight="bold">AGENT</text>
-            <text x="62" y="35" font-size="10" fill="#f5a623">✓</text>
-          </svg>
-        </div>
-        <div class="step-title">Apply & Get Approved</div>
-        <div class="step-desc">Quick verification process. We check your background and expertise. Approval within 48 hours.</div>
+
+    <!-- 3 spotlight cards -->
+    <div class="agent-spotlight rv d1">
+      <div class="spotlight-card">
+        <span class="sc-icon">🤝</span>
+        <div class="sc-title">You Bring Business, We Handle the Rest</div>
+        <div class="sc-desc">Focus entirely on connecting clients to the right product. Our backend team manages all paperwork, policy issuance, and after-sales support — so you can keep selling.</div>
+        <div class="sc-stat">100%</div>
+        <div class="sc-stat-label">Backend support — zero admin burden on you</div>
       </div>
-      <div class="step-card rv d2">
-        <div class="step-cartoon">
-          <div class="step-num">2</div>
-          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="46" fill="rgba(37,211,102,.06)" stroke="rgba(37,211,102,.12)" stroke-width="1"/>
-            <rect x="32" y="25" width="36" height="55" rx="6" fill="#1a3a5c" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
-            <rect x="35" y="30" width="30" height="40" rx="3" fill="#0d2438"/>
-            <circle cx="50" cy="50" r="10" fill="#ff6b00"/>
-            <text x="46" y="54" font-size="9" fill="#fff">📚</text>
-            <rect x="62" y="28" width="22" height="12" rx="6" fill="#25d366" opacity=".9"/>
-            <text x="63" y="37" font-size="6" fill="#fff" opacity=".9">TRAINING</text>
-            <circle cx="50" cy="76" r="2.5" fill="rgba(255,255,255,.2)"/>
-          </svg>
-        </div>
-        <div class="step-title">Complete Training</div>
-        <div class="step-desc">Get certified with our comprehensive product training. Master sales techniques & client management.</div>
+      <div class="spotlight-card">
+        <span class="sc-icon">💳</span>
+        <div class="sc-title">Credit for Every Sale You Make</div>
+        <div class="sc-desc">You are treated as a valued contributor — not just a referral source. Every policy closed through you is tracked and credited directly to your account with full transparency.</div>
+        <div class="sc-stat">Real-time</div>
+        <div class="sc-stat-label">Credit tracking — know exactly what you've earned</div>
       </div>
-      <div class="step-card rv d3">
-        <div class="step-cartoon">
-          <div class="step-num">3</div>
-          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="46" fill="rgba(96,165,250,.06)" stroke="rgba(96,165,250,.12)" stroke-width="1"/>
-            <circle cx="35" cy="40" r="10" fill="#fdb97d"/>
-            <ellipse cx="35" cy="55" rx="10" ry="7" fill="#2563eb"/>
-            <ellipse cx="35" cy="33" rx="10" ry="6" fill="#1e3a5f"/>
-            <circle cx="32" cy="40" r="1.5" fill="#1a1a1a"/><circle cx="38" cy="40" r="1.5" fill="#1a1a1a"/>
-            <rect x="42" y="32" width="20" height="26" rx="3" fill="#fff" opacity=".9"/>
-            <rect x="45" y="36" width="14" height="2" rx="1" fill="#1e40af"/>
-            <rect x="45" y="41" width="10" height="1.5" rx=".75" fill="#93c5fd"/>
-            <circle cx="56" cy="55" r="6" fill="#25d366"/>
-            <text x="53" y="58" font-size="7" fill="#fff">✓</text>
-            <text x="68" y="45" font-size="14" fill="#ff6b00">🤝</text>
-          </svg>
-        </div>
-        <div class="step-title">Start Selling</div>
-        <div class="step-desc">Access our client tools, marketing materials & agent portal. Begin building your client base immediately.</div>
-      </div>
-      <div class="step-card rv d4">
-        <div class="step-cartoon">
-          <div class="step-num">4</div>
-          <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="46" fill="rgba(245,166,35,.08)" stroke="rgba(245,166,35,.15)" stroke-width="1"/>
-            <circle cx="50" cy="42" r="14" fill="#fdb97d"/>
-            <ellipse cx="50" cy="76" rx="16" ry="10" fill="#166534"/>
-            <ellipse cx="50" cy="31" rx="14" ry="7" fill="#2d1a0e"/>
-            <circle cx="45" cy="42" r="2" fill="#1a1a1a"/><circle cx="55" cy="42" r="2" fill="#1a1a1a"/>
-            <path d="M43 50 Q50 58 57 50" stroke="#c97a3a" stroke-width="2" fill="none" stroke-linecap="round"/>
-            <ellipse cx="50" cy="87" rx="10" ry="8" fill="#f5a623"/>
-            <text x="47" y="90" font-size="8" fill="#06101f" font-weight="bold">₹</text>
-            <circle cx="28" cy="35" r="7" fill="#f5a623" opacity=".9"/>
-            <text x="25" y="38" font-size="7" fill="#06101f">📈</text>
-            <circle cx="72" cy="30" r="6" fill="#f5a623" opacity=".8"/>
-          </svg>
-        </div>
-        <div class="step-title">Earn & Grow</div>
-        <div class="step-desc">Attractive commissions on every sale. Bonuses for performance. Build recurring income month after month.</div>
+      <div class="spotlight-card">
+        <span class="sc-icon">📈</span>
+        <div class="sc-title">Grow at Your Own Pace</div>
+        <div class="sc-desc">Start with one client or build a full book of business — there's no minimum. The more business you bring, the better your earning tier and priority support from our team.</div>
+        <div class="sc-stat">No Cap</div>
+        <div class="sc-stat-label">On earnings — your effort defines your income</div>
       </div>
     </div>
 
+    <!-- How it works: 4 steps -->
+    <div class="steps-row">
+      <div class="step-card rv d1">
+        <div class="step-ico-wrap">
+          <div class="step-num">1</div>
+          📋
+        </div>
+        <div class="step-title">Apply & Get Verified</div>
+        <div class="step-desc">Submit your interest. Our team verifies your profile and onboards you as an authorized Cover Credit agent within 48 hours.</div>
+      </div>
+      <div class="step-card rv d2">
+        <div class="step-ico-wrap">
+          <div class="step-num">2</div>
+          🎯
+        </div>
+        <div class="step-title">Get Your Agent Portal Access</div>
+        <div class="step-desc">Access our dedicated agent portal with product brochures, pricing, and all materials you need to present to clients — everything ready for you from day one.</div>
+      </div>
+      <div class="step-card rv d3">
+        <div class="step-ico-wrap">
+          <div class="step-num">3</div>
+          🤝
+        </div>
+        <div class="step-title">Bring Business & Close Deals</div>
+        <div class="step-desc">Source clients in your network, present Cover Credit products, and submit leads. Our team supports closing, issuance, and all client queries end-to-end.</div>
+      </div>
+      <div class="step-card rv d4">
+        <div class="step-ico-wrap">
+          <div class="step-num">4</div>
+          💰
+        </div>
+        <div class="step-title">Get Credited & Keep Growing</div>
+        <div class="step-desc">Every sale is logged to your account. Credits are settled on time, every time. More business means higher tiers, better rates, and exclusive incentives.</div>
+      </div>
+    </div>
+
+    <!-- Credit / earning structure -->
     <div class="commission-block rv">
       <div class="cb-left">
-        <div class="tag">Agent Benefits</div>
-        <h3 class="cb-title">Comprehensive <em>agent support</em><br/>& earning structure.</h3>
-        <p class="cb-sub">We offer a tiered commission structure based on your performance and volume. The more you sell, the better your earnings grow. Contact our team for detailed commission details tailored to your market.</p>
-        <div class="cb-badge">✅ Customized structure • Performance incentives • Bonus opportunities</div>
+        <div class="tag">Agent Credit Structure</div>
+        <h3 class="cb-title">Your work gets <em>full credit.</em><br/>Every time, on time.</h3>
+        <p class="cb-sub">We believe agents who bring business deserve to be recognized like employees — with reliable payouts, performance tiers, and growing rewards as your contribution scales. No guesswork, no delays.</p>
+        <div class="cb-badge">✅ Timely credits &nbsp;•&nbsp; Performance tiers &nbsp;•&nbsp; Seasonal bonuses</div>
       </div>
       <div>
         <div class="earn-table">
-          <div class="et-row head"><div class="et-head-lbl">Agent Level</div><div class="et-head-lbl">Monthly Target</div><div class="et-head-lbl">Key Benefits</div></div>
-          <div class="et-row"><div class="et-dept">⭐ <span>Starter Agent</span></div><div class="et-pct">Flexible</div><div class="et-amt">Training • Support • Portal</div></div>
-          <div class="et-row"><div class="et-dept">🔥 <span>Active Agent</span></div><div class="et-pct">10–15 Sales</div><div class="et-amt">Incentives • Bonuses • Priority</div></div>
-          <div class="et-row"><div class="et-dept">💎 <span>Premium Agent</span></div><div class="et-pct">20+ Sales</div><div class="et-amt">Higher commissions • Perks</div></div>
-          <div class="et-row"><div class="et-dept">👑 <span>Elite Partner</span></div><div class="et-pct">40+ Sales</div><div class="et-amt">Best rates • Dedicated support</div></div>
-          <div class="et-row"><div class="et-dept">🚀 <span>All Products</span></div><div class="et-pct">Full Range</div><div class="et-amt">Health • Life • Auto • Loans</div></div>
-          <div class="et-row"><div class="et-dept">📈 <span>Seasonal Bonuses</span></div><div class="et-pct">Quarterly</div><div class="et-amt">Performance rewards • Contests</div></div>
+          <div class="et-row head"><div class="et-head-lbl">Agent Tier</div><div class="et-head-lbl">Monthly Business</div><div class="et-head-lbl">What You Get</div></div>
+          <div class="et-row"><div class="et-dept">⭐ <span>Associate Agent</span></div><div class="et-pct">Flexible</div><div class="et-amt">Portal access • Full backend support</div></div>
+          <div class="et-row"><div class="et-dept">🔥 <span>Active Agent</span></div><div class="et-pct">10–15 Policies</div><div class="et-amt">Priority support • Performance bonus</div></div>
+          <div class="et-row"><div class="et-dept">💎 <span>Senior Agent</span></div><div class="et-pct">20+ Policies</div><div class="et-amt">Higher credits • Exclusive incentives</div></div>
+          <div class="et-row"><div class="et-dept">👑 <span>Elite Partner</span></div><div class="et-pct">40+ Policies</div><div class="et-amt">Best rates • Dedicated relationship manager</div></div>
+          <div class="et-row"><div class="et-dept">🚀 <span>All Product Lines</span></div><div class="et-pct">Full Range</div><div class="et-amt">Health • Life • Auto • Loans • Tax</div></div>
+          <div class="et-row"><div class="et-dept">📈 <span>Quarterly Contests</span></div><div class="et-pct">Every Quarter</div><div class="et-amt">Cash rewards • Recognition • Gifts</div></div>
         </div>
       </div>
     </div>
 
+    <!-- CTA block -->
     <div class="partner-cta rv">
       <div class="pc-left">
         <div class="pc-tag">Agent Onboarding</div>
-        <h3 class="pc-title">Become a <em>Cover Credit Agent.</em><br/>Build your success.</h3>
-        <p class="pc-sub">We provide everything you need to succeed as an insurance agent. Professional training, marketing support, dedicated backend team, and a proven commission structure.</p>
+        <h3 class="pc-title">Ready to start earning<br/>on <em>your own terms?</em></h3>
+        <p class="pc-sub">Join Cover Credit's growing agent network. You source the business — we handle operations, issuance, and service. You earn credit for every sale, every month, without exception.</p>
         <div class="pc-perks">
-          <span class="pc-perk">🎓 Complete product training</span>
-          <span class="pc-perk">📊 Agent management portal</span>
-          <span class="pc-perk">💼 Marketing materials included</span>
-          <span class="pc-perk">📱 Real-time commission tracking</span>
-          <span class="pc-perk">🤝 Dedicated agent support</span>
-          <span class="pc-perk">🏆 Performance incentives</span>
+          <span class="pc-perk">🎯 Dedicated agent portal</span>
+          <span class="pc-perk">📁 Ready-to-use product materials</span>
+          <span class="pc-perk">⚙️ Full backend operations handled</span>
+          <span class="pc-perk">📱 Real-time credit tracking</span>
+          <span class="pc-perk">🤝 Relationship manager at Senior+ tier</span>
+          <span class="pc-perk">🏆 Quarterly performance contests</span>
         </div>
       </div>
       <div class="pc-right">
@@ -701,11 +827,12 @@ textarea.fi{resize:none;min-height:110px;}
           </svg>
         </div>
         <div class="pc-actions">
-          <button class="pc-btn-primary" onclick="openContactModal('agent')">🚀 Become an Agent</button>
-          <button class="pc-btn-sec" onclick="openContactModal('agent')">Get More Information →</button>
+          <button class="pc-btn-primary" onclick="openContactModal('agent')">🚀 Join as Agent</button>
+          <button class="pc-btn-sec" onclick="openContactModal('agent')">Learn More →</button>
         </div>
       </div>
     </div>
+
   </div>
 </section>
 
@@ -753,8 +880,8 @@ textarea.fi{resize:none;min-height:110px;}
     <button class="modal-close" onclick="closeContactModal()">✕</button>
     <div class="modal-header">
       <div class="modal-logo">Cover<em>Credit</em></div>
-      <h2 class="modal-title">Become a <em>Direct Agent</em></h2>
-      <p class="modal-desc">Connect with our team to discuss agent opportunities, commission structure, and onboarding process.</p>
+      <h2 class="modal-title">Join as a <em>Direct Agent</em></h2>
+      <p class="modal-desc">Connect with our team to discuss how to get started, what products you'll sell, and how your credits will be tracked and paid.</p>
     </div>
     <div class="contact-options">
       <a href="tel:+917842854466" class="contact-option call">
@@ -776,7 +903,7 @@ textarea.fi{resize:none;min-height:110px;}
 <script>
 const API_URL = 'https://api.covercredit.in';
 
-/* ══ TICKER — service-based ══ */
+/* ══ TICKER ══ */
 (function(){
   var SERVICES = [
     {cat:'insurance', name:'Health Insurance'},
@@ -808,22 +935,9 @@ const API_URL = 'https://api.covercredit.in';
     tax:       {label:'📋 Tax',       cls:'ct-pill--tax'},
     support:   {label:'🤝 Support',   cls:'ct-pill--support'},
   };
-  function makePill(cat){
-    var d=document.createElement('div');d.className='ct-pill '+CATS[cat].cls;
-    var s=document.createElement('span');s.textContent=CATS[cat].label;d.appendChild(s);return d;
-  }
-  function makeItem(svc){
-    var d=document.createElement('div');d.className='ct-item';
-    var n=document.createElement('span');n.className='ct-item-name';n.textContent=svc.name;d.appendChild(n);return d;
-  }
-  function buildSet(){
-    var f=document.createDocumentFragment(),last=null;
-    SERVICES.forEach(function(svc){
-      if(svc.cat!==last){f.appendChild(makePill(svc.cat));last=svc.cat;}
-      f.appendChild(makeItem(svc));
-    });
-    return f;
-  }
+  function makePill(cat){var d=document.createElement('div');d.className='ct-pill '+CATS[cat].cls;var s=document.createElement('span');s.textContent=CATS[cat].label;d.appendChild(s);return d;}
+  function makeItem(svc){var d=document.createElement('div');d.className='ct-item';var n=document.createElement('span');n.className='ct-item-name';n.textContent=svc.name;d.appendChild(n);return d;}
+  function buildSet(){var f=document.createDocumentFragment(),last=null;SERVICES.forEach(function(svc){if(svc.cat!==last){f.appendChild(makePill(svc.cat));last=svc.cat;}f.appendChild(makeItem(svc));});return f;}
   var track=document.getElementById('ct-track');
   if(track){track.appendChild(buildSet());track.appendChild(buildSet());}
 })();
@@ -834,7 +948,7 @@ if(cur&&cr){
   let mx=0,my=0,cx=0,cy=0;
   document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
   (function a(){cx+=(mx-cx)*.12;cy+=(my-cy)*.12;cr.style.left=cx+'px';cr.style.top=cy+'px';requestAnimationFrame(a);})();
-  document.querySelectorAll('a,button,input,select,textarea,.hc,.qc,.step-card').forEach(el=>{
+  document.querySelectorAll('a,button,input,select,textarea,.hc,.qc,.step-card,.spotlight-card').forEach(el=>{
     el.addEventListener('mouseenter',()=>document.body.classList.add('hov'));
     el.addEventListener('mouseleave',()=>document.body.classList.remove('hov'));
   });
