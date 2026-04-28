@@ -738,7 +738,7 @@ async function saveProfile() {
 
 async function changePw() {
   const el = document.getElementById('pwMsg');
-  const r = await api('/auth/change-password', {
+  const r = await api('/auth/agent/change-password', {
     method: 'POST',
     body: JSON.stringify({
       currentPassword: document.getElementById('cpCurrent').value,
