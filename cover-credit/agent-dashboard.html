@@ -3,817 +3,1189 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>Agent Dashboard — Cover Credit</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<title>Agent Portal — Cover Credit</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"/>
 <style>
 :root {
-  --navy:#0D1F3C; --navy2:#152845; --navy3:#1E3558;
-  --gold:#C98A1A;  --gold2:#E5A020; --gold3:#F5C050;
-  --slate:#7A9BBF; --muted:#4A6585;
-  --white:#F0F4FA; --dim:#A8BCCF;
-  --green:#1A9E6A; --red:#C43030; --amber:#D4870A;
-  --border:rgba(120,160,200,.15);
-  --card:rgba(21,40,69,.7);
-  --radius:10px;
+  --bg:      #0f1117;
+  --bg2:     #161b27;
+  --bg3:     #1e2535;
+  --bg4:     #252d40;
+  --bg5:     #2d3650;
+  --border:  rgba(255,255,255,.06);
+  --border2: rgba(255,255,255,.12);
+  --border3: rgba(255,255,255,.22);
+  --text:    #f0f4ff;
+  --text2:   #8b9cc8;
+  --text3:   #4d5a7a;
+  --sidebar: 240px;
+
+  --gold:    #c9a227;
+  --gold2:   #e8b84b;
+  --gold3:   #f5d07a;
+  --goldb:   rgba(201,162,39,.15);
+
+  --blue:    #4f8ef7;
+  --blue2:   #3b7cf4;
+  --indigo:  #6c63ff;
+  --violet:  #9b59f7;
+  --pink:    #f059c3;
+  --rose:    #f44b6b;
+  --orange:  #f97316;
+  --amber:   #f59e0b;
+  --lime:    #84cc16;
+  --green:   #22d68a;
+  --teal:    #14cec8;
+  --cyan:    #06b6d4;
+
+  --success: #22d68a;
+  --warning: #f59e0b;
+  --danger:  #f44b6b;
+
+  --grad-gold:   linear-gradient(135deg,#c9a227,#e8b84b);
+  --grad-blue:   linear-gradient(135deg,#4f8ef7,#6c63ff);
+  --grad-green:  linear-gradient(135deg,#22d68a,#14cec8);
+  --grad-orange: linear-gradient(135deg,#f97316,#f44b6b);
+  --grad-violet: linear-gradient(135deg,#9b59f7,#f059c3);
+  --grad-amber:  linear-gradient(135deg,#f59e0b,#f97316);
+
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'Plus Jakarta Sans', sans-serif;
+  --radius: 8px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --shadow: 0 4px 24px rgba(0,0,0,.35);
+  --shadow-lg: 0 8px 48px rgba(0,0,0,.55);
 }
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);min-height:100vh;display:flex;flex-direction:column}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{font-size:13px;}
+body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+a{text-decoration:none;color:inherit;}
+button{font-family:inherit;cursor:pointer;}
+::-webkit-scrollbar{width:4px;height:4px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:var(--bg5);border-radius:4px;}
 
-/* ── LOGIN SCREEN ── */
-#loginScreen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px}
-.login-card{background:var(--navy2);border:1px solid var(--border);border-radius:16px;padding:40px 36px;width:100%;max-width:400px}
-.login-logo{font-size:22px;font-weight:600;color:var(--gold);letter-spacing:-.5px;margin-bottom:6px}
-.login-sub{font-size:13px;color:var(--slate);margin-bottom:28px}
-.login-card label{display:block;font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
-.login-card input{width:100%;background:var(--navy3);border:1px solid var(--border);border-radius:8px;padding:11px 14px;color:var(--white);font-size:14px;font-family:inherit;outline:none;margin-bottom:16px;transition:border-color .2s}
-.login-card input:focus{border-color:var(--gold)}
-.btn-gold{width:100%;padding:12px;background:var(--gold);color:#0D1F3C;font-weight:600;font-size:15px;border:none;border-radius:8px;cursor:pointer;font-family:inherit;transition:background .2s}
-.btn-gold:hover{background:var(--gold2)}
-.login-err{font-size:13px;color:var(--red);margin-top:10px;display:none}
+/* ══ LOGIN ══ */
+.login-screen{
+  display:flex;align-items:center;justify-content:center;min-height:100vh;
+  background:var(--bg);
+  background-image:
+    radial-gradient(ellipse 60% 50% at 20% 30%,rgba(201,162,39,.08) 0%,transparent 60%),
+    radial-gradient(ellipse 50% 60% at 80% 70%,rgba(79,142,247,.06) 0%,transparent 60%);
+}
+.login-card{
+  width:380px;padding:2.4rem;
+  background:var(--bg2);border:1px solid var(--border2);
+  border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);
+  animation:fadeUp .5s ease both;
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:none;}}
+.login-brand{display:flex;align-items:center;gap:12px;margin-bottom:2rem;}
+.login-logo{
+  width:40px;height:40px;border-radius:11px;
+  background:var(--grad-gold);
+  display:flex;align-items:center;justify-content:center;
+  font-size:14px;font-weight:800;color:#0f1117;letter-spacing:-.5px;
+  box-shadow:0 4px 16px rgba(201,162,39,.4);
+}
+.login-brand-name{font-size:15px;font-weight:700;color:var(--text);}
+.login-brand-sub{font-size:10.5px;color:var(--text3);}
+.login-title{font-size:20px;font-weight:700;margin-bottom:.3rem;}
+.login-sub{font-size:12.5px;color:var(--text2);margin-bottom:1.8rem;}
+.lf-group{margin-bottom:1rem;}
+.lf-group label{display:block;font-size:10.5px;font-weight:600;color:var(--text2);letter-spacing:.6px;text-transform:uppercase;margin-bottom:.4rem;}
+.lf-group input{
+  width:100%;padding:.65rem .9rem;
+  background:var(--bg3);border:1.5px solid var(--border2);
+  border-radius:var(--radius);color:var(--text);font-family:inherit;font-size:13px;outline:none;transition:.2s;
+}
+.lf-group input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,162,39,.12);}
+.login-btn{
+  width:100%;padding:.72rem;margin-top:.6rem;
+  background:var(--grad-gold);color:#0f1117;border:none;
+  border-radius:var(--radius);font-size:13.5px;font-weight:700;
+  transition:.2s;box-shadow:0 4px 18px rgba(201,162,39,.35);
+}
+.login-btn:hover{opacity:.9;transform:translateY(-1px);}
+.login-error{display:none;margin-top:.9rem;padding:.6rem .85rem;background:rgba(244,75,107,.12);border:1px solid rgba(244,75,107,.3);border-radius:var(--radius);font-size:12px;color:var(--rose);}
 
-/* ── TOP BAR ── */
-#app{display:none;flex-direction:column;min-height:100vh}
-.topbar{display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:56px;background:var(--navy2);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100}
-.topbar-left{display:flex;align-items:center;gap:16px}
-.topbar-brand{font-size:16px;font-weight:600;color:var(--gold)}
-.agent-pill{background:var(--navy3);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:12px;color:var(--dim)}
-.agent-pill span{color:var(--gold3);font-family:'DM Mono',monospace;font-weight:500}
-.topbar-nav{display:flex;gap:4px}
-.tnav{background:none;border:none;color:var(--dim);font-family:inherit;font-size:13px;padding:6px 14px;border-radius:6px;cursor:pointer;transition:all .15s}
-.tnav.active,.tnav:hover{background:var(--navy3);color:var(--white)}
-.tnav.active{color:var(--gold)}
-.topbar-right{display:flex;align-items:center;gap:10px}
-.btn-sm{padding:7px 14px;border-radius:7px;font-size:13px;font-family:inherit;cursor:pointer;transition:all .15s}
-.btn-add{background:var(--gold);color:#0D1F3C;border:none;font-weight:600}
-.btn-add:hover{background:var(--gold2)}
-.btn-out{background:none;border:1px solid var(--border);color:var(--dim)}
-.btn-out:hover{color:var(--white);border-color:var(--slate)}
+/* ══ PASSWORD RESET SCREEN ══ */
+.pwreset-screen{
+  display:none;align-items:center;justify-content:center;min-height:100vh;
+  background:var(--bg);
+  background-image:radial-gradient(ellipse 60% 50% at 50% 50%,rgba(201,162,39,.07) 0%,transparent 60%);
+}
+.pwreset-card{
+  width:420px;padding:2.6rem;
+  background:var(--bg2);border:1px solid var(--border2);
+  border-radius:var(--radius-xl);box-shadow:var(--shadow-lg);
+  animation:fadeUp .5s ease both;
+}
+.pwreset-badge{
+  display:inline-flex;align-items:center;gap:6px;padding:5px 12px;
+  background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.25);
+  border-radius:100px;font-size:11px;font-weight:600;color:var(--amber);margin-bottom:1.2rem;
+}
+.pwreset-title{font-size:20px;font-weight:700;margin-bottom:.4rem;}
+.pwreset-sub{font-size:12.5px;color:var(--text2);margin-bottom:1.8rem;line-height:1.6;}
+.pw-strength{height:3px;background:var(--bg4);border-radius:100px;overflow:hidden;margin-top:6px;}
+.pw-strength-fill{height:100%;border-radius:100px;transition:width .3s,background .3s;width:0%;}
 
-/* ── CONTENT ── */
-.content{flex:1;padding:24px;max-width:1200px;width:100%;margin:0 auto}
+/* ══ APP ══ */
+.app{display:none;}
+.app.show{display:flex;min-height:100vh;}
 
-/* ── VIEWS ── */
-.view{display:none}
-.view.active{display:block}
+/* ══ SIDEBAR ══ */
+.sidebar{
+  width:var(--sidebar);background:var(--bg2);border-right:1px solid var(--border);
+  display:flex;flex-direction:column;position:fixed;top:0;left:0;height:100vh;z-index:200;
+}
+.sidebar-header{
+  padding:18px 16px 14px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:10px;
+}
+.brand-logo{
+  width:32px;height:32px;border-radius:9px;flex-shrink:0;
+  background:var(--grad-gold);
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:800;color:#0f1117;
+  box-shadow:0 3px 12px rgba(201,162,39,.4);
+}
+.brand-name{font-size:13px;font-weight:700;color:var(--text);line-height:1.2;}
+.brand-tagline{font-size:9.5px;color:var(--text3);margin-top:1px;}
 
-/* ── STAT CARDS ── */
-.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin-bottom:24px}
-.stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px}
-.stat-label{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
-.stat-value{font-size:28px;font-weight:500;line-height:1}
-.stat-sub{font-size:12px;color:var(--slate);margin-top:4px}
+.sidebar-nav{flex:1;padding:8px 0;overflow-y:auto;}
+.nav-section-label{padding:14px 16px 5px;font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--text3);}
+.nav-item{
+  display:flex;align-items:center;gap:9px;margin:1px 8px;
+  padding:8px 10px;border-radius:var(--radius);
+  font-size:12.5px;font-weight:500;color:var(--text2);
+  border:none;background:none;width:calc(100% - 16px);text-align:left;
+  transition:.18s;position:relative;overflow:hidden;
+}
+.nav-item::before{content:'';position:absolute;left:0;top:50%;transform:translateY(-50%);width:3px;height:0;border-radius:0 3px 3px 0;transition:.2s;}
+.nav-item:hover{background:var(--bg3);color:var(--text);}
+.nav-item.active{background:rgba(201,162,39,.1);color:var(--gold);font-weight:600;}
+.nav-item.active::before{height:70%;background:var(--gold);}
+.nav-item-icon{width:28px;height:28px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;background:var(--bg3);transition:.18s;}
+.nav-item.active .nav-item-icon{background:rgba(201,162,39,.15);}
+.nav-badge{margin-left:auto;padding:2px 6px;border-radius:100px;font-size:10px;font-weight:700;font-family:var(--mono);background:var(--rose);color:#fff;}
 
-/* ── CHARTS ROW ── */
-.charts-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
-.chart-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px}
-.chart-title{font-size:13px;font-weight:500;color:var(--dim);margin-bottom:14px}
-.bar-chart{display:flex;flex-direction:column;gap:8px}
-.bar-row{display:flex;align-items:center;gap:10px;font-size:12px}
-.bar-label{width:90px;color:var(--dim);text-align:right;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.bar-wrap{flex:1;background:var(--navy3);border-radius:3px;height:8px;overflow:hidden}
-.bar-fill{height:100%;border-radius:3px;background:var(--gold);transition:width .5s}
-.bar-count{width:32px;color:var(--white);font-size:12px}
+.sidebar-footer{padding:12px;border-top:1px solid var(--border);}
+.sidebar-user{display:flex;align-items:center;gap:9px;padding:8px 10px;border-radius:var(--radius);background:var(--bg3);}
+.user-avatar{width:32px;height:32px;border-radius:50%;flex-shrink:0;background:var(--grad-gold);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:#0f1117;}
+.user-name{font-size:12px;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.user-code{font-size:10px;color:var(--text3);font-family:var(--mono);}
+.logout-btn{background:none;border:none;color:var(--text3);padding:3px;border-radius:4px;transition:.15s;font-size:14px;margin-left:auto;}
+.logout-btn:hover{color:var(--rose);background:rgba(244,75,107,.1);}
 
-/* ── LEAD LIST ── */
-.leads-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap;gap:10px}
-.leads-title{font-size:16px;font-weight:500}
-.leads-filters{display:flex;gap:8px;flex-wrap:wrap}
-.filter-select{background:var(--navy2);border:1px solid var(--border);color:var(--white);font-family:inherit;font-size:13px;padding:7px 12px;border-radius:7px;outline:none;cursor:pointer}
-.search-box{background:var(--navy2);border:1px solid var(--border);color:var(--white);font-family:inherit;font-size:13px;padding:7px 12px;border-radius:7px;outline:none;width:180px}
-.search-box:focus,.filter-select:focus{border-color:var(--gold)}
-.leads-table-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
-.leads-table{width:100%;border-collapse:collapse;font-size:13px}
-.leads-table th{padding:11px 14px;text-align:left;font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.06em;border-bottom:1px solid var(--border);white-space:nowrap}
-.leads-table td{padding:12px 14px;border-bottom:1px solid var(--border);vertical-align:top}
-.leads-table tr:last-child td{border-bottom:none}
-.leads-table tr:hover td{background:rgba(255,255,255,.02)}
-.lead-name{font-weight:500;color:var(--white)}
-.lead-phone{color:var(--slate);font-family:'DM Mono',monospace;font-size:12px;margin-top:2px}
-.dept-badge{display:inline-block;font-size:11px;padding:3px 8px;border-radius:4px;background:var(--navy3);color:var(--gold3)}
-.status-pill{display:inline-block;font-size:11px;padding:3px 9px;border-radius:20px;font-weight:500}
-.s-new{background:rgba(201,138,26,.15);color:var(--gold3)}
-.s-contacted{background:rgba(26,158,106,.12);color:#4ECFA0}
-.s-converted{background:rgba(26,158,106,.2);color:#2DDB8F}
-.s-notInterested,.s-lost{background:rgba(196,48,48,.12);color:#E07070}
-.s-followUp,.s-callbackScheduled{background:rgba(26,108,200,.15);color:var(--slate)}
-.s-default{background:var(--navy3);color:var(--dim)}
-.lead-date{color:var(--dim);font-size:12px;white-space:nowrap}
-.btn-icon{background:none;border:1px solid var(--border);color:var(--dim);padding:5px 10px;border-radius:6px;font-size:12px;cursor:pointer;font-family:inherit}
-.btn-icon:hover{color:var(--white);border-color:var(--slate)}
-.wa-btn{background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.3);color:#25D366}
-.wa-btn:hover{background:rgba(37,211,102,.2)}
-.empty-state{text-align:center;padding:48px 20px;color:var(--muted)}
+/* ══ MAIN ══ */
+.main{margin-left:var(--sidebar);flex:1;display:flex;flex-direction:column;min-width:0;}
+.topbar{
+  height:56px;background:rgba(22,27,39,.85);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;padding:0 22px;gap:12px;
+  position:sticky;top:0;z-index:100;
+}
+.topbar-breadcrumb{display:flex;align-items:center;gap:6px;flex:1;}
+.topbar-crumb{font-size:12px;color:var(--text3);}
+.topbar-crumb-sep{color:var(--text3);font-size:11px;}
+.topbar-crumb-current{font-size:13px;font-weight:600;color:var(--text);}
+.topbar-actions{display:flex;align-items:center;gap:10px;}
+.topbar-status{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--green);}
+.status-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:glow-green 2s ease-in-out infinite;}
+@keyframes glow-green{0%,100%{box-shadow:0 0 0 0 rgba(34,214,138,.5);}50%{box-shadow:0 0 0 4px rgba(34,214,138,0);}}
 
-/* ── MODAL ── */
-.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:200;align-items:flex-start;justify-content:center;padding:40px 16px;overflow-y:auto}
-.modal-bg.open{display:flex}
-.modal{background:var(--navy2);border:1px solid var(--border);border-radius:14px;width:100%;max-width:520px;padding:28px}
-.modal-title{font-size:17px;font-weight:500;margin-bottom:20px;color:var(--white)}
-.form-row{margin-bottom:14px}
-.form-row label{display:block;font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px}
-.form-row input,.form-row select,.form-row textarea{width:100%;background:var(--navy3);border:1px solid var(--border);color:var(--white);font-family:inherit;font-size:14px;padding:10px 13px;border-radius:8px;outline:none;transition:border-color .2s}
-.form-row input:focus,.form-row select:focus,.form-row textarea:focus{border-color:var(--gold)}
-.form-row textarea{resize:vertical;min-height:80px}
-.form-row select option{background:var(--navy2)}
-.form-2col{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.modal-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:20px}
-.btn-cancel{background:none;border:1px solid var(--border);color:var(--dim);padding:9px 18px;border-radius:7px;font-family:inherit;font-size:14px;cursor:pointer}
-.btn-submit{background:var(--gold);color:#0D1F3C;border:none;padding:9px 20px;border-radius:7px;font-family:inherit;font-size:14px;font-weight:600;cursor:pointer}
-.btn-cancel:hover{color:var(--white)} .btn-submit:hover{background:var(--gold2)}
+.content{padding:22px;flex:1;}
 
-/* ── NOTE LOG ── */
-.note-log{max-height:180px;overflow-y:auto;margin-bottom:14px}
-.note-item{background:var(--navy3);border-radius:7px;padding:10px 12px;margin-bottom:8px;font-size:13px}
-.note-meta{font-size:11px;color:var(--dim);margin-top:4px}
+/* ══ PANELS ══ */
+.panel{display:none;}
+.panel.active{display:block;animation:fadeIn .25s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px);}to{opacity:1;transform:none;}}
 
-/* ── TREND MINI ── */
-.trend-bars{display:flex;align-items:flex-end;gap:3px;height:48px;margin-top:8px}
-.tb{flex:1;background:rgba(201,138,26,.4);border-radius:2px 2px 0 0;min-width:4px;transition:height .4s}
+/* ══ STAT CARDS ══ */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-bottom:22px;}
+.stat-card{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--radius-lg);padding:18px;
+  position:relative;overflow:hidden;
+  transition:.25s;
+}
+.stat-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:var(--radius-lg) var(--radius-lg) 0 0;}
+.stat-card.gold::after{background:var(--grad-gold);}
+.stat-card.blue::after{background:var(--grad-blue);}
+.stat-card.green::after{background:var(--grad-green);}
+.stat-card.violet::after{background:var(--grad-violet);}
+.stat-card.amber::after{background:var(--grad-amber);}
+.stat-card.orange::after{background:var(--grad-orange);}
+.stat-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+.stat-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:16px;}
+.stat-icon.gold{background:rgba(201,162,39,.12);}
+.stat-icon.blue{background:rgba(79,142,247,.15);}
+.stat-icon.green{background:rgba(34,214,138,.12);}
+.stat-icon.violet{background:rgba(155,89,247,.12);}
+.stat-icon.amber{background:rgba(245,158,11,.12);}
+.stat-icon.orange{background:rgba(249,115,22,.12);}
+.stat-num{font-size:28px;font-weight:700;color:var(--text);letter-spacing:-.5px;line-height:1.1;}
+.stat-label{font-size:11.5px;color:var(--text2);margin-top:4px;font-weight:500;}
+.stat-sub{font-size:10.5px;color:var(--text3);margin-top:3px;}
 
-/* ── RESP ── */
-@media(max-width:640px){
-  .charts-row{grid-template-columns:1fr}
-  .form-2col{grid-template-columns:1fr}
-  .topbar-nav{display:none}
+/* ══ CARD ══ */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;}
+.card-header{padding:14px 18px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.card-title{font-size:13px;font-weight:700;color:var(--text);display:flex;align-items:center;gap:7px;}
+.card-title-badge{font-size:9.5px;font-weight:600;padding:2px 6px;border-radius:100px;background:var(--bg3);color:var(--text3);font-family:var(--mono);}
+.card-body{padding:18px;}
+
+/* ══ TABLE ══ */
+.table-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;min-width:600px;}
+thead th{padding:10px 14px;text-align:left;font-size:10px;font-weight:700;color:var(--text3);text-transform:uppercase;letter-spacing:.7px;background:var(--bg3);border-bottom:1px solid var(--border2);white-space:nowrap;}
+tbody tr{transition:.12s;}
+tbody tr:hover{background:rgba(255,255,255,.025);}
+tbody td{padding:10px 14px;font-size:12.5px;border-bottom:1px solid var(--border);vertical-align:middle;}
+tbody tr:last-child td{border-bottom:none;}
+.td-name{font-weight:600;color:var(--text);}
+.td-phone{font-family:var(--mono);font-size:12px;color:var(--cyan);}
+.td-date{font-family:var(--mono);font-size:11px;color:var(--text3);white-space:nowrap;}
+.td-muted{color:var(--text3);font-size:12px;}
+
+/* ══ BADGES ══ */
+.badge{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:100px;font-size:11px;font-weight:600;white-space:nowrap;font-family:var(--mono);}
+.badge::before{content:'';width:5px;height:5px;border-radius:50%;flex-shrink:0;}
+.badge-new{background:rgba(245,158,11,.12);color:var(--amber);}
+.badge-new::before{background:var(--amber);}
+.badge-contacted{background:rgba(79,142,247,.12);color:var(--blue);}
+.badge-contacted::before{background:var(--blue);}
+.badge-converted{background:rgba(34,214,138,.1);color:var(--green);}
+.badge-converted::before{background:var(--green);}
+.badge-notInterested,.badge-lost{background:rgba(244,75,107,.1);color:var(--rose);}
+.badge-notInterested::before,.badge-lost::before{background:var(--rose);}
+.badge-followUp,.badge-callbackScheduled{background:rgba(155,89,247,.12);color:var(--violet);}
+.badge-followUp::before,.badge-callbackScheduled::before{background:var(--violet);}
+.badge-qualified{background:rgba(20,206,200,.12);color:var(--teal);}
+.badge-qualified::before{background:var(--teal);}
+.badge-default{background:var(--bg3);color:var(--text3);}
+.badge-default::before{background:var(--text3);}
+.dept-badge{display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:6px;font-size:11px;font-weight:600;white-space:nowrap;background:var(--bg3);border:1px solid var(--border2);color:var(--text2);}
+
+/* ══ CONTROLS ══ */
+.page-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px;gap:12px;flex-wrap:wrap;}
+.page-title{font-size:17px;font-weight:700;}
+.page-subtitle{font-size:12px;color:var(--text3);margin-top:2px;}
+.controls{display:flex;gap:7px;flex-wrap:wrap;align-items:center;}
+.search-wrap{position:relative;}
+.search-ico{position:absolute;left:9px;top:50%;transform:translateY(-50%);width:13px;height:13px;color:var(--text3);pointer-events:none;fill:none;stroke:currentColor;stroke-width:2.2;}
+.search-input{padding:.48rem .85rem .48rem 30px;background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);color:var(--text);font-family:inherit;font-size:12.5px;outline:none;min-width:210px;transition:.2s;}
+.search-input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,162,39,.1);}
+.search-input::placeholder{color:var(--text3);}
+.filter-select{padding:.48rem .8rem;background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);color:var(--text2);font-family:inherit;font-size:12.5px;outline:none;cursor:pointer;transition:.2s;}
+.filter-select:focus{border-color:var(--gold);}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:.48rem 1rem;border-radius:var(--radius);font-size:12.5px;font-weight:600;border:none;cursor:pointer;transition:.2s;white-space:nowrap;}
+.btn:hover{transform:translateY(-1px);}
+.btn-gold{background:var(--grad-gold);color:#0f1117;box-shadow:0 3px 12px rgba(201,162,39,.3);}
+.btn-gold:hover{box-shadow:0 5px 18px rgba(201,162,39,.45);}
+.btn-ghost{background:var(--bg3);color:var(--text2);border:1.5px solid var(--border2);}
+.btn-ghost:hover{border-color:var(--border3);color:var(--text);}
+.btn-danger{background:rgba(244,75,107,.12);color:var(--rose);border:1px solid rgba(244,75,107,.25);}
+.btn-sm{padding:.3rem .7rem;font-size:11px;}
+
+/* ══ ACTIONS ══ */
+.actions{display:flex;gap:4px;flex-wrap:nowrap;}
+.act-btn{padding:4px 9px;border-radius:5px;font-size:11px;font-weight:600;border:1px solid transparent;font-family:inherit;transition:.15s;white-space:nowrap;}
+.act-wa{background:rgba(37,211,102,.1);border-color:rgba(37,211,102,.2);color:#25d366;}
+.act-wa:hover{background:rgba(37,211,102,.2);}
+.act-edit{background:rgba(201,162,39,.1);border-color:rgba(201,162,39,.2);color:var(--gold);}
+.act-edit:hover{background:rgba(201,162,39,.2);}
+.act-call{background:rgba(34,214,138,.1);border-color:rgba(34,214,138,.2);color:var(--green);}
+.act-call:hover{background:rgba(34,214,138,.2);}
+
+/* ══ MODAL ══ */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(8px);z-index:500;align-items:center;justify-content:center;padding:1rem;overflow-y:auto;}
+.modal-overlay.show{display:flex;}
+.modal{background:var(--bg2);border:1px solid var(--border2);border-radius:var(--radius-xl);width:100%;max-width:520px;max-height:90vh;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 80px rgba(0,0,0,.6);animation:modalIn .25s cubic-bezier(.16,1,.3,1) both;}
+@keyframes modalIn{from{opacity:0;transform:scale(.96) translateY(12px);}to{opacity:1;transform:none;}}
+.modal-head{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.modal-head h3{font-size:14px;font-weight:700;color:var(--text);}
+.modal-close{background:none;border:none;color:var(--text3);font-size:16px;padding:2px;border-radius:4px;transition:.15s;}
+.modal-close:hover{color:var(--text);background:var(--bg3);}
+.modal-body{flex:1;overflow-y:auto;padding:20px;}
+.modal-foot{padding:14px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:9px;flex-shrink:0;}
+.modal-cancel{background:var(--bg3);color:var(--text2);border:1.5px solid var(--border2);padding:.5rem 1.1rem;border-radius:var(--radius);font-family:inherit;font-size:12.5px;font-weight:500;cursor:pointer;transition:.15s;}
+.modal-cancel:hover{border-color:var(--border3);color:var(--text);}
+.modal-save{background:var(--grad-gold);color:#0f1117;border:none;padding:.5rem 1.1rem;border-radius:var(--radius);font-family:inherit;font-size:12.5px;font-weight:700;cursor:pointer;transition:.15s;box-shadow:0 3px 12px rgba(201,162,39,.3);}
+.modal-save:hover{opacity:.9;}
+
+.mf-label{display:block;font-size:10.5px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;margin-top:13px;}
+.mf-select,.mf-input,.mf-textarea{width:100%;padding:.55rem .85rem;background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);color:var(--text);font-family:inherit;font-size:12.5px;outline:none;transition:.2s;}
+.mf-select:focus,.mf-input:focus,.mf-textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,162,39,.08);}
+.mf-textarea{resize:vertical;min-height:80px;}
+.mf-info{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;}
+.mf-info p{font-size:12.5px;color:var(--text2);margin-bottom:4px;line-height:1.6;}
+.mf-info strong{color:var(--text);font-weight:600;}
+
+.note-log{max-height:160px;overflow-y:auto;border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;}
+.note-entry{padding:10px 12px;border-bottom:1px solid var(--border);background:var(--bg3);}
+.note-entry:last-child{border-bottom:none;}
+.note-text{font-size:12.5px;color:var(--text2);line-height:1.5;}
+.note-meta{font-size:10.5px;color:var(--text3);margin-top:3px;font-family:var(--mono);}
+.note-empty{padding:14px;text-align:center;font-size:12px;color:var(--text3);background:var(--bg3);}
+
+/* ══ SECTION GRID ══ */
+.section-row{display:grid;gap:16px;margin-bottom:20px;}
+.section-row.col-2{grid-template-columns:1fr 1fr;}
+
+/* ══ TREND BARS ══ */
+.trend-wrap{display:flex;align-items:flex-end;gap:3px;height:56px;}
+.tb{flex:1;border-radius:3px 3px 0 0;min-width:6px;cursor:pointer;transition:.15s;background:rgba(201,162,39,.35);}
+.tb:hover{background:var(--gold);transform:scaleY(1.05);transform-origin:bottom;}
+.trend-labels{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--text3);margin-top:6px;}
+
+/* ══ BAR CHART ══ */
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px;}
+.bar-label{font-size:12px;color:var(--text2);width:100px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500;}
+.bar-track{flex:1;height:6px;background:var(--bg3);border-radius:100px;overflow:hidden;}
+.bar-fill{height:100%;border-radius:100px;background:var(--gold);transition:width .7s cubic-bezier(.16,1,.3,1);}
+.bar-count{font-family:var(--mono);font-size:11px;color:var(--text2);width:36px;text-align:right;}
+
+/* ══ PROFILE ══ */
+.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+.form-group{display:flex;flex-direction:column;gap:4px;}
+.form-group label{font-size:10.5px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.5px;}
+.form-group input,.form-group select{padding:.55rem .85rem;background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);color:var(--text);font-family:inherit;font-size:12.5px;outline:none;transition:.2s;}
+.form-group input:focus,.form-group select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,162,39,.08);}
+
+/* ══ TOAST ══ */
+.toast{position:fixed;bottom:22px;right:22px;z-index:999;padding:10px 16px;border:1px solid var(--border2);border-radius:var(--radius);font-size:12.5px;font-weight:500;box-shadow:0 8px 32px rgba(0,0,0,.5);transform:translateY(16px);opacity:0;transition:.25s ease;max-width:310px;display:flex;align-items:center;gap:8px;background:var(--bg3);color:var(--text);}
+.toast::before{content:'';width:8px;height:8px;border-radius:50%;flex-shrink:0;}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast.success{background:rgba(34,214,138,.1);border-color:rgba(34,214,138,.3);color:var(--green);}
+.toast.success::before{background:var(--green);}
+.toast.error{background:rgba(244,75,107,.1);border-color:rgba(244,75,107,.3);color:var(--rose);}
+.toast.error::before{background:var(--rose);}
+.toast.info{background:rgba(201,162,39,.1);border-color:rgba(201,162,39,.3);color:var(--gold);}
+.toast.info::before{background:var(--gold);}
+
+/* ══ EMPTY ══ */
+.empty{text-align:center;padding:3rem;color:var(--text3);}
+.empty-icon{font-size:2.5rem;margin-bottom:10px;opacity:.35;}
+.empty p{font-size:12.5px;}
+.loading{text-align:center;padding:2.5rem;color:var(--text3);font-size:12px;}
+
+/* ══ PAGINATION ══ */
+.pagination{display:flex;align-items:center;gap:5px;margin-top:14px;justify-content:flex-end;}
+.page-info{font-size:11px;color:var(--text3);margin-right:6px;font-family:var(--mono);}
+.page-btn{padding:4px 10px;border:1.5px solid var(--border2);border-radius:6px;background:var(--bg3);font-family:var(--mono);font-size:11px;color:var(--text2);cursor:pointer;transition:.15s;}
+.page-btn:hover,.page-btn.active{background:var(--gold);border-color:var(--gold);color:#0f1117;}
+
+/* ══ MOB ══ */
+.mob-hamburger{display:none;align-items:center;justify-content:center;width:32px;height:32px;border-radius:var(--radius);background:var(--bg3);border:1px solid var(--border2);color:var(--text2);font-size:17px;cursor:pointer;}
+.mob-sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(3px);z-index:199;}
+.mob-sidebar-overlay.show{display:block;}
+
+@media(max-width:768px){
+  .mob-hamburger{display:flex;}
+  .sidebar{transform:translateX(-100%);}
+  .main{margin-left:0;}
+  .sidebar.mobile-open{transform:translateX(0);box-shadow:var(--shadow-lg);}
+  .content{padding:14px;}
+  .section-row.col-2{grid-template-columns:1fr;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  .profile-grid{grid-template-columns:1fr;}
+  .search-input{min-width:130px;}
+}
+@media(max-width:480px){
+  .stats-grid{grid-template-columns:1fr 1fr;}
+  .login-card,.pwreset-card{width:calc(100% - 2rem);padding:1.6rem 1.2rem;}
 }
 </style>
 </head>
 <body>
 
-<!-- ══════════ LOGIN ══════════ -->
-<div id="loginScreen">
+<!-- ══ LOGIN ══ -->
+<div class="login-screen" id="login-screen" style="display:flex;">
   <div class="login-card">
-    <div class="login-logo">Cover Credit</div>
-    <div class="login-sub">Agent Portal — sign in to your dashboard</div>
-    <label>Email</label>
-    <input type="email" id="loginEmail" placeholder="your@email.com" autocomplete="username"/>
-    <label>Password</label>
-    <input type="password" id="loginPw" placeholder="••••••••" autocomplete="current-password"
-      onkeydown="if(event.key==='Enter')doLogin()"/>
-    <button class="btn-gold" onclick="doLogin()">Sign in</button>
-    <div class="login-err" id="loginErr"></div>
+    <div class="login-brand">
+      <div class="login-logo">CC</div>
+      <div>
+        <div class="login-brand-name">Cover Credit</div>
+        <div class="login-brand-sub">Agent Portal</div>
+      </div>
+    </div>
+    <div class="login-title">Welcome back</div>
+    <div class="login-sub">Sign in to your agent dashboard</div>
+    <div class="lf-group">
+      <label for="l-email">Email Address</label>
+      <input type="email" id="l-email" placeholder="agent@covercredit.in" autocomplete="username"/>
+    </div>
+    <div class="lf-group">
+      <label for="l-pass">Password</label>
+      <input type="password" id="l-pass" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"/>
+    </div>
+    <button class="login-btn" onclick="doLogin()">Sign in to Dashboard →</button>
+    <div class="login-error" id="login-error"></div>
   </div>
 </div>
 
-<!-- ══════════ APP ══════════ -->
-<div id="app">
-  <!-- Top bar -->
-  <div class="topbar">
-    <div class="topbar-left">
-      <div class="topbar-brand">Cover Credit</div>
-      <div class="agent-pill" id="agentPill">Agent · <span id="agentCode">–</span></div>
+<!-- ══ PASSWORD RESET (forced on first login) ══ -->
+<div class="pwreset-screen" id="pwreset-screen" style="display:none;align-items:center;justify-content:center;min-height:100vh;background:var(--bg);">
+  <div class="pwreset-card">
+    <div class="login-brand" style="margin-bottom:1.2rem;">
+      <div class="login-logo">CC</div>
+      <div>
+        <div class="login-brand-name">Cover Credit</div>
+        <div class="login-brand-sub">Agent Portal</div>
+      </div>
     </div>
-    <div class="topbar-nav">
-      <button class="tnav active" onclick="showView('dashboard')">Dashboard</button>
-      <button class="tnav" onclick="showView('leads')">My Leads</button>
-      <button class="tnav" onclick="showView('profile')">Profile</button>
+    <div class="pwreset-badge">⚠ Action Required</div>
+    <div class="pwreset-title">Set Your New Password</div>
+    <div class="pwreset-sub">This is your first login. Please set a secure password to continue. You cannot access any other pages until this is done.</div>
+    <div class="lf-group">
+      <label>New Password</label>
+      <input type="password" id="pr-new" placeholder="Minimum 8 characters" oninput="checkPwStrength()"/>
+      <div class="pw-strength" style="margin-top:6px;"><div class="pw-strength-fill" id="pw-strength-fill"></div></div>
+      <div style="font-size:10.5px;color:var(--text3);margin-top:4px;" id="pw-strength-label"></div>
     </div>
-    <div class="topbar-right">
-      <button class="btn-sm btn-add" onclick="openAddLead()">+ Add Lead</button>
-      <button class="btn-sm btn-out" onclick="logout()">Sign out</button>
+    <div class="lf-group">
+      <label>Confirm Password</label>
+      <input type="password" id="pr-confirm" placeholder="Repeat your new password" onkeydown="if(event.key==='Enter')doPasswordReset()"/>
+    </div>
+    <div class="login-error" id="pr-error"></div>
+    <button class="login-btn" onclick="doPasswordReset()">Set Password & Continue →</button>
+  </div>
+</div>
+
+<!-- ══ APP ══ -->
+<div class="app" id="app">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="brand-logo">CC</div>
+      <div>
+        <div class="brand-name">Cover Credit</div>
+        <div class="brand-tagline">Agent Portal</div>
+      </div>
+    </div>
+    <nav class="sidebar-nav">
+      <div class="nav-section-label">Overview</div>
+      <button class="nav-item active" onclick="showPanel('dashboard')">
+        <span class="nav-item-icon">📊</span> Dashboard
+      </button>
+      <div class="nav-section-label">My Work</div>
+      <button class="nav-item" onclick="showPanel('leads')">
+        <span class="nav-item-icon">👥</span> My Leads
+        <span class="nav-badge" id="nav-new-badge" style="display:none;"></span>
+      </button>
+      <div class="nav-section-label">Account</div>
+      <button class="nav-item" onclick="showPanel('profile')">
+        <span class="nav-item-icon">⚙️</span> Profile & Settings
+      </button>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user">
+        <div class="user-avatar" id="user-avatar-sidebar">A</div>
+        <div style="flex:1;min-width:0;">
+          <div class="user-name" id="user-name-sidebar">Agent</div>
+          <div class="user-code" id="user-code-sidebar">—</div>
+        </div>
+        <button class="logout-btn" onclick="doLogout()" title="Sign out">⏻</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+    <div class="mob-sidebar-overlay" id="mob-overlay" onclick="closeMobileSidebar()"></div>
+    <div class="topbar">
+      <button class="mob-hamburger" onclick="toggleMobileSidebar()">☰</button>
+      <div class="topbar-breadcrumb">
+        <span class="topbar-crumb">Cover Credit</span>
+        <span class="topbar-crumb-sep">›</span>
+        <span class="topbar-crumb-current" id="panel-heading">Dashboard</span>
+      </div>
+      <div class="topbar-actions">
+        <div class="topbar-status"><span class="status-dot"></span> Live</div>
+        <button class="btn btn-gold btn-sm" onclick="openAddLead()">+ Add Lead</button>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- ══ DASHBOARD ══ -->
+      <div class="panel active" id="panel-dashboard">
+        <div class="stats-grid" id="stats-grid">
+          <div class="loading">Loading stats…</div>
+        </div>
+        <div class="section-row col-2">
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">📈 Last 14 Days <span class="card-title-badge">activity</span></span>
+            </div>
+            <div class="card-body">
+              <div class="trend-wrap" id="trend-bars"></div>
+              <div class="trend-labels" id="trend-labels"></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">🗂 Leads by Status <span class="card-title-badge">breakdown</span></span>
+            </div>
+            <div class="card-body" id="status-chart">
+              <div class="loading">Loading…</div>
+            </div>
+          </div>
+        </div>
+        <div class="section-row col-2">
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">🏷 By Department</span>
+            </div>
+            <div class="card-body" id="dept-chart">
+              <div class="loading">Loading…</div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header">
+              <span class="card-title">🕐 Recent Activity</span>
+              <button class="btn btn-ghost btn-sm" onclick="showPanel('leads')">View All →</button>
+            </div>
+            <div class="card-body" id="recent-leads-mini">
+              <div class="loading">Loading…</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ LEADS ══ -->
+      <div class="panel" id="panel-leads">
+        <div class="page-header">
+          <div>
+            <div class="page-title">My Leads</div>
+            <div class="page-subtitle">Track and manage all your client leads</div>
+          </div>
+          <div class="controls">
+            <div class="search-wrap">
+              <svg class="search-ico" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+              <input class="search-input" id="lead-search" placeholder="Search name, phone…" oninput="debounceSearch()"/>
+            </div>
+            <select class="filter-select" id="filter-status" onchange="loadLeads()">
+              <option value="">All Statuses</option>
+              <option value="new">New</option>
+              <option value="contacted">Contacted</option>
+              <option value="qualified">Qualified</option>
+              <option value="followUp">Follow Up</option>
+              <option value="converted">Converted</option>
+              <option value="notInterested">Not Interested</option>
+            </select>
+            <select class="filter-select" id="filter-dept" onchange="loadLeads()">
+              <option value="">All Departments</option>
+              <option value="health">Health</option>
+              <option value="life">Life</option>
+              <option value="bike">Bike</option>
+              <option value="car">Car</option>
+              <option value="loans">Loans</option>
+            </select>
+          </div>
+        </div>
+        <div class="card">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Client</th><th>Department</th><th>Status</th><th>Source</th><th>Last Note</th><th>Date</th><th>Actions</th></tr></thead>
+              <tbody id="leads-tbody"><tr><td colspan="7"><div class="loading">Loading…</div></td></tr></tbody>
+            </table>
+          </div>
+        </div>
+        <div class="pagination" id="leads-pgn"></div>
+      </div>
+
+      <!-- ══ PROFILE ══ -->
+      <div class="panel" id="panel-profile">
+        <div class="page-header">
+          <div>
+            <div class="page-title">Profile & Settings</div>
+            <div class="page-subtitle">Manage your account information</div>
+          </div>
+        </div>
+        <div class="section-row col-2">
+          <div class="card">
+            <div class="card-header"><span class="card-title">👤 My Information</span></div>
+            <div class="card-body">
+              <div class="profile-grid" style="margin-bottom:14px;">
+                <div class="form-group"><label>Full Name</label><input id="p-name" placeholder="Your name"/></div>
+                <div class="form-group"><label>Phone</label><input id="p-phone" placeholder="10-digit mobile"/></div>
+                <div class="form-group"><label>City</label><input id="p-city" placeholder="Your city"/></div>
+                <div class="form-group"><label>Email</label><input id="p-email" placeholder="your@email.com" disabled style="opacity:.5;cursor:not-allowed;"/></div>
+              </div>
+              <div class="form-group" style="margin-bottom:14px;"><label>Agent Code</label><input id="p-code" disabled style="opacity:.5;cursor:not-allowed;font-family:var(--mono);"/></div>
+              <button class="btn btn-gold" onclick="saveProfile()">Save Changes</button>
+              <div id="profile-msg" style="font-size:12.5px;margin-top:10px;display:none;"></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-header"><span class="card-title">🔑 Change Password</span></div>
+            <div class="card-body">
+              <div class="form-group" style="margin-bottom:12px;"><label>Current Password</label><input type="password" id="cp-current" placeholder="••••••••"/></div>
+              <div class="form-group" style="margin-bottom:8px;"><label>New Password</label><input type="password" id="cp-new" placeholder="Min 8 characters" oninput="checkPwStrengthProfile()"/></div>
+              <div class="pw-strength" style="margin-bottom:4px;"><div class="pw-strength-fill" id="cp-strength-fill"></div></div>
+              <div style="font-size:10.5px;color:var(--text3);margin-bottom:12px;" id="cp-strength-label"></div>
+              <div class="form-group" style="margin-bottom:14px;"><label>Confirm New Password</label><input type="password" id="cp-confirm" placeholder="Repeat new password"/></div>
+              <button class="btn btn-ghost" onclick="changePassword()">Update Password</button>
+              <div id="pw-msg" style="font-size:12.5px;margin-top:10px;display:none;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<!-- ══ ADD LEAD MODAL ══ -->
+<div class="modal-overlay" id="add-modal" onclick="closeAddLead(event)">
+  <div class="modal">
+    <div class="modal-head"><h3>➕ Add New Lead</h3><button class="modal-close" onclick="closeAddLead()">✕</button></div>
+    <div class="modal-body">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <div class="form-group"><label>Client Name *</label><input class="mf-input" id="al-name" placeholder="Full name"/></div>
+        <div class="form-group"><label>Phone *</label><input class="mf-input" id="al-phone" placeholder="10-digit mobile"/></div>
+        <div class="form-group"><label>City</label><input class="mf-input" id="al-city" placeholder="e.g. Hyderabad"/></div>
+        <div class="form-group"><label>Email</label><input class="mf-input" id="al-email" placeholder="optional"/></div>
+        <div class="form-group">
+          <label>Department *</label>
+          <select class="mf-select" id="al-dept">
+            <option value="">Select…</option>
+            <option value="health">🏥 Health Insurance</option>
+            <option value="life">❤️ Life Insurance</option>
+            <option value="bike">🏍️ Bike Insurance</option>
+            <option value="car">🚗 Car Insurance</option>
+            <option value="loans">🏠 Loans</option>
+            <option value="commercial">🚛 Commercial Vehicle</option>
+            <option value="other">📋 Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Lead Source</label>
+          <select class="mf-select" id="al-source">
+            <option value="agent">Direct Contact</option>
+            <option value="whatsapp">WhatsApp</option>
+            <option value="referral">Referral</option>
+            <option value="walkIn">Walk-in</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+      <label class="mf-label">Notes</label>
+      <textarea class="mf-textarea" id="al-notes" placeholder="Any details about this enquiry…"></textarea>
+      <div id="al-error" style="font-size:12.5px;color:var(--rose);margin-top:10px;display:none;padding:8px 12px;background:rgba(244,75,107,.1);border-radius:6px;"></div>
+    </div>
+    <div class="modal-foot">
+      <button class="modal-cancel" onclick="closeAddLead()">Cancel</button>
+      <button class="modal-save" onclick="submitLead()">Save Lead</button>
     </div>
   </div>
+</div>
 
-  <div class="content">
-
-    <!-- ── DASHBOARD VIEW ── -->
-    <div class="view active" id="view-dashboard">
-      <div class="stats-grid" id="statsGrid"></div>
-      <div class="charts-row">
-        <div class="chart-card">
-          <div class="chart-title">Leads by department</div>
-          <div class="bar-chart" id="deptChart"></div>
-        </div>
-        <div class="chart-card">
-          <div class="chart-title">Leads by status</div>
-          <div class="bar-chart" id="statusChart"></div>
-        </div>
-      </div>
-      <div class="chart-card" style="margin-bottom:24px">
-        <div class="chart-title">Last 14 days activity</div>
-        <div class="trend-bars" id="trendBars"></div>
-      </div>
-      <div class="leads-title" style="margin-bottom:12px">Recent leads</div>
-      <div class="leads-table-wrap">
-        <table class="leads-table">
-          <thead><tr>
-            <th>Client</th><th>Department</th><th>Status</th><th>Source</th><th>Date</th><th>Actions</th>
-          </tr></thead>
-          <tbody id="recentTbody"></tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- ── LEADS VIEW ── -->
-    <div class="view" id="view-leads">
-      <div class="leads-header">
-        <div class="leads-title">My Leads</div>
-        <div class="leads-filters">
-          <input class="search-box" placeholder="Search name, phone..." id="searchBox"
-            oninput="debounceSearch()" />
-          <select class="filter-select" id="filterStatus" onchange="loadLeads()">
-            <option value="">All statuses</option>
+<!-- ══ EDIT LEAD MODAL ══ -->
+<div class="modal-overlay" id="edit-modal" onclick="closeEditLead(event)">
+  <div class="modal">
+    <div class="modal-head"><h3 id="edit-modal-title">Edit Lead</h3><button class="modal-close" onclick="closeEditLead()">✕</button></div>
+    <div class="modal-body">
+      <div class="mf-info" id="edit-client-info" style="margin-bottom:16px;"></div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;">
+        <div>
+          <label class="mf-label">Status</label>
+          <select class="mf-select" id="edit-status">
             <option value="new">New</option>
             <option value="contacted">Contacted</option>
             <option value="qualified">Qualified</option>
-            <option value="proposal">Proposal sent</option>
-            <option value="converted">Converted</option>
-            <option value="followUp">Follow up</option>
-            <option value="notInterested">Not interested</option>
-          </select>
-          <select class="filter-select" id="filterDept" onchange="loadLeads()">
-            <option value="">All departments</option>
-            <option value="health">Health</option>
-            <option value="life">Life</option>
-            <option value="bike">Bike</option>
-            <option value="car">Car</option>
-            <option value="loans">Loans</option>
+            <option value="proposal">Proposal Sent</option>
+            <option value="followUp">Follow Up</option>
+            <option value="callbackScheduled">Callback Scheduled</option>
+            <option value="noAnswer1">No Answer (1)</option>
+            <option value="noAnswer2">No Answer (2)</option>
+            <option value="noAnswer3">No Answer (3)</option>
+            <option value="wrongNumber">Wrong Number</option>
+            <option value="converted">Converted ✓</option>
+            <option value="notInterested">Not Interested</option>
+            <option value="lost">Lost</option>
           </select>
         </div>
-      </div>
-      <div class="leads-table-wrap">
-        <table class="leads-table">
-          <thead><tr>
-            <th>Client</th><th>Dept</th><th>Status</th><th>Source</th><th>Notes</th><th>Date</th><th>Actions</th>
-          </tr></thead>
-          <tbody id="leadsTbody"></tbody>
-        </table>
-      </div>
-      <div style="text-align:center;margin-top:14px;font-size:13px;color:var(--dim)" id="pagination"></div>
-    </div>
-
-    <!-- ── PROFILE VIEW ── -->
-    <div class="view" id="view-profile">
-      <div style="max-width:420px">
-        <div class="leads-title" style="margin-bottom:18px">My Profile</div>
-        <div class="chart-card">
-          <div class="form-row"><label>Name</label><input id="pName"/></div>
-          <div class="form-row"><label>Phone</label><input id="pPhone"/></div>
-          <div class="form-row"><label>City</label><input id="pCity"/></div>
-          <button class="btn-gold" style="width:auto;padding:10px 24px;font-size:14px" onclick="saveProfile()">Save changes</button>
-        </div>
-        <div class="chart-card" style="margin-top:16px">
-          <div class="leads-title" style="font-size:15px;margin-bottom:14px">Change password</div>
-          <div class="form-row"><label>Current password</label><input type="password" id="cpCurrent"/></div>
-          <div class="form-row"><label>New password</label><input type="password" id="cpNew"/></div>
-          <button class="btn-gold" style="width:auto;padding:10px 24px;font-size:14px" onclick="changePw()">Update password</button>
-          <div id="pwMsg" style="font-size:13px;margin-top:8px;display:none"></div>
+        <div>
+          <label class="mf-label">Contact Via</label>
+          <select class="mf-select" id="edit-contact">
+            <option value="call">📞 Call</option>
+            <option value="whatsapp">💬 WhatsApp</option>
+            <option value="email">✉️ Email</option>
+          </select>
         </div>
       </div>
+      <label class="mf-label">Add Note</label>
+      <textarea class="mf-textarea" id="edit-note" style="min-height:64px;" placeholder="What happened in this call / meeting…"></textarea>
+      <label class="mf-label" style="margin-top:14px;">Previous Notes</label>
+      <div class="note-log" id="note-log"></div>
     </div>
-
-  </div><!-- /content -->
-</div><!-- /app -->
-
-<!-- ══════════ ADD LEAD MODAL ══════════ -->
-<div class="modal-bg" id="addLeadModal">
-  <div class="modal">
-    <div class="modal-title">Add new lead</div>
-    <div class="form-2col">
-      <div class="form-row"><label>Client name *</label><input id="lName" placeholder="Full name"/></div>
-      <div class="form-row"><label>Phone *</label><input id="lPhone" placeholder="10-digit mobile"/></div>
-    </div>
-    <div class="form-2col">
-      <div class="form-row"><label>City</label><input id="lCity" placeholder="e.g. Hyderabad"/></div>
-      <div class="form-row"><label>Email</label><input id="lEmail" placeholder="optional"/></div>
-    </div>
-    <div class="form-2col">
-      <div class="form-row">
-        <label>Department *</label>
-        <select id="lDept">
-          <option value="">Select...</option>
-          <option value="health">Health Insurance</option>
-          <option value="life">Life Insurance</option>
-          <option value="bike">Bike Insurance</option>
-          <option value="car">Car Insurance</option>
-          <option value="loans">Loans</option>
-          <option value="commercial">Commercial Vehicle</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <label>Lead source</label>
-        <select id="lSource">
-          <option value="agent">Direct contact</option>
-          <option value="whatsapp">WhatsApp</option>
-          <option value="referral">Referral</option>
-          <option value="walkIn">Walk-in</option>
-          <option value="other">Other</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-row"><label>Notes</label><textarea id="lNotes" placeholder="Any details about this enquiry..."></textarea></div>
-    <div id="addLeadErr" style="font-size:13px;color:var(--red);display:none"></div>
-    <div class="modal-actions">
-      <button class="btn-cancel" onclick="closeAddLead()">Cancel</button>
-      <button class="btn-submit" onclick="submitLead()">Save lead</button>
+    <div class="modal-foot">
+      <button class="modal-cancel" onclick="closeEditLead()">Close</button>
+      <button class="modal-save" onclick="saveEdit()">Save Changes</button>
     </div>
   </div>
 </div>
 
-<!-- ══════════ EDIT LEAD MODAL ══════════ -->
-<div class="modal-bg" id="editModal">
-  <div class="modal">
-    <div class="modal-title" id="editModalTitle">Lead details</div>
-    <input type="hidden" id="editId"/>
-    <div style="background:var(--navy3);border-radius:8px;padding:14px 16px;margin-bottom:16px;font-size:13px" id="editClientInfo"></div>
-    <div class="form-2col">
-      <div class="form-row">
-        <label>Status</label>
-        <select id="editStatus">
-          <option value="new">New</option>
-          <option value="contacted">Contacted</option>
-          <option value="qualified">Qualified</option>
-          <option value="proposal">Proposal sent</option>
-          <option value="followUp">Follow up</option>
-          <option value="callbackScheduled">Callback scheduled</option>
-          <option value="noAnswer1">No answer (1)</option>
-          <option value="noAnswer2">No answer (2)</option>
-          <option value="noAnswer3">No answer (3)</option>
-          <option value="wrongNumber">Wrong number</option>
-          <option value="converted">Converted</option>
-          <option value="notInterested">Not interested</option>
-          <option value="lost">Lost</option>
-        </select>
-      </div>
-      <div class="form-row">
-        <label>Contact via</label>
-        <select id="editContact">
-          <option value="call">Call</option>
-          <option value="whatsapp">WhatsApp</option>
-          <option value="email">Email</option>
-        </select>
-      </div>
-    </div>
-    <div class="form-row"><label>Add note</label><textarea id="editNote" placeholder="What happened on this call/meeting..."></textarea></div>
-    <div class="note-log" id="noteLog"></div>
-    <div class="modal-actions">
-      <button class="btn-cancel" onclick="closeEdit()">Close</button>
-      <button class="btn-submit" onclick="saveEdit()">Save changes</button>
-    </div>
-  </div>
-</div>
+<div class="toast" id="toast"></div>
 
 <script>
-// ════════════════════════════════════════
-// CONFIG
-// ════════════════════════════════════════
 const API = 'https://api.covercredit.in/api';
-let TOKEN = '', PAGE = 1, SEARCH_TIMER;
+let TOKEN = '', PAGE = 1, SEARCH_TIMER, CURRENT_AGENT = {};
 
-// ════════════════════════════════════════
-// AUTH
-// ════════════════════════════════════════
+const DEPT_ICONS = {health:'🏥',life:'❤️',bike:'🏍️',car:'🚗',loans:'🏠',commercial:'🚛',other:'📋'};
+const DEPT_COLORS = {health:'#f44b6b',life:'#9b59f7',bike:'#22d68a',car:'#4f8ef7',loans:'#f59e0b',commercial:'#14cec8',other:'#4d5a7a'};
 
-// FIX 1: d.error → d.message; use d.success instead of r.ok
+// ══ AUTH ══
 async function doLogin() {
-  const email = document.getElementById('loginEmail').value.trim();
-  const pw    = document.getElementById('loginPw').value;
-  const errEl = document.getElementById('loginErr');
+  const email = document.getElementById('l-email').value.trim();
+  const pw    = document.getElementById('l-pass').value;
+  const errEl = document.getElementById('login-error');
   errEl.style.display = 'none';
-
   try {
     const r = await fetch(`${API}/auth/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password: pw }),
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({email, password: pw})
     });
     const d = await r.json();
-
-    // FIX: was `if (!r.ok)` → use d.success which all API responses set consistently
-    if (!d.success) {
-      // FIX: was d.error → API sends d.message
-      errEl.textContent  = d.message || 'Login failed. Please try again.';
-      errEl.style.display = 'block';
-      return;
-    }
-
+    if (!d.success) { errEl.textContent = d.message || 'Login failed.'; errEl.style.display = 'block'; return; }
     TOKEN = d.token;
     localStorage.setItem('cc_agent_token', TOKEN);
 
-    if (d.role === 'owner' || d.role === 'admin') {
-      window.location.href = '/admin';
-      return;
-    }
+    if (d.role === 'owner' || d.role === 'admin') { window.location.href = '/admin'; return; }
 
-    document.getElementById('loginScreen').style.display = 'none';
-    document.getElementById('app').style.display         = 'flex';
-    // d.agentCode and d.name come directly from the login response
-    document.getElementById('agentCode').textContent     = d.agentCode || d.name || 'Agent';
+    CURRENT_AGENT = { name: d.name || 'Agent', code: d.agentCode || '—', email };
 
     if (d.mustResetPw) {
-      showView('profile');
-      alert('Please change your password on first login.');
+      showPwReset();
     } else {
-      loadDashboard();
+      showApp();
     }
-  } catch (err) {
-    console.error('Login error:', err);
-    errEl.textContent  = 'Connection error. Try again.';
-    errEl.style.display = 'block';
+  } catch (e) {
+    errEl.textContent = 'Connection error. Try again.'; errEl.style.display = 'block';
   }
 }
 
-function logout() {
-  localStorage.removeItem('cc_agent_token');
-  document.getElementById('app').style.display        = 'none';
-  document.getElementById('loginScreen').style.display = 'flex';
-  TOKEN = '';
+function showPwReset() {
+  document.getElementById('login-screen').style.display = 'none';
+  const prs = document.getElementById('pwreset-screen');
+  prs.style.display = 'flex';
 }
 
-// Centralised fetch helper — all API calls go through here
-async function api(path, opts = {}) {
+async function doPasswordReset() {
+  const np = document.getElementById('pr-new').value;
+  const cp = document.getElementById('pr-confirm').value;
+  const errEl = document.getElementById('pr-error');
+  errEl.style.display = 'none';
+  if (!np || np.length < 8) { errEl.textContent = 'Password must be at least 8 characters.'; errEl.style.display = 'block'; return; }
+  if (np !== cp) { errEl.textContent = 'Passwords do not match.'; errEl.style.display = 'block'; return; }
   try {
-    const r = await fetch(API + path, {
-      ...opts,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${TOKEN}`,
-        ...(opts.headers || {}),
-      },
-    });
-    if (r.status === 401) { logout(); return null; }
-    return r.json();
-  } catch (err) {
-    console.error('API error on', path, err);
-    return null;
+    const r = await apiFetch('/auth/agent/change-password', 'POST', { currentPassword: '_first_login_', newPassword: np });
+    if (r && r.success) {
+      document.getElementById('pwreset-screen').style.display = 'none';
+      showApp();
+    } else {
+      errEl.textContent = r?.message || 'Failed. Please try again.'; errEl.style.display = 'block';
+    }
+  } catch {
+    errEl.textContent = 'Connection error.'; errEl.style.display = 'block';
   }
 }
 
-// ════════════════════════════════════════
-// NAVIGATION
-// ════════════════════════════════════════
-function showView(v) {
-  document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
-  document.querySelectorAll('.tnav').forEach(el => el.classList.remove('active'));
-  document.getElementById('view-' + v).classList.add('active');
-  const idx = ['dashboard', 'leads', 'profile'].indexOf(v);
-  if (idx >= 0) document.querySelectorAll('.tnav')[idx]?.classList.add('active');
-  if (v === 'dashboard') loadDashboard();
-  if (v === 'leads')     loadLeads();
-  if (v === 'profile')   loadProfile();
+function checkPwStrength() {
+  const pw = document.getElementById('pr-new').value;
+  calcStrength(pw, 'pw-strength-fill', 'pw-strength-label');
+}
+function checkPwStrengthProfile() {
+  const pw = document.getElementById('cp-new').value;
+  calcStrength(pw, 'cp-strength-fill', 'cp-strength-label');
+}
+function calcStrength(pw, fillId, labelId) {
+  let score = 0;
+  if (pw.length >= 8) score++;
+  if (/[A-Z]/.test(pw)) score++;
+  if (/[0-9]/.test(pw)) score++;
+  if (/[^A-Za-z0-9]/.test(pw)) score++;
+  const fill = document.getElementById(fillId);
+  const label = document.getElementById(labelId);
+  const map = [{w:'25%',c:'var(--rose)',l:'Weak'},{w:'50%',c:'var(--amber)',l:'Fair'},{w:'75%',c:'var(--blue)',l:'Good'},{w:'100%',c:'var(--green)',l:'Strong'}];
+  const m = map[Math.max(0, score - 1)] || map[0];
+  fill.style.width = pw.length ? m.w : '0%';
+  fill.style.background = m.c;
+  label.textContent = pw.length ? m.l : '';
+  label.style.color = m.c;
 }
 
-// ════════════════════════════════════════
-// DASHBOARD
-// ════════════════════════════════════════
+function showApp() {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('pwreset-screen').style.display = 'none';
+  document.getElementById('app').classList.add('show');
+  updateSidebarUser();
+  loadDashboard();
+}
+
+function updateSidebarUser() {
+  const initials = (CURRENT_AGENT.name||'A').split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();
+  document.getElementById('user-avatar-sidebar').textContent = initials;
+  document.getElementById('user-name-sidebar').textContent = CURRENT_AGENT.name || 'Agent';
+  document.getElementById('user-code-sidebar').textContent = CURRENT_AGENT.code || '—';
+}
+
+function doLogout() {
+  TOKEN = ''; localStorage.removeItem('cc_agent_token');
+  document.getElementById('app').classList.remove('show');
+  document.getElementById('login-screen').style.display = 'flex';
+  CURRENT_AGENT = {};
+}
+
+async function apiFetch(path, method = 'GET', body = null) {
+  try {
+    const opts = { method, headers: { 'Content-Type':'application/json', 'Authorization': `Bearer ${TOKEN}` }};
+    if (body) opts.body = JSON.stringify(body);
+    const r = await fetch(API + path, opts);
+    if (r.status === 401) { doLogout(); return null; }
+    return r.json();
+  } catch { return null; }
+}
+
+// ══ AUTO-LOGIN ══
+window.addEventListener('DOMContentLoaded', () => {
+  const saved = localStorage.getItem('cc_agent_token');
+  if (!saved) return;
+  TOKEN = saved;
+  apiFetch('/auth/me').then(d => {
+    if (!d || !d.success) { TOKEN = ''; localStorage.removeItem('cc_agent_token'); return; }
+    const u = d.data || d;
+    CURRENT_AGENT = { name: u.name || 'Agent', code: u.agentCode || '—', email: u.email || '' };
+    if (u.mustResetPw) { showPwReset(); return; }
+    showApp();
+  });
+});
+
+// ══ NAVIGATION ══
+const panelTitles = { dashboard:'Dashboard', leads:'My Leads', profile:'Profile & Settings' };
+function showPanel(name) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n => { if (n.getAttribute('onclick')?.includes(`'${name}'`)) n.classList.add('active'); });
+  document.getElementById('panel-heading').textContent = panelTitles[name] || name;
+  if (name === 'dashboard') loadDashboard();
+  if (name === 'leads') loadLeads();
+  if (name === 'profile') loadProfile();
+}
+
+// ══ DASHBOARD ══
 async function loadDashboard() {
-  const d = await api('/agent/dashboard');
+  const d = await apiFetch('/agent/dashboard');
   if (!d || !d.success) return;
-
-  // d.stats, d.recentLeads, d.charts all come directly on d — no wrapping
   const s = d.stats;
-  const convColor = s.conversionRate >= 20 ? '#2DDB8F' : s.conversionRate >= 10 ? '#E5A020' : '#E07070';
 
-  document.getElementById('statsGrid').innerHTML = `
-    <div class="stat-card">
-      <div class="stat-label">Total leads</div>
-      <div class="stat-value">${s.totalLeads}</div>
+  const convColor = s.conversionRate >= 20 ? 'var(--green)' : s.conversionRate >= 10 ? 'var(--amber)' : 'var(--rose)';
+  document.getElementById('stats-grid').innerHTML = `
+    <div class="stat-card gold">
+      <div class="stat-card-header"><div class="stat-icon gold">📋</div></div>
+      <div class="stat-num">${s.totalLeads}</div>
+      <div class="stat-label">Total Leads</div>
       <div class="stat-sub">${s.leadsThisMonth} this month</div>
     </div>
-    <div class="stat-card">
+    <div class="stat-card blue">
+      <div class="stat-card-header"><div class="stat-icon blue">📅</div></div>
+      <div class="stat-num" style="color:var(--gold)">${s.leadsToday}</div>
       <div class="stat-label">Today</div>
-      <div class="stat-value" style="color:var(--gold)">${s.leadsToday}</div>
       <div class="stat-sub">${s.leadsThisWeek} this week</div>
     </div>
-    <div class="stat-card">
-      <div class="stat-label">New (uncontacted)</div>
-      <div class="stat-value" style="color:var(--amber)">${s.newLeads}</div>
-      <div class="stat-sub">Action needed</div>
+    <div class="stat-card amber">
+      <div class="stat-card-header"><div class="stat-icon amber">🔔</div></div>
+      <div class="stat-num" style="color:var(--amber)">${s.newLeads}</div>
+      <div class="stat-label">New — Action Needed</div>
+      <div class="stat-sub">Uncontacted leads</div>
     </div>
-    <div class="stat-card">
+    <div class="stat-card green">
+      <div class="stat-card-header"><div class="stat-icon green">✅</div></div>
+      <div class="stat-num" style="color:${convColor}">${s.converted}</div>
       <div class="stat-label">Converted</div>
-      <div class="stat-value" style="color:${convColor}">${s.converted}</div>
       <div class="stat-sub">${s.conversionRate}% conversion rate</div>
-    </div>
-  `;
+    </div>`;
 
-  // Dashboard charts keys match API: byDepartment, byStatus, dailyTrend
-  renderBarChart('deptChart',   d.charts.byDepartment, '_id', 'count');
-  renderBarChart('statusChart', d.charts.byStatus,     '_id', 'count');
-  renderTrend(d.charts.dailyTrend);
-  renderRecentLeads(d.recentLeads);
+  // Update badge
+  const nb = document.getElementById('nav-new-badge');
+  if (nb) { nb.textContent = s.newLeads; nb.style.display = s.newLeads > 0 ? '' : 'none'; }
+
+  // Trend
+  renderTrend(d.charts?.dailyTrend);
+
+  // Status chart
+  renderBarChart('status-chart', d.charts?.byStatus, '_id', 'count', STATUS_COLORS);
+
+  // Dept chart
+  renderBarChart('dept-chart', d.charts?.byDepartment, '_id', 'count', DEPT_COLORS);
+
+  // Recent leads mini
+  renderRecentMini(d.recentLeads || []);
 }
 
-function renderBarChart(elId, data, keyField, valField) {
-  if (!data || !data.length) {
-    document.getElementById(elId).innerHTML =
-      '<div style="color:var(--muted);font-size:13px">No data yet</div>';
-    return;
-  }
-  const max = Math.max(...data.map(d => d[valField]), 1);
-  document.getElementById(elId).innerHTML = data.slice(0, 6).map(d =>
-    `<div class="bar-row">
-      <div class="bar-label">${d[keyField] || 'Unknown'}</div>
-      <div class="bar-wrap"><div class="bar-fill" style="width:${Math.round(d[valField]/max*100)}%"></div></div>
-      <div class="bar-count">${d[valField]}</div>
-    </div>`
-  ).join('');
+const STATUS_COLORS = { new:'#f59e0b', contacted:'#4f8ef7', converted:'#22d68a', notInterested:'#f44b6b', lost:'#f44b6b', followUp:'#9b59f7', callbackScheduled:'#9b59f7', qualified:'#14cec8' };
+
+function renderBarChart(elId, data, keyF, valF, colorMap) {
+  const el = document.getElementById(elId);
+  if (!data || !data.length) { el.innerHTML = '<div style="color:var(--text3);font-size:12px;text-align:center;padding:1rem 0;">No data yet.</div>'; return; }
+  const max = Math.max(...data.map(d => d[valF]), 1);
+  el.innerHTML = data.slice(0, 7).map(d => {
+    const col = (colorMap && colorMap[d[keyF]]) || 'var(--gold)';
+    const pct = Math.round((d[valF] / max) * 100);
+    return `<div class="bar-row">
+      <div class="bar-label">${d[keyF] || 'Unknown'}</div>
+      <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${col};"></div></div>
+      <div class="bar-count">${d[valF]}</div>
+    </div>`;
+  }).join('');
 }
 
 function renderTrend(data) {
-  if (!data || !data.length) {
-    document.getElementById('trendBars').innerHTML =
-      '<div style="color:var(--muted);font-size:12px">No data yet</div>';
-    return;
-  }
-  const max = Math.max(...data.map(d => d.count), 1);
+  const bars = document.getElementById('trend-bars');
+  const labels = document.getElementById('trend-labels');
   const map = {};
-  data.forEach(d => map[d._id] = d.count);
-  const bars = [];
+  (data || []).forEach(d => map[d._id] = d.count);
+  const days = [];
   for (let i = 13; i >= 0; i--) {
-    const dt  = new Date(Date.now() - i * 86400000);
-    const key = dt.toISOString().slice(0, 10);
-    bars.push(map[key] || 0);
+    const dt = new Date(Date.now() - i * 86400000);
+    days.push({ key: dt.toISOString().slice(0, 10), label: dt.toLocaleDateString('en-IN', { day:'numeric', month:'short' }), count: map[dt.toISOString().slice(0, 10)] || 0 });
   }
-  document.getElementById('trendBars').innerHTML = bars.map(v =>
-    `<div class="tb" style="height:${Math.max(4, Math.round(v/max*100))}%" title="${v} leads"></div>`
-  ).join('');
+  const max = Math.max(...days.map(d => d.count), 1);
+  bars.innerHTML = days.map(d => `<div class="tb" style="height:${Math.max(6, Math.round((d.count / max) * 56))}px;" title="${d.label}: ${d.count} leads"></div>`).join('');
+  labels.innerHTML = `<span>${days[0].label}</span><span>${days[days.length - 1].label}</span>`;
 }
 
-function renderRecentLeads(leads) {
-  const tbody = document.getElementById('recentTbody');
-  if (!leads || !leads.length) {
-    tbody.innerHTML = `<tr><td colspan="6" class="empty-state">No leads yet — add your first one!</td></tr>`;
-    return;
-  }
-  tbody.innerHTML = leads.map(l => `
-    <tr>
-      <td><div class="lead-name">${esc(l.name)}</div><div class="lead-phone">${l.phone}</div></td>
-      <td><span class="dept-badge">${l.department || '–'}</span></td>
-      <td>${statusPill(l.status)}</td>
-      <td style="color:var(--dim);font-size:12px">${l.leadSource || 'website'}</td>
-      <td class="lead-date">${fmtDate(l.createdAt)}</td>
-      <td style="display:flex;gap:6px">
-        <button class="btn-icon" onclick="openEdit('${l._id}')">Edit</button>
-        ${l.phone ? `<button class="btn-icon wa-btn" onclick="waLink('${l.phone}','${esc(l.name)}')">WA</button>` : ''}
-      </td>
-    </tr>
-  `).join('');
+function renderRecentMini(leads) {
+  const el = document.getElementById('recent-leads-mini');
+  if (!leads.length) { el.innerHTML = '<div class="empty"><div class="empty-icon">📭</div><p>No leads yet. Add your first!</p></div>'; return; }
+  el.innerHTML = leads.slice(0, 5).map(l => `
+    <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);cursor:pointer;" onclick="openEdit('${l._id}')">
+      <div style="width:32px;height:32px;border-radius:8px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">${DEPT_ICONS[l.department]||'📋'}</div>
+      <div style="flex:1;min-width:0;">
+        <div style="font-weight:600;font-size:12.5px;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(l.name)}</div>
+        <div style="font-size:11px;color:var(--text3);font-family:var(--mono);">${l.phone}</div>
+      </div>
+      <span class="badge badge-${l.status||'new'}">${l.status||'new'}</span>
+    </div>`).join('');
+  el.innerHTML += '<div style="text-align:center;padding-top:10px;"><button class="btn btn-ghost btn-sm" onclick="showPanel(\'leads\')">View all leads →</button></div>';
 }
 
-// ════════════════════════════════════════
-// LEADS PAGE
-// ════════════════════════════════════════
+// ══ LEADS ══
+let SEARCH_TIMER_ID;
+function debounceSearch() { clearTimeout(SEARCH_TIMER_ID); SEARCH_TIMER_ID = setTimeout(loadLeads, 350); }
 
-// FIX 4: d.leads → d.data; d.total/page/pages → d.pagination.*
-async function loadLeads() {
-  PAGE = 1;
-  const q      = document.getElementById('searchBox')?.value || '';
-  const status = document.getElementById('filterStatus')?.value || '';
-  const dept   = document.getElementById('filterDept')?.value || '';
-
+async function loadLeads(page = 1) {
+  PAGE = page;
+  const q = document.getElementById('lead-search')?.value || '';
+  const status = document.getElementById('filter-status')?.value || '';
+  const dept   = document.getElementById('filter-dept')?.value || '';
   const params = new URLSearchParams({ page: PAGE, limit: 20 });
   if (q)      params.set('q', q);
   if (status) params.set('status', status);
   if (dept)   params.set('dept', dept);
-
-  const d = await api('/agent/leads?' + params);
-  if (!d || !d.success) return;
-
-  const tbody = document.getElementById('leadsTbody');
-
-  // FIX: was d.leads → API returns d.data
+  const d = await apiFetch('/agent/leads?' + params);
+  const tbody = document.getElementById('leads-tbody');
+  if (!d || !d.success) { tbody.innerHTML = '<tr><td colspan="7"><div class="empty"><div class="empty-icon">⚠</div><p>Failed to load leads.</p></div></td></tr>'; return; }
   const leads = d.data || [];
   if (!leads.length) {
-    tbody.innerHTML = `<tr><td colspan="7" class="empty-state">No leads found</td></tr>`;
-    document.getElementById('pagination').textContent = '';
+    tbody.innerHTML = '<tr><td colspan="7"><div class="empty"><div class="empty-icon">📭</div><p>No leads found. Try a different filter.</p></div></td></tr>';
+    document.getElementById('leads-pgn').innerHTML = '';
     return;
   }
-
   tbody.innerHTML = leads.map(l => `
     <tr>
-      <td><div class="lead-name">${esc(l.name)}</div><div class="lead-phone">${l.phone}</div></td>
-      <td><span class="dept-badge">${l.department || '–'}</span></td>
-      <td>${statusPill(l.status)}</td>
-      <td style="color:var(--dim);font-size:12px">${l.leadSource || 'website'}</td>
-      <td style="color:var(--dim);font-size:12px;max-width:160px">${l.adminNotes || '–'}</td>
-      <td class="lead-date">${fmtDate(l.createdAt)}</td>
-      <td style="display:flex;gap:5px;flex-wrap:wrap">
-        <button class="btn-icon" onclick="openEdit('${l._id}')">Edit</button>
-        ${l.phone ? `<button class="btn-icon wa-btn" onclick="waLink('${l.phone}','${esc(l.name)}')">WA</button>` : ''}
+      <td>
+        <div class="td-name">${esc(l.name)}</div>
+        <div class="td-phone">${l.phone}</div>
       </td>
-    </tr>
-  `).join('');
-
-  // FIX: was d.total/d.page/d.pages → API returns d.pagination.total/page/pages
+      <td><span class="dept-badge">${DEPT_ICONS[l.department]||'📋'} ${l.department||'—'}</span></td>
+      <td><span class="badge badge-${statusClass(l.status)}">${l.status||'new'}</span></td>
+      <td class="td-muted">${l.leadSource||'direct'}</td>
+      <td class="td-muted" style="max-width:140px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${(l.noteLog && l.noteLog.length ? l.noteLog[l.noteLog.length-1].note : l.adminNotes) || '—'}</td>
+      <td class="td-date">${fmtDate(l.createdAt)}</td>
+      <td>
+        <div class="actions">
+          <a href="tel:${l.phone}" class="act-btn act-call">📞</a>
+          ${l.phone ? `<a href="https://wa.me/${waNum(l.phone)}?text=Hi ${encodeURIComponent(l.name)}, I'm from Cover Credit." target="_blank" class="act-btn act-wa">WA</a>` : ''}
+          <button class="act-btn act-edit" onclick="openEdit('${l._id}')">Edit</button>
+        </div>
+      </td>
+    </tr>`).join('');
   const p = d.pagination || {};
-  document.getElementById('pagination').textContent =
-    `Showing ${leads.length} of ${p.total || 0} leads · Page ${p.page || 1} of ${p.pages || 1}`;
+  renderPgn('leads-pgn', p, loadLeads);
 }
 
-function debounceSearch() {
-  clearTimeout(SEARCH_TIMER);
-  SEARCH_TIMER = setTimeout(loadLeads, 350);
+function statusClass(s) {
+  const m = {new:'new',contacted:'contacted',converted:'converted',notInterested:'notInterested',lost:'lost',followUp:'followUp',callbackScheduled:'callbackScheduled',qualified:'qualified'};
+  return m[s] || 'default';
 }
 
-// ════════════════════════════════════════
-// ADD LEAD
-// ════════════════════════════════════════
-function openAddLead()  { document.getElementById('addLeadModal').classList.add('open'); }
-function closeAddLead() { document.getElementById('addLeadModal').classList.remove('open'); }
+function renderPgn(elId, pgn, fn) {
+  const el = document.getElementById(elId);
+  if (!pgn || pgn.pages <= 1) { if(el) el.innerHTML = ''; return; }
+  let html = `<span class="page-info">Page ${pgn.page}/${pgn.pages} · ${pgn.total} total</span>`;
+  for (let i = 1; i <= pgn.pages; i++) html += `<button class="page-btn${i===pgn.page?' active':''}" onclick="(${fn.name})(${i})">${i}</button>`;
+  el.innerHTML = html;
+}
 
-// FIX 7: r?.error → r?.message
+// ══ ADD LEAD ══
+function openAddLead() { document.getElementById('add-modal').classList.add('show'); }
+function closeAddLead(e) { if (!e || e.target === document.getElementById('add-modal')) { document.getElementById('add-modal').classList.remove('show'); clearAddForm(); } }
+function clearAddForm() {
+  ['al-name','al-phone','al-city','al-email','al-notes'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
+  const d = document.getElementById('al-dept'); if(d) d.selectedIndex = 0;
+  document.getElementById('al-error').style.display = 'none';
+}
+
 async function submitLead() {
-  const name  = document.getElementById('lName').value.trim();
-  const phone = document.getElementById('lPhone').value.trim();
-  const dept  = document.getElementById('lDept').value;
-  const errEl = document.getElementById('addLeadErr');
+  const name  = document.getElementById('al-name').value.trim();
+  const phone = document.getElementById('al-phone').value.trim();
+  const dept  = document.getElementById('al-dept').value;
+  const errEl = document.getElementById('al-error');
   errEl.style.display = 'none';
-
-  if (!name)  { errEl.textContent = 'Name is required';             errEl.style.display = 'block'; return; }
-  if (!phone) { errEl.textContent = 'Phone is required';            errEl.style.display = 'block'; return; }
-  if (!dept)  { errEl.textContent = 'Please select a department';   errEl.style.display = 'block'; return; }
-
-  const r = await api('/agent/leads', {
-    method: 'POST',
-    body: JSON.stringify({
-      name, phone,
-      city:       document.getElementById('lCity').value,
-      email:      document.getElementById('lEmail').value,
-      department: dept,
-      leadSource: document.getElementById('lSource').value,
-      notes:      document.getElementById('lNotes').value,
-    }),
+  if (!name)  { errEl.textContent = 'Client name is required.'; errEl.style.display = 'block'; return; }
+  if (!phone) { errEl.textContent = 'Phone number is required.'; errEl.style.display = 'block'; return; }
+  if (!dept)  { errEl.textContent = 'Please select a department.'; errEl.style.display = 'block'; return; }
+  const r = await apiFetch('/agent/leads', 'POST', {
+    name, phone,
+    city:       document.getElementById('al-city').value,
+    email:      document.getElementById('al-email').value,
+    department: dept,
+    leadSource: document.getElementById('al-source').value,
+    notes:      document.getElementById('al-notes').value,
   });
-
-  if (!r?.success) {
-    // FIX: was r?.error → API returns r?.message
-    errEl.textContent  = r?.message || 'Failed to save lead. Please try again.';
-    errEl.style.display = 'block';
-    return;
-  }
-
+  if (!r?.success) { errEl.textContent = r?.message || 'Failed to save lead.'; errEl.style.display = 'block'; return; }
   closeAddLead();
-  ['lName', 'lPhone', 'lCity', 'lEmail', 'lNotes'].forEach(id =>
-    document.getElementById(id).value = ''
-  );
-  document.getElementById('lDept').selectedIndex = 0;
+  showToast('Lead saved ✓', 'success');
   loadDashboard();
-  if (document.getElementById('view-leads').classList.contains('active')) loadLeads();
+  if (document.getElementById('panel-leads').classList.contains('active')) loadLeads();
 }
 
-// ════════════════════════════════════════
-// EDIT LEAD
-// ════════════════════════════════════════
-
-// FIX 5: API returns { success, data: booking } — must use d.data.*
+// ══ EDIT LEAD ══
+let EDIT_ID = '';
 async function openEdit(id) {
-  const d = await api('/agent/leads/' + id);
-  if (!d || !d.success) return;
-
-  // FIX: was d.name, d.phone etc → API wraps in d.data
+  EDIT_ID = id;
+  const d = await apiFetch('/agent/leads/' + id);
+  if (!d || !d.success) { showToast('Could not load lead.', 'error'); return; }
   const lead = d.data;
-
-  document.getElementById('editId').value            = id;
-  document.getElementById('editModalTitle').textContent =
-    esc(lead.name) + ' — ' + (lead.department || 'lead');
-  document.getElementById('editClientInfo').innerHTML =
-    `<strong>${esc(lead.name)}</strong> &nbsp;·&nbsp; ${lead.phone} &nbsp;·&nbsp; ${esc(lead.city || '')}` +
-    `<br/><span style="color:var(--dim);font-size:12px">` +
-    `${lead.department || ''} · ${lead.leadSource || 'website'} · ${fmtDate(lead.createdAt)}</span>`;
-
-  document.getElementById('editStatus').value  = lead.status        || 'new';
-  document.getElementById('editContact').value = lead.contactMethod || 'call';
-  document.getElementById('editNote').value    = '';
-
-  // noteLog field names match API (note, addedByName, addedAt) — no change needed
-  const log = lead.noteLog || [];
-  document.getElementById('noteLog').innerHTML = log.length
-    ? log.slice().reverse().map(n =>
-        `<div class="note-item">${esc(n.note)}<div class="note-meta">${esc(n.addedByName || 'You')} · ${fmtDate(n.addedAt)}</div></div>`
-      ).join('')
-    : '<div style="color:var(--dim);font-size:12px">No notes yet</div>';
-
-  document.getElementById('editModal').classList.add('open');
+  document.getElementById('edit-modal-title').textContent = `${DEPT_ICONS[lead.department]||'📋'} ${esc(lead.name)} — ${lead.department||'lead'}`;
+  document.getElementById('edit-client-info').innerHTML = `
+    <p><strong>Name:</strong> ${esc(lead.name)}</p>
+    <p><strong>Phone:</strong> <a href="tel:${lead.phone}" style="color:var(--cyan);">${lead.phone}</a></p>
+    ${lead.city ? `<p><strong>City:</strong> ${esc(lead.city)}</p>` : ''}
+    <p><strong>Dept:</strong> ${lead.department||'—'} · <strong>Source:</strong> ${lead.leadSource||'direct'} · <strong>Added:</strong> ${fmtDate(lead.createdAt)}</p>`;
+  document.getElementById('edit-status').value  = lead.status || 'new';
+  document.getElementById('edit-contact').value = lead.contactMethod || 'call';
+  document.getElementById('edit-note').value    = '';
+  const log = (lead.noteLog || []).slice().reverse();
+  const logEl = document.getElementById('note-log');
+  logEl.innerHTML = log.length
+    ? log.map((n, i) => `<div class="note-entry"><div class="note-text">${esc(n.note)}</div><div class="note-meta">${esc(n.addedByName||'You')} · ${fmtDate(n.addedAt)}${i===0?'<span style="background:rgba(34,214,138,.1);color:var(--green);font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;margin-left:5px;text-transform:uppercase;">Latest</span>':''}</div></div>`).join('')
+    : '<div class="note-empty">No notes yet — add your first after this call.</div>';
+  document.getElementById('edit-modal').classList.add('show');
 }
-
-function closeEdit() { document.getElementById('editModal').classList.remove('open'); }
+function closeEditLead(e) { if (!e || e.target === document.getElementById('edit-modal')) document.getElementById('edit-modal').classList.remove('show'); }
 
 async function saveEdit() {
-  const id = document.getElementById('editId').value;
-  const r = await api('/agent/leads/' + id, {
-    method: 'PATCH',
-    body: JSON.stringify({
-      status:        document.getElementById('editStatus').value,
-      contactMethod: document.getElementById('editContact').value,
-      note:          document.getElementById('editNote').value.trim(),
-    }),
+  const r = await apiFetch('/agent/leads/' + EDIT_ID, 'PATCH', {
+    status:        document.getElementById('edit-status').value,
+    contactMethod: document.getElementById('edit-contact').value,
+    note:          document.getElementById('edit-note').value.trim(),
   });
   if (r?.success) {
-    closeEdit();
+    closeEditLead();
+    showToast('Lead updated ✓', 'success');
     loadDashboard();
-    if (document.getElementById('view-leads').classList.contains('active')) loadLeads();
+    if (document.getElementById('panel-leads').classList.contains('active')) loadLeads();
+  } else {
+    showToast(r?.message || 'Update failed.', 'error');
   }
 }
 
-// ════════════════════════════════════════
-// PROFILE
-// ════════════════════════════════════════
-
-// FIX 8: API returns { success, data: user } — must use d.data.*
+// ══ PROFILE ══
 async function loadProfile() {
-  const d = await api('/agent/profile');
+  const d = await apiFetch('/agent/profile');
   if (!d || !d.success) return;
-
-  // FIX: was d.name, d.phone, d.city → API wraps in d.data
   const u = d.data;
-  document.getElementById('pName').value  = u.name  || '';
-  document.getElementById('pPhone').value = u.phone || '';
-  document.getElementById('pCity').value  = u.city  || '';
+  document.getElementById('p-name').value  = u.name  || '';
+  document.getElementById('p-phone').value = u.phone || '';
+  document.getElementById('p-city').value  = u.city  || '';
+  document.getElementById('p-email').value = u.email || '';
+  document.getElementById('p-code').value  = u.agentCode || '—';
 }
 
 async function saveProfile() {
-  const r = await api('/agent/profile', {
-    method: 'PATCH',
-    body: JSON.stringify({
-      name:  document.getElementById('pName').value,
-      phone: document.getElementById('pPhone').value,
-      city:  document.getElementById('pCity').value,
-    }),
+  const r = await apiFetch('/agent/profile', 'PATCH', {
+    name:  document.getElementById('p-name').value,
+    phone: document.getElementById('p-phone').value,
+    city:  document.getElementById('p-city').value,
   });
-  alert(r?.success ? 'Profile updated ✓' : (r?.message || 'Failed to update'));
-}
-
-async function changePw() {
-  const el = document.getElementById('pwMsg');
-  const r = await api('/auth/agent/change-password', {
-    method: 'POST',
-    body: JSON.stringify({
-      currentPassword: document.getElementById('cpCurrent').value,
-      newPassword:     document.getElementById('cpNew').value,
-    }),
-  });
-  el.style.display = 'block';
-  el.style.color   = r?.success ? '#2DDB8F' : 'var(--red)';
-  // API returns r.message on both success and failure
-  el.textContent   = r?.message || 'Error';
+  const msgEl = document.getElementById('profile-msg');
+  msgEl.style.display = 'block';
+  msgEl.style.color = r?.success ? 'var(--green)' : 'var(--rose)';
+  msgEl.textContent = r?.success ? 'Profile updated ✓' : (r?.message || 'Update failed.');
   if (r?.success) {
-    document.getElementById('cpCurrent').value = '';
-    document.getElementById('cpNew').value     = '';
+    CURRENT_AGENT.name = document.getElementById('p-name').value;
+    updateSidebarUser();
+    showToast('Profile saved ✓', 'success');
   }
 }
 
-// ════════════════════════════════════════
-// HELPERS
-// ════════════════════════════════════════
-function fmtDate(d) {
-  if (!d) return '–';
-  return new Date(d).toLocaleDateString('en-IN', {
-    day: 'numeric', month: 'short', year: 'numeric',
+async function changePassword() {
+  const curr = document.getElementById('cp-current').value;
+  const np   = document.getElementById('cp-new').value;
+  const conf = document.getElementById('cp-confirm').value;
+  const msgEl = document.getElementById('pw-msg');
+  msgEl.style.display = 'none';
+  if (!curr) { msgEl.textContent = 'Enter current password.'; msgEl.style.display = 'block'; msgEl.style.color='var(--rose)'; return; }
+  if (np.length < 8) { msgEl.textContent = 'New password must be at least 8 characters.'; msgEl.style.display='block'; msgEl.style.color='var(--rose)'; return; }
+  if (np !== conf) { msgEl.textContent = 'Passwords do not match.'; msgEl.style.display='block'; msgEl.style.color='var(--rose)'; return; }
+  const r = await apiFetch('/auth/agent/change-password', 'POST', { currentPassword: curr, newPassword: np });
+  msgEl.style.display = 'block';
+  msgEl.style.color = r?.success ? 'var(--green)' : 'var(--rose)';
+  msgEl.textContent = r?.message || (r?.success ? 'Password updated ✓' : 'Failed.');
+  if (r?.success) { ['cp-current','cp-new','cp-confirm'].forEach(id => document.getElementById(id).value = ''); showToast('Password updated ✓', 'success'); }
+}
+
+// ══ HELPERS ══
+function esc(str) { return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function fmtDate(iso) { if(!iso) return '—'; return new Date(iso).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}); }
+function waNum(ph) { const c = ph.replace(/\D/g,''); return c.startsWith('91') ? c : '91'+c; }
+
+function showToast(msg, type='') {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.className = 'toast show ' + type;
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ══ MOBILE SIDEBAR ══
+function toggleMobileSidebar() {
+  document.getElementById('sidebar').classList.toggle('mobile-open');
+  document.getElementById('mob-overlay').classList.toggle('show');
+}
+function closeMobileSidebar() {
+  document.getElementById('sidebar').classList.remove('mobile-open');
+  document.getElementById('mob-overlay').classList.remove('show');
+}
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.nav-item').forEach(btn => {
+    btn.addEventListener('click', () => { if(window.innerWidth<=768) closeMobileSidebar(); });
   });
-}
+});
 
-function statusPill(s) {
-  const map = {
-    new:               's-new',
-    contacted:         's-contacted',
-    converted:         's-converted',
-    notInterested:     's-notInterested',
-    lost:              's-notInterested',
-    followUp:          's-followUp',
-    callbackScheduled: 's-followUp',
-  };
-  return `<span class="status-pill ${map[s] || 's-default'}">${s || 'new'}</span>`;
-}
-
-function waLink(phone, name) {
-  const clean = phone.replace(/\D/g, '');
-  const num   = clean.startsWith('91') ? clean : '91' + clean;
-  window.open(
-    `https://wa.me/${num}?text=Hi ${encodeURIComponent(name)}, I'm from Cover Credit. Is this a good time to talk?`,
-    '_blank'
-  );
-}
-
-function esc(str) {
-  return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
-
-// ════════════════════════════════════════
-// AUTO-LOGIN on page load
-// FIX 9: /auth/me response may wrap user in d.data
-// ════════════════════════════════════════
-window.addEventListener('DOMContentLoaded', () => {
-  const saved = localStorage.getItem('cc_agent_token');
-  if (!saved) return;
-
-  TOKEN = saved;
-  api('/auth/me').then(d => {
-    if (!d || !d.success) {
-      // Token invalid or expired — stay on login screen
-      TOKEN = '';
-      localStorage.removeItem('cc_agent_token');
-      return;
-    }
-    // Handle both flat (d.agentCode) and wrapped (d.data.agentCode) response shapes
-    const user = d.data || d;
-    document.getElementById('loginScreen').style.display = 'none';
-    document.getElementById('app').style.display         = 'flex';
-    document.getElementById('agentCode').textContent     = user.agentCode || user.name || 'Agent';
-    loadDashboard();
-  });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.show').forEach(m => m.classList.remove('show'));
+  }
 });
 </script>
 </body>
