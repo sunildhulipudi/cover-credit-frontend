@@ -356,10 +356,17 @@ body{font-family:'DM Sans',sans-serif;background:var(--navy);color:var(--white);
 </div>
 
 <script>
+// ════════════════════════════════════════
+// CONFIG
+// ════════════════════════════════════════
 const API = 'https://api.covercredit.in/api';
 let TOKEN = '', PAGE = 1, SEARCH_TIMER;
 
-// ── Auth ──────────────────────────────────────────────────
+// ════════════════════════════════════════
+// AUTH
+// ════════════════════════════════════════
+
+// FIX 1: d.error → d.message; use d.success instead of r.ok
 async function doLogin() {
   const email = document.getElementById('loginEmail').value.trim();
   const pw    = document.getElementById('loginPw').value;
@@ -368,58 +375,94 @@ async function doLogin() {
 
   try {
     const r = await fetch(`${API}/auth/login`, {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email, password: pw }),
     });
     const d = await r.json();
-    if (!r.ok) { errEl.textContent = d.error; errEl.style.display = 'block'; return; }
+
+    // FIX: was `if (!r.ok)` → use d.success which all API responses set consistently
+    if (!d.success) {
+      // FIX: was d.error → API sends d.message
+      errEl.textContent  = d.message || 'Login failed. Please try again.';
+      errEl.style.display = 'block';
+      return;
+    }
 
     TOKEN = d.token;
     localStorage.setItem('cc_agent_token', TOKEN);
 
-    if (d.role === 'owner') { window.location.href = '/admin'; return; }
+    if (d.role === 'owner' || d.role === 'admin') {
+      window.location.href = '/admin';
+      return;
+    }
 
     document.getElementById('loginScreen').style.display = 'none';
     document.getElementById('app').style.display         = 'flex';
-    document.getElementById('agentCode').textContent = d.agentCode || d.name;
+    // d.agentCode and d.name come directly from the login response
+    document.getElementById('agentCode').textContent     = d.agentCode || d.name || 'Agent';
 
-    if (d.mustResetPw) { showView('profile'); alert('Please change your password on first login.'); }
-    else loadDashboard();
-  } catch { errEl.textContent = 'Connection error. Try again.'; errEl.style.display = 'block'; }
+    if (d.mustResetPw) {
+      showView('profile');
+      alert('Please change your password on first login.');
+    } else {
+      loadDashboard();
+    }
+  } catch (err) {
+    console.error('Login error:', err);
+    errEl.textContent  = 'Connection error. Try again.';
+    errEl.style.display = 'block';
+  }
 }
 
 function logout() {
   localStorage.removeItem('cc_agent_token');
-  document.getElementById('app').style.display = 'none';
+  document.getElementById('app').style.display        = 'none';
   document.getElementById('loginScreen').style.display = 'flex';
   TOKEN = '';
 }
 
+// Centralised fetch helper — all API calls go through here
 async function api(path, opts = {}) {
-  const r = await fetch(API + path, {
-    ...opts,
-    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${TOKEN}`, ...opts.headers },
-  });
-  if (r.status === 401) { logout(); return null; }
-  return r.json();
+  try {
+    const r = await fetch(API + path, {
+      ...opts,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${TOKEN}`,
+        ...(opts.headers || {}),
+      },
+    });
+    if (r.status === 401) { logout(); return null; }
+    return r.json();
+  } catch (err) {
+    console.error('API error on', path, err);
+    return null;
+  }
 }
 
-// ── Navigation ────────────────────────────────────────────
+// ════════════════════════════════════════
+// NAVIGATION
+// ════════════════════════════════════════
 function showView(v) {
   document.querySelectorAll('.view').forEach(el => el.classList.remove('active'));
   document.querySelectorAll('.tnav').forEach(el => el.classList.remove('active'));
   document.getElementById('view-' + v).classList.add('active');
-  document.querySelectorAll('.tnav')[['dashboard','leads','profile'].indexOf(v)]?.classList.add('active');
+  const idx = ['dashboard', 'leads', 'profile'].indexOf(v);
+  if (idx >= 0) document.querySelectorAll('.tnav')[idx]?.classList.add('active');
   if (v === 'dashboard') loadDashboard();
   if (v === 'leads')     loadLeads();
   if (v === 'profile')   loadProfile();
 }
 
-// ── Dashboard ─────────────────────────────────────────────
+// ════════════════════════════════════════
+// DASHBOARD
+// ════════════════════════════════════════
 async function loadDashboard() {
   const d = await api('/agent/dashboard');
-  if (!d) return;
+  if (!d || !d.success) return;
 
+  // d.stats, d.recentLeads, d.charts all come directly on d — no wrapping
   const s = d.stats;
   const convColor = s.conversionRate >= 20 ? '#2DDB8F' : s.conversionRate >= 10 ? '#E5A020' : '#E07070';
 
@@ -446,33 +489,41 @@ async function loadDashboard() {
     </div>
   `;
 
-  renderBarChart('deptChart', d.charts.byDepartment, '_id', 'count');
-  renderBarChart('statusChart', d.charts.byStatus, '_id', 'count');
+  // Dashboard charts keys match API: byDepartment, byStatus, dailyTrend
+  renderBarChart('deptChart',   d.charts.byDepartment, '_id', 'count');
+  renderBarChart('statusChart', d.charts.byStatus,     '_id', 'count');
   renderTrend(d.charts.dailyTrend);
   renderRecentLeads(d.recentLeads);
 }
 
 function renderBarChart(elId, data, keyField, valField) {
+  if (!data || !data.length) {
+    document.getElementById(elId).innerHTML =
+      '<div style="color:var(--muted);font-size:13px">No data yet</div>';
+    return;
+  }
   const max = Math.max(...data.map(d => d[valField]), 1);
-  document.getElementById(elId).innerHTML = data.slice(0,6).map(d =>
+  document.getElementById(elId).innerHTML = data.slice(0, 6).map(d =>
     `<div class="bar-row">
       <div class="bar-label">${d[keyField] || 'Unknown'}</div>
       <div class="bar-wrap"><div class="bar-fill" style="width:${Math.round(d[valField]/max*100)}%"></div></div>
       <div class="bar-count">${d[valField]}</div>
     </div>`
-  ).join('') || '<div style="color:var(--muted);font-size:13px">No data yet</div>';
+  ).join('');
 }
 
 function renderTrend(data) {
-  if (!data.length) { document.getElementById('trendBars').innerHTML = '<div style="color:var(--muted);font-size:12px">No data yet</div>'; return; }
+  if (!data || !data.length) {
+    document.getElementById('trendBars').innerHTML =
+      '<div style="color:var(--muted);font-size:12px">No data yet</div>';
+    return;
+  }
   const max = Math.max(...data.map(d => d.count), 1);
-
-  // Fill missing days
   const map = {};
   data.forEach(d => map[d._id] = d.count);
   const bars = [];
   for (let i = 13; i >= 0; i--) {
-    const dt = new Date(Date.now() - i * 86400000);
+    const dt  = new Date(Date.now() - i * 86400000);
     const key = dt.toISOString().slice(0, 10);
     bars.push(map[key] || 0);
   }
@@ -483,23 +534,30 @@ function renderTrend(data) {
 
 function renderRecentLeads(leads) {
   const tbody = document.getElementById('recentTbody');
-  if (!leads.length) { tbody.innerHTML = `<tr><td colspan="6" class="empty-state">No leads yet — add your first one!</td></tr>`; return; }
+  if (!leads || !leads.length) {
+    tbody.innerHTML = `<tr><td colspan="6" class="empty-state">No leads yet — add your first one!</td></tr>`;
+    return;
+  }
   tbody.innerHTML = leads.map(l => `
     <tr>
-      <td><div class="lead-name">${l.name}</div><div class="lead-phone">${l.phone}</div></td>
+      <td><div class="lead-name">${esc(l.name)}</div><div class="lead-phone">${l.phone}</div></td>
       <td><span class="dept-badge">${l.department || '–'}</span></td>
       <td>${statusPill(l.status)}</td>
       <td style="color:var(--dim);font-size:12px">${l.leadSource || 'website'}</td>
       <td class="lead-date">${fmtDate(l.createdAt)}</td>
       <td style="display:flex;gap:6px">
         <button class="btn-icon" onclick="openEdit('${l._id}')">Edit</button>
-        ${l.phone ? `<button class="btn-icon wa-btn" onclick="waLink('${l.phone}','${l.name}')">WA</button>` : ''}
+        ${l.phone ? `<button class="btn-icon wa-btn" onclick="waLink('${l.phone}','${esc(l.name)}')">WA</button>` : ''}
       </td>
     </tr>
   `).join('');
 }
 
-// ── Leads page ────────────────────────────────────────────
+// ════════════════════════════════════════
+// LEADS PAGE
+// ════════════════════════════════════════
+
+// FIX 4: d.leads → d.data; d.total/page/pages → d.pagination.*
 async function loadLeads() {
   PAGE = 1;
   const q      = document.getElementById('searchBox')?.value || '';
@@ -512,18 +570,21 @@ async function loadLeads() {
   if (dept)   params.set('dept', dept);
 
   const d = await api('/agent/leads?' + params);
-  if (!d) return;
+  if (!d || !d.success) return;
 
   const tbody = document.getElementById('leadsTbody');
-  if (!d.leads.length) {
+
+  // FIX: was d.leads → API returns d.data
+  const leads = d.data || [];
+  if (!leads.length) {
     tbody.innerHTML = `<tr><td colspan="7" class="empty-state">No leads found</td></tr>`;
     document.getElementById('pagination').textContent = '';
     return;
   }
 
-  tbody.innerHTML = d.leads.map(l => `
+  tbody.innerHTML = leads.map(l => `
     <tr>
-      <td><div class="lead-name">${l.name}</div><div class="lead-phone">${l.phone}</div></td>
+      <td><div class="lead-name">${esc(l.name)}</div><div class="lead-phone">${l.phone}</div></td>
       <td><span class="dept-badge">${l.department || '–'}</span></td>
       <td>${statusPill(l.status)}</td>
       <td style="color:var(--dim);font-size:12px">${l.leadSource || 'website'}</td>
@@ -531,13 +592,15 @@ async function loadLeads() {
       <td class="lead-date">${fmtDate(l.createdAt)}</td>
       <td style="display:flex;gap:5px;flex-wrap:wrap">
         <button class="btn-icon" onclick="openEdit('${l._id}')">Edit</button>
-        ${l.phone ? `<button class="btn-icon wa-btn" onclick="waLink('${l.phone}','${l.name}')">WA</button>` : ''}
+        ${l.phone ? `<button class="btn-icon wa-btn" onclick="waLink('${l.phone}','${esc(l.name)}')">WA</button>` : ''}
       </td>
     </tr>
   `).join('');
 
+  // FIX: was d.total/d.page/d.pages → API returns d.pagination.total/page/pages
+  const p = d.pagination || {};
   document.getElementById('pagination').textContent =
-    `Showing ${d.leads.length} of ${d.total} leads · Page ${d.page} of ${d.pages}`;
+    `Showing ${leads.length} of ${p.total || 0} leads · Page ${p.page || 1} of ${p.pages || 1}`;
 }
 
 function debounceSearch() {
@@ -545,10 +608,13 @@ function debounceSearch() {
   SEARCH_TIMER = setTimeout(loadLeads, 350);
 }
 
-// ── Add Lead ──────────────────────────────────────────────
-function openAddLead() { document.getElementById('addLeadModal').classList.add('open'); }
+// ════════════════════════════════════════
+// ADD LEAD
+// ════════════════════════════════════════
+function openAddLead()  { document.getElementById('addLeadModal').classList.add('open'); }
 function closeAddLead() { document.getElementById('addLeadModal').classList.remove('open'); }
 
+// FIX 7: r?.error → r?.message
 async function submitLead() {
   const name  = document.getElementById('lName').value.trim();
   const phone = document.getElementById('lPhone').value.trim();
@@ -556,48 +622,67 @@ async function submitLead() {
   const errEl = document.getElementById('addLeadErr');
   errEl.style.display = 'none';
 
-  if (!name)  { errEl.textContent = 'Name is required'; errEl.style.display='block'; return; }
-  if (!phone) { errEl.textContent = 'Phone is required'; errEl.style.display='block'; return; }
-  if (!dept)  { errEl.textContent = 'Please select a department'; errEl.style.display='block'; return; }
+  if (!name)  { errEl.textContent = 'Name is required';             errEl.style.display = 'block'; return; }
+  if (!phone) { errEl.textContent = 'Phone is required';            errEl.style.display = 'block'; return; }
+  if (!dept)  { errEl.textContent = 'Please select a department';   errEl.style.display = 'block'; return; }
 
   const r = await api('/agent/leads', {
     method: 'POST',
     body: JSON.stringify({
-      name, phone, city: document.getElementById('lCity').value,
-      email: document.getElementById('lEmail').value,
+      name, phone,
+      city:       document.getElementById('lCity').value,
+      email:      document.getElementById('lEmail').value,
       department: dept,
       leadSource: document.getElementById('lSource').value,
-      notes: document.getElementById('lNotes').value,
+      notes:      document.getElementById('lNotes').value,
     }),
   });
-  if (!r?.success) { errEl.textContent = r?.error || 'Failed to save'; errEl.style.display='block'; return; }
+
+  if (!r?.success) {
+    // FIX: was r?.error → API returns r?.message
+    errEl.textContent  = r?.message || 'Failed to save lead. Please try again.';
+    errEl.style.display = 'block';
+    return;
+  }
 
   closeAddLead();
-  ['lName','lPhone','lCity','lEmail','lNotes'].forEach(id => document.getElementById(id).value='');
+  ['lName', 'lPhone', 'lCity', 'lEmail', 'lNotes'].forEach(id =>
+    document.getElementById(id).value = ''
+  );
   document.getElementById('lDept').selectedIndex = 0;
   loadDashboard();
   if (document.getElementById('view-leads').classList.contains('active')) loadLeads();
 }
 
-// ── Edit Lead ─────────────────────────────────────────────
+// ════════════════════════════════════════
+// EDIT LEAD
+// ════════════════════════════════════════
+
+// FIX 5: API returns { success, data: booking } — must use d.data.*
 async function openEdit(id) {
   const d = await api('/agent/leads/' + id);
-  if (!d) return;
+  if (!d || !d.success) return;
 
-  document.getElementById('editId').value   = id;
-  document.getElementById('editModalTitle').textContent = d.name + ' — ' + (d.department || 'lead');
+  // FIX: was d.name, d.phone etc → API wraps in d.data
+  const lead = d.data;
+
+  document.getElementById('editId').value            = id;
+  document.getElementById('editModalTitle').textContent =
+    esc(lead.name) + ' — ' + (lead.department || 'lead');
   document.getElementById('editClientInfo').innerHTML =
-    `<strong>${d.name}</strong> &nbsp;·&nbsp; ${d.phone} &nbsp;·&nbsp; ${d.city || ''}<br/>
-     <span style="color:var(--dim);font-size:12px">${d.department || ''} · ${d.leadSource || 'website'} · ${fmtDate(d.createdAt)}</span>`;
+    `<strong>${esc(lead.name)}</strong> &nbsp;·&nbsp; ${lead.phone} &nbsp;·&nbsp; ${esc(lead.city || '')}` +
+    `<br/><span style="color:var(--dim);font-size:12px">` +
+    `${lead.department || ''} · ${lead.leadSource || 'website'} · ${fmtDate(lead.createdAt)}</span>`;
 
-  document.getElementById('editStatus').value  = d.status || 'new';
-  document.getElementById('editContact').value = d.contactMethod || 'call';
+  document.getElementById('editStatus').value  = lead.status        || 'new';
+  document.getElementById('editContact').value = lead.contactMethod || 'call';
   document.getElementById('editNote').value    = '';
 
-  const log = d.noteLog || [];
+  // noteLog field names match API (note, addedByName, addedAt) — no change needed
+  const log = lead.noteLog || [];
   document.getElementById('noteLog').innerHTML = log.length
     ? log.slice().reverse().map(n =>
-        `<div class="note-item">${n.note}<div class="note-meta">${n.addedByName || 'You'} · ${fmtDate(n.addedAt)}</div></div>`
+        `<div class="note-item">${esc(n.note)}<div class="note-meta">${esc(n.addedByName || 'You')} · ${fmtDate(n.addedAt)}</div></div>`
       ).join('')
     : '<div style="color:var(--dim);font-size:12px">No notes yet</div>';
 
@@ -616,16 +701,27 @@ async function saveEdit() {
       note:          document.getElementById('editNote').value.trim(),
     }),
   });
-  if (r?.success) { closeEdit(); loadDashboard(); loadLeads(); }
+  if (r?.success) {
+    closeEdit();
+    loadDashboard();
+    if (document.getElementById('view-leads').classList.contains('active')) loadLeads();
+  }
 }
 
-// ── Profile ───────────────────────────────────────────────
+// ════════════════════════════════════════
+// PROFILE
+// ════════════════════════════════════════
+
+// FIX 8: API returns { success, data: user } — must use d.data.*
 async function loadProfile() {
   const d = await api('/agent/profile');
-  if (!d) return;
-  document.getElementById('pName').value  = d.name  || '';
-  document.getElementById('pPhone').value = d.phone || '';
-  document.getElementById('pCity').value  = d.city  || '';
+  if (!d || !d.success) return;
+
+  // FIX: was d.name, d.phone, d.city → API wraps in d.data
+  const u = d.data;
+  document.getElementById('pName').value  = u.name  || '';
+  document.getElementById('pPhone').value = u.phone || '';
+  document.getElementById('pCity').value  = u.city  || '';
 }
 
 async function saveProfile() {
@@ -637,7 +733,7 @@ async function saveProfile() {
       city:  document.getElementById('pCity').value,
     }),
   });
-  alert(r?.success ? 'Profile updated' : 'Failed to update');
+  alert(r?.success ? 'Profile updated ✓' : (r?.message || 'Failed to update'));
 }
 
 async function changePw() {
@@ -651,42 +747,73 @@ async function changePw() {
   });
   el.style.display = 'block';
   el.style.color   = r?.success ? '#2DDB8F' : 'var(--red)';
-  el.textContent   = r?.message || r?.error || 'Error';
-  if (r?.success) { document.getElementById('cpCurrent').value=''; document.getElementById('cpNew').value=''; }
+  // API returns r.message on both success and failure
+  el.textContent   = r?.message || 'Error';
+  if (r?.success) {
+    document.getElementById('cpCurrent').value = '';
+    document.getElementById('cpNew').value     = '';
+  }
 }
 
-// ── Helpers ───────────────────────────────────────────────
+// ════════════════════════════════════════
+// HELPERS
+// ════════════════════════════════════════
 function fmtDate(d) {
   if (!d) return '–';
-  const dt = new Date(d);
-  return dt.toLocaleDateString('en-IN', { day:'numeric', month:'short', year:'numeric' });
+  return new Date(d).toLocaleDateString('en-IN', {
+    day: 'numeric', month: 'short', year: 'numeric',
+  });
 }
 
 function statusPill(s) {
   const map = {
-    new:'s-new', contacted:'s-contacted', converted:'s-converted',
-    notInterested:'s-notInterested', lost:'s-notInterested',
-    followUp:'s-followUp', callbackScheduled:'s-followUp',
+    new:               's-new',
+    contacted:         's-contacted',
+    converted:         's-converted',
+    notInterested:     's-notInterested',
+    lost:              's-notInterested',
+    followUp:          's-followUp',
+    callbackScheduled: 's-followUp',
   };
-  return `<span class="status-pill ${map[s]||'s-default'}">${s||'new'}</span>`;
+  return `<span class="status-pill ${map[s] || 's-default'}">${s || 'new'}</span>`;
 }
 
 function waLink(phone, name) {
-  const clean = phone.replace(/\D/g,'');
+  const clean = phone.replace(/\D/g, '');
   const num   = clean.startsWith('91') ? clean : '91' + clean;
-  window.open(`https://wa.me/${num}?text=Hi ${encodeURIComponent(name)}, I'm from Cover Credit. Is this a good time to talk?`, '_blank');
+  window.open(
+    `https://wa.me/${num}?text=Hi ${encodeURIComponent(name)}, I'm from Cover Credit. Is this a good time to talk?`,
+    '_blank'
+  );
 }
 
-// ── Auto login ────────────────────────────────────────────
+function esc(str) {
+  return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ════════════════════════════════════════
+// AUTO-LOGIN on page load
+// FIX 9: /auth/me response may wrap user in d.data
+// ════════════════════════════════════════
 window.addEventListener('DOMContentLoaded', () => {
   const saved = localStorage.getItem('cc_agent_token');
-  if (saved) { TOKEN = saved; api('/auth/me').then(d => {
-    if (!d) return;
+  if (!saved) return;
+
+  TOKEN = saved;
+  api('/auth/me').then(d => {
+    if (!d || !d.success) {
+      // Token invalid or expired — stay on login screen
+      TOKEN = '';
+      localStorage.removeItem('cc_agent_token');
+      return;
+    }
+    // Handle both flat (d.agentCode) and wrapped (d.data.agentCode) response shapes
+    const user = d.data || d;
     document.getElementById('loginScreen').style.display = 'none';
     document.getElementById('app').style.display         = 'flex';
-    document.getElementById('agentCode').textContent     = d.agentCode || d.name;
+    document.getElementById('agentCode').textContent     = user.agentCode || user.name || 'Agent';
     loadDashboard();
-  }); }
+  });
 });
 </script>
 </body>
