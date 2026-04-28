@@ -7,3 +7,4 @@
 
 # All other routes — SPA fallback
 /*      /index.html     200
+/api/*  https://api.covercredit.in/api/:splat  200
