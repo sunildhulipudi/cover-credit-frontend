@@ -377,7 +377,7 @@ tbody tr:last-child td{border-bottom:none;}
 /* ══ PAGINATION ══ */
 .pagination{display:flex;align-items:center;gap:5px;margin-top:14px;justify-content:flex-end;}
 .page-info{font-size:11px;color:var(--text3);margin-right:6px;font-family:var(--mono);}
-.page-btn{padding:4px 10px;border:1.5px solid var(--border2);border-radius:6px;background:var(--bg3);font-family:var(--mono);font-size:11px;color:var(--text2);cursor:pointer;transition:.15s;}
+.page-btn{padding:4px 10px;border:1.5px solid var(--border2);border-radius:6px;background:var(--bg3);font-family:var(--mono);font-size:11px;color:var(--text2);cursor:pointer;transition:.15px;}
 .page-btn:hover,.page-btn.active{background:var(--gold);border-color:var(--gold);color:#0f1117;}
 
 /* ══ MOB ══ */
@@ -738,7 +738,9 @@ tbody tr:last-child td{border-bottom:none;}
 
 <script>
 const API = 'https://api.covercredit.in/api';
-let TOKEN = '', PAGE = 1, SEARCH_TIMER, CURRENT_AGENT = {};
+
+// ── FIX 1: Added TEMP_PW variable alongside other state variables ──
+let TOKEN = '', PAGE = 1, SEARCH_TIMER, CURRENT_AGENT = {}, TEMP_PW = '';
 
 const DEPT_ICONS = {health:'🏥',life:'❤️',bike:'🏍️',car:'🚗',loan:'🏠',commercial:'🚛',other:'📋'};
 const DEPT_COLORS = {health:'#f44b6b',life:'#9b59f7',bike:'#22d68a',car:'#4f8ef7',loan:'#f59e0b',commercial:'#14cec8',other:'#4d5a7a'};
@@ -758,6 +760,9 @@ async function doLogin() {
     if (!d.success) { errEl.textContent = d.message || 'Login failed.'; errEl.style.display = 'block'; return; }
     TOKEN = d.token;
     localStorage.setItem('cc_agent_token', TOKEN);
+
+    // ── FIX 2: Save the entered password so doPasswordReset() can use it ──
+    TEMP_PW = pw;
 
     if (d.role === 'owner' || d.role === 'admin') { window.location.href = '/admin'; return; }
 
@@ -787,9 +792,12 @@ async function doPasswordReset() {
   if (!np || np.length < 8) { errEl.textContent = 'Password must be at least 8 characters.'; errEl.style.display = 'block'; return; }
   if (np !== cp) { errEl.textContent = 'Passwords do not match.'; errEl.style.display = 'block'; return; }
   try {
-    const r = await apiFetch('/auth/agent/change-password', 'POST', { currentPassword: '_first_login_', newPassword: np });
+    // ── FIX 3: Use TEMP_PW (the actual login password) instead of the hardcoded '_first_login_' string ──
+    const r = await apiFetch('/auth/agent/change-password', 'POST', { currentPassword: TEMP_PW, newPassword: np });
     if (r && r.success) {
       document.getElementById('pwreset-screen').style.display = 'none';
+      // ── FIX 4: Clear TEMP_PW from memory after successful reset for security ──
+      TEMP_PW = '';
       showApp();
     } else {
       errEl.textContent = r?.message || 'Failed. Please try again.'; errEl.style.display = 'block';
@@ -840,6 +848,7 @@ function updateSidebarUser() {
 
 function doLogout() {
   TOKEN = ''; localStorage.removeItem('cc_agent_token');
+  TEMP_PW = ''; // Also clear TEMP_PW on logout for safety
   document.getElementById('app').classList.remove('show');
   document.getElementById('login-screen').style.display = 'flex';
   CURRENT_AGENT = {};
