@@ -66,6 +66,100 @@ button{font-family:inherit;cursor:pointer;}
 ::-webkit-scrollbar-track{background:transparent;}
 ::-webkit-scrollbar-thumb{background:var(--bg5);border-radius:4px;}
 
+/* ══ PROGRESS BAR (Option 3) ══ */
+#progress-bar {
+  position:fixed;top:0;left:0;height:2px;width:0%;z-index:9999;
+  background:var(--grad-gold);
+  transition:width .3s ease, opacity .4s ease;
+  pointer-events:none;
+  box-shadow:0 0 8px rgba(201,162,39,.5);
+}
+#progress-bar.done {
+  width:100% !important;
+  opacity:0;
+  transition:width .2s ease, opacity .5s ease .1s;
+}
+
+/* ══ SHIMMER SKELETON (Options 2 & 4) ══ */
+@keyframes shimmer {
+  0%   { background-position: -800px 0; }
+  100% { background-position:  800px 0; }
+}
+.sk {
+  background: linear-gradient(90deg,
+    var(--bg3) 25%,
+    var(--bg4) 50%,
+    var(--bg3) 75%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.5s infinite linear;
+  border-radius: 4px;
+}
+
+/* ── Skeleton stat cards ── */
+.stat-sk-card {
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--radius-lg);padding:18px;
+  position:relative;overflow:hidden;
+}
+.stat-sk-card::after{
+  content:'';position:absolute;top:0;left:0;right:0;height:3px;
+  border-radius:var(--radius-lg) var(--radius-lg) 0 0;
+  background:var(--bg4);
+}
+.sk-icon  { width:36px;height:36px;border-radius:10px; }
+.sk-num   { width:64px;height:28px;border-radius:6px;margin:12px 0 8px; }
+.sk-label { width:110px;height:11px;border-radius:4px; }
+.sk-sub   { width:80px;height:10px;border-radius:4px;margin-top:5px; }
+
+/* ── Skeleton table rows ── */
+.sk-row td { padding:11px 14px; border-bottom:1px solid var(--border); }
+.sk-cell-name   { width:120px;height:11px;border-radius:4px;margin-bottom:5px; }
+.sk-cell-phone  { width:90px; height:10px;border-radius:4px; }
+.sk-cell-dept   { width:70px;height:20px;border-radius:100px; }
+.sk-cell-status { width:64px;height:20px;border-radius:100px; }
+.sk-cell-src    { width:50px;height:10px;border-radius:4px; }
+.sk-cell-note   { width:100px;height:10px;border-radius:4px; }
+.sk-cell-date   { width:72px;height:10px;border-radius:4px; }
+.sk-cell-act    { display:flex;gap:4px; }
+.sk-act-btn     { width:28px;height:24px;border-radius:5px; }
+
+/* ── Skeleton mini recent ── */
+.sk-mini { display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border); }
+.sk-mini-icon { width:32px;height:32px;border-radius:8px;flex-shrink:0; }
+.sk-mini-name { width:110px;height:11px;border-radius:4px;margin-bottom:5px; }
+.sk-mini-ph   { width:75px;height:10px;border-radius:4px; }
+.sk-mini-badge{ width:52px;height:18px;border-radius:100px;margin-left:auto;flex-shrink:0; }
+
+/* ── Skeleton bar chart ── */
+.sk-bar-row { display:flex;align-items:center;gap:10px;margin-bottom:10px; }
+.sk-bar-lbl { width:80px;height:10px;border-radius:4px;flex-shrink:0; }
+.sk-bar-track{ flex:1;height:6px;border-radius:100px; }
+.sk-bar-cnt { width:24px;height:10px;border-radius:4px;flex-shrink:0; }
+
+/* ── Skeleton trend ── */
+.sk-trend-wrap { display:flex;align-items:flex-end;gap:3px;height:56px; }
+.sk-trend-bar  { flex:1;border-radius:3px 3px 0 0;min-width:6px; }
+
+/* ══ BUTTON SPINNER (Option 1) ══ */
+@keyframes btn-spin { to { transform:rotate(360deg); } }
+.btn-spinner {
+  display:inline-block;
+  width:13px;height:13px;
+  border:2px solid rgba(15,17,23,.25);
+  border-top-color:#0f1117;
+  border-radius:50%;
+  animation:btn-spin .65s linear infinite;
+  vertical-align:middle;
+  flex-shrink:0;
+}
+.btn-spinner-light {
+  border-color:rgba(201,162,39,.25);
+  border-top-color:var(--gold);
+}
+button:disabled, button[disabled] { opacity:.72; cursor:not-allowed !important; }
+button:disabled:hover { transform:none !important; }
+
 /* ══ LOGIN ══ */
 .login-screen{
   display:flex;align-items:center;justify-content:center;min-height:100vh;
@@ -106,8 +200,9 @@ button{font-family:inherit;cursor:pointer;}
   background:var(--grad-gold);color:#0f1117;border:none;
   border-radius:var(--radius);font-size:13.5px;font-weight:700;
   transition:.2s;box-shadow:0 4px 18px rgba(201,162,39,.35);
+  display:flex;align-items:center;justify-content:center;gap:8px;
 }
-.login-btn:hover{opacity:.9;transform:translateY(-1px);}
+.login-btn:hover:not(:disabled){opacity:.9;transform:translateY(-1px);}
 .login-error{display:none;margin-top:.9rem;padding:.6rem .85rem;background:rgba(244,75,107,.12);border:1px solid rgba(244,75,107,.3);border-radius:var(--radius);font-size:12px;color:var(--rose);}
 
 /* ══ PASSWORD RESET SCREEN ══ */
@@ -284,11 +379,11 @@ tbody tr:last-child td{border-bottom:none;}
 .filter-select{padding:.48rem .8rem;background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);color:var(--text2);font-family:inherit;font-size:12.5px;outline:none;cursor:pointer;transition:.2s;}
 .filter-select:focus{border-color:var(--gold);}
 .btn{display:inline-flex;align-items:center;gap:6px;padding:.48rem 1rem;border-radius:var(--radius);font-size:12.5px;font-weight:600;border:none;cursor:pointer;transition:.2s;white-space:nowrap;}
-.btn:hover{transform:translateY(-1px);}
+.btn:hover:not(:disabled){transform:translateY(-1px);}
 .btn-gold{background:var(--grad-gold);color:#0f1117;box-shadow:0 3px 12px rgba(201,162,39,.3);}
-.btn-gold:hover{box-shadow:0 5px 18px rgba(201,162,39,.45);}
+.btn-gold:hover:not(:disabled){box-shadow:0 5px 18px rgba(201,162,39,.45);}
 .btn-ghost{background:var(--bg3);color:var(--text2);border:1.5px solid var(--border2);}
-.btn-ghost:hover{border-color:var(--border3);color:var(--text);}
+.btn-ghost:hover:not(:disabled){border-color:var(--border3);color:var(--text);}
 .btn-danger{background:rgba(244,75,107,.12);color:var(--rose);border:1px solid rgba(244,75,107,.25);}
 .btn-sm{padding:.3rem .7rem;font-size:11px;}
 
@@ -314,9 +409,9 @@ tbody tr:last-child td{border-bottom:none;}
 .modal-body{flex:1;overflow-y:auto;padding:20px;}
 .modal-foot{padding:14px 20px;border-top:1px solid var(--border);display:flex;justify-content:flex-end;gap:9px;flex-shrink:0;}
 .modal-cancel{background:var(--bg3);color:var(--text2);border:1.5px solid var(--border2);padding:.5rem 1.1rem;border-radius:var(--radius);font-family:inherit;font-size:12.5px;font-weight:500;cursor:pointer;transition:.15s;}
-.modal-cancel:hover{border-color:var(--border3);color:var(--text);}
-.modal-save{background:var(--grad-gold);color:#0f1117;border:none;padding:.5rem 1.1rem;border-radius:var(--radius);font-family:inherit;font-size:12.5px;font-weight:700;cursor:pointer;transition:.15s;box-shadow:0 3px 12px rgba(201,162,39,.3);}
-.modal-save:hover{opacity:.9;}
+.modal-cancel:hover:not(:disabled){border-color:var(--border3);color:var(--text);}
+.modal-save{background:var(--grad-gold);color:#0f1117;border:none;padding:.5rem 1.1rem;border-radius:var(--radius);font-family:inherit;font-size:12.5px;font-weight:700;cursor:pointer;transition:.15s;box-shadow:0 3px 12px rgba(201,162,39,.3);display:inline-flex;align-items:center;gap:7px;}
+.modal-save:hover:not(:disabled){opacity:.9;}
 
 .mf-label{display:block;font-size:10.5px;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.5px;margin-bottom:5px;margin-top:13px;}
 .mf-select,.mf-input,.mf-textarea{width:100%;padding:.55rem .85rem;background:var(--bg3);border:1.5px solid var(--border2);border-radius:var(--radius);color:var(--text);font-family:inherit;font-size:12.5px;outline:none;transition:.2s;}
@@ -372,7 +467,6 @@ tbody tr:last-child td{border-bottom:none;}
 .empty{text-align:center;padding:3rem;color:var(--text3);}
 .empty-icon{font-size:2.5rem;margin-bottom:10px;opacity:.35;}
 .empty p{font-size:12.5px;}
-.loading{text-align:center;padding:2.5rem;color:var(--text3);font-size:12px;}
 
 /* ══ PAGINATION ══ */
 .pagination{display:flex;align-items:center;gap:5px;margin-top:14px;justify-content:flex-end;}
@@ -404,6 +498,9 @@ tbody tr:last-child td{border-bottom:none;}
 </head>
 <body>
 
+<!-- ══ PROGRESS BAR ══ -->
+<div id="progress-bar"></div>
+
 <!-- ══ LOGIN ══ -->
 <div class="login-screen" id="login-screen" style="display:flex;">
   <div class="login-card">
@@ -424,12 +521,12 @@ tbody tr:last-child td{border-bottom:none;}
       <label for="l-pass">Password</label>
       <input type="password" id="l-pass" placeholder="••••••••" autocomplete="current-password" onkeydown="if(event.key==='Enter')doLogin()"/>
     </div>
-    <button class="login-btn" onclick="doLogin()">Sign in to Dashboard →</button>
+    <button class="login-btn" id="login-btn" onclick="doLogin()">Sign in to Dashboard →</button>
     <div class="login-error" id="login-error"></div>
   </div>
 </div>
 
-<!-- ══ PASSWORD RESET (forced on first login) ══ -->
+<!-- ══ PASSWORD RESET ══ -->
 <div class="pwreset-screen" id="pwreset-screen" style="display:none;align-items:center;justify-content:center;min-height:100vh;background:var(--bg);">
   <div class="pwreset-card">
     <div class="login-brand" style="margin-bottom:1.2rem;">
@@ -453,14 +550,13 @@ tbody tr:last-child td{border-bottom:none;}
       <input type="password" id="pr-confirm" placeholder="Repeat your new password" onkeydown="if(event.key==='Enter')doPasswordReset()"/>
     </div>
     <div class="login-error" id="pr-error"></div>
-    <button class="login-btn" onclick="doPasswordReset()">Set Password & Continue →</button>
+    <button class="login-btn" id="pwreset-btn" onclick="doPasswordReset()">Set Password & Continue →</button>
   </div>
 </div>
 
 <!-- ══ APP ══ -->
 <div class="app" id="app">
 
-  <!-- SIDEBAR -->
   <aside class="sidebar" id="sidebar">
     <div class="sidebar-header">
       <div class="brand-logo">CC</div>
@@ -496,7 +592,6 @@ tbody tr:last-child td{border-bottom:none;}
     </div>
   </aside>
 
-  <!-- MAIN -->
   <main class="main">
     <div class="mob-sidebar-overlay" id="mob-overlay" onclick="closeMobileSidebar()"></div>
     <div class="topbar">
@@ -514,11 +609,9 @@ tbody tr:last-child td{border-bottom:none;}
 
     <div class="content">
 
-      <!-- ══ DASHBOARD ══ -->
+      <!-- DASHBOARD -->
       <div class="panel active" id="panel-dashboard">
-        <div class="stats-grid" id="stats-grid">
-          <div class="loading">Loading stats…</div>
-        </div>
+        <div class="stats-grid" id="stats-grid"><!-- skeleton rendered by JS --></div>
         <div class="section-row col-2">
           <div class="card">
             <div class="card-header">
@@ -533,33 +626,25 @@ tbody tr:last-child td{border-bottom:none;}
             <div class="card-header">
               <span class="card-title">🗂 Leads by Status <span class="card-title-badge">breakdown</span></span>
             </div>
-            <div class="card-body" id="status-chart">
-              <div class="loading">Loading…</div>
-            </div>
+            <div class="card-body" id="status-chart"></div>
           </div>
         </div>
         <div class="section-row col-2">
           <div class="card">
-            <div class="card-header">
-              <span class="card-title">🏷 By Department</span>
-            </div>
-            <div class="card-body" id="dept-chart">
-              <div class="loading">Loading…</div>
-            </div>
+            <div class="card-header"><span class="card-title">🏷 By Department</span></div>
+            <div class="card-body" id="dept-chart"></div>
           </div>
           <div class="card">
             <div class="card-header">
               <span class="card-title">🕐 Recent Activity</span>
               <button class="btn btn-ghost btn-sm" onclick="showPanel('leads')">View All →</button>
             </div>
-            <div class="card-body" id="recent-leads-mini">
-              <div class="loading">Loading…</div>
-            </div>
+            <div class="card-body" id="recent-leads-mini"></div>
           </div>
         </div>
       </div>
 
-      <!-- ══ LEADS ══ -->
+      <!-- LEADS -->
       <div class="panel" id="panel-leads">
         <div class="page-header">
           <div>
@@ -595,14 +680,14 @@ tbody tr:last-child td{border-bottom:none;}
           <div class="table-wrap">
             <table>
               <thead><tr><th>Client</th><th>Department</th><th>Status</th><th>Source</th><th>Last Note</th><th>Date</th><th>Actions</th></tr></thead>
-              <tbody id="leads-tbody"><tr><td colspan="7"><div class="loading">Loading…</div></td></tr></tbody>
+              <tbody id="leads-tbody"><!-- skeleton rendered by JS --></tbody>
             </table>
           </div>
         </div>
         <div class="pagination" id="leads-pgn"></div>
       </div>
 
-      <!-- ══ PROFILE ══ -->
+      <!-- PROFILE -->
       <div class="panel" id="panel-profile">
         <div class="page-header">
           <div>
@@ -621,7 +706,7 @@ tbody tr:last-child td{border-bottom:none;}
                 <div class="form-group"><label>Email</label><input id="p-email" placeholder="your@email.com" disabled style="opacity:.5;cursor:not-allowed;"/></div>
               </div>
               <div class="form-group" style="margin-bottom:14px;"><label>Agent Code</label><input id="p-code" disabled style="opacity:.5;cursor:not-allowed;font-family:var(--mono);"/></div>
-              <button class="btn btn-gold" onclick="saveProfile()">Save Changes</button>
+              <button class="btn btn-gold" id="save-profile-btn" onclick="saveProfile()">Save Changes</button>
               <div id="profile-msg" style="font-size:12.5px;margin-top:10px;display:none;"></div>
             </div>
           </div>
@@ -633,7 +718,7 @@ tbody tr:last-child td{border-bottom:none;}
               <div class="pw-strength" style="margin-bottom:4px;"><div class="pw-strength-fill" id="cp-strength-fill"></div></div>
               <div style="font-size:10.5px;color:var(--text3);margin-bottom:12px;" id="cp-strength-label"></div>
               <div class="form-group" style="margin-bottom:14px;"><label>Confirm New Password</label><input type="password" id="cp-confirm" placeholder="Repeat new password"/></div>
-              <button class="btn btn-ghost" onclick="changePassword()">Update Password</button>
+              <button class="btn btn-ghost" id="change-pw-btn" onclick="changePassword()">Update Password</button>
               <div id="pw-msg" style="font-size:12.5px;margin-top:10px;display:none;"></div>
             </div>
           </div>
@@ -644,7 +729,7 @@ tbody tr:last-child td{border-bottom:none;}
   </main>
 </div>
 
-<!-- ══ ADD LEAD MODAL ══ -->
+<!-- ADD LEAD MODAL -->
 <div class="modal-overlay" id="add-modal" onclick="closeAddLead(event)">
   <div class="modal">
     <div class="modal-head"><h3>➕ Add New Lead</h3><button class="modal-close" onclick="closeAddLead()">✕</button></div>
@@ -682,13 +767,13 @@ tbody tr:last-child td{border-bottom:none;}
       <div id="al-error" style="font-size:12.5px;color:var(--rose);margin-top:10px;display:none;padding:8px 12px;background:rgba(244,75,107,.1);border-radius:6px;"></div>
     </div>
     <div class="modal-foot">
-      <button class="modal-cancel" onclick="closeAddLead()">Cancel</button>
-      <button class="modal-save" onclick="submitLead()">Save Lead</button>
+      <button class="modal-cancel" id="al-cancel-btn" onclick="closeAddLead()">Cancel</button>
+      <button class="modal-save" id="al-save-btn" onclick="submitLead()">Save Lead</button>
     </div>
   </div>
 </div>
 
-<!-- ══ EDIT LEAD MODAL ══ -->
+<!-- EDIT LEAD MODAL -->
 <div class="modal-overlay" id="edit-modal" onclick="closeEditLead(event)">
   <div class="modal">
     <div class="modal-head"><h3 id="edit-modal-title">Edit Lead</h3><button class="modal-close" onclick="closeEditLead()">✕</button></div>
@@ -728,8 +813,8 @@ tbody tr:last-child td{border-bottom:none;}
       <div class="note-log" id="note-log"></div>
     </div>
     <div class="modal-foot">
-      <button class="modal-cancel" onclick="closeEditLead()">Close</button>
-      <button class="modal-save" onclick="saveEdit()">Save Changes</button>
+      <button class="modal-cancel" id="edit-cancel-btn" onclick="closeEditLead()">Close</button>
+      <button class="modal-save" id="edit-save-btn" onclick="saveEdit()">Save Changes</button>
     </div>
   </div>
 </div>
@@ -738,30 +823,141 @@ tbody tr:last-child td{border-bottom:none;}
 
 <script>
 const API = 'https://api.covercredit.in/api';
+let TOKEN = '', PAGE = 1, SEARCH_TIMER_ID, CURRENT_AGENT = {}, TEMP_PW = '';
 
-// ── FIX 1: Added TEMP_PW variable alongside other state variables ──
-let TOKEN = '', PAGE = 1, SEARCH_TIMER, CURRENT_AGENT = {}, TEMP_PW = '';
+const DEPT_ICONS   = {health:'🏥',life:'❤️',bike:'🏍️',car:'🚗',loan:'🏠',commercial:'🚛',other:'📋'};
+const DEPT_COLORS  = {health:'#f44b6b',life:'#9b59f7',bike:'#22d68a',car:'#4f8ef7',loan:'#f59e0b',commercial:'#14cec8',other:'#4d5a7a'};
+const STATUS_COLORS= {new:'#f59e0b',contacted:'#4f8ef7',converted:'#22d68a',notInterested:'#f44b6b',lost:'#f44b6b',followUp:'#9b59f7',callbackScheduled:'#9b59f7',qualified:'#14cec8'};
 
-const DEPT_ICONS = {health:'🏥',life:'❤️',bike:'🏍️',car:'🚗',loan:'🏠',commercial:'🚛',other:'📋'};
-const DEPT_COLORS = {health:'#f44b6b',life:'#9b59f7',bike:'#22d68a',car:'#4f8ef7',loan:'#f59e0b',commercial:'#14cec8',other:'#4d5a7a'};
+/* ════════════════════════════
+   PROGRESS BAR (Option 3)
+════════════════════════════ */
+let _pgTimer;
+function pgStart() {
+  const bar = document.getElementById('progress-bar');
+  bar.style.transition = 'width .3s ease, opacity .4s ease';
+  bar.style.opacity = '1';
+  bar.style.width = '0%';
+  clearTimeout(_pgTimer);
+  // Animate to 85% slowly
+  requestAnimationFrame(() => {
+    bar.style.transition = 'width 2.5s cubic-bezier(.1,.6,.4,1), opacity .4s ease';
+    bar.style.width = '85%';
+  });
+}
+function pgDone() {
+  const bar = document.getElementById('progress-bar');
+  bar.style.transition = 'width .2s ease, opacity .5s ease .15s';
+  bar.style.width = '100%';
+  bar.style.opacity = '0';
+  _pgTimer = setTimeout(() => { bar.style.width = '0%'; bar.style.opacity='1'; }, 700);
+}
 
-// ══ AUTH ══
+/* ════════════════════════════
+   SKELETON HELPERS (Options 2 & 4)
+════════════════════════════ */
+function skStatCards() {
+  const colors = ['gold','blue','amber','green'];
+  return colors.map(c => `
+    <div class="stat-sk-card ${c}">
+      <div class="stat-card-header"><div class="sk sk-icon"></div></div>
+      <div class="sk sk-num"></div>
+      <div class="sk sk-label"></div>
+      <div class="sk sk-sub"></div>
+    </div>`).join('');
+}
+
+function skTableRows(n = 6) {
+  return Array.from({length: n}, () => `
+    <tr class="sk-row">
+      <td><div class="sk sk-cell-name"></div><div class="sk sk-cell-phone"></div></td>
+      <td><div class="sk sk-cell-dept"></div></td>
+      <td><div class="sk sk-cell-status"></div></td>
+      <td><div class="sk sk-cell-src"></div></td>
+      <td><div class="sk sk-cell-note"></div></td>
+      <td><div class="sk sk-cell-date"></div></td>
+      <td><div class="sk-cell-act"><div class="sk sk-act-btn"></div><div class="sk sk-act-btn"></div><div class="sk sk-act-btn" style="width:38px;"></div></div></td>
+    </tr>`).join('');
+}
+
+function skBarChart(rows = 5) {
+  const widths = [100, 72, 58, 44, 30];
+  return widths.slice(0, rows).map(w => `
+    <div class="sk-bar-row">
+      <div class="sk sk-bar-lbl"></div>
+      <div class="sk sk-bar-track" style="width:${w}%;max-width:100%;"></div>
+      <div class="sk sk-bar-cnt"></div>
+    </div>`).join('');
+}
+
+function skTrend() {
+  const heights = [20,35,18,42,30,56,24,38,44,20,50,32,46,28];
+  return `
+    <div class="sk-trend-wrap">
+      ${heights.map(h => `<div class="sk sk-trend-bar" style="height:${h}px;"></div>`).join('')}
+    </div>
+    <div class="trend-labels" style="margin-top:6px;">
+      <div class="sk" style="width:40px;height:9px;border-radius:3px;"></div>
+      <div class="sk" style="width:40px;height:9px;border-radius:3px;"></div>
+    </div>`;
+}
+
+function skRecentMini(n = 4) {
+  return Array.from({length: n}, () => `
+    <div class="sk-mini">
+      <div class="sk sk-mini-icon"></div>
+      <div style="flex:1;"><div class="sk sk-mini-name"></div><div class="sk sk-mini-ph"></div></div>
+      <div class="sk sk-mini-badge"></div>
+    </div>`).join('');
+}
+
+/* ════════════════════════════
+   BUTTON LOADING HELPER (Option 1)
+   Usage: setBtnLoading(btn, true, 'Saving…')
+          setBtnLoading(btn, false, 'Save Lead')
+════════════════════════════ */
+function setBtnLoading(btnOrId, loading, loadingText, defaultText) {
+  const btn = typeof btnOrId === 'string' ? document.getElementById(btnOrId) : btnOrId;
+  if (!btn) return;
+  if (loading) {
+    btn._defaultHTML = btn.innerHTML;
+    const spinnerClass = btn.classList.contains('btn-gold') || btn.classList.contains('modal-save') || btn.classList.contains('login-btn')
+      ? 'btn-spinner' : 'btn-spinner btn-spinner-light';
+    btn.innerHTML = `<span class="${spinnerClass}"></span> ${loadingText || 'Loading…'}`;
+    btn.disabled = true;
+  } else {
+    btn.innerHTML = btn._defaultHTML || defaultText || btn.innerHTML;
+    btn.disabled = false;
+  }
+}
+
+/* ════════════════════════════
+   AUTH
+════════════════════════════ */
 async function doLogin() {
   const email = document.getElementById('l-email').value.trim();
   const pw    = document.getElementById('l-pass').value;
   const errEl = document.getElementById('login-error');
   errEl.style.display = 'none';
+
+  setBtnLoading('login-btn', true, 'Signing in…');
+  pgStart();
+
   try {
     const r = await fetch(`${API}/auth/login`, {
       method:'POST', headers:{'Content-Type':'application/json'},
       body: JSON.stringify({email, password: pw})
     });
     const d = await r.json();
-    if (!d.success) { errEl.textContent = d.message || 'Login failed.'; errEl.style.display = 'block'; return; }
+    pgDone();
+    if (!d.success) {
+      errEl.textContent = d.message || 'Login failed.';
+      errEl.style.display = 'block';
+      setBtnLoading('login-btn', false);
+      return;
+    }
     TOKEN = d.token;
     localStorage.setItem('cc_agent_token', TOKEN);
-
-    // ── FIX 2: Save the entered password so doPasswordReset() can use it ──
     TEMP_PW = pw;
 
     if (d.role === 'owner' || d.role === 'admin') { window.location.href = '/admin'; return; }
@@ -769,19 +965,22 @@ async function doLogin() {
     CURRENT_AGENT = { name: d.name || 'Agent', code: d.agentCode || '—', email };
 
     if (d.mustResetPw) {
+      setBtnLoading('login-btn', false);
       showPwReset();
     } else {
       showApp();
     }
   } catch (e) {
-    errEl.textContent = 'Connection error. Try again.'; errEl.style.display = 'block';
+    pgDone();
+    errEl.textContent = 'Connection error. Try again.';
+    errEl.style.display = 'block';
+    setBtnLoading('login-btn', false);
   }
 }
 
 function showPwReset() {
   document.getElementById('login-screen').style.display = 'none';
-  const prs = document.getElementById('pwreset-screen');
-  prs.style.display = 'flex';
+  document.getElementById('pwreset-screen').style.display = 'flex';
 }
 
 async function doPasswordReset() {
@@ -791,44 +990,43 @@ async function doPasswordReset() {
   errEl.style.display = 'none';
   if (!np || np.length < 8) { errEl.textContent = 'Password must be at least 8 characters.'; errEl.style.display = 'block'; return; }
   if (np !== cp) { errEl.textContent = 'Passwords do not match.'; errEl.style.display = 'block'; return; }
+
+  setBtnLoading('pwreset-btn', true, 'Setting password…');
+  pgStart();
+
   try {
-    // ── FIX 3: Use TEMP_PW (the actual login password) instead of the hardcoded '_first_login_' string ──
     const r = await apiFetch('/auth/agent/change-password', 'POST', { currentPassword: TEMP_PW, newPassword: np });
+    pgDone();
     if (r && r.success) {
       document.getElementById('pwreset-screen').style.display = 'none';
-      // ── FIX 4: Clear TEMP_PW from memory after successful reset for security ──
       TEMP_PW = '';
       showApp();
     } else {
-      errEl.textContent = r?.message || 'Failed. Please try again.'; errEl.style.display = 'block';
+      errEl.textContent = r?.message || 'Failed. Please try again.';
+      errEl.style.display = 'block';
+      setBtnLoading('pwreset-btn', false);
     }
   } catch {
-    errEl.textContent = 'Connection error.'; errEl.style.display = 'block';
+    pgDone();
+    errEl.textContent = 'Connection error.';
+    errEl.style.display = 'block';
+    setBtnLoading('pwreset-btn', false);
   }
 }
 
-function checkPwStrength() {
-  const pw = document.getElementById('pr-new').value;
-  calcStrength(pw, 'pw-strength-fill', 'pw-strength-label');
-}
-function checkPwStrengthProfile() {
-  const pw = document.getElementById('cp-new').value;
-  calcStrength(pw, 'cp-strength-fill', 'cp-strength-label');
-}
+function checkPwStrength() { calcStrength(document.getElementById('pr-new').value,'pw-strength-fill','pw-strength-label'); }
+function checkPwStrengthProfile() { calcStrength(document.getElementById('cp-new').value,'cp-strength-fill','cp-strength-label'); }
 function calcStrength(pw, fillId, labelId) {
   let score = 0;
   if (pw.length >= 8) score++;
   if (/[A-Z]/.test(pw)) score++;
   if (/[0-9]/.test(pw)) score++;
   if (/[^A-Za-z0-9]/.test(pw)) score++;
-  const fill = document.getElementById(fillId);
-  const label = document.getElementById(labelId);
+  const fill = document.getElementById(fillId), label = document.getElementById(labelId);
   const map = [{w:'25%',c:'var(--rose)',l:'Weak'},{w:'50%',c:'var(--amber)',l:'Fair'},{w:'75%',c:'var(--blue)',l:'Good'},{w:'100%',c:'var(--green)',l:'Strong'}];
-  const m = map[Math.max(0, score - 1)] || map[0];
-  fill.style.width = pw.length ? m.w : '0%';
-  fill.style.background = m.c;
-  label.textContent = pw.length ? m.l : '';
-  label.style.color = m.c;
+  const m = map[Math.max(0,score-1)] || map[0];
+  fill.style.width = pw.length ? m.w : '0%'; fill.style.background = m.c;
+  label.textContent = pw.length ? m.l : ''; label.style.color = m.c;
 }
 
 function showApp() {
@@ -847,16 +1045,17 @@ function updateSidebarUser() {
 }
 
 function doLogout() {
-  TOKEN = ''; localStorage.removeItem('cc_agent_token');
-  TEMP_PW = ''; // Also clear TEMP_PW on logout for safety
+  TOKEN = ''; TEMP_PW = '';
+  localStorage.removeItem('cc_agent_token');
   document.getElementById('app').classList.remove('show');
   document.getElementById('login-screen').style.display = 'flex';
+  setBtnLoading('login-btn', false);
   CURRENT_AGENT = {};
 }
 
 async function apiFetch(path, method = 'GET', body = null) {
   try {
-    const opts = { method, headers: { 'Content-Type':'application/json', 'Authorization': `Bearer ${TOKEN}` }};
+    const opts = { method, headers:{'Content-Type':'application/json','Authorization':`Bearer ${TOKEN}`} };
     if (body) opts.body = JSON.stringify(body);
     const r = await fetch(API + path, opts);
     if (r.status === 401) { doLogout(); return null; }
@@ -864,12 +1063,16 @@ async function apiFetch(path, method = 'GET', body = null) {
   } catch { return null; }
 }
 
-// ══ AUTO-LOGIN ══
+/* ════════════════════════════
+   AUTO-LOGIN
+════════════════════════════ */
 window.addEventListener('DOMContentLoaded', () => {
   const saved = localStorage.getItem('cc_agent_token');
   if (!saved) return;
   TOKEN = saved;
+  pgStart();
   apiFetch('/auth/me').then(d => {
+    pgDone();
     if (!d || !d.success) { TOKEN = ''; localStorage.removeItem('cc_agent_token'); return; }
     const u = d.data || d;
     CURRENT_AGENT = { name: u.name || 'Agent', code: u.agentCode || '—', email: u.email || '' };
@@ -878,22 +1081,36 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-// ══ NAVIGATION ══
-const panelTitles = { dashboard:'Dashboard', leads:'My Leads', profile:'Profile & Settings' };
+/* ════════════════════════════
+   NAVIGATION
+════════════════════════════ */
+const panelTitles = {dashboard:'Dashboard',leads:'My Leads',profile:'Profile & Settings'};
 function showPanel(name) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   document.getElementById('panel-' + name).classList.add('active');
-  document.querySelectorAll('.nav-item').forEach(n => { if (n.getAttribute('onclick')?.includes(`'${name}'`)) n.classList.add('active'); });
+  document.querySelectorAll('.nav-item').forEach(n => { if(n.getAttribute('onclick')?.includes(`'${name}'`)) n.classList.add('active'); });
   document.getElementById('panel-heading').textContent = panelTitles[name] || name;
   if (name === 'dashboard') loadDashboard();
   if (name === 'leads') loadLeads();
   if (name === 'profile') loadProfile();
 }
 
-// ══ DASHBOARD ══
+/* ════════════════════════════
+   DASHBOARD
+════════════════════════════ */
 async function loadDashboard() {
+  // Show skeletons immediately
+  document.getElementById('stats-grid').innerHTML = skStatCards();
+  document.getElementById('trend-bars').innerHTML = skTrend();
+  document.getElementById('trend-labels').innerHTML = '';
+  document.getElementById('status-chart').innerHTML = skBarChart(5);
+  document.getElementById('dept-chart').innerHTML   = skBarChart(5);
+  document.getElementById('recent-leads-mini').innerHTML = skRecentMini(4);
+  pgStart();
+
   const d = await apiFetch('/agent/dashboard');
+  pgDone();
   if (!d || !d.success) return;
   const s = d.stats;
 
@@ -924,34 +1141,24 @@ async function loadDashboard() {
       <div class="stat-sub">${s.conversionRate}% conversion rate</div>
     </div>`;
 
-  // Update badge
   const nb = document.getElementById('nav-new-badge');
   if (nb) { nb.textContent = s.newLeads; nb.style.display = s.newLeads > 0 ? '' : 'none'; }
 
-  // Trend
   renderTrend(d.charts?.dailyTrend);
-
-  // Status chart
   renderBarChart('status-chart', d.charts?.byStatus, '_id', 'count', STATUS_COLORS);
-
-  // Dept chart
   renderBarChart('dept-chart', d.charts?.byDepartment, '_id', 'count', DEPT_COLORS);
-
-  // Recent leads mini
   renderRecentMini(d.recentLeads || []);
 }
 
-const STATUS_COLORS = { new:'#f59e0b', contacted:'#4f8ef7', converted:'#22d68a', notInterested:'#f44b6b', lost:'#f44b6b', followUp:'#9b59f7', callbackScheduled:'#9b59f7', qualified:'#14cec8' };
-
 function renderBarChart(elId, data, keyF, valF, colorMap) {
   const el = document.getElementById(elId);
-  if (!data || !data.length) { el.innerHTML = '<div style="color:var(--text3);font-size:12px;text-align:center;padding:1rem 0;">No data yet.</div>'; return; }
+  if (!data || !data.length) { el.innerHTML='<div style="color:var(--text3);font-size:12px;text-align:center;padding:1rem 0;">No data yet.</div>'; return; }
   const max = Math.max(...data.map(d => d[valF]), 1);
-  el.innerHTML = data.slice(0, 7).map(d => {
+  el.innerHTML = data.slice(0,7).map(d => {
     const col = (colorMap && colorMap[d[keyF]]) || 'var(--gold)';
-    const pct = Math.round((d[valF] / max) * 100);
+    const pct = Math.round((d[valF]/max)*100);
     return `<div class="bar-row">
-      <div class="bar-label">${d[keyF] || 'Unknown'}</div>
+      <div class="bar-label">${d[keyF]||'Unknown'}</div>
       <div class="bar-track"><div class="bar-fill" style="width:${pct}%;background:${col};"></div></div>
       <div class="bar-count">${d[valF]}</div>
     </div>`;
@@ -962,21 +1169,21 @@ function renderTrend(data) {
   const bars = document.getElementById('trend-bars');
   const labels = document.getElementById('trend-labels');
   const map = {};
-  (data || []).forEach(d => map[d._id] = d.count);
+  (data||[]).forEach(d => map[d._id] = d.count);
   const days = [];
   for (let i = 13; i >= 0; i--) {
-    const dt = new Date(Date.now() - i * 86400000);
-    days.push({ key: dt.toISOString().slice(0, 10), label: dt.toLocaleDateString('en-IN', { day:'numeric', month:'short' }), count: map[dt.toISOString().slice(0, 10)] || 0 });
+    const dt = new Date(Date.now() - i*86400000);
+    days.push({key:dt.toISOString().slice(0,10),label:dt.toLocaleDateString('en-IN',{day:'numeric',month:'short'}),count:map[dt.toISOString().slice(0,10)]||0});
   }
-  const max = Math.max(...days.map(d => d.count), 1);
-  bars.innerHTML = days.map(d => `<div class="tb" style="height:${Math.max(6, Math.round((d.count / max) * 56))}px;" title="${d.label}: ${d.count} leads"></div>`).join('');
-  labels.innerHTML = `<span>${days[0].label}</span><span>${days[days.length - 1].label}</span>`;
+  const max = Math.max(...days.map(d => d.count),1);
+  bars.innerHTML = days.map(d => `<div class="tb" style="height:${Math.max(6,Math.round((d.count/max)*56))}px;" title="${d.label}: ${d.count} leads"></div>`).join('');
+  labels.innerHTML = `<span>${days[0].label}</span><span>${days[days.length-1].label}</span>`;
 }
 
 function renderRecentMini(leads) {
   const el = document.getElementById('recent-leads-mini');
-  if (!leads.length) { el.innerHTML = '<div class="empty"><div class="empty-icon">📭</div><p>No leads yet. Add your first!</p></div>'; return; }
-  el.innerHTML = leads.slice(0, 5).map(l => `
+  if (!leads.length) { el.innerHTML='<div class="empty"><div class="empty-icon">📭</div><p>No leads yet. Add your first!</p></div>'; return; }
+  el.innerHTML = leads.slice(0,5).map(l => `
     <div style="display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border);cursor:pointer;" onclick="openEdit('${l._id}')">
       <div style="width:32px;height:32px;border-radius:8px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:14px;flex-shrink:0;">${DEPT_ICONS[l.department]||'📋'}</div>
       <div style="flex:1;min-width:0;">
@@ -988,71 +1195,79 @@ function renderRecentMini(leads) {
   el.innerHTML += '<div style="text-align:center;padding-top:10px;"><button class="btn btn-ghost btn-sm" onclick="showPanel(\'leads\')">View all leads →</button></div>';
 }
 
-// ══ LEADS ══
-let SEARCH_TIMER_ID;
+/* ════════════════════════════
+   LEADS
+════════════════════════════ */
 function debounceSearch() { clearTimeout(SEARCH_TIMER_ID); SEARCH_TIMER_ID = setTimeout(loadLeads, 350); }
 
 async function loadLeads(page = 1) {
   PAGE = page;
-  const q = document.getElementById('lead-search')?.value || '';
+  const q      = document.getElementById('lead-search')?.value || '';
   const status = document.getElementById('filter-status')?.value || '';
   const dept   = document.getElementById('filter-dept')?.value || '';
-  const params = new URLSearchParams({ page: PAGE, limit: 20 });
+  const params = new URLSearchParams({page: PAGE, limit: 20});
   if (q)      params.set('q', q);
   if (status) params.set('status', status);
   if (dept)   params.set('dept', dept);
+
+  // Show skeleton rows immediately
+  document.getElementById('leads-tbody').innerHTML = skTableRows(7);
+  document.getElementById('leads-pgn').innerHTML = '';
+  pgStart();
+
   const d = await apiFetch('/agent/leads?' + params);
+  pgDone();
   const tbody = document.getElementById('leads-tbody');
-  if (!d || !d.success) { tbody.innerHTML = '<tr><td colspan="7"><div class="empty"><div class="empty-icon">⚠</div><p>Failed to load leads.</p></div></td></tr>'; return; }
+  if (!d || !d.success) { tbody.innerHTML='<tr><td colspan="7"><div class="empty"><div class="empty-icon">⚠</div><p>Failed to load leads.</p></div></td></tr>'; return; }
   const leads = d.data || [];
-  if (!leads.length) {
-    tbody.innerHTML = '<tr><td colspan="7"><div class="empty"><div class="empty-icon">📭</div><p>No leads found. Try a different filter.</p></div></td></tr>';
-    document.getElementById('leads-pgn').innerHTML = '';
-    return;
-  }
+  if (!leads.length) { tbody.innerHTML='<tr><td colspan="7"><div class="empty"><div class="empty-icon">📭</div><p>No leads found. Try a different filter.</p></div></td></tr>'; document.getElementById('leads-pgn').innerHTML=''; return; }
   tbody.innerHTML = leads.map(l => `
     <tr>
-      <td>
-        <div class="td-name">${esc(l.name)}</div>
-        <div class="td-phone">${l.phone}</div>
-      </td>
+      <td><div class="td-name">${esc(l.name)}</div><div class="td-phone">${l.phone}</div></td>
       <td><span class="dept-badge">${DEPT_ICONS[l.department]||'📋'} ${l.department||'—'}</span></td>
       <td><span class="badge badge-${statusClass(l.status)}">${l.status||'new'}</span></td>
       <td class="td-muted">${l.leadSource||'direct'}</td>
-      <td class="td-muted" style="max-width:140px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${(l.noteLog && l.noteLog.length ? l.noteLog[l.noteLog.length-1].note : l.adminNotes) || '—'}</td>
+      <td class="td-muted" style="max-width:140px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${(l.noteLog&&l.noteLog.length?l.noteLog[l.noteLog.length-1].note:l.adminNotes)||'—'}</td>
       <td class="td-date">${fmtDate(l.createdAt)}</td>
       <td>
         <div class="actions">
           <a href="tel:${l.phone}" class="act-btn act-call">📞</a>
-          ${l.phone ? `<a href="https://wa.me/${waNum(l.phone)}?text=Hi ${encodeURIComponent(l.name)}, I'm from Cover Credit." target="_blank" class="act-btn act-wa">WA</a>` : ''}
+          ${l.phone?`<a href="https://wa.me/${waNum(l.phone)}?text=Hi ${encodeURIComponent(l.name)}, I'm from Cover Credit." target="_blank" class="act-btn act-wa">WA</a>`:''}
           <button class="act-btn act-edit" onclick="openEdit('${l._id}')">Edit</button>
         </div>
       </td>
     </tr>`).join('');
-  const p = d.pagination || {};
-  renderPgn('leads-pgn', p, loadLeads);
+  renderPgn('leads-pgn', d.pagination||{}, loadLeads);
 }
 
 function statusClass(s) {
-  const m = {new:'new',contacted:'contacted',converted:'converted',notInterested:'notInterested',lost:'lost',followUp:'followUp',callbackScheduled:'callbackScheduled',qualified:'qualified'};
-  return m[s] || 'default';
+  return {new:'new',contacted:'contacted',converted:'converted',notInterested:'notInterested',lost:'lost',followUp:'followUp',callbackScheduled:'callbackScheduled',qualified:'qualified'}[s] || 'default';
 }
 
 function renderPgn(elId, pgn, fn) {
   const el = document.getElementById(elId);
-  if (!pgn || pgn.pages <= 1) { if(el) el.innerHTML = ''; return; }
+  if (!pgn || pgn.pages <= 1) { if(el) el.innerHTML=''; return; }
   let html = `<span class="page-info">Page ${pgn.page}/${pgn.pages} · ${pgn.total} total</span>`;
   for (let i = 1; i <= pgn.pages; i++) html += `<button class="page-btn${i===pgn.page?' active':''}" onclick="(${fn.name})(${i})">${i}</button>`;
   el.innerHTML = html;
 }
 
-// ══ ADD LEAD ══
+/* ════════════════════════════
+   ADD LEAD
+════════════════════════════ */
 function openAddLead() { document.getElementById('add-modal').classList.add('show'); }
-function closeAddLead(e) { if (!e || e.target === document.getElementById('add-modal')) { document.getElementById('add-modal').classList.remove('show'); clearAddForm(); } }
+function closeAddLead(e) {
+  if (!e || e.target === document.getElementById('add-modal')) {
+    document.getElementById('add-modal').classList.remove('show');
+    clearAddForm();
+  }
+}
 function clearAddForm() {
-  ['al-name','al-phone','al-city','al-email','al-notes'].forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
-  const d = document.getElementById('al-dept'); if(d) d.selectedIndex = 0;
-  document.getElementById('al-error').style.display = 'none';
+  ['al-name','al-phone','al-city','al-email','al-notes'].forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
+  const d=document.getElementById('al-dept'); if(d) d.selectedIndex=0;
+  document.getElementById('al-error').style.display='none';
+  setBtnLoading('al-save-btn', false);
+  setBtnLoading('al-cancel-btn', false);
 }
 
 async function submitLead() {
@@ -1061,9 +1276,14 @@ async function submitLead() {
   const dept  = document.getElementById('al-dept').value;
   const errEl = document.getElementById('al-error');
   errEl.style.display = 'none';
-  if (!name)  { errEl.textContent = 'Client name is required.'; errEl.style.display = 'block'; return; }
-  if (!phone) { errEl.textContent = 'Phone number is required.'; errEl.style.display = 'block'; return; }
-  if (!dept)  { errEl.textContent = 'Please select a department.'; errEl.style.display = 'block'; return; }
+  if (!name)  { errEl.textContent='Client name is required.'; errEl.style.display='block'; return; }
+  if (!phone) { errEl.textContent='Phone number is required.'; errEl.style.display='block'; return; }
+  if (!dept)  { errEl.textContent='Please select a department.'; errEl.style.display='block'; return; }
+
+  setBtnLoading('al-save-btn', true, 'Saving…');
+  setBtnLoading('al-cancel-btn', true, 'Cancel');
+  pgStart();
+
   const r = await apiFetch('/agent/leads', 'POST', {
     name, phone,
     city:       document.getElementById('al-city').value,
@@ -1072,57 +1292,89 @@ async function submitLead() {
     leadSource: document.getElementById('al-source').value,
     notes:      document.getElementById('al-notes').value,
   });
-  if (!r?.success) { errEl.textContent = r?.message || 'Failed to save lead.'; errEl.style.display = 'block'; return; }
+  pgDone();
+  if (!r?.success) {
+    errEl.textContent = r?.message || 'Failed to save lead.';
+    errEl.style.display = 'block';
+    setBtnLoading('al-save-btn', false);
+    setBtnLoading('al-cancel-btn', false);
+    return;
+  }
   closeAddLead();
   showToast('Lead saved ✓', 'success');
   loadDashboard();
   if (document.getElementById('panel-leads').classList.contains('active')) loadLeads();
 }
 
-// ══ EDIT LEAD ══
+/* ════════════════════════════
+   EDIT LEAD
+════════════════════════════ */
 let EDIT_ID = '';
 async function openEdit(id) {
   EDIT_ID = id;
+  // Show loading state in modal while fetching
+  document.getElementById('edit-modal-title').textContent = 'Loading…';
+  document.getElementById('edit-client-info').innerHTML = skBarChart(2);
+  document.getElementById('note-log').innerHTML = '<div class="note-empty"><span class="btn-spinner btn-spinner-light" style="display:inline-block;margin-right:6px;"></span> Loading notes…</div>';
+  document.getElementById('edit-modal').classList.add('show');
+  setBtnLoading('edit-save-btn', false);
+
   const d = await apiFetch('/agent/leads/' + id);
-  if (!d || !d.success) { showToast('Could not load lead.', 'error'); return; }
+  if (!d || !d.success) { showToast('Could not load lead.','error'); closeEditLead(); return; }
   const lead = d.data;
   document.getElementById('edit-modal-title').textContent = `${DEPT_ICONS[lead.department]||'📋'} ${esc(lead.name)} — ${lead.department||'lead'}`;
   document.getElementById('edit-client-info').innerHTML = `
     <p><strong>Name:</strong> ${esc(lead.name)}</p>
     <p><strong>Phone:</strong> <a href="tel:${lead.phone}" style="color:var(--cyan);">${lead.phone}</a></p>
-    ${lead.city ? `<p><strong>City:</strong> ${esc(lead.city)}</p>` : ''}
+    ${lead.city?`<p><strong>City:</strong> ${esc(lead.city)}</p>`:''}
     <p><strong>Dept:</strong> ${lead.department||'—'} · <strong>Source:</strong> ${lead.leadSource||'direct'} · <strong>Added:</strong> ${fmtDate(lead.createdAt)}</p>`;
   document.getElementById('edit-status').value  = lead.status || 'new';
   document.getElementById('edit-contact').value = lead.contactMethod || 'call';
   document.getElementById('edit-note').value    = '';
-  const log = (lead.noteLog || []).slice().reverse();
+  const log = (lead.noteLog||[]).slice().reverse();
   const logEl = document.getElementById('note-log');
   logEl.innerHTML = log.length
-    ? log.map((n, i) => `<div class="note-entry"><div class="note-text">${esc(n.note)}</div><div class="note-meta">${esc(n.addedByName||'You')} · ${fmtDate(n.addedAt)}${i===0?'<span style="background:rgba(34,214,138,.1);color:var(--green);font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;margin-left:5px;text-transform:uppercase;">Latest</span>':''}</div></div>`).join('')
+    ? log.map((n,i) => `<div class="note-entry"><div class="note-text">${esc(n.note)}</div><div class="note-meta">${esc(n.addedByName||'You')} · ${fmtDate(n.addedAt)}${i===0?'<span style="background:rgba(34,214,138,.1);color:var(--green);font-size:9px;font-weight:700;padding:1px 5px;border-radius:3px;margin-left:5px;text-transform:uppercase;">Latest</span>':''}</div></div>`).join('')
     : '<div class="note-empty">No notes yet — add your first after this call.</div>';
-  document.getElementById('edit-modal').classList.add('show');
 }
-function closeEditLead(e) { if (!e || e.target === document.getElementById('edit-modal')) document.getElementById('edit-modal').classList.remove('show'); }
+
+function closeEditLead(e) {
+  if (!e || e.target === document.getElementById('edit-modal')) {
+    document.getElementById('edit-modal').classList.remove('show');
+  }
+}
 
 async function saveEdit() {
+  setBtnLoading('edit-save-btn', true, 'Saving…');
+  setBtnLoading('edit-cancel-btn', true, 'Close');
+  pgStart();
+
   const r = await apiFetch('/agent/leads/' + EDIT_ID, 'PATCH', {
     status:        document.getElementById('edit-status').value,
     contactMethod: document.getElementById('edit-contact').value,
     note:          document.getElementById('edit-note').value.trim(),
   });
+  pgDone();
+  setBtnLoading('edit-save-btn', false);
+  setBtnLoading('edit-cancel-btn', false);
+
   if (r?.success) {
     closeEditLead();
-    showToast('Lead updated ✓', 'success');
+    showToast('Lead updated ✓','success');
     loadDashboard();
     if (document.getElementById('panel-leads').classList.contains('active')) loadLeads();
   } else {
-    showToast(r?.message || 'Update failed.', 'error');
+    showToast(r?.message||'Update failed.','error');
   }
 }
 
-// ══ PROFILE ══
+/* ════════════════════════════
+   PROFILE
+════════════════════════════ */
 async function loadProfile() {
+  pgStart();
   const d = await apiFetch('/agent/profile');
+  pgDone();
   if (!d || !d.success) return;
   const u = d.data;
   document.getElementById('p-name').value  = u.name  || '';
@@ -1133,19 +1385,25 @@ async function loadProfile() {
 }
 
 async function saveProfile() {
+  setBtnLoading('save-profile-btn', true, 'Saving…');
+  pgStart();
+
   const r = await apiFetch('/agent/profile', 'PATCH', {
     name:  document.getElementById('p-name').value,
     phone: document.getElementById('p-phone').value,
     city:  document.getElementById('p-city').value,
   });
+  pgDone();
+  setBtnLoading('save-profile-btn', false);
+
   const msgEl = document.getElementById('profile-msg');
   msgEl.style.display = 'block';
   msgEl.style.color = r?.success ? 'var(--green)' : 'var(--rose)';
-  msgEl.textContent = r?.success ? 'Profile updated ✓' : (r?.message || 'Update failed.');
+  msgEl.textContent = r?.success ? 'Profile updated ✓' : (r?.message||'Update failed.');
   if (r?.success) {
     CURRENT_AGENT.name = document.getElementById('p-name').value;
     updateSidebarUser();
-    showToast('Profile saved ✓', 'success');
+    showToast('Profile saved ✓','success');
   }
 }
 
@@ -1155,20 +1413,32 @@ async function changePassword() {
   const conf = document.getElementById('cp-confirm').value;
   const msgEl = document.getElementById('pw-msg');
   msgEl.style.display = 'none';
-  if (!curr) { msgEl.textContent = 'Enter current password.'; msgEl.style.display = 'block'; msgEl.style.color='var(--rose)'; return; }
-  if (np.length < 8) { msgEl.textContent = 'New password must be at least 8 characters.'; msgEl.style.display='block'; msgEl.style.color='var(--rose)'; return; }
-  if (np !== conf) { msgEl.textContent = 'Passwords do not match.'; msgEl.style.display='block'; msgEl.style.color='var(--rose)'; return; }
+  if (!curr) { msgEl.textContent='Enter current password.'; msgEl.style.display='block'; msgEl.style.color='var(--rose)'; return; }
+  if (np.length < 8) { msgEl.textContent='New password must be at least 8 characters.'; msgEl.style.display='block'; msgEl.style.color='var(--rose)'; return; }
+  if (np !== conf) { msgEl.textContent='Passwords do not match.'; msgEl.style.display='block'; msgEl.style.color='var(--rose)'; return; }
+
+  setBtnLoading('change-pw-btn', true, 'Updating…');
+  pgStart();
+
   const r = await apiFetch('/auth/agent/change-password', 'POST', { currentPassword: curr, newPassword: np });
+  pgDone();
+  setBtnLoading('change-pw-btn', false);
+
   msgEl.style.display = 'block';
   msgEl.style.color = r?.success ? 'var(--green)' : 'var(--rose)';
   msgEl.textContent = r?.message || (r?.success ? 'Password updated ✓' : 'Failed.');
-  if (r?.success) { ['cp-current','cp-new','cp-confirm'].forEach(id => document.getElementById(id).value = ''); showToast('Password updated ✓', 'success'); }
+  if (r?.success) {
+    ['cp-current','cp-new','cp-confirm'].forEach(id => document.getElementById(id).value='');
+    showToast('Password updated ✓','success');
+  }
 }
 
-// ══ HELPERS ══
+/* ════════════════════════════
+   HELPERS
+════════════════════════════ */
 function esc(str) { return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 function fmtDate(iso) { if(!iso) return '—'; return new Date(iso).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}); }
-function waNum(ph) { const c = ph.replace(/\D/g,''); return c.startsWith('91') ? c : '91'+c; }
+function waNum(ph) { const c=ph.replace(/\D/g,''); return c.startsWith('91')?c:'91'+c; }
 
 function showToast(msg, type='') {
   const t = document.getElementById('toast');
@@ -1176,7 +1446,9 @@ function showToast(msg, type='') {
   setTimeout(() => t.classList.remove('show'), 3000);
 }
 
-// ══ MOBILE SIDEBAR ══
+/* ════════════════════════════
+   MOBILE SIDEBAR
+════════════════════════════ */
 function toggleMobileSidebar() {
   document.getElementById('sidebar').classList.toggle('mobile-open');
   document.getElementById('mob-overlay').classList.toggle('show');
@@ -1190,11 +1462,8 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => { if(window.innerWidth<=768) closeMobileSidebar(); });
   });
 });
-
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    document.querySelectorAll('.modal-overlay.show').forEach(m => m.classList.remove('show'));
-  }
+  if (e.key === 'Escape') document.querySelectorAll('.modal-overlay.show').forEach(m => m.classList.remove('show'));
 });
 </script>
 </body>
