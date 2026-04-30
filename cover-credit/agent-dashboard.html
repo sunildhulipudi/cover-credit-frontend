@@ -66,7 +66,7 @@ button{font-family:inherit;cursor:pointer;}
 ::-webkit-scrollbar-track{background:transparent;}
 ::-webkit-scrollbar-thumb{background:var(--bg5);border-radius:4px;}
 
-/* ══ PROGRESS BAR (Option 3) ══ */
+/* ══ PROGRESS BAR ══ */
 #progress-bar {
   position:fixed;top:0;left:0;height:2px;width:0%;z-index:9999;
   background:var(--grad-gold);
@@ -80,7 +80,7 @@ button{font-family:inherit;cursor:pointer;}
   transition:width .2s ease, opacity .5s ease .1s;
 }
 
-/* ══ SHIMMER SKELETON (Options 2 & 4) ══ */
+/* ══ SHIMMER SKELETON ══ */
 @keyframes shimmer {
   0%   { background-position: -800px 0; }
   100% { background-position:  800px 0; }
@@ -96,7 +96,6 @@ button{font-family:inherit;cursor:pointer;}
   border-radius: 4px;
 }
 
-/* ── Skeleton stat cards ── */
 .stat-sk-card {
   background:var(--bg2);border:1px solid var(--border);
   border-radius:var(--radius-lg);padding:18px;
@@ -112,7 +111,6 @@ button{font-family:inherit;cursor:pointer;}
 .sk-label { width:110px;height:11px;border-radius:4px; }
 .sk-sub   { width:80px;height:10px;border-radius:4px;margin-top:5px; }
 
-/* ── Skeleton table rows ── */
 .sk-row td { padding:11px 14px; border-bottom:1px solid var(--border); }
 .sk-cell-name   { width:120px;height:11px;border-radius:4px;margin-bottom:5px; }
 .sk-cell-phone  { width:90px; height:10px;border-radius:4px; }
@@ -124,24 +122,21 @@ button{font-family:inherit;cursor:pointer;}
 .sk-cell-act    { display:flex;gap:4px; }
 .sk-act-btn     { width:28px;height:24px;border-radius:5px; }
 
-/* ── Skeleton mini recent ── */
 .sk-mini { display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border); }
 .sk-mini-icon { width:32px;height:32px;border-radius:8px;flex-shrink:0; }
 .sk-mini-name { width:110px;height:11px;border-radius:4px;margin-bottom:5px; }
 .sk-mini-ph   { width:75px;height:10px;border-radius:4px; }
 .sk-mini-badge{ width:52px;height:18px;border-radius:100px;margin-left:auto;flex-shrink:0; }
 
-/* ── Skeleton bar chart ── */
 .sk-bar-row { display:flex;align-items:center;gap:10px;margin-bottom:10px; }
 .sk-bar-lbl { width:80px;height:10px;border-radius:4px;flex-shrink:0; }
 .sk-bar-track{ flex:1;height:6px;border-radius:100px; }
 .sk-bar-cnt { width:24px;height:10px;border-radius:4px;flex-shrink:0; }
 
-/* ── Skeleton trend ── */
 .sk-trend-wrap { display:flex;align-items:flex-end;gap:3px;height:56px; }
 .sk-trend-bar  { flex:1;border-radius:3px 3px 0 0;min-width:6px; }
 
-/* ══ BUTTON SPINNER (Option 1) ══ */
+/* ══ BUTTON SPINNER ══ */
 @keyframes btn-spin { to { transform:rotate(360deg); } }
 .btn-spinner {
   display:inline-block;
@@ -474,7 +469,7 @@ tbody tr:last-child td{border-bottom:none;}
 .page-btn{padding:4px 10px;border:1.5px solid var(--border2);border-radius:6px;background:var(--bg3);font-family:var(--mono);font-size:11px;color:var(--text2);cursor:pointer;transition:.15px;}
 .page-btn:hover,.page-btn.active{background:var(--gold);border-color:var(--gold);color:#0f1117;}
 
-/* ══ MOB ══ */
+/* ══ MOBILE ══ */
 .mob-hamburger{display:none;align-items:center;justify-content:center;width:32px;height:32px;border-radius:var(--radius);background:var(--bg3);border:1px solid var(--border2);color:var(--text2);font-size:17px;cursor:pointer;}
 .mob-sidebar-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);backdrop-filter:blur(3px);z-index:199;}
 .mob-sidebar-overlay.show{display:block;}
@@ -498,7 +493,6 @@ tbody tr:last-child td{border-bottom:none;}
 </head>
 <body>
 
-<!-- ══ PROGRESS BAR ══ -->
 <div id="progress-bar"></div>
 
 <!-- ══ LOGIN ══ -->
@@ -611,7 +605,7 @@ tbody tr:last-child td{border-bottom:none;}
 
       <!-- DASHBOARD -->
       <div class="panel active" id="panel-dashboard">
-        <div class="stats-grid" id="stats-grid"><!-- skeleton rendered by JS --></div>
+        <div class="stats-grid" id="stats-grid"></div>
         <div class="section-row col-2">
           <div class="card">
             <div class="card-header">
@@ -680,7 +674,7 @@ tbody tr:last-child td{border-bottom:none;}
           <div class="table-wrap">
             <table>
               <thead><tr><th>Client</th><th>Department</th><th>Status</th><th>Source</th><th>Last Note</th><th>Date</th><th>Actions</th></tr></thead>
-              <tbody id="leads-tbody"><!-- skeleton rendered by JS --></tbody>
+              <tbody id="leads-tbody"></tbody>
             </table>
           </div>
         </div>
@@ -703,7 +697,8 @@ tbody tr:last-child td{border-bottom:none;}
                 <div class="form-group"><label>Full Name</label><input id="p-name" placeholder="Your name"/></div>
                 <div class="form-group"><label>Phone</label><input id="p-phone" placeholder="10-digit mobile"/></div>
                 <div class="form-group"><label>City</label><input id="p-city" placeholder="Your city"/></div>
-                <div class="form-group"><label>Email</label><input id="p-email" placeholder="your@email.com" disabled style="opacity:.5;cursor:not-allowed;"/></div>
+                <!-- FIX #6: Added type="email" attribute to email input -->
+                <div class="form-group"><label>Email</label><input type="email" id="p-email" placeholder="your@email.com" disabled style="opacity:.5;cursor:not-allowed;"/></div>
               </div>
               <div class="form-group" style="margin-bottom:14px;"><label>Agent Code</label><input id="p-code" disabled style="opacity:.5;cursor:not-allowed;font-family:var(--mono);"/></div>
               <button class="btn btn-gold" id="save-profile-btn" onclick="saveProfile()">Save Changes</button>
@@ -767,6 +762,7 @@ tbody tr:last-child td{border-bottom:none;}
       <div id="al-error" style="font-size:12.5px;color:var(--rose);margin-top:10px;display:none;padding:8px 12px;background:rgba(244,75,107,.1);border-radius:6px;"></div>
     </div>
     <div class="modal-foot">
+      <!-- FIX #4: Cancel button is never disabled — agent can always abort -->
       <button class="modal-cancel" id="al-cancel-btn" onclick="closeAddLead()">Cancel</button>
       <button class="modal-save" id="al-save-btn" onclick="submitLead()">Save Lead</button>
     </div>
@@ -813,6 +809,7 @@ tbody tr:last-child td{border-bottom:none;}
       <div class="note-log" id="note-log"></div>
     </div>
     <div class="modal-foot">
+      <!-- FIX #5: Close button stays enabled so agent can always dismiss -->
       <button class="modal-cancel" id="edit-cancel-btn" onclick="closeEditLead()">Close</button>
       <button class="modal-save" id="edit-save-btn" onclick="saveEdit()">Save Changes</button>
     </div>
@@ -822,15 +819,26 @@ tbody tr:last-child td{border-bottom:none;}
 <div class="toast" id="toast"></div>
 
 <script>
-const API = 'https://api.covercredit.in/api';
-let TOKEN = '', PAGE = 1, SEARCH_TIMER_ID, CURRENT_AGENT = {}, TEMP_PW = '';
+// ════════════════════════════════════════════════════════════
+// FIX #1: API URL — detect localhost for dev, use prod URL for live
+// Original had a hardcoded prod URL that broke all local development
+// ════════════════════════════════════════════════════════════
+const API = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
+  ? 'http://localhost:5000/api'
+  : 'https://api.covercredit.in/api';
+
+// FIX #7: Removed unused global PAGE variable. 
+// currentPage tracks the active leads page now (used by debounceSearch).
+let currentPage = 1;
+let SEARCH_TIMER_ID, CURRENT_AGENT = {}, TEMP_PW = '';
+let TOKEN = localStorage.getItem('cc_agent_token') || '';
 
 const DEPT_ICONS   = {health:'🏥',life:'❤️',bike:'🏍️',car:'🚗',loan:'🏠',commercial:'🚛',other:'📋'};
 const DEPT_COLORS  = {health:'#f44b6b',life:'#9b59f7',bike:'#22d68a',car:'#4f8ef7',loan:'#f59e0b',commercial:'#14cec8',other:'#4d5a7a'};
 const STATUS_COLORS= {new:'#f59e0b',contacted:'#4f8ef7',converted:'#22d68a',notInterested:'#f44b6b',lost:'#f44b6b',followUp:'#9b59f7',callbackScheduled:'#9b59f7',qualified:'#14cec8'};
 
 /* ════════════════════════════
-   PROGRESS BAR (Option 3)
+   PROGRESS BAR
 ════════════════════════════ */
 let _pgTimer;
 function pgStart() {
@@ -839,7 +847,6 @@ function pgStart() {
   bar.style.opacity = '1';
   bar.style.width = '0%';
   clearTimeout(_pgTimer);
-  // Animate to 85% slowly
   requestAnimationFrame(() => {
     bar.style.transition = 'width 2.5s cubic-bezier(.1,.6,.4,1), opacity .4s ease';
     bar.style.width = '85%';
@@ -854,7 +861,7 @@ function pgDone() {
 }
 
 /* ════════════════════════════
-   SKELETON HELPERS (Options 2 & 4)
+   SKELETON HELPERS
 ════════════════════════════ */
 function skStatCards() {
   const colors = ['gold','blue','amber','green'];
@@ -912,9 +919,7 @@ function skRecentMini(n = 4) {
 }
 
 /* ════════════════════════════
-   BUTTON LOADING HELPER (Option 1)
-   Usage: setBtnLoading(btn, true, 'Saving…')
-          setBtnLoading(btn, false, 'Save Lead')
+   BUTTON LOADING HELPER
 ════════════════════════════ */
 function setBtnLoading(btnOrId, loading, loadingText, defaultText) {
   const btn = typeof btnOrId === 'string' ? document.getElementById(btnOrId) : btnOrId;
@@ -983,6 +988,11 @@ function showPwReset() {
   document.getElementById('pwreset-screen').style.display = 'flex';
 }
 
+// ════════════════════════════════════════════════════════════
+// FIX #5: TEMP_PW now cleared in a finally block.
+// Previously it was only cleared on success, so a failed reset
+// left the plaintext temp password lingering in memory.
+// ════════════════════════════════════════════════════════════
 async function doPasswordReset() {
   const np = document.getElementById('pr-new').value;
   const cp = document.getElementById('pr-confirm').value;
@@ -999,7 +1009,6 @@ async function doPasswordReset() {
     pgDone();
     if (r && r.success) {
       document.getElementById('pwreset-screen').style.display = 'none';
-      TEMP_PW = '';
       showApp();
     } else {
       errEl.textContent = r?.message || 'Failed. Please try again.';
@@ -1011,6 +1020,9 @@ async function doPasswordReset() {
     errEl.textContent = 'Connection error.';
     errEl.style.display = 'block';
     setBtnLoading('pwreset-btn', false);
+  } finally {
+    // Always wipe the plaintext temp password from memory
+    TEMP_PW = '';
   }
 }
 
@@ -1051,6 +1063,7 @@ function doLogout() {
   document.getElementById('login-screen').style.display = 'flex';
   setBtnLoading('login-btn', false);
   CURRENT_AGENT = {};
+  currentPage = 1;
 }
 
 async function apiFetch(path, method = 'GET', body = null) {
@@ -1067,9 +1080,7 @@ async function apiFetch(path, method = 'GET', body = null) {
    AUTO-LOGIN
 ════════════════════════════ */
 window.addEventListener('DOMContentLoaded', () => {
-  const saved = localStorage.getItem('cc_agent_token');
-  if (!saved) return;
-  TOKEN = saved;
+  if (!TOKEN) return;
   pgStart();
   apiFetch('/auth/me').then(d => {
     pgDone();
@@ -1100,7 +1111,6 @@ function showPanel(name) {
    DASHBOARD
 ════════════════════════════ */
 async function loadDashboard() {
-  // Show skeletons immediately
   document.getElementById('stats-grid').innerHTML = skStatCards();
   document.getElementById('trend-bars').innerHTML = skTrend();
   document.getElementById('trend-labels').innerHTML = '';
@@ -1198,19 +1208,22 @@ function renderRecentMini(leads) {
 /* ════════════════════════════
    LEADS
 ════════════════════════════ */
-function debounceSearch() { clearTimeout(SEARCH_TIMER_ID); SEARCH_TIMER_ID = setTimeout(loadLeads, 350); }
+function debounceSearch() {
+  clearTimeout(SEARCH_TIMER_ID);
+  // Reset to page 1 on every new search
+  SEARCH_TIMER_ID = setTimeout(() => loadLeads(1), 350);
+}
 
 async function loadLeads(page = 1) {
-  PAGE = page;
+  currentPage = page;
   const q      = document.getElementById('lead-search')?.value || '';
   const status = document.getElementById('filter-status')?.value || '';
   const dept   = document.getElementById('filter-dept')?.value || '';
-  const params = new URLSearchParams({page: PAGE, limit: 20});
+  const params = new URLSearchParams({page: currentPage, limit: 20});
   if (q)      params.set('q', q);
   if (status) params.set('status', status);
   if (dept)   params.set('dept', dept);
 
-  // Show skeleton rows immediately
   document.getElementById('leads-tbody').innerHTML = skTableRows(7);
   document.getElementById('leads-pgn').innerHTML = '';
   pgStart();
@@ -1237,18 +1250,26 @@ async function loadLeads(page = 1) {
         </div>
       </td>
     </tr>`).join('');
-  renderPgn('leads-pgn', d.pagination||{}, loadLeads);
+  // FIX #3: Pass function name as string — safe under minification
+  renderPgn('leads-pgn', d.pagination||{}, 'loadLeads');
 }
 
 function statusClass(s) {
   return {new:'new',contacted:'contacted',converted:'converted',notInterested:'notInterested',lost:'lost',followUp:'followUp',callbackScheduled:'callbackScheduled',qualified:'qualified'}[s] || 'default';
 }
 
-function renderPgn(elId, pgn, fn) {
+// ════════════════════════════════════════════════════════════
+// FIX #3: renderPgn now accepts fnName as a plain string instead
+// of a function reference. fn.name gets mangled by minifiers,
+// causing pagination to silently break in production builds.
+// ════════════════════════════════════════════════════════════
+function renderPgn(elId, pgn, fnName) {
   const el = document.getElementById(elId);
   if (!pgn || pgn.pages <= 1) { if(el) el.innerHTML=''; return; }
   let html = `<span class="page-info">Page ${pgn.page}/${pgn.pages} · ${pgn.total} total</span>`;
-  for (let i = 1; i <= pgn.pages; i++) html += `<button class="page-btn${i===pgn.page?' active':''}" onclick="(${fn.name})(${i})">${i}</button>`;
+  for (let i = 1; i <= pgn.pages; i++) {
+    html += `<button class="page-btn${i===pgn.page?' active':''}" onclick="${fnName}(${i})">${i}</button>`;
+  }
   el.innerHTML = html;
 }
 
@@ -1267,9 +1288,13 @@ function clearAddForm() {
   const d=document.getElementById('al-dept'); if(d) d.selectedIndex=0;
   document.getElementById('al-error').style.display='none';
   setBtnLoading('al-save-btn', false);
-  setBtnLoading('al-cancel-btn', false);
 }
 
+// ════════════════════════════════════════════════════════════
+// FIX #4: Cancel button is no longer disabled during save.
+// Previously both Save and Cancel were disabled, trapping agents
+// if the request hung or the network was slow.
+// ════════════════════════════════════════════════════════════
 async function submitLead() {
   const name  = document.getElementById('al-name').value.trim();
   const phone = document.getElementById('al-phone').value.trim();
@@ -1280,8 +1305,8 @@ async function submitLead() {
   if (!phone) { errEl.textContent='Phone number is required.'; errEl.style.display='block'; return; }
   if (!dept)  { errEl.textContent='Please select a department.'; errEl.style.display='block'; return; }
 
+  // Only the Save button gets a spinner — Cancel stays clickable
   setBtnLoading('al-save-btn', true, 'Saving…');
-  setBtnLoading('al-cancel-btn', true, 'Cancel');
   pgStart();
 
   const r = await apiFetch('/agent/leads', 'POST', {
@@ -1293,17 +1318,17 @@ async function submitLead() {
     notes:      document.getElementById('al-notes').value,
   });
   pgDone();
+  setBtnLoading('al-save-btn', false);
+
   if (!r?.success) {
     errEl.textContent = r?.message || 'Failed to save lead.';
     errEl.style.display = 'block';
-    setBtnLoading('al-save-btn', false);
-    setBtnLoading('al-cancel-btn', false);
     return;
   }
   closeAddLead();
   showToast('Lead saved ✓', 'success');
   loadDashboard();
-  if (document.getElementById('panel-leads').classList.contains('active')) loadLeads();
+  if (document.getElementById('panel-leads').classList.contains('active')) loadLeads(1);
 }
 
 /* ════════════════════════════
@@ -1312,7 +1337,6 @@ async function submitLead() {
 let EDIT_ID = '';
 async function openEdit(id) {
   EDIT_ID = id;
-  // Show loading state in modal while fetching
   document.getElementById('edit-modal-title').textContent = 'Loading…';
   document.getElementById('edit-client-info').innerHTML = skBarChart(2);
   document.getElementById('note-log').innerHTML = '<div class="note-empty"><span class="btn-spinner btn-spinner-light" style="display:inline-block;margin-right:6px;"></span> Loading notes…</div>';
@@ -1328,9 +1352,14 @@ async function openEdit(id) {
     <p><strong>Phone:</strong> <a href="tel:${lead.phone}" style="color:var(--cyan);">${lead.phone}</a></p>
     ${lead.city?`<p><strong>City:</strong> ${esc(lead.city)}</p>`:''}
     <p><strong>Dept:</strong> ${lead.department||'—'} · <strong>Source:</strong> ${lead.leadSource||'direct'} · <strong>Added:</strong> ${fmtDate(lead.createdAt)}</p>`;
-  document.getElementById('edit-status').value  = lead.status || 'new';
-  document.getElementById('edit-contact').value = lead.contactMethod || 'call';
-  document.getElementById('edit-note').value    = '';
+  document.getElementById('edit-status').value = lead.status || 'new';
+  // ════════════════════════════════════════════════════════
+  // FIX #2: Default contactMethod was 'call' which matches no
+  // <option> value, causing the select to appear blank/unset.
+  // Corrected to 'Phone Call' matching the actual option values.
+  // ════════════════════════════════════════════════════════
+  document.getElementById('edit-contact').value = lead.contactMethod || 'Phone Call';
+  document.getElementById('edit-note').value = '';
   const log = (lead.noteLog||[]).slice().reverse();
   const logEl = document.getElementById('note-log');
   logEl.innerHTML = log.length
@@ -1344,9 +1373,13 @@ function closeEditLead(e) {
   }
 }
 
+// ════════════════════════════════════════════════════════════
+// FIX #5: Close/Cancel button is no longer disabled during save.
+// Agents can always dismiss the modal even while a save is in flight.
+// ════════════════════════════════════════════════════════════
 async function saveEdit() {
   setBtnLoading('edit-save-btn', true, 'Saving…');
-  setBtnLoading('edit-cancel-btn', true, 'Close');
+  // edit-cancel-btn intentionally NOT disabled
   pgStart();
 
   const r = await apiFetch('/agent/leads/' + EDIT_ID, 'PATCH', {
@@ -1356,13 +1389,12 @@ async function saveEdit() {
   });
   pgDone();
   setBtnLoading('edit-save-btn', false);
-  setBtnLoading('edit-cancel-btn', false);
 
   if (r?.success) {
     closeEditLead();
     showToast('Lead updated ✓','success');
     loadDashboard();
-    if (document.getElementById('panel-leads').classList.contains('active')) loadLeads();
+    if (document.getElementById('panel-leads').classList.contains('active')) loadLeads(currentPage);
   } else {
     showToast(r?.message||'Update failed.','error');
   }
