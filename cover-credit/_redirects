@@ -1,10 +1,27 @@
-# CoverCredit — Netlify Redirects
+# CoverCredit — Redirects
 # ─────────────────────────────────────────────────────────
+# .html extension → clean URL (301 permanent)
+/index.html                         /                              301
+/health-insurance.html              /health-insurance              301
+/life-insurance.html                /life-insurance                301
+/bike-insurance.html                /bike-insurance                301
+/car-insurance.html                 /car-insurance                 301
+/commercial-vehicle-insurance.html  /commercial-vehicle-insurance  301
+/vehicle-insurance.html             /vehicle-insurance             301
+/loans.html                         /loans                         301
+/tax-services.html                  /tax-services                  301
+/blog.html                          /blog                          301
+/about.html                         /about                         301
+/contact.html                       /contact                       301
+/book.html                          /book                          301
+/terms.html                         /terms                         301
+/privacy.html                       /privacy                       301
+
 # Proxy /og/:slug to backend — keeps covercredit.in in the URL
 # WhatsApp/Facebook crawlers hit this URL and get correct OG tags
-# Humans get instantly redirected to the blog post by the backend
 /og/*   https://api.covercredit.in/og/:splat   200
 
-# All other routes — SPA fallback
-/*      /index.html     200
 /api/*  https://api.covercredit.in/api/:splat  200
+
+# Genuine 404s — catch-all returning true 404 status
+/*      /404.html       404
