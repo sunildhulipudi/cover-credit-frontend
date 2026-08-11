@@ -131,7 +131,7 @@
     }
 
     /* ══ HERO ══ */
-    .hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:calc(var(--ticker-h) + var(--nav-h))}
+    .hero{height:100svh;min-height:600px;max-height:1000px;display:flex;align-items:center;position:relative;overflow:hidden;padding-top:calc(var(--ticker-h) + var(--nav-h))}
     .hero__slides{position:absolute;inset:0;z-index:0}
     .hero__slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.2s ease-in-out}
     .hero__slide.active{opacity:1}
@@ -142,44 +142,44 @@
     .slide-car{background-image:url('https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=1600&q=80')}
     .slide-loan{background-image:url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80')}
     .slide-vehicle{background-image:url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=1600&q=80')}
-    .hero__slide-caption{position:absolute;bottom:2rem;right:2rem;z-index:3;display:flex;gap:0.5rem}
+    .hero__slide-caption{position:absolute;bottom:1.4rem;right:2rem;z-index:3;display:flex;gap:0.5rem}
     .slide-dot{width:8px;height:8px;border-radius:100px;background:rgba(255,255,255,0.3);border:none;cursor:none;transition:background 0.3s,width 0.4s var(--ease)}
     .slide-dot.active{background:var(--gold);width:28px}
-    .hero__slide-label{position:absolute;bottom:2rem;left:5%;z-index:3;display:flex;align-items:center;gap:0.6rem;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.7);opacity:0;transform:translateY(8px);transition:opacity 0.5s,transform 0.5s}
+    .hero__slide-label{position:absolute;bottom:1.4rem;left:5%;z-index:3;display:flex;align-items:center;gap:0.6rem;font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.7);opacity:0;transform:translateY(8px);transition:opacity 0.5s,transform 0.5s}
     .hero__slide-label.show{opacity:1;transform:translateY(0)}
     .slide-label-dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
     .hero__grid{position:absolute;inset:0;z-index:1;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent)}
-    .hero__inner{position:relative;z-index:2;max-width:1280px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:4rem;padding:5rem 5% 4rem}
-    .hero__label{display:inline-flex;align-items:center;gap:.5rem;background:rgba(230,168,23,.12);border:1px solid rgba(230,168,23,.3);color:var(--gold);font-size:.8rem;font-weight:600;padding:.4rem 1rem;border-radius:100px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:1.5rem}
+    .hero__inner{position:relative;z-index:2;max-width:1280px;margin:0 auto;width:100%;height:100%;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:clamp(2rem,4vw,4rem);padding:clamp(1rem,3vh,2.5rem) 5%}
+    .hero__label{display:inline-flex;align-items:center;gap:.5rem;background:rgba(230,168,23,.12);border:1px solid rgba(230,168,23,.3);color:var(--gold);font-size:.78rem;font-weight:600;padding:.35rem .9rem;border-radius:100px;letter-spacing:.5px;text-transform:uppercase;margin-bottom:clamp(.9rem,2vh,1.4rem)}
     .hero__label::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
     @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
-    .hero__title{font-family:var(--font-display);font-size:clamp(2.8rem,5vw,4.5rem);font-weight:700;line-height:1.1;letter-spacing:-1px;margin-bottom:1.5rem}
+    .hero__title{font-family:var(--font-display);font-size:clamp(2.1rem,3vw + 1.4vh,3.8rem);font-weight:700;line-height:1.08;letter-spacing:-1px;margin-bottom:clamp(.9rem,2vh,1.3rem)}
     .hero__title em,.section__title em{font-style:normal;background:linear-gradient(135deg,var(--gold),var(--gold-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-    .hero__desc{font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,.65);margin-bottom:2.5rem;max-width:480px}
-    .hero__btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:1.2rem;align-items:center}
-    .btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy);padding:.9rem 2rem;border-radius:12px;font-weight:700;font-size:.95rem;transition:transform .2s var(--ease),box-shadow .2s;box-shadow:0 0 0 0 rgba(230,168,23,.4)}
+    .hero__desc{font-size:clamp(.9rem,1vh + .6vw,1.02rem);line-height:1.65;color:rgba(255,255,255,.65);margin-bottom:clamp(1.3rem,3vh,2rem);max-width:480px}
+    .hero__btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:clamp(.7rem,1.6vh,1rem);align-items:center}
+    .btn-primary{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:var(--navy);padding:.85rem 1.9rem;border-radius:12px;font-weight:700;font-size:.94rem;transition:transform .2s var(--ease),box-shadow .2s;box-shadow:0 0 0 0 rgba(230,168,23,.4)}
     .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(230,168,23,.35)}
     /* ── CHANGE 3: phone is now plain text link, not a button ── */
-    .hero__phone-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.9rem;color:rgba(255,255,255,.6);font-weight:500;transition:color .2s;margin-bottom:2.5rem}
+    .hero__phone-link{display:inline-flex;align-items:center;gap:.4rem;font-size:.9rem;color:rgba(255,255,255,.6);font-weight:500;transition:color .2s;margin-bottom:clamp(1.3rem,3vh,2rem)}
     .hero__phone-link:hover{color:var(--white)}
     .btn-outline{display:inline-flex;align-items:center;gap:.5rem;background:var(--glass);border:1px solid var(--border);color:var(--white);padding:.9rem 2rem;border-radius:12px;font-weight:500;font-size:.95rem;transition:background .2s,transform .2s;backdrop-filter:blur(10px)}
     .btn-outline:hover{background:var(--glass-2);transform:translateY(-2px)}
-    .hero__trust{display:flex;gap:2rem;flex-wrap:wrap}
-    .hero__trust-item{display:flex;align-items:center;gap:.5rem;font-size:.82rem;color:rgba(255,255,255,.5)}
+    .hero__trust{display:flex;gap:1.6rem;flex-wrap:wrap}
+    .hero__trust-item{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:rgba(255,255,255,.5)}
     .hero__trust-item svg{color:var(--gold);flex-shrink:0}
-    .hero__right{position:relative;height:520px}
-    .hero__card{position:absolute;background:rgba(9,29,62,.85);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:1.5rem;transition:transform .4s var(--ease)}
-    .hero__card-1{top:0;right:0;width:260px;animation:cardFloat1 6s ease-in-out infinite}
-    .hero__card-2{top:30%;left:0;width:230px;animation:cardFloat2 7s ease-in-out infinite}
-    .hero__card-3{bottom:0;right:10%;width:250px;animation:cardFloat3 5.5s ease-in-out infinite}
+    .hero__right{position:relative;height:min(70vh,460px)}
+    .hero__card{position:absolute;background:rgba(9,29,62,.85);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.12);border-radius:20px;padding:1.4rem;transition:transform .4s var(--ease)}
+    .hero__card-1{top:0;right:0;width:250px;animation:cardFloat1 6s ease-in-out infinite}
+    .hero__card-2{top:30%;left:0;width:220px;animation:cardFloat2 7s ease-in-out infinite}
+    .hero__card-3{bottom:0;right:8%;width:240px;animation:cardFloat3 5.5s ease-in-out infinite}
     @keyframes cardFloat1{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-16px) rotate(1deg)}}
     @keyframes cardFloat2{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-12px) rotate(0)}}
     @keyframes cardFloat3{0%,100%{transform:translateY(0) rotate(.5deg)}50%{transform:translateY(-20px) rotate(-.5deg)}}
-    .hero__card-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:.8rem}
-    .hero__card-label{font-size:.72rem;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:.3rem}
-    .hero__card-value{font-family:var(--font-display);font-size:1.5rem;font-weight:700;color:var(--white)}
-    .hero__card-sub{font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.2rem}
-    .hero__card-stat{display:flex;align-items:center;gap:.4rem;margin-top:.8rem;padding-top:.8rem;border-top:1px solid rgba(255,255,255,.08);font-size:.78rem;color:#4ade80}
+    .hero__card-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.25rem;margin-bottom:.7rem}
+    .hero__card-label{font-size:.7rem;font-weight:600;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:1px;margin-bottom:.3rem}
+    .hero__card-value{font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--white)}
+    .hero__card-sub{font-size:.76rem;color:rgba(255,255,255,.5);margin-top:.2rem}
+    .hero__card-stat{display:flex;align-items:center;gap:.4rem;margin-top:.7rem;padding-top:.7rem;border-top:1px solid rgba(255,255,255,.08);font-size:.76rem;color:#4ade80}
 
     /* ══ GOLD TICKER ══ */
     .ticker{background:var(--gold);padding:.7rem 0;overflow:hidden;white-space:nowrap}
@@ -377,7 +377,8 @@
 
     /* ══ RESPONSIVE ══ */
     @media(max-width:1024px){
-      .hero__inner{grid-template-columns:1fr}
+      .hero{height:auto;min-height:100svh}
+      .hero__inner{grid-template-columns:1fr;height:auto;padding:clamp(1.5rem,4vh,3rem) 5%}
       .hero__right{display:none}
       .services__grid{grid-template-columns:1fr 1fr}
       .why__layout{grid-template-columns:1fr}
@@ -396,7 +397,7 @@
       .services__grid{grid-template-columns:1fr}
       .stats__grid{grid-template-columns:1fr 1fr}
       .footer__top{grid-template-columns:1fr}
-      .hero__title{font-size:2.4rem}
+      .hero__title{font-size:clamp(2rem,7vw,2.6rem)}
       body{cursor:auto}
       .cursor,.cursor-ring{display:none}
       .nw-panel.act{grid-template-columns:repeat(3,1fr)}
@@ -421,15 +422,21 @@
       .ins-strip__row{grid-template-columns:1fr}
       .nw-count{gap:1.2rem}
       .nw-div{display:none}
-      .hero__inner{padding:3rem 0 3rem}
+      .hero__inner{padding:clamp(1.2rem,4vh,2.5rem) 5%}
       .hero__label{font-size:.72rem;padding:.35rem .85rem}
-      .hero__title{font-size:clamp(2rem,8vw,2.8rem);letter-spacing:-.5px}
-      .hero__desc{font-size:.88rem;margin-bottom:1.8rem}
-      .hero__btns{margin-bottom:1rem}
+      .hero__title{font-size:clamp(1.9rem,8vw,2.5rem);letter-spacing:-.5px}
+      .hero__desc{font-size:.88rem;margin-bottom:1.4rem}
+      .hero__btns{margin-bottom:.8rem}
       .hero__trust{gap:.75rem}
       .footer__top{gap:2rem}
       .cta__btns{flex-direction:column;width:100%}
       .btn-primary{justify-content:center}
+    }
+    @media(max-height:700px) and (min-width:1025px){
+      .hero__title{font-size:clamp(1.9rem,2.6vw + 1vh,3rem)}
+      .hero__desc{margin-bottom:1rem}
+      .hero__label{margin-bottom:.7rem}
+      .hero__phone-link{margin-bottom:1rem}
     }
   </style>
 <script type="application/ld+json">
@@ -666,7 +673,7 @@
     <div class="hero__left">
       <div class="hero__label reveal">&#x1F4CD; Helping Families Across Andhra Pradesh &amp; Telangana</div>
       <h1 class="hero__title reveal reveal-delay-1">Your Financial<br/>Future, <em>Secured</em><br/>&amp; Simplified.</h1>
-      <p class="hero__desc reveal reveal-delay-2">From health insurance to home loans — Cover Credit is your single trusted advisor for all financial protection needs. Whether you're in Hyderabad, Vijayawada, Visakhapatnam, or anywhere across AP and Telangana, we guide you in Telugu or English — from choosing the right plan to settling a claim.</p>
+      <p class="hero__desc reveal reveal-delay-2">From health insurance to home loans — one trusted advisor for every financial protection need. We guide you in Telugu or English, across Andhra Pradesh and Telangana.</p>
       <!-- CHANGE 3: Primary CTA only; phone as plain text link below -->
       <div class="hero__btns reveal reveal-delay-3">
         <a href="/book" class="btn-primary">Book Free Consultation <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
